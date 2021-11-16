@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jasmine.example.persistence.mapper.ExampleMapper">
+
+    <resultMap id="exampleDO" type="jasmine.example.persistence.model.ExampleDO">
+    </resultMap>
+
+    <select id="listAllExamples" resultMap="exampleDO">
+        select * from demo_example
+    </select>
+
+</mapper>
