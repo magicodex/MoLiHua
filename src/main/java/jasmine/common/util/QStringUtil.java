@@ -1,4 +1,7 @@
 package jasmine.common.util;
 
-public class QStringUtil {
+import cn.hutool.core.util.StrUtil;
+
+public class QStringUtil extends StrUtil {
+
 }
