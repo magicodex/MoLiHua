@@ -20,6 +20,9 @@
 
         <!-- API文档 -->
         <swagger.version>2.9.2</swagger.version>
+
+        <!-- MyBatis-Plus -->
+        <mybatis-plus-boot-starter.version>3.4.3.4</mybatis-plus-boot-starter.version>
     </properties>
 
     <dependencies>
@@ -39,6 +42,13 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
+        </dependency>
+
+        <!-- MyBatis-Plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
     </dependencies>
 
