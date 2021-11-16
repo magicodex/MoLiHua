@@ -23,6 +23,8 @@
 
         <!-- MyBatis-Plus -->
         <mybatis-plus-boot-starter.version>3.4.3.4</mybatis-plus-boot-starter.version>
+        <!-- MySql数据库驱动 -->
+        <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
     </properties>
 
     <dependencies>
@@ -49,6 +51,12 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus-boot-starter.version}</version>
+        </dependency>
+        <!-- Mysql数据库驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
     </dependencies>
 

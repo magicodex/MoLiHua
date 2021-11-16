@@ -1,5 +1,10 @@
 package jasmine.example.business.service;
 
-public class ExampleService {
+import jasmine.example.business.dto.ExampleDTO;
 
+import java.util.List;
+
+public interface ExampleService {
+
+    List<ExampleDTO> listAllExamples();
 }
