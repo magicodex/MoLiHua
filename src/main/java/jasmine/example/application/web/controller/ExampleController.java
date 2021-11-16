@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import jasmine.common.web.WebResult;
 import jasmine.example.application.web.conversion.WebExampleConversion;
 import jasmine.example.application.web.dto.WebExampleDTO;
+import jasmine.example.application.web.dto.WebExampleQO;
 import jasmine.example.business.dto.ExampleDTO;
 import jasmine.example.business.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +41,15 @@ public class ExampleController {
 
         WebResult result = new WebResult();
         result.setData(webExampleDTOList);
+
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/example/by/cond")
+    public ResponseEntity<WebResult<List<WebExampleDTO>>> listExamplesByCond(@Valid WebExampleQO query) {
+        WebResult result = new WebResult();
+        result.setData(Collections.emptyList());
+        // TODO
 
         return ResponseEntity.ok(result);
     }

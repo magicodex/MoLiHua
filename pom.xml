@@ -20,6 +20,8 @@
 
         <!-- API文档 -->
         <swagger.version>2.9.2</swagger.version>
+        <!-- 注解校验 -->
+        <hibernate-validator>6.0.7.Final</hibernate-validator>
 
         <!-- MyBatis-Plus -->
         <mybatis-plus-boot-starter.version>3.4.3.4</mybatis-plus-boot-starter.version>
@@ -37,6 +39,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 注解校验 -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
         </dependency>
 
         <!-- API文档 -->
