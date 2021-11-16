@@ -5,6 +5,11 @@ spring:
     url: jdbc:mysql://localhost:3306/????
     username: ????
     password: ????
+  liquibase:
+    # 自定义Liquibase路径
+    change-log: classpath:/database/master.xml
+    # 是否启用Liquibase
+    enabled: true
 
 mybatis-plus:
   mapper-locations: jasmine/**/*.xml
