@@ -1,5 +1,10 @@
 package jasmine.common.exception;
 
+/**
+ * <p>
+ * 不期望的异常，表示不应该出现的错误。
+ * </p>
+ */
 public class UnexpectedException extends RuntimeException {
 
     public UnexpectedException() {
