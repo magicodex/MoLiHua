@@ -24,6 +24,9 @@
         <hibernate-validator>6.0.7.Final</hibernate-validator>
         <!-- 安全认证 -->
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
+        <!-- XML类库 -->
+        <jakarta.xml.bind-api.version>2.3.3</jakarta.xml.bind-api.version>
+        <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
 
         <!-- MyBatis-Plus -->
         <mybatis-plus-boot-starter.version>3.4.3.4</mybatis-plus-boot-starter.version>
@@ -58,6 +61,17 @@
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
             <version>${spring-security-oauth2.version}</version>
+        </dependency>
+        <!-- XML类库 -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
         </dependency>
 
         <!-- API文档 -->
