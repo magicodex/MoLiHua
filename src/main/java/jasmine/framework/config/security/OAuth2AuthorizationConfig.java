@@ -23,9 +23,9 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.tokenKeyAccess("permitAll")
-                .checkTokenAccess("isAuthenticated()")
-                .allowFormAuthenticationForClients();
+        security.allowFormAuthenticationForClients()
+                .tokenKeyAccess("permitAll")
+                .checkTokenAccess("isAuthenticated()");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
                 .secret(passwordEncoder.encode("secret"))
                 .authorizedGrantTypes("password", "refresh_token")
                 .scopes("all")
-                .accessTokenValiditySeconds(100000);
+                .accessTokenValiditySeconds(3600);
     }
 
     @Override
