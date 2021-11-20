@@ -18,6 +18,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class SwaggerConfig {
     private static final String API_VERSION = "0.1";
     private static final String API_TITLE = "茉莉花";
+    private static final String API_PACKAGE = "jasmine";
 
     @Bean
     public Docket docket() {
@@ -29,7 +30,7 @@ public class SwaggerConfig {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage(API_PACKAGE))
                 .paths(PathSelectors.any())
                 .build();
 
