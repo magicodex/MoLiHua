@@ -23,8 +23,7 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security
-                .tokenKeyAccess("permitAll")
+        security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()")
                 .allowFormAuthenticationForClients();
     }
@@ -32,10 +31,10 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("client")
-                .secret(passwordEncoder.encode("secret"))
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("all")
+                .withClient("MoLiHua")
+                .secret(passwordEncoder.encode("123456"))
+                .authorizedGrantTypes("authorization_code", "password", "refresh_token")
+                .scopes("ALL")
                 .accessTokenValiditySeconds(3600);
     }
 
