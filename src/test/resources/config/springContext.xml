@@ -7,10 +7,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:property-placeholder location="classpath:/config/testApplication.properties,
-        classpath:/testConfig.properties"/>
+    <context:property-placeholder location="classpath:/config/application.properties,
+        classpath:/test-config.properties"/>
 
-    <import resource="classpath:/testContext.xml"/>
+    <import resource="classpath:/test-context.xml"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${database.driver}"/>
@@ -26,6 +26,6 @@
     <bean id="springLiquibase" class="liquibase.integration.spring.SpringLiquibase">
         <property name="dataSource" ref="dataSource"/>
         <property name="shouldRun" value="${liquibase.enabled}"/>
-        <property name="changeLog" value="classpath:config/testLiquibaseMaster.xml"/>
+        <property name="changeLog" value="classpath:config/liquibaseMaster.xml"/>
     </bean>
 </beans>
