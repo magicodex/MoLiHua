@@ -1,5 +1,6 @@
 package jasmine.common.util;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Q {
@@ -10,8 +11,7 @@ public class Q {
     }
 
     public static <K, V> Map<K, V> map() {
-        // TODO
-        return null;
+        return new HashMap<>(16);
     }
 
 }
