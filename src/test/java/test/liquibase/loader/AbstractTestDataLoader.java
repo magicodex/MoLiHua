@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import test.liquibase.log.TestDataChangeLog;
 import test.liquibase.log.TestDataChangeLogMapper;
 import test.util.MybatisPlusUtil;
-import test.util.ResourceUtil;
+import test.util.StreamUtil;
 import test.util.SpringUtil;
 
 import java.io.InputStream;
@@ -45,7 +45,7 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
             logMapper.deleteBatchIds(logIdList);
         }
 
-        List<Object> recordList = ResourceUtil.readCSV(inputStream, (Class<Object>) type);
+        List<Object> recordList = StreamUtil.readCSV(inputStream, (Class<Object>) type);
 
         if (CollUtil.isNotEmpty(recordList)) {
             for (Object record : recordList) {
