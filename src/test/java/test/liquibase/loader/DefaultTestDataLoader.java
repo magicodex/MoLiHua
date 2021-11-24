@@ -3,7 +3,7 @@ package test.liquibase.loader;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import test.liquibase.util.SpringUtil;
+import test.util.SpringUtil;
 
 import java.util.List;
 
@@ -15,7 +15,13 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
         super.init(type);
 
         String simpleClassName = type.getSimpleName();
-        String mapperBeanName = StrUtil.lowerFirst(simpleClassName) + "Mapper";
+        String mapperPrefix = StrUtil.lowerFirst(simpleClassName);
+
+        if (mapperPrefix.endsWith("DO")) {
+            mapperPrefix = mapperPrefix.substring(0, mapperPrefix.length() - 2);
+        }
+
+        String mapperBeanName = mapperPrefix + "Mapper";
         baseMapper = SpringUtil.getBean(mapperBeanName);
     }
 

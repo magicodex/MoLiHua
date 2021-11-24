@@ -1,4 +1,4 @@
-package test.liquibase.csv;
+package test.csv;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;

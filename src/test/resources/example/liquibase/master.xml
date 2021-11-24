@@ -4,5 +4,11 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <include file="classpath:/example/liquibase/master.xml" relativeToChangelogFile="false"/>
+    <changeSet id="test_data_20211125005801_v1" author="mh.z">
+        <customChange class="test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.example.persistence.model.ExampleDO"/>
+            <param name="resourcePath" value="classpath:example/liquibase/ExampleDO_1.csv"/>
+        </customChange>
+    </changeSet>
+
 </databaseChangeLog>

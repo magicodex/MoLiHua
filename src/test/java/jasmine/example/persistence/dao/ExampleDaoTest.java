@@ -14,7 +14,7 @@ public class ExampleDaoTest extends BeanTestContext {
 
     @Test
     public void testListAllExamples() {
-        Assert.assertEquals(0, exampleDao.listAllExamples().size());
+        Assert.assertEquals(2, exampleDao.listAllExamples().size());
     }
 
 }

@@ -1,10 +1,10 @@
-package test.liquibase.util;
+package test.util;
 
 import cn.hutool.core.lang.Assert;
 import liquibase.util.csv.CSVReader;
 import liquibase.util.csv.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
-import test.liquibase.csv.CsvToObject;
-import test.liquibase.csv.MybatisPlusColumnMapping;
+import test.csv.CsvToObject;
+import test.csv.MybatisPlusColumnMapping;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,6 +20,7 @@ public class ResourceUtil {
         MybatisPlusColumnMapping columnMapping = new MybatisPlusColumnMapping(type);
         HeaderColumnNameTranslateMappingStrategy mappingStrategy = new HeaderColumnNameTranslateMappingStrategy();
         mappingStrategy.setColumnMapping(columnMapping);
+        mappingStrategy.setType(type);
 
         InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
         CSVReader csvReader = new CSVReader(reader);

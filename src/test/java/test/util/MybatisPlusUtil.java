@@ -1,4 +1,4 @@
-package test.liquibase.util;
+package test.util;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ReflectUtil;

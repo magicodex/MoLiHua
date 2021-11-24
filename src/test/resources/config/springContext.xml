@@ -10,6 +10,13 @@
     <context:property-placeholder location="classpath:/config/application.properties,
         classpath:/test-config.properties"/>
 
+    <context:component-scan base-package="test,jasmine">
+    </context:component-scan>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="test.liquibase.log,jasmine.**.persistence.mapper"/>
+    </bean>
+
     <import resource="classpath:/test-context.xml"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

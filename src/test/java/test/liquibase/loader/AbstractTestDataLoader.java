@@ -8,9 +8,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import test.liquibase.log.TestDataChangeLog;
 import test.liquibase.log.TestDataChangeLogMapper;
-import test.liquibase.util.MybatisPlusUtil;
-import test.liquibase.util.ResourceUtil;
-import test.liquibase.util.SpringUtil;
+import test.util.MybatisPlusUtil;
+import test.util.ResourceUtil;
+import test.util.SpringUtil;
 
 import java.io.InputStream;
 import java.lang.reflect.Field;
