@@ -10,4 +10,8 @@
     <context:component-scan base-package="jasmine">
     </context:component-scan>
 
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="test.liquibase.log,jasmine.**.persistence.mapper"/>
+    </bean>
+
 </beans>
