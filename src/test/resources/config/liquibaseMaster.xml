@@ -9,10 +9,10 @@
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_test_data_change_log"/>
             </column>
-            <column name="file_name" type="varchar(500)" remarks="文件名">
+            <column name="resource_path" type="varchar(500)" remarks="资源路径">
                 <constraints nullable="false"/>
             </column>
-            <column name="record_type" type="varchar(100)" remarks="记录类型">
+            <column name="resource_name" type="varchar(100)" remarks="资源名">
                 <constraints nullable="false"/>
             </column>
             <column name="record_id" type="bigint" remarks="记录id">
