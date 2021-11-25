@@ -12,8 +12,17 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
+/**
+ * @author mh.z
+ */
 public class DeclareI18nScanUtil {
 
+    /**
+     * 扫描多语言常量
+     *
+     * @param locationPattern
+     * @return
+     */
     public static Properties scan(String locationPattern) {
         QCheckUtil.notNull(locationPattern, "locationPattern null");
         Properties properties = new Properties();
@@ -40,6 +49,12 @@ public class DeclareI18nScanUtil {
         return properties;
     }
 
+    /**
+     * 扫描多语言常量
+     *
+     * @param properties
+     * @param clazz
+     */
     protected static void doScan(Properties properties, Class<?> clazz) {
         QCheckUtil.notNull(properties, "properties null");
         QCheckUtil.notNull(clazz, "clazz null");
