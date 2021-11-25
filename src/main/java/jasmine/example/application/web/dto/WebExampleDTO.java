@@ -1,5 +1,8 @@
 package jasmine.example.application.web.dto;
 
+/**
+ * @author mh.z
+ */
 public class WebExampleDTO {
     private Long id;
     private String exampleCode;

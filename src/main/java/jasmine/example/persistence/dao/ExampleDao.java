@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author mh.z
+ */
 @Repository
 public class ExampleDao {
     private ExampleMapper baseMapper;

@@ -2,6 +2,9 @@ package jasmine.example.persistence.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 
+/**
+ * @author mh.z
+ */
 @TableName("demo_example")
 public class ExampleDO {
     private Long id;

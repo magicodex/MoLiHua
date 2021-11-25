@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author mh.z
+ */
 @Service
 public class ExampleServiceImpl implements ExampleService {
     private ExampleDao exampleDao;
