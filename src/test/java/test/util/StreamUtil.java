@@ -11,8 +11,19 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+/**
+ * @author mh.z
+ */
 public class StreamUtil {
 
+    /**
+     * 读取CSV
+     *
+     * @param inputStream
+     * @param type
+     * @param <T>
+     * @return
+     */
     public static <T> List<T> readCSV(InputStream inputStream, Class<T> type) {
         Assert.notNull(inputStream, "inputStream null");
         Assert.notNull(type, "type null");

@@ -10,6 +10,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+/**
+ * @author mh.z
+ */
 public class CsvToObject<T> extends CsvToBean<T> {
 
     @Override
@@ -34,6 +37,12 @@ public class CsvToObject<T> extends CsvToBean<T> {
         return result;
     }
 
+    /**
+     * 转换成 Boolean 对象
+     *
+     * @param value
+     * @return
+     */
     protected Boolean toBoolean(String value) {
         Boolean result = null;
 
@@ -46,6 +55,12 @@ public class CsvToObject<T> extends CsvToBean<T> {
         return result;
     }
 
+    /**
+     * 转换成 Decimal 对象
+     *
+     * @param value
+     * @return
+     */
     protected BigDecimal toBigDecimal(String value) {
         BigDecimal result = null;
 
@@ -56,6 +71,12 @@ public class CsvToObject<T> extends CsvToBean<T> {
         return result;
     }
 
+    /**
+     * 转换成 ZonedDateTime 对象
+     *
+     * @param value
+     * @return
+     */
     protected ZonedDateTime toZonedDateTime(String value) {
         ZonedDateTime result = null;
 

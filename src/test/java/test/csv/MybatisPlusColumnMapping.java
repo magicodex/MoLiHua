@@ -8,6 +8,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 
+/**
+ * @author mh.z
+ */
 public class MybatisPlusColumnMapping extends LinkedHashMap<String, String> {
 
     public MybatisPlusColumnMapping(Class<?> type) {
@@ -22,6 +25,12 @@ public class MybatisPlusColumnMapping extends LinkedHashMap<String, String> {
         }
     }
 
+    /**
+     * 返回列名
+     *
+     * @param field
+     * @return
+     */
     protected String getColumnName(Field field) {
         Assert.notNull(field, "field null");
         String columnName = null;

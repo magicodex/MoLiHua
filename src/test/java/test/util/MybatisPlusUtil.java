@@ -8,6 +8,9 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * @author mh.z
+ */
 public class MybatisPlusUtil {
     private static final Map<Class, Field> ID_FIELD_CACHE;
 
@@ -15,6 +18,12 @@ public class MybatisPlusUtil {
         ID_FIELD_CACHE = new ConcurrentHashMap<>();
     }
 
+    /**
+     * 查找 ID 字段
+     *
+     * @param entityType
+     * @return
+     */
     public static Field getIdField(Class<?> entityType) {
         Assert.notNull(entityType, "entityType null");
 

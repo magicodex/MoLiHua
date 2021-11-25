@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 import test.context.BeanTestContext;
 
+/**
+ * @author mh.z
+ */
 @RunWith(SpringRunner.class)
 public class ExampleDaoTest extends BeanTestContext {
     @Autowired
