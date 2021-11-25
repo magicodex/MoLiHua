@@ -26,10 +26,10 @@
    |---- dao
    |---- mapper
    |---- model
-   |---- constant
-   |---- enums
-   |---- exception
-   |---- util
+|---- constant
+|---- enums
+|---- exception
+|---- util
 ```
 
 ### framework
