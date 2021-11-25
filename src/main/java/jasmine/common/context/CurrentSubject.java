@@ -5,8 +5,20 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+/**
+ * <p>
+ * 表示当前用户。
+ * </p>
+ *
+ * @author mh.z
+ */
 public class CurrentSubject {
 
+    /**
+     * 返回用户ID
+     *
+     * @return
+     */
     public static Long getUserId() {
         SecurityContext context = SecurityContextHolder.getContext();
         if (context == null) {
