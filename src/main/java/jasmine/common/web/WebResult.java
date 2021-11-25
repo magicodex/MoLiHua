@@ -1,10 +1,24 @@
 package jasmine.common.web;
 
+/**
+ * <p>
+ * WEB响应结果。
+ * </p>
+ *
+ * @author mh.z
+ * @param <T>
+ */
 public class WebResult<T> {
+    /** 是否成功 */
     private Boolean success;
+    /** 响应数据 */
     private T data;
+    /** 响应信息 */
     private String message;
+
+    /** 错误代码 */
     private String errorCode;
+    /** 错误详情 */
     private String errorDetail;
 
     public Boolean getSuccess() {
