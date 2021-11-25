@@ -1,6 +1,6 @@
 package jasmine.framework.config;
 
-import jasmine.framework.impl.context.DeclareI18nScanUtil;
+import jasmine.framework.i18n.DeclareI18nScanUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

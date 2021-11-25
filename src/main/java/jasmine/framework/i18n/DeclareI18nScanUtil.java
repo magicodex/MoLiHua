@@ -1,4 +1,4 @@
-package jasmine.framework.impl.context;
+package jasmine.framework.i18n;
 
 import jasmine.common.annotation.DeclareI18N;
 import jasmine.common.util.QCheckUtil;
