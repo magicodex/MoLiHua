@@ -7,6 +7,10 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.time.ZonedDateTime;
 
 /**
+ * <p>
+ * 测试数据变更日志。
+ * </p>
+ *
  * @author mh.z
  */
 @TableName("test_data_change_log")

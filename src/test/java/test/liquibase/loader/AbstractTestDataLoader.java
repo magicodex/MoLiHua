@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import test.liquibase.log.TestDataChangeLog;
 import test.liquibase.log.TestDataChangeLogMapper;
 import test.util.MybatisPlusUtil;
-import test.util.StreamUtil;
 import test.util.SpringUtil;
+import test.util.StreamUtil;
 
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -18,8 +18,13 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.function.Function;
 
+/**
+ * @author mh.z
+ */
 public abstract class AbstractTestDataLoader implements TestDataLoader {
+    /** 类型 */
     protected Class<?> type;
+    /** 日志数据接口 */
     protected TestDataChangeLogMapper logMapper;
 
     @Override
@@ -57,6 +62,13 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
         }
     }
 
+    /**
+     * 创建日志
+     *
+     * @param resourcePath
+     * @param record
+     * @return
+     */
     protected TestDataChangeLog createLog(String resourcePath, Object record) {
         Assert.notNull(resourcePath, "resourcePath null");
         Assert.notNull(record, "record null");
@@ -74,6 +86,14 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
         return createLog(resourcePath, record, function);
     }
 
+    /**
+     * 创建日志
+     *
+     * @param resourcePath
+     * @param record
+     * @param function
+     * @return
+     */
     protected TestDataChangeLog createLog(String resourcePath, Object record, Function<Object, Long> function) {
         Assert.notNull(resourcePath, "resourcePath null");
         Assert.notNull(record, "record null");
@@ -90,7 +110,17 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
         return log;
     }
 
+    /**
+     * 保存记录
+     *
+     * @param records
+     */
     protected abstract void insertRecords(List<Object> records);
 
+    /**
+     * 删除记录
+     *
+     * @param recordIds
+     */
     protected abstract void deleteRecords(List<Long> recordIds);
 }

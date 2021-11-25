@@ -7,6 +7,9 @@ import test.util.SpringUtil;
 
 import java.util.List;
 
+/**
+ * @author mh.z
+ */
 public class DefaultTestDataLoader extends AbstractTestDataLoader {
     private BaseMapper<Object> baseMapper;
 
@@ -25,6 +28,7 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
         baseMapper = SpringUtil.getBean(mapperBeanName);
     }
 
+    @Override
     protected void insertRecords(List<Object> records) {
         Assert.notNull(records, "records null");
 
@@ -33,6 +37,7 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
         }
     }
 
+    @Override
     protected void deleteRecords(List<Long> recordIds) {
         Assert.notNull(recordIds, "recordIds null");
 
