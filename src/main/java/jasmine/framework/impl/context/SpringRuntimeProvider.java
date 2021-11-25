@@ -6,6 +6,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author mh.z
+ */
 @Component
 public class SpringRuntimeProvider implements RuntimeProvider, ApplicationContextAware {
     private static ApplicationContext applicationContext;

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
+/**
+ * @author mh.z
+ */
 @Component
 public class SpringMessageTranslator implements MessageTranslator {
     private final MessageSource messageSource;
