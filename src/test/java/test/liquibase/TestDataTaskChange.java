@@ -15,10 +15,16 @@ import test.liquibase.loader.TestDataLoader;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 
+/**
+ * @author mh.z
+ */
 public class TestDataTaskChange implements CustomTaskChange {
     private ResourceAccessor resourceAccessor;
+    /** 类名 */
     private String className;
+    /** 加载器名 */
     private String loaderName;
+    /** 资源路径 */
     private String resourcePath;
 
     public void setClassName(String className) {
