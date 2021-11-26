@@ -35,6 +35,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureForwardUrl("/login")
                 .permitAll();
 
+        http.logout()
+                .logoutSuccessUrl("/login")
+                .permitAll();
+
         http.csrf()
                 .disable();
     }
