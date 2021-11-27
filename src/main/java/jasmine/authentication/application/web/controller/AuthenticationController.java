@@ -1,6 +1,7 @@
 package jasmine.authentication.application.web.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import jasmine.common.util.Q;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import java.util.Map;
 public class AuthenticationController {
     private static final String SPRING_SECURITY_LAST_EXCEPTION = "SPRING_SECURITY_LAST_EXCEPTION";
 
+    @ApiOperation(value = "登录认证")
     @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = Q.map();
