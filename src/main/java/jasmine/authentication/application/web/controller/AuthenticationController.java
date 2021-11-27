@@ -1,8 +1,10 @@
 package jasmine.authentication.application.web.controller;
 
+import io.swagger.annotations.Api;
 import jasmine.common.util.Q;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,15 +15,17 @@ import java.util.Map;
 /**
  * @author mh.z
  */
+@Api(tags = "认证")
 @RestController
 public class AuthenticationController {
+    private static final String SPRING_SECURITY_LAST_EXCEPTION = "SPRING_SECURITY_LAST_EXCEPTION";
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = Q.map();
 
         // 根据指定的请求属性判断是否认证失败
-        Object exception = request.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+        Object exception = request.getAttribute(SPRING_SECURITY_LAST_EXCEPTION);
         if (exception instanceof BadCredentialsException) {
             BadCredentialsException failException = (BadCredentialsException) exception;
 
