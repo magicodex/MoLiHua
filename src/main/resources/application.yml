@@ -1,5 +1,5 @@
-# 数据库连接参数
 spring:
+  # 数据库连接参数
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/????
@@ -12,9 +12,11 @@ spring:
     enabled: true
 
 mybatis-plus:
+  # 自定义 mapper 文件路径
   mapper-locations: jasmine/**/*.xml
 
 app:
+  # 配置 swagger 文档
   swagger:
     version: 0.1
     title: 茉莉花
