@@ -13,3 +13,9 @@ spring:
 
 mybatis-plus:
   mapper-locations: jasmine/**/*.xml
+
+app:
+  swagger:
+    version: 0.1
+    title: 茉莉花
+    base-package: jasmine

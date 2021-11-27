@@ -1,5 +1,6 @@
 package jasmine.framework.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -16,21 +17,26 @@ import springfox.documentation.spring.web.plugins.Docket;
  */
 @Configuration
 public class SwaggerConfig {
-    private static final String API_VERSION = "0.1";
-    private static final String API_TITLE = "茉莉花";
-    private static final String API_PACKAGE = "jasmine";
+    @Value("${app.swagger.version:}")
+    private String apiVersion;
+
+    @Value("${app.swagger.title:}")
+    private String apiTitle;
+
+    @Value("${app.swagger.base-package:}")
+    private String apiPackage;
 
     @Bean
     public Docket docket() {
         ApiInfo apiInfo = new ApiInfoBuilder()
-                .title(API_TITLE)
-                .version(API_VERSION)
+                .title(apiTitle)
+                .version(apiVersion)
                 .build();
 
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(API_PACKAGE))
+                .apis(RequestHandlerSelectors.basePackage(apiPackage))
                 .paths(PathSelectors.any())
                 .build();
 
