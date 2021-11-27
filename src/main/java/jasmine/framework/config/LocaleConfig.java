@@ -11,6 +11,10 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import java.util.Properties;
 
 /**
+ * <p>
+ * 配置多语言。
+ * </p>
+ *
  * @author mh.z
  */
 @Configuration
@@ -31,12 +35,18 @@ public class LocaleConfig {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename(MESSAGE_PATH_PREFIX);
         messageSource.setDefaultEncoding(MESSAGE_DEFAULT_ENCODING);
+        // 扫描多语言常量
         Properties commonMessages = DeclareI18nScanUtil.scan(MESSAGE_CONSTANT_PATH);
         messageSource.setCommonMessages(commonMessages);
 
         return messageSource;
     }
 
+    /**
+     * 切换语言的策略
+     *
+     * @return
+     */
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();

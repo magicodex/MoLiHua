@@ -16,6 +16,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import java.util.Collections;
 
 /**
+ * <p>
+ * 配置 Spring Security。
+ * </p>
+ *
  * @author mh.z
  */
 @EnableWebSecurity
@@ -25,20 +29,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                // 允许所有人访问静态目录 /static/
                 .antMatchers("/static/**")
                 .permitAll()
+                // 没有特别说明的其它请求必须认证才能访问
                 .anyRequest()
                 .authenticated();
 
+        // 自定义登录页面和认证失败后跳转的页面
         http.formLogin()
                 .loginPage("/login")
                 .failureForwardUrl("/login")
                 .permitAll();
 
+        // 自定义登出后跳转的页面
         http.logout()
                 .logoutSuccessUrl("/login")
                 .permitAll();
 
+        // 不启用 CSRF 特殊处理
         http.csrf()
                 .disable();
     }
@@ -46,6 +55,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsServiceBean() {
+        // TODO 这里硬编码个用户，实际开发时需要重写这个方法
         UserSubject user = new UserSubject(100001L, "MoLiHua",
                 passwordEncoder().encode("123456"),
                 Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));

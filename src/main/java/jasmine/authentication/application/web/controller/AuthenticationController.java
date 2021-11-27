@@ -20,6 +20,7 @@ public class AuthenticationController {
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = Q.map();
 
+        // 根据指定的请求属性判断是否认证失败
         Object exception = request.getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
         if (exception instanceof BadCredentialsException) {
             BadCredentialsException failException = (BadCredentialsException) exception;
