@@ -13,6 +13,10 @@ import java.lang.reflect.Field;
 import java.util.Properties;
 
 /**
+ * <p>
+ * 扫描多语言常量。
+ * </p>
+ *
  * @author mh.z
  */
 public class DeclareI18nScanUtil {
@@ -32,14 +36,17 @@ public class DeclareI18nScanUtil {
         ClassLoader classLoader = DeclareI18nScanUtil.class.getClassLoader();
 
         try {
+            // 获取多语言常量类信息
             Resource[] resources = pathResolver.getResources(locationPattern);
 
             for (Resource resource : resources) {
                 MetadataReader metadataReader = readerFactory.getMetadataReader(resource);
                 ClassMetadata classMetadata = metadataReader.getClassMetadata();
                 String className = classMetadata.getClassName();
+                // 加载多语言常量类
                 Class<?> clazz = classLoader.loadClass(className);
 
+                // 扫描多语言常量类获取多语言信息
                 doScan(properties, clazz);
             }
         } catch (Exception e) {
@@ -76,6 +83,7 @@ public class DeclareI18nScanUtil {
             }
 
             try {
+                // 获取多语言信息
                 Object key = field.get(null);
                 String value = annotation.value();
 
