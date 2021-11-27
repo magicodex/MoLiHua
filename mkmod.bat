@@ -9,6 +9,7 @@ cd jasmine
 mkdir %module%
 cd %module%
 
+rem 创建 application 目录
 mkdir application
 cd application
 mkdir web
@@ -20,6 +21,7 @@ mkdir validation
 cd ../
 cd ../
 
+rem 创建 business 目录
 mkdir business
 cd business
 mkdir conversion
@@ -29,6 +31,7 @@ mkdir helper
 mkdir service
 cd ../
 
+rem 创建 persistent 目录
 mkdir persistent
 cd persistent
 mkdir cond
@@ -36,6 +39,7 @@ mkdir dao
 mkdir mapper
 mkdir model
 
+rem 创建 constant 目录
 mkdir constant
 
 popd

@@ -143,6 +143,7 @@
             </plugin>
         </plugins>
         <resources>
+            <!-- 保留源码目录下的XML文件 -->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
