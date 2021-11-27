@@ -30,8 +30,7 @@ public class ExampleController {
     @ApiOperation(value = "向世界打招呼")
     @GetMapping("/example/hello/world")
     public ResponseEntity<WebResult> helloWorld() {
-        WebResult result = new WebResult();
-        result.setData("Hello, world!");
+        WebResult result = WebResult.success("Hello, world!");
 
         return ResponseEntity.ok(result);
     }
@@ -42,16 +41,13 @@ public class ExampleController {
         List<WebExampleDTO> webExampleDTOList = exampleDTOList.stream()
                 .map(WebExampleConversion::toWebExampleDTO).collect(Collectors.toList());
 
-        WebResult result = new WebResult();
-        result.setData(webExampleDTOList);
-
+        WebResult result = WebResult.success(webExampleDTOList);
         return ResponseEntity.ok(result);
     }
 
     @GetMapping("/example/by/cond")
     public ResponseEntity<WebResult<List<WebExampleDTO>>> listExamplesByCond(@Valid WebExampleQO query) {
-        WebResult result = new WebResult();
-        result.setData(Collections.emptyList());
+        WebResult result = WebResult.success(Collections.emptyList());
         // TODO
 
         return ResponseEntity.ok(result);

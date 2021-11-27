@@ -21,6 +21,42 @@ public class WebResult<T> {
     /** 错误详情 */
     private String errorDetail;
 
+    protected WebResult(Boolean success, T data, String message) {
+        this(success, data, message, null, null);
+    }
+
+    protected WebResult(Boolean success, T data, String message,
+                        String errorCode, String errorDetail) {
+        this.success = success;
+        this.data = data;
+        this.message = message;
+        this.errorCode = errorCode;
+        this.errorDetail = errorDetail;
+    }
+
+    /**
+     * 成功结果
+     *
+     * @param data
+     * @param <T>
+     * @return
+     */
+    public static <T> WebResult<T> success(T data) {
+        return new WebResult<>(true, data, null);
+    }
+
+    /**
+     * 出错结果
+     *
+     * @param errorCode
+     * @param message
+     * @param <T>
+     * @return
+     */
+    public static <T> WebResult<T> error(String errorCode, String message) {
+        return new WebResult<>(false, null, message, errorCode, null);
+    }
+
     public Boolean getSuccess() {
         return success;
     }
