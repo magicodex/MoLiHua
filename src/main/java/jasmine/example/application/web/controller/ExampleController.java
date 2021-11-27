@@ -35,6 +35,7 @@ public class ExampleController {
         return ResponseEntity.ok(result);
     }
 
+    @ApiOperation(value = "查找所有记录")
     @GetMapping("/example/all")
     public ResponseEntity<WebResult<List<WebExampleDTO>>> listAllExamples() {
         List<ExampleDTO> exampleDTOList = exampleService.listAllExamples();
@@ -45,6 +46,7 @@ public class ExampleController {
         return ResponseEntity.ok(result);
     }
 
+    @ApiOperation(value = "查找指定记录")
     @GetMapping("/example/by/cond")
     public ResponseEntity<WebResult<List<WebExampleDTO>>> listExamplesByCond(@Valid WebExampleQO query) {
         WebResult result = WebResult.success(Collections.emptyList());
