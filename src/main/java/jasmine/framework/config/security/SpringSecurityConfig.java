@@ -1,19 +1,17 @@
 package jasmine.framework.config.security;
 
-import jasmine.framework.security.UserSubject;
+import jasmine.common.context.RuntimeProvider;
+import jasmine.example.business.service.DemoUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
-import java.util.Collections;
 
 /**
  * <p>
@@ -25,6 +23,8 @@ import java.util.Collections;
 @EnableWebSecurity
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private RuntimeProvider runtimeProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -55,12 +55,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsServiceBean() {
-        // TODO 这里硬编码个用户，实际开发时需要重写这个方法
-        UserSubject user = new UserSubject(100001L, "MoLiHua",
-                passwordEncoder().encode("123456"),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
-
-        return new InMemoryUserDetailsManager(user);
+        // TODO 这里只是为了演示，实际开发时需要重写这个方法
+        return new DemoUserDetailsService(runtimeProvider);
     }
 
     @Override
