@@ -21,7 +21,7 @@
         <!-- API文档 -->
         <swagger.version>2.9.2</swagger.version>
         <!-- 注解校验 -->
-        <hibernate-validator>6.0.7.Final</hibernate-validator>
+        <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
         <!-- 安全认证 -->
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
         <!-- XML类库 -->

@@ -2,12 +2,14 @@ package jasmine.example.application.web.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import jasmine.common.util.Q;
 import jasmine.common.web.WebResult;
 import jasmine.example.application.web.conversion.WebExampleConversion;
 import jasmine.example.application.web.dto.WebExampleDTO;
 import jasmine.example.application.web.dto.WebExampleQO;
 import jasmine.example.business.dto.ExampleDTO;
 import jasmine.example.business.service.ExampleService;
+import jasmine.example.constant.ExampleMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +32,7 @@ public class ExampleController {
     @ApiOperation(value = "向世界打招呼")
     @GetMapping("/example/hello/world")
     public ResponseEntity<WebResult> helloWorld() {
-        WebResult result = WebResult.success("Hello, world!");
+        WebResult result = WebResult.success(Q.tr(ExampleMessages.HELLO_WORLD));
 
         return ResponseEntity.ok(result);
     }
