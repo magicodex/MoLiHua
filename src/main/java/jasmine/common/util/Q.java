@@ -2,7 +2,6 @@ package jasmine.common.util;
 
 import jasmine.common.context.I18N;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -33,7 +32,7 @@ public class Q {
      * @return
      */
     public static <K, V> Map<K, V> map() {
-        return new HashMap<>(16);
+        return QNewUtil.map();
     }
 
 }
