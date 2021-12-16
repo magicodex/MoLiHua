@@ -5,6 +5,12 @@ spring:
     url: jdbc:mysql://localhost:3306/????
     username: ????
     password: ????
+    type: com.zaxxer.hikari.HikariDataSource
+  hikari:
+    # 最小空闲连接数量
+    minimum-idle: 10
+    # 连接超时时间
+    connection-timeout: 30000
   liquibase:
     # 自定义Liquibase路径
     change-log: classpath:/database/master.xml
