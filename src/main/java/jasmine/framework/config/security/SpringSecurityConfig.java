@@ -2,16 +2,19 @@ package jasmine.framework.config.security;
 
 import jasmine.common.context.RuntimeProvider;
 import jasmine.example.business.service.DemoUserDetailsService;
+import jasmine.framework.security.DynamicAccessDecisionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 /**
  * <p>
@@ -26,6 +29,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private RuntimeProvider runtimeProvider;
 
+    @Autowired
+    private DynamicAccessDecisionManager accessDecisionManager;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -34,7 +40,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 // 没有特别说明的其它请求必须认证才能访问
                 .anyRequest()
-                .authenticated();
+                .authenticated()
+                .withObjectPostProcessor(filterSecurityInterceptorPostProcessor());
 
         // 自定义登录页面和认证失败后跳转的页面
         http.formLogin()
@@ -68,6 +75,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    /**
+     *
+     * @return
+     */
+    private ObjectPostProcessor<FilterSecurityInterceptor> filterSecurityInterceptorPostProcessor() {
+        return new ObjectPostProcessor<>() {
+            @Override
+            public <O extends FilterSecurityInterceptor> O postProcess(O object) {
+                object.setAccessDecisionManager(accessDecisionManager);
+
+                return object;
+            }
+        };
     }
 
 }
