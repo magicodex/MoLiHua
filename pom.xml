@@ -37,6 +37,8 @@
 
         <!-- 工具类库 -->
         <hutool.version>5.6.6</hutool.version>
+        <!-- Redis客户端 -->
+        <redisson.version>3.16.6</redisson.version>
         <!-- 测试框架 -->
         <junit.version>4.13.2</junit.version>
         <spring-test.version>5.3.8</spring-test.version>
@@ -119,6 +121,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        <!-- Redis客户端 -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>${redisson.veersion}</version>
         </dependency>
 
         <!-- 测试框架 -->
