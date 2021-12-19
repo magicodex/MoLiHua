@@ -15,4 +15,12 @@ public interface DeclaredGlobalLock {
      * @param callback
      */
     <T> T lock(GlobalLockCallback callback);
+
+    /**
+     * 先加锁后执行
+     *
+     * @param waitTime
+     * @param callback
+     */
+    <T> T lock(long waitTime, GlobalLockCallback callback);
 }

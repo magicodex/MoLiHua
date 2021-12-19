@@ -14,6 +14,9 @@ public class RedisDeclaredLock implements DeclaredGlobalLock {
     private RedissonClient redissonClient;
     private String redisKey;
 
+    private static final long DEFAULT_WAIT_TIME = 5000L;
+    private static final long DEFAULT_LEASE_TIME = 10000L;
+
     public RedisDeclaredLock(RedissonClient redissonClient, String redisKey) {
         this.redissonClient = redissonClient;
         this.redisKey = redisKey;
@@ -21,15 +24,27 @@ public class RedisDeclaredLock implements DeclaredGlobalLock {
 
     @Override
     public <T> T lock(GlobalLockCallback callback) {
+        return lock(DEFAULT_WAIT_TIME, callback);
+    }
+
+    @Override
+    public <T> T lock(long waitTime, GlobalLockCallback callback) {
         RLock lock = redissonClient.getLock(redisKey);
-        lock.lock(10, TimeUnit.SECONDS);
+        boolean lockFlag = false;
 
         try {
+            lockFlag = lock.tryLock(waitTime, DEFAULT_LEASE_TIME, TimeUnit.MILLISECONDS);
+            if (!lockFlag) {
+                throw new RuntimeException("lock failed");
+            }
+
             return (T) callback.call();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
-            lock.unlock();
+            if (lockFlag) {
+                lock.unlock();
+            }
         }
     }
 
