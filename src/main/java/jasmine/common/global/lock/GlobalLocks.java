@@ -5,7 +5,7 @@ import jasmine.common.util.spring.SpringUtil;
 /**
  * @author mh.z
  */
-public class GlobalLockHelper {
+public class GlobalLocks {
 
     /**
      * 声明分布式锁

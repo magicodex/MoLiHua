@@ -3,7 +3,7 @@ package jasmine.example.application.web.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jasmine.common.global.lock.DeclaredGlobalLock;
-import jasmine.common.global.lock.GlobalLockHelper;
+import jasmine.common.global.lock.GlobalLocks;
 import jasmine.common.util.Q;
 import jasmine.common.web.WebResult;
 import jasmine.example.application.web.conversion.WebExampleConversion;
@@ -42,7 +42,7 @@ public class ExampleController {
     @ApiOperation(value = "先加锁，后向世界打招呼")
     @GetMapping("/example/lockThenHelloWorld")
     public ResponseEntity<WebResult> lockThenHelloWorld() {
-        DeclaredGlobalLock lock = GlobalLockHelper.declareLock("example", "lockThenHelloWorld");
+        DeclaredGlobalLock lock = GlobalLocks.declareLock("example", "lockThenHelloWorld");
 
         WebResult result = lock.lock(() -> {
             Thread.sleep(5000L);
