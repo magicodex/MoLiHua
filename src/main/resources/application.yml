@@ -16,6 +16,9 @@ spring:
     change-log: classpath:/database/master.xml
     # 是否启用Liquibase
     enabled: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
 # 配置日志
 logging:
