@@ -2,6 +2,7 @@ package jasmine.framework.impl.global.lock;
 
 import jasmine.common.global.lock.DeclaredGlobalLock;
 import jasmine.common.global.lock.GlobalLockCallback;
+import jasmine.common.util.QCheckUtil;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 
@@ -11,15 +12,17 @@ import java.util.concurrent.TimeUnit;
  * @author mh.z
  */
 public class RedisDeclaredLock implements DeclaredGlobalLock {
-    private RedissonClient redissonClient;
-    private String redisKey;
+    private RedissonClient redisson;
+    private String lockKey;
 
+    /** 默认等待锁的时间 */
     private static final long DEFAULT_WAIT_TIME = 5000L;
+    /** 默认释放锁的时间 */
     private static final long DEFAULT_LEASE_TIME = 10000L;
 
-    public RedisDeclaredLock(RedissonClient redissonClient, String redisKey) {
-        this.redissonClient = redissonClient;
-        this.redisKey = redisKey;
+    public RedisDeclaredLock(RedissonClient redisson, String lockKey) {
+        this.redisson = redisson;
+        this.lockKey = lockKey;
     }
 
     @Override
@@ -29,7 +32,9 @@ public class RedisDeclaredLock implements DeclaredGlobalLock {
 
     @Override
     public <T> T lock(long waitTime, GlobalLockCallback callback) {
-        RLock lock = redissonClient.getLock(redisKey);
+        QCheckUtil.notNull(callback, "callback null");
+
+        RLock lock = redisson.getLock(lockKey);
         boolean lockFlag = false;
 
         try {

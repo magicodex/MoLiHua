@@ -3,6 +3,10 @@ package jasmine.common.global.lock;
 import jasmine.common.util.spring.SpringUtil;
 
 /**
+ * <p>
+ * 分布式锁。
+ * </p>
+ *
  * @author mh.z
  */
 public class GlobalLock {
