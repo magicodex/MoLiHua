@@ -18,7 +18,18 @@ public class SpringUtil implements ApplicationContextAware {
     }
 
     /**
-     * 查找指定类型的对象并返回
+     * 查找 bean 对象
+     *
+     * @param name
+     * @param <T>
+     * @return
+     */
+    public static <T> T getBean(String name) {
+        return (T) applicationContext.getBean(name);
+    }
+
+    /**
+     * 查找 bean 对象
      *
      * @param type
      * @param <T>

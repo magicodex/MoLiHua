@@ -6,10 +6,10 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import jasmine.common.util.spring.SpringUtil;
 import test.liquibase.log.TestDataChangeLog;
 import test.liquibase.log.TestDataChangeLogMapper;
 import test.util.MybatisPlusUtil;
-import test.util.SpringUtil;
 import test.util.StreamUtil;
 
 import java.io.InputStream;
