@@ -1,9 +1,9 @@
-package jasmine.common.cache;
+package jasmine.common.global.cache;
 
 /**
  * @author mh.z
  */
-public interface CacheService {
+public interface GlobalCacheService {
 
     /**
      * 从缓存中查找数据
