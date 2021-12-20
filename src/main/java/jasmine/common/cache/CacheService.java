@@ -10,8 +10,9 @@ public interface CacheService {
      *
      * @param category
      * @param key
+     * @return
      */
-    void get(String category, String key);
+    Object get(String category, String key);
 
     /**
      * 添加数据到缓存中
