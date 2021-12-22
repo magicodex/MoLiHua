@@ -22,6 +22,8 @@
 | HikariCP | 4.0.3 | 数据库连接池 |
 | Liquibase | 4.3.5 | 数据库版本管理工具 |
 | Redisson | 3.12.3 | Redis客户端 |
+| amqp-client | 5.12.0 | RabbitMQ客户端 |
+| Jackson | 2.12.4 | JSON库 |
 | JUnit | 4.13.2 | 单元测试 |
 | SLF4J | 1.7.32 | 日志库 |
 

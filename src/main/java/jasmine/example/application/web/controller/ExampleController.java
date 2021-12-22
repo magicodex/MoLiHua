@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jasmine.common.global.lock.DeclaredGlobalLock;
 import jasmine.common.global.lock.GlobalLock;
+import jasmine.common.support.publisher.PublisherService;
 import jasmine.common.util.Q;
 import jasmine.common.web.WebResult;
 import jasmine.example.application.web.conversion.WebExampleConversion;
@@ -15,11 +16,13 @@ import jasmine.example.constant.ExampleMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -30,6 +33,9 @@ import java.util.stream.Collectors;
 public class ExampleController {
     @Autowired
     private ExampleService exampleService;
+
+    @Autowired
+    private PublisherService publisherService;
 
     @ApiOperation(value = "向世界打招呼")
     @GetMapping("/example/hello/world")
@@ -50,6 +56,16 @@ public class ExampleController {
         });
 
         return ResponseEntity.ok(result);
+    }
+
+    @ApiOperation(value = "发送消息")
+    @GetMapping("/example/publish/message")
+    public ResponseEntity<WebResult> publishMessage(@RequestParam String category,
+                                                    @RequestParam String content) {
+        Object data = Map.of("category", category, "content", content);
+        publisherService.publish("example", data);
+
+        return ResponseEntity.ok(WebResult.success("publish success"));
     }
 
     @ApiOperation(value = "查找所有记录")
