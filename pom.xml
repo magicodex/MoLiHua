@@ -37,6 +37,8 @@
 
         <!-- 工具类库 -->
         <hutool.version>5.6.6</hutool.version>
+        <!-- JSON库 -->
+        <jackson.version>2.12.4</jackson.version>
         <!-- Redis客户端 -->
         <redisson-spring-boot-starter.version>3.12.3</redisson-spring-boot-starter.version>
         <!-- 测试框架 -->
@@ -116,11 +118,23 @@
             <version>${liquibase.version}</version>
         </dependency>
 
+        <!-- 消息队列 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
         <!-- 工具类库 -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        <!-- JSON库 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- Redis客户端 -->
         <dependency>

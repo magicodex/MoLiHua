@@ -17,4 +17,13 @@ public interface RuntimeProvider {
      * @return
      */
     <T> T getByType(Class<T> type);
+
+    /**
+     * 返回指定名称的对象
+     *
+     * @param name
+     * @param <T>
+     * @return
+     */
+    <T> T getByName(String name);
 }

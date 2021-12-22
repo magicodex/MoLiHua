@@ -23,4 +23,9 @@ public class SpringRuntimeProvider implements RuntimeProvider, ApplicationContex
         return applicationContext.getBean(type);
     }
 
+    @Override
+    public <T> T getByName(String name) {
+        return (T) applicationContext.getBean(name);
+    }
+
 }

@@ -19,6 +19,12 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+  # 消息队列
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 # 配置日志
 logging:
@@ -35,3 +41,5 @@ app:
     version: 0.1
     title: 茉莉花
     base-package: jasmine
+  rabbitmq:
+    enabled: false
