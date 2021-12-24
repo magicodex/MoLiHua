@@ -14,7 +14,7 @@ import java.util.Map;
  * @author mh.z
  */
 @Configuration
-@ConditionalOnProperty(value = "app.rabbitmq.enabled",
+@ConditionalOnProperty(value = "app.message-queue.rabbitmq.auto-declare",
         havingValue = "true", matchIfMissing = false)
 public class RabbitConfig {
     private static final String EXAMPLE_EXCHANGE_NAME1 = "demo.example.exchange1";

@@ -42,4 +42,8 @@ app:
     title: 茉莉花
     base-package: jasmine
   rabbitmq:
+    auto-declare: false
+  publisher:
+    enabled: false
+  consumer:
     enabled: false

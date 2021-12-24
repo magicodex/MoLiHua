@@ -3,9 +3,9 @@ package jasmine.support.impl.publisher;
 import jasmine.common.support.publisher.PublisherProvider;
 import jasmine.common.util.QCheckUtil;
 import jasmine.common.util.QJsonUtil;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -16,9 +16,9 @@ import java.util.Map;
  */
 @Component("examplePublisherProvider")
 public class ExamplePublisherProvider implements PublisherProvider {
-    private AmqpTemplate template;
+    private RabbitTemplate template;
 
-    public ExamplePublisherProvider(AmqpTemplate template) {
+    public ExamplePublisherProvider(RabbitTemplate template) {
         this.template = template;
     }
 
@@ -36,5 +36,6 @@ public class ExamplePublisherProvider implements PublisherProvider {
 
         template.send("demo.example.exchange1", null, message);
     }
+
 
 }
