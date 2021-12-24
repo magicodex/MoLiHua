@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -16,6 +17,8 @@ import java.util.Map;
 /**
  * @author mh.z
  */
+@ConditionalOnProperty(value = "app.message-queue.consumer.enabled",
+        havingValue = "true", matchIfMissing = false)
 @Component
 public class ExampleConsumerProvider implements ConsumerProvider {
     private static final Logger logger = LoggerFactory.getLogger(ExampleConsumerProvider.class);
