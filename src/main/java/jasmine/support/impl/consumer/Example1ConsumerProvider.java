@@ -20,8 +20,8 @@ import java.util.Map;
 @ConditionalOnProperty(value = "app.message-queue.consumer.enabled",
         havingValue = "true", matchIfMissing = false)
 @Component
-public class ExampleConsumerProvider implements ConsumerProvider {
-    private static final Logger logger = LoggerFactory.getLogger(ExampleConsumerProvider.class);
+public class Example1ConsumerProvider implements ConsumerProvider {
+    private static final Logger logger = LoggerFactory.getLogger(Example1ConsumerProvider.class);
 
     @RabbitListener(queues = "demo.example.queue1")
     public void handle(Message message) {
