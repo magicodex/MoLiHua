@@ -9,12 +9,17 @@ import org.springframework.stereotype.Component;
  * @author mh.z
  */
 @Component
-public class Example2ConsumerProvider implements ConsumerProvider {
+public class Example2ConsumerProvider implements ConsumerProvider<String> {
     private static final Logger logger = LoggerFactory.getLogger(Example2ConsumerProvider.class);
 
     @Override
     public void consume(Object data) {
         logger.debug("consume <= " + data);
+    }
+
+    @Override
+    public Class<String> getType() {
+        return String.class;
     }
 
 }

@@ -5,7 +5,7 @@ package jasmine.common.support.consumer;
  *
  * @author mh.z
  */
-public interface ConsumerProvider {
+public interface ConsumerProvider<T> {
 
     /**
      * 消费消息
@@ -13,4 +13,11 @@ public interface ConsumerProvider {
      * @param data
      */
     void consume(Object data);
+
+    /**
+     * 返回类型
+     *
+     * @return
+     */
+    Class<T> getType();
 }

@@ -44,4 +44,20 @@ public class QJsonUtil {
         }
     }
 
+    /**
+     * 反序列化JSON字符串成对象
+     *
+     * @param json
+     * @param type
+     * @param <T>
+     * @return
+     */
+    public static <T> T fromJson(byte[] json, Class<T> type) {
+        try {
+            return OBJECT_MAPPER.readValue(json, type);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

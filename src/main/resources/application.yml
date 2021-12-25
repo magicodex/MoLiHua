@@ -41,12 +41,13 @@ app:
     version: 0.1
     title: 茉莉花
     base-package: jasmine
-  rabbitmq:
-    # 是否自动创建交换器和队列
-    auto-declare: false
-  # 是否发送消息到消息队列
-  publisher:
-    enabled: false
-  # 是否监听消息队列的消息
-  consumer:
-    enabled: false
+  message-queue:
+    rabbitmq:
+      # 是否自动创建交换器和队列
+      auto-declare: false
+    # 是否发送消息到消息队列
+    publisher:
+      enabled: false
+    # 是否监听消息队列的消息
+    consumer:
+      enabled: false
