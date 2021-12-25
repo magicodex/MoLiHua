@@ -11,6 +11,18 @@
 2. 修改 src/test/resources/test-config.properties 的数据库连接参数。
 3. 通过命令 mvn test 或其它途径执行单元测试。
 
+## 配置参数
+```
+# 是否自动创建交换器和队列 (默认false)
+app.message-queue.rabbitmq.auto-declare=true
+
+# 是否发布消息到消息队列 (默认false)
+app.message-queue.publisher.enabled=true
+
+# 是否消费消息队列的消息 (默认false)
+app.message-queue.consumer.enabled=true
+```
+
 ## 集成框架
 | 框架 | 版本 | 说明 |
 | :----: | :---- | :---- |
