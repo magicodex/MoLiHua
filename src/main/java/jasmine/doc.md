@@ -43,6 +43,12 @@ mkmod 模块名
 |---- i18n
 |---- impl
    |---- context
+   |---- global
+      |---- lock
+      |---- transaction
+   |---- support
+      |---- consumer
+      |---- publisher
 |---- security
 ```
 
