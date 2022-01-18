@@ -20,8 +20,11 @@ public class SpringMessageTranslator implements MessageTranslator {
 
     @Override
     public String translate(String source, Object... args) {
-        Locale locale = LocaleContextHolder.getLocale();
+        if (source != null && source.startsWith("$")) {
+            source = source.substring(1);
+        }
 
+        Locale locale = LocaleContextHolder.getLocale();
         if (locale == null) {
             locale = Locale.SIMPLIFIED_CHINESE;
         }

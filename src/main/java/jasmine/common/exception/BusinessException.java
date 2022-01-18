@@ -7,14 +7,14 @@ package jasmine.common.exception;
  *
  * @author mh.z
  */
-public class BusinessException extends RuntimeException {
+public class BusinessException extends ApplicationException {
 
     public BusinessException() {
         //
     }
 
-    public BusinessException(String message) {
-        super(message);
+    public BusinessException(String message, Object... args) {
+        super(message, args);
     }
 
     public BusinessException(String message, Throwable cause) {

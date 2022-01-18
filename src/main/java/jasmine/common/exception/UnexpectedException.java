@@ -7,13 +7,14 @@ package jasmine.common.exception;
  *
  * @author mh.z
  */
-public class UnexpectedException extends RuntimeException {
+public class UnexpectedException extends ApplicationException {
 
     public UnexpectedException() {
+        //
     }
 
-    public UnexpectedException(String message) {
-        super(message);
+    public UnexpectedException(String message, Object... args) {
+        super(message, args);
     }
 
     public UnexpectedException(String message, Throwable cause) {
