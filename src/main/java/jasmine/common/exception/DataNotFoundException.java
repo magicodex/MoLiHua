@@ -1,6 +1,10 @@
 package jasmine.common.exception;
 
 /**
+ * <p>
+ * 未找到数据的异常，表示未找到数据。
+ * </p>
+ *
  * @author mh.z
  */
 public class DataNotFoundException extends UnexpectedException {

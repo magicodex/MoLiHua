@@ -1,6 +1,10 @@
 package jasmine.common.exception;
 
 /**
+ * <p>
+ * 无效参数的异常，表示参数的值无效。
+ * </p>
+ *
  * @author mh.z
  */
 public class InvalidParameterException extends UnexpectedException {

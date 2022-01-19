@@ -1,6 +1,7 @@
 package jasmine.common.exception;
 
 import jasmine.common.util.Q;
+import jasmine.common.util.QCheckUtil;
 
 /**
  * @author mh.z
@@ -31,8 +32,10 @@ public class ApplicationException extends RuntimeException {
      * @return
      */
     protected static String buildErrorMessage(String message, Object[] args) {
+        QCheckUtil.notNull(message, "message null");
         String returnMessage = null;
 
+        // 符号"$"开头的是多语言信息key
         if (!message.startsWith("$")) {
             if (args.length > 0) {
                 returnMessage = String.format(message, args);

@@ -1,6 +1,10 @@
 package jasmine.common.exception;
 
 /**
+ * <p>
+ * 无效属性的异常，表示属性的值无效。
+ * </p>
+ *
  * @author mh.z
  */
 public class InvalidPropertyException extends UnexpectedException {

@@ -1,6 +1,10 @@
 package jasmine.common.exception;
 
 /**
+ * <p>
+ * 无效数据，表示数据有错误。
+ * </p>
+ *
  * @author mh.z
  */
 public class InvalidDataException extends UnexpectedException {
