@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet id="demo_20220124170501" author="mh.z">
+        <createTable tableName="demo_journal" remarks="日记">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_demo_journal"/>
+            </column>
+            <column name="journal_title" type="varchar(100)" remarks="日记标题">
+                <constraints nullable="false"/>
+            </column>
+            <column name="journal_content" type="varchar(100)" remarks="日记内容">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="demo_20220125221701" author="mh.z">
+        <createTable tableName="demo_user" remarks="用户">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_demo_user"/>
+            </column>
+            <column name="user_name" type="varchar(100)" remarks="用户名">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(100)" remarks="密码">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="demo_20211117002801" author="mh.z">
+        <createTable tableName="demo_example" remarks="例子">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_demo_example"/>
+            </column>
+            <column name="example_code" type="varchar(100)" remarks="代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="example_name" type="varchar(100)" remarks="名称">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
