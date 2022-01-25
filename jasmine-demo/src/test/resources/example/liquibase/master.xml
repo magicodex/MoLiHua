@@ -5,8 +5,8 @@
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="test_data_20211125005801_v1" author="mh.z">
-        <customChange class="test.liquibase.TestDataTaskChange">
-            <param name="className" value="jasmine.example.persistence.model.ExampleDO"/>
+        <customChange class="jasmine.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.demo.example.persistence.model.ExampleDO"/>
             <param name="resourcePath" value="classpath:example/liquibase/Example_1.csv"/>
         </customChange>
     </changeSet>

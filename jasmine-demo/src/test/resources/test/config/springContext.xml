@@ -11,7 +11,8 @@
         classpath:/test-config.properties"/>
 
     <!-- 扫描测试目录 -->
-    <context:component-scan base-package="test">
+    <context:component-scan base-package="jasmine.test,jasmine.framework">
+        <context:exclude-filter type="regex" expression=".*\.RedisLockSupportBean"/>
     </context:component-scan>
 
     <import resource="classpath:/test-context.xml"/>
