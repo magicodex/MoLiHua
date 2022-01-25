@@ -20,6 +20,8 @@
         <module>jasmine-framework</module>
         <module>jasmine-test</module>
         <module>jasmine-demo</module>
+        <module>jasmine-core</module>
+        <module>jasmine-security</module>
     </modules>
 
     <properties>
