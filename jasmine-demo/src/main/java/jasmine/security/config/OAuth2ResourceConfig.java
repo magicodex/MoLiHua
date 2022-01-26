@@ -1,4 +1,4 @@
-package jasmine.demo.framework.security.config;
+package jasmine.security.config;
 
 import jasmine.core.util.QStringUtil;
 import org.springframework.context.annotation.Configuration;

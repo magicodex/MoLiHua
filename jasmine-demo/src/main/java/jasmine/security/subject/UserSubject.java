@@ -1,4 +1,4 @@
-package jasmine.demo.framework.security;
+package jasmine.security.subject;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

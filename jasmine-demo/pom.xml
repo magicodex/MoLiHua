@@ -22,6 +22,11 @@
         </dependency>
         <dependency>
             <groupId>com.magicodex</groupId>
+            <artifactId>jasmine-security</artifactId>
+            <version>${project.module.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.magicodex</groupId>
             <artifactId>jasmine-test</artifactId>
             <version>0.1-SNAPSHOT</version>
             <scope>test</scope>

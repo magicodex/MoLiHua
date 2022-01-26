@@ -1,6 +1,6 @@
 package jasmine.demo.common.context;
 
-import jasmine.demo.framework.security.UserSubject;
+import jasmine.security.subject.UserSubject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;

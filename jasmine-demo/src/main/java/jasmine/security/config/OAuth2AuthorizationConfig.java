@@ -1,4 +1,4 @@
-package jasmine.demo.framework.security.config;
+package jasmine.security.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

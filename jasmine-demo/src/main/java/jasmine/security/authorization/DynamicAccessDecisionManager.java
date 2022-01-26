@@ -1,4 +1,4 @@
-package jasmine.demo.framework.security;
+package jasmine.security.authorization;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

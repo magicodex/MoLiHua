@@ -1,6 +1,6 @@
-package jasmine.demo.framework.security.config;
+package jasmine.security.config;
 
-import jasmine.demo.framework.security.DynamicAccessDecisionManager;
+import jasmine.security.authorization.DynamicAccessDecisionManager;
 import jasmine.demo.authentication.business.service.DemoUserDetailsService;
 import jasmine.core.context.RuntimeProvider;
 import org.springframework.beans.factory.annotation.Autowired;

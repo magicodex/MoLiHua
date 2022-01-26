@@ -1,6 +1,6 @@
 package jasmine.demo.authentication.business.service;
 
-import jasmine.demo.framework.security.UserSubject;
+import jasmine.security.subject.UserSubject;
 import jasmine.demo.authentication.persistence.dao.DemoUserDao;
 import jasmine.demo.authentication.persistence.entity.DemoUserEntity;
 import jasmine.core.context.RuntimeProvider;
