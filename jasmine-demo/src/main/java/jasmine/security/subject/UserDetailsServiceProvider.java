@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 /**
  * @author mh.z
  */
-public interface UserSubjectDetailsService extends UserDetailsService {
+public interface UserDetailsServiceProvider {
 
+    UserDetailsService getService();
 }

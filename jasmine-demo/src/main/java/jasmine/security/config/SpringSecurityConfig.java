@@ -2,7 +2,7 @@ package jasmine.security.config;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.security.authorization.DynamicAccessDecisionManager;
-import jasmine.security.subject.UserSubjectDetailsService;
+import jasmine.security.subject.UserDetailsServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private DynamicAccessDecisionManager accessDecisionManager;
 
     @Autowired
-    private UserSubjectDetailsService userSubjectDetailsService;
+    private UserDetailsServiceProvider userDetailsServiceProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -65,7 +65,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsServiceBean() {
-        return userSubjectDetailsService;
+        return userDetailsServiceProvider.getService();
     }
 
     @Override
