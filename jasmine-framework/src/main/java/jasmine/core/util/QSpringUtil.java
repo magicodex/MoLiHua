@@ -1,4 +1,4 @@
-package jasmine.framework.util;
+package jasmine.core.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

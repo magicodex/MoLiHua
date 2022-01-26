@@ -1,4 +1,4 @@
-package jasmine.framework.util;
+package jasmine.core.util;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,6 @@
 package jasmine.demo.authentication.application.web.controller;
 
-import jasmine.framework.util.QNewUtil;
+import jasmine.core.util.QNewUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.authentication.BadCredentialsException;

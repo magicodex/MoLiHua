@@ -1,4 +1,4 @@
-package jasmine.framework.i18n;
+package jasmine.core.i18n;
 
 /**
  * <p>
@@ -7,7 +7,7 @@ package jasmine.framework.i18n;
  *
  * @author mh.z
  */
-public interface LocalizationMessageProvider {
+public interface LocaleMessageProvider {
 
     /**
      * 查找信息

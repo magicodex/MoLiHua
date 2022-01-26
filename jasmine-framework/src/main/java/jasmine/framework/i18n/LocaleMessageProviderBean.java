@@ -1,6 +1,7 @@
 package jasmine.framework.i18n;
 
-import jasmine.framework.util.QCheckUtil;
+import jasmine.core.i18n.LocaleMessageProvider;
+import jasmine.core.util.QCheckUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
@@ -11,10 +12,10 @@ import java.util.Locale;
  * @author mh.z
  */
 @Component
-public class LocalizationMessageProviderBean implements LocalizationMessageProvider {
+public class LocaleMessageProviderBean implements LocaleMessageProvider {
     private final MessageSource messageSource;
 
-    public LocalizationMessageProviderBean(MessageSource messageSource) {
+    public LocaleMessageProviderBean(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
 

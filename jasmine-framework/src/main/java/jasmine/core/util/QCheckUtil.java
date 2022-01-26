@@ -1,7 +1,7 @@
-package jasmine.framework.util;
+package jasmine.core.util;
 
-import jasmine.framework.exception.InvalidPropertyException;
-import jasmine.framework.exception.UnexpectedException;
+import jasmine.core.exception.InvalidPropertyException;
+import jasmine.core.exception.UnexpectedException;
 
 /**
  * <p>

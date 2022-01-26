@@ -1,4 +1,4 @@
-package jasmine.framework.exception;
+package jasmine.core.exception;
 
 /**
  * <p>

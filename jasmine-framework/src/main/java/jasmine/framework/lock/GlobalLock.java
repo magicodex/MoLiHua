@@ -1,6 +1,6 @@
 package jasmine.framework.lock;
 
-import jasmine.framework.util.QSpringUtil;
+import jasmine.core.util.QSpringUtil;
 
 /**
  * <p>

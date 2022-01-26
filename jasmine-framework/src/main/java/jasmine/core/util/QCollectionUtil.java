@@ -1,4 +1,4 @@
-package jasmine.framework.util;
+package jasmine.core.util;
 
 import cn.hutool.core.collection.CollStreamUtil;
 import cn.hutool.core.collection.CollUtil;

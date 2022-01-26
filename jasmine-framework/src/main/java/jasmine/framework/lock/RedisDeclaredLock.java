@@ -1,7 +1,7 @@
 package jasmine.framework.lock;
 
 
-import jasmine.framework.util.QCheckUtil;
+import jasmine.core.util.QCheckUtil;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 

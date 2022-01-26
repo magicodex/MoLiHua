@@ -1,6 +1,6 @@
 package jasmine.test.mockito;
 
-import jasmine.framework.util.QCheckUtil;
+import jasmine.core.util.QCheckUtil;
 import org.mockito.Mockito;
 
 /**

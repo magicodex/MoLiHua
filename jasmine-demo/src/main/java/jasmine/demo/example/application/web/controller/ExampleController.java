@@ -6,7 +6,7 @@ import jasmine.demo.example.constant.ExampleMessages;
 import jasmine.framework.lock.DeclaredGlobalLock;
 import jasmine.framework.lock.GlobalLock;
 import jasmine.framework.remote.sender.MessageSendService;
-import jasmine.framework.util.QI18nUtil;
+import jasmine.core.util.QI18nUtil;
 import jasmine.framework.web.entity.WebResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -1,4 +1,4 @@
-package jasmine.framework.i18n;
+package jasmine.core.i18n;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

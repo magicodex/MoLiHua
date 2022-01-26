@@ -1,8 +1,8 @@
 package jasmine.demo.framework.rabbit;
 
 import jasmine.framework.remote.sender.MessageSendProvider;
-import jasmine.framework.util.QCheckUtil;
-import jasmine.framework.util.QJsonUtil;
+import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QJsonUtil;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

@@ -1,4 +1,4 @@
-package jasmine.framework.context;
+package jasmine.core.context;
 
 /**
  * <p>

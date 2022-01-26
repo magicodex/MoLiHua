@@ -3,7 +3,7 @@ package jasmine.test.liquibase.loader;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import jasmine.framework.util.QSpringUtil;
+import jasmine.core.util.QSpringUtil;
 
 import java.util.List;
 

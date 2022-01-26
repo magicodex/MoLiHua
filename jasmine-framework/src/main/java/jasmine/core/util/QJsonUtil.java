@@ -1,4 +1,4 @@
-package jasmine.framework.util;
+package jasmine.core.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

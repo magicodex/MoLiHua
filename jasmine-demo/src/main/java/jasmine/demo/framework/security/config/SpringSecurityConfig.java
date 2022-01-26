@@ -2,7 +2,7 @@ package jasmine.demo.framework.security.config;
 
 import jasmine.demo.framework.security.DynamicAccessDecisionManager;
 import jasmine.demo.authentication.business.service.DemoUserDetailsService;
-import jasmine.framework.context.RuntimeProvider;
+import jasmine.core.context.RuntimeProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

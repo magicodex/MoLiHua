@@ -1,6 +1,6 @@
 package jasmine.demo.example.constant;
 
-import jasmine.framework.i18n.DeclareI18N;
+import jasmine.core.i18n.DeclareI18N;
 
 /**
  * @author mh.z

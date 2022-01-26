@@ -6,7 +6,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import jasmine.framework.util.QSpringUtil;
+import jasmine.core.util.QSpringUtil;
 import jasmine.test.liquibase.log.TestDataChangeLog;
 import jasmine.test.liquibase.log.TestDataChangeLogMapper;
 import jasmine.test.util.MybatisPlusUtil;

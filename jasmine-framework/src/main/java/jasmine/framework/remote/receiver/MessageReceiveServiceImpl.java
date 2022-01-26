@@ -1,10 +1,10 @@
 package jasmine.framework.remote.receiver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jasmine.framework.context.RuntimeProvider;
-import jasmine.framework.util.QCheckUtil;
-import jasmine.framework.util.QJsonUtil;
-import jasmine.framework.util.QStringUtil;
+import jasmine.core.context.RuntimeProvider;
+import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QJsonUtil;
+import jasmine.core.util.QStringUtil;
 import org.springframework.amqp.core.Message;
 import org.springframework.stereotype.Service;
 

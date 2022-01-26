@@ -1,7 +1,8 @@
 package jasmine.framework.i18n;
 
 
-import jasmine.framework.util.QCheckUtil;
+import jasmine.core.i18n.DeclareI18N;
+import jasmine.core.util.QCheckUtil;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.type.ClassMetadata;

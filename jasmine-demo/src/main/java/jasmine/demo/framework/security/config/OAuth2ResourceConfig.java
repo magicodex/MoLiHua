@@ -1,6 +1,6 @@
 package jasmine.demo.framework.security.config;
 
-import jasmine.framework.util.QStringUtil;
+import jasmine.core.util.QStringUtil;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;

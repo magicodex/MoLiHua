@@ -1,6 +1,7 @@
 package jasmine.framework.context;
 
-import jasmine.framework.util.QSpringUtil;
+import jasmine.core.context.RuntimeProvider;
+import jasmine.core.util.QSpringUtil;
 import org.springframework.stereotype.Component;
 
 /**

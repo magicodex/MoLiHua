@@ -1,6 +1,6 @@
-package jasmine.framework.exception;
+package jasmine.core.exception;
 
-import jasmine.framework.util.QI18nUtil;
+import jasmine.core.util.QI18nUtil;
 
 /**
  * @author mh.z

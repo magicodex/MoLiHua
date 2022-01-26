@@ -1,6 +1,6 @@
-package jasmine.framework.util;
+package jasmine.core.util;
 
-import jasmine.framework.i18n.LocalizationMessageProvider;
+import jasmine.core.i18n.LocaleMessageProvider;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class QI18nUtil {
-    private static LocalizationMessageProvider provider;
+    private static LocaleMessageProvider provider;
 
-    public QI18nUtil(LocalizationMessageProvider provider) {
+    public QI18nUtil(LocaleMessageProvider provider) {
         QI18nUtil.provider = provider;
     }
 
-    public static void setProvider(LocalizationMessageProvider provider) {
+    public static void setProvider(LocaleMessageProvider provider) {
         QI18nUtil.provider = provider;
     }
 
