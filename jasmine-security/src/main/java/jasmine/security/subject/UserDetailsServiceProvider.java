@@ -7,5 +7,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 public interface UserDetailsServiceProvider {
 
+    /**
+     * 返回对象
+     *
+     * @return
+     */
     UserDetailsService getService();
 }

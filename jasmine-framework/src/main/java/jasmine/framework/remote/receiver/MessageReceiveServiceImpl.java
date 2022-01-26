@@ -27,7 +27,7 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
         QCheckUtil.notNull(data, "data null");
 
         // 获取消费者
-        String consumerProviderBeanName = category + "ConsumerProvider";
+        String consumerProviderBeanName = category + "MessageReceiveProvider";
         MessageReceiveProvider receiveProvider = runtimeProvider.getByName(consumerProviderBeanName);
         Class<?> targetType = receiveProvider.getType();
 

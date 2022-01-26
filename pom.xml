@@ -27,8 +27,10 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+
         <!-- 子模块的版本 -->
         <project.module.version>0.1-SNAPSHOT</project.module.version>
+
         <!-- API文档 -->
         <swagger.version>2.9.2</swagger.version>
         <!-- 注解校验 -->
@@ -52,6 +54,7 @@
         <jackson.version>2.12.4</jackson.version>
         <!-- Redis客户端 -->
         <redisson-spring-boot-starter.version>3.12.3</redisson-spring-boot-starter.version>
+
         <!-- 测试框架 -->
         <junit.version>4.13.2</junit.version>
         <spring-test.version>5.3.8</spring-test.version>

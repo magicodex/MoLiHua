@@ -28,7 +28,7 @@ public class MessageSendServiceImpl implements MessageSendService {
         QCheckUtil.notNull(data, "data null");
 
         if (Boolean.TRUE.equals(frameworkConfig.getMessageQueuePublisherEnabled())) {
-            String publisherProviderBeanName = category + "PublisherProvider";
+            String publisherProviderBeanName = category + "MessageSendProvider";
             MessageSendProvider sendProvider = runtimeProvider.getByName(publisherProviderBeanName);
 
             // 发布消息到消息队列

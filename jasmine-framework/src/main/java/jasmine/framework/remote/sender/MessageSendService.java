@@ -8,7 +8,7 @@ package jasmine.framework.remote.sender;
 public interface MessageSendService {
 
     /**
-     * 发布消息
+     * 发送消息
      *
      * @param category
      * @param data

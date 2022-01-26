@@ -39,18 +39,6 @@
             <version>${swagger.version}</version>
         </dependency>
 
-        <!-- 工具类库 -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
-        </dependency>
-        <!-- JSON库 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
         <!-- Redis客户端 -->
         <dependency>
             <groupId>org.redisson</groupId>
