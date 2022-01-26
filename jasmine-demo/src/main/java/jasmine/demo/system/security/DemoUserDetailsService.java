@@ -1,4 +1,4 @@
-package jasmine.demo.authentication.business.service;
+package jasmine.demo.system.security;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.demo.authentication.persistence.dao.DemoUserDao;

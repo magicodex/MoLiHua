@@ -14,7 +14,7 @@
         jasmine.demo.dashboard,
         jasmine.demo.example,
         jasmine.demo.external,
-        jasmine.demo.framework">
+        jasmine.demo.system">
     </context:component-scan>
 
     <!-- 扫描Mapper接口类 -->

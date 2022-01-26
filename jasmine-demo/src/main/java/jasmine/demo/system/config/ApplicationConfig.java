@@ -1,4 +1,4 @@
-package jasmine.demo.framework;
+package jasmine.demo.system.config;
 
 /**
  * <p>

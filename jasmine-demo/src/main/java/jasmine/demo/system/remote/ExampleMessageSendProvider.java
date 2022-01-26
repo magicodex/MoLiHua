@@ -1,4 +1,4 @@
-package jasmine.demo.framework.rabbit;
+package jasmine.demo.system.remote;
 
 import jasmine.framework.remote.sender.MessageSendProvider;
 import jasmine.core.util.QCheckUtil;
@@ -15,10 +15,10 @@ import java.util.Map;
  * @author mh.z
  */
 @Component("examplePublisherProvider")
-public class ExamplePublisherProvider implements MessageSendProvider {
+public class ExampleMessageSendProvider implements MessageSendProvider {
     private RabbitTemplate template;
 
-    public ExamplePublisherProvider(RabbitTemplate template) {
+    public ExampleMessageSendProvider(RabbitTemplate template) {
         this.template = template;
     }
 

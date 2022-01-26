@@ -1,4 +1,4 @@
-package jasmine.demo.framework.rabbit;
+package jasmine.demo.system.remote;
 
 import jasmine.framework.remote.receiver.MessageReceiveProvider;
 import org.slf4j.Logger;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
  * @author mh.z
  */
 @Component
-public class Example2ConsumerProvider implements MessageReceiveProvider {
-    private static final Logger logger = LoggerFactory.getLogger(Example2ConsumerProvider.class);
+public class Example1MessageReceiveProvider implements MessageReceiveProvider {
+    private static final Logger logger = LoggerFactory.getLogger(Example1MessageReceiveProvider.class);
 
     @Override
     public void receive(Object data) {

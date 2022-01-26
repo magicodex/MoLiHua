@@ -1,4 +1,4 @@
-package jasmine.demo.framework.rabbit;
+package jasmine.demo.system.config;
 
 import jasmine.framework.remote.receiver.MessageReceiveService;
 import org.springframework.amqp.core.Queue;
