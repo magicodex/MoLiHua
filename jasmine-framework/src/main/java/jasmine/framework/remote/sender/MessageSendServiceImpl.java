@@ -1,6 +1,6 @@
 package jasmine.framework.remote.sender;
 
-import jasmine.framework.common.FrameworkConfig;
+import jasmine.framework.FrameworkConfig;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import org.slf4j.Logger;

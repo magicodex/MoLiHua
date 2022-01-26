@@ -1,7 +1,7 @@
 package jasmine.test.mock.framework;
 
-import jasmine.framework.lock.DeclaredGlobalLock;
-import jasmine.framework.lock.GlobalLockSupport;
+import jasmine.framework.lock.distributed.DeclaredGlobalLock;
+import jasmine.framework.lock.distributed.GlobalLockSupport;
 import org.springframework.stereotype.Component;
 
 /**

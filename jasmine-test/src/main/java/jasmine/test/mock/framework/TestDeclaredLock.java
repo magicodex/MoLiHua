@@ -1,7 +1,7 @@
 package jasmine.test.mock.framework;
 
-import jasmine.framework.lock.DeclaredGlobalLock;
-import jasmine.framework.lock.GlobalLockCallback;
+import jasmine.framework.lock.distributed.DeclaredGlobalLock;
+import jasmine.framework.lock.distributed.GlobalLockCallback;
 
 /**
  * @author mh.z

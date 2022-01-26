@@ -1,6 +1,8 @@
-package jasmine.framework.lock;
+package jasmine.framework.lock.distributed;
 
 import jasmine.core.util.QSpringUtil;
+import jasmine.framework.lock.distributed.DeclaredGlobalLock;
+import jasmine.framework.lock.distributed.GlobalLockSupport;
 
 /**
  * <p>

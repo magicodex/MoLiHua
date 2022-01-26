@@ -1,7 +1,9 @@
-package jasmine.framework.lock;
+package jasmine.framework.lock.distributed;
 
 
 import jasmine.core.util.QCheckUtil;
+import jasmine.framework.lock.distributed.DeclaredGlobalLock;
+import jasmine.framework.lock.distributed.GlobalLockCallback;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 

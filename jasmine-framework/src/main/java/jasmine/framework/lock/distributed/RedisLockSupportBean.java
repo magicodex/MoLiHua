@@ -1,4 +1,4 @@
-package jasmine.framework.lock;
+package jasmine.framework.lock.distributed;
 
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Component;

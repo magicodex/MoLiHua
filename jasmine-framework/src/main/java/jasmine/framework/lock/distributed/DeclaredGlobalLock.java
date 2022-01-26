@@ -1,4 +1,4 @@
-package jasmine.framework.lock;
+package jasmine.framework.lock.distributed;
 
 /**
  * <p>
