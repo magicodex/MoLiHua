@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * @author mh.z
  */
-public class WebExampleQO {
+public class WebExampleQueryDTO {
     @NotBlank
     private String exampleName;
 

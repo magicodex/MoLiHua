@@ -1,19 +1,19 @@
-package jasmine.demo.example.business.conversion;
+package jasmine.demo.example.business.adapter;
 
 import jasmine.demo.example.business.dto.ExampleDTO;
-import jasmine.demo.example.persistence.model.ExampleDO;
+import jasmine.demo.example.persistence.entity.ExampleEntity;
 
 /**
  * @author mh.z
  */
-public class ExampleConversion {
+public class ExampleAdapter {
 
     /**
      *
      * @param exampleDO
      * @return
      */
-    public static ExampleDTO toExampleDTO(ExampleDO exampleDO) {
+    public static ExampleDTO toExampleDTO(ExampleEntity exampleDO) {
         ExampleDTO exampleDTO = new ExampleDTO();
         exampleDTO.setId(exampleDO.getId());
         exampleDTO.setExampleCode(exampleDO.getExampleCode());

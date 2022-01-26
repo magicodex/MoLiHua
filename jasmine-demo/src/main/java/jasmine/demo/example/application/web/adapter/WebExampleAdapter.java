@@ -1,4 +1,4 @@
-package jasmine.demo.example.application.web.conversion;
+package jasmine.demo.example.application.web.adapter;
 
 import jasmine.demo.example.application.web.dto.WebExampleDTO;
 import jasmine.demo.example.business.dto.ExampleDTO;
@@ -6,7 +6,7 @@ import jasmine.demo.example.business.dto.ExampleDTO;
 /**
  * @author mh.z
  */
-public class WebExampleConversion {
+public class WebExampleAdapter {
 
     /**
      *

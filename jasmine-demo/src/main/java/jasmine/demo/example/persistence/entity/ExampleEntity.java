@@ -1,4 +1,4 @@
-package jasmine.demo.example.persistence.model;
+package jasmine.demo.example.persistence.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author mh.z
  */
 @TableName("demo_example")
-public class ExampleDO {
+public class ExampleEntity {
     private Long id;
     private String exampleCode;
     private String exampleName;

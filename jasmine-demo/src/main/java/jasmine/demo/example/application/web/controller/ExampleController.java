@@ -1,7 +1,7 @@
 package jasmine.demo.example.application.web.controller;
 
 import jasmine.demo.example.application.web.dto.WebExampleDTO;
-import jasmine.demo.example.application.web.dto.WebExampleQO;
+import jasmine.demo.example.application.web.dto.WebExampleQueryDTO;
 import jasmine.demo.example.constant.ExampleMessages;
 import jasmine.framework.lock.distributed.DeclaredGlobalLock;
 import jasmine.framework.lock.distributed.GlobalLock;
@@ -10,7 +10,7 @@ import jasmine.core.util.QI18nUtil;
 import jasmine.framework.web.entity.WebResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import jasmine.demo.example.application.web.conversion.WebExampleConversion;
+import jasmine.demo.example.application.web.adapter.WebExampleAdapter;
 import jasmine.demo.example.business.dto.ExampleDTO;
 import jasmine.demo.example.business.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +73,7 @@ public class ExampleController {
     public ResponseEntity<WebResult<List<WebExampleDTO>>> listAllExamples() {
         List<ExampleDTO> exampleDTOList = exampleService.listAllExamples();
         List<WebExampleDTO> webExampleDTOList = exampleDTOList.stream()
-                .map(WebExampleConversion::toWebExampleDTO).collect(Collectors.toList());
+                .map(WebExampleAdapter::toWebExampleDTO).collect(Collectors.toList());
 
         WebResult result = WebResult.success(webExampleDTOList);
         return ResponseEntity.ok(result);
@@ -81,7 +81,7 @@ public class ExampleController {
 
     @ApiOperation(value = "查找指定记录")
     @GetMapping("/example/by/cond")
-    public ResponseEntity<WebResult<List<WebExampleDTO>>> listExamplesByCond(@Valid WebExampleQO query) {
+    public ResponseEntity<WebResult<List<WebExampleDTO>>> listExamplesByCond(@Valid WebExampleQueryDTO query) {
         WebResult result = WebResult.success(Collections.emptyList());
         // TODO
 
