@@ -1,21 +1,23 @@
 package jasmine.demo.authentication.business.service;
 
-import jasmine.security.subject.UserSubject;
+import jasmine.core.context.RuntimeProvider;
 import jasmine.demo.authentication.persistence.dao.DemoUserDao;
 import jasmine.demo.authentication.persistence.entity.DemoUserEntity;
-import jasmine.core.context.RuntimeProvider;
+import jasmine.security.subject.UserSubject;
+import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
 /**
  * @author mh.z
  */
-public class DemoUserDetailsService implements UserDetailsService {
+@Service
+public class DemoUserDetailsService implements UserSubjectDetailsService {
     private DemoUserDao userDao;
     private PasswordEncoder passwordEncoder;
 

@@ -1,8 +1,8 @@
 package jasmine.security.config;
 
-import jasmine.security.authorization.DynamicAccessDecisionManager;
-import jasmine.demo.authentication.business.service.DemoUserDetailsService;
 import jasmine.core.context.RuntimeProvider;
+import jasmine.security.authorization.DynamicAccessDecisionManager;
+import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +31,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DynamicAccessDecisionManager accessDecisionManager;
+
+    @Autowired
+    private UserSubjectDetailsService userSubjectDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -62,8 +65,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsServiceBean() {
-        // TODO 这里只是为了演示，实际开发时需要重写这个方法
-        return new DemoUserDetailsService(runtimeProvider);
+        return userSubjectDetailsService;
     }
 
     @Override
