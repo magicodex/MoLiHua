@@ -20,7 +20,7 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
         String simpleClassName = type.getSimpleName();
         String mapperPrefix = StrUtil.lowerFirst(simpleClassName);
 
-        if (mapperPrefix.endsWith("DO")) {
+        if (mapperPrefix.endsWith("EO")) {
             mapperPrefix = mapperPrefix.substring(0, mapperPrefix.length() - 2);
         }
 

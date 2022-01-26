@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author mh.z
  */
 @TableName("demo_example")
-public class ExampleDO {
+public class ExampleEO {
     private Long id;
     private String exampleCode;
     private String exampleName;

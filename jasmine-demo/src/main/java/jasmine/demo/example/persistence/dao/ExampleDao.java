@@ -1,7 +1,7 @@
 package jasmine.demo.example.persistence.dao;
 
 import jasmine.demo.example.persistence.mapper.ExampleMapper;
-import jasmine.demo.example.persistence.entity.ExampleDO;
+import jasmine.demo.example.persistence.entity.ExampleEO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class ExampleDao {
         this.baseMapper = baseMapper;
     }
 
-    public List<ExampleDO> listAllExamples() {
+    public List<ExampleEO> listAllExamples() {
         /*LambdaQueryWrapper<ExampleDO> wrapper = Wrappers.lambdaQuery();
 
         return baseMapper.selectList(wrapper);*/

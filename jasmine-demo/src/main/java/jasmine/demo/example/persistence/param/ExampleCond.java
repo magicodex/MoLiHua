@@ -1,4 +1,4 @@
-package jasmine.demo.example.persistence.cond;
+package jasmine.demo.example.persistence.param;
 
 /**
  * @author mh.z
