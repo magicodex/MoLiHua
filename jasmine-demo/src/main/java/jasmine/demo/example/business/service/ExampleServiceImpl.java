@@ -3,7 +3,7 @@ package jasmine.demo.example.business.service;
 import jasmine.demo.example.business.dto.ExampleDTO;
 import jasmine.demo.example.business.adapter.ExampleAdapter;
 import jasmine.demo.example.persistence.dao.ExampleDao;
-import jasmine.demo.example.persistence.entity.ExampleEntity;
+import jasmine.demo.example.persistence.entity.ExampleDO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class ExampleServiceImpl implements ExampleService {
 
     @Override
     public List<ExampleDTO> listAllExamples() {
-        List<ExampleEntity> exampleDOList = exampleDao.listAllExamples();
+        List<ExampleDO> exampleDOList = exampleDao.listAllExamples();
 
         List<ExampleDTO> exampleDTOList = exampleDOList.stream()
                 .map(ExampleAdapter::toExampleDTO).collect(Collectors.toList());
