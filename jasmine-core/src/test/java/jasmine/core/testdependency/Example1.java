@@ -5,9 +5,7 @@ package jasmine.core.testdependency;
  */
 public class Example1 {
     private String string1;
-
     private Integer integer1;
-
     private Boolean boolean1;
 
     public String getString1() {
