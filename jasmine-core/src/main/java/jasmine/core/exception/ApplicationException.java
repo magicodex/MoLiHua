@@ -16,7 +16,7 @@ public class ApplicationException extends RuntimeException {
     }
 
     public ApplicationException(String message, Throwable cause) {
-        super(message, cause);
+        super(buildErrorMessage(message, new Object[0]), cause);
     }
 
     public ApplicationException(Throwable cause) {
@@ -31,7 +31,7 @@ public class ApplicationException extends RuntimeException {
      * @return
      */
     protected static String buildErrorMessage(String message, Object[] args) {
-        String returnMessage = null;
+        String returnErrorMessage = null;
 
         if (message == null) {
             return null;
@@ -40,15 +40,15 @@ public class ApplicationException extends RuntimeException {
         // 符号"$"开头的是多语言信息key
         if (!message.startsWith("$")) {
             if (args.length > 0) {
-                returnMessage = String.format(message, args);
+                returnErrorMessage = String.format(message, args);
             } else {
-                returnMessage = message;
+                returnErrorMessage = message;
             }
         } else {
-            returnMessage = QI18nUtil.getMessage(message, args);
+            returnErrorMessage = QI18nUtil.getMessage(message, args);
         }
 
-        return returnMessage;
+        return returnErrorMessage;
     }
 
 }

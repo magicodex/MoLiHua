@@ -16,6 +16,21 @@ public class QCheckUtil {
      * 期望不为null
      *
      * @param value
+     * @param <T>
+     * @return
+     */
+    public static <T> T notNull(T value) {
+        if (value == null) {
+            throw new UnexpectedException("value null");
+        }
+
+        return value;
+    }
+
+    /**
+     * 期望不为null
+     *
+     * @param value
      * @param message
      * @param <T>
      * @return
@@ -23,6 +38,23 @@ public class QCheckUtil {
     public static <T> T notNull(T value, String message) {
         if (value == null) {
             throw new UnexpectedException(message);
+        }
+
+        return value;
+    }
+
+    /**
+     * 期望不为null
+     *
+     * @param value
+     * @param format
+     * @param args
+     * @param <T>
+     * @return
+     */
+    public static <T> T notNullFmt(T value, String format, Object... args) {
+        if (value == null) {
+            throw new UnexpectedException(format, args);
         }
 
         return value;
@@ -39,6 +71,23 @@ public class QCheckUtil {
     public static <T> T notNullProp(T value, String message) {
         if (value == null) {
             throw new InvalidPropertyException(message);
+        }
+
+        return value;
+    }
+
+    /**
+     * 期望指定属性的值不为null
+     *
+     * @param value
+     * @param format
+     * @param args
+     * @param <T>
+     * @return
+     */
+    public static <T> T notNullPropFmt(T value, String format, Object... args) {
+        if (value == null) {
+            throw new InvalidPropertyException(format, args);
         }
 
         return value;
