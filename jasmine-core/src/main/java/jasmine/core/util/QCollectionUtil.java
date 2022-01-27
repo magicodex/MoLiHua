@@ -1,5 +1,6 @@
 package jasmine.core.util;
 
+import cn.hutool.core.collection.CollStreamUtil;
 import cn.hutool.core.collection.CollUtil;
 
 import java.util.ArrayList;
@@ -81,10 +82,8 @@ public class QCollectionUtil extends CollUtil {
      * @param <V>
      * @return
      */
-    public static <E, K, V> Map<K, E> toMap(Collection<E> collection, Function<E, K> keyMapper) {
-        QCheckUtil.notNull(keyMapper, "keyMapper null");
-
-        return toMap(collection, keyMapper, Function.identity());
+    public static <E, K, V> Map<K, E> toIdentityMap(Collection<E> collection, Function<E, K> keyMapper) {
+        return CollStreamUtil.toIdentityMap(collection, keyMapper);
     }
 
     /**
@@ -114,50 +113,6 @@ public class QCollectionUtil extends CollUtil {
     }
 
     /**
-     * 转换成列表
-     *
-     * @param collection
-     * @param <T>
-     * @return
-     */
-    public static <T> List<T> toList(Collection<T> collection) {
-        List<T> returnList = null;
-
-        if (isNotEmpty(collection)) {
-            if (collection instanceof List) {
-                returnList = (List<T>) collection;
-            } else {
-                returnList = new ArrayList<>(collection);
-            }
-        } else {
-            returnList = Collections.emptyList();
-        }
-
-        return returnList;
-    }
-
-    /**
-     * 返回集合的第一个元素
-     *
-     * @param collection
-     * @param <T>
-     * @return
-     */
-    public static <T> T first(Collection<T> collection) {
-        T returnItem = null;
-
-        if (isNotEmpty(collection)) {
-            if (collection instanceof List) {
-                returnItem = ((List<T>) collection).get(0);
-            } else {
-                returnItem = collection.iterator().next();
-            }
-        }
-
-        return returnItem;
-    }
-
-    /**
      * 对集合分组并返回
      *
      * @param collection
@@ -166,17 +121,8 @@ public class QCollectionUtil extends CollUtil {
      * @param <K>
      * @return
      */
-    public static <E, K> Map<K, List<E>> groupingBy(Collection<E> collection, Function<E, K> classifier) {
-        QCheckUtil.notNull(classifier, "classifier null");
-        Map<K, List<E>> returnMap = null;
-
-        if (isNotEmpty(collection)) {
-            returnMap = collection.stream().collect(Collectors.groupingBy(classifier));
-        } else {
-            returnMap = Collections.emptyMap();
-        }
-
-        return returnMap;
+    public static <E, K> Map<K, List<E>> groupByKey(Collection<E> collection, Function<E, K> classifier) {
+        return CollStreamUtil.groupByKey(collection, classifier);
     }
 
 }
