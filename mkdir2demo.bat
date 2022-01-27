@@ -29,7 +29,6 @@ mkdir service
 mkdir dto
 mkdir adapter
 mkdir domain
-mkdir helper
 cd ../
 
 rem 创建 persistent 目录
@@ -39,6 +38,7 @@ mkdir entity
 mkdir dao
 mkdir mapper
 mkdir param
+cd ../
 
 rem 创建 constant 目录
 mkdir constant
