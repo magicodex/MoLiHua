@@ -58,7 +58,7 @@
         <!-- 测试框架 -->
         <junit.version>4.13.2</junit.version>
         <spring-test.version>5.3.8</spring-test.version>
-        <mockito.versio>4.2.0</mockito.versio>
+        <mockito.version>4.2.0</mockito.version>
     </properties>
 
 </project>
