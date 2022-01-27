@@ -10,8 +10,8 @@
     <context:property-placeholder location="classpath:/test/config/application.properties,
         classpath:/test-config.properties"/>
 
-    <!-- 扫描测试目录 -->
-    <context:component-scan base-package="jasmine.test,jasmine.core,jasmine.framework">
+    <!-- 扫描核心模块 -->
+    <context:component-scan base-package="jasmine.core,jasmine.framework,jasmine.test">
         <context:exclude-filter type="regex" expression=".*\.RedisLockSupportBean"/>
     </context:component-scan>
 

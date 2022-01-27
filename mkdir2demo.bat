@@ -1,10 +1,12 @@
 @echo off
 set module=%1%
 
-pushd src
+pushd jasmine-demo
+cd src
 cd main
 cd java
 cd jasmine
+cd demo
 
 mkdir %module%
 cd %module%
@@ -15,29 +17,28 @@ cd application
 mkdir web
 cd web
 mkdir controller
-mkdir conversion
 mkdir dto
-mkdir validation
+mkdir adapter
 cd ../
 cd ../
 
 rem 创建 business 目录
 mkdir business
 cd business
-mkdir conversion
-mkdir domain
-mkdir dto
-mkdir helper
 mkdir service
+mkdir dto
+mkdir adapter
+mkdir domain
+mkdir helper
 cd ../
 
 rem 创建 persistent 目录
 mkdir persistent
 cd persistent
-mkdir cond
+mkdir entity
 mkdir dao
 mkdir mapper
-mkdir model
+mkdir param
 
 rem 创建 constant 目录
 mkdir constant

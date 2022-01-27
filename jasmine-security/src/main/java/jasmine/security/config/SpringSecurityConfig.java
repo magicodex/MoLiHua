@@ -1,6 +1,5 @@
 package jasmine.security.config;
 
-import jasmine.core.context.RuntimeProvider;
 import jasmine.security.authorization.DynamicAccessDecisionManager;
 import jasmine.security.subject.UserDetailsServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +25,6 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 @EnableWebSecurity
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private RuntimeProvider runtimeProvider;
-
     @Autowired
     private DynamicAccessDecisionManager accessDecisionManager;
 
