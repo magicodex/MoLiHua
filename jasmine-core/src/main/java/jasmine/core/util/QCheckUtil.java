@@ -21,7 +21,7 @@ public class QCheckUtil {
      */
     public static <T> T notNull(T value) {
         if (value == null) {
-            throw new UnexpectedException("value null");
+            throw new UnexpectedException("expected not null, but actual null");
         }
 
         return value;
