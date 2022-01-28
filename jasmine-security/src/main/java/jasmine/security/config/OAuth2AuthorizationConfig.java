@@ -1,5 +1,6 @@
 package jasmine.security.config;
 
+import jasmine.security.subject.ClientDetailsServiceProvider;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,10 +25,14 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     /** 密码编码器 */
     private final PasswordEncoder passwordEncoder;
 
+    private ClientDetailsServiceProvider clientDetailsServiceProvider;
+
     public OAuth2AuthorizationConfig(AuthenticationManager authenticationManager,
-                                     PasswordEncoder passwordEncoder) {
+                                     PasswordEncoder passwordEncoder,
+                                     ClientDetailsServiceProvider clientDetailsServiceProvider) {
         this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;
+        this.clientDetailsServiceProvider = clientDetailsServiceProvider;
     }
 
     @Override
@@ -39,14 +44,7 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // TODO 这里硬编码个客户端，实际开发时需要重写这个方法
-        clients.inMemory()
-                .withClient("MoLiHua")
-                .secret(passwordEncoder.encode("123456"))
-                .authorizedGrantTypes("authorization_code", "password", "refresh_token")
-                // "ALL"是自定义，没有特殊含义
-                .scopes("ALL")
-                .accessTokenValiditySeconds(3600);
+        clients.withClientDetails(clientDetailsServiceProvider.getService());
     }
 
     @Override
