@@ -1,14 +1,17 @@
 package jasmine.security.rbac.model;
 
 /**
+ * <p>
+ * 关联功能和权限。
+ * </p>
+ *
  * @author mh.z
  */
 public class SecurityFunctionPermission {
-
     private Long id;
-
+    /** 功能ID */
     private Long functionId;
-
+    /** 权限ID */
     private Long permissionId;
 
     public Long getId() {

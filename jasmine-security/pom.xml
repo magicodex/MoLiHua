@@ -51,6 +51,14 @@
             <version>${jaxb-runtime.version}</version>
         </dependency>
 
+        <!-- MyBatis-Plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-boot-starter.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- 测试框架 -->
         <dependency>
             <groupId>junit</groupId>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="jasmine_20220128222301" author="mh.z">
+        <createTable tableName="sec_role" remarks="角色">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_role"/>
+            </column>
+            <column name="role_code" type="varchar(100)" remarks="角色代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_name" type="varchar(100)" remarks="角色名称">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222302" author="mh.z">
+        <createTable tableName="sec_function" remarks="功能">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_function"/>
+            </column>
+            <column name="function_code" type="varchar(100)" remarks="功能代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_name" type="varchar(100)" remarks="功能名称">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222303" author="mh.z">
+        <createTable tableName="sec_permission" remarks="权限">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_permission"/>
+            </column>
+            <column name="permission_code" type="varchar(100)" remarks="权限代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_name" type="varchar(100)" remarks="权限名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="method_type" type="varchar(50)" remarks="请求方式">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resource_path" type="varchar(1000)" remarks="资源路径">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222304" author="mh.z">
+        <createTable tableName="sec_permission_set" remarks="权限集">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_permission_set"/>
+            </column>
+            <column name="permission_set_code" type="varchar(100)" remarks="权限集代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_set_name" type="varchar(100)" remarks="权限集名称">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222305" author="mh.z">
+        <createTable tableName="sec_menu_template" remarks="菜单模板">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_menu_template"/>
+            </column>
+            <column name="template_code" type="varchar(100)" remarks="模板代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="template_name" type="varchar(100)" remarks="模板名称">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222306" author="mh.z">
+        <createTable tableName="sec_menu" remarks="菜单">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_menu"/>
+            </column>
+            <column name="template_id" type="bigint" remarks="模板ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="bigint" remarks="父菜单ID">
+                <constraints nullable="true"/>
+            </column>
+            <column name="menu_code" type="varchar(100)" remarks="菜单代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="menu_name" type="varchar(100)" remarks="菜单名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="menu_order" type="int" remarks="菜单序号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="target_page" type="varchar(1000)" remarks="页面">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222307" author="mh.z">
+        <createTable tableName="sec_user_role" remarks="关联用户和角色">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_user_role"/>
+            </column>
+            <column name="user_id" type="bigint" remarks="用户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="bigint" remarks="角色ID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222308" author="mh.z">
+        <createTable tableName="sec_role_function" remarks="关联角色和功能">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_role_function"/>
+            </column>
+            <column name="role_id" type="bigint" remarks="角色ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_id" type="bigint" remarks="功能ID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222309" author="mh.z">
+        <createTable tableName="sec_function_permission" remarks="关联功能和权限">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_function_permission"/>
+            </column>
+            <column name="function_id" type="bigint" remarks="功能ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_id" type="bigint" remarks="权限ID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222310" author="mh.z">
+        <createTable tableName="sec_function_permission_set" remarks="关联功能和权限集">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_function_permission_set"/>
+            </column>
+            <column name="function_id" type="bigint" remarks="功能ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_set_id" type="bigint" remarks="权限集ID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222311" author="mh.z">
+        <createTable tableName="sec_permission_set_permission" remarks="关联权限集和权限">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_permission_set_perm"/>
+            </column>
+            <column name="permission_set_id" type="bigint" remarks="权限集ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_id" type="bigint" remarks="权限ID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220128222312" author="mh.z">
+        <createTable tableName="sec_menu_function" remarks="关联菜单和功能">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_menu_function"/>
+            </column>
+            <column name="menu_id" type="bigint" remarks="菜单ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_id" type="bigint" remarks="功能ID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

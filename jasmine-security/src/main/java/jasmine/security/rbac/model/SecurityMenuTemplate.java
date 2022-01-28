@@ -1,13 +1,17 @@
 package jasmine.security.rbac.model;
 
 /**
+ * <p>
+ * 菜单模板。
+ * </p>
+ *
  * @author mh.z
  */
 public class SecurityMenuTemplate {
     private Long id;
-
+    /** 模板代码 */
     private String templateCode;
-
+    /** 模板名称 */
     private String templateName;
 
     public Long getId() {

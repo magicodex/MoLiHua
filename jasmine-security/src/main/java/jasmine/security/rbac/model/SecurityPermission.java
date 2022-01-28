@@ -1,18 +1,22 @@
 package jasmine.security.rbac.model;
 
 /**
+ * <p>
+ * 权限。
+ * </p>
+ *
  * @author mh.z
  */
 public class SecurityPermission {
     private Long id;
-
+    /** 请求方式 */
     private String methodType;
-
+    /** 权限代码 */
     private String permissionCode;
-
+    /** 权限名称 */
     private String permissionName;
-
-    private String path;
+    /** 资源路径 */
+    private String resourcePath;
 
     public Long getId() {
         return id;
@@ -46,12 +50,12 @@ public class SecurityPermission {
         this.permissionName = permissionName;
     }
 
-    public String getPath() {
-        return path;
+    public String getResourcePath() {
+        return resourcePath;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setResourcePath(String resourcePath) {
+        this.resourcePath = resourcePath;
     }
 
 }

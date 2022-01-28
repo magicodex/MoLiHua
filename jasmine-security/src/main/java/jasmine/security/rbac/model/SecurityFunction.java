@@ -1,14 +1,17 @@
 package jasmine.security.rbac.model;
 
 /**
+ * <p>
+ * 功能。
+ * </p>
+ *
  * @author mh.z
  */
 public class SecurityFunction {
-
     private Long id;
-
+    /** 功能代码 */
     private String functionCode;
-
+    /** 功能名称 */
     private String functionName;
 
     public Long getId() {

@@ -1,21 +1,27 @@
 package jasmine.security.rbac.model;
 
 /**
+ * <p>
+ * 菜单。
+ * </p>
+ *
  * @author mh.z
  */
 public class SecurityMenu {
-
     private Long id;
-
+    /** 模板ID */
+    private Long templateId;
+    /** 父菜单ID */
     private Long parentId;
 
-    private Long templateId;
-
+    /** 菜单代码 */
     private String menuCode;
-
+    /** 菜单名称 */
     private String menuName;
-
+    /** 菜单序号 */
     private Integer menuOrder;
+    /** 页面 */
+    private String targetPage;
 
     public Long getId() {
         return id;
@@ -25,20 +31,20 @@ public class SecurityMenu {
         this.id = id;
     }
 
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
-
     public Long getTemplateId() {
         return templateId;
     }
 
     public void setTemplateId(Long templateId) {
         this.templateId = templateId;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public String getMenuCode() {
@@ -63,6 +69,14 @@ public class SecurityMenu {
 
     public void setMenuOrder(Integer menuOrder) {
         this.menuOrder = menuOrder;
+    }
+
+    public String getTargetPage() {
+        return targetPage;
+    }
+
+    public void setTargetPage(String targetPage) {
+        this.targetPage = targetPage;
     }
 
 }

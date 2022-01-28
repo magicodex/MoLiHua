@@ -1,14 +1,17 @@
 package jasmine.security.rbac.model;
 
 /**
+ * <p>
+ * 角色。
+ * </p>
+ *
  * @author mh.z
  */
 public class SecurityRole {
-
     private Long id;
-
+    /** 角色代码 */
     private String roleCode;
-
+    /** 角色名称 */
     private String roleName;
 
     public Long getId() {
