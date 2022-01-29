@@ -20,14 +20,7 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
     public void init(Class<?> type) {
         super.init(type);
 
-        String simpleClassName = type.getSimpleName();
-        String mapperPrefix = StrUtil.lowerFirst(simpleClassName);
-
-        if (mapperPrefix.endsWith(ENTITY_SUFFIX)) {
-            mapperPrefix = mapperPrefix.substring(0, mapperPrefix.length() - 2);
-        }
-
-        String mapperBeanName = mapperPrefix + MAPPER_SUFFIX;
+        String mapperBeanName = getMapperBeanName(type);
         baseMapper = QSpringUtil.getBean(mapperBeanName);
     }
 
@@ -45,6 +38,26 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
         Assert.notNull(recordIds, "recordIds null");
 
         baseMapper.deleteBatchIds(recordIds);
+    }
+
+    /**
+     * 返回指定类型对应的 mapper 的名称
+     *
+     * @param type
+     * @return
+     */
+    protected String getMapperBeanName(Class<?> type) {
+        Assert.notNull(type, "type null");
+
+        String simpleClassName = type.getSimpleName();
+        String mapperPrefix = StrUtil.lowerFirst(simpleClassName);
+
+        if (mapperPrefix.endsWith(ENTITY_SUFFIX)) {
+            mapperPrefix = mapperPrefix.substring(0, mapperPrefix.length() - 2);
+        }
+
+        String mapperBeanName = mapperPrefix + MAPPER_SUFFIX;
+        return mapperBeanName;
     }
 
 }
