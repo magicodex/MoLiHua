@@ -15,6 +15,9 @@
             <column name="role_name" type="varchar(100)" remarks="角色名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -77,6 +80,9 @@
             <column name="template_name" type="varchar(100)" remarks="模板名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -102,6 +108,9 @@
             </column>
             <column name="target_page" type="varchar(1000)" remarks="页面">
                 <constraints nullable="true"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>

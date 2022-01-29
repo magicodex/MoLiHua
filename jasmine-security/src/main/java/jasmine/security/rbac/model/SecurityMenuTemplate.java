@@ -14,6 +14,9 @@ public class SecurityMenuTemplate {
     /** 模板名称 */
     private String templateName;
 
+    /** 租户ID */
+    private Long tenantId;
+
     public Long getId() {
         return id;
     }
@@ -36,6 +39,14 @@ public class SecurityMenuTemplate {
 
     public void setTemplateName(String templateName) {
         this.templateName = templateName;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
 }

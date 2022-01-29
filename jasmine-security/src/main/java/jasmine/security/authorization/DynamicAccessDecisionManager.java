@@ -31,7 +31,6 @@ public class DynamicAccessDecisionManager extends AffirmativeBased {
             throws AccessDeniedException, InsufficientAuthenticationException {
         super.decide(authentication, object, configAttributes);
 
-        // TODO
         HttpServletRequest request = ((FilterInvocation) object).getRequest();
         logger.debug("access [{}]{}", request.getMethod(), request.getRequestURI());
     }

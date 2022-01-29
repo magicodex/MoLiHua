@@ -13,6 +13,8 @@ public class SecurityRole {
     private String roleCode;
     /** 角色名称 */
     private String roleName;
+    /** 租户ID */
+    private Long tenantId;
 
     public Long getId() {
         return id;
@@ -36,6 +38,14 @@ public class SecurityRole {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
 }
