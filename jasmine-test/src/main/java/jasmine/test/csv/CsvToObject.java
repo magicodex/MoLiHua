@@ -46,9 +46,9 @@ public class CsvToObject<T> extends CsvToBean<T> {
     protected Boolean toBoolean(String value) {
         Boolean result = null;
 
-        if ("1".equals(value)) {
+        if ("1".equals(value) || "true".equals(value)) {
             result = Boolean.TRUE;
-        } else if ("0".equals(value)) {
+        } else if ("0".equals(value) || "false".equals(value)) {
             result = Boolean.FALSE;
         }
 

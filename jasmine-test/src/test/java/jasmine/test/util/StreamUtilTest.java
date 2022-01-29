@@ -20,12 +20,14 @@ public class StreamUtilTest {
             List<Example1> actualList = StreamUtil.readCSV(inputStream, Example1.class);
 
             Assert.assertEquals(10, actualList.size());
-            Assert.assertEquals("zero", actualList.get(0).getString1());
-            Assert.assertEquals(Integer.valueOf(0), actualList.get(0).getInteger1());
-            Assert.assertEquals(true, actualList.get(0).getBoolean1());
-            Assert.assertEquals("nine", actualList.get(9).getString1());
-            Assert.assertEquals(Integer.valueOf(9), actualList.get(9).getInteger1());
-            Assert.assertEquals(false, actualList.get(9).getBoolean1());
+            Assert.assertEquals(Long.valueOf(1), actualList.get(0).getId());
+            Assert.assertEquals("zero", actualList.get(0).getAttribute1());
+            Assert.assertEquals(Integer.valueOf(0), actualList.get(0).getAttribute2());
+            Assert.assertEquals(true, actualList.get(0).getAttribute3());
+            Assert.assertEquals(Long.valueOf(10), actualList.get(9).getId());
+            Assert.assertEquals("nine", actualList.get(9).getAttribute1());
+            Assert.assertEquals(Integer.valueOf(9), actualList.get(9).getAttribute2());
+            Assert.assertEquals(false, actualList.get(9).getAttribute3());
         }
     }
 
