@@ -13,6 +13,9 @@ import java.util.List;
 public class DefaultTestDataLoader extends AbstractTestDataLoader {
     private BaseMapper<Object> baseMapper;
 
+    private static final String ENTITY_SUFFIX = "EO";
+    private static final String MAPPER_SUFFIX = "Mapper";
+
     @Override
     public void init(Class<?> type) {
         super.init(type);
@@ -20,11 +23,11 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
         String simpleClassName = type.getSimpleName();
         String mapperPrefix = StrUtil.lowerFirst(simpleClassName);
 
-        if (mapperPrefix.endsWith("EO")) {
+        if (mapperPrefix.endsWith(ENTITY_SUFFIX)) {
             mapperPrefix = mapperPrefix.substring(0, mapperPrefix.length() - 2);
         }
 
-        String mapperBeanName = mapperPrefix + "Mapper";
+        String mapperBeanName = mapperPrefix + MAPPER_SUFFIX;
         baseMapper = QSpringUtil.getBean(mapperBeanName);
     }
 

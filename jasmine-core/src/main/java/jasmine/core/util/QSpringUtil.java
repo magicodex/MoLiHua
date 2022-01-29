@@ -18,6 +18,15 @@ public class QSpringUtil implements ApplicationContextAware {
     }
 
     /**
+     * 设置 Spring 上下文
+     *
+     * @param applicationContext
+     */
+    public static void setGlobalApplicationContext(ApplicationContext applicationContext) {
+        QSpringUtil.applicationContext = applicationContext;
+    }
+
+    /**
      * 查找 bean 对象
      *
      * @param name
