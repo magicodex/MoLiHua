@@ -36,7 +36,7 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
         Object targetObject = null;
 
         if (targetType != null) {
-            targetObject = convert(messageBody, targetType);
+            targetObject = convertBytes(messageBody, targetType);
         } else {
             targetObject = messageBody;
         }
@@ -52,16 +52,15 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
      * @param type
      * @return
      */
-    protected Object convert(byte[] bytes, Class<?> type) {
+    protected Object convertBytes(byte[] bytes, Class<?> type) {
         QCheckUtil.notNull(type, "type");
+        Object returnObject = null;
 
         if (bytes == null) {
             return null;
         }
 
         if (!type.isPrimitive()) {
-            Object returnObject = null;
-
             if (bytes.length != 0) {
                 if (String.class == type) {
                     returnObject = QStringUtil.utf8Str(bytes);
@@ -75,39 +74,55 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
                     }
                 }
             }
-
-            return returnObject;
+        } else {
+            String text = QStringUtil.utf8Str(bytes);
+            returnObject = convertText(text, type);
         }
 
-        String sourceText = QStringUtil.utf8Str(bytes);
+        return returnObject;
+    }
+
+    /**
+     * 转换类型
+     *
+     * @param text
+     * @param type
+     * @return
+     */
+    protected Object convertText(String text, Class<?> type) {
+        QCheckUtil.notNull(type, "type");
         Object returnObject = null;
+
+        if (QStringUtil.isNotEmpty(text)) {
+            return null;
+        }
 
         if (Boolean.class == type) {
             //
-            returnObject = Boolean.valueOf(sourceText);
+            returnObject = Boolean.valueOf(text);
         } else if (Character.class == type) {
             //
-            char[] charArray = sourceText.toCharArray();
+            char[] charArray = text.toCharArray();
             returnObject = (charArray.length > 0)
                     ? charArray[0] : null;
         } else if (Byte.class == type) {
             //
-            returnObject = Byte.valueOf(sourceText);
+            returnObject = Byte.valueOf(text);
         } else if (Short.class == type) {
             //
-            returnObject = Short.valueOf(sourceText);
+            returnObject = Short.valueOf(text);
         } else if (Integer.class == type) {
             //
-            returnObject = Integer.valueOf(sourceText);
+            returnObject = Integer.valueOf(text);
         } else if (Long.class == type) {
             //
-            returnObject = Long.valueOf(sourceText);
+            returnObject = Long.valueOf(text);
         } else if (Float.class == type) {
             //
-            returnObject = Float.valueOf(sourceText);
+            returnObject = Float.valueOf(text);
         } else if (Double.class == type) {
             //
-            returnObject = Double.valueOf(sourceText);
+            returnObject = Double.valueOf(text);
         } else {
             throw new IllegalArgumentException("type(" + type.getName() + ") invalid");
         }
