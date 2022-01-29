@@ -1,8 +1,8 @@
 package jasmine.framework.remote.sender;
 
-import jasmine.framework.FrameworkConfig;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
+import jasmine.framework.FrameworkConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -28,13 +28,13 @@ public class MessageSendServiceImpl implements MessageSendService {
         QCheckUtil.notNull(data, "data null");
 
         if (Boolean.TRUE.equals(frameworkConfig.getMessageQueuePublisherEnabled())) {
-            String publisherProviderBeanName = category + "MessageSendProvider";
-            MessageSendProvider sendProvider = runtimeProvider.getByName(publisherProviderBeanName);
+            String sendProviderName = category + "MessageSendProvider";
+            MessageSendProvider sendProvider = runtimeProvider.getByName(sendProviderName);
 
             // 发布消息到消息队列
             sendProvider.send(data);
         } else {
-            logger.warn("publish skipped(app.message-queue.publisher.enabled=false)");
+            logger.warn("send skipped(app.message-queue.publisher.enabled=false)");
         }
     }
 
