@@ -18,8 +18,8 @@ public class CacheServiceImpl implements CacheService {
     @Override
     public Object get(String category, String key) {
         QCheckUtil.notNull(category, "category null");
+        QCheckUtil.notNull(key, "key null");
 
-        // TODO 简单实现
         String cacheKey = category + ":" + key;
         Object value = redisTemplate.opsForValue().get(cacheKey);
 
@@ -31,7 +31,6 @@ public class CacheServiceImpl implements CacheService {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
-        // TODO 简单实现
         String cacheKey = category + ":" + key;
         redisTemplate.opsForValue().set(cacheKey, value);
     }
