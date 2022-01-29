@@ -1,8 +1,7 @@
 package jasmine.framework.lock.distributed;
 
+import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QSpringUtil;
-import jasmine.framework.lock.distributed.DeclaredGlobalLock;
-import jasmine.framework.lock.distributed.GlobalLockSupport;
 
 /**
  * <p>
@@ -21,9 +20,14 @@ public class GlobalLock {
      * @return
      */
     public static DeclaredGlobalLock declareLock(String category, Object key) {
-        GlobalLockSupport support = QSpringUtil.getBean(GlobalLockSupport.class);
+        QCheckUtil.notNull(category, "category null");
+        QCheckUtil.notNull(key, "key null");
 
-        return support.declareLock(category, key);
+        // 获取分布式锁的实现
+        GlobalLockProvider provider = QSpringUtil.getBean(GlobalLockProvider.class);
+        DeclaredGlobalLock lock = provider.declareLock(category, key);
+
+        return lock;
     }
 
 }

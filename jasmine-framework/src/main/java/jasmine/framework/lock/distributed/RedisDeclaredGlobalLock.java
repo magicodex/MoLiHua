@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author mh.z
  */
-public class RedisDeclaredLock implements DeclaredGlobalLock {
+public class RedisDeclaredGlobalLock implements DeclaredGlobalLock {
     private RedissonClient redisson;
     private String lockKey;
 
@@ -21,7 +21,7 @@ public class RedisDeclaredLock implements DeclaredGlobalLock {
     /** 默认释放锁的时间 */
     private static final long DEFAULT_LEASE_TIME = 10000L;
 
-    public RedisDeclaredLock(RedissonClient redisson, String lockKey) {
+    public RedisDeclaredGlobalLock(RedissonClient redisson, String lockKey) {
         this.redisson = redisson;
         this.lockKey = lockKey;
     }

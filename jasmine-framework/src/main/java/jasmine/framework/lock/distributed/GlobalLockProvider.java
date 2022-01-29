@@ -3,7 +3,7 @@ package jasmine.framework.lock.distributed;
 /**
  * @author mh.z
  */
-public interface GlobalLockSupport {
+public interface GlobalLockProvider {
 
     /**
      * 声明分布式锁

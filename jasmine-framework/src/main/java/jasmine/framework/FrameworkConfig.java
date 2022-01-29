@@ -14,11 +14,15 @@ public class FrameworkConfig {
     private Boolean messageQueuePublisherEnabled;
 
     /** 是否消费消息队列的消息 */
-    @Value("${app.message-queue.publisher.enabled:false}")
+    @Value("${app.message-queue.consumer.enabled:false}")
     private Boolean messageQueueConsumerEnabled;
 
     public Boolean getMessageQueuePublisherEnabled() {
         return messageQueuePublisherEnabled;
+    }
+
+    public Boolean getMessageQueueConsumerEnabled() {
+        return messageQueueConsumerEnabled;
     }
 
 }
