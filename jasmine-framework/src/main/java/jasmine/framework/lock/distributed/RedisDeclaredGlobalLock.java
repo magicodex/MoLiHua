@@ -2,8 +2,6 @@ package jasmine.framework.lock.distributed;
 
 
 import jasmine.core.util.QCheckUtil;
-import jasmine.framework.lock.distributed.DeclaredGlobalLock;
-import jasmine.framework.lock.distributed.GlobalLockCallback;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 
@@ -39,6 +37,7 @@ public class RedisDeclaredGlobalLock implements DeclaredGlobalLock {
         boolean lockFlag = false;
 
         try {
+            // 尝试获取锁
             lockFlag = lock.tryLock(waitTime, DEFAULT_LEASE_TIME, TimeUnit.MILLISECONDS);
             if (!lockFlag) {
                 throw new RuntimeException("lock failed");
@@ -48,6 +47,7 @@ public class RedisDeclaredGlobalLock implements DeclaredGlobalLock {
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
+            // 释放锁
             if (lockFlag) {
                 lock.unlock();
             }
