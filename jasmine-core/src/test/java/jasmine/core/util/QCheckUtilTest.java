@@ -11,7 +11,18 @@ import org.junit.Test;
 public class QCheckUtilTest {
 
     @Test
-    public void testNotNull() {
+    public void testNotNull1() {
+        // 校验通过
+        QCheckUtil.notNull(new Object());
+
+        // 校验不通过报错
+        Assert.assertThrows(UnexpectedException.class, () -> {
+            QCheckUtil.notNull(null);
+        });
+    }
+
+    @Test
+    public void testNotNull2() {
         // 校验通过
         QCheckUtil.notNull(new Object(), "value null");
 
