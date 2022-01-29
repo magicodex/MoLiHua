@@ -17,6 +17,9 @@
         jasmine.demo.system">
     </context:component-scan>
 
+    <context:component-scan base-package="jasmine.security">
+    </context:component-scan>
+
     <!-- 扫描Mapper接口类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="jasmine.test.liquibase.log,jasmine.**.persistence.mapper"/>
