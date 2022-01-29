@@ -56,7 +56,7 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
         QCheckUtil.notNull(type, "type");
         Object returnObject = null;
 
-        if (bytes == null) {
+        if (bytes == null || bytes.length == 0) {
             return null;
         }
 
@@ -93,7 +93,7 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
         QCheckUtil.notNull(type, "type");
         Object returnObject = null;
 
-        if (QStringUtil.isNotEmpty(text)) {
+        if (QStringUtil.isEmpty(text)) {
             return null;
         }
 
