@@ -1,6 +1,5 @@
 package jasmine.demo.example.persistence.dao;
 
-import jasmine.demo.example.persistence.dao.ExampleDao;
 import jasmine.test.context.BeanTestContext;
 import org.junit.Assert;
 import org.junit.Test;
