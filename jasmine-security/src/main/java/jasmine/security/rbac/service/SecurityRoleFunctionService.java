@@ -28,7 +28,7 @@ public class SecurityRoleFunctionService {
      * @param roleIds
      * @return
      */
-    protected List<SecurityRoleFunction> listByRoles(Collection<Long> roleIds) {
+    public List<SecurityRoleFunction> listByRoles(Collection<Long> roleIds) {
         if (QCollectionUtil.isEmpty(roleIds)) {
             return Collections.emptyList();
         }
