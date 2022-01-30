@@ -1,5 +1,8 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * <p>
  * 关联用户和角色。
@@ -7,7 +10,9 @@ package jasmine.security.rbac.model;
  *
  * @author mh.z
  */
+@TableName("sec_user_role")
 public class SecurityUserRole {
+    @TableId
     private Long id;
     /** 用户ID */
     private Long userId;

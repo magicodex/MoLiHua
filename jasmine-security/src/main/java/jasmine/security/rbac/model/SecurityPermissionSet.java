@@ -1,5 +1,8 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * <p>
  * 权限集。
@@ -7,7 +10,9 @@ package jasmine.security.rbac.model;
  *
  * @author mh.z
  */
+@TableName("sec_permission_set")
 public class SecurityPermissionSet {
+    @TableId
     private Long id;
     /** 权限集代码 */
     private String permissionSetCode;

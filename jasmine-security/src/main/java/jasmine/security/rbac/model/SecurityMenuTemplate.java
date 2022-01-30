@@ -1,5 +1,8 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * <p>
  * 菜单模板。
@@ -7,7 +10,9 @@ package jasmine.security.rbac.model;
  *
  * @author mh.z
  */
+@TableName("sec_menu_template")
 public class SecurityMenuTemplate {
+    @TableId
     private Long id;
     /** 模板代码 */
     private String templateCode;

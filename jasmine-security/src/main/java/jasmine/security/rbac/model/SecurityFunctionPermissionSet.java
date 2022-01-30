@@ -1,5 +1,8 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * <p>
  * 关联功能和权限集。
@@ -7,7 +10,9 @@ package jasmine.security.rbac.model;
  *
  * @author mh.z
  */
+@TableName("sec_function_permission_set")
 public class SecurityFunctionPermissionSet {
+    @TableId
     private Long id;
     /** 功能ID */
     private Long functionId;
