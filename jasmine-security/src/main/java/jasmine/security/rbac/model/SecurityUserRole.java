@@ -1,5 +1,6 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -14,9 +15,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class SecurityUserRole {
     @TableId
     private Long id;
+
     /** 用户ID */
+    @TableField("user_id")
     private Long userId;
+
     /** 角色ID */
+    @TableField("role_id")
     private Long roleId;
 
     public Long getId() {

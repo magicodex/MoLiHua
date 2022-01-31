@@ -1,5 +1,6 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -14,9 +15,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class SecurityMenuFunction {
     @TableId
     private Long id;
+
     /** 菜单ID */
+    @TableField("menu_id")
     private Long menuId;
+
     /** 功能ID */
+    @TableField("function_id")
     private Long functionId;
 
     public Long getId() {

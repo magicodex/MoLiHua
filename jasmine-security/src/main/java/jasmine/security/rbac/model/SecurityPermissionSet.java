@@ -1,5 +1,6 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -14,9 +15,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class SecurityPermissionSet {
     @TableId
     private Long id;
+
     /** 权限集代码 */
+    @TableField("permissionSet_code")
     private String permissionSetCode;
+
     /** 权限集名称 */
+    @TableField("permission_set_name")
     private String permissionSetName;
 
     public Long getId() {
