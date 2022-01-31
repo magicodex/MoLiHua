@@ -17,13 +17,13 @@ import springfox.documentation.spring.web.plugins.Docket;
  */
 @Configuration
 public class SwaggerConfig {
-    @Value("${app.swagger.version:}")
+    @Value("${jasmine.swagger.version:}")
     private String apiVersion;
 
-    @Value("${app.swagger.title:}")
+    @Value("${jasmine.swagger.title:}")
     private String apiTitle;
 
-    @Value("${app.swagger.base-package:}")
+    @Value("${jasmine.swagger.base-package:}")
     private String apiPackage;
 
     @Bean

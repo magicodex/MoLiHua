@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Configuration;
 public class FrameworkConfig {
 
     /** 是否发布消息到消息队列 */
-    @Value("${app.message-queue.publisher.enabled:false}")
+    @Value("${jasmine.message-queue.publisher.enabled:false}")
     private Boolean messageQueuePublisherEnabled;
 
     /** 是否消费消息队列的消息 */
-    @Value("${app.message-queue.consumer.enabled:false}")
+    @Value("${jasmine.message-queue.consumer.enabled:false}")
     private Boolean messageQueueConsumerEnabled;
 
     public Boolean getMessageQueuePublisherEnabled() {

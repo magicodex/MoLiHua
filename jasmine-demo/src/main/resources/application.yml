@@ -35,19 +35,21 @@ mybatis-plus:
   # 自定义 mapper 文件路径
   mapper-locations: jasmine/**/*.xml
 
-app:
+jasmine:
   # 配置 swagger 文档
   swagger:
     version: 0.1
     title: 茉莉花
     base-package: jasmine
   message-queue:
-    rabbitmq:
-      # 是否自动创建交换器和队列
-      auto-declare: false
     # 是否发送消息到消息队列
     publisher:
       enabled: false
     # 是否监听消息队列的消息
     consumer:
       enabled: false
+
+app:
+  rabbitmq:
+    # 是否自动创建交换器和队列
+    auto-declare: false
