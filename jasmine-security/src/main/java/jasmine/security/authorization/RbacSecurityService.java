@@ -71,7 +71,7 @@ public class RbacSecurityService {
             return true;
         }
 
-        // 获取所有权限
+        // 查找该用户下的所有权限
         List<SecurityPermission> permissionList = getAllUserPermissions(userId);
         if (QCollectionUtil.isEmpty(permissionList)) {
             return false;
@@ -83,6 +83,7 @@ public class RbacSecurityService {
             String pattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
             String method = request.getMethod();
 
+            // 检查是否有访问该资源的权限
             for (SecurityPermission permission : permissionList) {
                 String resourcePath = permission.getResourcePath();
                 String resourceMethod = permission.getMethodType();
@@ -110,29 +111,29 @@ public class RbacSecurityService {
         QCheckUtil.notNull(userId, "userId null");
         Set<Long> permissionIdSet = new HashSet<>();
 
-        // 用户角色关系
+        // 用户和角色的关系
         List<SecurityUserRole> userRoleList = userRoleService.listByUser(userId);
         List<Long> roleIdList = QCollectionUtil.mapToList(userRoleList, SecurityUserRole::getRoleId);
 
-        // 角色功能关系
+        // 角色和功能的关系
         List<SecurityRoleFunction> roleFunctionList = roleFunctionService.listByRoles(roleIdList);
         List<Long> functionIdList = QCollectionUtil.mapToList(roleFunctionList,
                 SecurityRoleFunction::getFunctionId);
 
-        // 功能权限关系
+        // 功能和权限的关系
         List<SecurityFunctionPermission> functionPermissionList = functionPermissionService
                 .listByFunctions(functionIdList);
         functionPermissionList.forEach((functionPermission) -> {
             permissionIdSet.add(functionPermission.getPermissionId());
         });
 
-        // 功能权限集关系
+        // 功能和权限集的关系
         List<SecurityFunctionPermissionSet> functionPermissionSetList = functionPermissionSetService
                 .listByFunctions(functionIdList);
         List<Long> permissionSetIdList = QCollectionUtil.mapToList(functionPermissionSetList,
                 SecurityFunctionPermissionSet::getPermissionSetId);
 
-        // 权限集权限关系
+        // 权限集和权限的关系
         if (QCollectionUtil.isNotEmpty(permissionSetIdList)) {
             List<SecurityPermissionSetPermission> permissionSetPermissionList = permissionSetPermissionService
                     .listByPermissionSets(permissionSetIdList);
