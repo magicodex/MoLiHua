@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.HashSet;
@@ -35,6 +36,7 @@ import java.util.Set;
 @Service
 public class RbacSecurityService {
     private static final Logger logger = LoggerFactory.getLogger(RbacSecurityService.class);
+    private RuntimeProvider runtimeProvider;
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
     private SecurityUserRoleService userRoleService;
     private SecurityRoleFunctionService roleFunctionService;
@@ -44,6 +46,11 @@ public class RbacSecurityService {
     private SecurityPermissionService permissionService;
 
     public RbacSecurityService(RuntimeProvider runtimeProvider) {
+        this.runtimeProvider = runtimeProvider;
+    }
+
+    @PostConstruct
+    protected void init() {
         this.requestMappingHandlerMapping = runtimeProvider.getByType(RequestMappingHandlerMapping.class);
         this.userRoleService = runtimeProvider.getByType(SecurityUserRoleService.class);
         this.roleFunctionService = runtimeProvider.getByType(SecurityRoleFunctionService.class);

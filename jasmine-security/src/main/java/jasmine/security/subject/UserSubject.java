@@ -13,13 +13,25 @@ import java.util.Collection;
  * @author mh.z
  */
 public class UserSubject extends User {
+    /** 租户ID */
+    private Long tenantId;
     /** 用户ID */
     private Long userId;
 
     public UserSubject(Long userId, String username, String password,
                        Collection<? extends GrantedAuthority> authorities) {
+        this(-1L, userId, username, password, authorities);
+    }
+
+    public UserSubject(Long tenantId, Long userId, String username, String password,
+                       Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
+        this.tenantId = tenantId;
         this.userId = userId;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
     }
 
     /**

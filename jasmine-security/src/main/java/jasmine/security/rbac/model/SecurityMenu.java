@@ -1,5 +1,6 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -21,7 +22,7 @@ public class SecurityMenu {
     private Long templateId;
 
     /** 父菜单ID */
-    @TableField("parent_id")
+    @TableField(value = "parent_id", updateStrategy = FieldStrategy.IGNORED)
     private Long parentId;
 
     /** 菜单代码 */
