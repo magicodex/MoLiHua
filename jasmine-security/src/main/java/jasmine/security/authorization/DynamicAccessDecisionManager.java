@@ -1,5 +1,6 @@
 package jasmine.security.authorization;
 
+import jasmine.security.config.JasmineSecurityConfig;
 import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,24 +23,40 @@ import java.util.Collections;
 @Component
 public class DynamicAccessDecisionManager extends AffirmativeBased {
     private static final Logger logger = LoggerFactory.getLogger(DynamicAccessDecisionManager.class);
-    private CheckUserPermissionService checkUserPermissionService;
+    private JasmineSecurityConfig securityConfig;
+    private RbacSecurityService rbacService;
 
-    public DynamicAccessDecisionManager(CheckUserPermissionService checkUserPermissionService) {
+    public DynamicAccessDecisionManager(JasmineSecurityConfig securityConfig,
+                                        RbacSecurityService rbacService) {
         super(Collections.singletonList(new WebExpressionVoter()));
-        this.checkUserPermissionService = checkUserPermissionService;
+        this.securityConfig = securityConfig;
+        this.rbacService = rbacService;
     }
 
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
             throws AccessDeniedException, InsufficientAuthenticationException {
         super.decide(authentication, object, configAttributes);
-
-        Object principal = authentication.getPrincipal();
         HttpServletRequest request = ((FilterInvocation) object).getRequest();
 
+        if (Boolean.TRUE.equals(securityConfig.getRbacEnabled())) {
+            Object principal = authentication.getPrincipal();
+            rbacCheck(principal, request);
+        }
+
+        logger.debug("access [{}]{}", request.getMethod(), request.getRequestURI());
+    }
+
+    /**
+     * 检查权限
+     *
+     * @param principal
+     * @param request
+     */
+    protected void rbacCheck(Object principal, HttpServletRequest request) {
         if (principal instanceof UserSubject) {
             UserSubject subject = (UserSubject) principal;
-            boolean checkResult = checkUserPermissionService.check(subject, request);
+            boolean checkResult = rbacService.check(subject, request);
 
             if (!checkResult) {
                 String message = messages.getMessage("AbstractAccessDecisionManager.accessDenied",
@@ -47,8 +64,6 @@ public class DynamicAccessDecisionManager extends AffirmativeBased {
                 throw new AccessDeniedException(message);
             }
         }
-
-        logger.debug("access [{}]{}", request.getMethod(), request.getRequestURI());
     }
 
 }
