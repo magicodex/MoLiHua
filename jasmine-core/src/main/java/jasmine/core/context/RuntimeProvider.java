@@ -2,7 +2,7 @@ package jasmine.core.context;
 
 /**
  * <p>
- * 提供根据类型获取对象的方法。
+ * 提供获取对象的方法。
  * </p>
  *
  * @author mh.z
