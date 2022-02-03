@@ -3,7 +3,6 @@ package jasmine.security.config;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -22,16 +21,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     /** 认证管理器 */
     private final AuthenticationManager authenticationManager;
-    /** 密码编码器 */
-    private final PasswordEncoder passwordEncoder;
 
     private ClientDetailsServiceProvider clientDetailsServiceProvider;
 
     public OAuth2AuthorizationConfig(AuthenticationManager authenticationManager,
-                                     PasswordEncoder passwordEncoder,
                                      ClientDetailsServiceProvider clientDetailsServiceProvider) {
         this.authenticationManager = authenticationManager;
-        this.passwordEncoder = passwordEncoder;
         this.clientDetailsServiceProvider = clientDetailsServiceProvider;
     }
 

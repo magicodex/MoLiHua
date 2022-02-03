@@ -1,5 +1,6 @@
 package jasmine.security.authorization;
 
+import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
@@ -34,7 +35,7 @@ import java.util.Set;
 @Service
 public class RbacSecurityService {
     private static final Logger logger = LoggerFactory.getLogger(RbacSecurityService.class);
-    private RequestMappingHandlerMapping requestMappingHandlerMapping;
+    private RuntimeProvider runtimeProvider;
     private SecurityUserRoleService userRoleService;
     private SecurityRoleFunctionService roleFunctionService;
     private SecurityFunctionPermissionSetService functionPermissionSetService;
@@ -42,14 +43,14 @@ public class RbacSecurityService {
     private SecurityPermissionSetPermissionService permissionSetPermissionService;
     private SecurityPermissionService permissionService;
 
-    public RbacSecurityService(RequestMappingHandlerMapping requestMappingHandlerMapping,
+    public RbacSecurityService(RuntimeProvider runtimeProvider,
                                SecurityUserRoleService userRoleService,
                                SecurityRoleFunctionService roleFunctionService,
                                SecurityFunctionPermissionSetService functionPermissionSetService,
                                SecurityFunctionPermissionService functionPermissionService,
                                SecurityPermissionSetPermissionService permissionSetPermissionService,
                                SecurityPermissionService permissionService) {
-        this.requestMappingHandlerMapping = requestMappingHandlerMapping;
+        this.runtimeProvider = runtimeProvider;
         this.userRoleService = userRoleService;
         this.roleFunctionService = roleFunctionService;
         this.functionPermissionSetService = functionPermissionSetService;
@@ -84,6 +85,8 @@ public class RbacSecurityService {
 
         try {
             // 获取请求信息
+            RequestMappingHandlerMapping requestMappingHandlerMapping = runtimeProvider
+                    .getByType(RequestMappingHandlerMapping.class);
             requestMappingHandlerMapping.getHandler(request);
             String pattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
             String method = request.getMethod();
