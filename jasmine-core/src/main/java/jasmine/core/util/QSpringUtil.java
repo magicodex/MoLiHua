@@ -1,29 +1,21 @@
 package jasmine.core.util;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import jasmine.core.context.RuntimeProvider;
 import org.springframework.stereotype.Component;
 
 /**
  * @author mh.z
  */
 @Component
-public class QSpringUtil implements ApplicationContextAware {
-    private static ApplicationContext applicationContext;
+public class QSpringUtil {
+    private static RuntimeProvider runtimeProvider;
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        QSpringUtil.applicationContext = applicationContext;
+    public QSpringUtil(RuntimeProvider runtimeProvider) {
+        QSpringUtil.runtimeProvider = runtimeProvider;
     }
 
-    /**
-     * 设置 Spring 上下文
-     *
-     * @param applicationContext
-     */
-    public static void setGlobalApplicationContext(ApplicationContext applicationContext) {
-        QSpringUtil.applicationContext = applicationContext;
+    public static void setRuntimeProvider(RuntimeProvider runtimeProvider) {
+        QSpringUtil.runtimeProvider = runtimeProvider;
     }
 
     /**
@@ -34,7 +26,7 @@ public class QSpringUtil implements ApplicationContextAware {
      * @return
      */
     public static <T> T getBean(String name) {
-        return (T) applicationContext.getBean(name);
+        return (T) runtimeProvider.getByName(name);
     }
 
     /**
@@ -45,7 +37,7 @@ public class QSpringUtil implements ApplicationContextAware {
      * @return
      */
     public static <T> T getBean(Class<T> type) {
-        return applicationContext.getBean(type);
+        return runtimeProvider.getByType(type);
     }
 
 }

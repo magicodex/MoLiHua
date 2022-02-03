@@ -1,6 +1,5 @@
 package jasmine.security.authorization;
 
-import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
@@ -23,7 +22,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.HashSet;
@@ -36,7 +34,6 @@ import java.util.Set;
 @Service
 public class RbacSecurityService {
     private static final Logger logger = LoggerFactory.getLogger(RbacSecurityService.class);
-    private RuntimeProvider runtimeProvider;
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
     private SecurityUserRoleService userRoleService;
     private SecurityRoleFunctionService roleFunctionService;
@@ -45,19 +42,20 @@ public class RbacSecurityService {
     private SecurityPermissionSetPermissionService permissionSetPermissionService;
     private SecurityPermissionService permissionService;
 
-    public RbacSecurityService(RuntimeProvider runtimeProvider) {
-        this.runtimeProvider = runtimeProvider;
-    }
-
-    @PostConstruct
-    protected void init() {
-        this.requestMappingHandlerMapping = runtimeProvider.getByType(RequestMappingHandlerMapping.class);
-        this.userRoleService = runtimeProvider.getByType(SecurityUserRoleService.class);
-        this.roleFunctionService = runtimeProvider.getByType(SecurityRoleFunctionService.class);
-        this.functionPermissionSetService = runtimeProvider.getByType(SecurityFunctionPermissionSetService.class);
-        this.functionPermissionService = runtimeProvider.getByType(SecurityFunctionPermissionService.class);
-        this.permissionSetPermissionService = runtimeProvider.getByType(SecurityPermissionSetPermissionService.class);
-        this.permissionService = runtimeProvider.getByType(SecurityPermissionService.class);
+    public RbacSecurityService(RequestMappingHandlerMapping requestMappingHandlerMapping,
+                               SecurityUserRoleService userRoleService,
+                               SecurityRoleFunctionService roleFunctionService,
+                               SecurityFunctionPermissionSetService functionPermissionSetService,
+                               SecurityFunctionPermissionService functionPermissionService,
+                               SecurityPermissionSetPermissionService permissionSetPermissionService,
+                               SecurityPermissionService permissionService) {
+        this.requestMappingHandlerMapping = requestMappingHandlerMapping;
+        this.userRoleService = userRoleService;
+        this.roleFunctionService = roleFunctionService;
+        this.functionPermissionSetService = functionPermissionSetService;
+        this.functionPermissionService = functionPermissionService;
+        this.permissionSetPermissionService = permissionSetPermissionService;
+        this.permissionService = permissionService;
     }
 
     /**
