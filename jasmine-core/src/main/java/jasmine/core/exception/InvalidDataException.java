@@ -1,5 +1,8 @@
 package jasmine.core.exception;
 
+import jasmine.core.exception.type.ErrorType;
+import jasmine.core.exception.type.SimpleErrorType;
+
 /**
  * <p>
  * 无效数据，表示数据有错误。
@@ -8,6 +11,14 @@ package jasmine.core.exception;
  * @author mh.z
  */
 public class InvalidDataException extends UnexpectedException {
+    /** 错误代码 */
+    private static final String ERROR_CODE = "INVALID_DATA";
+    /** 错误详情格式 */
+    private static final String ERROR_DETAIL_FORMAT = "data %s[%s=%s] is invalid(reason %s)";
+    /** 默认key名称 */
+    private static final String DEFAULT_KEY_NAME = "key";
+    /** 默认信息 */
+    private static final String DEFAULT_MESSAGE = "invalid data";
 
     public InvalidDataException() {
         //
@@ -26,11 +37,28 @@ public class InvalidDataException extends UnexpectedException {
     }
 
     public InvalidDataException(Class<?> clazz, Object key, String reason) {
-        this(clazz, "key", key, reason);
+        super(buildErrorType(clazz, DEFAULT_KEY_NAME, key, reason), DEFAULT_MESSAGE);
     }
 
     public InvalidDataException(Class<?> clazz, String keyName, Object key, String reason) {
-        this("data %s[%s=%s] is invalid(reason %s)", clazz.getSimpleName(), keyName, key, reason);
+        super(buildErrorType(clazz, keyName, key, reason), DEFAULT_MESSAGE);
+    }
+
+    /**
+     * 创建错误类型
+     *
+     * @param clazz
+     * @param keyName
+     * @param key
+     * @param reason
+     * @return
+     */
+    protected static ErrorType buildErrorType(Class<?> clazz, String keyName,
+                                              Object key, String reason) {
+        String errorDetail = String.format(ERROR_DETAIL_FORMAT, clazz.getSimpleName(), keyName, key, reason);
+        ErrorType errorType = new SimpleErrorType(ERROR_CODE, errorDetail);
+
+        return errorType;
     }
 
 }

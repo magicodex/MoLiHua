@@ -1,5 +1,6 @@
 package jasmine.core.exception;
 
+import jasmine.core.exception.type.ErrorType;
 import jasmine.core.testdependency.Example1;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,8 +13,10 @@ public class InvalidDataExceptionTest {
     @Test
     public void test() {
         InvalidDataException exception = new InvalidDataException(Example1.class, 1L, "string1 null");
+        Assert.assertEquals("invalid data", exception.getMessage());
 
-        Assert.assertEquals("data Example1[key=1] is invalid(reason string1 null)", exception.getMessage());
+        ErrorType errorType = exception.getErrorType();
+        Assert.assertEquals("data Example1[key=1] is invalid(reason string1 null)", errorType.getDetail());
     }
 
 }
