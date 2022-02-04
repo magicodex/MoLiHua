@@ -17,6 +17,9 @@ import java.io.IOException;
 public class MessageReceiveServiceImpl implements MessageReceiveService {
     private RuntimeProvider runtimeProvider;
 
+    /** 消息接收bean的名称后缀 */
+    private static final String PROVIDER_BEAN_NAME_SUFFIX = "MessageReceiveProvider";
+
     public MessageReceiveServiceImpl(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
@@ -27,7 +30,7 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
         QCheckUtil.notNull(data, "data null");
 
         // 获取消费者
-        String receiveProviderName = category + "MessageReceiveProvider";
+        String receiveProviderName = category + PROVIDER_BEAN_NAME_SUFFIX;
         MessageReceiveProvider receiveProvider = runtimeProvider.getByName(receiveProviderName);
         Class<?> targetType = receiveProvider.getType();
 

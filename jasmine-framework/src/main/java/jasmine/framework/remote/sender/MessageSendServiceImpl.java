@@ -16,6 +16,9 @@ public class MessageSendServiceImpl implements MessageSendService {
     private FrameworkConfig frameworkConfig;
     private RuntimeProvider runtimeProvider;
 
+    /** 消息发送bean的名称后缀 */
+    private static final String PROVIDER_BEAN_NAME_SUFFIX = "MessageSendProvider";
+
     public MessageSendServiceImpl(FrameworkConfig frameworkConfig,
                                   RuntimeProvider runtimeProvider) {
         this.frameworkConfig = frameworkConfig;
@@ -28,7 +31,7 @@ public class MessageSendServiceImpl implements MessageSendService {
         QCheckUtil.notNull(data, "data null");
 
         if (Boolean.TRUE.equals(frameworkConfig.getMessageQueuePublisherEnabled())) {
-            String sendProviderName = category + "MessageSendProvider";
+            String sendProviderName = category + PROVIDER_BEAN_NAME_SUFFIX;
             MessageSendProvider sendProvider = runtimeProvider.getByName(sendProviderName);
 
             // 发布消息到消息队列
