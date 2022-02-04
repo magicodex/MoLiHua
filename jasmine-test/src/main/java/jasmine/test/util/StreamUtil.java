@@ -28,11 +28,13 @@ public class StreamUtil {
         Assert.notNull(inputStream, "inputStream null");
         Assert.notNull(type, "type null");
 
+        // 列名映射
         MybatisPlusColumnMapping columnMapping = new MybatisPlusColumnMapping(type);
         HeaderColumnNameTranslateMappingStrategy mappingStrategy = new HeaderColumnNameTranslateMappingStrategy();
         mappingStrategy.setColumnMapping(columnMapping);
         mappingStrategy.setType(type);
 
+        // 读取CSV
         InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
         CSVReader csvReader = new CSVReader(reader);
         CsvToObject csvToObject = new CsvToObject();

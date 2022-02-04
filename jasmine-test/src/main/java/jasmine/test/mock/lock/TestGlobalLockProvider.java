@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
  * @author mh.z
  */
 @Component
-public class TestLockSupportBean implements GlobalLockProvider {
+public class TestGlobalLockProvider implements GlobalLockProvider {
 
     @Override
     public DeclaredGlobalLock declareLock(String category, Object key) {
-        return new TestDeclaredLock();
+        return new TestDeclaredGlobalLock();
     }
 
 }

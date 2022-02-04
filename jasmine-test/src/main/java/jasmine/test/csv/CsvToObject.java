@@ -11,6 +11,10 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 /**
+ * <p>
+ * 转换 CSV 成对象。
+ * </p>
+ *
  * @author mh.z
  */
 public class CsvToObject<T> extends CsvToBean<T> {

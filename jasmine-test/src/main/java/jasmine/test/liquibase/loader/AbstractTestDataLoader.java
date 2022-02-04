@@ -43,9 +43,11 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
         List<TestDataChangeLog> logList = logMapper.selectList(logWrapper);
 
         if (CollUtil.isNotEmpty(logList)) {
+            // 删除原来的数据
             List<Long> recordIdList = CollStreamUtil.toList(logList, TestDataChangeLog::getRecordId);
             deleteRecords(recordIdList);
 
+            // 删除原来的日志记录
             List<Long> logIdList = CollStreamUtil.toList(logList, TestDataChangeLog::getId);
             logMapper.deleteBatchIds(logIdList);
         }
@@ -54,10 +56,12 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
 
         if (CollUtil.isNotEmpty(recordList)) {
             for (Object record : recordList) {
+                // 保存新的日志记录
                 TestDataChangeLog log = createLog(resourcePath, record);
                 logMapper.insert(log);
             }
 
+            // 保存新的数据
             insertRecords(recordList);
         }
     }
@@ -100,11 +104,16 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
         Assert.notNull(function, "function null");
         TestDataChangeLog log = new TestDataChangeLog();
 
+        // 资源路径
         log.setResourcePath(resourcePath);
+        // 资源名
         log.setResourceName(type.getName());
+        // 记录ID
         Long resourceId = function.apply(record);
         log.setRecordId(resourceId);
+        // 创建日期
         log.setCreatedDate(ZonedDateTime.now());
+        // 最后更新日期
         log.setLastUpdatedDate(ZonedDateTime.now());
 
         return log;

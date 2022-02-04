@@ -13,7 +13,9 @@ import java.util.List;
 public class DefaultTestDataLoader extends AbstractTestDataLoader {
     private BaseMapper<Object> baseMapper;
 
+    /** 实体类的名称后缀 */
     private static final String ENTITY_SUFFIX = "EO";
+    /** mapper的名称后缀 */
     private static final String MAPPER_SUFFIX = "Mapper";
 
     @Override

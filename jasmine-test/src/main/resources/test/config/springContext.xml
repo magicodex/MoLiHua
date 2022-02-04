@@ -16,6 +16,7 @@
         <context:exclude-filter type="regex" expression=".*\.CacheServiceImpl"/>
     </context:component-scan>
 
+    <!-- 测试上下文 -->
     <import resource="classpath:/test-context.xml"/>
 
     <!-- 数据源 -->

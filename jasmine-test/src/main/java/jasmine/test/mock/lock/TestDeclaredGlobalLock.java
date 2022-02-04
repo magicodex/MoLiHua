@@ -6,7 +6,7 @@ import jasmine.framework.lock.distributed.GlobalLockCallback;
 /**
  * @author mh.z
  */
-public class TestDeclaredLock implements DeclaredGlobalLock {
+public class TestDeclaredGlobalLock implements DeclaredGlobalLock {
 
     @Override
     public <T> T lock(GlobalLockCallback callback) {
