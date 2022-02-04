@@ -1,9 +1,11 @@
 package jasmine.security.authorization;
 
+import jasmine.core.util.QCheckUtil;
 import jasmine.security.config.JasmineSecurityConfig;
 import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.vote.AffirmativeBased;
@@ -27,7 +29,7 @@ public class DynamicAccessDecisionManager extends AffirmativeBased {
     private RbacCheckService rbacService;
 
     public DynamicAccessDecisionManager(JasmineSecurityConfig securityConfig,
-                                        RbacCheckService rbacService) {
+                                        @Autowired(required = false) RbacCheckService rbacService) {
         super(Collections.singletonList(new WebExpressionVoter()));
         this.securityConfig = securityConfig;
         this.rbacService = rbacService;
@@ -54,6 +56,8 @@ public class DynamicAccessDecisionManager extends AffirmativeBased {
      * @param request
      */
     protected void rbacCheck(Object principal, HttpServletRequest request) {
+        QCheckUtil.notNullProp(rbacService, "rbacService null");
+
         if (principal instanceof UserSubject) {
             UserSubject subject = (UserSubject) principal;
             boolean checkResult = rbacService.check(subject, request);

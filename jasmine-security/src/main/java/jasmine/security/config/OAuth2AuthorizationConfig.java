@@ -1,6 +1,7 @@
 package jasmine.security.config;
 
 import jasmine.security.subject.ClientDetailsServiceProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -25,7 +26,7 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     private ClientDetailsServiceProvider clientDetailsServiceProvider;
 
     public OAuth2AuthorizationConfig(AuthenticationManager authenticationManager,
-                                     ClientDetailsServiceProvider clientDetailsServiceProvider) {
+                                     @Autowired(required = false) ClientDetailsServiceProvider clientDetailsServiceProvider) {
         this.authenticationManager = authenticationManager;
         this.clientDetailsServiceProvider = clientDetailsServiceProvider;
     }
@@ -39,7 +40,9 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsServiceProvider.getService());
+        if (clientDetailsServiceProvider != null) {
+            clients.withClientDetails(clientDetailsServiceProvider.getService());
+        }
     }
 
     @Override

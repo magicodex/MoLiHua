@@ -2,6 +2,7 @@ package jasmine.security.config;
 
 import jasmine.security.authorization.DynamicAccessDecisionManager;
 import jasmine.security.subject.UserDetailsServiceProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 /**
@@ -30,7 +32,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsServiceProvider userDetailsServiceProvider;
 
     public SpringSecurityConfig(DynamicAccessDecisionManager accessDecisionManager,
-                                UserDetailsServiceProvider userDetailsServiceProvider) {
+                                @Autowired(required = false) UserDetailsServiceProvider userDetailsServiceProvider) {
         this.accessDecisionManager = accessDecisionManager;
         this.userDetailsServiceProvider = userDetailsServiceProvider;
     }
@@ -65,7 +67,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsServiceBean() {
-        return userDetailsServiceProvider.getService();
+        UserDetailsService userDetailsService = null;
+
+        if (userDetailsServiceProvider != null) {
+            userDetailsService = userDetailsServiceProvider.getService();
+        } else {
+            userDetailsService = new InMemoryUserDetailsManager();
+        }
+
+        return userDetailsService;
     }
 
     @Override
