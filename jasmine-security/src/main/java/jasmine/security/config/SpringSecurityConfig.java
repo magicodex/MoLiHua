@@ -2,7 +2,6 @@ package jasmine.security.config;
 
 import jasmine.security.authorization.DynamicAccessDecisionManager;
 import jasmine.security.subject.UserDetailsServiceProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,11 +24,16 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 @EnableWebSecurity
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+    /** 访问决策管理器 */
     private DynamicAccessDecisionManager accessDecisionManager;
 
-    @Autowired
     private UserDetailsServiceProvider userDetailsServiceProvider;
+
+    public SpringSecurityConfig(DynamicAccessDecisionManager accessDecisionManager,
+                                UserDetailsServiceProvider userDetailsServiceProvider) {
+        this.accessDecisionManager = accessDecisionManager;
+        this.userDetailsServiceProvider = userDetailsServiceProvider;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

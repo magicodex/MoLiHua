@@ -59,6 +59,8 @@ public class DynamicAccessDecisionManager extends AffirmativeBased {
             boolean checkResult = rbacService.check(subject, request);
 
             if (!checkResult) {
+                logger.debug("access denied [{}]{}", request.getMethod(), request.getRequestURI());
+
                 String message = messages.getMessage("AbstractAccessDecisionManager.accessDenied",
                         "Access is denied");
                 throw new AccessDeniedException(message);

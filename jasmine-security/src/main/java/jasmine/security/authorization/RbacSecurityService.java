@@ -24,6 +24,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -42,6 +43,8 @@ public class RbacSecurityService {
     private SecurityFunctionPermissionService functionPermissionService;
     private SecurityPermissionSetPermissionService permissionSetPermissionService;
     private SecurityPermissionService permissionService;
+    /** 公开的API */
+    private static final Collection<String> PUBLIC_APIS;
 
     public RbacSecurityService(RuntimeProvider runtimeProvider,
                                SecurityUserRoleService userRoleService,
@@ -59,6 +62,12 @@ public class RbacSecurityService {
         this.permissionService = permissionService;
     }
 
+    static {
+        PUBLIC_APIS = new HashSet<>();
+        PUBLIC_APIS.add("/");
+        PUBLIC_APIS.add("/login");
+    }
+
     /**
      * 检查权限
      *
@@ -74,6 +83,11 @@ public class RbacSecurityService {
         // 不鉴权静态资源
         String servletPath = request.getServletPath();
         if (servletPath.startsWith("/static/")) {
+            return true;
+        }
+
+        // 不鉴权公开的API
+        if (PUBLIC_APIS.contains(servletPath)) {
             return true;
         }
 
