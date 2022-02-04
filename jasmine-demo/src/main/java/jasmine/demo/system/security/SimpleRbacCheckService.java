@@ -1,9 +1,10 @@
-package jasmine.security.authorization;
+package jasmine.demo.system.security;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
+import jasmine.security.authorization.RbacCheckService;
 import jasmine.security.rbac.model.SecurityFunctionPermission;
 import jasmine.security.rbac.model.SecurityFunctionPermissionSet;
 import jasmine.security.rbac.model.SecurityPermission;
@@ -34,8 +35,8 @@ import java.util.Set;
  * @author mh.z
  */
 @Service
-public class RbacSecurityService {
-    private static final Logger logger = LoggerFactory.getLogger(RbacSecurityService.class);
+public class SimpleRbacCheckService implements RbacCheckService {
+    private static final Logger logger = LoggerFactory.getLogger(SimpleRbacCheckService.class);
     private RuntimeProvider runtimeProvider;
     private SecurityUserRoleService userRoleService;
     private SecurityRoleFunctionService roleFunctionService;
@@ -46,13 +47,13 @@ public class RbacSecurityService {
     /** 公开的API */
     private static final Collection<String> PUBLIC_APIS;
 
-    public RbacSecurityService(RuntimeProvider runtimeProvider,
-                               SecurityUserRoleService userRoleService,
-                               SecurityRoleFunctionService roleFunctionService,
-                               SecurityFunctionPermissionSetService functionPermissionSetService,
-                               SecurityFunctionPermissionService functionPermissionService,
-                               SecurityPermissionSetPermissionService permissionSetPermissionService,
-                               SecurityPermissionService permissionService) {
+    public SimpleRbacCheckService(RuntimeProvider runtimeProvider,
+                                  SecurityUserRoleService userRoleService,
+                                  SecurityRoleFunctionService roleFunctionService,
+                                  SecurityFunctionPermissionSetService functionPermissionSetService,
+                                  SecurityFunctionPermissionService functionPermissionService,
+                                  SecurityPermissionSetPermissionService permissionSetPermissionService,
+                                  SecurityPermissionService permissionService) {
         this.runtimeProvider = runtimeProvider;
         this.userRoleService = userRoleService;
         this.roleFunctionService = roleFunctionService;
@@ -75,6 +76,7 @@ public class RbacSecurityService {
      * @param request
      * @return
      */
+    @Override
     public boolean check(UserSubject subject, HttpServletRequest request) {
         QCheckUtil.notNull(subject, "subject null");
         QCheckUtil.notNull(request, "request null");

@@ -24,10 +24,10 @@ import java.util.Collections;
 public class DynamicAccessDecisionManager extends AffirmativeBased {
     private static final Logger logger = LoggerFactory.getLogger(DynamicAccessDecisionManager.class);
     private JasmineSecurityConfig securityConfig;
-    private RbacSecurityService rbacService;
+    private RbacCheckService rbacService;
 
     public DynamicAccessDecisionManager(JasmineSecurityConfig securityConfig,
-                                        RbacSecurityService rbacService) {
+                                        RbacCheckService rbacService) {
         super(Collections.singletonList(new WebExpressionVoter()));
         this.securityConfig = securityConfig;
         this.rbacService = rbacService;
