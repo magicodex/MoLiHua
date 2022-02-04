@@ -14,6 +14,8 @@ import java.util.Locale;
 @Component
 public class LocaleMessageProviderBean implements LocaleMessageProvider {
     private final MessageSource messageSource;
+    /** 多语言key前缀 */
+    private static final String MESSAGE_KEY_PREFIX = "$";
 
     public LocaleMessageProviderBean(MessageSource messageSource) {
         this.messageSource = messageSource;
@@ -23,7 +25,7 @@ public class LocaleMessageProviderBean implements LocaleMessageProvider {
     public String getMessage(String messageKey, Object... args) {
         QCheckUtil.notNull(messageKey, "messageKey null");
 
-        if (messageKey != null && messageKey.startsWith("$")) {
+        if (messageKey != null && messageKey.startsWith(MESSAGE_KEY_PREFIX)) {
             messageKey = messageKey.substring(1);
         }
 

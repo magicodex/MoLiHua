@@ -1,6 +1,10 @@
 package jasmine.framework.cache;
 
 /**
+ * <p>
+ * 提供缓存的功能。
+ * </p>
+ *
  * @author mh.z
  */
 public interface CacheService {

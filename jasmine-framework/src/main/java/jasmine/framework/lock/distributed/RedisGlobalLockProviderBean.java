@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 class RedisGlobalLockProviderBean implements GlobalLockProvider {
     private RedissonClient redisson;
+    /** 锁key的分隔符 */
+    private static final String REDIS_KEY_SEPARATOR = ":";
 
     public RedisGlobalLockProviderBean(RedissonClient redisson) {
         this.redisson = redisson;
@@ -20,7 +22,7 @@ class RedisGlobalLockProviderBean implements GlobalLockProvider {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
-        String redisKey = category + ":" + key;
+        String redisKey = category + REDIS_KEY_SEPARATOR + key;
         DeclaredGlobalLock lock = new RedisDeclaredGlobalLock(redisson, redisKey);
 
         return lock;
