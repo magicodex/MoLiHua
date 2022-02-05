@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
  * @author mh.z
  */
 @Service
-public class ClientDetailsServiceProviderBean implements ClientDetailsServiceProvider {
+public class SimpleClientDetailsServiceProvider implements ClientDetailsServiceProvider {
     private SimpleClientDetailsService clientDetailsService;
 
-    public ClientDetailsServiceProviderBean(SimpleClientDetailsService clientDetailsService) {
+    public SimpleClientDetailsServiceProvider(SimpleClientDetailsService clientDetailsService) {
         this.clientDetailsService = clientDetailsService;
     }
 
