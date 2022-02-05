@@ -5,10 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
     <!-- 定义语句 -->
-    <include file="classpath:database/schema/demo-schema.xml"/>
+    <include file="classpath:database/schema/schema-changeSet.xml"/>
 
     <!-- 预置数据 -->
-    <include file="classpath:database/data/demo-data.xml"/>
+    <include file="classpath:database/data/data-changeSet.xml"/>
 
     <include file="classpath:jasmine/security/SecurityLiquibase.xml"/>
 </databaseChangeLog>
