@@ -4,4 +4,14 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
+    <changeSet id="demo_20220205232801" author="mh.z">
+        <sqlFile dbms="all"
+                 encoding="UTF-8"
+                 endDelimiter="\nGO"
+                 path="demo-init.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
 </databaseChangeLog>

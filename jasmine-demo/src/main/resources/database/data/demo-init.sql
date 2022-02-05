@@ -1,0 +1,1 @@
+INSERT INTO `sys_user` VALUES (100001, 'MoLiHua', '123456', 1);
