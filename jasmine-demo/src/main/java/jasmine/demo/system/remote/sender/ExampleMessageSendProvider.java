@@ -1,4 +1,4 @@
-package jasmine.demo.system.remote;
+package jasmine.demo.system.remote.sender;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
