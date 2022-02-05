@@ -42,10 +42,10 @@ app.message-queue.consumer.enabled=true
 ## 模块划分
 | 目录 | 说明 |
 | :----: | :---- |
-| config | 配置 |
-| framework | 框架 |
-| common | 通用模块 |
-| authentication | 认证模块 |
-| dashboard | 仪表盘模块 |
-| example | DEMO模块 |
+| jasmine-core | 基本模块 |
+| jasmine-framework | 框架模块 |
+| jasmine-test | 测试模块 |
+| jasmine-security | 安全模块 |
+| jasmine-demo | DEMO模块 |
+
 

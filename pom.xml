@@ -17,11 +17,11 @@
     </parent>
 
     <modules>
+        <module>jasmine-core</module>
         <module>jasmine-framework</module>
         <module>jasmine-test</module>
-        <module>jasmine-demo</module>
-        <module>jasmine-core</module>
         <module>jasmine-security</module>
+        <module>jasmine-demo</module>
     </modules>
 
     <properties>
