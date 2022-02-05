@@ -1,4 +1,4 @@
-package jasmine.demo.authentication.persistent.entity;
+package jasmine.demo.authentication.persistence.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

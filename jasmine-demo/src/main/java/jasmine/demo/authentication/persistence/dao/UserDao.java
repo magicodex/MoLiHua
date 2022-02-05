@@ -1,10 +1,10 @@
-package jasmine.demo.authentication.persistent.dao;
+package jasmine.demo.authentication.persistence.dao;
 
 import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import jasmine.demo.authentication.persistent.entity.UserEO;
-import jasmine.demo.authentication.persistent.mapper.UserMapper;
+import jasmine.demo.authentication.persistence.entity.UserEO;
+import jasmine.demo.authentication.persistence.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 /**

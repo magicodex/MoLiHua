@@ -4,7 +4,11 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <include file="classpath:/database/master.xml" relativeToChangelogFile="false"/>
+    <changeSet id="test_data_20220205214001_v1" author="mh.z">
+        <customChange class="jasmine.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.demo.authentication.persistence.entity.UserEO"/>
+            <param name="resourcePath" value="classpath:test/data/authentication/user_1.csv"/>
+        </customChange>
+    </changeSet>
 
-    <include file="classpath:/test/data/authentication/master.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

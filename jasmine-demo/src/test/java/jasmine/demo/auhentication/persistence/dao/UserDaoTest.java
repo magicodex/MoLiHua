@@ -1,7 +1,7 @@
 package jasmine.demo.auhentication.persistence.dao;
 
-import jasmine.demo.authentication.persistent.dao.UserDao;
-import jasmine.demo.authentication.persistent.entity.UserEO;
+import jasmine.demo.authentication.persistence.dao.UserDao;
+import jasmine.demo.authentication.persistence.entity.UserEO;
 import jasmine.test.context.BeanTestContext;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class UserDaoTest extends BeanTestContext {
     public void testGetUserByName() {
         UserEO user = userDao.getUserByName("test");
 
-        Assert.assertNull(user);
+        Assert.assertNotNull(user);
     }
 
 }

@@ -1,8 +1,8 @@
 package jasmine.demo.system.security;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.demo.authentication.persistent.dao.UserDao;
-import jasmine.demo.authentication.persistent.entity.UserEO;
+import jasmine.demo.authentication.persistence.dao.UserDao;
+import jasmine.demo.authentication.persistence.entity.UserEO;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;

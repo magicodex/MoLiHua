@@ -1,5 +1,6 @@
 package jasmine.demo.system.security;
 
+import jasmine.core.context.RuntimeProvider;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.stereotype.Service;
@@ -9,15 +10,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SimpleClientDetailsServiceProvider implements ClientDetailsServiceProvider {
-    private SimpleClientDetailsService clientDetailsService;
+    private RuntimeProvider runtimeProvider;
 
-    public SimpleClientDetailsServiceProvider(SimpleClientDetailsService clientDetailsService) {
-        this.clientDetailsService = clientDetailsService;
+    public SimpleClientDetailsServiceProvider(RuntimeProvider runtimeProvider) {
+        this.runtimeProvider = runtimeProvider;
     }
 
     @Override
     public ClientDetailsService getService() {
-        return clientDetailsService;
+        return new SimpleClientDetailsService(runtimeProvider);
     }
 
 }

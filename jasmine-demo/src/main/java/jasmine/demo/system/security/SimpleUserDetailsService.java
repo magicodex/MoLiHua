@@ -1,8 +1,8 @@
 package jasmine.demo.system.security;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.demo.authentication.persistent.dao.UserDao;
-import jasmine.demo.authentication.persistent.entity.UserEO;
+import jasmine.demo.authentication.persistence.dao.UserDao;
+import jasmine.demo.authentication.persistence.entity.UserEO;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

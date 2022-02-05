@@ -1,7 +1,7 @@
-package jasmine.demo.authentication.persistent.mapper;
+package jasmine.demo.authentication.persistence.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import jasmine.demo.authentication.persistent.entity.UserEO;
+import jasmine.demo.authentication.persistence.entity.UserEO;
 
 /**
  * @author mh.z

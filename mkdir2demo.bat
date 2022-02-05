@@ -31,9 +31,9 @@ mkdir adapter
 mkdir domain
 cd ../
 
-rem 创建 persistent 目录
-mkdir persistent
-cd persistent
+rem 创建 persistence 目录
+mkdir persistence
+cd persistence
 mkdir entity
 mkdir dao
 mkdir mapper
