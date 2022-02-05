@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-@Component("examplePublisherProvider")
+@Component("exampleMessageSendProvider")
 public class ExampleMessageSendProvider implements MessageSendProvider {
     private RabbitTemplate template;
 
