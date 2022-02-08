@@ -16,21 +16,25 @@ public class SecurityPermission {
     @TableId
     private Long id;
 
-    /** 请求方式 */
-    @TableField("method_type")
-    private String methodType;
-
     /** 权限代码 */
     @TableField("permission_code")
     private String permissionCode;
 
     /** 权限名称 */
-    @TableField("permission_code")
+    @TableField("permission_name")
     private String permissionName;
 
-    /** 资源路径 */
-    @TableField("resource_path")
-    private String resourcePath;
+    /** 访问类型 */
+    @TableField("access_type")
+    private String accessType;
+
+    /** 请求方式 */
+    @TableField("request_method")
+    private String requestMethod;
+
+    /** 请求资源 */
+    @TableField("request_resource")
+    private String requestResource;
 
     public Long getId() {
         return id;
@@ -38,14 +42,6 @@ public class SecurityPermission {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getMethodType() {
-        return methodType;
-    }
-
-    public void setMethodType(String methodType) {
-        this.methodType = methodType;
     }
 
     public String getPermissionCode() {
@@ -64,12 +60,28 @@ public class SecurityPermission {
         this.permissionName = permissionName;
     }
 
-    public String getResourcePath() {
-        return resourcePath;
+    public String getAccessType() {
+        return accessType;
     }
 
-    public void setResourcePath(String resourcePath) {
-        this.resourcePath = resourcePath;
+    public void setAccessType(String accessType) {
+        this.accessType = accessType;
+    }
+
+    public String getRequestMethod() {
+        return requestMethod;
+    }
+
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
+
+    public String getRequestResource() {
+        return requestResource;
+    }
+
+    public void setRequestResource(String requestResource) {
+        this.requestResource = requestResource;
     }
 
 }

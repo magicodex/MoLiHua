@@ -5,6 +5,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.security.authorization.RbacCheckService;
+import jasmine.security.rbac.constant.RbacConstants;
 import jasmine.security.rbac.model.SecurityFunctionPermission;
 import jasmine.security.rbac.model.SecurityFunctionPermissionSet;
 import jasmine.security.rbac.model.SecurityPermission;
@@ -109,10 +110,11 @@ public class SimpleRbacCheckService implements RbacCheckService {
 
             // 检查是否有访问该资源的权限
             for (SecurityPermission permission : permissionList) {
-                String resourcePath = permission.getResourcePath();
-                String resourceMethod = permission.getMethodType();
+                String resourcePath = permission.getRequestResource();
+                String resourceMethod = permission.getAccessType();
                 boolean matchResult = QStringUtil.equals(pattern, resourcePath)
-                        && ("*".equals(resourceMethod) || QStringUtil.equals(method, resourceMethod));
+                        && (RbacConstants.REQUEST_METHOD_ANY.equals(resourceMethod)
+                        || QStringUtil.equals(method, resourceMethod));
 
                 if (matchResult) {
                     return true;

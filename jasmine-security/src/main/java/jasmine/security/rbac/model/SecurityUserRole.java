@@ -24,6 +24,10 @@ public class SecurityUserRole {
     @TableField("role_id")
     private Long roleId;
 
+    /** 租户ID */
+    @TableField("tenant_id")
+    private Long tenantId;
+
     public Long getId() {
         return id;
     }
@@ -46,6 +50,14 @@ public class SecurityUserRole {
 
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
 }

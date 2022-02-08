@@ -46,10 +46,13 @@
             <column name="permission_name" type="varchar(100)" remarks="权限名称">
                 <constraints nullable="false"/>
             </column>
-            <column name="method_type" type="varchar(50)" remarks="请求方式">
+            <column name="access_type" type="varchar(50)" remarks="访问类型">
                 <constraints nullable="false"/>
             </column>
-            <column name="resource_path" type="varchar(1000)" remarks="资源路径">
+            <column name="request_method" type="varchar(50)" remarks="请求方式">
+                <constraints nullable="false"/>
+            </column>
+            <column name="request_resource" type="varchar(1000)" remarks="请求资源">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -126,6 +129,9 @@
             <column name="role_id" type="bigint" remarks="角色ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -138,6 +144,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="function_id" type="bigint" remarks="功能ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -194,6 +203,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="function_id" type="bigint" remarks="功能ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
         </createTable>

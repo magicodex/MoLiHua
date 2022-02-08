@@ -24,6 +24,10 @@ public class SecurityRoleFunction {
     @TableField("function_id")
     private Long functionId;
 
+    /** 租户ID */
+    @TableField("tenant_id")
+    private Long tenantId;
+
     public Long getId() {
         return id;
     }
@@ -46,6 +50,14 @@ public class SecurityRoleFunction {
 
     public void setFunctionId(Long functionId) {
         this.functionId = functionId;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
 }

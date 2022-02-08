@@ -30,7 +30,7 @@ public class SimpleUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEO user = userDao.getUserByName(username);
         if (user == null) {
-            return null;
+            throw new UsernameNotFoundException("username '" + username + "' not found");
         }
 
         UserSubject userDetails = new UserSubject(user.getTenantId(), user.getId(),
