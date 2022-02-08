@@ -62,6 +62,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         // 不启用 CSRF 特殊处理
         http.csrf()
                 .disable();
+
+        // 同域的可以被嵌套
+        http.headers()
+                .frameOptions()
+                .sameOrigin();
     }
 
     @Bean

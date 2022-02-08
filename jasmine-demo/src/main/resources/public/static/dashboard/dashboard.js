@@ -8,7 +8,7 @@
   // Graphs
   var ctx = document.getElementById('myChart')
   // eslint-disable-next-line no-unused-vars
-  var myChart = new Chart(ctx, {
+  /*var myChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: [
@@ -49,5 +49,13 @@
         display: false
       }
     }
-  })
+  })*/
+
+  // 初始主区域大小
+  $("main").css("height", $(document).height() - 48);
+
+  // 调整主区域大小
+  $(window).resize(function() {
+    $("main").css("height", $(document).height() - 48);
+  });
 }())
