@@ -7,7 +7,7 @@ package jasmine.framework.lock.distributed;
  *
  * @author mh.z
  */
-public interface GlobalLockCallback<T> {
+public interface DistributedLockCallback<T> {
 
     /**
      * 调用加锁后的逻辑

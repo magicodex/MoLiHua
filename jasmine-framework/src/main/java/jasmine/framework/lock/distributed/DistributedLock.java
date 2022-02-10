@@ -10,7 +10,7 @@ import jasmine.core.util.QSpringUtil;
  *
  * @author mh.z
  */
-public class GlobalLock {
+public class DistributedLock {
 
     /**
      * 声明分布式锁
@@ -19,13 +19,13 @@ public class GlobalLock {
      * @param key
      * @return
      */
-    public static DeclaredGlobalLock declareLock(String category, Object key) {
+    public static DistributedDeclaredLock declareLock(String category, Object key) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
         // 获取分布式锁的实现
-        GlobalLockProvider provider = QSpringUtil.getBean(GlobalLockProvider.class);
-        DeclaredGlobalLock lock = provider.declareLock(category, key);
+        DistributedLockProvider provider = QSpringUtil.getBean(DistributedLockProvider.class);
+        DistributedDeclaredLock lock = provider.declare(category, key);
 
         return lock;
     }

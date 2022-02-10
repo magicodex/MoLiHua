@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author mh.z
  */
-public class RedisDeclaredGlobalLock implements DeclaredGlobalLock {
+public class RedisDistributedDeclaredLock implements DistributedDeclaredLock {
     private RedissonClient redisson;
     private String lockKey;
 
@@ -19,18 +19,18 @@ public class RedisDeclaredGlobalLock implements DeclaredGlobalLock {
     /** 默认释放锁的时间 */
     private static final long DEFAULT_LEASE_TIME = 10000L;
 
-    public RedisDeclaredGlobalLock(RedissonClient redisson, String lockKey) {
+    public RedisDistributedDeclaredLock(RedissonClient redisson, String lockKey) {
         this.redisson = redisson;
         this.lockKey = lockKey;
     }
 
     @Override
-    public <T> T lock(GlobalLockCallback callback) {
+    public <T> T lock(DistributedLockCallback callback) {
         return lock(DEFAULT_WAIT_TIME, callback);
     }
 
     @Override
-    public <T> T lock(long waitTime, GlobalLockCallback callback) {
+    public <T> T lock(long waitTime, DistributedLockCallback callback) {
         QCheckUtil.notNull(callback, "callback null");
 
         RLock lock = redisson.getLock(lockKey);

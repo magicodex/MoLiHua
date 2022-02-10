@@ -1,15 +1,15 @@
 package jasmine.test.mock.lock;
 
-import jasmine.framework.lock.distributed.DeclaredGlobalLock;
-import jasmine.framework.lock.distributed.GlobalLockCallback;
+import jasmine.framework.lock.distributed.DistributedDeclaredLock;
+import jasmine.framework.lock.distributed.DistributedLockCallback;
 
 /**
  * @author mh.z
  */
-public class TestDeclaredGlobalLock implements DeclaredGlobalLock {
+public class TestDistributedDeclaredLock implements DistributedDeclaredLock {
 
     @Override
-    public <T> T lock(GlobalLockCallback callback) {
+    public <T> T lock(DistributedLockCallback callback) {
         try {
             return (T) callback.call();
         } catch (Exception e) {
@@ -18,7 +18,7 @@ public class TestDeclaredGlobalLock implements DeclaredGlobalLock {
     }
 
     @Override
-    public <T> T lock(long waitTime, GlobalLockCallback callback) {
+    public <T> T lock(long waitTime, DistributedLockCallback callback) {
         try {
             return (T) callback.call();
         } catch (Exception e) {

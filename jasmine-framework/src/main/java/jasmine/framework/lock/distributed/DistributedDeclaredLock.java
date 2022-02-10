@@ -7,14 +7,14 @@ package jasmine.framework.lock.distributed;
  *
  * @author mh.z
  */
-public interface DeclaredGlobalLock {
+public interface DistributedDeclaredLock {
 
     /**
      * 先加锁后执行
      *
      * @param callback
      */
-    <T> T lock(GlobalLockCallback callback);
+    <T> T lock(DistributedLockCallback callback);
 
     /**
      * 先加锁后执行
@@ -22,5 +22,5 @@ public interface DeclaredGlobalLock {
      * @param waitTime
      * @param callback
      */
-    <T> T lock(long waitTime, GlobalLockCallback callback);
+    <T> T lock(long waitTime, DistributedLockCallback callback);
 }

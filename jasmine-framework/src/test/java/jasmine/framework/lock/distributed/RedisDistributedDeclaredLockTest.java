@@ -9,14 +9,14 @@ import org.redisson.api.RedissonClient;
 /**
  * @author mh.z
  */
-public class RedisDeclaredGlobalLockTest {
+public class RedisDistributedDeclaredLockTest {
 
     @Test
     public void test() throws InterruptedException {
         // 成功获取锁
         {
             RedissonClient client = mockRedissonClient(true);
-            RedisDeclaredGlobalLock lock = new RedisDeclaredGlobalLock(client, "testLock");
+            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client, "testLock");
             boolean actual = lock.lock(() -> true);
 
             Assert.assertTrue(actual);
@@ -25,7 +25,7 @@ public class RedisDeclaredGlobalLockTest {
         // 获取不到锁会报错
         {
             RedissonClient client = mockRedissonClient(false);
-            RedisDeclaredGlobalLock lock = new RedisDeclaredGlobalLock(client, "testLock");
+            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client, "testLock");
 
             Assert.assertThrows(RuntimeException.class, () -> {
                 lock.lock(() -> true);
