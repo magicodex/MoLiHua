@@ -71,10 +71,13 @@ public class CacheServiceImpl implements CacheService {
     public void sync(String category, String key, Supplier<Object> supplier) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
-        QCheckUtil.notNullProp(syncStrategy, "syncStrategy null");
 
         if (supplier != null) {
-            syncStrategy.sync(category, key, supplier);
+            if (syncStrategy != null) {
+                syncStrategy.sync(category, key, supplier);
+            } else {
+                remove(category, key);
+            }
         }
     }
 
