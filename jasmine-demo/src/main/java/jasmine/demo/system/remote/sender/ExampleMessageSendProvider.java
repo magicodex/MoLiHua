@@ -2,7 +2,7 @@ package jasmine.demo.system.remote.sender;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
-import jasmine.framework.remote.sender.MessageSendProvider;
+import jasmine.framework.remote.publisher.PublisherProvider;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -15,7 +15,7 @@ import java.util.Map;
  * @author mh.z
  */
 @Component("exampleMessageSendProvider")
-public class ExampleMessageSendProvider implements MessageSendProvider {
+public class ExampleMessageSendProvider implements PublisherProvider {
     private RabbitTemplate template;
 
     public ExampleMessageSendProvider(RabbitTemplate template) {

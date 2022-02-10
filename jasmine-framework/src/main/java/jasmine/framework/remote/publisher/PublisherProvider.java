@@ -1,11 +1,11 @@
-package jasmine.framework.remote.sender;
+package jasmine.framework.remote.publisher;
 
 /**
  * 消息发送者
  *
  * @author mh.z
  */
-public interface MessageSendProvider<T> {
+public interface PublisherProvider<T> {
 
     /**
      * 发送消息

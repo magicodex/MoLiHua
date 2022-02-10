@@ -1,4 +1,4 @@
-package jasmine.framework.remote.sender;
+package jasmine.framework.remote.publisher;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
@@ -11,16 +11,16 @@ import org.springframework.stereotype.Service;
  * @author mh.z
  */
 @Service
-public class MessageSendServiceImpl implements MessageSendService {
-    private static final Logger logger = LoggerFactory.getLogger(MessageSendServiceImpl.class);
+public class PublisherServiceImpl implements PublisherService {
+    private static final Logger logger = LoggerFactory.getLogger(PublisherServiceImpl.class);
     private FrameworkConfig frameworkConfig;
     private RuntimeProvider runtimeProvider;
 
     /** 消息发送bean的名称后缀 */
     private static final String PROVIDER_BEAN_NAME_SUFFIX = "MessageSendProvider";
 
-    public MessageSendServiceImpl(FrameworkConfig frameworkConfig,
-                                  RuntimeProvider runtimeProvider) {
+    public PublisherServiceImpl(FrameworkConfig frameworkConfig,
+                                RuntimeProvider runtimeProvider) {
         this.frameworkConfig = frameworkConfig;
         this.runtimeProvider = runtimeProvider;
     }
@@ -32,7 +32,7 @@ public class MessageSendServiceImpl implements MessageSendService {
 
         if (Boolean.TRUE.equals(frameworkConfig.getMessageQueuePublisherEnabled())) {
             String sendProviderName = category + PROVIDER_BEAN_NAME_SUFFIX;
-            MessageSendProvider sendProvider = runtimeProvider.getByName(sendProviderName);
+            PublisherProvider sendProvider = runtimeProvider.getByName(sendProviderName);
 
             // 发布消息到消息队列
             sendProvider.send(data);

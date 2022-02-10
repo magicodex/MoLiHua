@@ -1,11 +1,11 @@
-package jasmine.framework.remote.receiver;
+package jasmine.framework.remote.consumer;
 
 /**
  * 消息接收者
  *
  * @author mh.z
  */
-public interface MessageReceiveProvider<T> {
+public interface ConsumerProvider<T> {
 
     /**
      * 接收消息

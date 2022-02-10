@@ -1,6 +1,6 @@
 package jasmine.demo.system.config;
 
-import jasmine.framework.remote.receiver.MessageReceiveService;
+import jasmine.framework.remote.consumer.ConsumerService;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
@@ -21,7 +21,7 @@ public class RabbitConsumerConfig {
     private ConnectionFactory connectionFactory;
 
     @Autowired
-    private MessageReceiveService receiveService;
+    private ConsumerService receiveService;
 
     @Bean
     public MessageListenerContainer exampleConsumer1(Queue exampleQueue1) {

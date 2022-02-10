@@ -1,4 +1,4 @@
-package jasmine.framework.remote.receiver;
+package jasmine.framework.remote.consumer;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,7 +10,7 @@ public class MessageReceiveServiceImplTest {
 
     @Test
     public void testConvertText() {
-        MessageReceiveServiceImpl service = new MessageReceiveServiceImpl(null);
+        ConsumerServiceImpl service = new ConsumerServiceImpl(null);
 
         // 布尔值
         Assert.assertEquals(true, service.convertText("true", Boolean.class));

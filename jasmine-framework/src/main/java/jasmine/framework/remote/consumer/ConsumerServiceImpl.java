@@ -1,4 +1,4 @@
-package jasmine.framework.remote.receiver;
+package jasmine.framework.remote.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jasmine.core.context.RuntimeProvider;
@@ -14,13 +14,13 @@ import java.io.IOException;
  * @author mh.z
  */
 @Service
-public class MessageReceiveServiceImpl implements MessageReceiveService {
+public class ConsumerServiceImpl implements ConsumerService {
     private RuntimeProvider runtimeProvider;
 
     /** 消息接收bean的名称后缀 */
     private static final String PROVIDER_BEAN_NAME_SUFFIX = "MessageReceiveProvider";
 
-    public MessageReceiveServiceImpl(RuntimeProvider runtimeProvider) {
+    public ConsumerServiceImpl(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
 
@@ -31,7 +31,7 @@ public class MessageReceiveServiceImpl implements MessageReceiveService {
 
         // 获取消费者
         String receiveProviderName = category + PROVIDER_BEAN_NAME_SUFFIX;
-        MessageReceiveProvider receiveProvider = runtimeProvider.getByName(receiveProviderName);
+        ConsumerProvider receiveProvider = runtimeProvider.getByName(receiveProviderName);
         Class<?> targetType = receiveProvider.getType();
 
         Message message = (Message) data;
