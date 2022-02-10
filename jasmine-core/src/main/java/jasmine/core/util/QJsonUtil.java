@@ -1,8 +1,12 @@
 package jasmine.core.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -47,6 +51,26 @@ public class QJsonUtil {
     public static <T> T fromJson(String json, Class<T> type) {
         try {
             return OBJECT_MAPPER.readValue(json, type);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 反序列化JSON字符串成列表
+     *
+     * @param json
+     * @param type
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> fromArray(String json, Class<T> type) {
+        TypeFactory typeFactory = OBJECT_MAPPER.getTypeFactory();
+        CollectionType collectionType = typeFactory.constructCollectionType(ArrayList.class, type);
+
+        try {
+            List<T> list = OBJECT_MAPPER.readValue(json, collectionType);
+            return list;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

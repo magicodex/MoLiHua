@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
+import java.util.List;
+
 /**
  * @author mh.z
  */
@@ -29,6 +31,17 @@ public class QJsonUtilTest {
 
         Assert.assertEquals("1", example.getString1());
         Assert.assertFalse(example.getBoolean1());
+    }
+
+    @Test
+    public void testFromArray() {
+        String json = "[{\"string1\":\"1\",\"boolean1\":true}," +
+                "{\"string1\":\"0\",\"boolean1\":false}]";
+        List<Example1> actualList = QJsonUtil.fromArray(json, Example1.class);
+
+        Assert.assertEquals(2, actualList.size());
+        Assert.assertTrue(actualList.get(0).getBoolean1());
+        Assert.assertFalse(actualList.get(1).getBoolean1());
     }
 
 }
