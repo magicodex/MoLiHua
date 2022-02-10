@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @author mh.z
  */
 @Service
-public class PublisherServiceImpl implements PublishService {
+public class PublisherServiceImpl implements PublisherService {
     private static final Logger logger = LoggerFactory.getLogger(PublisherServiceImpl.class);
     private FrameworkConfig frameworkConfig;
     private RuntimeProvider runtimeProvider;

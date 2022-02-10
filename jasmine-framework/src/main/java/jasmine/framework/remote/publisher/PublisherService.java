@@ -5,7 +5,7 @@ package jasmine.framework.remote.publisher;
  *
  * @author mh.z
  */
-public interface PublishService {
+public interface PublisherService {
 
     /**
      * 发布消息
