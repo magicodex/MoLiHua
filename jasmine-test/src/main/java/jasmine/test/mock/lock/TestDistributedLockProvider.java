@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class TestDistributedLockProvider implements DistributedLockProvider {
 
     @Override
-    public DistributedDeclaredLock declare(String category, Object key) {
+    public DistributedDeclaredLock declareLock(String category, Object key) {
         return new TestDistributedDeclaredLock();
     }
 

@@ -12,5 +12,5 @@ public interface DistributedLockProvider {
      * @param key
      * @return
      */
-    DistributedDeclaredLock declare(String category, Object key);
+    DistributedDeclaredLock declareLock(String category, Object key);
 }

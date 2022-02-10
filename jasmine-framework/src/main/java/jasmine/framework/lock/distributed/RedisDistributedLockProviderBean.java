@@ -18,7 +18,7 @@ class RedisDistributedLockProviderBean implements DistributedLockProvider {
     }
 
     @Override
-    public DistributedDeclaredLock declare(String category, Object key) {
+    public DistributedDeclaredLock declareLock(String category, Object key) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 

@@ -19,15 +19,30 @@ public class DistributedLock {
      * @param key
      * @return
      */
-    public static DistributedDeclaredLock declareLock(String category, Object key) {
+    public static DistributedDeclaredLock declare(String category, Object key) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
         // 获取分布式锁的实现
         DistributedLockProvider provider = QSpringUtil.getBean(DistributedLockProvider.class);
-        DistributedDeclaredLock lock = provider.declare(category, key);
+        DistributedDeclaredLock lock = provider.declareLock(category, key);
 
         return lock;
+    }
+
+    /**
+     * 加锁
+     *
+     * @param category
+     * @param key
+     * @param callback
+     * @param <T>
+     * @return
+     */
+    public static <T> T lock(String category, Object key, DistributedLockCallback callback) {
+        DistributedDeclaredLock lock = declare(category, key);
+
+        return lock.lock(callback);
     }
 
 }
