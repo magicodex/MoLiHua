@@ -1,5 +1,6 @@
 package jasmine.demo.system.security;
 
+import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
@@ -36,9 +37,9 @@ import java.util.Set;
  * @author mh.z
  */
 @Service
-public class SimpleRbacCheckService implements RbacCheckService {
+public class SimpleRbacCheckService implements RbacCheckService, InitSupport {
     private static final Logger logger = LoggerFactory.getLogger(SimpleRbacCheckService.class);
-    private RuntimeProvider runtimeProvider;
+    private RequestMappingHandlerMapping requestMappingHandlerMapping;
     private SecurityUserRoleService userRoleService;
     private SecurityRoleFunctionService roleFunctionService;
     private SecurityFunctionPermissionSetService functionPermissionSetService;
@@ -48,20 +49,23 @@ public class SimpleRbacCheckService implements RbacCheckService {
     /** 所有人都能访问的API */
     private static final Collection<String> ANYONE_CAN_ACCESS_APIS;
 
-    public SimpleRbacCheckService(RuntimeProvider runtimeProvider,
-                                  SecurityUserRoleService userRoleService,
+    public SimpleRbacCheckService(SecurityUserRoleService userRoleService,
                                   SecurityRoleFunctionService roleFunctionService,
                                   SecurityFunctionPermissionSetService functionPermissionSetService,
                                   SecurityFunctionPermissionService functionPermissionService,
                                   SecurityPermissionSetPermissionService permissionSetPermissionService,
                                   SecurityPermissionService permissionService) {
-        this.runtimeProvider = runtimeProvider;
         this.userRoleService = userRoleService;
         this.roleFunctionService = roleFunctionService;
         this.functionPermissionSetService = functionPermissionSetService;
         this.functionPermissionService = functionPermissionService;
         this.permissionSetPermissionService = permissionSetPermissionService;
         this.permissionService = permissionService;
+    }
+
+    @Override
+    public void init(RuntimeProvider provider) {
+        requestMappingHandlerMapping = provider.getByType(RequestMappingHandlerMapping.class);
     }
 
     static {
@@ -102,8 +106,6 @@ public class SimpleRbacCheckService implements RbacCheckService {
 
         try {
             // 获取请求信息
-            RequestMappingHandlerMapping requestMappingHandlerMapping = runtimeProvider
-                    .getByType(RequestMappingHandlerMapping.class);
             requestMappingHandlerMapping.getHandler(request);
             String pattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
             String method = request.getMethod();

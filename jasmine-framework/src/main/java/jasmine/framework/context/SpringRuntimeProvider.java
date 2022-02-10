@@ -18,6 +18,10 @@ public class SpringRuntimeProvider implements RuntimeProvider, ApplicationContex
         SpringRuntimeProvider.applicationContext = applicationContext;
     }
 
+    public static ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
     @Override
     public <T> T getByType(Class<T> type) {
         return applicationContext.getBean(type);
