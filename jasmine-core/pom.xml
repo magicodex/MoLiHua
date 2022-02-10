@@ -12,6 +12,7 @@
     <artifactId>jasmine-core</artifactId>
 
     <properties>
+        <orika.version>1.5.4</orika.version>
     </properties>
 
     <dependencies>
@@ -27,6 +28,11 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>${orika.version}</version>
         </dependency>
 
         <!-- JSON库 -->
