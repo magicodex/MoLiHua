@@ -10,7 +10,7 @@ import jasmine.core.util.QSpringUtil;
  *
  * @author mh.z
  */
-public class DistributedLock {
+public class DistributedLocks {
 
     /**
      * 声明分布式锁
