@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * @author mh.z
  */
-public class MessageReceiveServiceImplTest {
+public class ConsumerServiceImplTest {
 
     @Test
     public void testConvertText() {

@@ -30,7 +30,7 @@ public class RabbitConsumerConfig {
         container.setConcurrentConsumers(1);
 
         container.setMessageListener((message) -> {
-            receiveService.receive("example1", message);
+            receiveService.consume("example1", message);
         });
 
         return container;
@@ -43,7 +43,7 @@ public class RabbitConsumerConfig {
         container.setConcurrentConsumers(1);
 
         container.setMessageListener((message) -> {
-            receiveService.receive("example2", message);
+            receiveService.consume("example2", message);
         });
 
         return container;

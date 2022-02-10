@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
  * @author mh.z
  */
 @Service
-public class PublisherServiceImpl implements PublisherService {
+public class PublisherServiceImpl implements PublishService {
     private static final Logger logger = LoggerFactory.getLogger(PublisherServiceImpl.class);
     private FrameworkConfig frameworkConfig;
     private RuntimeProvider runtimeProvider;
 
-    /** 消息发送bean的名称后缀 */
-    private static final String PROVIDER_BEAN_NAME_SUFFIX = "MessageSendProvider";
+    /** 消息发布者bean的名称后缀 */
+    private static final String PUBLISHER_BEAN_NAME_SUFFIX = "Publisher";
 
     public PublisherServiceImpl(FrameworkConfig frameworkConfig,
                                 RuntimeProvider runtimeProvider) {
@@ -26,16 +26,16 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public void send(String category, Object data) {
+    public void publish(String category, Object data) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(data, "data null");
 
         if (Boolean.TRUE.equals(frameworkConfig.getMessageQueuePublisherEnabled())) {
-            String sendProviderName = category + PROVIDER_BEAN_NAME_SUFFIX;
-            PublisherProvider sendProvider = runtimeProvider.getByName(sendProviderName);
+            String publisherName = category + PUBLISHER_BEAN_NAME_SUFFIX;
+            CustomPublisher publisher = runtimeProvider.getByName(publisherName);
 
             // 发布消息到消息队列
-            sendProvider.send(data);
+            publisher.publish(data);
         } else {
             logger.warn("send skipped(app.message-queue.publisher.enabled=false)");
         }

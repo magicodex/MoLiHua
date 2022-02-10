@@ -1,16 +1,16 @@
 package jasmine.framework.remote.publisher;
 
 /**
- * 消息发送者
+ * 消息发布者
  *
  * @author mh.z
  */
-public interface PublisherProvider<T> {
+public interface CustomPublisher<T> {
 
     /**
-     * 发送消息
+     * 发布消息
      *
      * @param data
      */
-    void send(T data);
+    void publish(T data);
 }

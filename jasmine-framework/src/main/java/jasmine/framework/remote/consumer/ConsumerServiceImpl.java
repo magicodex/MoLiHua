@@ -17,22 +17,22 @@ import java.io.IOException;
 public class ConsumerServiceImpl implements ConsumerService {
     private RuntimeProvider runtimeProvider;
 
-    /** 消息接收bean的名称后缀 */
-    private static final String PROVIDER_BEAN_NAME_SUFFIX = "MessageReceiveProvider";
+    /** 消息消费者bean的名称后缀 */
+    private static final String CONSUMER_BEAN_NAME_SUFFIX = "Consumer";
 
     public ConsumerServiceImpl(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
 
     @Override
-    public void receive(String category, Object data) {
+    public void consume(String category, Object data) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(data, "data null");
 
         // 获取消费者
-        String receiveProviderName = category + PROVIDER_BEAN_NAME_SUFFIX;
-        ConsumerProvider receiveProvider = runtimeProvider.getByName(receiveProviderName);
-        Class<?> targetType = receiveProvider.getType();
+        String consumerName = category + CONSUMER_BEAN_NAME_SUFFIX;
+        CustomConsumer consumer = runtimeProvider.getByName(consumerName);
+        Class<?> targetType = consumer.getType();
 
         Message message = (Message) data;
         byte[] messageBody = message.getBody();
@@ -45,7 +45,7 @@ public class ConsumerServiceImpl implements ConsumerService {
         }
 
         // 消费消息
-        receiveProvider.receive(targetObject);
+        consumer.consume(targetObject);
     }
 
     /**

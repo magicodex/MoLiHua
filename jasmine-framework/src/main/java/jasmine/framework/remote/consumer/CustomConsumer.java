@@ -1,18 +1,18 @@
 package jasmine.framework.remote.consumer;
 
 /**
- * 消息接收者
+ * 消息消费者
  *
  * @author mh.z
  */
-public interface ConsumerProvider<T> {
+public interface CustomConsumer<T> {
 
     /**
-     * 接收消息
+     * 消费消息
      *
      * @param data
      */
-    void receive(T data);
+    void consume(T data);
 
     /**
      * 返回类型

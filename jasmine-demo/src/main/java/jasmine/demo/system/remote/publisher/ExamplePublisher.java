@@ -1,8 +1,8 @@
-package jasmine.demo.system.remote.sender;
+package jasmine.demo.system.remote.publisher;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
-import jasmine.framework.remote.publisher.PublisherProvider;
+import jasmine.framework.remote.publisher.CustomPublisher;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -14,16 +14,16 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-@Component("exampleMessageSendProvider")
-public class ExampleMessageSendProvider implements PublisherProvider {
+@Component("examplePublisher")
+public class ExamplePublisher implements CustomPublisher {
     private RabbitTemplate template;
 
-    public ExampleMessageSendProvider(RabbitTemplate template) {
+    public ExamplePublisher(RabbitTemplate template) {
         this.template = template;
     }
 
     @Override
-    public void send(Object data) {
+    public void publish(Object data) {
         QCheckUtil.notNull(data, "data null");
         Map<String, Object> map = (Map<String, Object>) data;
 
