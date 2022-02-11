@@ -8,7 +8,7 @@ public interface JobService {
     /**
      * 执行
      *
-     * @param target
+     * @param job
      */
-    void execute(ExecuteTarget target);
+    void execute(JobCurrent job);
 }
