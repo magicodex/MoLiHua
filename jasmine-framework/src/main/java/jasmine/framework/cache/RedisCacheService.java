@@ -12,7 +12,7 @@ import java.util.function.Supplier;
  * @author mh.z
  */
 @Service
-public class CacheServiceImpl implements CacheService {
+public class RedisCacheService implements CacheService {
     private RedisTemplate redisTemplate;
     private CacheSyncStrategy syncStrategy;
 
@@ -21,8 +21,8 @@ public class CacheServiceImpl implements CacheService {
     /** 默认超时时间 */
     private static final long DEFAULT_TIMEOUT = 3600;
 
-    public CacheServiceImpl(RedisTemplate redisTemplate,
-                            @Autowired(required = false) CacheSyncStrategy syncStrategy) {
+    public RedisCacheService(RedisTemplate redisTemplate,
+                             @Autowired(required = false) CacheSyncStrategy syncStrategy) {
         this.redisTemplate = redisTemplate;
         this.syncStrategy = syncStrategy;
     }
