@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
  * @author mh.z
  */
 @Service
-public class UserDetailsServiceProviderBean implements UserDetailsServiceProvider {
+public class CustomUserDetailsServiceProvider implements UserDetailsServiceProvider {
     private RuntimeProvider runtimeProvider;
 
-    public UserDetailsServiceProviderBean(RuntimeProvider runtimeProvider) {
+    public CustomUserDetailsServiceProvider(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
 
