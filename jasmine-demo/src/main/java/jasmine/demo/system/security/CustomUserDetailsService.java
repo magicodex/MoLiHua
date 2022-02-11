@@ -15,12 +15,12 @@ import java.util.Collections;
 /**
  * @author mh.z
  */
-public class SimpleUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
     private RuntimeProvider runtimeProvider;
     private UserDao userDao;
     private PasswordEncoder passwordEncoder;
 
-    public SimpleUserDetailsService(RuntimeProvider provider) {
+    public CustomUserDetailsService(RuntimeProvider provider) {
         this.runtimeProvider = provider;
         userDao = runtimeProvider.getByType(UserDao.class);
         passwordEncoder = runtimeProvider.getByType(PasswordEncoder.class);

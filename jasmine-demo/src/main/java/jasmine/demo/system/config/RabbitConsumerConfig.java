@@ -21,7 +21,7 @@ public class RabbitConsumerConfig {
     private ConnectionFactory connectionFactory;
 
     @Autowired
-    private ConsumerService receiveService;
+    private ConsumerService consumerService;
 
     @Bean
     public MessageListenerContainer exampleConsumer1(Queue exampleQueue1) {
@@ -30,7 +30,7 @@ public class RabbitConsumerConfig {
         container.setConcurrentConsumers(1);
 
         container.setMessageListener((message) -> {
-            receiveService.consume("example1", message);
+            consumerService.consume("example1", message);
         });
 
         return container;
@@ -43,7 +43,7 @@ public class RabbitConsumerConfig {
         container.setConcurrentConsumers(1);
 
         container.setMessageListener((message) -> {
-            receiveService.consume("example2", message);
+            consumerService.consume("example2", message);
         });
 
         return container;

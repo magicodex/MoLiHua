@@ -37,8 +37,8 @@ import java.util.Set;
  * @author mh.z
  */
 @Service
-public class SimpleRbacCheckService implements RbacCheckService, InitSupport {
-    private static final Logger logger = LoggerFactory.getLogger(SimpleRbacCheckService.class);
+public class CustomRbacCheckService implements RbacCheckService, InitSupport {
+    private static final Logger logger = LoggerFactory.getLogger(CustomRbacCheckService.class);
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
     private SecurityUserRoleService userRoleService;
     private SecurityRoleFunctionService roleFunctionService;
@@ -49,7 +49,7 @@ public class SimpleRbacCheckService implements RbacCheckService, InitSupport {
     /** 所有人都能访问的API */
     private static final Collection<String> ANYONE_CAN_ACCESS_APIS;
 
-    public SimpleRbacCheckService(SecurityUserRoleService userRoleService,
+    public CustomRbacCheckService(SecurityUserRoleService userRoleService,
                                   SecurityRoleFunctionService roleFunctionService,
                                   SecurityFunctionPermissionSetService functionPermissionSetService,
                                   SecurityFunctionPermissionService functionPermissionService,

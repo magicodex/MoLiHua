@@ -14,12 +14,12 @@ import java.util.Arrays;
 /**
  * @author mh.z
  */
-public class SimpleClientDetailsService implements ClientDetailsService {
+public class CustomClientDetailsService implements ClientDetailsService {
     private RuntimeProvider runtimeProvider;
     private UserDao userDao;
     private PasswordEncoder passwordEncoder;
 
-    public SimpleClientDetailsService(RuntimeProvider provider) {
+    public CustomClientDetailsService(RuntimeProvider provider) {
         this.runtimeProvider = provider;
         userDao = runtimeProvider.getByType(UserDao.class);
         passwordEncoder = runtimeProvider.getByType(PasswordEncoder.class);
