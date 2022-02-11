@@ -10,7 +10,7 @@ public class ConsumerServiceImplTest {
 
     @Test
     public void testConvertText() {
-        ConsumerServiceImpl service = new ConsumerServiceImpl(null);
+        RabbitConsumerService service = new RabbitConsumerService(null);
 
         // 布尔值
         Assert.assertEquals(true, service.convertText("true", Boolean.class));

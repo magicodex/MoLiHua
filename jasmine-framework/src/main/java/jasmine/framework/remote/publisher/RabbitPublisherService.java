@@ -11,16 +11,16 @@ import org.springframework.stereotype.Service;
  * @author mh.z
  */
 @Service
-public class PublisherServiceImpl implements PublisherService {
-    private static final Logger logger = LoggerFactory.getLogger(PublisherServiceImpl.class);
+public class RabbitPublisherService implements PublisherService {
+    private static final Logger logger = LoggerFactory.getLogger(RabbitPublisherService.class);
     private FrameworkConfig frameworkConfig;
     private RuntimeProvider runtimeProvider;
 
     /** 消息发布者bean的名称后缀 */
     private static final String PUBLISHER_BEAN_NAME_SUFFIX = "Publisher";
 
-    public PublisherServiceImpl(FrameworkConfig frameworkConfig,
-                                RuntimeProvider runtimeProvider) {
+    public RabbitPublisherService(FrameworkConfig frameworkConfig,
+                                  RuntimeProvider runtimeProvider) {
         this.frameworkConfig = frameworkConfig;
         this.runtimeProvider = runtimeProvider;
     }

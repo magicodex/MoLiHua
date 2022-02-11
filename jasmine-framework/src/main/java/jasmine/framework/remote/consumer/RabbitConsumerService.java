@@ -14,13 +14,13 @@ import java.io.IOException;
  * @author mh.z
  */
 @Service
-public class ConsumerServiceImpl implements ConsumerService {
+public class RabbitConsumerService implements ConsumerService {
     private RuntimeProvider runtimeProvider;
 
     /** 消息消费者bean的名称后缀 */
     private static final String CONSUMER_BEAN_NAME_SUFFIX = "Consumer";
 
-    public ConsumerServiceImpl(RuntimeProvider runtimeProvider) {
+    public RabbitConsumerService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
 
