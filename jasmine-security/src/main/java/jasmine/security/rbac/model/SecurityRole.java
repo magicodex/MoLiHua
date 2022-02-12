@@ -28,6 +28,10 @@ public class SecurityRole {
     @TableField("frozen_flag")
     private Boolean frozenFlag;
 
+    /** 备注 */
+    @TableField("remark")
+    private String remark;
+
     /** 租户ID */
     @TableField("tenant_id")
     private Long tenantId;
@@ -62,6 +66,14 @@ public class SecurityRole {
 
     public void setFrozenFlag(Boolean frozenFlag) {
         this.frozenFlag = frozenFlag;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Long getTenantId() {

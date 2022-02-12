@@ -24,6 +24,10 @@ public class SecurityResource {
     @TableField("resource_name")
     private String resourceName;
 
+    /** 资源类型 */
+    @TableField("resource_type")
+    private String resourceType;
+
     /** 访问策略 */
     @TableField("access_policy")
     private String accessPolicy;
@@ -62,6 +66,14 @@ public class SecurityResource {
 
     public void setResourceName(String resourceName) {
         this.resourceName = resourceName;
+    }
+
+    public String getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(String resourceType) {
+        this.resourceType = resourceType;
     }
 
     public String getAccessPolicy() {
