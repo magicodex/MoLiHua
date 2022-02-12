@@ -6,23 +6,23 @@ package jasmine.security.rbac.constant;
 public interface RbacConstants {
 
     /** 请求方法-GET */
-    String REQUEST_METHOD_GET = "GET";
+    String RESOURCE_METHOD_GET = "GET";
 
     /** 请求方法-POST */
-    String REQUEST_METHOD_POST = "POST";
+    String RESOURCE_METHOD_POST = "POST";
 
     /** 请求方法-PUT */
-    String REQUEST_METHOD_PUT = "PUT";
+    String RESOURCE_METHOD_PUT = "PUT";
 
     /** 请求方法-任意 */
-    String REQUEST_METHOD_ANY = "*";
+    String RESOURCE_METHOD_ANY = "*";
 
     /** 访问类型-公开，所有人都能访问 */
-    String ACCESS_TYPE_PUBLIC = "PUBLIC";
+    String ACCESS_POLICY_ANONYMOUS = "ANONYMOUS";
 
     /** 访问类型-已登录，已登录的就可访问 */
-    String ACCESS_TYPE_AUTHENTICATED = "AUTHENTICATED";
+    String ACCESS_POLICY_AUTHENTICATED = "AUTHENTICATED";
 
     /** 访问类型-已授权，已授权的才能访问 */
-    String ACCESS_TYPE_GRANTED = "GRANTED";
+    String ACCESS_POLICY_GRANTED = "GRANTED";
 }

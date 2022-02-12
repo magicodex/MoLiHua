@@ -6,23 +6,23 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
- * 关联用户和角色。
+ * 关联角色和功能。
  * </p>
  *
  * @author mh.z
  */
-@TableName("sec_user_role")
-public class SecurityUserRole {
+@TableName("sec_role_function_rel")
+public class SecurityRoleFunctionRelation {
     @TableId
     private Long id;
-
-    /** 用户ID */
-    @TableField("user_id")
-    private Long userId;
 
     /** 角色ID */
     @TableField("role_id")
     private Long roleId;
+
+    /** 功能ID */
+    @TableField("function_id")
+    private Long functionId;
 
     /** 租户ID */
     @TableField("tenant_id")
@@ -36,20 +36,20 @@ public class SecurityUserRole {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public Long getRoleId() {
         return roleId;
     }
 
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
+    }
+
+    public Long getFunctionId() {
+        return functionId;
+    }
+
+    public void setFunctionId(Long functionId) {
+        this.functionId = functionId;
     }
 
     public Long getTenantId() {

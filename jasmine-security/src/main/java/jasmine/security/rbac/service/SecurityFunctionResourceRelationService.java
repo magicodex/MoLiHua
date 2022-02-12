@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
  * @author mh.z
  */
 @Service
-public class SecurityPermissionService {
+public class SecurityFunctionResourceRelationService {
 
 }

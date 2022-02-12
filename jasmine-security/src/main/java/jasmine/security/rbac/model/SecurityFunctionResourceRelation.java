@@ -6,13 +6,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
- * 关联功能和权限。
+ * 关联功能和资源。
  * </p>
  *
  * @author mh.z
  */
-@TableName("sec_function_permission")
-public class SecurityFunctionPermission {
+@TableName("sec_function_resource_rel")
+public class SecurityFunctionResourceRelation {
     @TableId
     private Long id;
 
@@ -20,9 +20,9 @@ public class SecurityFunctionPermission {
     @TableField("function_id")
     private Long functionId;
 
-    /** 权限ID */
-    @TableField("permission_id")
-    private Long permissionId;
+    /** 资源ID */
+    @TableField("resource_id")
+    private Long resourceId;
 
     public Long getId() {
         return id;
@@ -40,12 +40,12 @@ public class SecurityFunctionPermission {
         this.functionId = functionId;
     }
 
-    public Long getPermissionId() {
-        return permissionId;
+    public Long getResourceId() {
+        return resourceId;
     }
 
-    public void setPermissionId(Long permissionId) {
-        this.permissionId = permissionId;
+    public void setResourceId(Long resourceId) {
+        this.resourceId = resourceId;
     }
 
 }

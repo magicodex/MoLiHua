@@ -6,23 +6,23 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
- * 关联权限集和权限。
+ * 关联权限和资源。
  * </p>
  *
  * @author mh.z
  */
-@TableName("sec_permission_set_permission")
-public class SecurityPermissionSetPermission {
+@TableName("sec_permission_resource_rel")
+public class SecurityPermissionResourceRelation {
     @TableId
     private Long id;
-
-    /** 权限集ID */
-    @TableField("permission_set_id")
-    private Long permissionSetId;
 
     /** 权限ID */
     @TableField("permission_id")
     private Long permissionId;
+
+    /** 资源ID */
+    @TableField("resource_id")
+    private Long resourceId;
 
     public Long getId() {
         return id;
@@ -32,20 +32,20 @@ public class SecurityPermissionSetPermission {
         this.id = id;
     }
 
-    public Long getPermissionSetId() {
-        return permissionSetId;
-    }
-
-    public void setPermissionSetId(Long permissionSetId) {
-        this.permissionSetId = permissionSetId;
-    }
-
     public Long getPermissionId() {
         return permissionId;
     }
 
     public void setPermissionId(Long permissionId) {
         this.permissionId = permissionId;
+    }
+
+    public Long getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(Long resourceId) {
+        this.resourceId = resourceId;
     }
 
 }

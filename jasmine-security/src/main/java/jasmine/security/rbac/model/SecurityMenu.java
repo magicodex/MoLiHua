@@ -37,9 +37,9 @@ public class SecurityMenu {
     @TableField("menu_order")
     private Integer menuOrder;
 
-    /** 页面 */
-    @TableField("target_page")
-    private String targetPage;
+    /** 链接资源ID */
+    @TableField("link_resource_id")
+    private Long linkResourceId;
 
     /** 租户ID */
     @TableField("tenant_id")
@@ -93,12 +93,12 @@ public class SecurityMenu {
         this.menuOrder = menuOrder;
     }
 
-    public String getTargetPage() {
-        return targetPage;
+    public Long getLinkResourceId() {
+        return linkResourceId;
     }
 
-    public void setTargetPage(String targetPage) {
-        this.targetPage = targetPage;
+    public void setLinkResourceId(Long linkResourceId) {
+        this.linkResourceId = linkResourceId;
     }
 
     public Long getTenantId() {

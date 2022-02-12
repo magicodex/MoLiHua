@@ -6,23 +6,27 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
- * 关联功能和权限集。
+ * 关联菜单和功能。
  * </p>
  *
  * @author mh.z
  */
-@TableName("sec_function_permission_set")
-public class SecurityFunctionPermissionSet {
+@TableName("sec_menu_function_rel")
+public class SecurityMenuFunctionRelation {
     @TableId
     private Long id;
+
+    /** 菜单ID */
+    @TableField("menu_id")
+    private Long menuId;
 
     /** 功能ID */
     @TableField("function_id")
     private Long functionId;
 
-    /** 权限集ID */
-    @TableField("permission_set_id")
-    private Long permissionSetId;
+    /** 租户ID */
+    @TableField("tenant_id")
+    private Long tenantId;
 
     public Long getId() {
         return id;
@@ -30,6 +34,14 @@ public class SecurityFunctionPermissionSet {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(Long menuId) {
+        this.menuId = menuId;
     }
 
     public Long getFunctionId() {
@@ -40,12 +52,12 @@ public class SecurityFunctionPermissionSet {
         this.functionId = functionId;
     }
 
-    public Long getPermissionSetId() {
-        return permissionSetId;
+    public Long getTenantId() {
+        return tenantId;
     }
 
-    public void setPermissionSetId(Long permissionSetId) {
-        this.permissionSetId = permissionSetId;
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
 }

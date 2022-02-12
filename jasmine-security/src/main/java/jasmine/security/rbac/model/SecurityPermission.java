@@ -24,18 +24,6 @@ public class SecurityPermission {
     @TableField("permission_name")
     private String permissionName;
 
-    /** 访问类型 */
-    @TableField("access_type")
-    private String accessType;
-
-    /** 请求方式 */
-    @TableField("request_method")
-    private String requestMethod;
-
-    /** 请求资源 */
-    @TableField("request_resource")
-    private String requestResource;
-
     public Long getId() {
         return id;
     }
@@ -58,30 +46,6 @@ public class SecurityPermission {
 
     public void setPermissionName(String permissionName) {
         this.permissionName = permissionName;
-    }
-
-    public String getAccessType() {
-        return accessType;
-    }
-
-    public void setAccessType(String accessType) {
-        this.accessType = accessType;
-    }
-
-    public String getRequestMethod() {
-        return requestMethod;
-    }
-
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
-    }
-
-    public String getRequestResource() {
-        return requestResource;
-    }
-
-    public void setRequestResource(String requestResource) {
-        this.requestResource = requestResource;
     }
 
 }
