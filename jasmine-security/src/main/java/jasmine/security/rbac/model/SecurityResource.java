@@ -28,9 +28,9 @@ public class SecurityResource {
     @TableField("access_policy")
     private String accessPolicy;
 
-    /** 资源方式 */
-    @TableField("resource_method")
-    private String resourceMethod;
+    /** 访问方式 */
+    @TableField("access_method")
+    private String accessMethod;
 
     /** 资源路径 */
     @TableField("resource_path")
@@ -72,12 +72,12 @@ public class SecurityResource {
         this.accessPolicy = accessPolicy;
     }
 
-    public String getResourceMethod() {
-        return resourceMethod;
+    public String getAccessMethod() {
+        return accessMethod;
     }
 
-    public void setResourceMethod(String resourceMethod) {
-        this.resourceMethod = resourceMethod;
+    public void setAccessMethod(String accessMethod) {
+        this.accessMethod = accessMethod;
     }
 
     public String getResourcePath() {
