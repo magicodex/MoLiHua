@@ -12,9 +12,10 @@ public interface ConsumeMessageProvider {
     /**
      * 消费消息
      *
+     * @param context
      * @param data
      */
-    void consume(Object data);
+    void consume(ConsumeMessageContext context, Object data);
 
     /**
      * 返回类型
