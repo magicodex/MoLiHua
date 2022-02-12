@@ -10,11 +10,11 @@ package jasmine.framework.remote.mq;
 public interface ConsumeMessageInterceptor {
 
     /**
-     * 消费消息
+     * 拦击
      *
      * @param provider
      * @param category
      * @param data
      */
-    void consume(ConsumeMessageProvider provider, String category, Object data);
+    void intercept(ConsumeMessageProvider provider, String category, Object data);
 }

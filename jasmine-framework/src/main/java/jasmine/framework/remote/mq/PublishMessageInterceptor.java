@@ -10,11 +10,11 @@ package jasmine.framework.remote.mq;
 public interface PublishMessageInterceptor {
 
     /**
-     * 发布消息
+     * 拦截
      *
      * @param provider
      * @param category
      * @param data
      */
-    void publish(PublishMessageProvider provider, String category, Object data);
+    void intercept(PublishMessageProvider provider, String category, Object data);
 }

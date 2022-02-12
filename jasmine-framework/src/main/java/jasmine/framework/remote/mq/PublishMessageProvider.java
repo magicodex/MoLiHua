@@ -12,7 +12,8 @@ public interface PublishMessageProvider {
     /**
      * 发布消息
      *
+     * @param context
      * @param data
      */
-    void publish(Object data);
+    void publish(PublishMessageContext context, Object data);
 }
