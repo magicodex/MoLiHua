@@ -16,14 +16,6 @@ public class SecurityResource {
     @TableId
     private Long id;
 
-    /** 资源代码 */
-    @TableField("resource_code")
-    private String resourceCode;
-
-    /** 资源名称 */
-    @TableField("resource_name")
-    private String resourceName;
-
     /** 资源类型 */
     @TableField("resource_type")
     private String resourceType;
@@ -44,28 +36,16 @@ public class SecurityResource {
     @TableField("frozen_flag")
     private Boolean frozenFlag;
 
+    /** 备注 */
+    @TableField("remark")
+    private String remark;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getResourceCode() {
-        return resourceCode;
-    }
-
-    public void setResourceCode(String resourceCode) {
-        this.resourceCode = resourceCode;
-    }
-
-    public String getResourceName() {
-        return resourceName;
-    }
-
-    public void setResourceName(String resourceName) {
-        this.resourceName = resourceName;
     }
 
     public String getResourceType() {
@@ -106,6 +86,14 @@ public class SecurityResource {
 
     public void setFrozenFlag(Boolean frozenFlag) {
         this.frozenFlag = frozenFlag;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
 }

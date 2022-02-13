@@ -24,9 +24,9 @@ public class SecurityRole {
     @TableField("role_name")
     private String roleName;
 
-    /** 冻结标志 */
-    @TableField("frozen_flag")
-    private Boolean frozenFlag;
+    /** 启用标志 */
+    @TableField("enable_flag")
+    private Boolean enableFlag;
 
     /** 备注 */
     @TableField("remark")
@@ -60,12 +60,12 @@ public class SecurityRole {
         this.roleName = roleName;
     }
 
-    public Boolean getFrozenFlag() {
-        return frozenFlag;
+    public Boolean getEnableFlag() {
+        return enableFlag;
     }
 
-    public void setFrozenFlag(Boolean frozenFlag) {
-        this.frozenFlag = frozenFlag;
+    public void setEnableFlag(Boolean enableFlag) {
+        this.enableFlag = enableFlag;
     }
 
     public String getRemark() {

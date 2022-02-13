@@ -17,12 +17,18 @@ public interface RbacConstants {
     /** 资源访问方式-任意 */
     String RESOURCE_ACCESS_METHOD_ANY = "*";
 
-    /** 资源访问策略-公开，所有人都能访问 */
+    /** 资源访问策略-匿名 */
     String RESOURCE_ACCESS_POLICY_ANONYMOUS = "ANONYMOUS";
 
-    /** 资源访问策略-已登录，已登录的就可访问 */
+    /** 资源访问策略-已登录 */
     String RESOURCE_ACCESS_POLICY_AUTHENTICATED = "AUTHENTICATED";
 
-    /** 资源访问策略-已授权，已授权的才能访问 */
+    /** 资源访问策略-已授权 */
     String RESOURCE_ACCESS_POLICY_GRANTED = "GRANTED";
+
+    /** 资源类型- */
+    String RESOURCE_TYPE_API = "API";
+
+    /** 资源类型- */
+    String RESOURCE_TYPE_PAGE = "PAGE";
 }
