@@ -13,7 +13,7 @@
     <!-- 扫描核心模块 -->
     <context:component-scan base-package="jasmine.core,jasmine.framework,jasmine.test">
         <context:exclude-filter type="regex" expression=".*\.RedisDistributedLockProviderBean"/>
-        <context:exclude-filter type="regex" expression=".*\.CacheServiceImpl"/>
+        <context:exclude-filter type="regex" expression=".*\.RedisCacheService"/>
     </context:component-scan>
 
     <!-- 测试上下文 -->
