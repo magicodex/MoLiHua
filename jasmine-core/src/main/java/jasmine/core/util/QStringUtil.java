@@ -23,4 +23,14 @@ public class QStringUtil extends StrUtil {
         return ObjectUtil.defaultIfNull(string, other);
     }
 
+    /**
+     * 如果给定字符串为null返回空字符串
+     *
+     * @param string
+     * @return
+     */
+    public static String orEmpty(String string) {
+        return ObjectUtil.defaultIfNull(string, "");
+    }
+
 }

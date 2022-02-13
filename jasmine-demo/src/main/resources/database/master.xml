@@ -7,8 +7,8 @@
     <!-- 定义语句 -->
     <include file="classpath:database/schema/schema-changeSet.xml"/>
 
+    <include file="classpath:jasmine/security/SecurityLiquibase.xml"/>
+
     <!-- 预置数据 -->
     <include file="classpath:database/data/data-changeSet.xml"/>
-
-    <include file="classpath:jasmine/security/SecurityLiquibase.xml"/>
 </databaseChangeLog>

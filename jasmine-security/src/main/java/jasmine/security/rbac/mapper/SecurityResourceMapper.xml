@@ -1,0 +1,63 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jasmine.security.rbac.mapper.SecurityResourceMapper">
+
+    <resultMap id="resourceBaseInfoDTO" type="jasmine.security.rbac.dto.ResourceBaseInfoDTO">
+    </resultMap>
+
+    <select id="listResourceBaseInfoDTOsByRoleIds" resultMap="resourceBaseInfoDTO">
+        select
+        t_outer.resource_id,
+        t_outer.access_method,
+        t_outer.resource_path
+        from (
+        <!-- 查询"角色-功能-权限"下的资源  -->
+        (
+        select
+        t_resource.id resource_id,
+        t_resource.access_method,
+        t_resource.resource_path
+        from sec_role t_role,
+        sec_role_function_rel t_role_function_rel,
+        sec_function_permission_rel t_function_permission_rel,
+        sec_permission_resource_rel t_permission_resource_rel,
+        sec_resource t_resource
+        where t_role.id = t_role_function_rel.role_id
+        and t_role_function_rel.function_id = t_function_permission_rel.function_id
+        and t_function_permission_rel.permission_id = t_permission_resource_rel.permission_id
+        and t_permission_resource_rel.resource_id = t_resource.id
+        and t_role.enable_flag = 1
+        and t_role.id in
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+        )
+        <!-- END 查询"角色-功能-权限"下的资源 -->
+        union all
+        <!-- 查询"角色-功能"下的资源 -->
+        (
+        select
+        t_resource.id resource_id,
+        t_resource.access_method,
+        t_resource.resource_path
+        from sec_role t_role,
+        sec_role_function_rel t_role_function_rel,
+        sec_function_resource_rel t_function_resource_rel,
+        sec_resource t_resource
+        where t_role.id = t_role_function_rel.role_id
+        and t_role_function_rel.function_id = t_function_resource_rel.function_id
+        and t_function_resource_rel.resource_id = t_resource.id
+        and t_role.enable_flag = 1
+        and t_role.id in
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+        )
+        <!-- END 查询"角色-功能"下的资源 -->
+        ) t_outer
+        group by t_outer.resource_id, t_outer.resource_path, t_outer.access_method
+        order by t_outer.resource_path, t_outer.access_method
+    </select>
+
+</mapper>

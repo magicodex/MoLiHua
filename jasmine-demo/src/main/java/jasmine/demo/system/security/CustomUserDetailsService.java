@@ -4,11 +4,11 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.authentication.persistence.dao.UserDao;
 import jasmine.demo.authentication.persistence.entity.UserEO;
+import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.model.SecurityRole;
 import jasmine.security.rbac.service.SecurityRoleService;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -43,7 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<SecurityRole> roleList = roleService.listRolesByUserId(userId);
 
         List<GrantedAuthority> authorityList = QCollectionUtil.mapToList(roleList, (role) -> {
-            return new SimpleGrantedAuthority(role.getRoleCode());
+            return new RoleAuthority(role.getId(), role.getRoleCode());
         });
 
         UserSubject userDetails = new UserSubject(user.getTenantId(), userId,
