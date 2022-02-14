@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @Configuration
-@ConditionalOnProperty(value = "app.message-queue.publisher.enabled",
+@ConditionalOnProperty(value = "jasmine.message-queue.consumer.enabled",
         havingValue = "true", matchIfMissing = false)
 public class RabbitRegisterConsumerConfig {
     @Autowired

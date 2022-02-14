@@ -17,10 +17,13 @@
 app.message-queue.rabbitmq.auto-declare=true
 
 # 是否发布消息到消息队列 (默认false)
-app.message-queue.publisher.enabled=true
+jasmine.message-queue.publisher.enabled=true
 
 # 是否消费消息队列的消息 (默认false)
-app.message-queue.consumer.enabled=true
+jasmine.message-queue.consumer.enabled=true
+
+# 是否启用RBAC访问控制 (默认false)
+jasmine.security.rbac.enabled=true
 ```
 
 ## 集成框架
