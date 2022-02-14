@@ -1,6 +1,7 @@
 package jasmine.framework.cache;
 
 import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QStringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -28,12 +29,12 @@ public class RedisCacheService implements CacheService {
     }
 
     @Override
-    public Object get(String category, String key) {
+    public Object get(String category, Object key) {
         return get(category, key, null);
     }
 
     @Override
-    public Object get(String category, String key, Supplier<Object> supplier) {
+    public Object get(String category, Object key, Supplier<Object> supplier) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
@@ -49,7 +50,7 @@ public class RedisCacheService implements CacheService {
     }
 
     @Override
-    public void set(String category, String key, Object value) {
+    public void set(String category, Object key, Object value) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
@@ -59,7 +60,7 @@ public class RedisCacheService implements CacheService {
     }
 
     @Override
-    public void remove(String category, String key) {
+    public void remove(String category, Object key) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
@@ -68,7 +69,7 @@ public class RedisCacheService implements CacheService {
     }
 
     @Override
-    public void sync(String category, String key, Supplier<Object> supplier) {
+    public void sync(String category, Object key, Supplier<Object> supplier) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
@@ -88,11 +89,11 @@ public class RedisCacheService implements CacheService {
      * @param key
      * @return
      */
-    protected String getCacheKey(String category, String key) {
+    protected String getCacheKey(String category, Object key) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
-        return (category + CATEGORY_KEY_SEPARATOR + key);
+        return (category + CATEGORY_KEY_SEPARATOR + QStringUtil.toString(key));
     }
 
 }

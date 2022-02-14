@@ -22,7 +22,7 @@ public class CacheSyncStrategyBean implements CacheSyncStrategy, InitSupport {
     }
 
     @Override
-    public void sync(String category, String key, Supplier<Object> supplier) {
+    public void sync(String category, Object key, Supplier<Object> supplier) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
         QCheckUtil.notNull(supplier, "supplier null");

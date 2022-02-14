@@ -14,5 +14,5 @@ public interface CacheSyncStrategy {
      * @param key
      * @param supplier
      */
-    void sync(String category, String key, Supplier<Object> supplier);
+    void sync(String category, Object key, Supplier<Object> supplier);
 }

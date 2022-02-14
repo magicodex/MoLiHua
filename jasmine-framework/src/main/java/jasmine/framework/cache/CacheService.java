@@ -18,7 +18,7 @@ public interface CacheService {
      * @param key
      * @return
      */
-    Object get(String category, String key);
+    Object get(String category, Object key);
 
     /**
      * 从缓存中查找数据
@@ -28,7 +28,7 @@ public interface CacheService {
      * @param supplier
      * @return
      */
-    Object get(String category, String key, Supplier<Object> supplier);
+    Object get(String category, Object key, Supplier<Object> supplier);
 
     /**
      * 添加数据到缓存中
@@ -37,7 +37,7 @@ public interface CacheService {
      * @param key
      * @param value
      */
-    void set(String category, String key, Object value);
+    void set(String category, Object key, Object value);
 
     /**
      * 从缓存中清除指定的数据
@@ -45,7 +45,7 @@ public interface CacheService {
      * @param category
      * @param key
      */
-    void remove(String category, String key);
+    void remove(String category, Object key);
 
     /**
      * 同步数据到缓存中
@@ -54,5 +54,5 @@ public interface CacheService {
      * @param key
      * @param supplier
      */
-    void sync(String category, String key, Supplier<Object> supplier);
+    void sync(String category, Object key, Supplier<Object> supplier);
 }
