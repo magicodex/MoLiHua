@@ -1,9 +1,11 @@
 package jasmine.demo.common.context;
 
+import jasmine.core.context.SubjectProvider;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -12,14 +14,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
  *
  * @author mh.z
  */
-public class CurrentSubject {
+@Component
+public class UserSubjectProviderBean implements SubjectProvider {
 
-    /**
-     * 返回用户ID
-     *
-     * @return
-     */
-    public static Long getUserId() {
+    @Override
+    public Long getCurrentUserId() {
         UserSubject subject = getSubjectFromContext();
 
         if (subject != null) {
@@ -29,12 +28,8 @@ public class CurrentSubject {
         return null;
     }
 
-    /**
-     * 返回租户ID
-     *
-     * @return
-     */
-    public static Long getTenantId() {
+    @Override
+    public Long getCurrentTenantId() {
         UserSubject subject = getSubjectFromContext();
 
         if (subject != null) {
@@ -49,7 +44,7 @@ public class CurrentSubject {
      *
      * @return
      */
-    protected static UserSubject getSubjectFromContext() {
+    protected UserSubject getSubjectFromContext() {
         SecurityContext context = SecurityContextHolder.getContext();
         if (context == null) {
             return null;
