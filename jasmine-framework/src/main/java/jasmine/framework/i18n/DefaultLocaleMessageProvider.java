@@ -12,12 +12,12 @@ import java.util.Locale;
  * @author mh.z
  */
 @Component
-public class LocaleMessageProviderBean implements LocaleMessageProvider {
+public class DefaultLocaleMessageProvider implements LocaleMessageProvider {
     private final MessageSource messageSource;
     /** 多语言key前缀 */
     private static final String MESSAGE_KEY_PREFIX = "$";
 
-    public LocaleMessageProviderBean(MessageSource messageSource) {
+    public DefaultLocaleMessageProvider(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
 

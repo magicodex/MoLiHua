@@ -13,7 +13,7 @@ import java.util.function.Supplier;
  * @author mh.z
  */
 @Component
-public class CacheSyncStrategyBean implements CacheSyncStrategy, InitSupport {
+public class CustomCacheSyncStrategy implements CacheSyncStrategy, InitSupport {
     private CacheService cacheService;
 
     @Override
