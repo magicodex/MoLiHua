@@ -12,7 +12,6 @@
     <artifactId>jasmine-core</artifactId>
 
     <properties>
-        <orika.version>1.5.4</orika.version>
     </properties>
 
     <dependencies>
