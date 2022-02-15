@@ -21,6 +21,7 @@
         <module>jasmine-framework</module>
         <module>jasmine-test</module>
         <module>jasmine-security</module>
+        <module>jasmine-lowcode</module>
         <module>jasmine-demo</module>
     </modules>
 
