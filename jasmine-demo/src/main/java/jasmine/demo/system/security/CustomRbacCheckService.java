@@ -16,7 +16,6 @@ import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
@@ -27,7 +26,6 @@ import java.util.List;
 /**
  * @author mh.z
  */
-@Service
 public class CustomRbacCheckService implements RbacCheckService, InitSupport {
     private static final Logger logger = LoggerFactory.getLogger(CustomRbacCheckService.class);
     private RequestMappingHandlerMapping requestMappingHandlerMapping;

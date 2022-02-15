@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @author mh.z
  */
 @Component
-public class UserSubjectProviderBean implements SubjectProvider {
+public class UserSubjectProvider implements SubjectProvider {
 
     @Override
     public Long getCurrentUserId() {

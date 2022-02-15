@@ -12,27 +12,27 @@ import java.util.function.Supplier;
 public class TestCacheService implements CacheService {
 
     @Override
-    public Object get(String category, String key) {
+    public Object get(String category, Object key) {
         return null;
     }
 
     @Override
-    public Object get(String category, String key, Supplier<Object> supplier) {
+    public Object get(String category, Object key, Supplier<Object> supplier) {
         return null;
     }
 
     @Override
-    public void set(String category, String key, Object value) {
+    public void set(String category, Object key, Object value) {
         //
     }
 
     @Override
-    public void remove(String category, String key) {
+    public void remove(String category, Object key) {
 
     }
 
     @Override
-    public void sync(String category, String key, Supplier<Object> supplier) {
+    public void sync(String category, Object key, Supplier<Object> supplier) {
 
     }
 
