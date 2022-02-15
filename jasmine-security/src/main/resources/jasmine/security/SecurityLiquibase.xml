@@ -24,6 +24,21 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -38,6 +53,21 @@
             <column name="function_name" type="varchar(100)" remarks="功能名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -50,6 +80,21 @@
                 <constraints nullable="false"/>
             </column>
             <column name="permission_name" type="varchar(100)" remarks="权限名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -78,6 +123,21 @@
             <column name="remark" type="varchar(1000)" remarks="备注">
                 <constraints nullable="true"/>
             </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -93,6 +153,21 @@
                 <constraints nullable="false"/>
             </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -112,6 +187,21 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -124,6 +214,21 @@
                 <constraints nullable="false"/>
             </column>
             <column name="permission_id" type="bigint" remarks="权限ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -140,6 +245,21 @@
             <column name="resource_id" type="bigint" remarks="资源ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -152,6 +272,21 @@
                 <constraints nullable="false"/>
             </column>
             <column name="resource_id" type="bigint" remarks="资源ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -169,6 +304,21 @@
                 <constraints nullable="false"/>
             </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -200,6 +350,21 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -215,6 +380,21 @@
                 <constraints nullable="false"/>
             </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
                 <constraints nullable="false"/>
             </column>
         </createTable>

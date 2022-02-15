@@ -1,8 +1,8 @@
 package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import jasmine.framework.persistence.entity.BaseEntity;
 
 /**
  * <p>
@@ -12,9 +12,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author mh.z
  */
 @TableName("sec_permission")
-public class SecurityPermission {
-    @TableId
-    private Long id;
+public class SecurityPermission extends BaseEntity {
 
     /** 权限代码 */
     @TableField("permission_code")
@@ -23,14 +21,6 @@ public class SecurityPermission {
     /** 权限名称 */
     @TableField("permission_name")
     private String permissionName;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getPermissionCode() {
         return permissionCode;

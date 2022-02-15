@@ -1,8 +1,8 @@
 package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import jasmine.framework.persistence.entity.BaseEntity;
 
 /**
  * <p>
@@ -12,9 +12,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author mh.z
  */
 @TableName("sec_resource")
-public class SecurityResource {
-    @TableId
-    private Long id;
+public class SecurityResource extends BaseEntity {
 
     /** 资源类型 */
     @TableField("resource_type")
@@ -39,14 +37,6 @@ public class SecurityResource {
     /** 备注 */
     @TableField("remark")
     private String remark;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getResourceType() {
         return resourceType;

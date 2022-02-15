@@ -1,8 +1,8 @@
 package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import jasmine.framework.persistence.entity.BaseEntity;
 
 /**
  * <p>
@@ -12,9 +12,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author mh.z
  */
 @TableName("sec_function_resource_rel")
-public class SecurityFunctionResourceRelation {
-    @TableId
-    private Long id;
+public class SecurityFunctionResourceRelation extends BaseEntity {
 
     /** 功能ID */
     @TableField("function_id")
@@ -23,14 +21,6 @@ public class SecurityFunctionResourceRelation {
     /** 资源ID */
     @TableField("resource_id")
     private Long resourceId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getFunctionId() {
         return functionId;

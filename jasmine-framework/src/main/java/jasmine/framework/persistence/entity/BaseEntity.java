@@ -1,4 +1,4 @@
-package jasmine.demo.common.entity;
+package jasmine.framework.persistence.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,21 +12,27 @@ import java.time.ZonedDateTime;
  */
 public class BaseEntity {
 
+    /** 唯一标识 */
     @TableId("id")
     private Long id;
 
+    /** 创建日期 */
     @TableField(value = "created_date", fill = FieldFill.INSERT)
     private ZonedDateTime createdDate;
 
+    /** 创建人ID */
     @TableField(value = "created_by", fill = FieldFill.INSERT)
     private Long createdBy;
 
+    /** 最后更新日期 */
     @TableField(value = "last_updated_date", fill = FieldFill.INSERT_UPDATE)
     private ZonedDateTime lastUpdatedDate;
 
+    /** 最后更新人ID */
     @TableField(value = "last_updated_by", fill = FieldFill.INSERT_UPDATE)
     private Long lastUpdatedBy;
 
+    /** 版本号 */
     @Version
     @TableField("version_number")
     private Integer versionNumber;

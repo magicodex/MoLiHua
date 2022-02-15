@@ -1,8 +1,8 @@
 package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import jasmine.framework.persistence.entity.BaseEntity;
 
 /**
  * <p>
@@ -12,9 +12,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author mh.z
  */
 @TableName("sec_user_role_rel")
-public class SecurityUserRoleRelation {
-    @TableId
-    private Long id;
+public class SecurityUserRoleRelation extends BaseEntity {
 
     /** 用户ID */
     @TableField("user_id")
@@ -27,14 +25,6 @@ public class SecurityUserRoleRelation {
     /** 租户ID */
     @TableField("tenant_id")
     private Long tenantId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getUserId() {
         return userId;

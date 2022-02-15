@@ -20,6 +20,12 @@
             <artifactId>jasmine-core</artifactId>
             <version>${project.module.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.magicodex</groupId>
+            <artifactId>jasmine-framework</artifactId>
+            <version>${project.module.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- Spring Web -->
         <dependency>
