@@ -1,4 +1,4 @@
-package jasmine.demo.common.context;
+package jasmine.demo.system.security;
 
 import jasmine.core.context.SubjectProvider;
 import jasmine.security.subject.UserSubject;
