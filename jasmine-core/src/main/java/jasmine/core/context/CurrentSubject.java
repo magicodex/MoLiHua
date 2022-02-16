@@ -5,14 +5,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
+ * <p>
+ * 获取当前用户的有关信息。
+ * </p>
+ *
  * @author mh.z
  */
 @Component
 public class CurrentSubject {
-    private static SubjectProvider provider;
+    /** 用户信息提供者 */
+    private static SubjectProvider subjectProvider;
+    /** 用户信息提供者NULL时的错误信息 */
+    private static final String SUBJECT_PROVIDER_NULL_MESSAGE;
+
+    static {
+        SUBJECT_PROVIDER_NULL_MESSAGE = CurrentSubject.class.getSimpleName() + ".subjectProvider null";
+    }
 
     public CurrentSubject(@Autowired(required = false) SubjectProvider subjectProvider) {
-        CurrentSubject.provider = subjectProvider;
+        CurrentSubject.subjectProvider = subjectProvider;
     }
 
     /**
@@ -21,9 +32,9 @@ public class CurrentSubject {
      * @return
      */
     public static Long getUserId() {
-        QCheckUtil.notNullProp(provider, "provider null");
+        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
 
-        return provider.getCurrentUserId();
+        return subjectProvider.getCurrentUserId();
     }
 
     /**
@@ -32,9 +43,9 @@ public class CurrentSubject {
      * @return
      */
     public static Long getTenantId() {
-        QCheckUtil.notNullProp(provider, "provider null");
+        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
 
-        return provider.getCurrentTenantId();
+        return subjectProvider.getCurrentTenantId();
     }
 
     /**
@@ -43,7 +54,9 @@ public class CurrentSubject {
      * @return
      */
     public static Object getSubject() {
-        return provider.getSubject();
+        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
+
+        return subjectProvider.getCurrentSubject();
     }
 
 }

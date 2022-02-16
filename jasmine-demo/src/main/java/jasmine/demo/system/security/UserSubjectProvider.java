@@ -40,7 +40,7 @@ public class UserSubjectProvider implements SubjectProvider {
     }
 
     @Override
-    public Object getSubject() {
+    public Object getCurrentSubject() {
         return getSubjectFromContext();
     }
 
