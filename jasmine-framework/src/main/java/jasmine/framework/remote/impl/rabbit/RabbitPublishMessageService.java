@@ -20,9 +20,12 @@ import org.springframework.stereotype.Service;
 public class RabbitPublishMessageService implements PublishMessageService {
     private static final Logger logger = LoggerFactory.getLogger(RabbitPublishMessageService.class);
     private RuntimeProvider runtimeProvider;
+    /** 配置 */
     private FrameworkConfig config;
+    /** 拦截器 */
     private PublishMessageInterceptor interceptor;
 
+    /** 发布消息提供者名称后缀 */
     private static final String PROVIDER_SUFFIX = "PublishMessageProvider";
 
     public RabbitPublishMessageService(RuntimeProvider runtimeProvider, FrameworkConfig config,
@@ -42,8 +45,10 @@ public class RabbitPublishMessageService implements PublishMessageService {
             PublishMessageProvider provider = getProvider(category);
 
             if (interceptor != null) {
+                // 拦截处理
                 interceptor.intercept(provider, category, data);
             } else {
+                // 发布消息
                 PublishMessageContext context = new DefaultPublishMessageContext();
                 provider.publish(context, data);
             }

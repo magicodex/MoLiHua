@@ -10,7 +10,9 @@ import java.util.function.Supplier;
  * @author mh.z
  */
 public class DefaultPublishMessageContext implements PublishMessageContext {
+    /** 标识 */
     private String key;
+    /** 属性 */
     private Map<String, Object> attributes;
 
     public DefaultPublishMessageContext() {

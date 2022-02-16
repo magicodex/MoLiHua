@@ -22,10 +22,14 @@ import org.springframework.stereotype.Service;
 public class RabbitConsumeMessageService implements ConsumeMessageService {
     private static final Logger logger = LoggerFactory.getLogger(RabbitConsumeMessageService.class);
     private RuntimeProvider runtimeProvider;
+    /** 配置 */
     private FrameworkConfig config;
+    /** 拦截器 */
     private ConsumeMessageInterceptor interceptor;
-
+    /** 反序列化帮助类 */
     private DeserializationHelper deserializationHelper;
+
+    /** 消费提供者名称后缀 */
     private static final String PROVIDER_SUFFIX = "ConsumeMessageProvider";
 
     public RabbitConsumeMessageService(RuntimeProvider runtimeProvider, FrameworkConfig config,
@@ -42,6 +46,7 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
         QCheckUtil.notNull(data, "data null");
 
         if (Boolean.TRUE.equals(config.getMessageQueuePublisherEnabled())) {
+            // 获取消费消息提供者
             ConsumeMessageProvider provider = getProvider(category);
             Class<?> targetType = provider.getType();
 
@@ -50,14 +55,17 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
             Object targetObject = null;
 
             if (targetType != null) {
+                // 反序列化成对象
                 targetObject = deserializationHelper.deserialize(messageBody, targetType);
             } else {
                 targetObject = messageBody;
             }
 
             if (interceptor != null) {
+                // 拦截处理
                 interceptor.intercept(provider, category, targetObject);
             } else {
+                // 消费消息
                 ConsumeMessageContext context = new DefaultConsumeMessageContext();
                 provider.consume(context, targetObject);
             }
@@ -73,7 +81,7 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
         String providerName = category + PROVIDER_SUFFIX;
         ConsumeMessageProvider providerBean = runtimeProvider.getByName(providerName);
 
-        return null;
+        return providerBean;
     }
 
 }

@@ -10,7 +10,7 @@ package jasmine.framework.remote.mq;
 public interface ConsumeMessageInterceptor {
 
     /**
-     * 拦击
+     * 拦截
      *
      * @param provider
      * @param category
