@@ -27,5 +27,5 @@
 |---- constant
 |---- enums
 |---- exception
-|---- util
+|---- helper
 ```

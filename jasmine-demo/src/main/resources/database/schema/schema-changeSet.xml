@@ -18,6 +18,21 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -35,13 +50,22 @@
             <column name="journal_content" type="varchar(100)" remarks="日记内容">
                 <constraints nullable="false"/>
             </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
             <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
                 <constraints nullable="false"/>
             </column>
-            <column name="tenant_id" type="bigint" remarks="租户ID">
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
                 <constraints nullable="false"/>
             </column>
         </createTable>
