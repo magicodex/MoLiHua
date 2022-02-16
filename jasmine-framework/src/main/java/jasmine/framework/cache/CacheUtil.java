@@ -5,10 +5,15 @@ import org.springframework.stereotype.Component;
 import java.util.function.Supplier;
 
 /**
+ * <p>
+ * 缓存工具类。
+ * </p>
+ *
  * @author mh.z
  */
 @Component
 public class CacheUtil {
+    /** 缓存接口 */
     private static CacheService cacheService;
 
     public CacheUtil(CacheService cacheService) {
@@ -24,10 +29,11 @@ public class CacheUtil {
      *
      * @param category
      * @param key
+     * @param type
      * @return
      */
-    public Object get(String category, Object key) {
-        return cacheService.get(category, key);
+    public <T> T get(String category, Object key, Class<T> type) {
+        return cacheService.get(category, key, type);
     }
 
     /**
@@ -35,11 +41,12 @@ public class CacheUtil {
      *
      * @param category
      * @param key
+     * @param type
      * @param supplier
      * @return
      */
-    public Object get(String category, Object key, Supplier<Object> supplier) {
-        return cacheService.get(category, key, supplier);
+    public <T> T get(String category, Object key, Class<T> type, Supplier<Object> supplier) {
+        return cacheService.get(category, key, type, supplier);
     }
 
     /**

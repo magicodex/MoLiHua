@@ -3,6 +3,10 @@ package jasmine.framework.cache;
 import java.util.function.Supplier;
 
 /**
+ * <p>
+ * 缓存同步策略。
+ * </p>
+ *
  * @author mh.z
  */
 public interface CacheSyncStrategy {

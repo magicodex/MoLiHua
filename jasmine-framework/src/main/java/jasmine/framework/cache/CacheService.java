@@ -16,19 +16,21 @@ public interface CacheService {
      *
      * @param category
      * @param key
+     * @param type
      * @return
      */
-    Object get(String category, Object key);
+    <T> T get(String category, Object key, Class<T> type);
 
     /**
      * 从缓存中查找数据
      *
      * @param category
      * @param key
+     * @param type
      * @param supplier
      * @return
      */
-    Object get(String category, Object key, Supplier<Object> supplier);
+    <T> T get(String category, Object key, Class<T> type, Supplier<Object> supplier);
 
     /**
      * 添加数据到缓存中

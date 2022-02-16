@@ -3,7 +3,7 @@ package jasmine.framework.remote.impl.rabbit;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.FrameworkConfig;
-import jasmine.framework.remote.impl.mq.ConvertMessageHelper;
+import jasmine.framework.common.conversion.DeserializationHelper;
 import jasmine.framework.remote.impl.mq.DefaultConsumeMessageContext;
 import jasmine.framework.remote.mq.ConsumeMessageContext;
 import jasmine.framework.remote.mq.ConsumeMessageInterceptor;
@@ -25,7 +25,7 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
     private FrameworkConfig config;
     private ConsumeMessageInterceptor interceptor;
 
-    private ConvertMessageHelper convertMessageHelper;
+    private DeserializationHelper deserializationHelper;
     private static final String PROVIDER_SUFFIX = "ConsumeMessageProvider";
 
     public RabbitConsumeMessageService(RuntimeProvider runtimeProvider, FrameworkConfig config,
@@ -33,7 +33,7 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
         this.runtimeProvider = runtimeProvider;
         this.config = config;
         this.interceptor = interceptor;
-        this.convertMessageHelper = new ConvertMessageHelper();
+        this.deserializationHelper = new DeserializationHelper();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
             Object targetObject = null;
 
             if (targetType != null) {
-                targetObject = convertMessageHelper.convertBytes(messageBody, targetType);
+                targetObject = deserializationHelper.deserialize(messageBody, targetType);
             } else {
                 targetObject = messageBody;
             }
