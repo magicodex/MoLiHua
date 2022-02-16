@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 /**
  * @author mh.z
  */
-@TableName("jl_journal")
+@TableName("jnl_journal")
 public class JournalEO {
     @TableId
     private Long id;
