@@ -1,0 +1,40 @@
+package jasmine.framework.persistence.mybatisplus;
+
+import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
+import org.apache.ibatis.executor.statement.StatementHandler;
+import org.apache.ibatis.mapping.BoundSql;
+
+import java.sql.Connection;
+
+/**
+ * @author mh.z
+ */
+public class ContextParameterInnerInterceptor implements InnerInterceptor {
+    private ContextParameter contextParameter;
+
+    public ContextParameterInnerInterceptor(ContextParameter contextParameter) {
+        this.contextParameter = contextParameter;
+    }
+
+    @Override
+    public void beforePrepare(StatementHandler statementHandler, Connection connection,
+                              Integer transactionTimeout) {
+        setContextParameter(statementHandler);
+    }
+
+    @Override
+    public void beforeGetBoundSql(StatementHandler statementHandler) {
+        setContextParameter(statementHandler);
+    }
+
+    /**
+     * 设置上下文参数
+     *
+     * @param statementHandler
+     */
+    protected void setContextParameter(StatementHandler statementHandler) {
+        BoundSql boundSql = statementHandler.getBoundSql();
+        boundSql.setAdditionalParameter("_current", contextParameter);
+    }
+
+}
