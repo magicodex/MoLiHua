@@ -45,7 +45,7 @@
         <!-- MyBatis-Plus -->
         <mybatis-plus-boot-starter.version>3.4.3.4</mybatis-plus-boot-starter.version>
         <!-- MySql数据库驱动 -->
-        <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
         <!-- Liquibase数据库版本管理工具 -->
         <liquibase.version>4.3.5</liquibase.version>
 
