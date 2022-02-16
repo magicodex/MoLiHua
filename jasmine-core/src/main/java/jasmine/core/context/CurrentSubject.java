@@ -26,6 +26,10 @@ public class CurrentSubject {
         CurrentSubject.subjectProvider = subjectProvider;
     }
 
+    public static void setProvider(SubjectProvider subjectProvider) {
+        CurrentSubject.subjectProvider = subjectProvider;
+    }
+
     /**
      * 返回用户ID
      *

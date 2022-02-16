@@ -47,8 +47,8 @@ public class QCheckUtil {
      * 期望不为null
      *
      * @param value
-     * @param format
-     * @param args
+     * @param format 错误信息格式
+     * @param args 错误信息参数
      * @param <T>
      * @return
      */
@@ -80,8 +80,8 @@ public class QCheckUtil {
      * 期望指定属性的值不为null
      *
      * @param value
-     * @param format
-     * @param args
+     * @param format 错误信息格式
+     * @param args 错误信息参数
      * @param <T>
      * @return
      */

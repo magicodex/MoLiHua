@@ -18,18 +18,18 @@ public class InvalidDataException extends UnexpectedException {
     /** 默认key名称 */
     private static final String DEFAULT_KEY_NAME = "key";
     /** 默认信息 */
-    private static final String DEFAULT_MESSAGE = "invalid data";
+    private static final String DEFAULT_MESSAGE_OR_KEY = "invalid data";
 
     public InvalidDataException() {
         //
     }
 
-    public InvalidDataException(String message, Object... args) {
-        super(message, args);
+    public InvalidDataException(String messageOrKey, Object... args) {
+        super(messageOrKey, args);
     }
 
-    public InvalidDataException(String message, Throwable cause) {
-        super(message, cause);
+    public InvalidDataException(String messageOrKey, Throwable cause) {
+        super(messageOrKey, cause);
     }
 
     public InvalidDataException(Throwable cause) {
@@ -37,11 +37,11 @@ public class InvalidDataException extends UnexpectedException {
     }
 
     public InvalidDataException(Class<?> clazz, Object key, String reason) {
-        super(buildErrorType(clazz, DEFAULT_KEY_NAME, key, reason), DEFAULT_MESSAGE);
+        super(buildErrorType(clazz, DEFAULT_KEY_NAME, key, reason), DEFAULT_MESSAGE_OR_KEY);
     }
 
     public InvalidDataException(Class<?> clazz, String keyName, Object key, String reason) {
-        super(buildErrorType(clazz, keyName, key, reason), DEFAULT_MESSAGE);
+        super(buildErrorType(clazz, keyName, key, reason), DEFAULT_MESSAGE_OR_KEY);
     }
 
     /**

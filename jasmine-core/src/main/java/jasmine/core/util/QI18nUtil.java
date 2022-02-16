@@ -4,6 +4,10 @@ import jasmine.core.i18n.LocaleMessageProvider;
 import org.springframework.stereotype.Component;
 
 /**
+ * <p>
+ * 多语言工具类。
+ * </p>
+ *
  * @author mh.z
  */
 @Component

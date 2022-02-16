@@ -18,7 +18,7 @@ public class DataNotFoundException extends UnexpectedException {
     /** 默认key名称 */
     private static final String DEFAULT_KEY_NAME = "key";
     /** 默认信息 */
-    private static final String DEFAULT_MESSAGE = "data not found";
+    private static final String DEFAULT_MESSAGE_OR_KEY = "data not found";
 
     public DataNotFoundException() {
         //
@@ -37,11 +37,11 @@ public class DataNotFoundException extends UnexpectedException {
     }
 
     public DataNotFoundException(Class<?> clazz, Object key) {
-        super(buildErrorType(clazz, DEFAULT_KEY_NAME, key), DEFAULT_MESSAGE);
+        super(buildErrorType(clazz, DEFAULT_KEY_NAME, key), DEFAULT_MESSAGE_OR_KEY);
     }
 
     public DataNotFoundException(Class<?> clazz, String keyName, Object key) {
-        super(buildErrorType(clazz, keyName, key), DEFAULT_MESSAGE);
+        super(buildErrorType(clazz, keyName, key), DEFAULT_MESSAGE_OR_KEY);
     }
 
     /**
