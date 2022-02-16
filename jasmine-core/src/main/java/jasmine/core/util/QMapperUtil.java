@@ -7,6 +7,10 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
 import java.util.List;
 
 /**
+ * <p>
+ * 映射对象工具类。
+ * </p>
+ *
  * @author mh.z
  */
 public class QMapperUtil {
