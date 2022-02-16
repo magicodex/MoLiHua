@@ -1,15 +1,16 @@
 package jasmine.demo.journal.business.domain;
 
-import jasmine.demo.journal.business.domain.dependency.JournalDependency;
+import jasmine.core.context.RuntimeProvider;
+import jasmine.demo.journal.business.domain.infrastructure.JournalInfrastructure;
 
 /**
  * @author mh.z
  */
 public class JournalDO {
-    private JournalDependency dependency;
+    private JournalInfrastructure infrastructure;
 
-    public JournalDO(JournalDependency dependency) {
-        this.dependency = dependency;
+    public JournalDO(RuntimeProvider provider) {
+        this.infrastructure = provider.getByType(JournalInfrastructure.class);
     }
 
 }

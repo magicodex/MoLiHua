@@ -36,7 +36,6 @@
         <spring.boot.version>2.5.4</spring.boot.version>
         <!-- 安全认证 -->
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
-
         <!-- API文档 -->
         <swagger.version>2.10.5</swagger.version>
         <!-- 注解校验 -->
@@ -49,6 +48,7 @@
         <!-- Liquibase数据库版本管理工具 -->
         <liquibase.version>4.3.5</liquibase.version>
 
+        <!-- 实体映射框架 -->
         <orika.version>1.5.4</orika.version>
         <!-- 工具类库 -->
         <hutool.version>5.6.6</hutool.version>
