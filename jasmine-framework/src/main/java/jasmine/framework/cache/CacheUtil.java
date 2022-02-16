@@ -45,7 +45,7 @@ public class CacheUtil {
      * @param supplier
      * @return
      */
-    public <T> T get(String category, Object key, Class<T> type, Supplier<Object> supplier) {
+    public <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
         return cacheService.get(category, key, type, supplier);
     }
 

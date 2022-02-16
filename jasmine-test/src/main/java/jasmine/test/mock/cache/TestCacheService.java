@@ -17,8 +17,8 @@ public class TestCacheService implements CacheService {
     }
 
     @Override
-    public <T> T get(String category, Object key, Class<T> type, Supplier<Object> supplier) {
-        return null;
+    public <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
+        return (T) supplier.get();
     }
 
     @Override

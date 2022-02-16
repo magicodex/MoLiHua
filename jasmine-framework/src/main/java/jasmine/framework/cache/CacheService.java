@@ -30,7 +30,7 @@ public interface CacheService {
      * @param supplier
      * @return
      */
-    <T> T get(String category, Object key, Class<T> type, Supplier<Object> supplier);
+    <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier);
 
     /**
      * 添加数据到缓存中

@@ -51,7 +51,7 @@ public class RedisCacheService implements CacheService {
     }
 
     @Override
-    public <T> T get(String category, Object key, Class<T> type, Supplier<Object> supplier) {
+    public <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
