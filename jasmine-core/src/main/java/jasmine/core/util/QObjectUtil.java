@@ -3,6 +3,10 @@ package jasmine.core.util;
 import cn.hutool.core.util.ObjectUtil;
 
 /**
+ * <p>
+ * 对象工具类。
+ * </p>
+ *
  * @author mh.z
  */
 public class QObjectUtil extends ObjectUtil {

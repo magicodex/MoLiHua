@@ -4,6 +4,10 @@ import jasmine.core.context.RuntimeProvider;
 import org.springframework.stereotype.Component;
 
 /**
+ * <p>
+ * Spring工具类。
+ * </p>
+ *
  * @author mh.z
  */
 @Component
