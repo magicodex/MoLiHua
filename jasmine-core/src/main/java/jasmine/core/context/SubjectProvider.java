@@ -18,4 +18,11 @@ public interface SubjectProvider {
      * @return
      */
     Long getCurrentTenantId();
+
+    /**
+     * 返回用户
+     *
+     * @return
+     */
+    Object getSubject();
 }

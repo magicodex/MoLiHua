@@ -39,6 +39,11 @@ public class UserSubjectProvider implements SubjectProvider {
         return null;
     }
 
+    @Override
+    public Object getSubject() {
+        return getSubjectFromContext();
+    }
+
     /**
      * 获取用户信息
      *

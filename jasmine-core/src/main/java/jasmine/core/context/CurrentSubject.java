@@ -38,13 +38,12 @@ public class CurrentSubject {
     }
 
     /**
-     * 返回用户对象
+     * 返回用户
      *
      * @return
      */
     public static Object getSubject() {
-        // TODO
-        return null;
+        return provider.getSubject();
     }
 
 }
