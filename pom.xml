@@ -38,7 +38,7 @@
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
 
         <!-- API文档 -->
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>2.10.5</swagger.version>
         <!-- 注解校验 -->
         <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
 
