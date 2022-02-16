@@ -1,4 +1,4 @@
-package jasmine.framework.async;
+package jasmine.framework.concurrent;
 
 import jasmine.core.util.QCheckUtil;
 
@@ -13,6 +13,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * <p>
+ * 异步工具类。
+ * </p>
+ *
  * @author mh.z
  */
 public class AsyncTaskUtil {
@@ -23,23 +27,34 @@ public class AsyncTaskUtil {
     }
 
     /**
-     * 执行
+     * 异步执行
      *
-     * @param callables
+     * @param task
+     */
+    public void async(Runnable task) {
+        QCheckUtil.notNull(task, "task null");
+
+        EXECUTOR_SERVICE.submit(task);
+    }
+
+    /**
+     * 异步执行
+     *
+     * @param tasks
      * @param <T>
      * @return
      */
-    public static <T> List<T> execute(Collection<Callable> callables) {
-        QCheckUtil.notNull(callables, "callables null");
+    public static <T> List<T> asyncAndGet(Collection<Callable> tasks) {
+        QCheckUtil.notNull(tasks, "tasks null");
         List<T> resultList = new ArrayList<>();
 
         CompletionService<T> completionService = new ExecutorCompletionService<>(EXECUTOR_SERVICE);
-        callables.forEach((callable) -> {
-            completionService.submit(callable);
+        tasks.forEach((task) -> {
+            completionService.submit(task);
         });
 
         try {
-            for (int i = 0; i < callables.size(); i++) {
+            for (int i = 0; i < tasks.size(); i++) {
                 T result = completionService.take().get();
                 resultList.add(result);
             }
