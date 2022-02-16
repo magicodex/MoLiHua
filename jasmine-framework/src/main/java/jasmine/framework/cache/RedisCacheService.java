@@ -23,10 +23,12 @@ import java.util.function.Supplier;
 public class RedisCacheService implements CacheService {
     private RedisTemplate redisTemplate;
     private ValueOperations valueOperations;
+
     /** 缓存同步策略 */
     private CacheSyncStrategy syncStrategy;
-
+    /** 序列化帮助类 */
     private SerializationHelper serializationHelper;
+    /** 反序列化帮助类 */
     private DeserializationHelper deserializationHelper;
 
     /** 缓存key的分隔符 */
@@ -55,7 +57,7 @@ public class RedisCacheService implements CacheService {
 
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
-        // 获取缓存值
+        // 获取缓存的值
         Object value = valueOperations.get(cacheKey);
 
         if (value == null && supplier != null) {
@@ -63,9 +65,11 @@ public class RedisCacheService implements CacheService {
             value = supplier.get();
             // 缓存值
             set(category, key, value);
+        } else {
+            // 反序列化成对象
+            value = deserializationHelper.deserialize((byte[]) value, type);
         }
 
-        T object = deserializationHelper.deserialize((byte[]) value, type);
         return (T) value;
     }
 
@@ -74,10 +78,12 @@ public class RedisCacheService implements CacheService {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
+        // 序列化成字节
         byte[] bytes = serializationHelper.serialize(value);
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
-        // 设置缓存值
+
+        // 缓存数据
         valueOperations.set(cacheKey, bytes);
         // 设置缓存时间
         redisTemplate.expire(cacheKey, DEFAULT_TIMEOUT, TimeUnit.SECONDS);

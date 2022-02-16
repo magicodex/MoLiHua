@@ -34,6 +34,7 @@ public class AsyncTaskUtil {
     public void async(Runnable task) {
         QCheckUtil.notNull(task, "task null");
 
+        // 开线程执行
         EXECUTOR_SERVICE.submit(task);
     }
 
@@ -48,11 +49,13 @@ public class AsyncTaskUtil {
         QCheckUtil.notNull(tasks, "tasks null");
         List<T> resultList = new ArrayList<>();
 
+        // 开线程执行
         CompletionService<T> completionService = new ExecutorCompletionService<>(EXECUTOR_SERVICE);
         tasks.forEach((task) -> {
             completionService.submit(task);
         });
 
+        // 获取执行结果
         try {
             for (int i = 0; i < tasks.size(); i++) {
                 T result = completionService.take().get();

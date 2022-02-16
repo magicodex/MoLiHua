@@ -12,12 +12,12 @@ import java.util.function.Supplier;
 public class TestCacheService implements CacheService {
 
     @Override
-    public Object get(String category, Object key) {
+    public <T> T get(String category, Object key, Class<T> type) {
         return null;
     }
 
     @Override
-    public Object get(String category, Object key, Supplier<Object> supplier) {
+    public <T> T get(String category, Object key, Class<T> type, Supplier<Object> supplier) {
         return null;
     }
 

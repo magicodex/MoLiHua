@@ -4,6 +4,10 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
 /**
+ * <p>
+ * 校验帮助类。
+ * </p>
+ *
  * @author mh.z
  */
 public class ValidationHelper {
@@ -15,6 +19,10 @@ public class ValidationHelper {
 
     public static ValidationHelper create(Errors errors) {
         return new ValidationHelper(errors);
+    }
+
+    public Errors getErrors() {
+        return errors;
     }
 
     /**

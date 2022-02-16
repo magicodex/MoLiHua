@@ -7,9 +7,15 @@ import org.apache.ibatis.mapping.BoundSql;
 import java.sql.Connection;
 
 /**
+ * <p>
+ * 可以在 Mapper XML里通过 #{_current.*} 获取上下文信息，
+ * 比如通过 #{_current.tenantId} 获取租户ID。
+ * </p>
+ *
  * @author mh.z
  */
 public class ContextParameterInnerInterceptor implements InnerInterceptor {
+    /** 上下文参数 */
     private ContextParameter contextParameter;
 
     public ContextParameterInnerInterceptor(ContextParameter contextParameter) {

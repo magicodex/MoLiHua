@@ -1,6 +1,10 @@
 package jasmine.framework.persistence.mybatisplus;
 
 /**
+ * <p>
+ * 上下文参数。
+ * </p>
+ *
  * @author mh.z
  */
 public interface ContextParameter {

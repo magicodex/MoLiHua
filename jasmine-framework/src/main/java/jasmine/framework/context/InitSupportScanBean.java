@@ -24,6 +24,7 @@ public class InitSupportScanBean implements SmartInitializingSingleton {
         ApplicationContext context = SpringRuntimeProvider.getApplicationContext();
         Map<String, InitSupport> beanMap = context.getBeansOfType(InitSupport.class);
 
+        // 调用初始方法
         if (QCollectionUtil.isNotEmpty(beanMap)) {
             beanMap.forEach((beanName, initSupport) -> {
                 initSupport.init(runtimeProvider);
