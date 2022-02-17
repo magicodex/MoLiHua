@@ -14,7 +14,8 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
     private BaseMapper<Object> baseMapper;
 
     /** 实体类的名称后缀 */
-    private static final String ENTITY_SUFFIX = "EO";
+    private static final String ENTITY_SUFFIX_1 = "DO";
+    private static final String ENTITY_SUFFIX_2 = "EO";
     /** mapper的名称后缀 */
     private static final String MAPPER_SUFFIX = "Mapper";
 
@@ -54,7 +55,8 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
         String simpleClassName = type.getSimpleName();
         String mapperPrefix = StrUtil.lowerFirst(simpleClassName);
 
-        if (mapperPrefix.endsWith(ENTITY_SUFFIX)) {
+        if (mapperPrefix.endsWith(ENTITY_SUFFIX_1)
+                || mapperPrefix.endsWith(ENTITY_SUFFIX_2)) {
             mapperPrefix = mapperPrefix.substring(0, mapperPrefix.length() - 2);
         }
 

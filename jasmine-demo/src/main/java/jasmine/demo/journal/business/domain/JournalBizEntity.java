@@ -6,10 +6,10 @@ import jasmine.demo.journal.business.domain.infrastructure.JournalInfrastructure
 /**
  * @author mh.z
  */
-public class JournalDO {
+public class JournalBizEntity {
     private JournalInfrastructure infrastructure;
 
-    public JournalDO(RuntimeProvider provider) {
+    public JournalBizEntity(RuntimeProvider provider) {
         this.infrastructure = provider.getByType(JournalInfrastructure.class);
     }
 
