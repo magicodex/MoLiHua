@@ -9,4 +9,12 @@
   $(window).resize(function() {
     $("main").css("height", $(document).height() - 48);
   });
+
+  // 点击菜单事件
+  $(".menu-item").click(function(event) {
+    event.preventDefault();
+
+    var link = $(this).attr("href");
+    $("main > iframe").attr("src", link);
+  });
 }())
