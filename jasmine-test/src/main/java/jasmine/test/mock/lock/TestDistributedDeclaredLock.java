@@ -12,7 +12,7 @@ public class TestDistributedDeclaredLock implements DistributedDeclaredLock {
     public <T> T lock(DistributedLockCallback callback) {
         try {
             return (T) callback.call();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
@@ -21,7 +21,7 @@ public class TestDistributedDeclaredLock implements DistributedDeclaredLock {
     public <T> T lock(long waitTime, DistributedLockCallback callback) {
         try {
             return (T) callback.call();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }

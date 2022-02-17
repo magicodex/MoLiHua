@@ -44,7 +44,7 @@ public class RedisDistributedDeclaredLock implements DistributedDeclaredLock {
             }
 
             return (T) callback.call();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         } finally {
             // 释放锁

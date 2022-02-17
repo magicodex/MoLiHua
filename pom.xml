@@ -60,6 +60,9 @@
         <!-- Redis客户端 -->
         <redisson-spring-boot-starter.version>3.12.3</redisson-spring-boot-starter.version>
 
+        <!-- 切面 -->
+        <aspectj.version>1.9.7</aspectj.version>
+
         <!-- 测试框架 -->
         <junit.version>4.13.2</junit.version>
         <spring-test.version>5.3.8</spring-test.version>
