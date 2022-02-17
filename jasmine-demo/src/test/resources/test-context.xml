@@ -14,7 +14,7 @@
     <context:component-scan base-package="
         jasmine.demo.authentication,
         jasmine.demo.common,
-        jasmine.demo.dashboard,
+        jasmine.demo.home,
         jasmine.demo.external,
         jasmine.demo.system">
     </context:component-scan>

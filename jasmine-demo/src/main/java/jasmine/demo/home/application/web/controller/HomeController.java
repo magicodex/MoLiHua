@@ -1,4 +1,4 @@
-package jasmine.demo.dashboard.application.web.controller;
+package jasmine.demo.home.application.web.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,20 +12,20 @@ import org.springframework.web.servlet.view.RedirectView;
 /**
  * @author mh.z
  */
-@Api(tags = "仪表盘")
+@Api(tags = "主页")
 @RestController
-public class DashboardController {
+public class HomeController {
 
-    @ApiOperation(value = "仪表盘")
-    @GetMapping("/dashboard")
-    public ModelAndView dashboard() {
-        return new ModelAndView("dashboard/dashboard.html");
+    @ApiOperation(value = "主页")
+    @GetMapping("/home")
+    public ModelAndView home() {
+        return new ModelAndView("home/home.html");
     }
 
-    @ApiOperation(value = "重定向到仪表盘")
+    @ApiOperation(value = "重定向到主页")
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public RedirectView index() {
-        return new RedirectView("dashboard");
+        return new RedirectView("home");
     }
 
 }
