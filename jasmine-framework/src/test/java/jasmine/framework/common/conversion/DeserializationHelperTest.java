@@ -16,7 +16,6 @@ public class DeserializationHelperTest {
         // 布尔值
         Assert.assertEquals(true, helper.deserialize(QStringUtil.utf8Bytes("true"), Boolean.class));
         Assert.assertEquals(false, helper.deserialize(QStringUtil.utf8Bytes("false"), Boolean.class));
-        Assert.assertEquals(null, helper.deserialize(QStringUtil.utf8Bytes(""), Boolean.class));
 
         // 字符
         Assert.assertEquals(Character.valueOf('t'), helper
@@ -25,7 +24,6 @@ public class DeserializationHelperTest {
 
         // 长整型
         Assert.assertEquals(Long.valueOf(1), helper.deserialize(QStringUtil.utf8Bytes("1"), Long.class));
-        Assert.assertEquals(null, helper.deserialize(QStringUtil.utf8Bytes(""), Long.class));
     }
 
 }

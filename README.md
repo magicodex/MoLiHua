@@ -49,6 +49,7 @@ jasmine.security.rbac.enabled=true
 | jasmine-framework | 框架模块 |
 | jasmine-test | 测试模块 |
 | jasmine-security | 安全模块 |
+| jasmine-lowcode | 低代码（设计中） |
 | jasmine-demo | DEMO模块 |
 
 
