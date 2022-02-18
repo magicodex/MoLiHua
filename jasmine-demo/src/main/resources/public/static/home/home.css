@@ -1,4 +1,5 @@
 
+/** 导航栏 */
 .home-top-bar {
   position: absolute;
   left: 201px;
@@ -13,6 +14,7 @@
   z-index: 10;
 }
 
+/** 侧栏 */
 .home-side-bar {
   position: absolute;
   left: 0;
@@ -26,6 +28,7 @@
   z-index: 0;
 }
 
+/** 内容 */
 .home-main-content {
   position: absolute;
   left: 202px;
@@ -35,15 +38,7 @@
   z-index: 10;
 }
 
-.home-navbar-brand {
-  padding: 10px 15px 15px 15px;
-  width: 100%;
-  height: 48px;
-  display: block;
-  color: #eff0f0;
-  background-color: #272c30;
-}
-
+/** 菜单栏 */
 .home-menu-bar {
   padding: 0 0 0 0;
 }
@@ -60,6 +55,16 @@
 
 .home-menu-item > a {
   color: #464646;
+}
+/** END 菜单栏 */
+
+.home-navbar-brand {
+  padding: 10px 15px 15px 15px;
+  width: 100%;
+  height: 48px;
+  display: block;
+  color: #eff0f0;
+  background-color: #272c30;
 }
 
 .home-top-bar > .nav-link {
