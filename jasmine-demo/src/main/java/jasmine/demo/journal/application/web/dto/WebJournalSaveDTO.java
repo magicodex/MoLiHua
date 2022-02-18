@@ -1,11 +1,9 @@
-package jasmine.demo.journal.business.dto;
-
-import jasmine.framework.persistence.entity.BaseEntity;
+package jasmine.demo.journal.application.web.dto;
 
 /**
  * @author mh.z
  */
-public class JournalDTO extends BaseEntity {
+public class WebJournalSaveDTO {
     /** 标题 */
     private String journalTitle;
     /** 内容 */

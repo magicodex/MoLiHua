@@ -1,8 +1,27 @@
 package jasmine.demo.journal.application.web.adapter;
 
+import jasmine.core.util.QMapperUtil;
+import jasmine.demo.journal.application.web.dto.WebJournalSaveDTO;
+import jasmine.demo.journal.business.dto.JournalSaveDTO;
+
 /**
  * @author mh.z
  */
 public class WebJournalDtoAdapter {
+
+    /**
+     * 转换成 JournalSaveDTO 对象
+     *
+     * @param webJournalSaveDTO
+     * @return
+     */
+    public static JournalSaveDTO toJournalSaveDTO(WebJournalSaveDTO webJournalSaveDTO) {
+        if (webJournalSaveDTO == null) {
+            return null;
+        }
+
+        JournalSaveDTO journalSaveDTO = QMapperUtil.mapTo(webJournalSaveDTO, JournalSaveDTO.class);
+        return journalSaveDTO;
+    }
 
 }
