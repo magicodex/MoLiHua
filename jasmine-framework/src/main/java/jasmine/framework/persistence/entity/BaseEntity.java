@@ -34,7 +34,7 @@ public class BaseEntity {
 
     /** 版本号 */
     @Version
-    @TableField("version_number")
+    @TableField(value = "version_number", fill = FieldFill.INSERT)
     private Integer versionNumber;
 
     public Long getId() {

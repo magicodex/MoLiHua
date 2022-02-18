@@ -33,6 +33,9 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
         strictInsertFill(metaObject, "createdDate", ZonedDateTime.class, now);
         // 最后更新日期
         strictInsertFill(metaObject, "lastUpdatedDate", ZonedDateTime.class, now);
+
+        // 版本号
+        strictInsertFill(metaObject, "versionNumber", Integer.class, 1);
     }
 
     @Override
