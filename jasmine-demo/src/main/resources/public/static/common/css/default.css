@@ -18,6 +18,10 @@
     padding-top: 15px;
 }
 
+.page-container-alert {
+    margin-top: -15px;
+}
+
 /** 隐藏滚动条 */
 .scrollbar-hidden {
   overflow-y: hidden;

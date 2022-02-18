@@ -2,6 +2,8 @@
 (function () {
   'use strict'
 
+  feather.replace();
+
   // 点击菜单事件
   $(".home-menu-item > a").click(function(event) {
     event.preventDefault();
