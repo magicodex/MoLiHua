@@ -6,11 +6,14 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.journal.business.adapter.JournalDtoAdapter;
 import jasmine.demo.journal.business.dto.JournalDTO;
+import jasmine.demo.journal.business.dto.JournalNoticeMessageDTO;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.persistence.dao.JournalDao;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.param.JournalQueryParam;
+import jasmine.framework.remote.mq.PublishMessageService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,9 +23,11 @@ import java.util.List;
 @Service
 public class JournalServiceImpl implements JournalService {
     private JournalDao journalDao;
+    private PublishMessageService publishMessageService;
 
-    public JournalServiceImpl(JournalDao journalDao) {
+    public JournalServiceImpl(JournalDao journalDao, PublishMessageService publishMessageService) {
         this.journalDao = journalDao;
+        this.publishMessageService = publishMessageService;
     }
 
     @Override
@@ -38,6 +43,7 @@ public class JournalServiceImpl implements JournalService {
         return journalDTOList;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public JournalDTO saveJournal(JournalSaveDTO journal) {
         QCheckUtil.notNull(journal, "journal null");
@@ -47,6 +53,10 @@ public class JournalServiceImpl implements JournalService {
         journalEO.setJournalContent(journal.getJournalContent());
         journalEO.setUserId(CurrentSubject.getUserId());
         journalDao.saveJournal(journalEO);
+
+        JournalNoticeMessageDTO messageDTO = JournalDtoAdapter.toJournalNoticeMessageDTO(journalEO);
+        // 发送消息
+        publishMessageService.publish("journalNotice", messageDTO);
 
         return JournalDtoAdapter.toJournalDTO(journalEO);
     }

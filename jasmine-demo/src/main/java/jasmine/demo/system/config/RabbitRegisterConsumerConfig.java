@@ -24,26 +24,13 @@ public class RabbitRegisterConsumerConfig {
     private ConsumeMessageService consumeMessageService;
 
     @Bean
-    public MessageListenerContainer exampleConsumer1(Queue exampleQueue1) {
+    public MessageListenerContainer journalSyncConsumer(Queue journalSyncQueue) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
-        container.setQueues(exampleQueue1);
+        container.setQueues(journalSyncQueue);
         container.setConcurrentConsumers(1);
 
         container.setMessageListener((message) -> {
-            consumeMessageService.consume("example1", message);
-        });
-
-        return container;
-    }
-
-    @Bean
-    public MessageListenerContainer exampleConsumer2(Queue exampleQueue2) {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
-        container.setQueues(exampleQueue2);
-        container.setConcurrentConsumers(1);
-
-        container.setMessageListener((message) -> {
-            consumeMessageService.consume("example2", message);
+            consumeMessageService.consume("journalSync", message);
         });
 
         return container;

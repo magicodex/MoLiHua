@@ -93,7 +93,7 @@ public class QDateUtil {
      * @param zonedDateTime
      * @return
      */
-    public static String formatYearDay(ZonedDateTime zonedDateTime) {
+    public static String formatYearSecond(ZonedDateTime zonedDateTime) {
         if (zonedDateTime == null) {
             return null;
         }

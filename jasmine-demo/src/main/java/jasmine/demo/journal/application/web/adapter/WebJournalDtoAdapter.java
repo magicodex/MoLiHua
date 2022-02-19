@@ -38,7 +38,7 @@ public class WebJournalDtoAdapter {
         }
 
         WebJournalViewDTO webJournalViewDTO = QMapperUtil.mapTo(journalDTO, WebJournalViewDTO.class);
-        webJournalViewDTO.setCreatedDateText(QDateUtil.formatYearDay(journalDTO.getCreatedDate()));
+        webJournalViewDTO.setCreatedDateText(QDateUtil.formatYearSecond(journalDTO.getCreatedDate()));
 
         return webJournalViewDTO;
     }

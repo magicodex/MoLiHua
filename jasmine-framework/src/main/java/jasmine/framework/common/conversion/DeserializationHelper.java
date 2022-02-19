@@ -73,7 +73,7 @@ public class DeserializationHelper {
             ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
 
             try {
-                target = objectMapper.writeValueAsBytes(source);
+                target = objectMapper.readValue(source, type);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

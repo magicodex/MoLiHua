@@ -17,50 +17,42 @@ import java.util.Map;
 @ConditionalOnProperty(value = "app.message-queue.rabbitmq.auto-declare",
         havingValue = "true", matchIfMissing = false)
 public class RabbitAutoDeclareConfig {
-    private static final String EXAMPLE_EXCHANGE_NAME1 = "demo.example.exchange1";
-    private static final String EXAMPLE_QUEUE_NAME1 = "demo.example.queue1";
-    private static final String EXAMPLE_QUEUE_NAME2 = "demo.example.queue2";
+    private static final String JOURNAL_EXCHANGE_NAME = "demo.journal.exchange";
+    private static final String JOURNAL_NOTICE_QUEUE_NAME = "demo.journal-notice.queue";
+    private static final String JOURNAL_SYNC_QUEUE_NAME = "demo.journal-sync.queue";
 
     @Bean
-    public HeadersExchange exampleExchange1() {
-        return new HeadersExchange(EXAMPLE_EXCHANGE_NAME1);
-    }
-
-    //
-    // example队列1
-    //
-
-    @Bean
-    public Queue exampleQueue1() {
-        return new Queue(EXAMPLE_QUEUE_NAME1);
+    public HeadersExchange journalExchange() {
+        return new HeadersExchange(JOURNAL_EXCHANGE_NAME);
     }
 
     @Bean
-    public Binding exampleBinding1(HeadersExchange exampleExchange1, Queue exampleQueue1) {
+    public Queue journalNoticeQueue() {
+        return new Queue(JOURNAL_NOTICE_QUEUE_NAME);
+    }
+
+    @Bean
+    public Queue journalSyncQueue() {
+        return new Queue(JOURNAL_SYNC_QUEUE_NAME);
+    }
+
+    @Bean
+    public Binding journalNoticeQueueBinding(HeadersExchange journalExchange, Queue journalNoticeQueue) {
         Binding binding = BindingBuilder
-                .bind(exampleQueue1)
-                .to(exampleExchange1)
-                .whereAny(Map.of("category", "example1"))
+                .bind(journalNoticeQueue)
+                .to(journalExchange)
+                .whereAny(Map.of("category", "notice"))
                 .match();
 
         return binding;
     }
 
-    //
-    // example队列2
-    //
-
     @Bean
-    public Queue exampleQueue2() {
-        return new Queue(EXAMPLE_QUEUE_NAME2);
-    }
-
-    @Bean
-    public Binding exampleBinding2(HeadersExchange exampleExchange1, Queue exampleQueue2) {
+    public Binding journalSyncQueueBinding(HeadersExchange journalExchange, Queue journalSyncQueue) {
         Binding binding = BindingBuilder
-                .bind(exampleQueue2)
-                .to(exampleExchange1)
-                .whereAny(Map.of("category", "example2"))
+                .bind(journalSyncQueue)
+                .to(journalExchange)
+                .whereAny(Map.of("category", "sync"))
                 .match();
 
         return binding;

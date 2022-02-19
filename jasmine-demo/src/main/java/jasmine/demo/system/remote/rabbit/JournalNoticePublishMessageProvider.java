@@ -10,16 +10,15 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 
 /**
  * @author mh.z
  */
 @Component
-public class ExamplePublishMessageProvider implements PublishMessageProvider {
+public class JournalNoticePublishMessageProvider implements PublishMessageProvider {
     private RabbitTemplate template;
 
-    public ExamplePublishMessageProvider(RabbitTemplate template) {
+    public JournalNoticePublishMessageProvider(RabbitTemplate template) {
         this.template = template;
     }
 
@@ -27,16 +26,15 @@ public class ExamplePublishMessageProvider implements PublishMessageProvider {
     public void publish(PublishMessageContext context, Object data) {
         QCheckUtil.notNull(context, "context null");
         QCheckUtil.notNull(data, "data null");
-        Map<String, Object> map = (Map<String, Object>) data;
 
         MessageProperties properties = new MessageProperties();
-        properties.setHeader("category", map.get("category"));
+        properties.setHeader("category", "notice");
 
         String json = QJsonUtil.toJson(data);
         byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
         Message message = new Message(bytes, properties);
 
-        template.send("demo.example.exchange1", null, message);
+        template.send("demo.journal.exchange", null, message);
     }
 
 }
