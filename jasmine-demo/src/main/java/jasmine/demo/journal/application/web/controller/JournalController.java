@@ -61,8 +61,8 @@ public class JournalController {
 
     @ApiOperation(value = "保存日记")
     @PostMapping("/journal/save")
-    public ModelAndView save(@ModelAttribute WebJournalSaveDTO param) {
-        JournalSaveDTO journalSaveDTO = WebJournalDtoAdapter.toJournalSaveDTO(param);
+    public ModelAndView save(@ModelAttribute WebJournalSaveDTO webJournalSaveDTO) {
+        JournalSaveDTO journalSaveDTO = WebJournalDtoAdapter.toJournalSaveDTO(webJournalSaveDTO);
         // 保存日记
         journalService.saveJournal(journalSaveDTO);
 

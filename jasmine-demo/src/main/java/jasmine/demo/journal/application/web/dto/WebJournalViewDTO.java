@@ -5,9 +5,11 @@ package jasmine.demo.journal.application.web.dto;
  */
 public class WebJournalViewDTO {
     private Long id;
+    /** 标题 */
     private String journalTitle;
+    /** 内容 */
     private String journalContent;
-
+    /** 创建日期 */
     private String createdDateText;
 
     public Long getId() {

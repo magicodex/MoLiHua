@@ -23,6 +23,7 @@ public interface JournalService {
      * 保存日记
      *
      * @param journal
+     * @return
      */
     JournalDTO saveJournal(JournalSaveDTO journal);
 }
