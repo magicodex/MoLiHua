@@ -17,7 +17,7 @@ public class RedisDistributedDeclaredLock implements DistributedDeclaredLock {
     /** 默认等待锁的时间 */
     private static final long DEFAULT_WAIT_TIME = 5000L;
     /** 默认释放锁的时间 */
-    private static final long DEFAULT_LEASE_TIME = 10000L;
+    private static final long DEFAULT_LEASE_TIME = -1;
 
     public RedisDistributedDeclaredLock(RedissonClient redisson, String lockKey) {
         this.redisson = redisson;

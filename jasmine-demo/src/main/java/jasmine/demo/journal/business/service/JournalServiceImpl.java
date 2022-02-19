@@ -11,6 +11,7 @@ import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.persistence.dao.JournalDao;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.param.JournalQueryParam;
+import jasmine.framework.lock.annotation.DistributedLock;
 import jasmine.framework.remote.mq.PublishMessageService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +44,10 @@ public class JournalServiceImpl implements JournalService {
         return journalDTOList;
     }
 
+    /**
+     * 此处使用分布式锁没有业务上的意义，只是用来测试分布式锁是否生效。
+     */
+    @DistributedLock(category = "JOURNAL_SAVE", key = "#journal.journalTitle")
     @Transactional(rollbackFor = Exception.class)
     @Override
     public JournalDTO saveJournal(JournalSaveDTO journal) {
