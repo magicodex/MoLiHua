@@ -8,17 +8,22 @@
     <link href="/static/common/bootstrap/css/bootstrap.css" rel="stylesheet"/>
 </head>
 <body class="page-container">
-<div th:if="${saveSuccess} == true" class="page-container-alert alert alert-success" role="alert">保存成功！</div>
+
+<div th:if="${showSaveSuccess} == true" class="page-container-alert alert alert-success" role="alert">
+    保存成功！
+</div>
 
 <form class="container" action="/journal/save" method="post">
     <!-- 日记标题 -->
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="标题" name="journalTitle" th:value="${record.journalTitle}">
+        <input type="text" class="form-control" placeholder="标题"
+               name="journalTitle" th:value="${record.journalTitle}">
     </div>
 
     <!-- 日记内容 -->
     <div class="form-group">
-        <textarea class="form-control" rows="10" name="journalContent" th:text="${record.journalContent}"></textarea>
+        <textarea class="form-control" rows="10" name="journalContent"
+                  th:text="${record.journalContent}"></textarea>
     </div>
 
     <!-- 保存按钮 -->
@@ -28,5 +33,6 @@
 </form>
 
 <script src="/static/common/jquery/core/jquery.min.js" type='text/javascript'></script>
+<script src="/static/journal/journal-edit.js" type='text/javascript'></script>
 </body>
 </html>

@@ -24,5 +24,5 @@ public interface JournalService {
      *
      * @param journal
      */
-    void saveJournal(JournalSaveDTO journal);
+    JournalDTO saveJournal(JournalSaveDTO journal);
 }

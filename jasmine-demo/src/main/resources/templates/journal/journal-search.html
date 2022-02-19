@@ -6,6 +6,7 @@
     <title>日志</title>
     <link href="/static/common/css/default.css" rel="stylesheet"/>
     <link href="/static/common/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/static/journal/journal-search.css" rel="stylesheet"/>
 </head>
 <body class="page-container">
 
@@ -23,18 +24,20 @@
                 </thead>
                 <tbody>
                 <tr class="journal-record" th:each="record,recordStat : ${records}">
-                    <td th:text="${record.date}"></td>
-                    <td th:text="${record.title}"></td>
-                    <input class="journal-content" type="hidden" th:value="${record.content}"/>
+                    <td th:text="${record.createdDateText}"></td>
+                    <td th:text="${record.journalTitle}"></td>
+                    <input class="journal-content" type="hidden" th:value="${record.journalContent}"/>
                 </tr>
                 </tbody>
             </table>
             <!-- END 表格 -->
 
+            <p th:if="${showNoData} == true" class="text-center text-info">没有数据！</p>
+
             <!-- 分页栏 -->
             <nav>
                 <ul class="pager">
-                    <li><a th:href="'/journal/search?page=' + ${prevPage}">上一页</a></li>
+                    <li><a th:if="${showPrevPage} == true" th:href="'/journal/search?page=' + ${prevPage}">上一页</a></li>
                     <li><a href="#" th:text="${currPage}"></a></li>
                     <li><a th:href="'/journal/search?page=' + ${nextPage}">下一页</a></li>
                 </ul>
@@ -42,9 +45,25 @@
             <!-- END 分页栏 -->
         </div>
     </div>
+
+    <div class="modal fade" id="modalDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">内容</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 </div>
 
 <script src="/static/common/jquery/core/jquery.min.js" type='text/javascript'></script>
+<script src="/static/common/bootstrap/js/bootstrap.min.js" type='text/javascript'></script>
 <script src="/static/journal/journal-search.js" type='text/javascript'></script>
 </body>
 </html>

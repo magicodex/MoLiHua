@@ -3,7 +3,7 @@ package jasmine.demo.journal.persistence.param;
 /**
  * @author mh.z
  */
-public class JournalByCondParam {
+public class JournalQueryParam {
     /** 用户ID */
     private Long userId;
 

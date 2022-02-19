@@ -9,7 +9,7 @@ import jasmine.demo.journal.business.dto.JournalDTO;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.persistence.dao.JournalDao;
 import jasmine.demo.journal.persistence.entity.JournalEO;
-import jasmine.demo.journal.persistence.param.JournalByCondParam;
+import jasmine.demo.journal.persistence.param.JournalQueryParam;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class JournalServiceImpl implements JournalService {
     @Override
     public List<JournalDTO> pageAllJournals(Page page) {
         QCheckUtil.notNull(page, "page null");
-        JournalByCondParam param = new JournalByCondParam();
+        JournalQueryParam param = new JournalQueryParam();
         param.setUserId(CurrentSubject.getUserId());
 
         List<JournalEO> journalEOList = journalDao.pageJournalsByCond(param, page);
@@ -39,7 +39,7 @@ public class JournalServiceImpl implements JournalService {
     }
 
     @Override
-    public void saveJournal(JournalSaveDTO journal) {
+    public JournalDTO saveJournal(JournalSaveDTO journal) {
         QCheckUtil.notNull(journal, "journal null");
 
         JournalEO journalEO = new JournalEO();
@@ -49,6 +49,8 @@ public class JournalServiceImpl implements JournalService {
         journalEO.setTenantId(CurrentSubject.getTenantId());
 
         journalDao.saveJournal(journalEO);
+
+        return JournalDtoAdapter.toJournalDTO(journalEO);
     }
 
 }

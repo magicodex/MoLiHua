@@ -40,7 +40,7 @@
 
 /** 菜单栏 */
 .home-menu-bar {
-  padding: 0 0 0 0;
+  padding: 5px 0 0 0;
 }
 
 .home-menu-item {
@@ -55,6 +55,7 @@
 
 .home-menu-item > a {
   color: #464646;
+  font-size: 14px !important;
 }
 /** END 菜单栏 */
 
@@ -69,4 +70,5 @@
 
 .home-top-bar > .nav-link {
   color: #929699 !important;
+  font-size: 14px !important;
 }

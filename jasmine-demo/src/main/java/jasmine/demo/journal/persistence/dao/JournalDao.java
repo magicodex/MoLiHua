@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jasmine.core.util.QCheckUtil;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.mapper.JournalMapper;
-import jasmine.demo.journal.persistence.param.JournalByCondParam;
+import jasmine.demo.journal.persistence.param.JournalQueryParam;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class JournalDao {
      * @param page
      * @return
      */
-    public List<JournalEO> pageJournalsByCond(JournalByCondParam param, Page<JournalEO> page) {
+    public List<JournalEO> pageJournalsByCond(JournalQueryParam param, Page<JournalEO> page) {
         QCheckUtil.notNull(param, "param null");
         QCheckUtil.notNull(page, "page null");
 
