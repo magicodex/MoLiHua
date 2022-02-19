@@ -15,6 +15,7 @@
         jasmine.demo.authentication,
         jasmine.demo.common,
         jasmine.demo.home,
+        jasmine.demo.journal,
         jasmine.demo.external,
         jasmine.demo.system">
     </context:component-scan>
