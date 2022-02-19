@@ -34,11 +34,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 获取用户
         UserEO user = userDao.getUserByName(username);
         if (user == null) {
             throw new UsernameNotFoundException("username '" + username + "' not found");
         }
 
+        // 获取角色
         Long userId = user.getId();
         List<SecurityRole> roleList = roleService.listRolesByUserId(userId);
 

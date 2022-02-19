@@ -45,7 +45,7 @@ public class CustomRbacCheckService implements RbacCheckService, InitSupport {
         QCheckUtil.notNull(subject, "subject null");
         QCheckUtil.notNull(request, "request null");
 
-        // 判断是不是公开的资源
+        // 不鉴权公开的资源
         if (isPublicResource(request)) {
             return true;
         }
@@ -56,18 +56,18 @@ public class CustomRbacCheckService implements RbacCheckService, InitSupport {
             return false;
         }
 
-        // 判断是不是匿名就可以访问的资源
+        // 不鉴权匿名就可以访问的资源
         String accessPolicy = resource.getAccessPolicy();
         if (RbacConstants.RESOURCE_ACCESS_POLICY_ANONYMOUS.equals(accessPolicy)) {
             return true;
         }
 
-        // 判断是不是登录就可以访问的资源
+        // 当前的用户是已登录的用户可以访问被标记成认证才能访问的资源
         if (RbacConstants.RESOURCE_ACCESS_POLICY_AUTHENTICATED.equals(accessPolicy)) {
             return true;
         }
 
-        // 判断是不是被授权访问的资源
+        // 判断当前用户是否被授权访问该资源
         if (isGrantedResource(subject, resource)) {
             return true;
         }

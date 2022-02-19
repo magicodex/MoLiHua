@@ -11,6 +11,9 @@ import jasmine.security.subject.UserDetailsServiceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author mh.z
+ */
 @Configuration
 public class SecurityConfig {
     private RuntimeProvider runtimeProvider;
