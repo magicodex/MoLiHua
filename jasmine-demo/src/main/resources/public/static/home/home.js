@@ -2,9 +2,10 @@
 (function () {
   'use strict'
 
+  // feather图标
   feather.replace();
 
-  // 点击菜单事件
+  // 点击菜单加载内嵌页面
   $(".home-menu-item > a").click(function(event) {
     event.preventDefault();
 
