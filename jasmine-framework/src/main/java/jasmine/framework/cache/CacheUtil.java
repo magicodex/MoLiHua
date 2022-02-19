@@ -32,7 +32,7 @@ public class CacheUtil {
      * @param type
      * @return
      */
-    public <T> T get(String category, Object key, Class<T> type) {
+    public static <T> T get(String category, Object key, Class<T> type) {
         return cacheService.get(category, key, type);
     }
 
@@ -45,7 +45,7 @@ public class CacheUtil {
      * @param supplier
      * @return
      */
-    public <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
+    public static <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
         return cacheService.get(category, key, type, supplier);
     }
 
@@ -56,7 +56,7 @@ public class CacheUtil {
      * @param key
      * @param value
      */
-    public void set(String category, Object key, Object value) {
+    public static void set(String category, Object key, Object value) {
         cacheService.set(category, key, value);
     }
 
@@ -66,7 +66,7 @@ public class CacheUtil {
      * @param category
      * @param key
      */
-    public void remove(String category, Object key) {
+    public static void remove(String category, Object key) {
         cacheService.remove(category, key);
     }
 
@@ -77,7 +77,7 @@ public class CacheUtil {
      * @param key
      * @param supplier
      */
-    public void sync(String category, Object key, Supplier<Object> supplier) {
+    public static void sync(String category, Object key, Supplier<Object> supplier) {
         cacheService.sync(category, key, supplier);
     }
 

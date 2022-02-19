@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class QJsonUtil {
     static {
         OBJECT_MAPPER = new ObjectMapper();
         OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        OBJECT_MAPPER.registerModule(new JavaTimeModule());
     }
 
     public static ObjectMapper getObjectMapper() {

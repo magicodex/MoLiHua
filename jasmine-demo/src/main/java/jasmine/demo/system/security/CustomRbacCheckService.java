@@ -6,6 +6,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.QStringUtil;
+import jasmine.framework.cache.CacheUtil;
 import jasmine.security.authorization.RbacCheckService;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.constant.RbacConstants;
@@ -110,25 +111,29 @@ public class CustomRbacCheckService implements RbacCheckService, InitSupport {
             return null;
         }
 
-        // 根据请求模式获取匹配的资源
-        List<SecurityResource> resourceList = resourceService.listResourcesByPath(pattern);
-        if (QCollectionUtil.isEmpty(resourceList)) {
-            return null;
-        }
-
         String requestMethod = request.getMethod();
-        SecurityResource matchedResource = null;
+        String cacheKey = requestMethod + "&" + pattern;
+        String cacheCategory = "SECURITY_RESOURCE";
 
-        // 根据访问方式获取匹配的资源
-        for (SecurityResource resource : resourceList) {
-            String accessMethod = resource.getAccessMethod();
-
-            if (RbacConstants.RESOURCE_ACCESS_METHOD_ANY.equals(accessMethod)
-                    || QStringUtil.equals(requestMethod, accessMethod)) {
-                matchedResource = resource;
-                break;
+        SecurityResource matchedResource = CacheUtil.get(cacheCategory, cacheKey, SecurityResource.class, () -> {
+            // 根据请求模式获取匹配的资源
+            List<SecurityResource> resourceList = resourceService.listResourcesByPath(pattern);
+            if (QCollectionUtil.isEmpty(resourceList)) {
+                return null;
             }
-        }
+
+            // 根据访问方式获取匹配的资源
+            for (SecurityResource resource : resourceList) {
+                String accessMethod = resource.getAccessMethod();
+
+                if (RbacConstants.RESOURCE_ACCESS_METHOD_ANY.equals(accessMethod)
+                        || QStringUtil.equals(requestMethod, accessMethod)) {
+                    return resource;
+                }
+            }
+
+            return null;
+        });
 
         return matchedResource;
     }

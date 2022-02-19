@@ -31,7 +31,7 @@ jasmine.security.rbac.enabled=true
 | :----: | :---- | :---- |
 | Spring Boot | 2.5.4 | WEB框架 |
 | Spring Security | 5.5.2 | 安全框架 |
-| Swagger | 2.9.2 | API文档 |
+| Swagger | 2.10.5 | API文档 |
 | Thymeleaf | 3.0.12 | 模板引擎 |
 | Mybatis-Plus | 3.4.3.4 | 持久层框架 |
 | HikariCP | 4.0.3 | 数据库连接池 |
