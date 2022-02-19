@@ -3,6 +3,7 @@ package jasmine.demo.journal.persistence.dao;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.mapper.JournalMapper;
@@ -49,6 +50,7 @@ public class JournalDao {
     public void saveJournal(JournalEO journal) {
         QCheckUtil.notNull(journal, "journal null");
 
+        journal.setTenantId(CurrentSubject.getTenantId());
         baseMapper.insert(journal);
     }
 

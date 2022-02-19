@@ -46,8 +46,6 @@ public class JournalServiceImpl implements JournalService {
         journalEO.setJournalTitle(journal.getJournalTitle());
         journalEO.setJournalContent(journal.getJournalContent());
         journalEO.setUserId(CurrentSubject.getUserId());
-        journalEO.setTenantId(CurrentSubject.getTenantId());
-
         journalDao.saveJournal(journalEO);
 
         return JournalDtoAdapter.toJournalDTO(journalEO);
