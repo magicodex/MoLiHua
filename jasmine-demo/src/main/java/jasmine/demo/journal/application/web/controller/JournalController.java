@@ -37,16 +37,16 @@ public class JournalController {
     public ModelAndView search(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
         Page queryPage = new Page(page, 10);
         // 查询日记
-        List<JournalDTO> recordList = journalService.pageAllJournals(queryPage);
-        List<WebJournalViewDTO> webJournalViewDTOList = QCollectionUtil.mapToList(recordList,
+        List<JournalDTO> journalDTOList = journalService.pageAllJournals(queryPage);
+        List<WebJournalViewDTO> webJournalViewDTOList = QCollectionUtil.mapToList(journalDTOList,
                 WebJournalDtoAdapter::toWebJournalViewDTO);
 
         Map<String, Object> model = Map.of("records", webJournalViewDTOList,
-                "showNoData", QCollectionUtil.isEmpty(recordList),
-                "showPrevPage", page > 1,
+                "showNoData", QCollectionUtil.isEmpty(journalDTOList),
+                "showPrevPage", (page > 1),
                 "currPage", page,
-                "prevPage", page - 1,
-                "nextPage", page + 1);
+                "prevPage", (page - 1),
+                "nextPage", (page + 1));
 
         return new ModelAndView("journal/journal-search.html", model);
     }

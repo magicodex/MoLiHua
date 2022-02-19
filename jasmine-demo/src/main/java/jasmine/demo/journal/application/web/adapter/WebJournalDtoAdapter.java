@@ -23,8 +23,7 @@ public class WebJournalDtoAdapter {
             return null;
         }
 
-        JournalSaveDTO journalSaveDTO = QMapperUtil.mapTo(webJournalSaveDTO, JournalSaveDTO.class);
-        return journalSaveDTO;
+        return QMapperUtil.mapTo(webJournalSaveDTO, JournalSaveDTO.class);
     }
 
     /**

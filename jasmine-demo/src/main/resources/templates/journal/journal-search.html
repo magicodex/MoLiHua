@@ -32,12 +32,17 @@
             </table>
             <!-- END 表格 -->
 
+            <!-- 没有数据时显示 -->
             <p th:if="${showNoData} == true" class="text-center text-info">没有数据！</p>
 
             <!-- 分页栏 -->
             <nav>
                 <ul class="pager">
-                    <li><a th:if="${showPrevPage} == true" th:href="'/journal/search?page=' + ${prevPage}">上一页</a></li>
+                    <li>
+                        <a th:if="${showPrevPage} == true" th:href="'/journal/search?page=' + ${prevPage}">
+                            上一页
+                        </a>
+                    </li>
                     <li><a href="#" th:text="${currPage}"></a></li>
                     <li><a th:href="'/journal/search?page=' + ${nextPage}">下一页</a></li>
                 </ul>
@@ -46,7 +51,9 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- 模态框 -->
+    <div class="modal fade" id="modalDialog" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -57,9 +64,10 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
+            </div>
+        </div>
     </div>
+    <!-- END 模态框 -->
 </div>
 
 <script src="/static/common/jquery/core/jquery.min.js" type='text/javascript'></script>

@@ -1,12 +1,18 @@
 package jasmine.demo.journal.application.web.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * @author mh.z
  */
+@ApiModel(description = "保存日记")
 public class WebJournalSaveDTO {
-    /** 标题 */
+
+    @ApiModelProperty("标题")
     private String journalTitle;
-    /** 内容 */
+
+    @ApiModelProperty("内容")
     private String journalContent;
 
     public String getJournalTitle() {
