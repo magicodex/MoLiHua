@@ -1,4 +1,4 @@
-package jasmine.demo.system.cache;
+package jasmine.demo.framework.cache;
 
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;

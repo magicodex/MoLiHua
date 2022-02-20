@@ -1,9 +1,9 @@
-package jasmine.demo.system.remote.rabbit;
+package jasmine.demo.framework.mq;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
-import jasmine.framework.remote.mq.PublishMessageContext;
-import jasmine.framework.remote.mq.PublishMessageProvider;
+import jasmine.demo.journal.business.dto.JournalNoticeMessageDTO;
+import jasmine.framework.remote.mq.MessageSender;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -15,22 +15,21 @@ import java.nio.charset.StandardCharsets;
  * @author mh.z
  */
 @Component
-public class JournalNoticePublishMessageProvider implements PublishMessageProvider {
+public class JournalNoticeMessageSender implements MessageSender<JournalNoticeMessageDTO> {
     private RabbitTemplate template;
 
-    public JournalNoticePublishMessageProvider(RabbitTemplate template) {
+    public JournalNoticeMessageSender(RabbitTemplate template) {
         this.template = template;
     }
 
     @Override
-    public void publish(PublishMessageContext context, Object data) {
-        QCheckUtil.notNull(context, "context null");
-        QCheckUtil.notNull(data, "data null");
+    public void send(String key, JournalNoticeMessageDTO messageDTO) {
+        QCheckUtil.notNull(messageDTO, "messageDTO null");
 
         MessageProperties properties = new MessageProperties();
         properties.setHeader("category", "notice");
 
-        String json = QJsonUtil.toJson(data);
+        String json = QJsonUtil.toJson(messageDTO);
         byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
         Message message = new Message(bytes, properties);
 

@@ -1,6 +1,6 @@
-package jasmine.demo.system.config;
+package jasmine.demo.framework.mq;
 
-import jasmine.framework.remote.mq.ConsumeMessageService;
+import jasmine.framework.remote.mq.ReceiveMessageService;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
@@ -16,12 +16,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnProperty(value = "jasmine.message-queue.consumer.enabled",
         havingValue = "true", matchIfMissing = false)
-public class RabbitRegisterConsumerConfig {
+public class RabbitConsumerConfig {
     @Autowired
     private ConnectionFactory connectionFactory;
 
     @Autowired
-    private ConsumeMessageService consumeMessageService;
+    private ReceiveMessageService receiveMessageService;
 
     @Bean
     public MessageListenerContainer journalSyncConsumer(Queue journalSyncQueue) {
@@ -30,7 +30,7 @@ public class RabbitRegisterConsumerConfig {
         container.setConcurrentConsumers(1);
 
         container.setMessageListener((message) -> {
-            consumeMessageService.consume("journalSync", message);
+            receiveMessageService.receive("journalSync", message);
         });
 
         return container;

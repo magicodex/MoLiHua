@@ -7,7 +7,7 @@ package jasmine.framework.job;
  *
  * @author mh.z
  */
-public interface JobService {
+public interface JobExecutor {
 
     /**
      * 执行

@@ -12,7 +12,7 @@ import jasmine.demo.journal.persistence.dao.JournalDao;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.param.JournalQueryParam;
 import jasmine.framework.lock.annotation.DistributedLock;
-import jasmine.framework.remote.mq.PublishMessageService;
+import jasmine.framework.remote.mq.SendMessageService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,11 +24,11 @@ import java.util.List;
 @Service
 public class JournalServiceImpl implements JournalService {
     private JournalDao journalDao;
-    private PublishMessageService publishMessageService;
+    private SendMessageService sendMessageService;
 
-    public JournalServiceImpl(JournalDao journalDao, PublishMessageService publishMessageService) {
+    public JournalServiceImpl(JournalDao journalDao, SendMessageService sendMessageService) {
         this.journalDao = journalDao;
-        this.publishMessageService = publishMessageService;
+        this.sendMessageService = sendMessageService;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class JournalServiceImpl implements JournalService {
 
         JournalNoticeMessageDTO messageDTO = JournalDtoAdapter.toJournalNoticeMessageDTO(journalEO);
         // 发送消息
-        publishMessageService.publish("journalNotice", messageDTO);
+        sendMessageService.send("journalNotice", messageDTO);
 
         return JournalDtoAdapter.toJournalDTO(journalEO);
     }

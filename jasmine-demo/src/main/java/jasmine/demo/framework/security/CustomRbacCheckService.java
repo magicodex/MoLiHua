@@ -1,4 +1,4 @@
-package jasmine.demo.system.security;
+package jasmine.demo.framework.security;
 
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;

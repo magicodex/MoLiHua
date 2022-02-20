@@ -1,4 +1,6 @@
-package jasmine.demo.system.config;
+package jasmine.demo.config;
+
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -7,6 +9,7 @@ package jasmine.demo.system.config;
  *
  * @author mh.z
  */
+@Component
 public class ApplicationConfig {
 
 }

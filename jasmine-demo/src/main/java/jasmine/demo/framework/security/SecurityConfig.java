@@ -1,9 +1,9 @@
-package jasmine.demo.system.config;
+package jasmine.demo.framework.security;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.demo.system.security.CustomClientDetailsService;
-import jasmine.demo.system.security.CustomRbacCheckService;
-import jasmine.demo.system.security.CustomUserDetailsService;
+import jasmine.demo.framework.security.CustomClientDetailsService;
+import jasmine.demo.framework.security.CustomRbacCheckService;
+import jasmine.demo.framework.security.CustomUserDetailsService;
 import jasmine.security.authorization.RbacCheckService;
 import jasmine.security.rbac.service.SecurityResourceService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
