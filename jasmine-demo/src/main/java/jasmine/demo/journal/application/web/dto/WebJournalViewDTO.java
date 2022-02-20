@@ -1,5 +1,9 @@
 package jasmine.demo.journal.application.web.dto;
 
+import jasmine.core.util.QDateUtil;
+import jasmine.core.util.QMapperUtil;
+import jasmine.demo.journal.business.dto.JournalDTO;
+
 /**
  * @author mh.z
  */
@@ -42,6 +46,23 @@ public class WebJournalViewDTO {
 
     public void setCreatedDateText(String createdDateText) {
         this.createdDateText = createdDateText;
+    }
+
+    /**
+     * 转换成 WebJournalViewDTO 对象
+     *
+     * @param journalDTO
+     * @return
+     */
+    public static WebJournalViewDTO fromJournalDTO(JournalDTO journalDTO) {
+        if (journalDTO == null) {
+            return null;
+        }
+
+        WebJournalViewDTO webJournalViewDTO = QMapperUtil.mapTo(journalDTO, WebJournalViewDTO.class);
+        webJournalViewDTO.setCreatedDateText(QDateUtil.formatYearSecond(journalDTO.getCreatedDate()));
+
+        return webJournalViewDTO;
     }
 
 }

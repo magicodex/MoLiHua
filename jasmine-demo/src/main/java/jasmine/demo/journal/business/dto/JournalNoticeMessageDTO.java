@@ -1,5 +1,9 @@
 package jasmine.demo.journal.business.dto;
 
+import jasmine.core.util.QDateUtil;
+import jasmine.core.util.QMapperUtil;
+import jasmine.demo.journal.persistence.entity.JournalEO;
+
 /**
  * @author mh.z
  */
@@ -44,5 +48,23 @@ public class JournalNoticeMessageDTO {
     public void setCreatedDateText(String createdDateText) {
         this.createdDateText = createdDateText;
     }
-    
+
+    /**
+     * 转换成 JournalNoticeMessageDTO 对象
+     *
+     * @param journalEO
+     * @return
+     */
+    public static JournalNoticeMessageDTO toJournalNoticeMessageDTO(JournalEO journalEO) {
+        if (journalEO == null) {
+            return null;
+        }
+
+        JournalNoticeMessageDTO messageDTO = QMapperUtil.mapTo(journalEO,
+                JournalNoticeMessageDTO.class);
+        messageDTO.setCreatedDateText(QDateUtil.formatYearSecond(journalEO.getCreatedDate()));
+
+        return messageDTO;
+    }
+
 }

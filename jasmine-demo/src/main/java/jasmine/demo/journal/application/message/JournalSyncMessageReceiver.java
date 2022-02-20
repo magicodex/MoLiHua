@@ -1,7 +1,6 @@
 package jasmine.demo.journal.application.message;
 
 import jasmine.core.util.QCheckUtil;
-import jasmine.demo.journal.business.adapter.JournalDtoAdapter;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.business.dto.JournalSyncMessageDTO;
 import jasmine.demo.journal.business.service.JournalService;
@@ -28,7 +27,7 @@ public class JournalSyncMessageReceiver implements MessageReceiver<JournalSyncMe
     public void receive(JournalSyncMessageDTO messageDTO) {
         QCheckUtil.notNull(messageDTO, "messageDTO null");
 
-        JournalSaveDTO journalSaveDTO = JournalDtoAdapter.toJournalSaveDTO(messageDTO);
+        JournalSaveDTO journalSaveDTO = JournalSaveDTO.fromJournalSyncMessageDTO(messageDTO);
         journalService.saveJournal(journalSaveDTO);
     }
 

@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
-import jasmine.demo.journal.business.adapter.JournalDtoAdapter;
 import jasmine.demo.journal.business.dto.JournalDTO;
 import jasmine.demo.journal.business.dto.JournalNoticeMessageDTO;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
@@ -39,7 +38,7 @@ public class JournalServiceImpl implements JournalService {
 
         List<JournalEO> journalEOList = journalDao.pageJournalsByCond(param, page);
         List<JournalDTO> journalDTOList = QCollectionUtil.mapToList(journalEOList,
-                JournalDtoAdapter::toJournalDTO);
+                JournalDTO::fromJournalEO);
 
         return journalDTOList;
     }
@@ -59,11 +58,11 @@ public class JournalServiceImpl implements JournalService {
         journalEO.setUserId(CurrentSubject.getUserId());
         journalDao.saveJournal(journalEO);
 
-        JournalNoticeMessageDTO messageDTO = JournalDtoAdapter.toJournalNoticeMessageDTO(journalEO);
+        JournalNoticeMessageDTO messageDTO = JournalNoticeMessageDTO.toJournalNoticeMessageDTO(journalEO);
         // 发送消息
         sendMessageService.send("journalNotice", messageDTO);
 
-        return JournalDtoAdapter.toJournalDTO(journalEO);
+        return JournalDTO.fromJournalEO(journalEO);
     }
 
 }

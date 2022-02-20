@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jasmine.core.util.QCollectionUtil;
-import jasmine.demo.journal.application.web.adapter.WebJournalDtoAdapter;
 import jasmine.demo.journal.application.web.dto.WebJournalSaveDTO;
 import jasmine.demo.journal.application.web.dto.WebJournalViewDTO;
 import jasmine.demo.journal.business.dto.JournalDTO;
@@ -39,7 +38,7 @@ public class JournalController {
         // 查询日记
         List<JournalDTO> journalDTOList = journalService.pageAllJournals(queryPage);
         List<WebJournalViewDTO> webJournalViewDTOList = QCollectionUtil.mapToList(journalDTOList,
-                WebJournalDtoAdapter::toWebJournalViewDTO);
+                WebJournalViewDTO::fromJournalDTO);
 
         Map<String, Object> model = Map.of("records", webJournalViewDTOList,
                 "showNoData", QCollectionUtil.isEmpty(journalDTOList),
@@ -62,7 +61,7 @@ public class JournalController {
     @ApiOperation(value = "保存日记")
     @PostMapping("/journal/save")
     public ModelAndView save(@ModelAttribute WebJournalSaveDTO webJournalSaveDTO) {
-        JournalSaveDTO journalSaveDTO = WebJournalDtoAdapter.toJournalSaveDTO(webJournalSaveDTO);
+        JournalSaveDTO journalSaveDTO = WebJournalSaveDTO.toJournalSaveDTO(webJournalSaveDTO);
         // 保存日记
         journalService.saveJournal(journalSaveDTO);
 
