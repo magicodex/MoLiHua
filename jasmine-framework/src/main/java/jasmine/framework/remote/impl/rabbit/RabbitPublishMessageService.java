@@ -43,13 +43,13 @@ public class RabbitPublishMessageService implements PublishMessageService {
 
         if (Boolean.TRUE.equals(config.getMessageQueuePublisherEnabled())) {
             PublishMessageProvider provider = getProvider(category);
+            PublishMessageContext context = new DefaultPublishMessageContext(category);
 
             if (interceptor != null) {
                 // 拦截处理
-                interceptor.intercept(provider, category, data);
+                interceptor.intercept(provider, context, data);
             } else {
                 // 发布消息
-                PublishMessageContext context = new DefaultPublishMessageContext();
                 provider.publish(context, data);
             }
         } else {

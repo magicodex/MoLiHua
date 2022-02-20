@@ -12,6 +12,13 @@ import java.util.function.Supplier;
 public interface PublishMessageContext {
 
     /**
+     * 返回类别
+     *
+     * @return
+     */
+    String getCategory();
+
+    /**
      * 返回标识
      *
      * @param supplier

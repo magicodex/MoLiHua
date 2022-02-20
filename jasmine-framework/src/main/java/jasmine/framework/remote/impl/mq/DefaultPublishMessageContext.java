@@ -10,18 +10,26 @@ import java.util.function.Supplier;
  * @author mh.z
  */
 public class DefaultPublishMessageContext implements PublishMessageContext {
+    /** 类别 */
+    private String category;
     /** 标识 */
     private String key;
     /** 属性 */
     private Map<String, Object> attributes;
 
-    public DefaultPublishMessageContext() {
-        this(null);
+    public DefaultPublishMessageContext(String category) {
+        this(category, null);
     }
 
-    public DefaultPublishMessageContext(String key) {
+    public DefaultPublishMessageContext(String category, String key) {
+        this.category = category;
         this.key = key;
         this.attributes = new HashMap<>();
+    }
+
+    @Override
+    public String getCategory() {
+        return category;
     }
 
     @Override

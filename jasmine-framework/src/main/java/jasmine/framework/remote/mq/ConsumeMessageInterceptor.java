@@ -13,8 +13,8 @@ public interface ConsumeMessageInterceptor {
      * 拦截
      *
      * @param provider
-     * @param category
+     * @param context
      * @param data
      */
-    void intercept(ConsumeMessageProvider provider, String category, Object data);
+    void intercept(ConsumeMessageProvider provider, ConsumeMessageContext context, Object data);
 }

@@ -53,6 +53,7 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
             Message message = (Message) data;
             byte[] messageBody = message.getBody();
             Object targetObject = null;
+            ConsumeMessageContext context = new DefaultConsumeMessageContext(category);
 
             if (targetType != null) {
                 // 反序列化成对象
@@ -63,10 +64,9 @@ public class RabbitConsumeMessageService implements ConsumeMessageService {
 
             if (interceptor != null) {
                 // 拦截处理
-                interceptor.intercept(provider, category, targetObject);
+                interceptor.intercept(provider, context, targetObject);
             } else {
                 // 消费消息
-                ConsumeMessageContext context = new DefaultConsumeMessageContext();
                 provider.consume(context, targetObject);
             }
         } else {

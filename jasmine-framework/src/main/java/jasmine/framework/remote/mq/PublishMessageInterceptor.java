@@ -13,8 +13,8 @@ public interface PublishMessageInterceptor {
      * 拦截
      *
      * @param provider
-     * @param category
+     * @param context
      * @param data
      */
-    void intercept(PublishMessageProvider provider, String category, Object data);
+    void intercept(PublishMessageProvider provider, PublishMessageContext context, Object data);
 }
