@@ -1,9 +1,9 @@
-package jasmine.demo.journal.persistence.param;
+package jasmine.demo.journal.persistence.dto;
 
 /**
  * @author mh.z
  */
-public class JournalQueryParam {
+public class JournalQueryDbDTO {
     /** 用户ID */
     private Long userId;
 

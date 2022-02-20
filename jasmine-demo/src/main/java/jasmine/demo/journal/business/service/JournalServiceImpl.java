@@ -10,7 +10,7 @@ import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.constant.JournalLocks;
 import jasmine.demo.journal.persistence.dao.JournalDao;
 import jasmine.demo.journal.persistence.entity.JournalEO;
-import jasmine.demo.journal.persistence.param.JournalQueryParam;
+import jasmine.demo.journal.persistence.dto.JournalQueryDbDTO;
 import jasmine.framework.lock.annotation.DistributedLock;
 import jasmine.framework.remote.mq.SendMessageService;
 import org.springframework.stereotype.Service;
@@ -34,7 +34,7 @@ public class JournalServiceImpl implements JournalService {
     @Override
     public List<JournalDTO> pageAllJournals(Page page) {
         QCheckUtil.notNull(page, "page null");
-        JournalQueryParam param = new JournalQueryParam();
+        JournalQueryDbDTO param = new JournalQueryDbDTO();
         param.setUserId(CurrentSubject.getUserId());
 
         List<JournalEO> journalEOList = journalDao.pageJournalsByCond(param, page);

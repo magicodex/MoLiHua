@@ -7,7 +7,7 @@ import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.mapper.JournalMapper;
-import jasmine.demo.journal.persistence.param.JournalQueryParam;
+import jasmine.demo.journal.persistence.dto.JournalQueryDbDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class JournalDao {
      * @param page
      * @return
      */
-    public List<JournalEO> pageJournalsByCond(JournalQueryParam param, Page<JournalEO> page) {
+    public List<JournalEO> pageJournalsByCond(JournalQueryDbDTO param, Page<JournalEO> page) {
         QCheckUtil.notNull(param, "param null");
         QCheckUtil.notNull(page, "page null");
 
