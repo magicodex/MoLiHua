@@ -2,10 +2,13 @@ package jasmine.demo.framework.security;
 
 import jasmine.core.context.SubjectProvider;
 import jasmine.security.subject.UserSubject;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
 
 /**
  * <p>
@@ -45,6 +48,15 @@ public class UserSubjectProvider implements SubjectProvider {
     }
 
     /**
+     * 设置当前的用户
+     *
+     * @param subject
+     */
+    public void setCurrentSubject(UserSubject subject) {
+        setSubjectToContext(subject);
+    }
+
+    /**
      * 获取用户信息
      *
      * @return
@@ -69,6 +81,19 @@ public class UserSubjectProvider implements SubjectProvider {
         }
 
         return null;
+    }
+
+    /**
+     * 设置用户信息
+     *
+     * @param subject
+     */
+    protected void setSubjectToContext(UserSubject subject) {
+        Authentication authentication = new UsernamePasswordAuthenticationToken(subject,
+                null, Collections.emptyList());
+
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(authentication);
     }
 
 }

@@ -1,5 +1,6 @@
 package jasmine.demo.journal.application.message;
 
+import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
 import jasmine.demo.journal.business.dto.JournalNoticeMessageDTO;
@@ -27,6 +28,8 @@ public class JournalNoticeMessageSender implements MessageSender<JournalNoticeMe
         QCheckUtil.notNull(messageDTO, "messageDTO null");
 
         MessageProperties properties = new MessageProperties();
+        properties.setHeader("subject", "userId:" + CurrentSubject.getUserId());
+
         String json = QJsonUtil.toJson(messageDTO);
         byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
         Message message = new Message(bytes, properties);

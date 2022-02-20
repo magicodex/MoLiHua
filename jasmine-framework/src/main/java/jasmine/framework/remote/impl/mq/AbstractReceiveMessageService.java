@@ -18,7 +18,7 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
     private FrameworkConfig frameworkConfig;
 
     /** 消息接收者 bean 的名称后缀 */
-    private static final String RECEIVER_BEAN_SUFFIX = "messageReceiver";
+    private static final String RECEIVER_BEAN_SUFFIX = "MessageReceiver";
 
     public AbstractReceiveMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;

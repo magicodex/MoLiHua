@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  * <p>
@@ -17,6 +18,10 @@ public class UserSubject extends User {
     private Long tenantId;
     /** 用户ID */
     private Long userId;
+
+    public UserSubject(Long tenantId, Long userId) {
+        this(tenantId, userId, "????", "????", Collections.emptyList());
+    }
 
     public UserSubject(Long userId, String username, String password,
                        Collection<? extends GrantedAuthority> authorities) {

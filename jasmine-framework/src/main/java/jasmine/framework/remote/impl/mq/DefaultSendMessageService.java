@@ -18,7 +18,7 @@ public class DefaultSendMessageService implements SendMessageService {
     private FrameworkConfig frameworkConfig;
 
     /** 消息发送者 bean 的名称后缀 */
-    private static final String SENDER_BEAN_SUFFIX = "messageSender";
+    private static final String SENDER_BEAN_SUFFIX = "MessageSender";
 
     public DefaultSendMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;

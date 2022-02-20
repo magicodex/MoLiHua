@@ -1,12 +1,12 @@
 package jasmine.demo.framework.config;
 
 import jasmine.core.context.RuntimeProvider;
+import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.CustomRbacCheckService;
 import jasmine.demo.framework.security.UserSubjectDetailsService;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
 import jasmine.framework.remote.impl.mq.DefaultSendMessageService;
-import jasmine.framework.remote.impl.rabbit.RabbitReceiveMessageService;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;
@@ -54,7 +54,7 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Bean
     @Override
     public ReceiveMessageService receiveMessageService() {
-        return new RabbitReceiveMessageService(runtimeProvider);
+        return new CustomRabbitReceiveMessageService(runtimeProvider);
     }
 
     @Bean
