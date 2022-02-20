@@ -1,11 +1,11 @@
-package jasmine.demo.journal.application.web.controller;
+package jasmine.demo.journal.application.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jasmine.core.util.QCollectionUtil;
-import jasmine.demo.journal.application.web.dto.WebJournalSaveDTO;
-import jasmine.demo.journal.application.web.dto.WebJournalViewDTO;
+import jasmine.demo.journal.application.dto.WebJournalSaveDTO;
+import jasmine.demo.journal.application.dto.WebJournalViewDTO;
 import jasmine.demo.journal.business.dto.JournalDTO;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.business.service.JournalService;

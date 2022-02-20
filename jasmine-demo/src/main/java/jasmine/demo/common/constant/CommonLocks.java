@@ -3,6 +3,6 @@ package jasmine.demo.common.constant;
 /**
  * @author mh.z
  */
-public interface LockConstants {
+public interface CommonLocks {
 
 }

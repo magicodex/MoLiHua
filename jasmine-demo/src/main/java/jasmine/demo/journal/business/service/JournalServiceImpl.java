@@ -7,6 +7,7 @@ import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.journal.business.dto.JournalDTO;
 import jasmine.demo.journal.business.dto.JournalNoticeMessageDTO;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
+import jasmine.demo.journal.constant.JournalLocks;
 import jasmine.demo.journal.persistence.dao.JournalDao;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.param.JournalQueryParam;
@@ -46,7 +47,7 @@ public class JournalServiceImpl implements JournalService {
     /**
      * 此处使用分布式锁没有业务上的意义，只是用来测试分布式锁是否生效。
      */
-    @DistributedLock(category = "JOURNAL_SAVE", key = "#journal.journalTitle")
+    @DistributedLock(category = JournalLocks.JOURNAL_SAVE, key = "#journal.journalTitle")
     @Transactional(rollbackFor = Exception.class)
     @Override
     public JournalDTO saveJournal(JournalSaveDTO journal) {

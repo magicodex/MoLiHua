@@ -1,4 +1,4 @@
-package jasmine.demo.journal.application.web.dto;
+package jasmine.demo.journal.application.dto;
 
 import jasmine.core.util.QDateUtil;
 import jasmine.core.util.QMapperUtil;

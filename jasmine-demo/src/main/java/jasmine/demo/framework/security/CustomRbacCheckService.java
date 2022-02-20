@@ -6,6 +6,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.QStringUtil;
+import jasmine.demo.common.constant.CommonCaches;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.security.authorization.RbacCheckService;
 import jasmine.security.authorization.RoleAuthority;
@@ -113,7 +114,7 @@ public class CustomRbacCheckService implements RbacCheckService, InitSupport {
 
         String requestMethod = request.getMethod();
         String cacheKey = requestMethod + "&" + pattern;
-        String cacheCategory = "SECURITY_RESOURCE";
+        String cacheCategory = CommonCaches.SECURITY_RESOURCE;
 
         SecurityResource matchedResource = CacheUtil.get(cacheCategory, cacheKey, SecurityResource.class, () -> {
             // 根据请求模式获取匹配的资源

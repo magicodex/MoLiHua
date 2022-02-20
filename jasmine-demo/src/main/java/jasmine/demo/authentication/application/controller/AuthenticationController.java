@@ -1,4 +1,4 @@
-package jasmine.demo.authentication.application.web.controller;
+package jasmine.demo.authentication.application.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

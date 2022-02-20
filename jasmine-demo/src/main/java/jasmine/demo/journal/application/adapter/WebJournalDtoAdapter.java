@@ -1,4 +1,4 @@
-package jasmine.demo.journal.application.web.adapter;
+package jasmine.demo.journal.application.adapter;
 
 /**
  * @author mh.z

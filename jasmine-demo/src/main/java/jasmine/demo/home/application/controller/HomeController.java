@@ -1,4 +1,4 @@
-package jasmine.demo.home.application.web.controller;
+package jasmine.demo.home.application.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
