@@ -35,7 +35,7 @@ cd persistence
 mkdir entity
 mkdir dao
 mkdir mapper
-mkdir param
+mkdir dto
 cd ../
 
 rem 创建 constant 目录
