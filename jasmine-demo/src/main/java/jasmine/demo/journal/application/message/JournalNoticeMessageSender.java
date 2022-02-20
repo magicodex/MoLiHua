@@ -27,13 +27,11 @@ public class JournalNoticeMessageSender implements MessageSender<JournalNoticeMe
         QCheckUtil.notNull(messageDTO, "messageDTO null");
 
         MessageProperties properties = new MessageProperties();
-        properties.setHeader("category", "notice");
-
         String json = QJsonUtil.toJson(messageDTO);
         byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
         Message message = new Message(bytes, properties);
 
-        template.send("demo.journal.exchange", null, message);
+        template.send("demo.journal.exchange", "notice", message);
     }
 
 }

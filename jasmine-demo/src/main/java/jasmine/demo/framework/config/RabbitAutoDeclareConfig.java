@@ -2,13 +2,11 @@ package jasmine.demo.framework.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.HeadersExchange;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Map;
 
 /**
  * @author mh.z
@@ -22,8 +20,8 @@ public class RabbitAutoDeclareConfig {
     private static final String JOURNAL_SYNC_QUEUE_NAME = "demo.journal-sync.queue";
 
     @Bean
-    public HeadersExchange journalExchange() {
-        return new HeadersExchange(JOURNAL_EXCHANGE_NAME);
+    public DirectExchange journalExchange() {
+        return new DirectExchange(JOURNAL_EXCHANGE_NAME);
     }
 
     @Bean
@@ -37,23 +35,21 @@ public class RabbitAutoDeclareConfig {
     }
 
     @Bean
-    public Binding journalNoticeQueueBinding(HeadersExchange journalExchange, Queue journalNoticeQueue) {
+    public Binding journalNoticeQueueBinding(DirectExchange journalExchange, Queue journalNoticeQueue) {
         Binding binding = BindingBuilder
                 .bind(journalNoticeQueue)
                 .to(journalExchange)
-                .whereAny(Map.of("category", "notice"))
-                .match();
+                .with("notice");
 
         return binding;
     }
 
     @Bean
-    public Binding journalSyncQueueBinding(HeadersExchange journalExchange, Queue journalSyncQueue) {
+    public Binding journalSyncQueueBinding(DirectExchange journalExchange, Queue journalSyncQueue) {
         Binding binding = BindingBuilder
                 .bind(journalSyncQueue)
                 .to(journalExchange)
-                .whereAny(Map.of("category", "sync"))
-                .match();
+                .with("sync");
 
         return binding;
     }
