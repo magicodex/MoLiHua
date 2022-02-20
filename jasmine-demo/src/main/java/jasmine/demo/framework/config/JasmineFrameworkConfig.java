@@ -1,9 +1,9 @@
 package jasmine.demo.framework.config;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.demo.framework.security.CustomClientDetailsService;
+import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.CustomRbacCheckService;
-import jasmine.demo.framework.security.CustomUserDetailsService;
+import jasmine.demo.framework.security.UserSubjectDetailsService;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
 import jasmine.framework.remote.impl.mq.DefaultSendMessageService;
 import jasmine.framework.remote.impl.rabbit.RabbitReceiveMessageService;
@@ -33,7 +33,7 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Override
     public ClientDetailsServiceProvider clientDetailsServiceProvider() {
         return () -> {
-            return new CustomClientDetailsService(runtimeProvider);
+            return new BaseClientDetailsService(runtimeProvider);
         };
     }
 
@@ -41,7 +41,7 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Override
     public UserDetailsServiceProvider userDetailsServiceProvider() {
         return () -> {
-            return new CustomUserDetailsService(runtimeProvider);
+            return new UserSubjectDetailsService(runtimeProvider);
         };
     }
 

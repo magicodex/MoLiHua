@@ -19,13 +19,13 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class CustomUserDetailsService implements UserDetailsService {
+public class UserSubjectDetailsService implements UserDetailsService {
     private RuntimeProvider runtimeProvider;
     private UserDao userDao;
     private PasswordEncoder passwordEncoder;
     private SecurityRoleService roleService;
 
-    public CustomUserDetailsService(RuntimeProvider provider) {
+    public UserSubjectDetailsService(RuntimeProvider provider) {
         this.runtimeProvider = provider;
         userDao = runtimeProvider.getByType(UserDao.class);
         passwordEncoder = runtimeProvider.getByType(PasswordEncoder.class);
