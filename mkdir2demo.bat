@@ -16,7 +16,6 @@ mkdir application
 cd application
 mkdir controller
 mkdir dto
-mkdir adapter
 cd ../
 
 rem 创建 business 目录
@@ -24,7 +23,6 @@ mkdir business
 cd business
 mkdir service
 mkdir dto
-mkdir adapter
 mkdir domain
 cd domain
 mkdir infrastructure
