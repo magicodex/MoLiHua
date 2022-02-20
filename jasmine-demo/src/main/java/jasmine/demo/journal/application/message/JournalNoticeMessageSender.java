@@ -1,4 +1,4 @@
-package jasmine.demo.framework.mq;
+package jasmine.demo.journal.application.message;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;

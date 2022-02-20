@@ -6,12 +6,10 @@ import jasmine.framework.common.conversion.DeserializationHelper;
 import jasmine.framework.remote.impl.mq.AbstractReceiveMessageService;
 import jasmine.framework.remote.mq.MessageReceiver;
 import org.springframework.amqp.core.Message;
-import org.springframework.stereotype.Component;
 
 /**
  * @author mh.z
  */
-@Component
 public class RabbitReceiveMessageService extends AbstractReceiveMessageService<Message> {
     private DeserializationHelper deserializationHelper;
 

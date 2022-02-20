@@ -1,4 +1,4 @@
-package jasmine.demo.framework.mq;
+package jasmine.demo.framework.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
