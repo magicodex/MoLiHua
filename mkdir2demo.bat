@@ -14,12 +14,9 @@ cd %module%
 rem 创建 application 目录
 mkdir application
 cd application
-mkdir web
-cd web
 mkdir controller
 mkdir dto
 mkdir adapter
-cd ../
 cd ../
 
 rem 创建 business 目录
@@ -29,6 +26,9 @@ mkdir service
 mkdir dto
 mkdir adapter
 mkdir domain
+cd domain
+mkdir infrastructure
+cd ../
 cd ../
 
 rem 创建 persistence 目录
