@@ -8,5 +8,5 @@ public interface DataActionWithoutResult {
     /**
      * 调用
      */
-    void call();
+    void call() throws Throwable;
 }

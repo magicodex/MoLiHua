@@ -12,7 +12,7 @@ public interface DataSourceDecideFacade {
      * @param key
      * @param action
      */
-    void decide(String category, Object key, DataActionWithResult action);
+    void decide(String category, Object key, DataActionWithoutResult action);
 
     /**
      * 切换数据源
@@ -21,5 +21,14 @@ public interface DataSourceDecideFacade {
      * @param key
      * @param action
      */
-    <T> T decide(String category, Object key, DataActionWithoutResult action);
+    <T> T decide(String category, Object key, DataActionWithResult<T> action);
+
+    /**
+     * 只读数据源
+     *
+     * @param action
+     * @param <T>
+     * @return
+     */
+    <T> T readOny(DataActionWithResult<T> action);
 }

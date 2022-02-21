@@ -3,7 +3,7 @@ package jasmine.framework.persistence.datasource;
 /**
  * @author mh.z
  */
-public interface DataActionWithResult {
+public interface DataActionWithResult<T> {
 
     /**
      * 调用
@@ -11,5 +11,5 @@ public interface DataActionWithResult {
      * @param <T>
      * @return
      */
-    <T> T call();
+    T call() throws Throwable;
 }
