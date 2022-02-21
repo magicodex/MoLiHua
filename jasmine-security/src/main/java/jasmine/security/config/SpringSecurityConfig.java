@@ -43,10 +43,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 允许所有人访问静态目录 /static/
                 .antMatchers("/static/**")
                 .permitAll()
-                // 没有特别说明的其它请求必须认证才能访问
+                // 没有特别说明的其它请求由访问决策管理器决定能否访问
                 .anyRequest()
-                .authenticated()
-                .withObjectPostProcessor(filterSecurityInterceptorPostProcessor());
+                .denyAll()
+                // 设置访问决策管理器
+                .withObjectPostProcessor(setAccessDecisionManager());
 
         // 自定义登录页面和认证失败后跳转的页面
         http.formLogin()
@@ -98,7 +99,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      *
      * @return
      */
-    private ObjectPostProcessor<FilterSecurityInterceptor> filterSecurityInterceptorPostProcessor() {
+    private ObjectPostProcessor<FilterSecurityInterceptor> setAccessDecisionManager() {
         return new ObjectPostProcessor<>() {
             @Override
             public <O extends FilterSecurityInterceptor> O postProcess(O object) {

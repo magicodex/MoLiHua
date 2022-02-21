@@ -8,7 +8,7 @@ import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.demo.common.constant.CommonCaches;
 import jasmine.framework.cache.CacheUtil;
-import jasmine.security.authorization.RbacCheckService;
+import jasmine.security.authorization.DynamicAccessCheckService;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.constant.RbacConstants;
 import jasmine.security.rbac.dto.ResourceBaseInfoDTO;
@@ -28,12 +28,12 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class CustomRbacCheckService implements RbacCheckService, InitSupport {
-    private static final Logger logger = LoggerFactory.getLogger(CustomRbacCheckService.class);
+public class RbacAccessCheckService implements DynamicAccessCheckService, InitSupport {
+    private static final Logger logger = LoggerFactory.getLogger(RbacAccessCheckService.class);
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
     private SecurityResourceService resourceService;
 
-    public CustomRbacCheckService(SecurityResourceService resourceService) {
+    public RbacAccessCheckService(SecurityResourceService resourceService) {
         this.resourceService = resourceService;
     }
 

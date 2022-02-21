@@ -1,6 +1,6 @@
 package jasmine.security;
 
-import jasmine.security.authorization.RbacCheckService;
+import jasmine.security.authorization.DynamicAccessCheckService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserDetailsServiceProvider;
 
@@ -39,9 +39,9 @@ public interface JasmineSecurityConfigTemplate {
     UserDetailsServiceProvider userDetailsServiceProvider();
 
     /**
-     * 注册 RbacCheckService 对象
+     * 注册 DynamicAccessCheckService 对象
      *
      * @return
      */
-    RbacCheckService rbacCheckService();
+    DynamicAccessCheckService dynamicAccessCheckService();
 }

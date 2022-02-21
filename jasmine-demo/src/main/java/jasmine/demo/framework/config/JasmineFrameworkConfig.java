@@ -3,14 +3,14 @@ package jasmine.demo.framework.config;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
-import jasmine.demo.framework.security.CustomRbacCheckService;
+import jasmine.demo.framework.security.RbacAccessCheckService;
 import jasmine.demo.framework.security.UserSubjectDetailsService;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
 import jasmine.framework.remote.mq.DefaultSendMessageService;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;
-import jasmine.security.authorization.RbacCheckService;
+import jasmine.security.authorization.DynamicAccessCheckService;
 import jasmine.security.rbac.service.SecurityResourceService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserDetailsServiceProvider;
@@ -47,8 +47,8 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
 
     @Bean
     @Override
-    public RbacCheckService rbacCheckService() {
-        return new CustomRbacCheckService(resourceService);
+    public DynamicAccessCheckService dynamicAccessCheckService() {
+        return new RbacAccessCheckService(resourceService);
     }
 
     @Bean

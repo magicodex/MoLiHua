@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author mh.z
  */
-public interface RbacCheckService {
+public interface DynamicAccessCheckService {
 
     /**
      * 检查权限
