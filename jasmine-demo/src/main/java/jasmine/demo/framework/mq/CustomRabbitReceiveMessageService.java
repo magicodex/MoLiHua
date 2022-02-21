@@ -6,7 +6,7 @@ import jasmine.core.util.QStringUtil;
 import jasmine.demo.authentication.persistence.entity.UserEO;
 import jasmine.demo.authentication.persistence.mapper.UserMapper;
 import jasmine.demo.framework.security.UserSubjectProvider;
-import jasmine.framework.remote.impl.rabbit.RabbitReceiveMessageService;
+import jasmine.framework.remote.rabbit.RabbitReceiveMessageService;
 import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

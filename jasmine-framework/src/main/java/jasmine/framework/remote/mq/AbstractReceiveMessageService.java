@@ -1,10 +1,8 @@
-package jasmine.framework.remote.impl.mq;
+package jasmine.framework.remote.mq;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.FrameworkConfig;
-import jasmine.framework.remote.mq.MessageReceiver;
-import jasmine.framework.remote.mq.ReceiveMessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

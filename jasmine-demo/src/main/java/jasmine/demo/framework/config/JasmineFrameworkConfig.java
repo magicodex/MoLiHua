@@ -6,7 +6,7 @@ import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.CustomRbacCheckService;
 import jasmine.demo.framework.security.UserSubjectDetailsService;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
-import jasmine.framework.remote.impl.mq.DefaultSendMessageService;
+import jasmine.framework.remote.mq.DefaultSendMessageService;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;

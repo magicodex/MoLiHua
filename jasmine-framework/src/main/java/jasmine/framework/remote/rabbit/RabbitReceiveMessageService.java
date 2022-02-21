@@ -1,9 +1,9 @@
-package jasmine.framework.remote.impl.rabbit;
+package jasmine.framework.remote.rabbit;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.common.conversion.DeserializationHelper;
-import jasmine.framework.remote.impl.mq.AbstractReceiveMessageService;
+import jasmine.framework.remote.mq.AbstractReceiveMessageService;
 import jasmine.framework.remote.mq.MessageReceiver;
 import org.springframework.amqp.core.Message;
 
