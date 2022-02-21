@@ -14,32 +14,41 @@
 | persistence | 扩展持久化层 |
 | remote/mq | 消息队列 |
 
-#### 缓存 cache
+#### 缓存 cache 示例
+
 ```
-...
+// 先获取缓存里的用户信息，找不到再查数据库并把用户信息添加到缓存中
+User user = CacheUtil.get("USER", userId, User.class, () -> {
+    return getUserById(userId);
+});
 ```
 
-#### 并发 concurrent
+#### 锁 lock 示例
+
 ```
-...
+// 使用注解 @DistributedLock 加锁
+@DistributedLock(category = "USER", key = "#user.id")
+public void updateUser(User user) {
+  ...
+}
 ```
 
-#### 锁 lock
-```
-...
-```
+#### 调度 job 示例
 
-#### 调度 job
 ```
-...
-```
+@Component
+public class UserSyncJobHandler extends AbstractXxlJobExecutor {
 
-#### 持久化 persistence
-```
-...
-```
+    @Override
+    public void execute(JobCurrent job) {
+        // TODO 调度任务逻辑
+    }
 
-#### 消息队列 remote/mq
-```
-...
+    @Override
+    protected String getJobName() {
+        // 调度任务名称
+        return "userSyncJobHandler";
+    }
+
+}
 ```

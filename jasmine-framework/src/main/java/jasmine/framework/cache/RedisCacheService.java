@@ -33,6 +33,8 @@ public class RedisCacheService implements CacheService {
 
     /** 缓存key的分隔符 */
     private static final String CACHE_KEY_SEPARATOR = ":";
+    /** 缓存key的前缀 */
+    private static final String CACHE_KEY_PREFIX = "CACHE:";
     /** 默认超时时间 */
     private static final long DEFAULT_TIMEOUT = 3600;
 
@@ -127,7 +129,7 @@ public class RedisCacheService implements CacheService {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
 
-        return (category + CACHE_KEY_SEPARATOR + QStringUtil.toString(key));
+        return (CACHE_KEY_PREFIX + category + CACHE_KEY_SEPARATOR + QStringUtil.toString(key));
     }
 
 }
