@@ -14,6 +14,22 @@ public interface JobCurrent {
     Object getParameter(String name);
 
     /**
+     * 查找参数
+     *
+     * @param index
+     * @return
+     */
+    Object getParameter(int index);
+
+
+    /**
+     * 设置结果
+     *
+     * @param success
+     */
+    void setResult(boolean success);
+
+    /**
      * 设置结果
      *
      * @param success
@@ -25,6 +41,16 @@ public interface JobCurrent {
      * 记录信息
      *
      * @param text
+     * @param args
      */
-    void trace(String text);
+    void trace(String text, Object... args);
+
+    /**
+     * 记录信息
+     *
+     * @param error
+     * @param text
+     * @param args
+     */
+    void trace(Throwable error, String text, Object... args);
 }
