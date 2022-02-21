@@ -5,6 +5,10 @@ import jasmine.security.subject.UserSubject;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * <p>
+ * 检查指定用户是否有访问指定资源的权限。
+ * </p>
+ *
  * @author mh.z
  */
 public interface RbacCheckService {
