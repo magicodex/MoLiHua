@@ -55,7 +55,7 @@ public class JournalNoticeMessageDTO {
      * @param journalEO
      * @return
      */
-    public static JournalNoticeMessageDTO toJournalNoticeMessageDTO(JournalEO journalEO) {
+    public static JournalNoticeMessageDTO fromJournalEO(JournalEO journalEO) {
         if (journalEO == null) {
             return null;
         }

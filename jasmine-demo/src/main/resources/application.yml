@@ -35,6 +35,20 @@ mybatis-plus:
   # 自定义 mapper 文件路径
   mapper-locations: jasmine/**/*.xml
 
+# 调度任务
+#xxl:
+#  job:
+#    admin:
+#      addresses: http://127.0.0.1:9090/xxl-job-admin
+#    accessToken:
+#    executor:
+#      appname: jasmine
+#      address:
+#      ip:
+#      port: 9090
+#      logpath: /data/applogs/xxl-job/jobhandler
+#      logretentiondays: 30
+
 jasmine:
   # 配置 swagger 文档
   swagger:

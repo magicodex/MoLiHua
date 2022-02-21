@@ -59,7 +59,7 @@ public class JournalServiceImpl implements JournalService {
         journalEO.setUserId(CurrentSubject.getUserId());
         journalDao.saveJournal(journalEO);
 
-        JournalNoticeMessageDTO messageDTO = JournalNoticeMessageDTO.toJournalNoticeMessageDTO(journalEO);
+        JournalNoticeMessageDTO messageDTO = JournalNoticeMessageDTO.fromJournalEO(journalEO);
         // 发送消息
         sendMessageService.send("journalNotice", messageDTO);
 
