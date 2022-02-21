@@ -1,14 +1,14 @@
 package jasmine.test.mock.cache;
 
 import jasmine.framework.cache.CacheService;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Supplier;
 
 /**
  * @author mh.z
  */
-@Service
+@Component
 public class TestCacheService implements CacheService {
 
     @Override

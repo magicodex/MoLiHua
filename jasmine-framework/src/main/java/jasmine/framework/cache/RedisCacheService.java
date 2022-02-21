@@ -7,7 +7,7 @@ import jasmine.framework.common.conversion.SerializationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
@@ -19,7 +19,7 @@ import java.util.function.Supplier;
  *
  * @author mh.z
  */
-@Service
+@Component
 public class RedisCacheService implements CacheService {
     private RedisTemplate redisTemplate;
     private ValueOperations valueOperations;
