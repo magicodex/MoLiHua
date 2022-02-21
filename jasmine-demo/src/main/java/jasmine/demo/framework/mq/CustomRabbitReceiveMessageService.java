@@ -29,6 +29,7 @@ public class CustomRabbitReceiveMessageService extends RabbitReceiveMessageServi
 
     @Override
     protected void doReceive(String category, Message message) {
+        // TODO 此处捕获到异常只是输出日志，实际业务场景中需要做对应的错误处理
         try {
             MessageProperties messageProperties = message.getMessageProperties();
             String subject = messageProperties.getHeader("subject");
