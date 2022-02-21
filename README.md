@@ -31,16 +31,20 @@ jasmine.security.rbac.enabled=true
 | :----: | :---- | :---- |
 | Spring Boot | 2.5.4 | WEB框架 |
 | Spring Security | 5.5.2 | 安全框架 |
+| SLF4J | 1.7.32 | 日志库 |
 | Swagger | 2.10.5 | API文档 |
 | Thymeleaf | 3.0.12 | 模板引擎 |
 | Mybatis-Plus | 3.4.3.4 | 持久层框架 |
 | HikariCP | 4.0.3 | 数据库连接池 |
+| mysql-connector-java | 8.0.28 | MySql JDBC驱动 |
 | Liquibase | 4.3.5 | 数据库版本管理工具 |
 | Redisson | 3.12.3 | Redis客户端 |
 | amqp-client | 5.12.0 | RabbitMQ客户端 |
+| xxl-job | 2.3.0 | 调度任务 |
 | Jackson | 2.12.4 | JSON库 |
 | JUnit | 4.13.2 | 单元测试 |
-| SLF4J | 1.7.32 | 日志库 |
+| spring-test | 5.3.8 | 单元测试 |
+| mockito-core | 4.2.0 | 单元测试 |
 
 ## 模块划分
 | 目录 | 说明 |

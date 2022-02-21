@@ -59,10 +59,10 @@
         <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
         <!-- Redis客户端 -->
         <redisson-spring-boot-starter.version>3.12.3</redisson-spring-boot-starter.version>
-
         <!-- XXL-JOB调度任务 -->
         <xxl-job.version>2.3.0</xxl-job.version>
-        <!-- 切面 -->
+
+        <!-- AOP切面 -->
         <aspectj.version>1.9.7</aspectj.version>
 
         <!-- 测试框架 -->

@@ -12,7 +12,10 @@
     <artifactId>jasmine-demo</artifactId>
 
     <properties>
+        <!-- 分布式事务 -->
         <seata.version>1.4.2</seata.version>
+        <!-- lombok注解 -->
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencies>
@@ -58,6 +61,14 @@
             <groupId>io.seata</groupId>
             <artifactId>seata-all</artifactId>
             <version>${seata.version}</version>
+        </dependency>
+
+        <!-- lombok注解 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
