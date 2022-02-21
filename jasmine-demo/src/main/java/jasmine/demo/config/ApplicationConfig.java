@@ -1,6 +1,6 @@
 package jasmine.demo.config;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  *
  * @author mh.z
  */
-@Component
+@Configuration
 public class ApplicationConfig {
 
 }

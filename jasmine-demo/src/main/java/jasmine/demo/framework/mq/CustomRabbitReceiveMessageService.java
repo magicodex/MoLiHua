@@ -34,6 +34,7 @@ public class CustomRabbitReceiveMessageService extends RabbitReceiveMessageServi
             MessageProperties messageProperties = message.getMessageProperties();
             String subject = messageProperties.getHeader("subject");
 
+            // 初始安全上下文
             if (QStringUtil.isNotEmpty(subject)) {
                 if (subject.startsWith("userId:")) {
                     String userIdStr = subject.substring(7);

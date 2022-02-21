@@ -8,6 +8,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author mh.z
+ */
 @ConditionalOnProperty(name = {"app.job.enabled"}, havingValue = "true")
 @Configuration
 public class XxlJobConfig {
