@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.client.InMemoryClientDetailsService;
 
 /**
  * <p>
@@ -33,8 +34,11 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        // 开启 /oauth/token_key 验证端口成无权限访问
         security.tokenKeyAccess("permitAll()")
+                // 开启 /oauth/check_token 验证端口成认证权限访问
                 .checkTokenAccess("isAuthenticated()")
+                // 主要是让 /oauth/token 支持 client_id 以及 client_secret 做登录认证
                 .allowFormAuthenticationForClients();
     }
 
@@ -42,6 +46,8 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         if (clientDetailsServiceProvider != null) {
             clients.withClientDetails(clientDetailsServiceProvider.getService());
+        } else {
+            clients.withClientDetails(new InMemoryClientDetailsService());
         }
     }
 
