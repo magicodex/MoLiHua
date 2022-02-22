@@ -7,7 +7,7 @@ import jasmine.demo.framework.context.AsyncTaskContextDecorator;
 import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.UserSubjectDetailsServiceImpl;
-import jasmine.demo.framework.security.UserSubjectProvider;
+import jasmine.security.subject.UserSubjectProvider;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.remote.mq.DefaultSendMessageService;

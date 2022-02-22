@@ -1,16 +1,14 @@
-package jasmine.demo.framework.security;
+package jasmine.security.subject;
 
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.context.SubjectProvider;
-import jasmine.demo.authentication.persistence.dao.UserDao;
-import jasmine.demo.authentication.persistence.entity.UserEO;
 import jasmine.security.subject.UserSubject;
+import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
@@ -21,13 +19,12 @@ import java.util.Collections;
  *
  * @author mh.z
  */
-@Component
 public class UserSubjectProvider implements SubjectProvider, InitSupport {
-    private UserDao userDao;
+    private UserSubjectDetailsService subjectDetailsService;
 
     @Override
     public void init(RuntimeProvider provider) {
-        this.userDao = provider.getByType(UserDao.class);
+        this.subjectDetailsService = provider.getByType(UserSubjectDetailsService.class);
     }
 
     @Override
@@ -62,11 +59,7 @@ public class UserSubjectProvider implements SubjectProvider, InitSupport {
         UserSubject userSubject = null;
 
         if (userId != null) {
-            UserEO userEO = userDao.getUserById(userId);
-
-            if (userEO != null) {
-                userSubject = new UserSubject(userEO.getTenantId(), userId);
-            }
+            userSubject = subjectDetailsService.loadUserByUserId(userId);
         } else if (tenantId != null) {
             userSubject = new UserSubject(tenantId, -1L);
         }
