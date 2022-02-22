@@ -2,25 +2,22 @@ package jasmine.security.authorization.dynamic;
 
 import jasmine.security.authorization.AccessDecisionManagerProvider;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
-import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 /**
  * @author mh.z
  */
-@Component
 public class DynamicAccessDecisionManagerProvider implements AccessDecisionManagerProvider {
-    private JasmineSecurityConfig securityConfig;
+    private DynamicConfig securityConfig;
     private DynamicAccessCheckService checkService;
 
-    public DynamicAccessDecisionManagerProvider(JasmineSecurityConfig securityConfig,
+    public DynamicAccessDecisionManagerProvider(DynamicConfig securityConfig,
                                                 @Autowired(required = false) DynamicAccessCheckService checkService) {
         this.securityConfig = securityConfig;
         this.checkService = checkService;

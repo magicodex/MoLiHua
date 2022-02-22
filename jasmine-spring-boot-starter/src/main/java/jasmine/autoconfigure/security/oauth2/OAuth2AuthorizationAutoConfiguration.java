@@ -1,4 +1,4 @@
-package jasmine.security.config;
+package jasmine.autoconfigure.security.oauth2;
 
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ import org.springframework.security.oauth2.provider.client.InMemoryClientDetails
  */
 @EnableAuthorizationServer
 @Configuration
-public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
+public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerConfigurerAdapter {
     /** 认证管理器 */
     private final AuthenticationManager authenticationManager;
 
     private ClientDetailsServiceProvider clientDetailsServiceProvider;
 
-    public OAuth2AuthorizationConfig(AuthenticationManager authenticationManager,
-                                     @Autowired(required = false) ClientDetailsServiceProvider clientDetailsServiceProvider) {
+    public OAuth2AuthorizationAutoConfiguration(AuthenticationManager authenticationManager,
+                                                @Autowired(required = false) ClientDetailsServiceProvider clientDetailsServiceProvider) {
         this.authenticationManager = authenticationManager;
         this.clientDetailsServiceProvider = clientDetailsServiceProvider;
     }

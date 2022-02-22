@@ -1,4 +1,4 @@
-package jasmine.security.rbac.constant;
+package jasmine.security.constant;
 
 /**
  * @author mh.z

@@ -3,7 +3,6 @@ package jasmine.security.rbac.service;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.security.rbac.dto.SecurityFunctionBaseInfoDTO;
 import jasmine.security.rbac.mapper.SecurityFunctionMapper;
-import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
-@Service
+
 public class SecurityFunctionService {
     private SecurityFunctionMapper baseMapper;
 

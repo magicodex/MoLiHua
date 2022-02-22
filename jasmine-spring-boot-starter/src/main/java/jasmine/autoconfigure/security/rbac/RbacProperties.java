@@ -1,5 +1,6 @@
-package jasmine.security.config;
+package jasmine.autoconfigure.security.rbac;
 
+import jasmine.security.authorization.dynamic.DynamicConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @Configuration
-public class JasmineSecurityConfig {
+public class RbacProperties implements DynamicConfig {
 
     /** 是否启用 RBAC 访问控制 */
     @Value("${jasmine.security.rbac.enabled:false}")

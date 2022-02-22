@@ -1,4 +1,4 @@
-package jasmine.security.config;
+package jasmine.autoconfigure.security.oauth2;
 
 import jasmine.core.util.QStringUtil;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
@@ -17,12 +17,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
  */
 @EnableResourceServer
 @Configuration
-public class OAuth2ResourceConfig extends ResourceServerConfigurerAdapter {
+public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAdapter {
     private static final String AUTHORIZATION_HEADER = "Authorization";
     /** 访问决策管理器 */
     private AccessDecisionManager accessDecisionManager;
 
-    public OAuth2ResourceConfig(AccessDecisionManager accessDecisionManager) {
+    public OAuth2ResourceAutoConfiguration(AccessDecisionManager accessDecisionManager) {
         this.accessDecisionManager = accessDecisionManager;
     }
 

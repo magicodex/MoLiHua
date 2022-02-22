@@ -2,14 +2,13 @@ package jasmine.security.rbac.service;
 
 import jasmine.security.rbac.mapper.SecurityRoleMapper;
 import jasmine.security.rbac.model.SecurityRole;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * @author mh.z
  */
-@Service
+
 public class SecurityRoleService {
     private SecurityRoleMapper baseMapper;
 

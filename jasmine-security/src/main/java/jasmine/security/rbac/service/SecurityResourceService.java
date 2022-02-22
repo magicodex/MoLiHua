@@ -5,14 +5,13 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import jasmine.security.rbac.dto.SecurityFunctionBaseInfoDTO;
 import jasmine.security.rbac.mapper.SecurityResourceMapper;
 import jasmine.security.rbac.model.SecurityResource;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * @author mh.z
  */
-@Service
+
 public class SecurityResourceService {
     private SecurityResourceMapper baseMapper;
 

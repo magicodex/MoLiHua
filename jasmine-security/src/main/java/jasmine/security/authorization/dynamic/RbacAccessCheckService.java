@@ -9,7 +9,7 @@ import jasmine.core.util.QStringUtil;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.constant.SecurityCaches;
-import jasmine.security.rbac.constant.RbacConstants;
+import jasmine.security.constant.RbacConstants;
 import jasmine.security.rbac.dto.SecurityFunctionBaseInfoDTO;
 import jasmine.security.rbac.model.SecurityResource;
 import jasmine.security.rbac.service.SecurityFunctionService;
@@ -18,7 +18,6 @@ import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
@@ -30,7 +29,6 @@ import java.util.List;
 /**
  * @author mh.z
  */
-@Component
 public class RbacAccessCheckService implements DynamicAccessCheckService, InitSupport {
     private static final Logger logger = LoggerFactory.getLogger(RbacAccessCheckService.class);
     private SecurityFunctionService functionService;

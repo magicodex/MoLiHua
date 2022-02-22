@@ -1,4 +1,4 @@
-package jasmine.security.context;
+package jasmine.security.support;
 
 import jasmine.framework.concurrent.ContextSnapshot;
 import org.springframework.security.core.context.SecurityContext;
