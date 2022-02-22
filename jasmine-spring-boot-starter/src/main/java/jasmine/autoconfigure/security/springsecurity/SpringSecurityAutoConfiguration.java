@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.security.spring;
+package jasmine.autoconfigure.security.springsecurity;
 
 import jasmine.security.authorization.AccessDecisionManagerProvider;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
