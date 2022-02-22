@@ -3,61 +3,45 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jasmine.security.rbac.mapper.SecurityResourceMapper">
 
-    <resultMap id="resourceBaseInfoDTO" type="jasmine.security.rbac.dto.ResourceBaseInfoDTO">
+    <resultMap id="securityFunctionBaseInfoDTO" type="jasmine.security.rbac.dto.SecurityFunctionBaseInfoDTO">
     </resultMap>
 
-    <select id="listResourceBaseInfoDTOsByRoleIds" resultMap="resourceBaseInfoDTO">
+    <select id="listFunctionBaseInfoDTOsById" resultMap="securityFunctionBaseInfoDTO">
         select
-        t_outer.resource_id,
-        t_outer.access_method,
-        t_outer.resource_path
+        t_outer.function_id,
+        t_outer.function_code,
+        t_outer.function_name
         from (
-        <!-- 查询"角色-功能-权限"下的资源  -->
+        <!-- 查询被间接授予给的功能  -->
         (
         select
         t_resource.id resource_id,
         t_resource.access_method,
         t_resource.resource_path
-        from sec_role t_role,
-        sec_role_function_rel t_role_function_rel,
+        from sec_function t_function
         sec_function_permission_rel t_function_permission_rel,
-        sec_permission_resource_rel t_permission_resource_rel,
-        sec_resource t_resource
-        where t_role.id = t_role_function_rel.role_id
-        and t_role_function_rel.function_id = t_function_permission_rel.function_id
-        and t_function_permission_rel.permission_id = t_permission_resource_rel.permission_id
-        and t_permission_resource_rel.resource_id = t_resource.id
-        and t_role.enable_flag = 1
-        and t_role.id in
-        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
-            #{roleId}
-        </foreach>
+        sec_permission_resource_rel t_permission_resource_rel
+        where t_function.id = sec_function_permission_rel.function_id
+        and sec_function_permission_rel.permission_id = sec_permission_resource_rel.permission_id
+        and sec_permission_resource_rel.resource_id = #{resource_id}
         )
-        <!-- END 查询"角色-功能-权限"下的资源 -->
+        <!-- END 查询被间接授予给的功能 -->
         union all
-        <!-- 查询"角色-功能"下的资源 -->
+        <!-- 查询被直接授予给的功能 -->
         (
         select
         t_resource.id resource_id,
         t_resource.access_method,
         t_resource.resource_path
-        from sec_role t_role,
-        sec_role_function_rel t_role_function_rel,
-        sec_function_resource_rel t_function_resource_rel,
-        sec_resource t_resource
-        where t_role.id = t_role_function_rel.role_id
-        and t_role_function_rel.function_id = t_function_resource_rel.function_id
-        and t_function_resource_rel.resource_id = t_resource.id
-        and t_role.enable_flag = 1
-        and t_role.id in
-        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
-            #{roleId}
-        </foreach>
+        from sec_function t_function
+        sec_function_resource_rel t_function_resource_rel
+        where t_function.id = sec_function_resource_rel.function_id
+        and t_function_resource_rel = #{resource_id}
         )
-        <!-- END 查询"角色-功能"下的资源 -->
+        <!-- END 查询被直接授予给的功能 -->
         ) t_outer
-        group by t_outer.resource_id, t_outer.resource_path, t_outer.access_method
-        order by t_outer.resource_path, t_outer.access_method
+        group by t_outer.function_id, t_outer.function_code, t_outer.function_name
+        order by t_outer.function_code asc
     </select>
 
 </mapper>

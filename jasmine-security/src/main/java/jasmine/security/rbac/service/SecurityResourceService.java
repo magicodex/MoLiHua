@@ -2,13 +2,11 @@ package jasmine.security.rbac.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import jasmine.core.util.QCollectionUtil;
-import jasmine.security.rbac.dto.ResourceBaseInfoDTO;
+import jasmine.security.rbac.dto.SecurityFunctionBaseInfoDTO;
 import jasmine.security.rbac.mapper.SecurityResourceMapper;
 import jasmine.security.rbac.model.SecurityResource;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -38,17 +36,13 @@ public class SecurityResourceService {
     }
 
     /**
-     * 查找指定角色被授予的所有资源
+     * 查找指定资源被授予给的所有功能
      *
-     * @param roleIds
+     * @param resourceId
      * @return
      */
-    public List<ResourceBaseInfoDTO> listResourceBaseInfoDTOsByRoleIds(List<Long> roleIds) {
-        if (QCollectionUtil.isEmpty(roleIds)) {
-            return Collections.emptyList();
-        }
-
-        return baseMapper.listResourceBaseInfoDTOsByRoleIds(roleIds);
+    public List<SecurityFunctionBaseInfoDTO> listFunctionBaseInfoDTOsById(Long resourceId) {
+        return baseMapper.listFunctionBaseInfoDTOsById(resourceId);
     }
 
 }

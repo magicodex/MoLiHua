@@ -3,6 +3,7 @@ package jasmine.test.mock.cache;
 import jasmine.framework.cache.CacheService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 /**
@@ -19,6 +20,16 @@ public class TestCacheService implements CacheService {
     @Override
     public <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
         return (T) supplier.get();
+    }
+
+    @Override
+    public <T> List<T> getList(String category, Object key, Class<T> type) {
+        return null;
+    }
+
+    @Override
+    public <T> List<T> getList(String category, Object key, Class<T> type, Supplier<List<T>> supplier) {
+        return supplier.get();
     }
 
     @Override

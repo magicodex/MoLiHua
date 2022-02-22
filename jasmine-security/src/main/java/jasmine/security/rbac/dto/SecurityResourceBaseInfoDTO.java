@@ -3,7 +3,7 @@ package jasmine.security.rbac.dto;
 /**
  * @author mh.z
  */
-public class ResourceBaseInfoDTO {
+public class SecurityResourceBaseInfoDTO {
     /** 资源ID */
     private Long resourceId;
     /** 访问方式 */
