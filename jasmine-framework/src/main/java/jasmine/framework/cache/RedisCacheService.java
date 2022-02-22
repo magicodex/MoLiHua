@@ -1,6 +1,10 @@
 package jasmine.framework.cache;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.framework.common.conversion.DeserializationHelper;
 import jasmine.framework.common.conversion.SerializationHelper;
@@ -9,6 +13,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
@@ -73,6 +80,43 @@ public class RedisCacheService implements CacheService {
         }
 
         return (T) value;
+    }
+
+    @Override
+    public <T> List<T> getList(String category, Object key, Class<T> type) {
+        return getList(category, key, type, null);
+    }
+
+    @Override
+    public <T> List<T> getList(String category, Object key, Class<T> type, Supplier<List<T>> supplier) {
+        QCheckUtil.notNull(category, "category null");
+        QCheckUtil.notNull(key, "key null");
+
+        // 获取缓存key
+        String cacheKey = getCacheKey(category, key);
+        // 获取缓存的值
+        Object value = valueOperations.get(cacheKey);
+
+        if (value == null && supplier != null) {
+            // 获取值
+            value = supplier.get();
+            // 缓存值
+            set(category, key, value);
+        } else {
+            ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
+            TypeFactory typeFactory = objectMapper.getTypeFactory();
+            CollectionType collectionType = typeFactory.constructCollectionType(ArrayList.class, type);
+
+            // 反序列化成对象
+            try {
+                List<T> list = objectMapper.readValue((byte[]) value, collectionType);
+                return list;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return (List<T>) value;
     }
 
     @Override

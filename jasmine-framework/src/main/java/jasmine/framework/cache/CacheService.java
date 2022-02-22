@@ -1,5 +1,6 @@
 package jasmine.framework.cache;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 /**
@@ -31,6 +32,29 @@ public interface CacheService {
      * @return
      */
     <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier);
+
+    /**
+     * 从缓存中查找数据
+     *
+     * @param category
+     * @param key
+     * @param type
+     * @param <T>
+     * @return
+     */
+    <T> List<T> getList(String category, Object key, Class<T> type);
+
+    /**
+     * 从缓存中查找数据
+     *
+     * @param category
+     * @param key
+     * @param type
+     * @param supplier
+     * @param <T>
+     * @return
+     */
+    <T> List<T> getList(String category, Object key, Class<T> type, Supplier<List<T>> supplier);
 
     /**
      * 添加数据到缓存中

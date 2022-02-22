@@ -11,10 +11,8 @@ import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;
 import jasmine.security.authorization.DynamicAccessCheckService;
-import jasmine.security.rbac.service.SecurityResourceService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserDetailsServiceProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,11 +21,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, JasmineSecurityConfigTemplate {
-    @Autowired
     private RuntimeProvider runtimeProvider;
 
-    @Autowired
-    private SecurityResourceService resourceService;
+    public JasmineFrameworkConfig(RuntimeProvider runtimeProvider) {
+        this.runtimeProvider = runtimeProvider;
+    }
 
     @Bean
     @Override
@@ -48,7 +46,7 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Bean
     @Override
     public DynamicAccessCheckService dynamicAccessCheckService() {
-        return new RbacAccessCheckService(resourceService);
+        return new RbacAccessCheckService(runtimeProvider);
     }
 
     @Bean
