@@ -63,4 +63,16 @@ public class CurrentSubject {
         return subjectProvider.getCurrentSubject();
     }
 
+    /**
+     * 设置用户
+     *
+     * @param tenantId
+     * @param userId
+     */
+    public static void setSubject(Long tenantId, Long userId) {
+        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
+
+        subjectProvider.setCurrentSubject(tenantId, userId);
+    }
+
 }

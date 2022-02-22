@@ -19,6 +19,16 @@ public class UserDao {
     }
 
     /**
+     * 根据用户 ID 查找用户
+     *
+     * @param userId
+     * @return
+     */
+    public UserEO getUserById(Long userId) {
+        return baseMapper.selectById(userId);
+    }
+
+    /**
      * 根据用户名查找用户
      *
      * @param userName

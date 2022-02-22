@@ -29,4 +29,12 @@ public interface SubjectProvider {
      * @return
      */
     Object getCurrentSubject();
+
+    /**
+     * 设置当前的用户
+     *
+     * @param tenantId
+     * @param userId
+     */
+    void setCurrentSubject(Long tenantId, Long userId);
 }

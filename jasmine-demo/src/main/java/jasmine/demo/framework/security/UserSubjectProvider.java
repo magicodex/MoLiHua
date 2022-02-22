@@ -1,6 +1,8 @@
 package jasmine.demo.framework.security;
 
 import jasmine.core.context.SubjectProvider;
+import jasmine.demo.authentication.persistence.dao.UserDao;
+import jasmine.demo.authentication.persistence.entity.UserEO;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,6 +21,11 @@ import java.util.Collections;
  */
 @Component
 public class UserSubjectProvider implements SubjectProvider {
+    private UserDao userDao;
+
+    public UserSubjectProvider(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public Long getCurrentUserId() {
@@ -47,13 +54,25 @@ public class UserSubjectProvider implements SubjectProvider {
         return getSubjectFromContext();
     }
 
-    /**
-     * 设置当前的用户
-     *
-     * @param subject
-     */
-    public void setCurrentSubject(UserSubject subject) {
-        setSubjectToContext(subject);
+    @Override
+    public void setCurrentSubject(Long tenantId, Long userId) {
+        UserSubject userSubject = null;
+
+        if (userId != null) {
+            UserEO userEO = userDao.getUserById(userId);
+
+            if (userEO != null) {
+                userSubject = new UserSubject(userEO.getTenantId(), userId);
+            }
+        } else if (tenantId != null) {
+            userSubject = new UserSubject(tenantId, -1L);
+        }
+
+        if (userSubject == null) {
+            userSubject = new UserSubject(-1L, -1L);
+        }
+
+        setSubjectToContext(userSubject);
     }
 
     /**
