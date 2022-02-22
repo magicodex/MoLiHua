@@ -2,6 +2,7 @@ package jasmine.framework;
 
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
+import org.springframework.core.task.TaskDecorator;
 
 /**
  * <p>
@@ -25,4 +26,11 @@ public interface JasmineFrameworkConfigTemplate {
      * @return
      */
     SendMessageService sendMessageService();
+
+    /**
+     * 注册 TaskDecorator 对象
+     *
+     * @return
+     */
+    TaskDecorator taskDecorator();
 }

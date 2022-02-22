@@ -1,6 +1,7 @@
 package jasmine.demo.framework.config;
 
 import jasmine.core.context.RuntimeProvider;
+import jasmine.demo.framework.context.AsyncTaskContextDecorator;
 import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.RbacAccessCheckService;
@@ -15,6 +16,7 @@ import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserDetailsServiceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskDecorator;
 
 /**
  * @author mh.z
@@ -59,6 +61,12 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Override
     public SendMessageService sendMessageService() {
         return new DefaultSendMessageService(runtimeProvider);
+    }
+
+    @Bean
+    @Override
+    public TaskDecorator taskDecorator() {
+        return new AsyncTaskContextDecorator();
     }
 
 }

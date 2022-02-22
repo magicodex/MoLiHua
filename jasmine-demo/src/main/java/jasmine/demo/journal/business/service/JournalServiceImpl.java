@@ -9,13 +9,15 @@ import jasmine.demo.journal.business.dto.JournalNoticeMessageDTO;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.constant.JournalLocks;
 import jasmine.demo.journal.persistence.dao.JournalDao;
-import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.dto.JournalQueryDbDTO;
+import jasmine.demo.journal.persistence.entity.JournalEO;
+import jasmine.framework.concurrent.AsyncTaskUtil;
 import jasmine.framework.lock.annotation.DistributedLock;
 import jasmine.framework.remote.mq.SendMessageService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,7 +39,11 @@ public class JournalServiceImpl implements JournalService {
         JournalQueryDbDTO param = new JournalQueryDbDTO();
         param.setUserId(CurrentSubject.getUserId());
 
-        List<JournalEO> journalEOList = journalDao.pageJournalsByCond(param, page);
+        // 此处使用多线程没有业务上的意义，只是用来测试多线程工具类。
+        List<JournalEO> journalEOList = (List<JournalEO>) AsyncTaskUtil.asyncAndGet(Collections.singletonList(() -> {
+            return journalDao.pageJournalsByCond(param, page);
+        })).get(0);
+
         List<JournalDTO> journalDTOList = QCollectionUtil.mapToList(journalEOList,
                 JournalDTO::fromJournalEO);
 

@@ -1,5 +1,7 @@
 package jasmine.demo.framework.security;
 
+import jasmine.core.context.InitSupport;
+import jasmine.core.context.RuntimeProvider;
 import jasmine.core.context.SubjectProvider;
 import jasmine.demo.authentication.persistence.dao.UserDao;
 import jasmine.demo.authentication.persistence.entity.UserEO;
@@ -20,11 +22,12 @@ import java.util.Collections;
  * @author mh.z
  */
 @Component
-public class UserSubjectProvider implements SubjectProvider {
+public class UserSubjectProvider implements SubjectProvider, InitSupport {
     private UserDao userDao;
 
-    public UserSubjectProvider(UserDao userDao) {
-        this.userDao = userDao;
+    @Override
+    public void init(RuntimeProvider provider) {
+        this.userDao = provider.getByType(UserDao.class);
     }
 
     @Override

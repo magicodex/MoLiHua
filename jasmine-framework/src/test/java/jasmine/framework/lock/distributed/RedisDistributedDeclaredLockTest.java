@@ -6,6 +6,8 @@ import org.mockito.Mockito;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 
+import java.util.Collections;
+
 /**
  * @author mh.z
  */
@@ -16,7 +18,8 @@ public class RedisDistributedDeclaredLockTest {
         // 成功获取锁
         {
             RedissonClient client = mockRedissonClient(true);
-            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client, "testLock");
+            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client,
+                    Collections.singletonList("testLock"));
             boolean actual = lock.lock(() -> true);
 
             Assert.assertTrue(actual);
@@ -25,7 +28,8 @@ public class RedisDistributedDeclaredLockTest {
         // 获取不到锁会报错
         {
             RedissonClient client = mockRedissonClient(false);
-            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client, "testLock");
+            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client,
+                    Collections.singletonList("testLock"));
 
             Assert.assertThrows(RuntimeException.class, () -> {
                 lock.lock(() -> true);
