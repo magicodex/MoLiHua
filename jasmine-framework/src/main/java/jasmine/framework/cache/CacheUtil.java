@@ -55,6 +55,19 @@ public class CacheUtil {
      *
      * @param category
      * @param key
+     * @param supplier
+     * @param type
+     * @return
+     */
+    public static <T> T get(String category, Object key, Supplier<T> supplier, Class<T> type) {
+        return cacheService.get(category, key, type, supplier);
+    }
+
+    /**
+     * 从缓存中查找数据
+     *
+     * @param category
+     * @param key
      * @param type
      * @return
      */
@@ -72,6 +85,19 @@ public class CacheUtil {
      * @return
      */
     public static <T> List<T> getList(String category, Object key, Class<T> type, Supplier<List<T>> supplier) {
+        return cacheService.getList(category, key, type, supplier);
+    }
+
+    /**
+     * 从缓存中查找数据
+     *
+     * @param category
+     * @param key
+     * @param supplier
+     * @param type
+     * @return
+     */
+    public static <T> List<T> getList(String category, Object key, Supplier<List<T>> supplier, Class<T> type) {
         return cacheService.getList(category, key, type, supplier);
     }
 
