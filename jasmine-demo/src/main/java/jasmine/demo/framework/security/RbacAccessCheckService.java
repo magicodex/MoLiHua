@@ -73,7 +73,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
             return true;
         }
 
-        // 当前用户可以访问被授权的资源
+        // 当前用户可以访问被授予的资源
         if (isGrantedResource(subject, resource)) {
             return true;
         }
@@ -110,7 +110,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
     }
 
     /**
-     * 判断该资源是否被授权给指定用户
+     * 判断该资源是否被授予给指定用户
      *
      * @param subject
      * @param resource
@@ -133,7 +133,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
             return false;
         }
 
-        // 若两个集合存在交际则判定该用户被授权资源
+        // 若两个集合存在交集则该用户允许访问该资源
         for (int i = 0; i < userFunctionList.size(); i++) {
             Long userFunctionId = userFunctionList.get(i).getFunctionId();
 
@@ -209,7 +209,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
                 return roleAuthority.getRoleId();
             });
 
-            // 获取角色被授权的所有功能
+            // 获取角色被授予的所有功能
             return functionService.listFunctionBaseInfoDTOsByRoleIds(roleIdList);
         }, SecurityFunctionBaseInfoDTO.class);
 
