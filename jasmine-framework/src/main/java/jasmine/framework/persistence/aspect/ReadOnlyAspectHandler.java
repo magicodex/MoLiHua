@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.datasource.aspect;
+package jasmine.framework.persistence.aspect;
 
 import jasmine.framework.persistence.annotation.ReadOnly;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>

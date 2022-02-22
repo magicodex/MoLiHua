@@ -1,10 +1,11 @@
-package jasmine.framework.lock.distributed;
+package jasmine.framework.lock.redis;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QNewUtil;
 import jasmine.core.util.QStringUtil;
+import jasmine.framework.lock.distributed.DistributedDeclaredLock;
+import jasmine.framework.lock.distributed.DistributedLockProvider;
 import org.redisson.api.RedissonClient;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Collections;

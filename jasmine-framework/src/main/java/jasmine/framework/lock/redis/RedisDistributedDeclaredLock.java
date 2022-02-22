@@ -1,9 +1,11 @@
-package jasmine.framework.lock.distributed;
+package jasmine.framework.lock.redis;
 
 
 import jasmine.core.exception.InvalidPropertyException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
+import jasmine.framework.lock.distributed.DistributedDeclaredLock;
+import jasmine.framework.lock.distributed.DistributedLockCallback;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 
