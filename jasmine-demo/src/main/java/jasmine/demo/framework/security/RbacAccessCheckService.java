@@ -32,9 +32,9 @@ import java.util.List;
  */
 public class RbacAccessCheckService implements DynamicAccessCheckService, InitSupport {
     private static final Logger logger = LoggerFactory.getLogger(RbacAccessCheckService.class);
-    private RequestMappingHandlerMapping requestMappingHandlerMapping;
     private SecurityFunctionService functionService;
     private SecurityResourceService resourceService;
+    private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     public RbacAccessCheckService(RuntimeProvider runtimeProvider) {
         this.functionService = runtimeProvider.getByType(SecurityFunctionService.class);
@@ -50,8 +50,13 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
     public boolean check(UserSubject subject, HttpServletRequest request) {
         QCheckUtil.notNull(subject, "subject null");
         QCheckUtil.notNull(request, "request null");
+        String servletPath = request.getServletPath();
 
-        // 获取匹配的资源
+        if (servletPath.isEmpty() || servletPath.equals("/")) {
+            return true;
+        }
+
+        // 获取请求对应的资源
         SecurityResource resource = getMatchedResource(request);
         if (resource == null) {
             return false;
@@ -63,12 +68,12 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
             return true;
         }
 
-        // 当前的用户是已登录的用户可以访问被标记成认证才能访问的资源
+        // 当前用户是已登录的用户可以访问被标记成认证才能访问的资源
         if (RbacConstants.RESOURCE_ACCESS_POLICY_AUTHENTICATED.equals(accessPolicy)) {
             return true;
         }
 
-        // 判断当前用户是否被授权访问该资源
+        // 当前用户可以访问被授权的资源
         if (isGrantedResource(subject, resource)) {
             return true;
         }
@@ -77,7 +82,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
     }
 
     /**
-     * 查找匹配到的请求资源
+     * 查找请求对应的资源
      *
      * @param request
      * @return
@@ -89,23 +94,23 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
         try {
             requestMappingHandlerMapping.getHandler(request);
         } catch (Exception e) {
-            logger.warn("obtain matched pattern failed", e);
+            logger.warn("RequestMappingHandlerMapping.getHandler failed", e);
         }
 
-        String requestPattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
-        if (requestPattern == null) {
+        String urlPattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
+        if (urlPattern == null) {
             return null;
         }
 
         String requestMethod = request.getMethod();
-        // 根据请求查找资源
-        SecurityResource matchedResource = getResourceByRequest(requestMethod, requestPattern);
+        // 获取请求对应的资源
+        SecurityResource resource = getResourceByRequest(requestMethod, urlPattern);
 
-        return matchedResource;
+        return resource;
     }
 
     /**
-     * 判断是不是被授权的资源
+     * 判断该资源是否被授权给指定用户
      *
      * @param subject
      * @param resource
@@ -122,16 +127,17 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
             return false;
         }
 
-        // 查找该资源被授予给的所有功能
+        // 获取该资源被授予给的所有功能
         List<SecurityFunctionBaseInfoDTO> resourceFunctionList = getFunctionsByResource(resourceId);
         if (QCollectionUtil.isEmpty(resourceFunctionList)) {
             return false;
         }
 
-        // 判断该资源是否被授权访问
+        // 若两个集合存在交际则判定该用户被授权资源
         for (int i = 0; i < userFunctionList.size(); i++) {
+            Long userFunctionId = userFunctionList.get(i).getFunctionId();
+
             for (int j = 0; j < resourceFunctionList.size(); j++) {
-                Long userFunctionId = userFunctionList.get(i).getFunctionId();
                 Long resourceFunctionId = resourceFunctionList.get(j).getFunctionId();
 
                 if (ObjectUtil.equals(userFunctionId, resourceFunctionId)) {
@@ -190,7 +196,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
         String category = FrameworkCaches.FUNCTIONS_WITH_USER_ID;
 
         List<SecurityFunctionBaseInfoDTO> functionList = CacheUtil.getList(category, userId, () -> {
-            // 获取授权
+            // 获取该用户的授权对象
             Collection<GrantedAuthority> authorityList = subject.getAuthorities();
             if (QCollectionUtil.isEmpty(authorityList)) {
                 return Collections.emptyList();
@@ -221,6 +227,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
         String category = FrameworkCaches.FUNCTIONS_WITH_RESOURCE_ID;
 
         List<SecurityFunctionBaseInfoDTO> functionList = CacheUtil.getList(category, resourceId, () -> {
+            // 获取该资源被授予给的所有功能
             return resourceService.listFunctionBaseInfoDTOsById(resourceId);
         }, SecurityFunctionBaseInfoDTO.class);
 

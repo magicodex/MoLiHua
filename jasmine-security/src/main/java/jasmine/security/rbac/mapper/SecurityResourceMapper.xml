@@ -15,28 +15,28 @@
         <!-- 查询被间接授予给的功能  -->
         (
         select
-        t_resource.id resource_id,
-        t_resource.access_method,
-        t_resource.resource_path
-        from sec_function t_function
+        t_function.id function_id,
+        t_function.function_code,
+        t_function.function_name
+        from sec_function t_function,
         sec_function_permission_rel t_function_permission_rel,
         sec_permission_resource_rel t_permission_resource_rel
-        where t_function.id = sec_function_permission_rel.function_id
-        and sec_function_permission_rel.permission_id = sec_permission_resource_rel.permission_id
-        and sec_permission_resource_rel.resource_id = #{resource_id}
+        where t_function.id = t_function_permission_rel.function_id
+        and t_function_permission_rel.permission_id = t_permission_resource_rel.permission_id
+        and t_permission_resource_rel.resource_id = #{resourceId}
         )
         <!-- END 查询被间接授予给的功能 -->
         union all
         <!-- 查询被直接授予给的功能 -->
         (
         select
-        t_resource.id resource_id,
-        t_resource.access_method,
-        t_resource.resource_path
-        from sec_function t_function
+        t_function.id function_id,
+        t_function.function_code,
+        t_function.function_name
+        from sec_function t_function,
         sec_function_resource_rel t_function_resource_rel
-        where t_function.id = sec_function_resource_rel.function_id
-        and t_function_resource_rel = #{resource_id}
+        where t_function.id = t_function_resource_rel.function_id
+        and t_function_resource_rel.resource_id = #{resourceId}
         )
         <!-- END 查询被直接授予给的功能 -->
         ) t_outer

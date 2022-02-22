@@ -22,7 +22,7 @@
             #{roleId}
         </foreach>
         group by t_function.id, t_function.function_code, t_function.function_name
-        order by t_function.role_code asc
+        order by t_function.function_code asc
     </select>
 
 </mapper>
