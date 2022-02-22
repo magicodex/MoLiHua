@@ -1,5 +1,7 @@
-package jasmine.security.authorization;
+package jasmine.security.authorization.dynamic;
 
+import jasmine.security.authorization.AccessDecisionManagerProvider;
+import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDecisionManager;

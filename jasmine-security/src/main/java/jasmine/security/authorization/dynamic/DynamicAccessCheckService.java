@@ -1,4 +1,4 @@
-package jasmine.security.authorization;
+package jasmine.security.authorization.dynamic;
 
 import jasmine.security.subject.UserSubject;
 

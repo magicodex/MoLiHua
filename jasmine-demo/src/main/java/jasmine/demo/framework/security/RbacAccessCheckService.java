@@ -8,7 +8,7 @@ import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.demo.framework.constant.FrameworkCaches;
 import jasmine.framework.cache.CacheUtil;
-import jasmine.security.authorization.DynamicAccessCheckService;
+import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.constant.RbacConstants;
 import jasmine.security.rbac.dto.SecurityFunctionBaseInfoDTO;

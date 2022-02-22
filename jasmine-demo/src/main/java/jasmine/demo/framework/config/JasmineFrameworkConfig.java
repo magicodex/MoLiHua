@@ -11,7 +11,7 @@ import jasmine.framework.remote.mq.DefaultSendMessageService;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;
-import jasmine.security.authorization.DynamicAccessCheckService;
+import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserDetailsServiceProvider;
 import org.springframework.context.annotation.Bean;

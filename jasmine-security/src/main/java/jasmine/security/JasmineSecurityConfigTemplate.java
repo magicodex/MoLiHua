@@ -1,6 +1,6 @@
 package jasmine.security;
 
-import jasmine.security.authorization.DynamicAccessCheckService;
+import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserDetailsServiceProvider;
 
