@@ -4,7 +4,6 @@ import jasmine.core.context.SubjectProvider;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
-import org.springframework.core.task.TaskDecorator;
 
 /**
  * <p>
@@ -43,19 +42,12 @@ public interface JasmineFrameworkConfigTemplate {
     }
 
     /**
-     * 注册 TaskDecorator 对象
-     *
-     * @return
-     */
-    default TaskDecorator taskDecorator() {
-        return null;
-    }
-
-    /**
      * 注册 SubjectProvider 对象
      *
      * @return
      */
-    SubjectProvider subjectProvider();
+    default SubjectProvider subjectProvider() {
+        return null;
+    }
 
 }

@@ -125,4 +125,41 @@ public class QCollectionUtil extends CollUtil {
         return CollStreamUtil.groupByKey(collection, classifier);
     }
 
+    /**
+     * 遍历集合
+     *
+     * @param collection
+     * @param function
+     * @param <E>
+     * @param <R>
+     * @return
+     */
+    public static <E, R> List<R> forEach(Collection<E> collection, Function<E, R> function) {
+        QCheckUtil.notNull(collection, "collection null");
+        QCheckUtil.notNull(function, "function null");
+        List<R> returnList = new ArrayList<>(collection.size());
+
+        collection.forEach((current) -> {
+            returnList.add(function.apply(current));
+        });
+
+        return returnList;
+    }
+
+    /**
+     * 遍历集合
+     *
+     * @param collection
+     * @param consumer
+     * @param <E>
+     */
+    public static <E> void forEach(Collection<E> collection, java.util.function.Consumer<E> consumer) {
+        QCheckUtil.notNull(collection, "collection null");
+        QCheckUtil.notNull(consumer, "consumer null");
+
+        collection.forEach((current) -> {
+            consumer.accept(current);
+        });
+    }
+
 }

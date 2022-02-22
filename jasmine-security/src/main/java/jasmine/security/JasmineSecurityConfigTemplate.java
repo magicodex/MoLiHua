@@ -1,6 +1,5 @@
 package jasmine.security;
 
-import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserSubjectDetailsServiceProvider;
 
@@ -37,14 +36,4 @@ public interface JasmineSecurityConfigTemplate {
      * @return
      */
     UserSubjectDetailsServiceProvider userSubjectDetailsServiceProvider();
-
-    /**
-     * 注册 DynamicAccessCheckService 对象
-     *
-     * @return
-     */
-    default DynamicAccessCheckService dynamicAccessCheckService() {
-        return null;
-    }
-
 }

@@ -1,6 +1,5 @@
 package jasmine.framework.concurrent;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskDecorator;
@@ -25,10 +24,6 @@ public class AsyncExecutorConfig implements AsyncConfigurer {
     /** 允许空闲的最大时间 */
     private static final int KEEP_ALIVE_SECONDS = 1800;
 
-    public AsyncExecutorConfig(@Autowired(required = false) TaskDecorator taskDecorator) {
-        this.taskDecorator = taskDecorator;
-    }
-
     @Bean
     @Override
     public Executor getAsyncExecutor() {
@@ -46,6 +41,15 @@ public class AsyncExecutorConfig implements AsyncConfigurer {
         executor.setTaskDecorator(taskDecorator);
 
         return executor;
+    }
+
+    @Bean
+    public TaskDecorator taskDecorator() {
+        taskDecorator = (taskDecorator != null)
+                ? taskDecorator
+                : (new AsyncTaskDecorator());
+
+        return taskDecorator;
     }
 
 }

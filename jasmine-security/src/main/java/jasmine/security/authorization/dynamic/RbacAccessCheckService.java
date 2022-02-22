@@ -18,6 +18,7 @@ import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
@@ -29,6 +30,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
+@Component
 public class RbacAccessCheckService implements DynamicAccessCheckService, InitSupport {
     private static final Logger logger = LoggerFactory.getLogger(RbacAccessCheckService.class);
     private SecurityFunctionService functionService;

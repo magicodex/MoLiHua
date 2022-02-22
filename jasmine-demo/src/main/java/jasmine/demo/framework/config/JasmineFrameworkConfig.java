@@ -1,26 +1,20 @@
 package jasmine.demo.framework.config;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.context.SubjectProvider;
 import jasmine.demo.framework.cache.CustomCacheSyncStrategy;
-import jasmine.demo.framework.context.AsyncTaskContextDecorator;
 import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.UserSubjectDetailsServiceImpl;
-import jasmine.security.subject.UserSubjectProvider;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.remote.mq.DefaultSendMessageService;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;
-import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
-import jasmine.security.authorization.dynamic.RbacAccessCheckService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserSubjectDetailsServiceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.task.TaskDecorator;
 
 /**
  * @author mh.z
@@ -51,12 +45,6 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
 
     @Bean
     @Override
-    public DynamicAccessCheckService dynamicAccessCheckService() {
-        return new RbacAccessCheckService(runtimeProvider);
-    }
-
-    @Bean
-    @Override
     public ReceiveMessageService receiveMessageService() {
         return new CustomRabbitReceiveMessageService(runtimeProvider);
     }
@@ -70,18 +58,6 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Override
     public CacheSyncStrategy cacheSyncStrategy() {
         return new CustomCacheSyncStrategy();
-    }
-
-    @Bean
-    @Override
-    public TaskDecorator taskDecorator() {
-        return new AsyncTaskContextDecorator();
-    }
-
-    @Bean
-    @Override
-    public SubjectProvider subjectProvider() {
-        return new UserSubjectProvider();
     }
 
 }
