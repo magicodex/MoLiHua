@@ -1,5 +1,6 @@
 package jasmine.framework;
 
+import jasmine.core.context.SubjectProvider;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
@@ -49,5 +50,12 @@ public interface JasmineFrameworkConfigTemplate {
     default TaskDecorator taskDecorator() {
         return null;
     }
+
+    /**
+     * 注册 SubjectProvider 对象
+     *
+     * @return
+     */
+    SubjectProvider subjectProvider();
 
 }

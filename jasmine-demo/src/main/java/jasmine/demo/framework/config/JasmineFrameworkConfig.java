@@ -1,19 +1,21 @@
 package jasmine.demo.framework.config;
 
 import jasmine.core.context.RuntimeProvider;
+import jasmine.core.context.SubjectProvider;
 import jasmine.demo.framework.cache.CustomCacheSyncStrategy;
 import jasmine.demo.framework.context.AsyncTaskContextDecorator;
 import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
-import jasmine.framework.cache.CacheSyncStrategy;
-import jasmine.security.authorization.dynamic.RbacAccessCheckService;
 import jasmine.demo.framework.security.UserSubjectDetailsService;
+import jasmine.demo.framework.security.UserSubjectProvider;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
+import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.remote.mq.DefaultSendMessageService;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;
 import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
+import jasmine.security.authorization.dynamic.RbacAccessCheckService;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserDetailsServiceProvider;
 import org.springframework.context.annotation.Bean;
@@ -74,6 +76,11 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Override
     public TaskDecorator taskDecorator() {
         return new AsyncTaskContextDecorator();
+    }
+
+    @Override
+    public SubjectProvider subjectProvider() {
+        return new UserSubjectProvider();
     }
 
 }
