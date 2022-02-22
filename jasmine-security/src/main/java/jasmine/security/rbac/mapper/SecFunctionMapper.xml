@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jasmine.security.rbac.mapper.SecFunctionMapper">
+
+    <resultMap id="securityFunctionBaseInfoDTO" type="jasmine.security.rbac.dto.SecFunctionBaseInfoDTO">
+    </resultMap>
+
+    <select id="listFunctionBaseInfoDTOsByRoleIds" resultMap="securityFunctionBaseInfoDTO">
+        select
+        t_function.id function_id,
+        t_function.function_code,
+        t_function.function_name
+        from sec_role t_role,
+        sec_role_function_rel t_role_function_rel,
+        sec_function t_function
+        where t_role.id = t_role_function_rel.role_id
+        and t_role_function_rel.function_id = t_function.id
+        and t_role.enable_flag = 1
+        and t_role.id in
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+        group by t_function.id, t_function.function_code, t_function.function_name
+        order by t_function.function_code asc
+    </select>
+
+</mapper>

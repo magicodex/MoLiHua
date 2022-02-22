@@ -4,9 +4,9 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.authentication.persistence.dao.UserDao;
 import jasmine.demo.authentication.persistence.entity.UserEO;
-import jasmine.security.authorization.RoleAuthority;
-import jasmine.security.rbac.model.SecurityRole;
-import jasmine.security.rbac.service.SecurityRoleService;
+import jasmine.security.authorization.rbac.RoleAuthority;
+import jasmine.security.rbac.model.SecRole;
+import jasmine.security.rbac.service.SecRoleService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
@@ -23,13 +23,13 @@ import java.util.List;
 public class BaseClientDetailsService implements ClientDetailsService {
     private RuntimeProvider runtimeProvider;
     private UserDao userDao;
-    private SecurityRoleService roleService;
+    private SecRoleService roleService;
     private PasswordEncoder passwordEncoder;
 
     public BaseClientDetailsService(RuntimeProvider provider) {
         this.runtimeProvider = provider;
         userDao = runtimeProvider.getByType(UserDao.class);
-        roleService = runtimeProvider.getByType(SecurityRoleService.class);
+        roleService = runtimeProvider.getByType(SecRoleService.class);
         passwordEncoder = runtimeProvider.getByType(PasswordEncoder.class);
     }
 
@@ -42,7 +42,7 @@ public class BaseClientDetailsService implements ClientDetailsService {
 
         // 获取角色
         Long userId = user.getId();
-        List<SecurityRole> roleList = roleService.listRolesByUserId(userId);
+        List<SecRole> roleList = roleService.listRolesByUserId(userId);
 
         List<GrantedAuthority> authorityList = QCollectionUtil.mapToList(roleList, (role) -> {
             return new RoleAuthority(role.getId(), role.getRoleCode());

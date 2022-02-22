@@ -3,7 +3,7 @@ package jasmine.autoconfigure.security.authoriaztion;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.authorization.dynamic.DynamicAccessDecisionManagerProvider;
-import jasmine.security.authorization.dynamic.RbacAccessCheckService;
+import jasmine.security.authorization.rbac.RbacAccessCheckService;
 import jasmine.security.authorization.dynamic.DynamicConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

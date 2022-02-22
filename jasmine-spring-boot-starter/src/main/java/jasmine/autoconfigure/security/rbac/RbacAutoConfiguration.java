@@ -1,20 +1,20 @@
 package jasmine.autoconfigure.security.rbac;
 
-import jasmine.security.rbac.mapper.SecurityFunctionMapper;
-import jasmine.security.rbac.mapper.SecurityResourceMapper;
-import jasmine.security.rbac.mapper.SecurityRoleMapper;
-import jasmine.security.rbac.service.SecurityFunctionPermissionRelationService;
-import jasmine.security.rbac.service.SecurityFunctionResourceRelationService;
-import jasmine.security.rbac.service.SecurityFunctionService;
-import jasmine.security.rbac.service.SecurityMenuFunctionRelationService;
-import jasmine.security.rbac.service.SecurityMenuService;
-import jasmine.security.rbac.service.SecurityMenuTemplateService;
-import jasmine.security.rbac.service.SecurityPermissionResourceRelationService;
-import jasmine.security.rbac.service.SecurityPermissionService;
-import jasmine.security.rbac.service.SecurityResourceService;
-import jasmine.security.rbac.service.SecurityRoleFunctionRelationService;
-import jasmine.security.rbac.service.SecurityRoleService;
-import jasmine.security.rbac.service.SecurityUserRoleRelationService;
+import jasmine.security.rbac.mapper.SecFunctionMapper;
+import jasmine.security.rbac.mapper.SecResourceMapper;
+import jasmine.security.rbac.mapper.SecRoleMapper;
+import jasmine.security.rbac.service.SecFunctionPermissionRelationService;
+import jasmine.security.rbac.service.SecFunctionResourceRelationService;
+import jasmine.security.rbac.service.SecFunctionService;
+import jasmine.security.rbac.service.SecMenuFunctionRelationService;
+import jasmine.security.rbac.service.SecMenuService;
+import jasmine.security.rbac.service.SecMenuTemplateService;
+import jasmine.security.rbac.service.SecPermissionResourceRelationService;
+import jasmine.security.rbac.service.SecPermissionService;
+import jasmine.security.rbac.service.SecResourceService;
+import jasmine.security.rbac.service.SecRoleFunctionRelationService;
+import jasmine.security.rbac.service.SecRoleService;
+import jasmine.security.rbac.service.SecUserRoleRelationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,63 +25,63 @@ import org.springframework.context.annotation.Configuration;
 public class RbacAutoConfiguration {
 
     @Bean
-    public SecurityFunctionPermissionRelationService securityFunctionPermissionRelationService() {
-        return new SecurityFunctionPermissionRelationService();
+    public SecFunctionPermissionRelationService securityFunctionPermissionRelationService() {
+        return new SecFunctionPermissionRelationService();
     }
 
     @Bean
-    public SecurityFunctionResourceRelationService securityFunctionResourceRelationService() {
-        return new SecurityFunctionResourceRelationService();
+    public SecFunctionResourceRelationService securityFunctionResourceRelationService() {
+        return new SecFunctionResourceRelationService();
     }
 
     @Bean
-    public SecurityFunctionService SecurityFunctionService(SecurityFunctionMapper baseMapper) {
-        return new SecurityFunctionService(baseMapper);
+    public SecFunctionService SecurityFunctionService(SecFunctionMapper baseMapper) {
+        return new SecFunctionService(baseMapper);
     }
 
     @Bean
-    public SecurityMenuFunctionRelationService securityMenuFunctionRelationService() {
-        return new SecurityMenuFunctionRelationService();
+    public SecMenuFunctionRelationService securityMenuFunctionRelationService() {
+        return new SecMenuFunctionRelationService();
     }
 
     @Bean
-    public SecurityMenuService securityMenuService() {
-        return new SecurityMenuService();
+    public SecMenuService securityMenuService() {
+        return new SecMenuService();
     }
 
     @Bean
-    public SecurityMenuTemplateService securityMenuTemplateService() {
-        return new SecurityMenuTemplateService();
+    public SecMenuTemplateService securityMenuTemplateService() {
+        return new SecMenuTemplateService();
     }
 
     @Bean
-    public SecurityPermissionResourceRelationService securityPermissionResourceRelationService() {
-        return new SecurityPermissionResourceRelationService();
+    public SecPermissionResourceRelationService securityPermissionResourceRelationService() {
+        return new SecPermissionResourceRelationService();
     }
 
     @Bean
-    public SecurityPermissionService securityPermissionService() {
-        return new SecurityPermissionService();
+    public SecPermissionService securityPermissionService() {
+        return new SecPermissionService();
     }
 
     @Bean
-    public SecurityResourceService securityResourceService(SecurityResourceMapper baseMapper) {
-        return new SecurityResourceService(baseMapper);
+    public SecResourceService securityResourceService(SecResourceMapper baseMapper) {
+        return new SecResourceService(baseMapper);
     }
 
     @Bean
-    public SecurityRoleFunctionRelationService securityRoleFunctionRelationService() {
-        return new SecurityRoleFunctionRelationService();
+    public SecRoleFunctionRelationService securityRoleFunctionRelationService() {
+        return new SecRoleFunctionRelationService();
     }
 
     @Bean
-    public SecurityRoleService securityRoleService(SecurityRoleMapper baseMapper) {
-        return new SecurityRoleService(baseMapper);
+    public SecRoleService securityRoleService(SecRoleMapper baseMapper) {
+        return new SecRoleService(baseMapper);
     }
 
     @Bean
-    public SecurityUserRoleRelationService securityUserRoleRelationService() {
-        return new SecurityUserRoleRelationService();
+    public SecUserRoleRelationService securityUserRoleRelationService() {
+        return new SecUserRoleRelationService();
     }
 
 }

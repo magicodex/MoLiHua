@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jasmine.security.rbac.mapper.SecRoleMapper">
+
+    <resultMap id="securityRole" type="jasmine.security.rbac.model.SecRole">
+    </resultMap>
+
+    <select id="listRolesByUserId" resultMap="securityRole">
+        select t_role.*
+        from sec_role t_role,
+        sec_user_role_rel t_user_role_rel
+        where t_role.id = t_user_role_rel.role_id
+        and t_user_role_rel.user_id = ${userId}
+        order by t_role.role_code asc
+    </select>
+
+</mapper>
