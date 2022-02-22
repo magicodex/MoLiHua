@@ -8,9 +8,9 @@ import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.model.SecurityRole;
 import jasmine.security.rbac.service.SecurityRoleService;
 import jasmine.security.subject.UserSubject;
+import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -19,13 +19,13 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class UserSubjectDetailsService implements UserDetailsService {
+public class UserSubjectDetailsServiceImpl implements UserSubjectDetailsService {
     private RuntimeProvider runtimeProvider;
     private UserDao userDao;
     private PasswordEncoder passwordEncoder;
     private SecurityRoleService roleService;
 
-    public UserSubjectDetailsService(RuntimeProvider provider) {
+    public UserSubjectDetailsServiceImpl(RuntimeProvider provider) {
         this.runtimeProvider = provider;
         userDao = runtimeProvider.getByType(UserDao.class);
         passwordEncoder = runtimeProvider.getByType(PasswordEncoder.class);
@@ -42,16 +42,46 @@ public class UserSubjectDetailsService implements UserDetailsService {
 
         // 获取角色
         Long userId = user.getId();
+        List<GrantedAuthority> authorityList = getGrantedAuthorities(userId);
+
+        UserSubject userDetails = new UserSubject(user.getTenantId(), userId,
+                user.getUserName(), passwordEncoder.encode(user.getPassword()), authorityList);
+
+        return userDetails;
+    }
+
+    @Override
+    public UserSubject loadUserByUserId(Long userId) throws UsernameNotFoundException {
+        // 获取用户
+        UserEO user = userDao.getUserById(userId);
+        if (user == null) {
+            throw new UsernameNotFoundException("userId '" + userId + "' not found");
+        }
+
+        // 获取角色
+        List<GrantedAuthority> authorityList = getGrantedAuthorities(userId);
+
+        UserSubject userDetails = new UserSubject(user.getTenantId(), userId,
+                user.getUserName(), passwordEncoder.encode(user.getPassword()), authorityList);
+
+        return userDetails;
+    }
+
+    /**
+     * 查找指定用户已授予的角色
+     *
+     * @param userId
+     * @return
+     */
+    protected List<GrantedAuthority> getGrantedAuthorities(Long userId) {
+        // 获取角色
         List<SecurityRole> roleList = roleService.listRolesByUserId(userId);
 
         List<GrantedAuthority> authorityList = QCollectionUtil.mapToList(roleList, (role) -> {
             return new RoleAuthority(role.getId(), role.getRoleCode());
         });
 
-        UserSubject userDetails = new UserSubject(user.getTenantId(), userId,
-                user.getUserName(), passwordEncoder.encode(user.getPassword()), authorityList);
-
-        return userDetails;
+        return authorityList;
     }
 
 }

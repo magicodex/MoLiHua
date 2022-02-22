@@ -2,7 +2,7 @@ package jasmine.security.config;
 
 import jasmine.security.authorization.AccessDecisionManagerProvider;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
-import jasmine.security.subject.UserDetailsServiceProvider;
+import jasmine.security.subject.UserSubjectDetailsServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,10 +27,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private AccessDecisionManagerProvider accessDecisionManagerProvider;
-    private UserDetailsServiceProvider userDetailsServiceProvider;
+    private UserSubjectDetailsServiceProvider userDetailsServiceProvider;
 
     public SpringSecurityConfig(AccessDecisionManagerProvider accessDecisionManagerProvider,
-                                @Autowired(required = false) UserDetailsServiceProvider userDetailsServiceProvider) {
+                                @Autowired(required = false) UserSubjectDetailsServiceProvider userDetailsServiceProvider) {
         this.accessDecisionManagerProvider = accessDecisionManagerProvider;
         this.userDetailsServiceProvider = userDetailsServiceProvider;
     }
