@@ -1,7 +1,9 @@
 package jasmine.security.config;
 
 import jasmine.core.util.QStringUtil;
+import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -17,6 +19,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @Configuration
 public class OAuth2ResourceConfig extends ResourceServerConfigurerAdapter {
     private static final String AUTHORIZATION_HEADER = "Authorization";
+    /** 访问决策管理器 */
+    private AccessDecisionManager accessDecisionManager;
+
+    public OAuth2ResourceConfig(AccessDecisionManager accessDecisionManager) {
+        this.accessDecisionManager = accessDecisionManager;
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -27,8 +35,11 @@ public class OAuth2ResourceConfig extends ResourceServerConfigurerAdapter {
         });
 
         http.authorizeRequests()
+                // 没有特别说明的其它请求由访问决策管理器决定能否访问
                 .anyRequest()
-                .authenticated();
+                .denyAll()
+                // 设置访问决策管理器
+                .withObjectPostProcessor(new FilterSecurityInterceptorPostProcessor(accessDecisionManager));
     }
 
 }

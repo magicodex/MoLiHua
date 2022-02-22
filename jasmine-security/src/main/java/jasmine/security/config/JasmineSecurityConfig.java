@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JasmineSecurityConfig {
 
-    /** 是否启用RBAC访问控制 */
+    /** 是否启用 RBAC 访问控制 */
     @Value("${jasmine.security.rbac.enabled:false}")
     private Boolean rbacEnabled;
 

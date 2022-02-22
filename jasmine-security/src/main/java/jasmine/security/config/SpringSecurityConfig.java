@@ -1,12 +1,13 @@
 package jasmine.security.config;
 
-import jasmine.security.authorization.DynamicAccessDecisionManager;
+import jasmine.security.authorization.AccessDecisionManagerProvider;
+import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import jasmine.security.subject.UserDetailsServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 /**
  * <p>
@@ -26,14 +26,12 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 @EnableWebSecurity
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-    /** 访问决策管理器 */
-    private DynamicAccessDecisionManager accessDecisionManager;
-
+    private AccessDecisionManagerProvider accessDecisionManagerProvider;
     private UserDetailsServiceProvider userDetailsServiceProvider;
 
-    public SpringSecurityConfig(DynamicAccessDecisionManager accessDecisionManager,
+    public SpringSecurityConfig(AccessDecisionManagerProvider accessDecisionManagerProvider,
                                 @Autowired(required = false) UserDetailsServiceProvider userDetailsServiceProvider) {
-        this.accessDecisionManager = accessDecisionManager;
+        this.accessDecisionManagerProvider = accessDecisionManagerProvider;
         this.userDetailsServiceProvider = userDetailsServiceProvider;
     }
 
@@ -47,7 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .denyAll()
                 // 设置访问决策管理器
-                .withObjectPostProcessor(setAccessDecisionManager());
+                .withObjectPostProcessor(new FilterSecurityInterceptorPostProcessor(accessDecisionManager()));
 
         // 自定义登录页面和认证失败后跳转的页面
         http.formLogin()
@@ -95,19 +93,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    /**
-     *
-     * @return
-     */
-    private ObjectPostProcessor<FilterSecurityInterceptor> setAccessDecisionManager() {
-        return new ObjectPostProcessor<>() {
-            @Override
-            public <O extends FilterSecurityInterceptor> O postProcess(O object) {
-                object.setAccessDecisionManager(accessDecisionManager);
-
-                return object;
-            }
-        };
+    @Bean
+    public AccessDecisionManager accessDecisionManager() {
+        return accessDecisionManagerProvider.getManager();
     }
 
 }
