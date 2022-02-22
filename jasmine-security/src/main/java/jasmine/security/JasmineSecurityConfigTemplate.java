@@ -43,5 +43,8 @@ public interface JasmineSecurityConfigTemplate {
      *
      * @return
      */
-    DynamicAccessCheckService dynamicAccessCheckService();
+    default DynamicAccessCheckService dynamicAccessCheckService() {
+        return null;
+    }
+
 }

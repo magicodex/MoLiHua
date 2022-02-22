@@ -5,14 +5,12 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheSyncStrategy;
-import org.springframework.stereotype.Component;
 
 import java.util.function.Supplier;
 
 /**
  * @author mh.z
  */
-@Component
 public class CustomCacheSyncStrategy implements CacheSyncStrategy, InitSupport {
     private CacheService cacheService;
 

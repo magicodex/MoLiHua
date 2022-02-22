@@ -1,10 +1,12 @@
 package jasmine.demo.framework.config;
 
 import jasmine.core.context.RuntimeProvider;
+import jasmine.demo.framework.cache.CustomCacheSyncStrategy;
 import jasmine.demo.framework.context.AsyncTaskContextDecorator;
 import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
-import jasmine.demo.framework.security.RbacAccessCheckService;
+import jasmine.framework.cache.CacheSyncStrategy;
+import jasmine.security.authorization.dynamic.RbacAccessCheckService;
 import jasmine.demo.framework.security.UserSubjectDetailsService;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
 import jasmine.framework.remote.mq.DefaultSendMessageService;
@@ -61,6 +63,11 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Override
     public SendMessageService sendMessageService() {
         return new DefaultSendMessageService(runtimeProvider);
+    }
+
+    @Override
+    public CacheSyncStrategy cacheSyncStrategy() {
+        return new CustomCacheSyncStrategy();
     }
 
     @Bean

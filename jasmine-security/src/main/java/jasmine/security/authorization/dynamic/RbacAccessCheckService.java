@@ -1,4 +1,4 @@
-package jasmine.demo.framework.security;
+package jasmine.security.authorization.dynamic;
 
 import cn.hutool.core.util.ObjectUtil;
 import jasmine.core.context.InitSupport;
@@ -6,10 +6,9 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
-import jasmine.demo.framework.constant.FrameworkCaches;
 import jasmine.framework.cache.CacheUtil;
-import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.authorization.RoleAuthority;
+import jasmine.security.constant.SecurityCaches;
 import jasmine.security.rbac.constant.RbacConstants;
 import jasmine.security.rbac.dto.SecurityFunctionBaseInfoDTO;
 import jasmine.security.rbac.model.SecurityResource;
@@ -161,7 +160,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
         QCheckUtil.notNull(urlPattern, "urlPattern null");
         String cacheKey = requestMethod + "&" + urlPattern;
 
-        SecurityResource resource = CacheUtil.get(FrameworkCaches.RESOURCE_WITH_REQUEST, cacheKey, () -> {
+        SecurityResource resource = CacheUtil.get(SecurityCaches.RESOURCE_WITH_REQUEST, cacheKey, () -> {
             // 获取指定路径的资源
             List<SecurityResource> resourceList = resourceService.listResourcesByPath(urlPattern);
             if (QCollectionUtil.isEmpty(resourceList)) {
@@ -193,7 +192,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
     protected List<SecurityFunctionBaseInfoDTO> getFunctionsByUser(UserSubject subject) {
         QCheckUtil.notNull(subject, "subject null");
         Long userId = QCheckUtil.notNull(subject.getUserId(), "subject.userId null");
-        String category = FrameworkCaches.FUNCTIONS_WITH_USER_ID;
+        String category = SecurityCaches.FUNCTIONS_WITH_USER_ID;
 
         List<SecurityFunctionBaseInfoDTO> functionList = CacheUtil.getList(category, userId, () -> {
             // 获取该用户的授权对象
@@ -224,7 +223,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
      */
     protected List<SecurityFunctionBaseInfoDTO> getFunctionsByResource(Long resourceId) {
         QCheckUtil.notNull(resourceId, "resourceId null");
-        String category = FrameworkCaches.FUNCTIONS_WITH_RESOURCE_ID;
+        String category = SecurityCaches.FUNCTIONS_WITH_RESOURCE_ID;
 
         List<SecurityFunctionBaseInfoDTO> functionList = CacheUtil.getList(category, resourceId, () -> {
             // 获取该资源被授予给的所有功能
