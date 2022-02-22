@@ -1,4 +1,4 @@
-package jasmine.framework.web.swagger;
+package jasmine.autoconfigure.framework.web;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * </p>
  */
 @Configuration
-public class SwaggerConfig {
+public class SwaggerAutoConfiguration {
     @Value("${jasmine.swagger.version:}")
     private String apiVersion;
 

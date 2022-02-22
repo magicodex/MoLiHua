@@ -1,6 +1,8 @@
-package jasmine.framework.i18n;
+package jasmine.autoconfigure.framework.i18n;
 
-
+import jasmine.core.i18n.LocaleMessageProvider;
+import jasmine.framework.i18n.DeclareI18nScanUtil;
+import jasmine.framework.i18n.DefaultLocaleMessageProvider;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,15 +13,10 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import java.util.Properties;
 
 /**
- * <p>
- * 配置多语言。
- * </p>
- *
  * @author mh.z
  */
 @Configuration
-public class LocaleConfig {
-
+public class I18nAutoConfiguration {
     /**  多语言资源路径 */
     private static final String MESSAGE_PATH_PREFIX = "message/messages";
     /** 多语言资源编码 */
@@ -53,6 +50,11 @@ public class LocaleConfig {
         resolver.setCookieName(COOKIE_LANGUAGE);
 
         return resolver;
+    }
+
+    @Bean
+    public LocaleMessageProvider localeMessageProvider(MessageSource messageSource) {
+        return new DefaultLocaleMessageProvider(messageSource);
     }
 
 }

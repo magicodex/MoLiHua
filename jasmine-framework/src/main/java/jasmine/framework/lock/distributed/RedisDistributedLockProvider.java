@@ -13,8 +13,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
-@Component
-class RedisDistributedLockProvider implements DistributedLockProvider {
+public class RedisDistributedLockProvider implements DistributedLockProvider {
     private RedissonClient redisson;
     /** 锁key的分隔符 */
     private static final String REDIS_KEY_SEPARATOR = ":";

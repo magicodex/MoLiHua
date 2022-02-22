@@ -4,14 +4,12 @@ import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.QCheckUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
 /**
  * @author mh.z
  */
-@Component
 public class DefaultLocaleMessageProvider implements LocaleMessageProvider {
     private final MessageSource messageSource;
     /** 多语言key前缀 */

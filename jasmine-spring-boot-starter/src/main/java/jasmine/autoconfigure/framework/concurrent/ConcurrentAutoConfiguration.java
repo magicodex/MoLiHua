@@ -1,5 +1,8 @@
-package jasmine.framework.concurrent;
+package jasmine.autoconfigure.framework.concurrent;
 
+import jasmine.framework.concurrent.AsyncTaskDecorator;
+import jasmine.framework.concurrent.AsyncTaskUtil;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskDecorator;
@@ -12,8 +15,8 @@ import java.util.concurrent.Executor;
  * @author mh.z
  */
 @Configuration
-public class AsyncExecutorConfig implements AsyncConfigurer {
-    private TaskDecorator taskDecorator;
+public class ConcurrentAutoConfiguration implements AsyncConfigurer {
+    private ThreadPoolTaskExecutor executor;
 
     /** 核心线程数 */
     private static final int CORE_POOL_SIZE = 10;
@@ -27,7 +30,7 @@ public class AsyncExecutorConfig implements AsyncConfigurer {
     @Bean
     @Override
     public Executor getAsyncExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor = new ThreadPoolTaskExecutor();
 
         // 核心线程数
         executor.setCorePoolSize(CORE_POOL_SIZE);
@@ -38,18 +41,15 @@ public class AsyncExecutorConfig implements AsyncConfigurer {
         // 允许空闲的最大时间
         executor.setKeepAliveSeconds(KEEP_ALIVE_SECONDS);
         // 任务装饰器
-        executor.setTaskDecorator(taskDecorator);
+        executor.setTaskDecorator(taskDecorator());
 
+        AsyncTaskUtil.setExecutor(executor);
         return executor;
     }
 
     @Bean
     public TaskDecorator taskDecorator() {
-        taskDecorator = (taskDecorator != null)
-                ? taskDecorator
-                : (new AsyncTaskDecorator());
-
-        return taskDecorator;
+        return new AsyncTaskDecorator();
     }
 
 }

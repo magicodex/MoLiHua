@@ -1,7 +1,5 @@
 package jasmine.framework.cache;
 
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -12,7 +10,6 @@ import java.util.function.Supplier;
  *
  * @author mh.z
  */
-@Component
 public class CacheUtil {
     /** 缓存接口 */
     private static CacheService cacheService;

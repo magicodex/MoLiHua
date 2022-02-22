@@ -1,7 +1,6 @@
 package jasmine.core.util;
 
 import jasmine.core.i18n.LocaleMessageProvider;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
  *
  * @author mh.z
  */
-@Component
 public class QI18nUtil {
     private static LocaleMessageProvider provider;
 

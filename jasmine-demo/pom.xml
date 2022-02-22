@@ -36,6 +36,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.magicodex</groupId>
+            <artifactId>jasmine-spring-boot-starter</artifactId>
+            <version>${project.module.version}</version>
+        </dependency>
+
         <!-- 注解校验 -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>

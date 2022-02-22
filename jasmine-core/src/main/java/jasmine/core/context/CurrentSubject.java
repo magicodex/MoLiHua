@@ -2,7 +2,6 @@ package jasmine.core.context;
 
 import jasmine.core.util.QCheckUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
  *
  * @author mh.z
  */
-@Component
 public class CurrentSubject {
     /** 用户信息提供者 */
     private static SubjectProvider subjectProvider;

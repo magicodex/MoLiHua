@@ -1,11 +1,15 @@
-package jasmine.framework.persistence.mybatisplus;
+package jasmine.autoconfigure.framework.persistence;
 
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import jasmine.core.context.SubjectProvider;
-import org.springframework.beans.factory.annotation.Autowired;
+import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
+import jasmine.framework.persistence.mybatisplus.ContextParameter;
+import jasmine.framework.persistence.mybatisplus.ContextParameterInnerInterceptor;
+import jasmine.framework.persistence.mybatisplus.DefaultContextParameter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,15 +17,10 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @Configuration
-public class MybatisPlusConfig {
-    private SubjectProvider subjectProvider;
-
-    public MybatisPlusConfig(@Autowired(required = false) SubjectProvider subjectProvider) {
-        this.subjectProvider = subjectProvider;
-    }
+public class MybatisPlusAutoConfiguration {
 
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+    public MybatisPlusInterceptor mybatisPlusInterceptor(SubjectProvider subjectProvider) {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         // 乐观锁插件
         interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
@@ -34,6 +33,11 @@ public class MybatisPlusConfig {
         interceptor.addInnerInterceptor(new ContextParameterInnerInterceptor(contextParameter));
 
         return interceptor;
+    }
+
+    @Bean
+    public MetaObjectHandler metaObjectHandler() {
+        return new BaseEntityMetaObjectHandler();
     }
 
 }

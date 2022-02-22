@@ -3,7 +3,6 @@ package jasmine.framework.persistence.mybatisplus;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import jasmine.core.context.CurrentSubject;
 import org.apache.ibatis.reflection.MetaObject;
-import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
 
@@ -14,7 +13,6 @@ import java.time.ZonedDateTime;
  *
  * @author mh.z
  */
-@Component
 public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
 
     @Override

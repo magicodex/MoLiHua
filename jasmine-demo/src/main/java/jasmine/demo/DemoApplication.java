@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @MapperScan("jasmine.**.mapper")
 @EnableSwagger2WebMvc
 @EnableAutoConfiguration
-@SpringBootApplication(scanBasePackages = {"jasmine"})
+@SpringBootApplication(scanBasePackages = {"jasmine.demo", "jasmine.autoconfigure", "jasmine.security"})
 public class DemoApplication {
     private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 

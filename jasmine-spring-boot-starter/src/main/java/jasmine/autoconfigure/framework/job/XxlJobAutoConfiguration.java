@@ -1,4 +1,4 @@
-package jasmine.framework.job;
+package jasmine.autoconfigure.framework.job;
 
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.slf4j.Logger;
@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @ConditionalOnProperty(name = {"jasmine.xxl.job.enabled"}, havingValue = "true")
 @Configuration
-public class XxlJobConfig {
-    private Logger logger = LoggerFactory.getLogger(XxlJobConfig.class);
+public class XxlJobAutoConfiguration {
+    private Logger logger = LoggerFactory.getLogger(XxlJobAutoConfiguration.class);
 
     @Value("${xxl.job.admin.addresses}")
     private String adminAddresses;

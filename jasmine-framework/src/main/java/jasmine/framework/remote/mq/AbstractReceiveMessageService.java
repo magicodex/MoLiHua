@@ -2,7 +2,6 @@ package jasmine.framework.remote.mq;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
-import jasmine.framework.FrameworkConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,15 +11,19 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractReceiveMessageService<T> implements ReceiveMessageService {
     private static final Logger logger = LoggerFactory.getLogger(AbstractReceiveMessageService.class);
     private RuntimeProvider runtimeProvider;
-    /** 配置 */
-    private FrameworkConfig frameworkConfig;
+    /** 是否消费消息队列的消息 */
+    private Boolean messageQueueConsumerEnabled;
 
     /** 消息接收者 bean 的名称后缀 */
     private static final String RECEIVER_BEAN_SUFFIX = "MessageReceiver";
 
     public AbstractReceiveMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
-        this.frameworkConfig = runtimeProvider.getByType(FrameworkConfig.class);
+        messageQueueConsumerEnabled = false;
+    }
+
+    public void setMessageQueueConsumerEnabled(Boolean messageQueueConsumerEnabled) {
+        this.messageQueueConsumerEnabled = messageQueueConsumerEnabled;
     }
 
     @Override
@@ -28,7 +31,7 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(message, "message null");
 
-        if (Boolean.TRUE.equals(frameworkConfig.getMessageQueuePublisherEnabled())) {
+        if (Boolean.TRUE.equals(messageQueueConsumerEnabled)) {
             // 接收消息
             doReceive(category, (T) message);
         } else {

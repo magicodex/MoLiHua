@@ -14,7 +14,6 @@ import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
@@ -26,7 +25,6 @@ import java.lang.reflect.Method;
  * @author mh.z
  */
 @Aspect
-@Component
 public class DistributedLockAspectHandler implements Ordered {
     private static final ExpressionParser EXPRESSION_PARSER;
     private static final ParameterNameDiscoverer PARAMETER_NAME_DISCOVERER;

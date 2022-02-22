@@ -1,4 +1,4 @@
-package jasmine.framework;
+package jasmine.autoconfigure.framework.remote;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @Configuration
-public class FrameworkConfig {
+public class MessageQueueProperties {
 
     /** 是否发布消息到消息队列 */
     @Value("${jasmine.message-queue.publisher.enabled:false}")
@@ -24,5 +24,4 @@ public class FrameworkConfig {
     public Boolean getMessageQueueConsumerEnabled() {
         return messageQueueConsumerEnabled;
     }
-
 }

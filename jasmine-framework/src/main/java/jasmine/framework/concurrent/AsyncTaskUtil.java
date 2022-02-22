@@ -1,7 +1,6 @@
 package jasmine.framework.concurrent;
 
 import jasmine.core.util.QCheckUtil;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,11 +18,14 @@ import java.util.concurrent.ExecutorCompletionService;
  *
  * @author mh.z
  */
-@Component
 public class AsyncTaskUtil {
     private static Executor executor;
 
     public AsyncTaskUtil(Executor executor) {
+        AsyncTaskUtil.executor = executor;
+    }
+
+    public static void setExecutor(Executor executor) {
         AsyncTaskUtil.executor = executor;
     }
 

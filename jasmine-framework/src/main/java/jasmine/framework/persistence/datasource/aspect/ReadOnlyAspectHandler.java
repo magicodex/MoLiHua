@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
  * @author mh.z
  */
 @Aspect
-@Component
 public class ReadOnlyAspectHandler implements Ordered {
     private DataSourceDecideFacade dataSourceDecideFacade;
 

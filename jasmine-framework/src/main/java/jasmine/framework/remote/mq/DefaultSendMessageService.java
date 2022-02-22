@@ -2,7 +2,6 @@ package jasmine.framework.remote.mq;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
-import jasmine.framework.FrameworkConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,15 +11,19 @@ import org.slf4j.LoggerFactory;
 public class DefaultSendMessageService implements SendMessageService {
     private static final Logger logger = LoggerFactory.getLogger(DefaultSendMessageService.class);
     private RuntimeProvider runtimeProvider;
-    /** 配置 */
-    private FrameworkConfig frameworkConfig;
+    /** 是否发布消息到消息队列 */
+    private Boolean messageQueuePublisherEnabled;
 
     /** 消息发送者 bean 的名称后缀 */
     private static final String SENDER_BEAN_SUFFIX = "MessageSender";
 
     public DefaultSendMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
-        this.frameworkConfig = runtimeProvider.getByType(FrameworkConfig.class);
+        this.messageQueuePublisherEnabled = false;
+    }
+
+    public void setMessageQueuePublisherEnabled(Boolean messageQueuePublisherEnabled) {
+        this.messageQueuePublisherEnabled = messageQueuePublisherEnabled;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class DefaultSendMessageService implements SendMessageService {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(content, "content null");
 
-        if (Boolean.TRUE.equals(frameworkConfig.getMessageQueuePublisherEnabled())) {
+        if (Boolean.TRUE.equals(messageQueuePublisherEnabled)) {
             // 发送消息
             doSend(category, content);
         } else {

@@ -3,13 +3,11 @@ package jasmine.security.subject;
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.context.SubjectProvider;
-import jasmine.security.subject.UserSubject;
-import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Collections;
 
@@ -20,13 +18,12 @@ import java.util.Collections;
  *
  * @author mh.z
  */
-@Component
 public class UserSubjectProvider implements SubjectProvider, InitSupport {
     private UserSubjectDetailsService subjectDetailsService;
 
     @Override
     public void init(RuntimeProvider provider) {
-        this.subjectDetailsService = provider.getByType(UserSubjectDetailsService.class);
+        this.subjectDetailsService = (UserSubjectDetailsService) provider.getByType(UserDetailsService.class);
     }
 
     @Override
