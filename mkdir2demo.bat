@@ -24,9 +24,7 @@ cd business
 mkdir service
 mkdir dto
 mkdir domain
-cd domain
-mkdir infrastructure
-cd ../
+mkdir facade
 cd ../
 
 rem 创建 persistence 目录
