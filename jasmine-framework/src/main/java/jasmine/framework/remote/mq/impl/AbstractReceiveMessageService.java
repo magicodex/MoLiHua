@@ -49,7 +49,13 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
      */
     protected abstract void doReceive(String category, T message);
 
-    @Override
+    /**
+     * 查找消息接收者并返回
+     *
+     * @param category
+     * @param required
+     * @return
+     */
     public MessageReceiver getReceiver(String category, boolean required) {
         QCheckUtil.notNull(category, "category null");
 

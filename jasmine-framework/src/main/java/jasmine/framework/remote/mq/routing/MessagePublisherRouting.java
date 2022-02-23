@@ -1,4 +1,4 @@
-package jasmine.framework.remote.mq;
+package jasmine.framework.remote.mq.routing;
 
 public interface MessagePublisherRouting {
 

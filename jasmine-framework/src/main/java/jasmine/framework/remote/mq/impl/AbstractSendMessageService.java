@@ -49,7 +49,13 @@ public abstract class AbstractSendMessageService implements SendMessageService {
      */
     protected abstract void doSend(String category, Object content);
 
-    @Override
+    /**
+     * 查找消息发送者并返回
+     *
+     * @param category
+     * @param required
+     * @return
+     */
     public MessageSender getSender(String category, boolean required) {
         QCheckUtil.notNull(category, "category null");
 

@@ -5,7 +5,7 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QNewUtil;
-import jasmine.framework.remote.mq.MessagePublisherRouting;
+import jasmine.framework.remote.mq.routing.MessagePublisherRouting;
 import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Message;

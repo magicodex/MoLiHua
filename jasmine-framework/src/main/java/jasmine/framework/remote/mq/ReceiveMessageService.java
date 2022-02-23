@@ -16,13 +16,4 @@ public interface ReceiveMessageService {
      * @param message
      */
     void receive(String category, Object message);
-
-    /**
-     * 查找消息接收者并返回
-     *
-     * @param category
-     * @param required
-     * @return
-     */
-    MessageReceiver getReceiver(String category, boolean required);
 }

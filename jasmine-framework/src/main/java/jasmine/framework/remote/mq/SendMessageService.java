@@ -16,13 +16,4 @@ public interface SendMessageService {
      * @param content
      */
     void send(String category, Object content);
-
-    /**
-     * 查找消息发送者并返回
-     *
-     * @param category
-     * @param required
-     * @return
-     */
-    MessageSender getSender(String category, boolean required);
 }
