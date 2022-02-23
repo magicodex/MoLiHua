@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.aspect;
+package jasmine.framework.persistence.annotation;
 
 import jasmine.framework.persistence.annotation.ReadOnly;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;

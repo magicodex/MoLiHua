@@ -1,6 +1,5 @@
 package jasmine.autoconfigure.security.oauth2;
 
-import jasmine.security.subject.ClientDetailsServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,6 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.InMemoryClientDetailsService;
 
 /**
@@ -24,12 +24,12 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
     /** 认证管理器 */
     private final AuthenticationManager authenticationManager;
 
-    private ClientDetailsServiceProvider clientDetailsServiceProvider;
+    private ClientDetailsService clientDetailsService;
 
     public OAuth2AuthorizationAutoConfiguration(AuthenticationManager authenticationManager,
-                                                @Autowired(required = false) ClientDetailsServiceProvider clientDetailsServiceProvider) {
+                                                @Autowired(required = false) ClientDetailsService clientDetailsService) {
         this.authenticationManager = authenticationManager;
-        this.clientDetailsServiceProvider = clientDetailsServiceProvider;
+        this.clientDetailsService = clientDetailsService;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        if (clientDetailsServiceProvider != null) {
-            clients.withClientDetails(clientDetailsServiceProvider.getService());
+        if (clientDetailsService != null) {
+            clients.withClientDetails(clientDetailsService);
         } else {
             clients.withClientDetails(new InMemoryClientDetailsService());
         }

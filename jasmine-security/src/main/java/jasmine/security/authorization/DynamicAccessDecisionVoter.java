@@ -1,7 +1,6 @@
 package jasmine.security.authorization;
 
 import jasmine.core.util.QCheckUtil;
-import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.ConfigAttribute;
@@ -16,9 +15,9 @@ import java.util.Collection;
  */
 public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInvocation> {
     private Boolean rbacEnabled;
-    private DynamicAccessCheckService checkService;
+    private UserAccessDecisionStrategy checkService;
 
-    public DynamicAccessDecisionVoter(Boolean rbacEnabled, DynamicAccessCheckService checkService) {
+    public DynamicAccessDecisionVoter(Boolean rbacEnabled, UserAccessDecisionStrategy checkService) {
         this.rbacEnabled = rbacEnabled;
         this.checkService = checkService;
     }

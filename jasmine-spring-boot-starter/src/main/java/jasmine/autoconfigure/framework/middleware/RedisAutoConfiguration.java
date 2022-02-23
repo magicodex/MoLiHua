@@ -4,7 +4,7 @@ import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.cache.redis.RedisCacheService;
-import jasmine.framework.lock.aspect.DistributedLockAspectHandler;
+import jasmine.framework.lock.annotation.DistributedLockAspectHandler;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.redis.RedisDistributedLockProvider;
 import org.redisson.api.RedissonClient;

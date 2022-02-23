@@ -3,7 +3,7 @@ package jasmine.autoconfigure.security;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
-import jasmine.security.authorization.dynamic.RbacAccessCheckService;
+import jasmine.security.strategy.RbacAccessCheckStrategy;
 import jasmine.security.support.SecurityContextCopyHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -30,8 +30,8 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public RbacAccessCheckService rbacAccessCheckService(RuntimeProvider runtimeProvider) {
-        return new RbacAccessCheckService(runtimeProvider);
+    public RbacAccessCheckStrategy rbacAccessCheckService(RuntimeProvider runtimeProvider) {
+        return new RbacAccessCheckStrategy(runtimeProvider);
     }
 
     @Bean
@@ -40,7 +40,7 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public AccessDecisionManager accessDecisionManager(RbacAccessCheckService checkService) {
+    public AccessDecisionManager accessDecisionManager(RbacAccessCheckStrategy checkService) {
         WebExpressionVoter webExpressionVoter = new WebExpressionVoter();
         webExpressionVoter.setExpressionHandler(new OAuth2WebSecurityExpressionHandler());
 

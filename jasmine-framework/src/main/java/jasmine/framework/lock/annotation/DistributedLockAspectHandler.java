@@ -1,4 +1,4 @@
-package jasmine.framework.lock.aspect;
+package jasmine.framework.lock.annotation;
 
 import jasmine.framework.lock.annotation.DistributedLock;
 import jasmine.framework.lock.distributed.DistributedLocks;

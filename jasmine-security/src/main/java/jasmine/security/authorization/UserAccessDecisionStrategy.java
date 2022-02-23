@@ -1,4 +1,4 @@
-package jasmine.security.authorization.dynamic;
+package jasmine.security.authorization;
 
 import jasmine.security.subject.UserSubject;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author mh.z
  */
-public interface DynamicAccessCheckService {
+public interface UserAccessDecisionStrategy {
 
     /**
      * 检查权限
