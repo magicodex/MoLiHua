@@ -19,7 +19,7 @@ public class CurrentSubject {
         SUBJECT_PROVIDER_NULL_MESSAGE = CurrentSubject.class.getSimpleName() + ".subjectProvider null";
     }
 
-    public static void initCurrentSubject(SubjectProvider subjectProvider) {
+    public static void initUtil(SubjectProvider subjectProvider) {
         CurrentSubject.subjectProvider = subjectProvider;
     }
 

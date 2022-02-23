@@ -36,9 +36,10 @@ public class RbacAccessCheckStrategy implements AccessDecisionStrategy, InitSupp
     private SecResourceService resourceService;
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    public RbacAccessCheckStrategy(RuntimeProvider runtimeProvider) {
-        this.functionService = runtimeProvider.getByType(SecFunctionService.class);
-        this.resourceService = runtimeProvider.getByType(SecResourceService.class);
+    public RbacAccessCheckStrategy(SecFunctionService functionService,
+                                   SecResourceService resourceService) {
+        this.functionService = functionService;
+        this.resourceService = resourceService;
     }
 
     @Override

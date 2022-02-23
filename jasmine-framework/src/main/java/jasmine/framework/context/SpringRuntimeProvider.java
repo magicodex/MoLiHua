@@ -6,8 +6,6 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import java.util.Map;
-
 /**
  * @author mh.z
  */
@@ -65,17 +63,6 @@ public class SpringRuntimeProvider implements RuntimeProvider, ApplicationContex
         }
 
         return bean;
-    }
-
-    /**
-     * 返回指定类型的对象
-     *
-     * @param type
-     * @param <T>
-     * @return
-     */
-    public <T> Map<String, T> getMapByType(Class<T> type) {
-        return applicationContext.getBeansOfType(type);
     }
 
 }

@@ -1,7 +1,6 @@
 package jasmine.framework.lock.distributed;
 
 import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QSpringUtil;
 
 /**
  * <p>
@@ -11,6 +10,11 @@ import jasmine.core.util.QSpringUtil;
  * @author mh.z
  */
 public class DistributedLocks {
+    private static DistributedLockProvider provider;
+
+    public static void initUtil(DistributedLockProvider provider) {
+        DistributedLocks.provider = provider;
+    }
 
     /**
      * 声明分布式锁
@@ -24,7 +28,6 @@ public class DistributedLocks {
         QCheckUtil.notNull(key, "key null");
 
         // 获取分布式锁的实现
-        DistributedLockProvider provider = QSpringUtil.getBean(DistributedLockProvider.class);
         DistributedDeclaredLock lock = provider.declareLock(category, key);
 
         return lock;

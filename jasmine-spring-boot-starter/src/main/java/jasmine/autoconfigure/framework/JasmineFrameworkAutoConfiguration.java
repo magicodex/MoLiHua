@@ -26,7 +26,7 @@ public class JasmineFrameworkAutoConfiguration {
     public SubjectProvider subjectProvider(UserSubjectDetailsService userSubjectDetailsService) {
         SubjectProvider subjectProvider = new UserSubjectProvider(userSubjectDetailsService);
 
-        CurrentSubject.initCurrentSubject(subjectProvider);
+        CurrentSubject.initUtil(subjectProvider);
         return subjectProvider;
     }
 

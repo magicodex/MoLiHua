@@ -1,8 +1,9 @@
 package jasmine.autoconfigure.security;
 
-import jasmine.core.context.RuntimeProvider;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
+import jasmine.security.rbac.service.SecFunctionService;
+import jasmine.security.rbac.service.SecResourceService;
 import jasmine.security.strategy.RbacAccessCheckStrategy;
 import jasmine.security.support.SecurityContextCopyHandler;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,8 +31,9 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public RbacAccessCheckStrategy rbacAccessCheckService(RuntimeProvider runtimeProvider) {
-        return new RbacAccessCheckStrategy(runtimeProvider);
+    public RbacAccessCheckStrategy rbacAccessCheckService(SecFunctionService functionService,
+                                                          SecResourceService resourceService) {
+        return new RbacAccessCheckStrategy(functionService, resourceService);
     }
 
     @Bean
