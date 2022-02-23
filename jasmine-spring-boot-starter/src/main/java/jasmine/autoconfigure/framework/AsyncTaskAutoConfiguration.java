@@ -1,8 +1,7 @@
-package jasmine.autoconfigure.framework.concurrent;
+package jasmine.autoconfigure.framework;
 
 import jasmine.framework.concurrent.AsyncTaskDecorator;
 import jasmine.framework.concurrent.AsyncTaskUtil;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskDecorator;
@@ -15,7 +14,7 @@ import java.util.concurrent.Executor;
  * @author mh.z
  */
 @Configuration
-public class ConcurrentAutoConfiguration implements AsyncConfigurer {
+public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
     private ThreadPoolTaskExecutor executor;
 
     /** 核心线程数 */

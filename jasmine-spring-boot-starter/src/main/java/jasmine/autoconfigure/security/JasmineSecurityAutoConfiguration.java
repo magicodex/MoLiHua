@@ -1,11 +1,11 @@
 package jasmine.autoconfigure.security;
 
-import jasmine.autoconfigure.security.rbac.RbacProperties;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
-import jasmine.security.authorization.dynamic.DynamicAccessDecisionVoter;
-import jasmine.security.authorization.rbac.RbacAccessCheckService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jasmine.security.authorization.DynamicAccessDecisionVoter;
+import jasmine.security.authorization.dynamic.RbacAccessCheckService;
+import jasmine.security.support.SecurityContextCopyHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionManager;
@@ -20,8 +20,9 @@ import java.util.Arrays;
 @Configuration
 public class JasmineSecurityAutoConfiguration {
 
-    @Autowired
-    private RbacProperties rbacProperties;
+    /** 是否启用 RBAC 访问控制 */
+    @Value("${jasmine.security.rbac.enabled:false}")
+    private Boolean rbacEnabled;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -34,12 +35,17 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
+    public SecurityContextCopyHandler securityContextCopyHandler() {
+        return new SecurityContextCopyHandler();
+    }
+
+    @Bean
     public AccessDecisionManager accessDecisionManager(RbacAccessCheckService checkService) {
         WebExpressionVoter webExpressionVoter = new WebExpressionVoter();
         webExpressionVoter.setExpressionHandler(new OAuth2WebSecurityExpressionHandler());
 
         // 动态访问决策投票器
-        DynamicAccessDecisionVoter dynamicVoter = new DynamicAccessDecisionVoter(rbacProperties.getRbacEnabled(), checkService);
+        DynamicAccessDecisionVoter dynamicVoter = new DynamicAccessDecisionVoter(rbacEnabled, checkService);
         // 访问决策管理器
         AccessDecisionManager manager = new AffirmativeBased(Arrays.asList(webExpressionVoter, dynamicVoter));
         AccessDecisionManagerProxy managerProxy = new AccessDecisionManagerProxy(manager);

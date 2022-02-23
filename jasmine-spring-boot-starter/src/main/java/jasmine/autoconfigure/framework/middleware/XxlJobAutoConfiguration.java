@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.framework.job;
+package jasmine.autoconfigure.framework.middleware;
 
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.slf4j.Logger;

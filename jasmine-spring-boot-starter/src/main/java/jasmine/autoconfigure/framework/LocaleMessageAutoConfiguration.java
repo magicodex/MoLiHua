@@ -1,6 +1,7 @@
-package jasmine.autoconfigure.framework.i18n;
+package jasmine.autoconfigure.framework;
 
 import jasmine.core.i18n.LocaleMessageProvider;
+import jasmine.core.util.QI18nUtil;
 import jasmine.framework.i18n.DeclareI18nScanUtil;
 import jasmine.framework.i18n.DefaultLocaleMessageProvider;
 import org.springframework.context.MessageSource;
@@ -16,7 +17,7 @@ import java.util.Properties;
  * @author mh.z
  */
 @Configuration
-public class I18nAutoConfiguration {
+public class LocaleMessageAutoConfiguration {
     /**  多语言资源路径 */
     private static final String MESSAGE_PATH_PREFIX = "message/messages";
     /** 多语言资源编码 */
@@ -54,7 +55,11 @@ public class I18nAutoConfiguration {
 
     @Bean
     public LocaleMessageProvider localeMessageProvider(MessageSource messageSource) {
-        return new DefaultLocaleMessageProvider(messageSource);
+        LocaleMessageProvider localeMessageProvider = new DefaultLocaleMessageProvider(messageSource);
+
+        QI18nUtil.initUtil(localeMessageProvider);
+
+        return localeMessageProvider;
     }
 
 }

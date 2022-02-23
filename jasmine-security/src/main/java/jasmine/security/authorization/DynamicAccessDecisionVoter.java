@@ -1,6 +1,7 @@
-package jasmine.security.authorization.dynamic;
+package jasmine.security.authorization;
 
 import jasmine.core.util.QCheckUtil;
+import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.ConfigAttribute;

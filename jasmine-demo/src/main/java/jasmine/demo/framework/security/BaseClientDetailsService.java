@@ -4,7 +4,7 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.authentication.persistence.dao.UserDao;
 import jasmine.demo.authentication.persistence.entity.UserEO;
-import jasmine.security.authorization.rbac.RoleAuthority;
+import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.model.SecRole;
 import jasmine.security.rbac.service.SecRoleService;
 import org.springframework.security.core.GrantedAuthority;

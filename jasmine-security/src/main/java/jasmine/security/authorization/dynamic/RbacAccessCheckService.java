@@ -1,4 +1,4 @@
-package jasmine.security.authorization.rbac;
+package jasmine.security.authorization.dynamic;
 
 import cn.hutool.core.util.ObjectUtil;
 import jasmine.core.context.InitSupport;
@@ -7,9 +7,9 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.framework.cache.CacheUtil;
-import jasmine.security.authorization.dynamic.DynamicAccessCheckService;
+import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.constant.SecurityCaches;
-import jasmine.security.constant.RbacConstants;
+import jasmine.security.constant.SecurityConstants;
 import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
 import jasmine.security.rbac.model.SecResource;
 import jasmine.security.rbac.service.SecFunctionService;
@@ -63,12 +63,12 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
 
         // 不鉴权匿名就可以访问的资源
         String accessPolicy = resource.getAccessPolicy();
-        if (RbacConstants.RESOURCE_ACCESS_POLICY_ANONYMOUS.equals(accessPolicy)) {
+        if (SecurityConstants.RESOURCE_ACCESS_POLICY_ANONYMOUS.equals(accessPolicy)) {
             return true;
         }
 
         // 当前用户是已登录的用户可以访问被标记成认证才能访问的资源
-        if (RbacConstants.RESOURCE_ACCESS_POLICY_AUTHENTICATED.equals(accessPolicy)) {
+        if (SecurityConstants.RESOURCE_ACCESS_POLICY_AUTHENTICATED.equals(accessPolicy)) {
             return true;
         }
 
@@ -171,7 +171,7 @@ public class RbacAccessCheckService implements DynamicAccessCheckService, InitSu
             for (SecResource current : resourceList) {
                 String accessMethod = current.getAccessMethod();
 
-                if (RbacConstants.RESOURCE_ACCESS_METHOD_ANY.equals(accessMethod)
+                if (SecurityConstants.RESOURCE_ACCESS_METHOD_ANY.equals(accessMethod)
                         || QStringUtil.equals(requestMethod, accessMethod)) {
                     return current;
                 }

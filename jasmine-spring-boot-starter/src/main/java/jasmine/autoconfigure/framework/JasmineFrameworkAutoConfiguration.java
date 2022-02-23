@@ -1,28 +1,29 @@
-package jasmine.autoconfigure.framework.context;
+package jasmine.autoconfigure.framework;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.SubjectProvider;
+import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.security.subject.UserSubjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @author mh.z
- */
 @Configuration
-public class ContextAutoConfiguration {
-    private SubjectProvider subjectProvider;
+public class JasmineFrameworkAutoConfiguration {
 
     @Bean
     public SpringRuntimeProvider runtimeProvider() {
-        return new SpringRuntimeProvider();
+        SpringRuntimeProvider runtimeProvider = new SpringRuntimeProvider();
+
+        QSpringUtil.initUtil(runtimeProvider);
+
+        return runtimeProvider;
     }
 
     @Bean
     public SubjectProvider subjectProvider() {
-        subjectProvider = new UserSubjectProvider();
+        SubjectProvider subjectProvider = new UserSubjectProvider();
 
         CurrentSubject.initCurrentSubject(subjectProvider);
         return subjectProvider;

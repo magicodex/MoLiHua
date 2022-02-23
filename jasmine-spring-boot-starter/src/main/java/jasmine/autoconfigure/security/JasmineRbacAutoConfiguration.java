@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.security.rbac;
+package jasmine.autoconfigure.security;
 
 import jasmine.security.rbac.mapper.SecFunctionMapper;
 import jasmine.security.rbac.mapper.SecResourceMapper;
@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @Configuration
-public class RbacAutoConfiguration {
+public class JasmineRbacAutoConfiguration {
 
     @Bean
     public SecFunctionPermissionRelationService securityFunctionPermissionRelationService() {

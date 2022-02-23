@@ -3,7 +3,7 @@ package jasmine.security.constant;
 /**
  * @author mh.z
  */
-public interface RbacConstants {
+public interface SecurityConstants {
 
     /** 资源访问方式-GET */
     String RESOURCE_ACCESS_METHOD_GET = "GET";

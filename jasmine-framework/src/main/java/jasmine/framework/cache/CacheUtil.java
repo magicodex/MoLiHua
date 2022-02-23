@@ -18,7 +18,7 @@ public class CacheUtil {
         CacheUtil.cacheService = cacheService;
     }
 
-    public static void setCacheService(CacheService cacheService) {
+    public static void initUtil(CacheService cacheService) {
         CacheUtil.cacheService = cacheService;
     }
 

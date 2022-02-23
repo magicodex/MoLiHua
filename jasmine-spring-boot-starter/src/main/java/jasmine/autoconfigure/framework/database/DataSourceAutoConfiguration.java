@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.framework.persistence;
+package jasmine.autoconfigure.framework.database;
 
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import jasmine.framework.persistence.aspect.ReadOnlyAspectHandler;

@@ -1,4 +1,4 @@
-package jasmine.security.authorization.rbac;
+package jasmine.security.authorization;
 
 import jasmine.core.util.QObjectUtil;
 import org.springframework.security.core.GrantedAuthority;

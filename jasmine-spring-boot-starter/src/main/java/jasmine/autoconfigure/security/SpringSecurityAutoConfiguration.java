@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.security.springsecurity;
+package jasmine.autoconfigure.security;
 
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import org.springframework.context.annotation.Bean;
