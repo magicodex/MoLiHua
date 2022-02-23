@@ -1,4 +1,4 @@
-package jasmine.security;
+package jasmine.autoconfigure.security;
 
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserSubjectDetailsServiceProvider;

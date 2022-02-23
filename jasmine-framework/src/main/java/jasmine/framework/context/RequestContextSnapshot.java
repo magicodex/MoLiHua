@@ -10,15 +10,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 public class RequestContextSnapshot implements ContextSnapshot {
     private RequestAttributes requestAttributes;
 
-    public RequestContextSnapshot() {
-        //
-    }
-
-    public RequestAttributes getRequestAttributes() {
-        return requestAttributes;
-    }
-
-    public void setRequestAttributes(RequestAttributes requestAttributes) {
+    public RequestContextSnapshot(RequestAttributes requestAttributes) {
         this.requestAttributes = requestAttributes;
     }
 

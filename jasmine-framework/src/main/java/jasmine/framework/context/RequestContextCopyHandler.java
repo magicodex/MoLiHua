@@ -12,10 +12,8 @@ public class RequestContextCopyHandler implements ContextCopyHandler {
 
     @Override
     public ContextSnapshot copy() {
-        RequestContextSnapshot snapshot = new RequestContextSnapshot();
-
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-        snapshot.setRequestAttributes(requestAttributes);
+        RequestContextSnapshot snapshot = new RequestContextSnapshot(requestAttributes);
 
         return snapshot;
     }

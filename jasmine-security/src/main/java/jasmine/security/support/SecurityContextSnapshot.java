@@ -10,15 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class SecurityContextSnapshot implements ContextSnapshot {
     private SecurityContext securityContext;
 
-    public SecurityContextSnapshot() {
-        //
-    }
-
-    public SecurityContext getSecurityContext() {
-        return securityContext;
-    }
-
-    public void setSecurityContext(SecurityContext securityContext) {
+    public SecurityContextSnapshot(SecurityContext securityContext) {
         this.securityContext = securityContext;
     }
 

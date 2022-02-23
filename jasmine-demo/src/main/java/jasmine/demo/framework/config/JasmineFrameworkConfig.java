@@ -1,6 +1,5 @@
 package jasmine.demo.framework.config;
 
-import jasmine.core.context.RuntimeProvider;
 import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.UserSubjectDetailsServiceImpl;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
@@ -9,7 +8,7 @@ import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.framework.remote.rabbit.RabbitReceiveMessageService;
 import jasmine.framework.remote.rabbit.RabbitSendMessageService;
-import jasmine.security.JasmineSecurityConfigTemplate;
+import jasmine.autoconfigure.security.JasmineSecurityConfigTemplate;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserSubjectDetailsServiceProvider;
 import org.springframework.context.annotation.Bean;

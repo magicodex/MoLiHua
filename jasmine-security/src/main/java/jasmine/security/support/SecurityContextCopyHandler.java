@@ -11,8 +11,7 @@ public class SecurityContextCopyHandler implements ContextCopyHandler {
 
     @Override
     public ContextSnapshot copy() {
-        SecurityContextSnapshot snapshot = new SecurityContextSnapshot();
-        snapshot.setSecurityContext(SecurityContextHolder.getContext());
+        SecurityContextSnapshot snapshot = new SecurityContextSnapshot(SecurityContextHolder.getContext());
 
         return snapshot;
     }
