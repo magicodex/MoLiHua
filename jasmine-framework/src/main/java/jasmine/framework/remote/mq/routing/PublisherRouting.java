@@ -1,6 +1,6 @@
 package jasmine.framework.remote.mq.routing;
 
-public interface MessagePublisherRouting {
+public interface PublisherRouting {
 
     /**
      * 类别

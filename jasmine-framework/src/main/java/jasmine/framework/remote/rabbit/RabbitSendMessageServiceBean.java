@@ -5,7 +5,7 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QNewUtil;
-import jasmine.framework.remote.mq.routing.MessagePublisherRouting;
+import jasmine.framework.remote.mq.routing.PublisherRouting;
 import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Message;
@@ -70,7 +70,7 @@ public class RabbitSendMessageServiceBean extends AbstractSendMessageService
 
     @Override
     public void afterSingletonsInstantiated() {
-        Map<String, MessagePublisherRouting> routingMap = applicationContext.getBeansOfType(MessagePublisherRouting.class);
+        Map<String, PublisherRouting> routingMap = applicationContext.getBeansOfType(PublisherRouting.class);
         this.routingMap = QNewUtil.map();
 
         routingMap.forEach((name, routing) -> {

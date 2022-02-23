@@ -4,6 +4,7 @@ import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.remote.mq.MessageSender;
 import jasmine.framework.remote.mq.SendMessageService;
+import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,19 +14,17 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractSendMessageService implements SendMessageService {
     private static final Logger logger = LoggerFactory.getLogger(AbstractSendMessageService.class);
     private RuntimeProvider runtimeProvider;
-    /** 是否发布消息到消息队列 */
-    private Boolean messageQueuePublisherEnabled;
+    protected SendInterceptor interceptor;
 
     /** 消息发送者 bean 的名称后缀 */
     private static final String SENDER_BEAN_SUFFIX = "MessageSender";
 
     public AbstractSendMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
-        this.messageQueuePublisherEnabled = true;
     }
 
-    public void setMessageQueuePublisherEnabled(Boolean messageQueuePublisherEnabled) {
-        this.messageQueuePublisherEnabled = messageQueuePublisherEnabled;
+    public void setInterceptor(SendInterceptor interceptor) {
+        this.interceptor = interceptor;
     }
 
     @Override
@@ -33,12 +32,8 @@ public abstract class AbstractSendMessageService implements SendMessageService {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(content, "content null");
 
-        if (Boolean.TRUE.equals(messageQueuePublisherEnabled)) {
-            // 发送消息
-            doSend(category, content);
-        } else {
-            logger.warn("send skipped(jasmine.message-queue.publisher.enabled=false)");
-        }
+        // 发送消息
+        doSend(category, content);
     }
 
     /**
