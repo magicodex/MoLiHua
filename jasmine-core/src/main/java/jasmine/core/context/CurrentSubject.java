@@ -1,7 +1,6 @@
 package jasmine.core.context;
 
 import jasmine.core.util.QCheckUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>
@@ -20,11 +19,7 @@ public class CurrentSubject {
         SUBJECT_PROVIDER_NULL_MESSAGE = CurrentSubject.class.getSimpleName() + ".subjectProvider null";
     }
 
-    public CurrentSubject(@Autowired(required = false) SubjectProvider subjectProvider) {
-        CurrentSubject.subjectProvider = subjectProvider;
-    }
-
-    public static void setProvider(SubjectProvider subjectProvider) {
+    public static void initCurrentSubject(SubjectProvider subjectProvider) {
         CurrentSubject.subjectProvider = subjectProvider;
     }
 

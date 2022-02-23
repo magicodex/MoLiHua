@@ -10,6 +10,7 @@ package jasmine.core.exception;
 public class InvalidParameterException extends UnexpectedException {
 
     public InvalidParameterException() {
+        //
     }
 
     public InvalidParameterException(String messageOrKey, Object... args) {

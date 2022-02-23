@@ -8,21 +8,24 @@ package jasmine.core.exception;
  * @author mh.z
  */
 public class InvalidDataException extends UnexpectedException {
-    /** 错误代码 */
-    private static final String ERROR_CODE = "INVALID_DATA";
+    // 数据类型
+    protected Class<?> dataType;
+    // key名称
+    protected String dataKeyName;
+    // key值
+    protected Object dataKey;
+
+    /** 默认错误代码 */
+    private static final String DEFAULT_ERROR_CODE = "INVALID_DATA";
     /** 默认key名称 */
     private static final String DEFAULT_KEY_NAME = "key";
 
-    protected Class<?> clazz;
-    protected String keyName;
-    protected Object key;
-
     public InvalidDataException() {
-        super(ERROR_CODE);
+        super(DEFAULT_ERROR_CODE);
     }
 
     public InvalidDataException(String messageOrKey, Object... args) {
-        super(ERROR_CODE, messageOrKey, args);
+        super(DEFAULT_ERROR_CODE, messageOrKey, args);
     }
 
     public InvalidDataException(String errorCode, String messageOrKey, Object... args) {
@@ -30,7 +33,7 @@ public class InvalidDataException extends UnexpectedException {
     }
 
     public InvalidDataException(String messageOrKey, Throwable cause) {
-        super(ERROR_CODE, messageOrKey, cause);
+        super(DEFAULT_ERROR_CODE, messageOrKey, cause);
     }
 
     public InvalidDataException(String errorCode, String messageOrKey, Throwable cause) {
@@ -38,29 +41,40 @@ public class InvalidDataException extends UnexpectedException {
     }
 
     public InvalidDataException(Throwable cause) {
-        super(ERROR_CODE, cause);
+        super(DEFAULT_ERROR_CODE, cause);
     }
 
-    public InvalidDataException(Class<?> clazz, Object key, String messageOrKey, Object... args) {
-        this(clazz, DEFAULT_KEY_NAME, key, messageOrKey, args);
+    public InvalidDataException(Class<?> dataType, Object dataKey, String messageOrKey, Object... args) {
+        this(dataType, DEFAULT_KEY_NAME, dataKey, messageOrKey, args);
     }
 
-    public InvalidDataException(Class<?> clazz, String keyName, Object key, String messageOrKey, Object... args) {
-        this(ERROR_CODE, messageOrKey, args);
-        this.clazz = clazz;
-        this.keyName = keyName;
-        this.key = key;
+    public InvalidDataException(Class<?> dataType, String dataKeyName, Object dataKey, String messageOrKey, Object... args) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, args);
+        this.dataType = dataType;
+        this.dataKeyName = dataKeyName;
+        this.dataKey = dataKey;
     }
 
-    public void detail(Class<?> clazz, Object key, String detail) {
-        detail(clazz, DEFAULT_KEY_NAME, key, detail);
+    public void detail(Class<?> dataType, Object dataKey, String detail) {
+        detail(dataType, DEFAULT_KEY_NAME, dataKey, detail);
     }
 
-    public void detail(Class<?> clazz, String keyName, Object key, String detail) {
-        this.clazz = clazz;
-        this.keyName = keyName;
-        this.key = key;
+    public void detail(Class<?> dataType, String dataKeyName, Object dataKey, String detail) {
+        this.dataType = dataType;
+        this.dataKeyName = dataKeyName;
+        this.dataKey = dataKey;
         this.errorDetail = detail;
     }
 
+    public Class<?> getDataType() {
+        return dataType;
+    }
+
+    public String getDataKeyName() {
+        return dataKeyName;
+    }
+
+    public Object getDataKey() {
+        return dataKey;
+    }
 }

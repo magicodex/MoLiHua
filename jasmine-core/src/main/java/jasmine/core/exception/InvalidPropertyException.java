@@ -10,6 +10,7 @@ package jasmine.core.exception;
 public class InvalidPropertyException extends UnexpectedException {
 
     public InvalidPropertyException() {
+        //
     }
 
     public InvalidPropertyException(String messageOrKey, Object... args) {

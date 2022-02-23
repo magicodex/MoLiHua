@@ -14,6 +14,7 @@ public class ApplicationException extends RuntimeException {
     protected String errorCode;
     /** 错误详情  */
     protected String errorDetail;
+
     /** 多语言key前缀 */
     private static final String I18N_MESSAGE_KEY_PREFIX = "$";
 

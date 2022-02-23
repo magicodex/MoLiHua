@@ -23,9 +23,9 @@ public class UtilityAutoConfiguration implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        QSpringUtil.setRuntimeProvider(runtimeProvider);
+        QSpringUtil.initUtil(runtimeProvider);
 
-        QI18nUtil.setProvider(localeMessageProvider);
+        QI18nUtil.initUtil(localeMessageProvider);
     }
 
 }

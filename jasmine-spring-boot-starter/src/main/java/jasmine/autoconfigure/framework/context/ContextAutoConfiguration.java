@@ -24,7 +24,7 @@ public class ContextAutoConfiguration {
     public SubjectProvider subjectProvider() {
         subjectProvider = new UserSubjectProvider();
 
-        CurrentSubject.setProvider(subjectProvider);
+        CurrentSubject.initCurrentSubject(subjectProvider);
         return subjectProvider;
     }
 

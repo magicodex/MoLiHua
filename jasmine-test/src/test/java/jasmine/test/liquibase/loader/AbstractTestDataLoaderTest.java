@@ -43,7 +43,7 @@ public class AbstractTestDataLoaderTest {
         RuntimeProvider runtimeProvider = Mockito.mock(RuntimeProvider.class);
         Mockito.when(runtimeProvider.getByType(TestDataChangeLogMapper.class)).thenReturn(testDataChangeLogMapper);
         // 初始 QSpringUtil 工具类
-        QSpringUtil.setRuntimeProvider(runtimeProvider);
+        QSpringUtil.initUtil(runtimeProvider);
 
         AbstractTestDataLoaderImpl loader = new AbstractTestDataLoaderImpl();
         loader.init(Example1.class);

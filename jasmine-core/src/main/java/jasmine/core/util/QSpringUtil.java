@@ -12,11 +12,7 @@ import jasmine.core.context.RuntimeProvider;
 public class QSpringUtil {
     private static RuntimeProvider runtimeProvider;
 
-    public QSpringUtil(RuntimeProvider runtimeProvider) {
-        QSpringUtil.runtimeProvider = runtimeProvider;
-    }
-
-    public static void setRuntimeProvider(RuntimeProvider runtimeProvider) {
+    public static void initUtil(RuntimeProvider runtimeProvider) {
         QSpringUtil.runtimeProvider = runtimeProvider;
     }
 
