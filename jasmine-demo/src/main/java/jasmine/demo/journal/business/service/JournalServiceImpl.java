@@ -2,6 +2,7 @@ package jasmine.demo.journal.business.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jasmine.core.context.CurrentSubject;
+import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.journal.business.dto.JournalDTO;
@@ -58,6 +59,11 @@ public class JournalServiceImpl implements JournalService {
     @Override
     public JournalDTO saveJournal(JournalSaveDTO journal) {
         QCheckUtil.notNull(journal, "journal null");
+
+        if (journal.getJournalTitle() == null) {
+            throw new ApplicationException("param wrong")
+                    .detail("journal title is null");
+        }
 
         JournalEO journalEO = new JournalEO();
         journalEO.setJournalTitle(journal.getJournalTitle());

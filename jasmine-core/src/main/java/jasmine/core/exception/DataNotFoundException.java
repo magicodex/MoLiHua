@@ -1,8 +1,5 @@
 package jasmine.core.exception;
 
-import jasmine.core.exception.type.ErrorType;
-import jasmine.core.exception.type.SimpleErrorType;
-
 /**
  * <p>
  * 未找到数据的异常，表示未找到数据。
@@ -13,50 +10,56 @@ import jasmine.core.exception.type.SimpleErrorType;
 public class DataNotFoundException extends UnexpectedException {
     /** 错误代码 */
     private static final String ERROR_CODE = "DATA_NOT_FOUND";
-    /** 错误详情格式 */
-    private static final String ERROR_DETAIL_FORMAT = "not found data %s[%s=%s]";
     /** 默认key名称 */
     private static final String DEFAULT_KEY_NAME = "key";
-    /** 默认信息 */
-    private static final String DEFAULT_MESSAGE_OR_KEY = "data not found";
+
+    protected Class<?> clazz;
+    protected String keyName;
+    protected Object key;
 
     public DataNotFoundException() {
-        //
     }
 
     public DataNotFoundException(String messageOrKey, Object... args) {
-        super(messageOrKey, args);
+        super(ERROR_CODE, messageOrKey, args);
+    }
+
+    public DataNotFoundException(String errorCode, String messageOrKey, Object... args) {
+        super(errorCode, messageOrKey, args);
     }
 
     public DataNotFoundException(String messageOrKey, Throwable cause) {
-        super(messageOrKey, cause);
+        super(ERROR_CODE, messageOrKey, cause);
+    }
+
+    public DataNotFoundException(String errorCode, String messageOrKey, Throwable cause) {
+        super(errorCode, messageOrKey, cause);
     }
 
     public DataNotFoundException(Throwable cause) {
-        super(cause);
+        super(ERROR_CODE, cause);
     }
 
-    public DataNotFoundException(Class<?> clazz, Object key) {
-        super(buildErrorType(clazz, DEFAULT_KEY_NAME, key), DEFAULT_MESSAGE_OR_KEY);
+    public DataNotFoundException(Class<?> clazz, Object key, String messageOrKey, Object... args) {
+        this(clazz, DEFAULT_KEY_NAME, key, messageOrKey, args);
     }
 
-    public DataNotFoundException(Class<?> clazz, String keyName, Object key) {
-        super(buildErrorType(clazz, keyName, key), DEFAULT_MESSAGE_OR_KEY);
+    public DataNotFoundException(Class<?> clazz, String keyName, Object key, String messageOrKey, Object... args) {
+        this(ERROR_CODE, messageOrKey, args);
+        this.clazz = clazz;
+        this.keyName = keyName;
+        this.key = key;
     }
 
-    /**
-     * 创建错误类型
-     *
-     * @param clazz
-     * @param keyName
-     * @param key
-     * @return
-     */
-    protected static ErrorType buildErrorType(Class<?> clazz, String keyName, Object key) {
-        String errorDetail = String.format(ERROR_DETAIL_FORMAT, clazz.getSimpleName(), keyName, key);
-        ErrorType errorType = new SimpleErrorType(ERROR_CODE, errorDetail);
+    public void detail(Class<?> clazz, Object key, String detail) {
+        detail(clazz, DEFAULT_KEY_NAME, key, detail);
+    }
 
-        return errorType;
+    public void detail(Class<?> clazz, String keyName, Object key, String detail) {
+        this.clazz = clazz;
+        this.keyName = keyName;
+        this.key = key;
+        this.errorDetail = detail;
     }
 
 }

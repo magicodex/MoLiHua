@@ -1,6 +1,5 @@
 package jasmine.core.exception;
 
-import jasmine.core.exception.type.ErrorType;
 import jasmine.core.util.QI18nUtil;
 
 /**
@@ -11,8 +10,10 @@ import jasmine.core.util.QI18nUtil;
  * @author mh.z
  */
 public class ApplicationException extends RuntimeException {
-    /** 错误类型 */
-    private ErrorType errorType;
+    /** 错误代码 */
+    protected String errorCode;
+    /** 错误详情  */
+    protected String errorDetail;
     /** 多语言key前缀 */
     private static final String I18N_MESSAGE_KEY_PREFIX = "$";
 
@@ -24,31 +25,28 @@ public class ApplicationException extends RuntimeException {
         super(buildErrorMessage(messageOrKey, args));
     }
 
-    public ApplicationException(ErrorType errorType, String messageOrKey, Object... args) {
+    public ApplicationException(String errorCode, String messageOrKey, Object... args) {
         super(buildErrorMessage(messageOrKey, args));
-        this.errorType = errorType;
+        this.errorCode = errorCode;
     }
 
     public ApplicationException(String messageOrKey, Throwable cause) {
         super(buildErrorMessage(messageOrKey, new Object[0]), cause);
     }
 
-    public ApplicationException(ErrorType errorType, String messageOrKey, Throwable cause) {
+    public ApplicationException(String errorCode, String messageOrKey, Throwable cause) {
         super(buildErrorMessage(messageOrKey, new Object[0]), cause);
-        this.errorType = errorType;
+        this.errorCode = errorCode;
     }
 
     public ApplicationException(Throwable cause) {
         super(cause);
     }
 
-    public ApplicationException(ErrorType errorType, Throwable cause) {
-        super(cause);
-        this.errorType = errorType;
-    }
+    public ApplicationException detail(String detail) {
+        this.errorDetail = detail;
 
-    public ErrorType getErrorType() {
-        return errorType;
+        return this;
     }
 
     /**

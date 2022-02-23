@@ -1,8 +1,5 @@
 package jasmine.core.exception;
 
-import jasmine.core.exception.type.ErrorType;
-import jasmine.core.exception.type.SimpleErrorType;
-
 /**
  * <p>
  * 无效数据，表示数据有错误。
@@ -13,52 +10,57 @@ import jasmine.core.exception.type.SimpleErrorType;
 public class InvalidDataException extends UnexpectedException {
     /** 错误代码 */
     private static final String ERROR_CODE = "INVALID_DATA";
-    /** 错误详情格式 */
-    private static final String ERROR_DETAIL_FORMAT = "data %s[%s=%s] is invalid(reason %s)";
     /** 默认key名称 */
     private static final String DEFAULT_KEY_NAME = "key";
-    /** 默认信息 */
-    private static final String DEFAULT_MESSAGE_OR_KEY = "invalid data";
+
+    protected Class<?> clazz;
+    protected String keyName;
+    protected Object key;
 
     public InvalidDataException() {
-        //
+        super(ERROR_CODE);
     }
 
     public InvalidDataException(String messageOrKey, Object... args) {
-        super(messageOrKey, args);
+        super(ERROR_CODE, messageOrKey, args);
+    }
+
+    public InvalidDataException(String errorCode, String messageOrKey, Object... args) {
+        super(errorCode, messageOrKey, args);
     }
 
     public InvalidDataException(String messageOrKey, Throwable cause) {
-        super(messageOrKey, cause);
+        super(ERROR_CODE, messageOrKey, cause);
+    }
+
+    public InvalidDataException(String errorCode, String messageOrKey, Throwable cause) {
+        super(errorCode, messageOrKey, cause);
     }
 
     public InvalidDataException(Throwable cause) {
-        super(cause);
+        super(ERROR_CODE, cause);
     }
 
-    public InvalidDataException(Class<?> clazz, Object key, String reason) {
-        super(buildErrorType(clazz, DEFAULT_KEY_NAME, key, reason), DEFAULT_MESSAGE_OR_KEY);
+    public InvalidDataException(Class<?> clazz, Object key, String messageOrKey, Object... args) {
+        this(clazz, DEFAULT_KEY_NAME, key, messageOrKey, args);
     }
 
-    public InvalidDataException(Class<?> clazz, String keyName, Object key, String reason) {
-        super(buildErrorType(clazz, keyName, key, reason), DEFAULT_MESSAGE_OR_KEY);
+    public InvalidDataException(Class<?> clazz, String keyName, Object key, String messageOrKey, Object... args) {
+        this(ERROR_CODE, messageOrKey, args);
+        this.clazz = clazz;
+        this.keyName = keyName;
+        this.key = key;
     }
 
-    /**
-     * 创建错误类型
-     *
-     * @param clazz
-     * @param keyName
-     * @param key
-     * @param reason
-     * @return
-     */
-    protected static ErrorType buildErrorType(Class<?> clazz, String keyName,
-                                              Object key, String reason) {
-        String errorDetail = String.format(ERROR_DETAIL_FORMAT, clazz.getSimpleName(), keyName, key, reason);
-        ErrorType errorType = new SimpleErrorType(ERROR_CODE, errorDetail);
+    public void detail(Class<?> clazz, Object key, String detail) {
+        detail(clazz, DEFAULT_KEY_NAME, key, detail);
+    }
 
-        return errorType;
+    public void detail(Class<?> clazz, String keyName, Object key, String detail) {
+        this.clazz = clazz;
+        this.keyName = keyName;
+        this.key = key;
+        this.errorDetail = detail;
     }
 
 }
