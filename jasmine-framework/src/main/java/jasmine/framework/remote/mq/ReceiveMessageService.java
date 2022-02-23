@@ -16,4 +16,12 @@ public interface ReceiveMessageService {
      * @param message
      */
     void receive(String category, Object message);
+
+    /**
+     * 接收消息
+     *
+     * @param category
+     * @param message
+     */
+    void receiveOnly(String category, Object message);
 }

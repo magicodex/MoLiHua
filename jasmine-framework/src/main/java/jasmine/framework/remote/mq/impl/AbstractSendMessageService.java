@@ -11,9 +11,14 @@ import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
  */
 public abstract class AbstractSendMessageService implements SendMessageService {
     private SendInterceptor interceptor;
+    private static final SendInterceptor EMPTY_INTERCEPTOR;
+
+    static {
+        EMPTY_INTERCEPTOR = new DefaultSendInterceptor();
+    }
 
     public AbstractSendMessageService() {
-        interceptor = new DefaultSendInterceptor();
+        interceptor = EMPTY_INTERCEPTOR;
     }
 
     public void setInterceptor(SendInterceptor interceptor) {
@@ -29,6 +34,15 @@ public abstract class AbstractSendMessageService implements SendMessageService {
         interceptor.onSend((newCategory, newKey, newContent) -> {
             return doSend(interceptor, category, newKey, content);
         }, category, key, content);
+    }
+
+    @Override
+    public void sendOnly(String category, String key, Object content) {
+        QCheckUtil.notNull(category, "category null");
+        QCheckUtil.notNull(content, "content null");
+
+        // 发送消息
+        doSend(EMPTY_INTERCEPTOR, category, key, content);
     }
 
     /**

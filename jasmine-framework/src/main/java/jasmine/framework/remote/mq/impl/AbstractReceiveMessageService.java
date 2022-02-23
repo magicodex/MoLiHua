@@ -11,13 +11,18 @@ import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
  */
 public abstract class AbstractReceiveMessageService<T> implements ReceiveMessageService {
     private ReceiveInterceptor interceptor;
+    private static final ReceiveInterceptor DEFAULT_INTERCEPTOR;
+
+    static {
+        DEFAULT_INTERCEPTOR = new DefaultReceiveInterceptor();
+    }
 
     public AbstractReceiveMessageService() {
         interceptor = new DefaultReceiveInterceptor();
     }
 
     public void setInterceptor(ReceiveInterceptor interceptor) {
-        this.interceptor = interceptor;
+        this.interceptor = DEFAULT_INTERCEPTOR;
     }
 
     @Override
@@ -29,6 +34,15 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
         interceptor.onReceive((newCategory, newMessage) -> {
             return doReceive(interceptor, newCategory, (T) newMessage);
         }, category, message);
+    }
+
+    @Override
+    public void receiveOnly(String category, Object message) {
+        QCheckUtil.notNull(category, "category null");
+        QCheckUtil.notNull(message, "message null");
+
+        // 接收消息
+        doReceive(DEFAULT_INTERCEPTOR, category, (T) message);
     }
 
     /**
