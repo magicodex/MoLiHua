@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -60,7 +61,7 @@ public class JournalController {
 
     @ApiOperation(value = "保存日记")
     @PostMapping("/journal/save")
-    public ModelAndView save(@ModelAttribute WebJournalSaveDTO webJournalSaveDTO) {
+    public ModelAndView save(@Valid @ModelAttribute WebJournalSaveDTO webJournalSaveDTO) {
         JournalSaveDTO journalSaveDTO = WebJournalSaveDTO.toJournalSaveDTO(webJournalSaveDTO);
         // 保存日记
         journalService.saveJournal(journalSaveDTO);

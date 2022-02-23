@@ -25,7 +25,6 @@
         <module>jasmine-framework</module>
         <module>jasmine-test</module>
         <module>jasmine-security</module>
-        <module>jasmine-lowcode</module>
         <module>jasmine-demo</module>
         <module>jasmine-spring-boot-starter</module>
     </modules>
