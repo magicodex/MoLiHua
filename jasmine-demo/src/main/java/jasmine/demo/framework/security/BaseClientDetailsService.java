@@ -1,6 +1,5 @@
 package jasmine.demo.framework.security;
 
-import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.authentication.persistence.dao.UserDao;
 import jasmine.demo.authentication.persistence.entity.UserEO;
@@ -13,6 +12,7 @@ import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,17 +20,17 @@ import java.util.List;
 /**
  * @author mh.z
  */
+@Component
 public class BaseClientDetailsService implements ClientDetailsService {
-    private RuntimeProvider runtimeProvider;
     private UserDao userDao;
     private SecRoleService roleService;
     private PasswordEncoder passwordEncoder;
 
-    public BaseClientDetailsService(RuntimeProvider provider) {
-        this.runtimeProvider = provider;
-        userDao = runtimeProvider.getByType(UserDao.class);
-        roleService = runtimeProvider.getByType(SecRoleService.class);
-        passwordEncoder = runtimeProvider.getByType(PasswordEncoder.class);
+    public BaseClientDetailsService(UserDao userDao, SecRoleService roleService,
+                                    PasswordEncoder passwordEncoder) {
+        this.userDao = userDao;
+        this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override

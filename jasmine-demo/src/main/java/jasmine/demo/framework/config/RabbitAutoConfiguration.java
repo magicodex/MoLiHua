@@ -1,12 +1,11 @@
 package jasmine.demo.framework.config;
 
-import jasmine.demo.framework.security.BaseClientDetailsService;
-import jasmine.demo.framework.security.UserSubjectDetailsServiceImpl;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.framework.remote.rabbit.RabbitReceiveMessageService;
-import jasmine.framework.remote.rabbit.RabbitSendMessageService;
+import jasmine.framework.remote.rabbit.RabbitSendMessageServiceBean;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,23 +21,13 @@ public class JasmineFrameworkConfig {
     }
 
     @Bean
-    public BaseClientDetailsService baseClientDetailsService() {
-        return new BaseClientDetailsService(runtimeProvider);
-    }
-
-    @Bean
-    public UserSubjectDetailsServiceImpl userSubjectDetailsServiceImpl() {
-        return new UserSubjectDetailsServiceImpl(runtimeProvider);
-    }
-
-    @Bean
     public ReceiveMessageService receiveMessageService() {
         return new RabbitReceiveMessageService(runtimeProvider);
     }
 
     @Bean
-    public SendMessageService sendMessageService() {
-        return new RabbitSendMessageService(runtimeProvider);
+    public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate) {
+        return new RabbitSendMessageServiceBean(runtimeProvider, rabbitTemplate);
     }
 
 }

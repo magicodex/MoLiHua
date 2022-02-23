@@ -1,5 +1,6 @@
 package jasmine.demo.framework.security;
 
+import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.authentication.persistence.dao.UserDao;
@@ -13,23 +14,24 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * @author mh.z
  */
-public class UserSubjectDetailsServiceImpl implements UserSubjectDetailsService {
-    private RuntimeProvider runtimeProvider;
+@Component
+public class UserSubjectDetailsServiceImpl implements UserSubjectDetailsService, InitSupport {
     private UserDao userDao;
     private PasswordEncoder passwordEncoder;
     private SecRoleService roleService;
 
-    public UserSubjectDetailsServiceImpl(RuntimeProvider provider) {
-        this.runtimeProvider = provider;
-        userDao = runtimeProvider.getByType(UserDao.class);
-        passwordEncoder = runtimeProvider.getByType(PasswordEncoder.class);
-        roleService = runtimeProvider.getByType(SecRoleService.class);
+    @Override
+    public void init(RuntimeProvider provider) {
+        this.userDao = provider.getByType(UserDao.class);
+        this.passwordEncoder = provider.getByType(PasswordEncoder.class);
+        this.roleService = provider.getByType(SecRoleService.class);
     }
 
     @Override

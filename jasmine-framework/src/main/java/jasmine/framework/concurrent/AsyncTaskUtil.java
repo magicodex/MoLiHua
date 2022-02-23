@@ -21,11 +21,7 @@ import java.util.concurrent.ExecutorCompletionService;
 public class AsyncTaskUtil {
     private static Executor executor;
 
-    public AsyncTaskUtil(Executor executor) {
-        AsyncTaskUtil.executor = executor;
-    }
-
-    public static void setExecutor(Executor executor) {
+    public static void initUtil(Executor executor) {
         AsyncTaskUtil.executor = executor;
     }
 

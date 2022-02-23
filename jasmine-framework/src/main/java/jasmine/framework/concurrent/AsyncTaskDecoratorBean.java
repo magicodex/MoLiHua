@@ -1,10 +1,11 @@
 package jasmine.framework.concurrent;
 
-import jasmine.core.context.InitSupport;
-import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
-import jasmine.framework.context.SpringRuntimeProvider;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.SmartInitializingSingleton;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.task.TaskDecorator;
 
 import java.util.ArrayList;
@@ -14,20 +15,17 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-public class AsyncTaskDecorator implements TaskDecorator, InitSupport {
+public class AsyncTaskDecoratorBean implements TaskDecorator, SmartInitializingSingleton, ApplicationContextAware {
     private List<ContextCopyHandler> handlers;
+    private static ApplicationContext applicationContext;
 
-    public AsyncTaskDecorator() {
+    public AsyncTaskDecoratorBean() {
         this.handlers = new ArrayList<>();
     }
 
     @Override
-    public void init(RuntimeProvider provider) {
-        SpringRuntimeProvider springRuntimeProvider = (SpringRuntimeProvider) provider;
-        Map<String, ContextCopyHandler> handlerMap = springRuntimeProvider
-                .getMapByType(ContextCopyHandler.class);
-
-        handlers.addAll(handlerMap.values());
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        AsyncTaskDecoratorBean.applicationContext = applicationContext;
     }
 
     @Override
@@ -48,6 +46,14 @@ public class AsyncTaskDecorator implements TaskDecorator, InitSupport {
         };
 
         return proxy;
+    }
+
+    @Override
+    public void afterSingletonsInstantiated() {
+        Map<String, ContextCopyHandler> handlerMap = applicationContext
+                .getBeansOfType(ContextCopyHandler.class);
+
+        handlers.addAll(handlerMap.values());
     }
 
 }

@@ -5,6 +5,7 @@ import jasmine.core.context.SubjectProvider;
 import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
+import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.subject.UserSubjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +23,8 @@ public class JasmineFrameworkAutoConfiguration {
     }
 
     @Bean
-    public SubjectProvider subjectProvider() {
-        SubjectProvider subjectProvider = new UserSubjectProvider();
+    public SubjectProvider subjectProvider(UserSubjectDetailsService userSubjectDetailsService) {
+        SubjectProvider subjectProvider = new UserSubjectProvider(userSubjectDetailsService);
 
         CurrentSubject.initCurrentSubject(subjectProvider);
         return subjectProvider;

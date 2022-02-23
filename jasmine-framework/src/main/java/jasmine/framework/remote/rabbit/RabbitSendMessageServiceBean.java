@@ -1,17 +1,20 @@
 package jasmine.framework.remote.rabbit;
 
 import jasmine.core.context.CurrentSubject;
+import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QNewUtil;
-import jasmine.framework.context.SpringRuntimeProvider;
-import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
 import jasmine.framework.remote.mq.MessagePublisherRouting;
+import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.SmartInitializingSingleton;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
@@ -20,23 +23,29 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-public class RabbitSendMessageService extends AbstractSendMessageService implements SmartInitializingSingleton {
+public class RabbitSendMessageServiceBean extends AbstractSendMessageService
+        implements SmartInitializingSingleton, ApplicationContextAware {
     private RabbitTemplate template;
-    private Map<String, RabbitPublisherRouting> routings;
-    private SpringRuntimeProvider runtimeProvider;
+    private Map<String, RabbitPublisherRouting> routingMap;
+    private static ApplicationContext applicationContext;
 
-    public RabbitSendMessageService(SpringRuntimeProvider runtimeProvider) {
+    public RabbitSendMessageServiceBean(RuntimeProvider runtimeProvider,
+                                        RabbitTemplate rabbitTemplate) {
         super(runtimeProvider);
-        this.runtimeProvider = runtimeProvider;
-        template = runtimeProvider.getByType(RabbitTemplate.class);
-        routings = Collections.emptyMap();
+        template = rabbitTemplate;
+        routingMap = Collections.emptyMap();
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        RabbitSendMessageServiceBean.applicationContext = applicationContext;
     }
 
     @Override
     protected void doSend(String category, Object content) {
         QCheckUtil.notNull(content, "content null");
 
-        RabbitPublisherRouting routing = routings.get(category);
+        RabbitPublisherRouting routing = routingMap.get(category);
         if (routing == null) {
             throw new RuntimeException("not found the RabbitPublisherRouting(category=" + category + ")");
         }
@@ -61,12 +70,12 @@ public class RabbitSendMessageService extends AbstractSendMessageService impleme
 
     @Override
     public void afterSingletonsInstantiated() {
-        Map<String, MessagePublisherRouting> routingMap = runtimeProvider.getMapByType(MessagePublisherRouting.class);
-        routings = QNewUtil.map();
+        Map<String, MessagePublisherRouting> routingMap = applicationContext.getBeansOfType(MessagePublisherRouting.class);
+        this.routingMap = QNewUtil.map();
 
         routingMap.forEach((name, routing) -> {
             if (routing instanceof RabbitPublisherRouting) {
-                routings.put(routing.getCategory(), (RabbitPublisherRouting) routing);
+                this.routingMap.put(routing.getCategory(), (RabbitPublisherRouting) routing);
             }
         });
     }
