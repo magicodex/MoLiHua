@@ -7,4 +7,6 @@ public interface ReceiveInvocationInfo {
     Object getContent();
 
     Object getMessage();
+
+    Throwable getError();
 }

@@ -70,7 +70,7 @@ public class JournalServiceImpl implements JournalService {
 
         JournalNoticeMessageDTO messageDTO = JournalNoticeMessageDTO.fromJournalEO(journalEO);
         // 发送消息
-        sendMessageService.send("journalNotice", messageDTO);
+        sendMessageService.send("journalNotice", null, messageDTO);
 
         return JournalDTO.fromJournalEO(journalEO);
     }

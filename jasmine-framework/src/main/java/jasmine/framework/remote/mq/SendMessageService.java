@@ -13,7 +13,8 @@ public interface SendMessageService {
      * 发送消息
      *
      * @param category
+     * @param key
      * @param content
      */
-    void send(String category, Object content);
+    void send(String category, String key, Object content);
 }

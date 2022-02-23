@@ -27,7 +27,7 @@ public class RabbitAutoConfiguration {
 
     @Bean
     public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate) {
-        return new RabbitSendMessageServiceBean(runtimeProvider, rabbitTemplate);
+        return new RabbitSendMessageServiceBean(rabbitTemplate);
     }
 
 }

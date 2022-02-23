@@ -1,12 +1,14 @@
 package jasmine.framework.remote.rabbit;
 
 import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QNewUtil;
-import jasmine.framework.remote.mq.routing.PublisherRouting;
 import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
+import jasmine.framework.remote.mq.interceptor.DefaultSendInvocationInfo;
+import jasmine.framework.remote.mq.interceptor.SendInterceptor;
+import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
+import jasmine.framework.remote.mq.routing.PublisherRouting;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
@@ -29,9 +31,7 @@ public class RabbitSendMessageServiceBean extends AbstractSendMessageService
     private Map<String, RabbitPublisherRouting> routingMap;
     private static ApplicationContext applicationContext;
 
-    public RabbitSendMessageServiceBean(RuntimeProvider runtimeProvider,
-                                        RabbitTemplate rabbitTemplate) {
-        super(runtimeProvider);
+    public RabbitSendMessageServiceBean(RabbitTemplate rabbitTemplate) {
         template = rabbitTemplate;
         routingMap = Collections.emptyMap();
     }
@@ -42,7 +42,7 @@ public class RabbitSendMessageServiceBean extends AbstractSendMessageService
     }
 
     @Override
-    protected void doSend(String category, Object content) {
+    protected SendInvocationInfo doSend(SendInterceptor interceptor, String key, String category, Object content) {
         QCheckUtil.notNull(content, "content null");
 
         RabbitPublisherRouting routing = routingMap.get(category);
@@ -63,9 +63,14 @@ public class RabbitSendMessageServiceBean extends AbstractSendMessageService
             routingKey = directRouting.getRoutingKey();
         }
 
+        DefaultSendInvocationInfo invocationInfo = new DefaultSendInvocationInfo(key, content, message);
+        interceptor.afterSerialize(invocationInfo);
+
         Exchange exchange = routing.getExchange();
         String exchangeName = exchange.getName();
         template.send(exchangeName, routingKey, message);
+
+        return invocationInfo;
     }
 
     @Override

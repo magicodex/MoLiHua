@@ -4,6 +4,7 @@ public class DefaultReceiveInvocationInfo implements ReceiveInvocationInfo {
     private String key;
     private Object content;
     private Object message;
+    private Throwable error;
 
     public DefaultReceiveInvocationInfo(String key, Object content, Object message) {
         this.key = key;
@@ -24,6 +25,15 @@ public class DefaultReceiveInvocationInfo implements ReceiveInvocationInfo {
     @Override
     public Object getMessage() {
         return message;
+    }
+
+    @Override
+    public Throwable getError() {
+        return error;
+    }
+
+    public void setError(Throwable error) {
+        this.error = error;
     }
 
 }

@@ -4,5 +4,5 @@ public interface ReceiveInterceptor {
 
     void onReceive(ReceiveInvocation invocation, String category, Object content);
 
-    void afterDeserialize(ReceiveInvocationInfo callInfo);
+    void afterDeserialize(ReceiveInvocationInfo invocationInfo);
 }
