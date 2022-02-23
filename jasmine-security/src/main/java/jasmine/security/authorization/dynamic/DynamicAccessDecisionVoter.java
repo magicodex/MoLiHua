@@ -14,12 +14,11 @@ import java.util.Collection;
  * @author mh.z
  */
 public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInvocation> {
-    private DynamicConfig securityConfig;
+    private Boolean rbacEnabled;
     private DynamicAccessCheckService checkService;
 
-    public DynamicAccessDecisionVoter(DynamicConfig securityConfig,
-                                      DynamicAccessCheckService checkService) {
-        this.securityConfig = securityConfig;
+    public DynamicAccessDecisionVoter(Boolean rbacEnabled, DynamicAccessCheckService checkService) {
+        this.rbacEnabled = rbacEnabled;
         this.checkService = checkService;
     }
 
@@ -31,7 +30,7 @@ public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInv
         Object principal = authentication.getPrincipal();
 
         // 若未开启 RBAC 访问控制则根据是否认证决定是否允许访问
-        if (!Boolean.TRUE.equals(securityConfig.getRbacEnabled())) {
+        if (!Boolean.TRUE.equals(rbacEnabled)) {
             if (authentication.isAuthenticated()) {
                 return AccessDecisionVoter.ACCESS_GRANTED;
             }
