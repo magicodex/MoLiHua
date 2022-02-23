@@ -33,15 +33,6 @@ public interface JasmineFrameworkConfigTemplate {
     }
 
     /**
-     * 注册 CacheSyncStrategy 方法
-     *
-     * @return
-     */
-    default CacheSyncStrategy cacheSyncStrategy() {
-        return null;
-    }
-
-    /**
      * 注册 SubjectProvider 对象
      *
      * @return

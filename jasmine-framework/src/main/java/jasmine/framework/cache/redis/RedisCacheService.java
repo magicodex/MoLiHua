@@ -1,7 +1,9 @@
-package jasmine.framework.cache;
+package jasmine.framework.cache.redis;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QStringUtil;
+import jasmine.framework.cache.CacheService;
+import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

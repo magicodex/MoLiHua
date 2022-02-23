@@ -1,15 +1,14 @@
 package jasmine.demo.framework.config;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.demo.framework.cache.CustomCacheSyncStrategy;
-import jasmine.demo.framework.mq.CustomRabbitReceiveMessageService;
 import jasmine.demo.framework.security.BaseClientDetailsService;
 import jasmine.demo.framework.security.UserSubjectDetailsServiceImpl;
 import jasmine.framework.JasmineFrameworkConfigTemplate;
-import jasmine.framework.cache.CacheSyncStrategy;
-import jasmine.framework.remote.mq.DefaultSendMessageService;
+import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
+import jasmine.framework.remote.rabbit.RabbitReceiveMessageService;
+import jasmine.framework.remote.rabbit.RabbitSendMessageService;
 import jasmine.security.JasmineSecurityConfigTemplate;
 import jasmine.security.subject.ClientDetailsServiceProvider;
 import jasmine.security.subject.UserSubjectDetailsServiceProvider;
@@ -21,9 +20,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, JasmineSecurityConfigTemplate {
-    private RuntimeProvider runtimeProvider;
+    private SpringRuntimeProvider runtimeProvider;
 
-    public JasmineFrameworkConfig(RuntimeProvider runtimeProvider) {
+    public JasmineFrameworkConfig(SpringRuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
 
@@ -46,18 +45,13 @@ public class JasmineFrameworkConfig implements JasmineFrameworkConfigTemplate, J
     @Bean
     @Override
     public ReceiveMessageService receiveMessageService() {
-        return new CustomRabbitReceiveMessageService(runtimeProvider);
+        return new RabbitReceiveMessageService(runtimeProvider);
     }
 
     @Bean
     @Override
     public SendMessageService sendMessageService() {
-        return new DefaultSendMessageService(runtimeProvider);
-    }
-
-    @Override
-    public CacheSyncStrategy cacheSyncStrategy() {
-        return new CustomCacheSyncStrategy();
+        return new RabbitSendMessageService(runtimeProvider);
     }
 
 }
