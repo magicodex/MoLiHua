@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author mh.z
  */
-public interface UserAccessDecisionStrategy {
+public interface AccessDecisionStrategy {
 
     /**
      * 检查权限

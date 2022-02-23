@@ -15,9 +15,9 @@ import java.util.Collection;
  */
 public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInvocation> {
     private Boolean rbacEnabled;
-    private UserAccessDecisionStrategy checkService;
+    private AccessDecisionStrategy checkService;
 
-    public DynamicAccessDecisionVoter(Boolean rbacEnabled, UserAccessDecisionStrategy checkService) {
+    public DynamicAccessDecisionVoter(Boolean rbacEnabled, AccessDecisionStrategy checkService) {
         this.rbacEnabled = rbacEnabled;
         this.checkService = checkService;
     }

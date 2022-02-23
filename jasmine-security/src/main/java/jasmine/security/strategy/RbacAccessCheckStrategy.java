@@ -7,7 +7,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.framework.cache.CacheUtil;
-import jasmine.security.authorization.UserAccessDecisionStrategy;
+import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.constant.SecurityCaches;
 import jasmine.security.constant.SecurityConstants;
@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class RbacAccessCheckStrategy implements UserAccessDecisionStrategy, InitSupport {
+public class RbacAccessCheckStrategy implements AccessDecisionStrategy, InitSupport {
     private static final Logger logger = LoggerFactory.getLogger(RbacAccessCheckStrategy.class);
     private SecFunctionService functionService;
     private SecResourceService resourceService;
