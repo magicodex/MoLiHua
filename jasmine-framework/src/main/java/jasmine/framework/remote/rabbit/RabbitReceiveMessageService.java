@@ -2,7 +2,7 @@ package jasmine.framework.remote.rabbit;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
-import jasmine.framework.common.conversion.DeserializationHelper;
+import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.remote.mq.AbstractReceiveMessageService;
 import jasmine.framework.remote.mq.MessageReceiver;
 import org.springframework.amqp.core.Message;
@@ -11,11 +11,9 @@ import org.springframework.amqp.core.Message;
  * @author mh.z
  */
 public class RabbitReceiveMessageService extends AbstractReceiveMessageService<Message> {
-    private DeserializationHelper deserializationHelper;
 
     public RabbitReceiveMessageService(RuntimeProvider runtimeProvider) {
         super(runtimeProvider);
-        this.deserializationHelper = new DeserializationHelper();
     }
 
     @Override
@@ -31,7 +29,7 @@ public class RabbitReceiveMessageService extends AbstractReceiveMessageService<M
 
         // 转换成指定的类型
         if (targetType != null) {
-            content = deserializationHelper.deserialize(messageBody, targetType);
+            content = SimpleConvertUtil.deserialize(messageBody, targetType);
         } else {
             content = messageBody;
         }

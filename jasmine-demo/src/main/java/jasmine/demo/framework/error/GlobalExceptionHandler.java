@@ -2,7 +2,6 @@ package jasmine.demo.framework.error;
 
 import cn.hutool.core.io.resource.ResourceUtil;
 import jasmine.core.exception.ApplicationException;
-import jasmine.core.exception.type.ErrorType;
 import jasmine.core.util.QJsonUtil;
 import jasmine.framework.web.entity.WebResult;
 import org.slf4j.Logger;
@@ -65,11 +64,8 @@ public class GlobalExceptionHandler {
             ApplicationException applicationException = (ApplicationException) error;
             result = WebResult.error(null, applicationException.getMessage());
 
-            ErrorType errorType = applicationException.getErrorType();
-            if (errorType != null) {
-                result.setErrorCode(errorType.getCode());
-                result.setErrorDetail(errorType.getDetail());
-            }
+            result.setErrorCode(applicationException.getErrorCode());
+            result.setErrorDetail(applicationException.getErrorDetail());
         } else {
             result = WebResult.error(null, error.getMessage());
         }

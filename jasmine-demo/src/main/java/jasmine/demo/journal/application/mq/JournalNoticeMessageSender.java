@@ -1,4 +1,4 @@
-package jasmine.demo.journal.application.message;
+package jasmine.demo.journal.application.mq;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;

@@ -1,19 +1,12 @@
 package jasmine.framework.cache;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QStringUtil;
-import jasmine.framework.common.conversion.DeserializationHelper;
-import jasmine.framework.common.conversion.SerializationHelper;
+import jasmine.framework.common.util.SimpleConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
@@ -31,10 +24,6 @@ public class RedisCacheService implements CacheService {
 
     /** 缓存同步策略 */
     private CacheSyncStrategy syncStrategy;
-    /** 序列化帮助类 */
-    private SerializationHelper serializationHelper;
-    /** 反序列化帮助类 */
-    private DeserializationHelper deserializationHelper;
 
     /** 缓存key的分隔符 */
     private static final String CACHE_KEY_SEPARATOR = ":";
@@ -48,8 +37,6 @@ public class RedisCacheService implements CacheService {
         this.redisTemplate = redisTemplate;
         this.valueOperations = redisTemplate.opsForValue();
         this.syncStrategy = syncStrategy;
-        this.serializationHelper = new SerializationHelper();
-        this.deserializationHelper = new DeserializationHelper();
     }
 
     @Override
@@ -74,7 +61,7 @@ public class RedisCacheService implements CacheService {
             set(category, key, value);
         } else {
             // 反序列化成对象
-            value = deserializationHelper.deserialize((byte[]) value, type);
+            value = SimpleConvertUtil.deserialize((byte[]) value, type);
         }
 
         return (T) value;
@@ -101,17 +88,7 @@ public class RedisCacheService implements CacheService {
             // 缓存值
             set(category, key, value);
         } else {
-            ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
-            TypeFactory typeFactory = objectMapper.getTypeFactory();
-            CollectionType collectionType = typeFactory.constructCollectionType(ArrayList.class, type);
-
-            // 反序列化成对象
-            try {
-                List<T> list = objectMapper.readValue((byte[]) value, collectionType);
-                return list;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            value = SimpleConvertUtil.deserializeToList((byte[]) value, type);
         }
 
         return (List<T>) value;
@@ -123,7 +100,7 @@ public class RedisCacheService implements CacheService {
         QCheckUtil.notNull(key, "key null");
 
         // 序列化成字节
-        byte[] bytes = serializationHelper.serialize(value);
+        byte[] bytes = SimpleConvertUtil.serialize(value);
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
 

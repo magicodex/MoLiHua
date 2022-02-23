@@ -49,6 +49,14 @@ public class ApplicationException extends RuntimeException {
         return this;
     }
 
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public String getErrorDetail() {
+        return errorDetail;
+    }
+
     /**
      * 生成错误信息
      *

@@ -1,4 +1,4 @@
-package jasmine.demo.journal.application.message;
+package jasmine.demo.journal.application.mq;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
