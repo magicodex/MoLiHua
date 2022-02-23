@@ -3,10 +3,14 @@ package jasmine.demo.authentication.persistence.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import jasmine.framework.persistence.entity.BaseEntity;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author mh.z
  */
+@NoArgsConstructor
+@Data
 @TableName("sys_user")
 public class UserEO extends BaseEntity {
 
@@ -18,29 +22,4 @@ public class UserEO extends BaseEntity {
 
     @TableField("tenant_id")
     private Long tenantId;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
-    }
-
 }

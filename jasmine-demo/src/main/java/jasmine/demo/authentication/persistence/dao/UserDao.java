@@ -5,18 +5,16 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import jasmine.demo.authentication.persistence.entity.UserEO;
 import jasmine.demo.authentication.persistence.mapper.UserMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 /**
  * @author mh.z
  */
+@RequiredArgsConstructor
 @Repository
 public class UserDao {
-    private UserMapper baseMapper;
-
-    public UserDao(UserMapper baseMapper) {
-        this.baseMapper = baseMapper;
-    }
+    private final UserMapper baseMapper;
 
     /**
      * 根据用户 ID 查找用户

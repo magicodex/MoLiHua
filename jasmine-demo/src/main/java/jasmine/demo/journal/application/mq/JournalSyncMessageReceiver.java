@@ -5,18 +5,16 @@ import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.business.dto.JournalSyncMessageDTO;
 import jasmine.demo.journal.business.service.JournalService;
 import jasmine.framework.remote.mq.MessageReceiver;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
  * @author mh.z
  */
+@RequiredArgsConstructor
 @Component
 public class JournalSyncMessageReceiver implements MessageReceiver<JournalSyncMessageDTO> {
-    private JournalService journalService;
-
-    public JournalSyncMessageReceiver(JournalService journalService) {
-        this.journalService = journalService;
-    }
+    private final JournalService journalService;
 
     @Override
     public Class<JournalSyncMessageDTO> getType() {

@@ -4,8 +4,7 @@ import cn.hutool.core.io.resource.ResourceUtil;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QJsonUtil;
 import jasmine.framework.web.entity.WebResult;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,16 +16,16 @@ import java.io.PrintWriter;
 /**
  * @author mh.z
  */
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public void exceptionHandler(HttpServletRequest request, HttpServletResponse response,
                                  Exception error) throws Exception {
         // 记录错误信息
-        logger.error("request failed", error);
+        log.error("request failed", error);
 
         String servletPath = request.getServletPath();
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

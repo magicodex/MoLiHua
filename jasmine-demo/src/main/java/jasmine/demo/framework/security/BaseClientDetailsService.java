@@ -6,6 +6,7 @@ import jasmine.demo.authentication.persistence.entity.UserEO;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.model.SecRole;
 import jasmine.security.rbac.service.SecRoleService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
@@ -20,18 +21,12 @@ import java.util.List;
 /**
  * @author mh.z
  */
+@RequiredArgsConstructor
 @Component
 public class BaseClientDetailsService implements ClientDetailsService {
-    private UserDao userDao;
-    private SecRoleService roleService;
-    private PasswordEncoder passwordEncoder;
-
-    public BaseClientDetailsService(UserDao userDao, SecRoleService roleService,
-                                    PasswordEncoder passwordEncoder) {
-        this.userDao = userDao;
-        this.roleService = roleService;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private final UserDao userDao;
+    private final SecRoleService roleService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {

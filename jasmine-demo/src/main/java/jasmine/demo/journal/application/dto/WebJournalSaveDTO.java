@@ -4,11 +4,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jasmine.core.util.QMapperUtil;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 /**
  * @author mh.z
  */
+@NoArgsConstructor
+@Data
 @ApiModel(description = "保存日记")
 public class WebJournalSaveDTO {
 
@@ -19,22 +23,6 @@ public class WebJournalSaveDTO {
     @Length(max = 50)
     @ApiModelProperty("内容")
     private String journalContent;
-
-    public String getJournalTitle() {
-        return journalTitle;
-    }
-
-    public void setJournalTitle(String journalTitle) {
-        this.journalTitle = journalTitle;
-    }
-
-    public String getJournalContent() {
-        return journalContent;
-    }
-
-    public void setJournalContent(String journalContent) {
-        this.journalContent = journalContent;
-    }
 
     /**
      * 转换成 JournalSaveDTO 对象

@@ -1,18 +1,15 @@
 package jasmine.demo.journal.persistence.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author mh.z
  */
+@NoArgsConstructor
+@Data
 public class JournalQueryDbDTO {
     /** 用户ID */
     private Long userId;
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
 }

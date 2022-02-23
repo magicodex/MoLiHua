@@ -1,8 +1,13 @@
 package jasmine.demo.journal.business.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author mh.z
  */
+@NoArgsConstructor
+@Data
 public class JournalSyncMessageDTO {
     /** 用户ID */
     private String userId;
@@ -10,29 +15,5 @@ public class JournalSyncMessageDTO {
     private String journalTitle;
     /** 内容 */
     private String journalContent;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getJournalTitle() {
-        return journalTitle;
-    }
-
-    public void setJournalTitle(String journalTitle) {
-        this.journalTitle = journalTitle;
-    }
-
-    public String getJournalContent() {
-        return journalContent;
-    }
-
-    public void setJournalContent(String journalContent) {
-        this.journalContent = journalContent;
-    }
 
 }

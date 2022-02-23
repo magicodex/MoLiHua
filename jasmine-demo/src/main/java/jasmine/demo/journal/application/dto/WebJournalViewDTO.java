@@ -3,10 +3,14 @@ package jasmine.demo.journal.application.dto;
 import jasmine.core.util.QDateUtil;
 import jasmine.core.util.QMapperUtil;
 import jasmine.demo.journal.business.dto.JournalDTO;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author mh.z
  */
+@NoArgsConstructor
+@Data
 public class WebJournalViewDTO {
     private Long id;
     /** 标题 */
@@ -15,38 +19,6 @@ public class WebJournalViewDTO {
     private String journalContent;
     /** 创建日期 */
     private String createdDateText;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getJournalTitle() {
-        return journalTitle;
-    }
-
-    public void setJournalTitle(String journalTitle) {
-        this.journalTitle = journalTitle;
-    }
-
-    public String getJournalContent() {
-        return journalContent;
-    }
-
-    public void setJournalContent(String journalContent) {
-        this.journalContent = journalContent;
-    }
-
-    public String getCreatedDateText() {
-        return createdDateText;
-    }
-
-    public void setCreatedDateText(String createdDateText) {
-        this.createdDateText = createdDateText;
-    }
 
     /**
      * 转换成 WebJournalViewDTO 对象

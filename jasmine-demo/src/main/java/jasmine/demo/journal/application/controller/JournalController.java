@@ -9,6 +9,7 @@ import jasmine.demo.journal.application.dto.WebJournalViewDTO;
 import jasmine.demo.journal.business.dto.JournalDTO;
 import jasmine.demo.journal.business.dto.JournalSaveDTO;
 import jasmine.demo.journal.business.service.JournalService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,14 +24,11 @@ import java.util.Map;
 /**
  * @author mh.z
  */
+@RequiredArgsConstructor
 @Api(tags = "日记")
 @RestController
 public class JournalController {
-    private JournalService journalService;
-
-    public JournalController(JournalService journalService) {
-        this.journalService = journalService;
-    }
+    private final JournalService journalService;
 
     @ApiOperation(value = "查询日记")
     @GetMapping("/journal/search")

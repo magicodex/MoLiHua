@@ -5,9 +5,10 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
+import jasmine.demo.journal.persistence.dto.JournalQueryDbDTO;
 import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.demo.journal.persistence.mapper.JournalMapper;
-import jasmine.demo.journal.persistence.dto.JournalQueryDbDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,13 +16,10 @@ import java.util.List;
 /**
  * @author mh.z
  */
+@RequiredArgsConstructor
 @Repository
 public class JournalDao {
-    private JournalMapper baseMapper;
-
-    public JournalDao(JournalMapper baseMapper) {
-        this.baseMapper = baseMapper;
-    }
+    private final JournalMapper baseMapper;
 
     /**
      * 查询日记

@@ -15,6 +15,7 @@ import jasmine.demo.journal.persistence.entity.JournalEO;
 import jasmine.framework.concurrent.AsyncTaskUtil;
 import jasmine.framework.lock.annotation.DistributedLock;
 import jasmine.framework.remote.mq.SendMessageService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,15 +25,11 @@ import java.util.List;
 /**
  * @author mh.z
  */
+@RequiredArgsConstructor
 @Service
 public class JournalServiceImpl implements JournalService {
-    private JournalDao journalDao;
-    private SendMessageService sendMessageService;
-
-    public JournalServiceImpl(JournalDao journalDao, SendMessageService sendMessageService) {
-        this.journalDao = journalDao;
-        this.sendMessageService = sendMessageService;
-    }
+    private final JournalDao journalDao;
+    private final SendMessageService sendMessageService;
 
     @Override
     public List<JournalDTO> pageAllJournals(Page page) {
