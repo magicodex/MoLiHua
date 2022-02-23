@@ -1,13 +1,12 @@
 package jasmine.test.liquibase.loader;
 
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.QSpringUtil;
 import jasmine.test.liquibase.log.TestDataChangeLog;
 import jasmine.test.liquibase.log.TestDataChangeLogMapper;
 import jasmine.test.testdependency.Example1;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
@@ -40,13 +39,11 @@ public class AbstractTestDataLoaderTest {
         // 模拟 TestDataChangeLogMapper 类
         TestDataChangeLogMapper testDataChangeLogMapper = Mockito.mock(TestDataChangeLogMapper.class);
         // 模拟 RuntimeProvider 类
-        RuntimeProvider runtimeProvider = Mockito.mock(RuntimeProvider.class);
-        Mockito.when(runtimeProvider.getByType(TestDataChangeLogMapper.class)).thenReturn(testDataChangeLogMapper);
-        // 初始 QSpringUtil 工具类
-        QSpringUtil.initUtil(runtimeProvider);
+        ApplicationContext applicationContext = Mockito.mock(ApplicationContext.class);
+        Mockito.when(applicationContext.getBean(TestDataChangeLogMapper.class)).thenReturn(testDataChangeLogMapper);
 
         AbstractTestDataLoaderImpl loader = new AbstractTestDataLoaderImpl();
-        loader.init(Example1.class);
+        loader.init(applicationContext, Example1.class);
 
         return loader;
     }

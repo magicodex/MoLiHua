@@ -6,11 +6,11 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import jasmine.core.util.QSpringUtil;
 import jasmine.test.liquibase.log.TestDataChangeLog;
 import jasmine.test.liquibase.log.TestDataChangeLogMapper;
 import jasmine.test.util.MybatisPlusUtil;
 import jasmine.test.util.StreamUtil;
+import org.springframework.context.ApplicationContext;
 
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -28,9 +28,9 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
     protected TestDataChangeLogMapper logMapper;
 
     @Override
-    public void init(Class<?> type) {
+    public void init(ApplicationContext applicationContext, Class<?> type) {
         this.type = type;
-        this.logMapper = QSpringUtil.getBean(TestDataChangeLogMapper.class);
+        this.logMapper = applicationContext.getBean(TestDataChangeLogMapper.class);
     }
 
     @Override

@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import jasmine.core.util.QSpringUtil;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
@@ -20,11 +21,11 @@ public class DefaultTestDataLoader extends AbstractTestDataLoader {
     private static final String MAPPER_SUFFIX = "Mapper";
 
     @Override
-    public void init(Class<?> type) {
-        super.init(type);
+    public void init(ApplicationContext applicationContext, Class<?> type) {
+        super.init(applicationContext, type);
 
         String mapperBeanName = getMapperBeanName(type);
-        baseMapper = QSpringUtil.getBean(mapperBeanName);
+        baseMapper = (BaseMapper<Object>) applicationContext.getBean(mapperBeanName);
     }
 
     @Override

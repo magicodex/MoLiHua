@@ -11,6 +11,10 @@ import liquibase.exception.CustomChangeException;
 import liquibase.exception.SetupException;
 import liquibase.exception.ValidationErrors;
 import liquibase.resource.ResourceAccessor;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
@@ -18,7 +22,8 @@ import java.lang.reflect.Constructor;
 /**
  * @author mh.z
  */
-public class TestDataTaskChange implements CustomTaskChange {
+@Component
+public class TestDataTaskChange implements CustomTaskChange, ApplicationContextAware {
     private ResourceAccessor resourceAccessor;
     /** 类名 */
     private String className;
@@ -26,6 +31,8 @@ public class TestDataTaskChange implements CustomTaskChange {
     private String loaderName;
     /** 资源路径 */
     private String resourcePath;
+
+    private static ApplicationContext applicationContext;
 
     public void setClassName(String className) {
         this.className = className;
@@ -37,6 +44,11 @@ public class TestDataTaskChange implements CustomTaskChange {
 
     public void setResourcePath(String resourcePath) {
         this.resourcePath = resourcePath;
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        TestDataTaskChange.applicationContext = applicationContext;
     }
 
     @Override
@@ -60,7 +72,7 @@ public class TestDataTaskChange implements CustomTaskChange {
         }
 
         try (InputStream inputStream = resourceAccessor.openStream(null, resourcePath)) {
-            loader.init(type);
+            loader.init(applicationContext, type);
             loader.load(resourcePath, inputStream);
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -1,5 +1,7 @@
 package jasmine.test.liquibase.loader;
 
+import org.springframework.context.ApplicationContext;
+
 import java.io.InputStream;
 
 /**
@@ -14,9 +16,10 @@ public interface TestDataLoader {
     /**
      * 初始
      *
+     * @param
      * @param type
      */
-    void init(Class<?> type);
+    void init(ApplicationContext applicationContext, Class<?> type);
 
     /**
      * 加载数据
