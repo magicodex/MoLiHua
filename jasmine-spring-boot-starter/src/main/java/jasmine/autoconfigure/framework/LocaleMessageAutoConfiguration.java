@@ -4,6 +4,8 @@ import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.QI18nUtil;
 import jasmine.framework.i18n.DeclareI18nScanUtil;
 import jasmine.framework.i18n.DefaultLocaleMessageProvider;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +18,7 @@ import java.util.Properties;
 /**
  * @author mh.z
  */
+@AutoConfigureBefore(WebMvcAutoConfiguration.class)
 @Configuration
 public class LocaleMessageAutoConfiguration {
     /**  多语言资源路径 */

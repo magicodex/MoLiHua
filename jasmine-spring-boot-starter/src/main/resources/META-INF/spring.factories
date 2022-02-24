@@ -1,0 +1,16 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+jasmine.autoconfigure.framework.JasmineFrameworkAutoConfiguration,\
+jasmine.autoconfigure.framework.LocaleMessageAutoConfiguration,\
+jasmine.autoconfigure.framework.SwaggerAutoConfiguration,\
+jasmine.autoconfigure.framework.AsyncTaskAutoConfiguration,\
+jasmine.autoconfigure.framework.middleware.RabbitAutoConfiguration,\
+jasmine.autoconfigure.framework.middleware.RedisAutoConfiguration,\
+jasmine.autoconfigure.framework.middleware.XxlJobAutoConfiguration,\
+jasmine.autoconfigure.framework.database.DataSourceAutoConfiguration,\
+jasmine.autoconfigure.framework.database.MybatisPlusAutoConfiguration,\
+jasmine.autoconfigure.security.JasmineSecurityAutoConfiguration,\
+jasmine.autoconfigure.security.JasmineRbacAutoConfiguration,\
+jasmine.autoconfigure.security.SpringSecurityAutoConfiguration,\
+jasmine.autoconfigure.security.oauth2.OAuth2AuthorizationAutoConfiguration,\
+jasmine.autoconfigure.security.oauth2.OAuth2ResourceAutoConfiguration
