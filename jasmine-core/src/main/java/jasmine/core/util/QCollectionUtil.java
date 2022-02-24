@@ -32,21 +32,13 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <E, R> List<R> mapToList(Collection<E> collection, Function<E, R> function) {
         QCheckUtil.notNull(function, "function null");
-        List<R> returnList = null;
 
-        if (isNotEmpty(collection)) {
-            returnList = new ArrayList<>();
-
-            for (E item : collection) {
-                if (item != null) {
-                    returnList.add(function.apply(item));
-                } else {
-                    returnList.add(null);
-                }
-            }
-        } else {
-            returnList = Collections.emptyList();
+        if (isEmpty(collection)) {
+            return Collections.emptyList();
         }
+
+        List<R> returnList = collection.stream()
+                .map(function).collect(Collectors.toList());
 
         return returnList;
     }
@@ -61,12 +53,34 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <T> List<T> chooseToList(Collection<T> collection, Predicate<T> predicate) {
         QCheckUtil.notNull(predicate, "predicate null");
-        List<T> returnList = null;
 
-        if (isNotEmpty(collection)) {
-            returnList = collection.stream().filter(predicate).collect(Collectors.toList());
+        if (isEmpty(collection)) {
+            return Collections.emptyList();
+        }
+
+        List<T> returnList = collection.stream()
+                .filter(predicate).collect(Collectors.toList());
+
+        return returnList;
+    }
+
+    /**
+     * 转换成列表
+     *
+     * @param collection
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> castToList(Collection<T> collection) {
+        if (isEmpty(collection)) {
+            return Collections.emptyList();
+        }
+
+        List<T> returnList = null;
+        if (collection instanceof List) {
+            returnList = (List<T>) collection;
         } else {
-            returnList = Collections.emptyList();
+            returnList = new ArrayList<>(collection);
         }
 
         return returnList;
@@ -82,7 +96,13 @@ public class QCollectionUtil extends CollUtil {
      * @param <V>
      * @return
      */
-    public static <E, K, V> Map<K, E> toIdentityMap(Collection<E> collection, Function<E, K> keyMapper) {
+    public static <E, K, V> Map<K, E> toMap(Collection<E> collection, Function<E, K> keyMapper) {
+        QCheckUtil.notNull(keyMapper, "keyMapper null");
+
+        if (isEmpty(collection)) {
+            return Collections.emptyMap();
+        }
+
         return CollStreamUtil.toIdentityMap(collection, keyMapper);
     }
 
@@ -101,13 +121,13 @@ public class QCollectionUtil extends CollUtil {
                                             Function<E, V> valueMapper) {
         QCheckUtil.notNull(keyMapper, "keyMapper null");
         QCheckUtil.notNull(valueMapper, "valueMapper null");
-        Map<K, V> returnMap = null;
 
-        if (collection != null) {
-            returnMap = collection.stream().collect(Collectors.toMap(keyMapper, valueMapper, (k1, k2) -> k1));
-        } else {
-            returnMap = Collections.emptyMap();
+        if (isEmpty(collection)) {
+            return Collections.emptyMap();
         }
+
+        Map<K, V> returnMap = collection.stream()
+                .collect(Collectors.toMap(keyMapper, valueMapper, (k1, k2) -> k1));
 
         return returnMap;
     }
@@ -121,7 +141,13 @@ public class QCollectionUtil extends CollUtil {
      * @param <K>
      * @return
      */
-    public static <E, K> Map<K, List<E>> groupByKey(Collection<E> collection, Function<E, K> classifier) {
+    public static <E, K> Map<K, List<E>> groupBy(Collection<E> collection, Function<E, K> classifier) {
+        QCheckUtil.notNull(classifier, "classifier null");
+
+        if (isEmpty(collection)) {
+            return Collections.emptyMap();
+        }
+
         return CollStreamUtil.groupByKey(collection, classifier);
     }
 
@@ -135,10 +161,13 @@ public class QCollectionUtil extends CollUtil {
      * @return
      */
     public static <E, R> List<R> forEach(Collection<E> collection, Function<E, R> function) {
-        QCheckUtil.notNull(collection, "collection null");
         QCheckUtil.notNull(function, "function null");
-        List<R> returnList = new ArrayList<>(collection.size());
 
+        if (isEmpty(collection)) {
+            return Collections.emptyList();
+        }
+
+        List<R> returnList = new ArrayList<>(collection.size());
         collection.forEach((current) -> {
             returnList.add(function.apply(current));
         });
@@ -154,8 +183,11 @@ public class QCollectionUtil extends CollUtil {
      * @param <E>
      */
     public static <E> void forEach(Collection<E> collection, java.util.function.Consumer<E> consumer) {
-        QCheckUtil.notNull(collection, "collection null");
         QCheckUtil.notNull(consumer, "consumer null");
+
+        if (isEmpty(collection)) {
+            return;
+        }
 
         collection.forEach((current) -> {
             consumer.accept(current);

@@ -4,6 +4,8 @@ import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QNewUtil;
+import jasmine.core.util.QStringUtil;
+import jasmine.framework.common.util.UniqueKeyUtil;
 import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
 import jasmine.framework.remote.mq.interceptor.DefaultSendInvocationInfo;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
@@ -50,8 +52,13 @@ public class RabbitSendMessageServiceBean extends AbstractSendMessageService
             throw new RuntimeException("not found the RabbitPublisherRouting(category=" + category + ")");
         }
 
+        if (key == null) {
+            key = QStringUtil.toString(UniqueKeyUtil.nextLong());
+        }
+
         MessageProperties properties = new MessageProperties();
         properties.setHeader("subject", "userId:" + CurrentSubject.getUserId());
+        properties.setMessageId(key);
 
         String json = QJsonUtil.toJson(content);
         byte[] bytes = json.getBytes(StandardCharsets.UTF_8);

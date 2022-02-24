@@ -1,6 +1,7 @@
 package jasmine.core.util;
 
 import jasmine.core.context.RuntimeProvider;
+import jasmine.core.exception.InvalidPropertyException;
 
 /**
  * <p>
@@ -24,6 +25,10 @@ public class QSpringUtil {
      * @return
      */
     public static <T> T getBean(String name) {
+        if (runtimeProvider == null) {
+            throw new InvalidPropertyException("QSpringUtil.runtimeProvider null");
+        }
+
         return (T) runtimeProvider.getByName(name);
     }
 
@@ -35,6 +40,10 @@ public class QSpringUtil {
      * @return
      */
     public static <T> T getBean(Class<T> type) {
+        if (runtimeProvider == null) {
+            throw new InvalidPropertyException("QSpringUtil.runtimeProvider null");
+        }
+
         return runtimeProvider.getByType(type);
     }
 

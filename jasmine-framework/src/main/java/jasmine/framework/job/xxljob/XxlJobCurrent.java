@@ -13,6 +13,7 @@ import java.util.Map;
 public class XxlJobCurrent implements JobCurrent {
     /** 参数 */
     private Map<String, Object> parameters;
+
     /** 参数与参数之间的分隔符 */
     private static final String PARAM_AND_PARAM_SEPARATOR = ",";
     /** 参数名与值之间的分隔符 */

@@ -15,6 +15,12 @@ import java.util.List;
  */
 public class SimpleConvertUtil {
 
+    /**
+     * 序列化
+     *
+     * @param source
+     * @return
+     */
     public static byte[] serialize(Object source) {
         if (source == null) {
             return new byte[0];
@@ -29,6 +35,14 @@ public class SimpleConvertUtil {
         }
     }
 
+    /**
+     * 翻序列化
+     *
+     * @param source
+     * @param type
+     * @param <T>
+     * @return
+     */
     public static <T> T deserialize(byte[] source, Class<T> type) {
         Object object = null;
 
@@ -55,7 +69,15 @@ public class SimpleConvertUtil {
         return (T) object;
     }
 
-    public static <T> T deserializeToList(byte[] source, Class<T> type) {
+    /**
+     * 翻序列化成列表
+     *
+     * @param source
+     * @param type
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> deserializeToList(byte[] source, Class<T> type) {
         if (source == null || source.length == 0) {
             return null;
         }
@@ -67,7 +89,7 @@ public class SimpleConvertUtil {
         // 反序列化成对象
         try {
             List<T> list = objectMapper.readValue(source, collectionType);
-            return (T) list;
+            return list;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

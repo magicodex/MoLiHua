@@ -23,7 +23,6 @@ import java.util.function.Supplier;
 public class RedisCacheService implements CacheService {
     private RedisTemplate redisTemplate;
     private ValueOperations valueOperations;
-
     /** 缓存同步策略 */
     private CacheSyncStrategy syncStrategy;
 

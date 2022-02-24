@@ -32,6 +32,7 @@ public class AsyncTaskUtil {
      */
     public void async(Runnable task) {
         QCheckUtil.notNull(task, "task null");
+        QCheckUtil.notNullProp(executor, "executor null");
 
         // 开线程执行
         executor.execute(task);
@@ -46,6 +47,7 @@ public class AsyncTaskUtil {
      */
     public static <T> List<T> asyncAndGet(Collection<Callable> tasks) {
         QCheckUtil.notNull(tasks, "tasks null");
+        QCheckUtil.notNullProp(executor, "executor null");
         List<T> resultList = new ArrayList<>();
 
         // 开线程执行

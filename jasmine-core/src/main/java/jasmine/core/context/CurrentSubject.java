@@ -12,7 +12,7 @@ import jasmine.core.util.QCheckUtil;
 public class CurrentSubject {
     /** 用户信息提供者 */
     private static SubjectProvider subjectProvider;
-    /** 用户信息提供者NULL时的错误信息 */
+    /** 用户信息提供者 NULL 时的错误信息 */
     private static final String SUBJECT_PROVIDER_NULL_MESSAGE;
 
     static {
