@@ -12,8 +12,6 @@
     <artifactId>jasmine-spring-boot-starter</artifactId>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -21,7 +19,14 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.5.4</version>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.magicodex</groupId>
+                <artifactId>jasmine-bom</artifactId>
+                <version>${project.module.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -61,7 +66,6 @@
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
-            <version>${redisson-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- 消息队列 -->
@@ -74,7 +78,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
 
         <dependency>
@@ -84,7 +87,6 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-            <version>${spring-security-oauth2.version}</version>
         </dependency>
     </dependencies>
 </project>
