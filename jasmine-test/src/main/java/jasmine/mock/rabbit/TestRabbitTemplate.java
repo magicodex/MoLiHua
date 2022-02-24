@@ -1,4 +1,4 @@
-package jasmine.test.mock.rabbit;
+package jasmine.mock.rabbit;
 
 import org.mockito.Mockito;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

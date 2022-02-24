@@ -1,4 +1,4 @@
-package jasmine.test.mock.cache;
+package jasmine.mock.cache;
 
 import jasmine.framework.cache.CacheService;
 import org.springframework.stereotype.Component;

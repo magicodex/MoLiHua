@@ -1,4 +1,4 @@
-package jasmine.test.mock.lock;
+package jasmine.mock.lock;
 
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
