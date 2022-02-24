@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
 
     <properties>
+        <!-- Spring Boot版本 -->
+        <spring.boot.version>2.5.4</spring.boot.version>
 
         <!-- 安全认证 -->
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
@@ -62,6 +64,14 @@
     <dependencyManagement>
 
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- 工具类库 -->
             <dependency>
                 <groupId>cn.hutool</groupId>
@@ -239,5 +249,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
