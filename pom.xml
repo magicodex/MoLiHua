@@ -11,15 +11,14 @@
     <version>0.1-SNAPSHOT</version>
 
     <modules>
+        <module>jasmine-bom</module>
         <module>jasmine-core</module>
         <module>jasmine-framework</module>
         <module>jasmine-test</module>
         <module>jasmine-security</module>
         <module>jasmine-demo</module>
         <module>jasmine-spring-boot-starter</module>
-        <module>jasmine-bom</module>
     </modules>
-
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

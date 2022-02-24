@@ -12,9 +12,7 @@
     <artifactId>jasmine-demo</artifactId>
 
     <properties>
-        <!-- 分布式事务 -->
         <seata.version>1.4.2</seata.version>
-        <!-- lombok注解 -->
         <lombok.version>1.18.22</lombok.version>
     </properties>
 
@@ -33,12 +31,7 @@
     <dependencies>
         <dependency>
             <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-framework</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-security</artifactId>
+            <artifactId>jasmine-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -48,28 +41,10 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <!-- 注解校验 -->
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
-
         <!-- 模板引擎 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <!-- Liquibase数据库版本管理工具 -->
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
         </dependency>
 
         <!-- 分布式事务 -->
