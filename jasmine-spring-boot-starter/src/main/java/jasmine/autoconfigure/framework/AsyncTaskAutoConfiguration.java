@@ -15,8 +15,6 @@ import java.util.concurrent.Executor;
  */
 @Configuration
 public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
-    private ThreadPoolTaskExecutor executor;
-
     /** 核心线程数 */
     private static final int CORE_POOL_SIZE = 10;
     /** 最大线程数 */
@@ -29,7 +27,7 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
     @Bean
     @Override
     public Executor getAsyncExecutor() {
-        executor = new ThreadPoolTaskExecutor();
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
         // 核心线程数
         executor.setCorePoolSize(CORE_POOL_SIZE);

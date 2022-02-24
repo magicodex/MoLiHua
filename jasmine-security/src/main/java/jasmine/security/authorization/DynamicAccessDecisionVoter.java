@@ -14,12 +14,14 @@ import java.util.Collection;
  * @author mh.z
  */
 public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInvocation> {
+    /** 是否启用 RBAC 访问控制 */
     private Boolean rbacEnabled;
-    private AccessDecisionStrategy checkService;
+    /** 访问决策策略 */
+    private AccessDecisionStrategy accessDecisionStrategy;
 
-    public DynamicAccessDecisionVoter(Boolean rbacEnabled, AccessDecisionStrategy checkService) {
+    public DynamicAccessDecisionVoter(Boolean rbacEnabled, AccessDecisionStrategy accessDecisionStrategy) {
         this.rbacEnabled = rbacEnabled;
-        this.checkService = checkService;
+        this.accessDecisionStrategy = accessDecisionStrategy;
     }
 
     @Override
@@ -38,14 +40,14 @@ public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInv
             return AccessDecisionVoter.ACCESS_DENIED;
         }
 
-        if (checkService == null) {
+        if (accessDecisionStrategy == null) {
             return AccessDecisionVoter.ACCESS_GRANTED;
         }
 
         if (principal instanceof UserSubject) {
             UserSubject subject = (UserSubject) principal;
             HttpServletRequest request = invocation.getRequest();
-            boolean checkResult = checkService.check(subject, request);
+            boolean checkResult = accessDecisionStrategy.check(subject, request);
 
             if (checkResult) {
                 return AccessDecisionVoter.ACCESS_GRANTED;

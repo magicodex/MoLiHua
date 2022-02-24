@@ -1,11 +1,14 @@
 package jasmine.autoconfigure.framework.middleware;
 
-import jasmine.framework.context.SpringRuntimeProvider;
+import jasmine.core.context.RuntimeProvider;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
+import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
+import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import jasmine.framework.remote.rabbit.RabbitReceiveMessageService;
 import jasmine.framework.remote.rabbit.RabbitSendMessageServiceBean;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +18,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitAutoConfiguration {
-    private SpringRuntimeProvider runtimeProvider;
 
     @Value("${jasmine.message-queue.consumer.enabled:false}")
     private Boolean receivedEnabled;
@@ -23,23 +25,22 @@ public class RabbitAutoConfiguration {
     @Value("${jasmine.message-queue.publisher.enabled:false}")
     private Boolean sendEnabled;
 
-
-    public RabbitAutoConfiguration(SpringRuntimeProvider runtimeProvider) {
-        this.runtimeProvider = runtimeProvider;
-    }
-
     @Bean
-    public ReceiveMessageService receiveMessageService() {
+    public ReceiveMessageService receiveMessageService(RuntimeProvider runtimeProvider,
+                                                       @Autowired(required = false) ReceiveInterceptor interceptor) {
         RabbitReceiveMessageService service = new RabbitReceiveMessageService(runtimeProvider);
         service.setEnabled(Boolean.TRUE.equals(receivedEnabled));
+        service.setInterceptor(interceptor);
 
         return service;
     }
 
     @Bean
-    public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate) {
+    public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate,
+                                                 @Autowired(required = false) SendInterceptor interceptor) {
         RabbitSendMessageServiceBean service = new RabbitSendMessageServiceBean(rabbitTemplate);
         service.setEnabled(Boolean.TRUE.equals(sendEnabled));
+        service.setInterceptor(interceptor);
 
         return service;
     }

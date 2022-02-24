@@ -27,62 +27,62 @@ import org.springframework.context.annotation.Configuration;
 public class JasmineRbacAutoConfiguration {
 
     @Bean
-    public SecFunctionPermissionRelationService securityFunctionPermissionRelationService() {
+    public SecFunctionPermissionRelationService secFunctionPermissionRelationService() {
         return new SecFunctionPermissionRelationService();
     }
 
     @Bean
-    public SecFunctionResourceRelationService securityFunctionResourceRelationService() {
+    public SecFunctionResourceRelationService secFunctionResourceRelationService() {
         return new SecFunctionResourceRelationService();
     }
 
     @Bean
-    public SecFunctionService SecurityFunctionService(SecFunctionMapper baseMapper) {
+    public SecFunctionService secFunctionService(SecFunctionMapper baseMapper) {
         return new SecFunctionService(baseMapper);
     }
 
     @Bean
-    public SecMenuFunctionRelationService securityMenuFunctionRelationService() {
+    public SecMenuFunctionRelationService secMenuFunctionRelationService() {
         return new SecMenuFunctionRelationService();
     }
 
     @Bean
-    public SecMenuService securityMenuService() {
+    public SecMenuService secMenuService() {
         return new SecMenuService();
     }
 
     @Bean
-    public SecMenuTemplateService securityMenuTemplateService() {
+    public SecMenuTemplateService secMenuTemplateService() {
         return new SecMenuTemplateService();
     }
 
     @Bean
-    public SecPermissionResourceRelationService securityPermissionResourceRelationService() {
+    public SecPermissionResourceRelationService secPermissionResourceRelationService() {
         return new SecPermissionResourceRelationService();
     }
 
     @Bean
-    public SecPermissionService securityPermissionService() {
+    public SecPermissionService secPermissionService() {
         return new SecPermissionService();
     }
 
     @Bean
-    public SecResourceService securityResourceService(SecResourceMapper baseMapper) {
+    public SecResourceService secResourceService(SecResourceMapper baseMapper) {
         return new SecResourceService(baseMapper);
     }
 
     @Bean
-    public SecRoleFunctionRelationService securityRoleFunctionRelationService() {
+    public SecRoleFunctionRelationService secRoleFunctionRelationService() {
         return new SecRoleFunctionRelationService();
     }
 
     @Bean
-    public SecRoleService securityRoleService(SecRoleMapper baseMapper) {
+    public SecRoleService secRoleService(SecRoleMapper baseMapper) {
         return new SecRoleService(baseMapper);
     }
 
     @Bean
-    public SecUserRoleRelationService securityUserRoleRelationService() {
+    public SecUserRoleRelationService secUserRoleRelationService() {
         return new SecUserRoleRelationService();
     }
 

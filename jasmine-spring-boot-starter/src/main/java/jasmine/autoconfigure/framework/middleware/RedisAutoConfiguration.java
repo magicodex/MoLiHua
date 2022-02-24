@@ -22,7 +22,9 @@ public class RedisAutoConfiguration {
                                      @Autowired(required = false) CacheSyncStrategy syncStrategy) {
         CacheService cacheService = new RedisCacheService(redisTemplate, syncStrategy);
 
+        // 初始工具类
         CacheUtil.initUtil(cacheService);
+
         return cacheService;
     }
 

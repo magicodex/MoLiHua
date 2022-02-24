@@ -17,6 +17,7 @@ import java.util.Collection;
  */
 public class AccessDecisionManagerProxy implements AccessDecisionManager {
     private static final Logger logger = LoggerFactory.getLogger(AccessDecisionManagerProxy.class);
+    /** 决策访问控制器 */
     private AccessDecisionManager accessDecisionManager;
 
     public AccessDecisionManagerProxy(AccessDecisionManager accessDecisionManager) {

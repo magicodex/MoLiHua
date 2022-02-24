@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.security;
 
 import jasmine.security.authorization.AccessDecisionManagerProxy;
+import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.rbac.service.SecFunctionService;
 import jasmine.security.rbac.service.SecResourceService;
@@ -42,12 +43,12 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public AccessDecisionManager accessDecisionManager(RbacAccessCheckStrategy checkService) {
+    public AccessDecisionManager accessDecisionManager(AccessDecisionStrategy accessDecisionStrategy) {
         WebExpressionVoter webExpressionVoter = new WebExpressionVoter();
         webExpressionVoter.setExpressionHandler(new OAuth2WebSecurityExpressionHandler());
 
         // 动态访问决策投票器
-        DynamicAccessDecisionVoter dynamicVoter = new DynamicAccessDecisionVoter(rbacEnabled, checkService);
+        DynamicAccessDecisionVoter dynamicVoter = new DynamicAccessDecisionVoter(rbacEnabled, accessDecisionStrategy);
         // 访问决策管理器
         AccessDecisionManager manager = new AffirmativeBased(Arrays.asList(webExpressionVoter, dynamicVoter));
         AccessDecisionManagerProxy managerProxy = new AccessDecisionManagerProxy(manager);

@@ -57,6 +57,7 @@ public class LocaleMessageAutoConfiguration {
     public LocaleMessageProvider localeMessageProvider(MessageSource messageSource) {
         LocaleMessageProvider localeMessageProvider = new DefaultLocaleMessageProvider(messageSource);
 
+        // 初始多语言工具类
         QI18nUtil.initUtil(localeMessageProvider);
 
         return localeMessageProvider;

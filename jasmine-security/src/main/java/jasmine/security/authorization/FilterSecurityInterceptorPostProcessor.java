@@ -8,6 +8,7 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
  * @author mh.z
  */
 public class FilterSecurityInterceptorPostProcessor implements ObjectPostProcessor<FilterSecurityInterceptor> {
+    /** 决策访问控制器 */
     private AccessDecisionManager accessDecisionManager;
 
     public FilterSecurityInterceptorPostProcessor(AccessDecisionManager accessDecisionManager) {
