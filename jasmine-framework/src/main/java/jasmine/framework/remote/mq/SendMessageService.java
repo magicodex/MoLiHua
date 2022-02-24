@@ -1,5 +1,7 @@
 package jasmine.framework.remote.mq;
 
+import jasmine.framework.remote.mq.interceptor.SendInterceptorDecorator;
+
 /**
  * <p>
  * 发送消息接口。
@@ -24,6 +26,7 @@ public interface SendMessageService {
      * @param category
      * @param key
      * @param content
+     * @param decorator
      */
-    void sendOnly(String category, String key, Object content);
+    void send(String category, String key, Object content, SendInterceptorDecorator decorator);
 }

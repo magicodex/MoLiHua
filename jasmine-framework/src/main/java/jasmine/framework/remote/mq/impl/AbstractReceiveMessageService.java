@@ -4,6 +4,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.interceptor.DefaultReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
+import jasmine.framework.remote.mq.interceptor.ReceiveInterceptorDecorator;
 import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,11 +18,11 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
     /** 是否接收消息 */
     private Boolean receiveEnabled;
 
-    private static final ReceiveInterceptor DEFAULT_INTERCEPTOR;
+    private static final ReceiveInterceptor EMPTY_INTERCEPTOR;
     private static final Logger logger = LoggerFactory.getLogger(AbstractReceiveMessageService.class);
 
     static {
-        DEFAULT_INTERCEPTOR = new DefaultReceiveInterceptor();
+        EMPTY_INTERCEPTOR = new DefaultReceiveInterceptor();
     }
 
     public AbstractReceiveMessageService() {
@@ -30,7 +31,8 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
     }
 
     public void setInterceptor(ReceiveInterceptor interceptor) {
-        this.interceptor = DEFAULT_INTERCEPTOR;
+        this.interceptor = (interceptor != null)
+                ? interceptor : EMPTY_INTERCEPTOR;
     }
 
     public void setEnabled(Boolean receiveEnabled) {
@@ -47,12 +49,17 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
     }
 
     @Override
-    public void receiveOnly(String category, Object message) {
+    public void receive(String category, Object message, ReceiveInterceptorDecorator decorator) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(message, "message null");
 
+        ReceiveInterceptor tempInterceptor = interceptor;
+        if (decorator != null) {
+            tempInterceptor = decorator.decorate(interceptor);
+        }
+
         // 接收消息
-        receive(DEFAULT_INTERCEPTOR, category, (T) message);
+        receive(tempInterceptor, category, (T) message);
     }
 
     /**

@@ -4,6 +4,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.framework.remote.mq.interceptor.DefaultSendInterceptor;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
+import jasmine.framework.remote.mq.interceptor.SendInterceptorDecorator;
 import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,8 @@ public abstract class AbstractSendMessageService implements SendMessageService {
     }
 
     public void setInterceptor(SendInterceptor interceptor) {
-        this.interceptor = interceptor;
+        this.interceptor = (interceptor != null)
+                ? interceptor : EMPTY_INTERCEPTOR;
     }
 
     public void setEnabled(Boolean sendEnabled) {
@@ -47,12 +49,17 @@ public abstract class AbstractSendMessageService implements SendMessageService {
     }
 
     @Override
-    public void sendOnly(String category, String key, Object content) {
+    public void send(String category, String key, Object content, SendInterceptorDecorator decorator) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(content, "content null");
 
+        SendInterceptor tempInterceptor = interceptor;
+        if (decorator != null) {
+            tempInterceptor = decorator.decorate(interceptor);
+        }
+
         // 发送消息
-        send(EMPTY_INTERCEPTOR, category, key, content);
+        send(tempInterceptor, category, key, content);
     }
 
     /**

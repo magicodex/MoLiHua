@@ -1,5 +1,7 @@
 package jasmine.framework.remote.mq;
 
+import jasmine.framework.remote.mq.interceptor.ReceiveInterceptorDecorator;
+
 /**
  * <p>
  * 接收消息接口。
@@ -23,5 +25,5 @@ public interface ReceiveMessageService {
      * @param category
      * @param message
      */
-    void receiveOnly(String category, Object message);
+    void receive(String category, Object message, ReceiveInterceptorDecorator decorator);
 }
