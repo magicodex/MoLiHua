@@ -10,6 +10,13 @@ package jasmine.framework.job;
 public interface JobExecutor {
 
     /**
+     * 返回名称
+     *
+     * @return
+     */
+    String getName();
+
+    /**
      * 执行
      *
      * @param job

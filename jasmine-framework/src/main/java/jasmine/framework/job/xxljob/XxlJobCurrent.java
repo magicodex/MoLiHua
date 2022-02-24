@@ -20,13 +20,12 @@ public class XxlJobCurrent implements JobCurrent {
 
     @Override
     public Object getParameter(String name) {
-        if (parameters != null) {
+        if (parameters == null) {
             String jobParam = XxlJobHelper.getJobParam();
-
-
+            initParameters(jobParam);
         }
 
-        return getParameter(name);
+        return parameters.get(name);
     }
 
     /**
