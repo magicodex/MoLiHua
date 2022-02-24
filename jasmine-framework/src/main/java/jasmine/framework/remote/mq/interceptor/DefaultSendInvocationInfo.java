@@ -1,5 +1,8 @@
 package jasmine.framework.remote.mq.interceptor;
 
+/**
+ * @author mh.z
+ */
 public class DefaultSendInvocationInfo implements SendInvocationInfo {
     private String key;
     private Object content;

@@ -12,10 +12,12 @@ import org.slf4j.LoggerFactory;
  * @author mh.z
  */
 public abstract class AbstractReceiveMessageService<T> implements ReceiveMessageService {
+    /** 拦截器 */
     private ReceiveInterceptor interceptor;
+    /** 是否接收消息 */
     private Boolean receiveEnabled;
-    private static final ReceiveInterceptor DEFAULT_INTERCEPTOR;
 
+    private static final ReceiveInterceptor DEFAULT_INTERCEPTOR;
     private static final Logger logger = LoggerFactory.getLogger(AbstractReceiveMessageService.class);
 
     static {

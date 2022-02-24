@@ -1,5 +1,8 @@
 package jasmine.framework.remote.mq.interceptor;
 
+/**
+ * @author mh.z
+ */
 public class DefaultReceiveInvocationInfo implements ReceiveInvocationInfo {
     private String key;
     private Object content;

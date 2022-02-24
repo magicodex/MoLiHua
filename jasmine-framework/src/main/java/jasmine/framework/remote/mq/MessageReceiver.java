@@ -17,6 +17,11 @@ public interface MessageReceiver<T> {
      */
     Class<T> getType();
 
+    /**
+     * 返回元素类型
+     *
+     * @return
+     */
     default Class<?> getElementType() {
         return null;
     }

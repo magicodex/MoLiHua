@@ -2,6 +2,9 @@ package jasmine.framework.remote.rabbit;
 
 import org.springframework.amqp.core.Exchange;
 
+/**
+ * @author mh.z
+ */
 public abstract class AbstractRabbitPublisherRouting implements RabbitPublisherRouting {
     private String category;
     private Exchange exchange;

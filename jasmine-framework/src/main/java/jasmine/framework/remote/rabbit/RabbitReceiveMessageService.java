@@ -22,6 +22,7 @@ import org.springframework.amqp.core.MessageProperties;
 public class RabbitReceiveMessageService extends AbstractReceiveMessageService<Message> {
     private static final Logger logger = LoggerFactory.getLogger(RabbitReceiveMessageService.class);
     private RuntimeProvider runtimeProvider;
+
     /** 消息接收者 bean 的名称后缀 */
     private static final String RECEIVER_BEAN_SUFFIX = "MessageReceiver";
 
@@ -91,13 +92,13 @@ public class RabbitReceiveMessageService extends AbstractReceiveMessageService<M
      * @param required
      * @return
      */
-    public MessageReceiver getReceiver(String category, boolean required) {
+    protected MessageReceiver getReceiver(String category, boolean required) {
         QCheckUtil.notNull(category, "category null");
 
         String receiverName = category + RECEIVER_BEAN_SUFFIX;
         MessageReceiver receiver = runtimeProvider.getByName(receiverName, false);
 
-        if (receiver == null) {
+        if (receiver == null && required) {
             throw new RuntimeException("not found the MessageReceiver(category=" + category + ")");
         }
 

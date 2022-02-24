@@ -12,10 +12,12 @@ import org.slf4j.LoggerFactory;
  * @author mh.z
  */
 public abstract class AbstractSendMessageService implements SendMessageService {
+    /** 拦截器 */
     private SendInterceptor interceptor;
+    /** 是否发送消息 */
     private Boolean sendEnabled;
-    private static final SendInterceptor EMPTY_INTERCEPTOR;
 
+    private static final SendInterceptor EMPTY_INTERCEPTOR;
     private static final Logger logger = LoggerFactory.getLogger(AbstractSendMessageService.class);
 
     static {

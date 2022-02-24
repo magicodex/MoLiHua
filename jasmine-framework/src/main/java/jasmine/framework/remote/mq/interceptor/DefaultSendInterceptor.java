@@ -1,5 +1,8 @@
 package jasmine.framework.remote.mq.interceptor;
 
+/**
+ * @author mh.z
+ */
 public class DefaultSendInterceptor implements SendInterceptor {
 
     @Override
