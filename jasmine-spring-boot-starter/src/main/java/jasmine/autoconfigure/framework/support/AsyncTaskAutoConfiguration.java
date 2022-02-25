@@ -1,5 +1,6 @@
 package jasmine.autoconfigure.framework.support;
 
+import jasmine.framework.concurrent.AsyncExecutorBuilder;
 import jasmine.framework.concurrent.AsyncTaskDecoratorBean;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
@@ -7,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskDecorator;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 
@@ -28,20 +28,10 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
     @Bean
     @Override
     public Executor getAsyncExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        AsyncExecutorBuilder builder = new AsyncExecutorBuilder();
+        builder.setTaskDecorator(taskDecorator());
 
-        // 核心线程数
-        executor.setCorePoolSize(CORE_POOL_SIZE);
-        // 最大线程数
-        executor.setMaxPoolSize(MAX_POOL_SIZE);
-        // 队列容量
-        executor.setQueueCapacity(QUEUE_CAPACITY);
-        // 允许空闲的最大时间
-        executor.setKeepAliveSeconds(KEEP_ALIVE_SECONDS);
-        // 任务装饰器
-        executor.setTaskDecorator(taskDecorator());
-
-        return executor;
+        return builder.build();
     }
 
     @Bean

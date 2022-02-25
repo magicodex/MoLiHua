@@ -2,18 +2,15 @@ package jasmine.autoconfigure.framework.support;
 
 import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.QI18nUtil;
-import jasmine.framework.i18n.DeclareI18nScanUtil;
 import jasmine.framework.i18n.DefaultLocaleMessageProvider;
+import jasmine.framework.i18n.MessageSourceBuilder;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-
-import java.util.Properties;
 
 /**
  * @author mh.z
@@ -21,26 +18,14 @@ import java.util.Properties;
 @AutoConfigureBefore(WebMvcAutoConfiguration.class)
 @Configuration
 public class LocaleMessageAutoConfiguration {
-    /**  多语言资源路径 */
-    private static final String MESSAGE_PATH_PREFIX = "message/messages";
-    /** 多语言资源编码 */
-    private static final String MESSAGE_DEFAULT_ENCODING = "UTF-8";
-    /** 多语言常量路径 */
-    private static final String MESSAGE_CONSTANT_PATH = "classpath*:/**/constant/*Messages.class";
-
     /** 多语言的cookie名 */
     private static final String COOKIE_LANGUAGE = "LANG";
 
     @Bean
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename(MESSAGE_PATH_PREFIX);
-        messageSource.setDefaultEncoding(MESSAGE_DEFAULT_ENCODING);
-        // 扫描多语言常量
-        Properties commonMessages = DeclareI18nScanUtil.scan(MESSAGE_CONSTANT_PATH);
-        messageSource.setCommonMessages(commonMessages);
+        MessageSourceBuilder builder = new MessageSourceBuilder();
 
-        return messageSource;
+        return builder.build();
     }
 
     /**
