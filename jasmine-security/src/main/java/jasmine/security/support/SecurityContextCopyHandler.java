@@ -1,7 +1,7 @@
 package jasmine.security.support;
 
-import jasmine.framework.concurrent.ContextCopyHandler;
-import jasmine.framework.concurrent.ContextSnapshot;
+import jasmine.framework.concurrent.context.ContextCopyHandler;
+import jasmine.framework.concurrent.context.ContextSnapshot;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**

@@ -1,7 +1,7 @@
 package jasmine.framework.context;
 
-import jasmine.framework.concurrent.ContextCopyHandler;
-import jasmine.framework.concurrent.ContextSnapshot;
+import jasmine.framework.concurrent.context.ContextCopyHandler;
+import jasmine.framework.concurrent.context.ContextSnapshot;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 

@@ -1,4 +1,4 @@
-package jasmine.framework.concurrent;
+package jasmine.framework.concurrent.context;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
