@@ -4,9 +4,12 @@ import jasmine.framework.concurrent.AsyncExecutorBuilder;
 import jasmine.framework.concurrent.AsyncTaskDecoratorBean;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskDecorator;
+import org.springframework.scheduling.annotation.AsyncAnnotationBeanPostProcessor;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 
 import java.util.concurrent.Executor;
@@ -14,6 +17,7 @@ import java.util.concurrent.Executor;
 /**
  * @author mh.z
  */
+@AutoConfigureBefore(TaskExecutionAutoConfiguration.class)
 @Configuration
 public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
     /** 核心线程数 */
@@ -34,7 +38,7 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
         return builder.build();
     }
 
-    @Bean
+    @Bean(AsyncAnnotationBeanPostProcessor.DEFAULT_TASK_EXECUTOR_BEAN_NAME)
     public AsyncTaskProvider asyncTaskProvider(Executor executor) {
         AsyncTaskProvider provider = new AsyncTaskProvider(executor);
         // 初始异步工具类

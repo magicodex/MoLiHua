@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring.version>5.3.8</spring.version>
+        <spring.version>5.3.9</spring.version>
         <spring.boot.version>2.5.4</spring.boot.version>
         <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
         <spring-data-redis.version>2.5.4</spring-data-redis.version>

@@ -78,6 +78,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- MyBatis-Plus持久层框架 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Redis客户端 -->
         <dependency>
             <groupId>org.redisson</groupId>

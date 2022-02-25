@@ -28,6 +28,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
             <groupId>com.magicodex</groupId>
             <artifactId>jasmine-security</artifactId>
             <version>${project.version}</version>
