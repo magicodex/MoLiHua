@@ -42,27 +42,6 @@ public class JasmineFrameworkTestConfig {
     }
 
     @Bean
-    public Executor getAsyncExecutor() {
-        return Executors.newFixedThreadPool(1);
-    }
-
-    @Bean
-    public AsyncTaskProvider asyncTaskProvider(Executor executor) {
-        AsyncTaskProvider provider = new AsyncTaskProvider(executor);
-        AsyncTaskUtil.initUtil(provider);
-
-        return provider;
-    }
-
-    @Bean
-    public LocaleMessageProvider localeMessageProvider() {
-        LocaleMessageProvider provider = Mockito.mock(LocaleMessageProvider.class);
-        QI18nUtil.initUtil(provider);
-
-        return provider;
-    }
-
-    @Bean
     public InitSupportScanBean initSupportScanBean(RuntimeProvider runtimeProvider) {
         return new InitSupportScanBean(runtimeProvider);
     }

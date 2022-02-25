@@ -45,7 +45,7 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
         QCheckUtil.notNull(message, "message null");
 
         // 接收消息
-        receive(interceptor, category, (T) message);
+        receive(interceptor, category, message);
     }
 
     @Override
@@ -59,7 +59,7 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
         }
 
         // 接收消息
-        receive(tempInterceptor, category, (T) message);
+        receive(tempInterceptor, category, message);
     }
 
     /**
