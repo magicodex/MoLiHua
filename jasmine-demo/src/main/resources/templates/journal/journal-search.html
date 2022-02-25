@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>日志</title>
     <link href="/static/common/css/app.css" rel="stylesheet"/>
-    <link href="/static/common/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/static/common/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/static/journal/journal-search.css" rel="stylesheet"/>
 </head>
 <body class="page-container">
@@ -37,14 +37,14 @@
 
             <!-- 分页栏 -->
             <nav>
-                <ul class="pager">
-                    <li>
-                        <a th:if="${showPrevPage} == true" th:href="'/journal/search?page=' + ${prevPage}">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" th:if="${showPrevPage} == true" th:href="'/journal/search?page=' + ${prevPage}">
                             上一页
                         </a>
                     </li>
-                    <li><a href="#" th:text="${currPage}"></a></li>
-                    <li><a th:href="'/journal/search?page=' + ${nextPage}">下一页</a></li>
+                    <li class="page-item"><a class="page-link" href="#" th:text="${currPage}"></a></li>
+                    <li class="page-item"><a class="page-link" th:href="'/journal/search?page=' + ${nextPage}">下一页</a></li>
                 </ul>
             </nav>
             <!-- END 分页栏 -->
@@ -58,7 +58,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">内容</h4>
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer">
