@@ -48,11 +48,13 @@ public class DataNotFoundException extends UnexpectedException {
         this(dataType, DEFAULT_KEY_NAME, dataKey, messageOrKey, args);
     }
 
-    public DataNotFoundException(Class<?> dataType, String dataKeyName, Object dataKey, String messageOrKey, Object... args) {
+    public DataNotFoundException(Class<?> dataType, String dataKeyName, Object dataKey,
+                                 String messageOrKey, Object... args) {
         super(DEFAULT_ERROR_CODE, messageOrKey, args);
         this.dataType = dataType;
         this.dataKeyName = dataKeyName;
         this.dataKey = dataKey;
+        this.errorDetail = buildErrorDetail(dataType, dataKeyName, dataKey, null);
     }
 
     public void detail(Class<?> dataType, Object dataKey, String detail) {
@@ -63,7 +65,7 @@ public class DataNotFoundException extends UnexpectedException {
         this.dataType = dataType;
         this.dataKeyName = dataKeyName;
         this.dataKey = dataKey;
-        this.errorDetail = detail;
+        this.errorDetail = buildErrorDetail(dataType, dataKeyName, dataKey, detail);
     }
 
     public Class<?> getDataType() {
@@ -76,6 +78,33 @@ public class DataNotFoundException extends UnexpectedException {
 
     public Object getDataKey() {
         return dataKey;
+    }
+
+    /**
+     * 生成错误详情
+     *
+     * @param dataType
+     * @param dataKeyName
+     * @param dataKey
+     * @param detail
+     * @return
+     */
+    protected String buildErrorDetail(Class<?> dataType, String dataKeyName, Object dataKey, String detail) {
+        StringBuilder builder = new StringBuilder("not found data ");
+
+        builder.append(dataType.getSimpleName());
+        builder.append('[');
+        builder.append(dataKeyName);
+        builder.append('=');
+        builder.append(dataKey);
+        builder.append(']');
+
+        if (detail != null) {
+            builder.append(", ");
+            builder.append(detail);
+        }
+
+        return builder.toString();
     }
 
 }

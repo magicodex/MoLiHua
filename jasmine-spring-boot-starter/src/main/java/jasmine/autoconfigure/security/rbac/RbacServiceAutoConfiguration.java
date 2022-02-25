@@ -26,39 +26,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RbacServiceAutoConfiguration {
 
-    @Bean
-    public SecFunctionPermissionRelationService secFunctionPermissionRelationService() {
-        return new SecFunctionPermissionRelationService();
-    }
+    //
+    // 权限
+    //
 
     @Bean
-    public SecFunctionResourceRelationService secFunctionResourceRelationService() {
-        return new SecFunctionResourceRelationService();
+    public SecRoleService secRoleService(SecRoleMapper baseMapper) {
+        return new SecRoleService(baseMapper);
     }
 
     @Bean
     public SecFunctionService secFunctionService(SecFunctionMapper baseMapper) {
         return new SecFunctionService(baseMapper);
-    }
-
-    @Bean
-    public SecMenuFunctionRelationService secMenuFunctionRelationService() {
-        return new SecMenuFunctionRelationService();
-    }
-
-    @Bean
-    public SecMenuService secMenuService() {
-        return new SecMenuService();
-    }
-
-    @Bean
-    public SecMenuTemplateService secMenuTemplateService() {
-        return new SecMenuTemplateService();
-    }
-
-    @Bean
-    public SecPermissionResourceRelationService secPermissionResourceRelationService() {
-        return new SecPermissionResourceRelationService();
     }
 
     @Bean
@@ -72,18 +51,47 @@ public class RbacServiceAutoConfiguration {
     }
 
     @Bean
+    public SecUserRoleRelationService secUserRoleRelationService() {
+        return new SecUserRoleRelationService();
+    }
+
+    @Bean
     public SecRoleFunctionRelationService secRoleFunctionRelationService() {
         return new SecRoleFunctionRelationService();
     }
 
     @Bean
-    public SecRoleService secRoleService(SecRoleMapper baseMapper) {
-        return new SecRoleService(baseMapper);
+    public SecFunctionResourceRelationService secFunctionResourceRelationService() {
+        return new SecFunctionResourceRelationService();
     }
 
     @Bean
-    public SecUserRoleRelationService secUserRoleRelationService() {
-        return new SecUserRoleRelationService();
+    public SecFunctionPermissionRelationService secFunctionPermissionRelationService() {
+        return new SecFunctionPermissionRelationService();
+    }
+
+    @Bean
+    public SecPermissionResourceRelationService secPermissionResourceRelationService() {
+        return new SecPermissionResourceRelationService();
+    }
+
+    //
+    // 菜单
+    //
+
+    @Bean
+    public SecMenuService secMenuService() {
+        return new SecMenuService();
+    }
+
+    @Bean
+    public SecMenuTemplateService secMenuTemplateService() {
+        return new SecMenuTemplateService();
+    }
+
+    @Bean
+    public SecMenuFunctionRelationService secMenuFunctionRelationService() {
+        return new SecMenuFunctionRelationService();
     }
 
 }

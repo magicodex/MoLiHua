@@ -53,6 +53,7 @@ public class InvalidDataException extends UnexpectedException {
         this.dataType = dataType;
         this.dataKeyName = dataKeyName;
         this.dataKey = dataKey;
+        this.errorDetail = buildErrorDetail(dataType, dataKeyName, dataKey, null);
     }
 
     public void detail(Class<?> dataType, Object dataKey, String detail) {
@@ -63,7 +64,7 @@ public class InvalidDataException extends UnexpectedException {
         this.dataType = dataType;
         this.dataKeyName = dataKeyName;
         this.dataKey = dataKey;
-        this.errorDetail = detail;
+        this.errorDetail = buildErrorDetail(dataType, dataKeyName, dataKey, detail);
     }
 
     public Class<?> getDataType() {
@@ -77,4 +78,33 @@ public class InvalidDataException extends UnexpectedException {
     public Object getDataKey() {
         return dataKey;
     }
+
+    /**
+     * 生成错误详情
+     *
+     * @param dataType
+     * @param dataKeyName
+     * @param dataKey
+     * @param detail
+     * @return
+     */
+    protected String buildErrorDetail(Class<?> dataType, String dataKeyName, Object dataKey, String detail) {
+        StringBuilder builder = new StringBuilder("data ");
+
+        builder.append(dataType.getSimpleName());
+        builder.append('[');
+        builder.append(dataKeyName);
+        builder.append('=');
+        builder.append(dataKey);
+        builder.append(']');
+        builder.append(" is invalid");
+
+        if (detail != null) {
+            builder.append(", ");
+            builder.append(detail);
+        }
+
+        return builder.toString();
+    }
+
 }

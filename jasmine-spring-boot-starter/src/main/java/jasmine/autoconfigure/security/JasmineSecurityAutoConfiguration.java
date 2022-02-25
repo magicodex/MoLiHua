@@ -32,8 +32,8 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public DynamicRbacCheckStrategy rbacAccessCheckService(SecFunctionService functionService,
-                                                           SecResourceService resourceService) {
+    public DynamicRbacCheckStrategy rbacCheckService(SecFunctionService functionService,
+                                                     SecResourceService resourceService) {
         return new DynamicRbacCheckStrategy(functionService, resourceService);
     }
 

@@ -1,6 +1,7 @@
 package jasmine.core.exception;
 
 import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.QStringUtil;
 
 /**
  * <p>
@@ -84,6 +85,19 @@ public class ApplicationException extends RuntimeException {
         }
 
         return returnErrorMessage;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(super.toString());
+
+        if (QStringUtil.isNotEmpty(errorDetail)) {
+            builder.append(" (");
+            builder.append(errorDetail);
+            builder.append(")");
+        }
+
+        return builder.toString();
     }
 
 }
