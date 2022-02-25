@@ -1,4 +1,4 @@
-package jasmine.mock.testautoconfigure;
+package jasmine.mock.testconfigure;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
  * @author mh.z
  */
 @Configuration
-public class FrameworkTestConfig {
+public class JasmineFrameworkTestConfig {
 
     @Bean
     public SpringRuntimeProvider runtimeProvider() {

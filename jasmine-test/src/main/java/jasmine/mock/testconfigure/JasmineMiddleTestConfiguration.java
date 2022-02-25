@@ -1,4 +1,4 @@
-package jasmine.mock.testautoconfigure;
+package jasmine.mock.testconfigure;
 
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheUtil;
@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @Configuration
-public class MiddleTestConfiguration {
+public class JasmineMiddleTestConfiguration {
 
     @Bean
     public CacheService cacheService() {

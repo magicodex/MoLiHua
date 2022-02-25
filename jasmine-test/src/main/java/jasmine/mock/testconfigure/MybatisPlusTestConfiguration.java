@@ -1,4 +1,4 @@
-package jasmine.mock.testautoconfigure;
+package jasmine.mock.testconfigure;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
