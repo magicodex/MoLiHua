@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.security;
+package jasmine.mock.testconfigure.rbac;
 
 import jasmine.security.rbac.mapper.SecFunctionMapper;
 import jasmine.security.rbac.mapper.SecResourceMapper;
@@ -15,16 +15,14 @@ import jasmine.security.rbac.service.SecResourceService;
 import jasmine.security.rbac.service.SecRoleFunctionRelationService;
 import jasmine.security.rbac.service.SecRoleService;
 import jasmine.security.rbac.service.SecUserRoleRelationService;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * @author mh.z
  */
-@MapperScan("jasmine.security.**.mapper")
 @Configuration
-public class JasmineRbacAutoConfiguration {
+public class RbacServiceTestConfiguration {
 
     @Bean
     public SecFunctionPermissionRelationService secFunctionPermissionRelationService() {

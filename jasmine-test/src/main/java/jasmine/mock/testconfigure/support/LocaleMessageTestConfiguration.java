@@ -1,4 +1,4 @@
-package jasmine.mock.testconfigure;
+package jasmine.mock.testconfigure.support;
 
 import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.QI18nUtil;

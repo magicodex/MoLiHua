@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.framework;
+package jasmine.autoconfigure.framework.support;
 
 import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.QI18nUtil;

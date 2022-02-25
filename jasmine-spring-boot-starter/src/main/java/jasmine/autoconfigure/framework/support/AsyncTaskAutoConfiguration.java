@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.framework;
+package jasmine.autoconfigure.framework.support;
 
 import jasmine.framework.concurrent.AsyncTaskDecoratorBean;
 import jasmine.framework.concurrent.AsyncTaskProvider;

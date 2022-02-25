@@ -30,14 +30,14 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class RbacAccessCheckStrategy implements AccessDecisionStrategy, InitSupport {
-    private static final Logger logger = LoggerFactory.getLogger(RbacAccessCheckStrategy.class);
+public class DynamicRbacCheckStrategy implements AccessDecisionStrategy, InitSupport {
+    private static final Logger logger = LoggerFactory.getLogger(DynamicRbacCheckStrategy.class);
     private SecFunctionService functionService;
     private SecResourceService resourceService;
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    public RbacAccessCheckStrategy(SecFunctionService functionService,
-                                   SecResourceService resourceService) {
+    public DynamicRbacCheckStrategy(SecFunctionService functionService,
+                                    SecResourceService resourceService) {
         this.functionService = functionService;
         this.resourceService = resourceService;
     }

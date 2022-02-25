@@ -5,7 +5,7 @@ import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.rbac.service.SecFunctionService;
 import jasmine.security.rbac.service.SecResourceService;
-import jasmine.security.strategy.RbacAccessCheckStrategy;
+import jasmine.security.strategy.DynamicRbacCheckStrategy;
 import jasmine.security.support.SecurityContextCopyHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -32,9 +32,9 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public RbacAccessCheckStrategy rbacAccessCheckService(SecFunctionService functionService,
-                                                          SecResourceService resourceService) {
-        return new RbacAccessCheckStrategy(functionService, resourceService);
+    public DynamicRbacCheckStrategy rbacAccessCheckService(SecFunctionService functionService,
+                                                           SecResourceService resourceService) {
+        return new DynamicRbacCheckStrategy(functionService, resourceService);
     }
 
     @Bean

@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.framework;
+package jasmine.autoconfigure.framework.web;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
