@@ -2,14 +2,9 @@ package jasmine.framework.concurrent;
 
 import jasmine.core.util.QCheckUtil;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.CompletionService;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorCompletionService;
 
 /**
  * <p>
@@ -19,10 +14,10 @@ import java.util.concurrent.ExecutorCompletionService;
  * @author mh.z
  */
 public class AsyncTaskUtil {
-    private static Executor executor;
+    private static AsyncTaskProvider provider;
 
-    public static void initUtil(Executor executor) {
-        AsyncTaskUtil.executor = executor;
+    public static void initUtil(AsyncTaskProvider provider) {
+        AsyncTaskUtil.provider = provider;
     }
 
     /**
@@ -30,12 +25,11 @@ public class AsyncTaskUtil {
      *
      * @param task
      */
-    public void async(Runnable task) {
+    public static void async(Runnable task) {
         QCheckUtil.notNull(task, "task null");
-        QCheckUtil.notNullProp(executor, "executor null");
+        QCheckUtil.notNullProp(provider, "provider null");
 
-        // 开线程执行
-        executor.execute(task);
+        provider.async(task);
     }
 
     /**
@@ -47,26 +41,9 @@ public class AsyncTaskUtil {
      */
     public static <T> List<T> asyncAndGet(Collection<Callable> tasks) {
         QCheckUtil.notNull(tasks, "tasks null");
-        QCheckUtil.notNullProp(executor, "executor null");
-        List<T> resultList = new ArrayList<>();
+        QCheckUtil.notNullProp(provider, "provider null");
 
-        // 开线程执行
-        CompletionService<T> completionService = new ExecutorCompletionService<>(executor);
-        tasks.forEach((task) -> {
-            completionService.submit(task);
-        });
-
-        // 获取执行结果
-        try {
-            for (int i = 0; i < tasks.size(); i++) {
-                T result = completionService.take().get();
-                resultList.add(result);
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
-        }
-
-        return resultList;
+        return provider.asyncAndGet(tasks);
     }
 
 }

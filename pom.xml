@@ -18,6 +18,7 @@
         <module>jasmine-security</module>
         <module>jasmine-demo</module>
         <module>jasmine-spring-boot-starter</module>
+        <module>jasmine-security-test</module>
     </modules>
 
     <properties>

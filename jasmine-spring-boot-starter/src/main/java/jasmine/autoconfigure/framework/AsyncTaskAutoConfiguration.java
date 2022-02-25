@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.framework;
 
 import jasmine.framework.concurrent.AsyncTaskDecoratorBean;
+import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,8 +41,16 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
         // 任务装饰器
         executor.setTaskDecorator(taskDecorator());
 
-        AsyncTaskUtil.initUtil(executor);
         return executor;
+    }
+
+    @Bean
+    public AsyncTaskProvider asyncTaskProvider(Executor executor) {
+        AsyncTaskProvider provider = new AsyncTaskProvider(executor);
+        // 初始异步工具类
+        AsyncTaskUtil.initUtil(provider);
+
+        return provider;
     }
 
     @Bean
