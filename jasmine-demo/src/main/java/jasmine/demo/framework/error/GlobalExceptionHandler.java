@@ -19,6 +19,7 @@ import java.io.PrintWriter;
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
+    private static final String ERROR_URL = "webapp/template/error/500.html";
 
     @ResponseBody
     @ExceptionHandler(Exception.class)
@@ -41,7 +42,7 @@ public class GlobalExceptionHandler {
             writer.write(json);
             writer.flush();
         } else {
-            String html = ResourceUtil.readUtf8Str("templates/error/500.html");
+            String html = ResourceUtil.readUtf8Str(ERROR_URL);
 
             response.setContentType("text/html");
             PrintWriter writer = response.getWriter();
