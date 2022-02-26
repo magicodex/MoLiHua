@@ -31,6 +31,7 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
         return builder.build();
     }
 
+    @Bean
     public AsyncTaskProvider asyncTaskProvider(Executor executor) {
         AsyncTaskProvider provider = new AsyncExecutorTaskProvider(executor);
         // 初始工具类
