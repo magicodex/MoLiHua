@@ -25,6 +25,9 @@ spring:
     port: 5672
     username: guest
     password: guest
+  web:
+    resources:
+      static-locations: classpath:/webapp/public/
 
 # 配置日志
 logging:
