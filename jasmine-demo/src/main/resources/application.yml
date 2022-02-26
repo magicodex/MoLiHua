@@ -27,7 +27,11 @@ spring:
     password: guest
   web:
     resources:
+      # 静态资源路径
       static-locations: classpath:/webapp/public/
+  thymeleaf:
+    # thymeleaf模板前缀
+    prefix: classpath:/webapp/template/
 
 # 配置日志
 logging:
