@@ -8,8 +8,8 @@ public interface DataActionWithResult<T> {
     /**
      * 调用
      *
-     * @param <T>
      * @return
+     * @throws Throwable
      */
     T call() throws Throwable;
 }
