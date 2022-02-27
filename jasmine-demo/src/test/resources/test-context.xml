@@ -9,13 +9,8 @@
 
     <!-- 扫描应用目录 -->
     <context:component-scan base-package="
-        jasmine.demo.authentication,
-        jasmine.demo.common,
-        jasmine.demo.config,
-        jasmine.demo.external,
-        jasmine.demo.framework,
-        jasmine.demo.home,
-        jasmine.demo.journal">
+        jasmine.demo.controller,
+        jasmine.demo.service">
     </context:component-scan>
     
     <!-- 扫描Mapper接口类 -->

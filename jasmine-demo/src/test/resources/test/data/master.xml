@@ -7,7 +7,7 @@
     <changeSet id="test_data_20220205214001_v1" author="mh.z">
         <customChange class="jasmine.test.liquibase.TestDataTaskChange">
             <param name="className" value="jasmine.demo.authentication.persistence.entity.UserEO"/>
-            <param name="resourcePath" value="classpath:test/data/authentication/user_1.csv"/>
+            <param name="resourcePath" value="classpath:test/data/user_1.csv"/>
         </customChange>
     </changeSet>
 

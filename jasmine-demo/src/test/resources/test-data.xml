@@ -6,5 +6,5 @@
 
     <include file="classpath:/database/master.xml" relativeToChangelogFile="false"/>
 
-    <include file="classpath:/test/data/authentication/master.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:/test/data/master.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>
