@@ -1,4 +1,4 @@
-package jasmine.framework.context;
+package jasmine.framework.context.handler;
 
 import jasmine.core.context.handler.ContextHandler;
 import jasmine.core.context.handler.ContextSnapshot;
