@@ -18,25 +18,32 @@
 ```
 # 是否自动创建交换器和队列 (默认false)
 app.message-queue.rabbitmq.auto-declare=true
-
 # 是否发布消息到消息队列 (默认false)
 jasmine.message-queue.publisher.enabled=true
-
 # 是否消费消息队列的消息 (默认false)
 jasmine.message-queue.consumer.enabled=true
 
 # 是否启用RBAC访问控制 (默认false)
 jasmine.security.rbac.enabled=true
 
-# 是否启用 XXL-job 任务调度
+# 是否启用 XXL-job 任务调度（默认false）
 jasmine.xxl.job.enabled=true
+# XXL-job 配置
+xxl.job.admin.addresses=http://127.0.0.1:9090/xxl-job-admin
+xxl.job.accessToken=
+xxl.job.executor.appname=xxl-job-executor-sample
+xxl.job.executor.address=
+xxl.job.executor.ip=
+xxl.job.executor.port=9999
+xxl.job.executor.logpath=/data/applogs/xxl-job/jobhandler
+xxl.job.executor.logretentiondays=30
 
-# 读写分离
+# 是否启用读写分离（默认false）
 jasmine.datasource.readWrite.enabled=true
+# 只读数据源配置
 spring.datasource.read.url=数据库连接字符串
 spring.datasource.read.username=用户名
 spring.datasource.read.password=密码
-spring.datasource.read.driverClassName=JDBC驱动名
 ```
 
 ## 集成框架
@@ -46,7 +53,6 @@ spring.datasource.read.driverClassName=JDBC驱动名
 | Spring Boot | 2.5.4 | WEB框架 |
 | Spring Security | 5.5.2 | 安全框架 |
 | Swagger | 2.10.5 | API文档 |
-| Thymeleaf | 3.0.12 | 模板引擎 |
 | SLF4J | 1.7.32 | 日志库 |
 | Jackson | 2.12.4 | JSON库 |
 | Mybatis-Plus | 3.4.3.4 | 持久层框架 |

@@ -11,7 +11,6 @@ public class ReadDataSourceProperties {
     private String url;
     private String username;
     private String password;
-    private String driverClassName;
 
     public String getUrl() {
         return url;
@@ -35,14 +34,6 @@ public class ReadDataSourceProperties {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDriverClassName() {
-        return driverClassName;
-    }
-
-    public void setDriverClassName(String driverClassName) {
-        this.driverClassName = driverClassName;
     }
 
 }

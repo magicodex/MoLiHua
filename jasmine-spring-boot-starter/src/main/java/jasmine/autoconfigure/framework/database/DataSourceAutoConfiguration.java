@@ -76,7 +76,7 @@ public class DataSourceAutoConfiguration {
     public HikariDataSource readDataSource(DataSourceProperties properties,
                                            ReadDataSourceProperties readProperties) {
         HikariDataSource dataSource = DataSourceBuilder.create(properties.getClassLoader())
-                .driverClassName(readProperties.getDriverClassName())
+                .driverClassName(properties.getDriverClassName())
                 .url(readProperties.getUrl())
                 .username(readProperties.getUsername())
                 .password(readProperties.getPassword())
