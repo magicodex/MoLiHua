@@ -1,7 +1,6 @@
 
 (function () {
-  'use strict'
-
+  
   // feather图标
   feather.replace();
 
@@ -12,4 +11,4 @@
     var link = $(this).attr("href");
     $("main > iframe").attr("src", link);
   });
-}())
+}());
