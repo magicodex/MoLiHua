@@ -1,8 +1,8 @@
 package jasmine.framework.context;
 
-import jasmine.core.context.ContextHandler;
-import jasmine.core.context.ContextHandlerFacade;
-import jasmine.core.context.ContextSnapshot;
+import jasmine.core.context.handler.ContextHandler;
+import jasmine.core.context.handler.ContextHandlerFacade;
+import jasmine.core.context.handler.ContextSnapshot;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import org.springframework.beans.BeansException;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,10 @@ import java.util.Map;
 public class ContextHandlerFacadeBean implements ContextHandlerFacade, SmartInitializingSingleton, ApplicationContextAware {
     private List<ContextHandler> handlers;
     private static ApplicationContext applicationContext;
+
+    public ContextHandlerFacadeBean() {
+        this.handlers = new ArrayList<>();
+    }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

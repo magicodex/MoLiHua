@@ -1,7 +1,6 @@
-package jasmine.core.context;
+package jasmine.core.context.handler;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author mh.z

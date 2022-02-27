@@ -1,6 +1,6 @@
 package jasmine.framework.context;
 
-import jasmine.core.context.ContextSnapshot;
+import jasmine.core.context.handler.ContextSnapshot;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
