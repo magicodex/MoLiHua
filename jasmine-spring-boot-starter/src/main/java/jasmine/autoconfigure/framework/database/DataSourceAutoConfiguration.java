@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
@@ -21,8 +22,8 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-@AutoConfigureBefore(org.springframework.boot.autoconfigure.jdbc
-        .DataSourceAutoConfiguration.class)
+@AutoConfigureBefore({org.springframework.boot.autoconfigure.jdbc
+        .DataSourceAutoConfiguration.class, MybatisPlusAutoConfiguration.class})
 @ConditionalOnProperty(value = "jasmine.datasource.readWrite.enabled",
         havingValue = "true", matchIfMissing = false)
 @EnableConfigurationProperties(DataSourceProperties.class)
@@ -40,6 +41,7 @@ public class DataSourceAutoConfiguration {
         return new ReadWriteDataSourceDecideFacade();
     }
 
+    @Primary
     @Bean
     public DataSource dataSource(DataSourceProperties properties) {
         DataSource mainDataSource = mainDataSource(properties);
