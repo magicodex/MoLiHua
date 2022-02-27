@@ -38,12 +38,12 @@ public class AsyncTaskDecoratorBean implements TaskDecorator, SmartInitializingS
         Runnable proxy = () -> {
             try {
                 // 设置上下文
-                QCollectionUtil.forEach(snapshots, ContextSnapshot::setToCurrentThread);
+                QCollectionUtil.forEach(snapshots, ContextSnapshot::copyToCurrentThread);
 
                 runnable.run();
             } finally {
                 // 清理上下文
-                QCollectionUtil.forEach(snapshots, ContextSnapshot::clearFromCurrentThread);
+                QCollectionUtil.forEach(handlers, ContextHandler::reset);
             }
         };
 

@@ -16,4 +16,9 @@ public class SecurityContextHandler implements ContextHandler {
         return snapshot;
     }
 
+    @Override
+    public void reset() {
+        SecurityContextHolder.clearContext();
+    }
+
 }

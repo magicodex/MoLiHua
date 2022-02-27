@@ -15,13 +15,8 @@ public class RequestContextSnapshot implements ContextSnapshot {
     }
 
     @Override
-    public void setToCurrentThread() {
+    public void copyToCurrentThread() {
         RequestContextHolder.setRequestAttributes(requestAttributes);
-    }
-
-    @Override
-    public void clearFromCurrentThread() {
-        RequestContextHolder.resetRequestAttributes();
     }
 
 }

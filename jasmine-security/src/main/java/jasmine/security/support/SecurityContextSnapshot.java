@@ -15,14 +15,9 @@ public class SecurityContextSnapshot implements ContextSnapshot {
     }
 
     @Override
-    public void setToCurrentThread() {
+    public void copyToCurrentThread() {
         SecurityContext targetSecurityContext = SecurityContextHolder.getContext();
         targetSecurityContext.setAuthentication(securityContext.getAuthentication());
-    }
-
-    @Override
-    public void clearFromCurrentThread() {
-        SecurityContextHolder.clearContext();
     }
 
 }

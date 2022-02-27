@@ -11,4 +11,9 @@ public interface ContextHandler {
      * @return
      */
     ContextSnapshot copy();
+
+    /**
+     * 重置上下文
+     */
+    void reset();
 }

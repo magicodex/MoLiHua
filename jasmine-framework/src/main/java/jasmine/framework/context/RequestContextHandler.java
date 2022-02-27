@@ -18,4 +18,9 @@ public class RequestContextHandler implements ContextHandler {
         return snapshot;
     }
 
+    @Override
+    public void reset() {
+        RequestContextHolder.resetRequestAttributes();
+    }
+
 }
