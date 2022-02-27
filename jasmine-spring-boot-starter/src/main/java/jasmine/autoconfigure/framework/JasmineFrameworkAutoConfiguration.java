@@ -1,13 +1,14 @@
 package jasmine.autoconfigure.framework;
 
-import jasmine.core.context.handler.ContextHandlerFacade;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
+import jasmine.core.context.handler.ContextHandlerFacade;
 import jasmine.core.util.QSpringUtil;
-import jasmine.framework.context.handler.ContextHandlerFacadeBean;
 import jasmine.framework.context.InitSupportScanBean;
-import jasmine.framework.context.handler.RequestContextHandler;
 import jasmine.framework.context.SpringRuntimeProvider;
+import jasmine.framework.context.handler.ContextHandlerFacadeBean;
+import jasmine.framework.context.handler.FrameworkContextHandler;
+import jasmine.framework.context.handler.RequestContextHandler;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.subject.UserSubjectProvider;
 import org.springframework.context.annotation.Bean;
@@ -52,6 +53,11 @@ public class JasmineFrameworkAutoConfiguration {
     @Bean
     public ContextHandlerFacade contextHandlerFacade() {
         return new ContextHandlerFacadeBean();
+    }
+
+    @Bean
+    public FrameworkContextHandler frameworkContextHandler() {
+        return new FrameworkContextHandler();
     }
 
 }
