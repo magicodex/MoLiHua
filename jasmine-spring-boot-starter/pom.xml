@@ -29,13 +29,7 @@
     <dependencies>
         <dependency>
             <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-framework</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-security</artifactId>
+            <artifactId>jasmine-autoconfigure</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
