@@ -19,6 +19,7 @@
         <module>jasmine-demo</module>
         <module>jasmine-spring-boot-starter</module>
         <module>jasmine-security-test</module>
+        <module>jasmine-autoconfigure</module>
     </modules>
 
     <properties>
