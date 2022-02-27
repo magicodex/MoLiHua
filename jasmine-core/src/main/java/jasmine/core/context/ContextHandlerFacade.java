@@ -1,24 +1,27 @@
 package jasmine.core.context;
 
+import java.util.Collection;
+import java.util.List;
+
 /**
  * @author mh.z
  */
-public interface ContextHandler {
+public interface ContextHandlerFacade {
 
     /**
      * 复制上下文
      *
      * @return
      */
-    ContextSnapshot copy();
+    Collection<ContextSnapshot> copyAll();
 
     /**
      * 初始上下文
      */
-    void init();
+    void initAll();
 
     /**
      * 清除上下文
      */
-    void clear();
+    void clearAll();
 }

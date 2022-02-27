@@ -17,7 +17,12 @@ public class SecurityContextHandler implements ContextHandler {
     }
 
     @Override
-    public void reset() {
+    public void init() {
+        SecurityContextHolder.clearContext();
+    }
+
+    @Override
+    public void clear() {
         SecurityContextHolder.clearContext();
     }
 

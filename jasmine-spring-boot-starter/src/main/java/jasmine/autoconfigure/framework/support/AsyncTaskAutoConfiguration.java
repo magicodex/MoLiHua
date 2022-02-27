@@ -1,9 +1,10 @@
 package jasmine.autoconfigure.framework.support;
 
+import jasmine.core.context.ContextHandlerFacade;
 import jasmine.framework.concurrent.AsyncExecutorBuilder;
-import jasmine.framework.concurrent.AsyncTaskDecoratorBean;
-import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncExecutorTaskProvider;
+import jasmine.framework.concurrent.AsyncTaskDecorator;
+import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
@@ -21,12 +22,17 @@ import java.util.concurrent.Executor;
 @AutoConfigureBefore(TaskExecutionAutoConfiguration.class)
 @Configuration
 public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
+    private ContextHandlerFacade handlerFacade;
+
+    public AsyncTaskAutoConfiguration(ContextHandlerFacade handlerFacade) {
+        this.handlerFacade = handlerFacade;
+    }
 
     @Bean(AsyncAnnotationBeanPostProcessor.DEFAULT_TASK_EXECUTOR_BEAN_NAME)
     @Override
     public Executor getAsyncExecutor() {
         AsyncExecutorBuilder builder = new AsyncExecutorBuilder();
-        builder.setTaskDecorator(taskDecorator());
+        builder.setTaskDecorator(taskDecorator(handlerFacade));
 
         return builder.build();
     }
@@ -41,8 +47,8 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
     }
 
     @Bean
-    public TaskDecorator taskDecorator() {
-        return new AsyncTaskDecoratorBean();
+    public TaskDecorator taskDecorator(ContextHandlerFacade handlerFacade) {
+        return new AsyncTaskDecorator(handlerFacade);
     }
 
 }

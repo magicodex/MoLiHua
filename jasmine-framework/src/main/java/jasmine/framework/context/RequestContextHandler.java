@@ -19,7 +19,12 @@ public class RequestContextHandler implements ContextHandler {
     }
 
     @Override
-    public void reset() {
+    public void init() {
+        RequestContextHolder.resetRequestAttributes();
+    }
+
+    @Override
+    public void clear() {
         RequestContextHolder.resetRequestAttributes();
     }
 
