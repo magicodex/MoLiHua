@@ -4,6 +4,7 @@ import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.InitSupportScanBean;
+import jasmine.framework.context.RequestContextHandler;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.subject.UserSubjectProvider;
@@ -39,6 +40,11 @@ public class JasmineFrameworkAutoConfiguration {
     @Bean
     public InitSupportScanBean initSupportScanBean(RuntimeProvider runtimeProvider) {
         return new InitSupportScanBean(runtimeProvider);
+    }
+
+    @Bean
+    public RequestContextHandler requestContextHandler() {
+        return new RequestContextHandler();
     }
 
 }

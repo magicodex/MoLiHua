@@ -1,14 +1,14 @@
 package jasmine.framework.context;
 
-import jasmine.framework.concurrent.context.ContextCopyHandler;
-import jasmine.framework.concurrent.context.ContextSnapshot;
+import jasmine.core.context.ContextHandler;
+import jasmine.core.context.ContextSnapshot;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 /**
  * @author mh.z
  */
-public class RequestContextCopyHandler implements ContextCopyHandler {
+public class RequestContextHandler implements ContextHandler {
 
     @Override
     public ContextSnapshot copy() {

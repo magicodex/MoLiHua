@@ -1,9 +1,9 @@
-package jasmine.framework.concurrent.context;
+package jasmine.core.context;
 
 /**
  * @author mh.z
  */
-public interface ContextCopyHandler {
+public interface ContextHandler {
 
     /**
      * 复制上下文

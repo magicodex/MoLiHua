@@ -6,7 +6,7 @@ import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.rbac.service.SecFunctionService;
 import jasmine.security.rbac.service.SecResourceService;
 import jasmine.security.strategy.DynamicRbacCheckStrategy;
-import jasmine.security.support.SecurityContextCopyHandler;
+import jasmine.security.support.SecurityContextHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,8 +38,8 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public SecurityContextCopyHandler securityContextCopyHandler() {
-        return new SecurityContextCopyHandler();
+    public SecurityContextHandler securityContextHandler() {
+        return new SecurityContextHandler();
     }
 
     @Bean

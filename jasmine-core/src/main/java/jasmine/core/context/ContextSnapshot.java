@@ -1,4 +1,4 @@
-package jasmine.framework.concurrent.context;
+package jasmine.core.context;
 
 /**
  * @author mh.z

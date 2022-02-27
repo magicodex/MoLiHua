@@ -1,5 +1,7 @@
-package jasmine.framework.concurrent.context;
+package jasmine.framework.concurrent;
 
+import jasmine.core.context.ContextHandler;
+import jasmine.core.context.ContextSnapshot;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import org.springframework.beans.BeansException;
@@ -16,7 +18,7 @@ import java.util.Map;
  * @author mh.z
  */
 public class AsyncTaskDecoratorBean implements TaskDecorator, SmartInitializingSingleton, ApplicationContextAware {
-    private List<ContextCopyHandler> handlers;
+    private List<ContextHandler> handlers;
     private static ApplicationContext applicationContext;
 
     public AsyncTaskDecoratorBean() {
@@ -31,7 +33,7 @@ public class AsyncTaskDecoratorBean implements TaskDecorator, SmartInitializingS
     @Override
     public Runnable decorate(Runnable runnable) {
         QCheckUtil.notNullProp(handlers, "handlers null");
-        List<ContextSnapshot> snapshots = QCollectionUtil.forEach(handlers, ContextCopyHandler::copy);
+        List<ContextSnapshot> snapshots = QCollectionUtil.forEach(handlers, ContextHandler::copy);
 
         Runnable proxy = () -> {
             try {
@@ -50,8 +52,8 @@ public class AsyncTaskDecoratorBean implements TaskDecorator, SmartInitializingS
 
     @Override
     public void afterSingletonsInstantiated() {
-        Map<String, ContextCopyHandler> handlerMap = applicationContext
-                .getBeansOfType(ContextCopyHandler.class);
+        Map<String, ContextHandler> handlerMap = applicationContext
+                .getBeansOfType(ContextHandler.class);
 
         handlers.addAll(handlerMap.values());
     }
