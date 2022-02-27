@@ -46,6 +46,18 @@ spring.datasource.read.username=用户名
 spring.datasource.read.password=密码
 ```
 
+## 已有功能
+
+- 多语言方案
+- 多线程方案
+- 基于角色的访问控制方案
+- 分布式缓存
+- 分布式锁
+- 消息队列
+- 任务调度
+- 读写分离
+- 多租户支持方案
+
 ## 集成框架
 
 | 框架 | 版本 | 说明 |
