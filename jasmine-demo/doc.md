@@ -10,22 +10,19 @@
 
 ```
 |---- application
-   |---- web
-      |---- controller 控制器
-      |---- dto
-      |---- adapter 适配器
+   |---- controller 控制器
+   |---- dto
+   |---- util
 |---- business 业务层
    |---- service
-   |---- domain 领域驱动对象
    |---- dto
-   |---- adapter 适配器
+   |---- util
+   |---- domain 领域驱动对象
 |---- persistence 持久层
    |---- entity 数据实体
    |---- dao
-   |---- param
+   |---- dto
    |---- mapper
 |---- constant
 |---- enums
-|---- exception
-|---- helper
 ```

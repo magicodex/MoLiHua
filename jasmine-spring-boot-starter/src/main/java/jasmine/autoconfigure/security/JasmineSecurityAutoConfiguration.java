@@ -6,14 +6,17 @@ import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.rbac.service.SecFunctionService;
 import jasmine.security.rbac.service.SecResourceService;
 import jasmine.security.strategy.DynamicRbacCheckStrategy;
+import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.support.SecurityContextHandler;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
 
@@ -54,6 +57,22 @@ public class JasmineSecurityAutoConfiguration {
         AccessDecisionManagerProxy managerProxy = new AccessDecisionManagerProxy(manager);
 
         return managerProxy;
+    }
+
+    @ConditionalOnMissingBean(UserSubjectDetailsService.class)
+    @Bean
+    public UserSubjectDetailsService userSubjectDetailsService(JasmineSecurityConfigTemplate configTemplate) {
+        UserSubjectDetailsService service = configTemplate.userSubjectDetailsService();
+
+        return service;
+    }
+
+    @ConditionalOnMissingBean(ClientDetailsService.class)
+    @Bean
+    public ClientDetailsService clientDetailsService(JasmineSecurityConfigTemplate configTemplate) {
+        ClientDetailsService service = configTemplate.clientDetailsService();
+
+        return service;
     }
 
 }
