@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -26,7 +27,7 @@ import java.util.Map;
         .DataSourceAutoConfiguration.class, MybatisPlusAutoConfiguration.class})
 @ConditionalOnProperty(value = "jasmine.datasource.readWrite.enabled",
         havingValue = "true", matchIfMissing = false)
-@EnableConfigurationProperties(DataSourceProperties.class)
+@EnableConfigurationProperties({DataSourceProperties.class, ReadDataSourceProperties.class})
 @Configuration
 public class DataSourceAutoConfiguration {
 
@@ -43,9 +44,10 @@ public class DataSourceAutoConfiguration {
 
     @Primary
     @Bean
-    public DataSource dataSource(DataSourceProperties properties) {
+    public DataSource dataSource(DataSourceProperties properties,
+                                 ReadDataSourceProperties readProperties) {
         DataSource mainDataSource = mainDataSource(properties);
-        DataSource readDataSource = readDataSource(properties);
+        DataSource readDataSource = readDataSource(properties, readProperties);
 
         Map<Object, Object> dataSourceMap = Map.of("master", mainDataSource,
                 "read", readDataSource);
@@ -69,10 +71,15 @@ public class DataSourceAutoConfiguration {
         return dataSource;
     }
 
-    @ConfigurationProperties(prefix = "spring.datasource.read")
+    @ConfigurationProperties(prefix = "spring.datasource.hikari.read")
     @Bean
-    public HikariDataSource readDataSource(DataSourceProperties properties) {
-        HikariDataSource dataSource = properties.initializeDataSourceBuilder()
+    public HikariDataSource readDataSource(DataSourceProperties properties,
+                                           ReadDataSourceProperties readProperties) {
+        HikariDataSource dataSource = DataSourceBuilder.create(properties.getClassLoader())
+                .driverClassName(readProperties.getDriverClassName())
+                .url(readProperties.getUrl())
+                .username(readProperties.getUsername())
+                .password(readProperties.getPassword())
                 .type(HikariDataSource.class)
                 .build();
         dataSource.setPoolName("read");
