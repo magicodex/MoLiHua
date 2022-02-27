@@ -30,6 +30,13 @@ jasmine.security.rbac.enabled=true
 
 # 是否启用 XXL-job 任务调度
 jasmine.xxl.job.enabled=true
+
+# 读写分离
+jasmine.datasource.readWrite.enabled=true
+spring.datasource.read.url=数据库连接字符串
+spring.datasource.read.username=用户名
+spring.datasource.read.password=密码
+spring.datasource.read.driverClassName=JDBC驱动名
 ```
 
 ## 集成框架
