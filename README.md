@@ -91,6 +91,7 @@ spring.datasource.read.password=密码
 | jasmine-test | 支持单元测试 |
 | jasmine-security | 安全模块 |
 | jasmine-security-test | 支持单元测试 |
+| jasmine-spring-boot-autoconfigure | 自动配置 |
 | jasmine-spring-boot-starter | 自动配置 |
 | jasmine-demo | DEMO模块 |
 
