@@ -16,10 +16,10 @@
         <module>jasmine-framework</module>
         <module>jasmine-test</module>
         <module>jasmine-security</module>
-        <module>jasmine-demo</module>
-        <module>jasmine-spring-boot-starter</module>
         <module>jasmine-security-test</module>
-        <module>jasmine-autoconfigure</module>
+        <module>jasmine-demo</module>
+        <module>jasmine-spring-boot-autoconfigure</module>
+        <module>jasmine-spring-boot-starter</module>
     </modules>
 
     <properties>

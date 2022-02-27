@@ -29,7 +29,7 @@
     <dependencies>
         <dependency>
             <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-autoconfigure</artifactId>
+            <artifactId>jasmine-spring-boot-autoconfigure</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
