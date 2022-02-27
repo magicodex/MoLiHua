@@ -72,3 +72,19 @@
   color: #929699 !important;
   font-size: 14px !important;
 }
+
+
+.full-size {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0 0 0 0;
+}
+
+/** 隐藏滚动条 */
+.scrollbar-hidden {
+overflow-y: hidden;
+overflow-x: hidden;
+}
