@@ -20,7 +20,7 @@ public class RedisDistributedDeclaredLock implements DistributedDeclaredLock {
     private List<String> lockKeys;
 
     /** 默认等待锁的时间 */
-    private static final long DEFAULT_WAIT_TIME = 5000L;
+    private static final long DEFAULT_WAIT_TIME = 10000L;
     /** 默认释放锁的时间 */
     private static final long DEFAULT_LEASE_TIME = -1;
 

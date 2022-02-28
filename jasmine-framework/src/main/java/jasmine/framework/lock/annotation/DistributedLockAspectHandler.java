@@ -1,6 +1,5 @@
 package jasmine.framework.lock.annotation;
 
-import jasmine.framework.lock.annotation.DistributedLock;
 import jasmine.framework.lock.distributed.DistributedLocks;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -50,8 +49,9 @@ public class DistributedLockAspectHandler implements Ordered {
         Object value = expression.getValue(context);
 
         String category = lock.category();
+        long waitTime = lock.waitTime();
         // 加锁
-        Object result = DistributedLocks.lock(category, value, () -> {
+        Object result = DistributedLocks.lock(category, value, waitTime, () -> {
             return joinPoint.proceed();
         });
 

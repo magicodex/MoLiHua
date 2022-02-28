@@ -49,4 +49,20 @@ public class DistributedLocks {
         return lock.lock(callback);
     }
 
+    /**
+     * 加锁
+     *
+     * @param category
+     * @param key
+     * @param waitTime
+     * @param callback
+     * @param <T>
+     * @return
+     */
+    public static <T> T lock(String category, Object key, long waitTime, DistributedLockCallback callback) {
+        DistributedDeclaredLock lock = declare(category, key);
+
+        return lock.lock(waitTime, callback);
+    }
+
 }

@@ -27,4 +27,11 @@ public @interface DistributedLock {
      * @return
      */
     String key();
+
+    /**
+     * 等待时间
+     *
+     * @return
+     */
+    long waitTime() default 10000L;
 }
