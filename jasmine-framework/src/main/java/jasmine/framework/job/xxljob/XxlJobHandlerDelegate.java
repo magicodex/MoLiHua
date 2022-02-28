@@ -4,6 +4,7 @@ import com.xxl.job.core.handler.IJobHandler;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.QStringUtil;
+import jasmine.framework.context.handler.ContextInitAndClearHelper;
 import jasmine.framework.job.JobExecutor;
 
 /**
@@ -30,7 +31,9 @@ public class XxlJobHandlerDelegate extends IJobHandler {
             CurrentSubject.setSubject(tenantId, null);
         }
 
-        jobExecutor.execute(current);
+        ContextInitAndClearHelper.initThenClear(() -> {
+            jobExecutor.execute(current);
+        });
     }
 
 }

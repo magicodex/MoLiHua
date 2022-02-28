@@ -1,6 +1,7 @@
 package jasmine.framework.remote.mq.impl;
 
 import jasmine.core.util.QCheckUtil;
+import jasmine.framework.context.handler.ContextInitAndClearHelper;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.interceptor.DefaultReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
@@ -71,10 +72,12 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
      */
     protected void receive(ReceiveInterceptor tempInterceptor, String category, Object message) {
         if (Boolean.TRUE.equals(receiveEnabled)) {
-            // 接收消息
-            tempInterceptor.onReceive((newCategory, newMessage) -> {
-                return doReceive(tempInterceptor, newCategory, (T) newMessage);
-            }, category, message);
+            ContextInitAndClearHelper.initThenClear(() -> {
+                // 接收消息
+                tempInterceptor.onReceive((newCategory, newMessage) -> {
+                    return doReceive(tempInterceptor, newCategory, (T) newMessage);
+                }, category, message);
+            });
         } else {
             logger.warn("receive skipped(jasmine.message-queue.consumer.enabled=false)");
         }
