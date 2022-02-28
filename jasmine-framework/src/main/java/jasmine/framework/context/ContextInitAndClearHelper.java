@@ -8,11 +8,11 @@ import jasmine.framework.common.function.FunctionWithoutResult;
 /**
  * @author mh.z
  */
-public class InitAndClearContextHelper {
+public class ContextInitAndClearHelper {
     private static ContextHandlerFacade handlerFacade;
 
     public static void initUtil(ContextHandlerFacade handlerFacade) {
-        InitAndClearContextHelper.handlerFacade = handlerFacade;
+        ContextInitAndClearHelper.handlerFacade = handlerFacade;
     }
 
     /**
