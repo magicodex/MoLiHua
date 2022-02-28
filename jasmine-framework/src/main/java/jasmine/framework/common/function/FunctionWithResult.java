@@ -1,9 +1,9 @@
-package jasmine.framework.persistence.datasource;
+package jasmine.framework.common.function;
 
 /**
  * @author mh.z
  */
-public interface DataActionWithResult<T> {
+public interface FunctionWithResult<T> {
 
     /**
      * 调用

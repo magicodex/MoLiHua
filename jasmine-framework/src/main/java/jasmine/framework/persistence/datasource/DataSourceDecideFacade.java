@@ -1,5 +1,8 @@
 package jasmine.framework.persistence.datasource;
 
+import jasmine.framework.common.function.FunctionWithResult;
+import jasmine.framework.common.function.FunctionWithoutResult;
+
 /**
  * @author mh.z
  */
@@ -12,7 +15,7 @@ public interface DataSourceDecideFacade {
      * @param key
      * @param action
      */
-    void decide(String category, Object key, DataActionWithoutResult action);
+    void decide(String category, Object key, FunctionWithoutResult action);
 
     /**
      * 切换数据源
@@ -21,7 +24,7 @@ public interface DataSourceDecideFacade {
      * @param key
      * @param action
      */
-    <T> T decide(String category, Object key, DataActionWithResult<T> action);
+    <T> T decide(String category, Object key, FunctionWithResult<T> action);
 
     /**
      * 只读数据源
@@ -30,5 +33,5 @@ public interface DataSourceDecideFacade {
      * @param <T>
      * @return
      */
-    <T> T readOny(DataActionWithResult<T> action);
+    <T> T readOny(FunctionWithResult<T> action);
 }

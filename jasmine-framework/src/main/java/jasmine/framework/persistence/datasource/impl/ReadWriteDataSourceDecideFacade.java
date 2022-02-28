@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.datasource.impl;
 
-import jasmine.framework.persistence.datasource.DataActionWithResult;
-import jasmine.framework.persistence.datasource.DataActionWithoutResult;
+import jasmine.framework.common.function.FunctionWithResult;
+import jasmine.framework.common.function.FunctionWithoutResult;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import jasmine.framework.persistence.datasource.context.DataSourceContext;
 import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;
@@ -13,17 +13,17 @@ public class ReadWriteDataSourceDecideFacade implements DataSourceDecideFacade {
     private static final String READ_DATA_SOURCE_KEY = "read";
 
     @Override
-    public void decide(String category, Object key, DataActionWithoutResult action) {
+    public void decide(String category, Object key, FunctionWithoutResult action) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public <T> T decide(String category, Object key, DataActionWithResult<T> action) {
+    public <T> T decide(String category, Object key, FunctionWithResult<T> action) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public <T> T readOny(DataActionWithResult<T> action) {
+    public <T> T readOny(FunctionWithResult<T> action) {
         DataSourceContext context = DataSourceContextHolder.getContext();
 
         try {
