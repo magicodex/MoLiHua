@@ -1,4 +1,4 @@
-package jasmine.framework.remote.rabbit;
+package jasmine.framework.remote.mq.impl;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
@@ -7,7 +7,6 @@ import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.remote.mq.MessageReceiver;
-import jasmine.framework.remote.mq.impl.AbstractReceiveMessageService;
 import jasmine.framework.remote.mq.interceptor.DefaultReceiveInvocationInfo;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
@@ -19,14 +18,14 @@ import org.springframework.amqp.core.MessageProperties;
 /**
  * @author mh.z
  */
-public class RabbitReceiveMessageService extends AbstractReceiveMessageService<Message> {
-    private static final Logger logger = LoggerFactory.getLogger(RabbitReceiveMessageService.class);
+public class DefaultReceiveMessageService extends AbstractReceiveMessageService<Message> {
+    private static final Logger logger = LoggerFactory.getLogger(DefaultReceiveMessageService.class);
     private RuntimeProvider runtimeProvider;
 
     /** 消息接收者 bean 的名称后缀 */
     private static final String RECEIVER_BEAN_SUFFIX = "MessageReceiver";
 
-    public RabbitReceiveMessageService(RuntimeProvider runtimeProvider) {
+    public DefaultReceiveMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
 

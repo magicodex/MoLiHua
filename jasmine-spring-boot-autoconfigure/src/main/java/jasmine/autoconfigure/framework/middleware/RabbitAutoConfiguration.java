@@ -5,8 +5,8 @@ import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
-import jasmine.framework.remote.rabbit.RabbitReceiveMessageService;
-import jasmine.framework.remote.rabbit.RabbitSendMessageServiceBean;
+import jasmine.framework.remote.mq.impl.DefaultReceiveMessageService;
+import jasmine.framework.remote.mq.impl.DefaultSendMessageServiceBean;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +28,7 @@ public class RabbitAutoConfiguration {
     @Bean
     public ReceiveMessageService receiveMessageService(RuntimeProvider runtimeProvider,
                                                        @Autowired(required = false) ReceiveInterceptor interceptor) {
-        RabbitReceiveMessageService service = new RabbitReceiveMessageService(runtimeProvider);
+        DefaultReceiveMessageService service = new DefaultReceiveMessageService(runtimeProvider);
         service.setEnabled(Boolean.TRUE.equals(receivedEnabled));
         service.setInterceptor(interceptor);
 
@@ -38,7 +38,7 @@ public class RabbitAutoConfiguration {
     @Bean
     public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate,
                                                  @Autowired(required = false) SendInterceptor interceptor) {
-        RabbitSendMessageServiceBean service = new RabbitSendMessageServiceBean(rabbitTemplate);
+        DefaultSendMessageServiceBean service = new DefaultSendMessageServiceBean(rabbitTemplate);
         service.setEnabled(Boolean.TRUE.equals(sendEnabled));
         service.setInterceptor(interceptor);
 

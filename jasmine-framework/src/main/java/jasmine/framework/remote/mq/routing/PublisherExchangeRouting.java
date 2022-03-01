@@ -1,4 +1,4 @@
-package jasmine.framework.remote.rabbit;
+package jasmine.framework.remote.mq.routing;
 
 import jasmine.framework.remote.mq.routing.PublisherRouting;
 import org.springframework.amqp.core.Exchange;
@@ -6,7 +6,7 @@ import org.springframework.amqp.core.Exchange;
 /**
  * @author mh.z
  */
-public interface RabbitPublisherRouting extends PublisherRouting {
+public interface PublisherExchangeRouting extends PublisherRouting {
 
     /**
      * 返回交换器

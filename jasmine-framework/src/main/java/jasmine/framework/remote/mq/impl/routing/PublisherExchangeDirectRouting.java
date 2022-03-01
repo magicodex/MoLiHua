@@ -1,14 +1,14 @@
-package jasmine.framework.remote.rabbit;
+package jasmine.framework.remote.mq.impl.routing;
 
 import org.springframework.amqp.core.Exchange;
 
 /**
  * @author mh.z
  */
-public class RabbitPublisherDirectRouting extends AbstractRabbitPublisherRouting {
+public class PublisherExchangeDirectRouting extends AbstractPublisherExchangeRouting {
     private String routingKey;
 
-    public RabbitPublisherDirectRouting(String category, Exchange exchange, String routingKey) {
+    public PublisherExchangeDirectRouting(String category, Exchange exchange, String routingKey) {
         super(category, exchange);
         this.routingKey = routingKey;
     }
