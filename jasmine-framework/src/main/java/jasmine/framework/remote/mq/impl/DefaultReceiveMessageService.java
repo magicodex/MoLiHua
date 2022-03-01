@@ -30,43 +30,27 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
     }
 
     @Override
-    protected ReceiveInvocationInfo doReceive(ReceiveInterceptor interceptor, String category, Message message) {
+    protected ReceiveInvocationInfo doReceive(ReceiveInterceptor interceptor,
+                                              String category, Message message) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(message, "message null");
-        byte[] messageBody = message.getBody();
-
         DefaultReceiveInvocationInfo invocationInfo = null;
         Exception error = null;
 
         // TODO 此处捕获到异常只是输出日志，实际业务场景中需要做对应的错误处理
         try {
-            MessageProperties messageProperties = message.getMessageProperties();
-            String subject = messageProperties.getHeader("subject");
-            String messageId = messageProperties.getMessageId();
-
             // 初始安全上下文
-            if (QStringUtil.isNotEmpty(subject)) {
-                if (subject.startsWith("userId:")) {
-                    String userIdStr = subject.substring(7);
-                    Long userId = QObjectUtil.parseLong(userIdStr);
-
-                    CurrentSubject.setSubject(null, userId);
-                }
-            }
-
+            initContext(message);
             // 获取消息接收者
             MessageReceiver receiver = getReceiver(category, true);
+            // 获取消息内容
             Class<?> targetType = receiver.getType();
-            Object content = null;
+            Object content = getContent(message, targetType);
 
-            // 转换成指定的类型
-            if (targetType != null) {
-                content = SimpleConvertUtil.deserialize(messageBody, targetType);
-            } else {
-                content = messageBody;
-            }
-
+            MessageProperties messageProperties = message.getMessageProperties();
+            String messageId = messageProperties.getMessageId();
             invocationInfo = new DefaultReceiveInvocationInfo(messageId, content, message);
+            // 反序列化消息后调用
             interceptor.afterDeserialize(invocationInfo);
 
             // 接收消息
@@ -79,9 +63,52 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
         if (invocationInfo == null) {
             invocationInfo = new DefaultReceiveInvocationInfo(null, null, message);
         }
-        invocationInfo.setError(error);
 
+        invocationInfo.setError(error);
         return invocationInfo;
+    }
+
+    /**
+     * 初始上下文
+     *
+     * @param message
+     */
+    protected void initContext(Message message) {
+        QCheckUtil.notNull(message, "message null");
+        MessageProperties messageProperties = message.getMessageProperties();
+        String subject = messageProperties.getHeader("subject");
+
+        // 初始安全上下文
+        if (QStringUtil.isNotEmpty(subject)) {
+            if (subject.startsWith("userId:")) {
+                String userIdStr = subject.substring(7);
+                Long userId = QObjectUtil.parseLong(userIdStr);
+
+                CurrentSubject.setSubject(null, userId);
+            }
+        }
+    }
+
+    /**
+     * 返回消息内容
+     *
+     * @param message
+     * @param targetType
+     * @return
+     */
+    protected Object getContent(Message message, Class<?> targetType) {
+        QCheckUtil.notNull(message, "message null");
+        byte[] messageBody = message.getBody();
+        Object content = null;
+
+        // 转换成指定的类型
+        if (targetType != null) {
+            content = SimpleConvertUtil.deserialize(messageBody, targetType);
+        } else {
+            content = messageBody;
+        }
+
+        return content;
     }
 
     /**
