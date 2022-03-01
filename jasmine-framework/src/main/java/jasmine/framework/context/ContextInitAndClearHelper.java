@@ -1,4 +1,4 @@
-package jasmine.framework.context.handler;
+package jasmine.framework.context;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.common.function.FunctionWithResult;

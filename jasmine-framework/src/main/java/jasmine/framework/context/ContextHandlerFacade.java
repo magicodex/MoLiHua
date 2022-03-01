@@ -1,4 +1,6 @@
-package jasmine.framework.context.handler;
+package jasmine.framework.context;
+
+import jasmine.framework.context.handler.ContextSnapshot;
 
 import java.util.Collection;
 
