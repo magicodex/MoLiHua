@@ -1,6 +1,5 @@
 package jasmine.framework.context.handler;
 
-import jasmine.core.context.handler.ContextHandlerFacade;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.common.function.FunctionWithResult;
 import jasmine.framework.common.function.FunctionWithoutResult;

@@ -1,4 +1,4 @@
-package jasmine.framework.lock.redis;
+package jasmine.framework.lock.redisson;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QNewUtil;
@@ -14,14 +14,14 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class RedisDistributedLockProvider implements DistributedLockProvider {
+public class RedissonDistributedLockProvider implements DistributedLockProvider {
     private RedissonClient redisson;
     /** 锁key的分隔符 */
     private static final String REDIS_KEY_SEPARATOR = ":";
     /** 锁key的前缀 */
     private static final String REDIS_KEY_PREFIX = "LOCK:";
 
-    public RedisDistributedLockProvider(RedissonClient redisson) {
+    public RedissonDistributedLockProvider(RedissonClient redisson) {
         this.redisson = redisson;
     }
 
@@ -47,7 +47,7 @@ public class RedisDistributedLockProvider implements DistributedLockProvider {
             redisKeyList = Collections.singletonList(redisKey);
         }
 
-        DistributedDeclaredLock lock = new RedisDistributedDeclaredLock(redisson, redisKeyList);
+        DistributedDeclaredLock lock = new RedissonDistributedDeclaredLock(redisson, redisKeyList);
         return lock;
     }
 

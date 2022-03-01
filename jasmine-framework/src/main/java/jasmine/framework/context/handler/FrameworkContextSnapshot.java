@@ -1,6 +1,5 @@
 package jasmine.framework.context.handler;
 
-import jasmine.core.context.handler.ContextSnapshot;
 import jasmine.framework.persistence.datasource.context.DataSourceContext;
 import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;
 

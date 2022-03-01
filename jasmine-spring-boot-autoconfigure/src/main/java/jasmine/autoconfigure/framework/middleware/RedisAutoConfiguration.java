@@ -7,7 +7,7 @@ import jasmine.framework.cache.redis.RedisCacheService;
 import jasmine.framework.lock.annotation.DistributedLockAspectHandler;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.distributed.DistributedLocks;
-import jasmine.framework.lock.redis.RedisDistributedLockProvider;
+import jasmine.framework.lock.redisson.RedissonDistributedLockProvider;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +35,7 @@ public class RedisAutoConfiguration {
 
     @Bean
     public DistributedLockProvider distributedLockProvider(RedissonClient redissonClient) {
-        DistributedLockProvider provider = new RedisDistributedLockProvider(redissonClient);
+        DistributedLockProvider provider = new RedissonDistributedLockProvider(redissonClient);
         DistributedLocks.initUtil(provider);
 
         return provider;

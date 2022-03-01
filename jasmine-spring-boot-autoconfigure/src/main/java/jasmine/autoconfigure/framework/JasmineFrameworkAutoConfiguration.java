@@ -2,7 +2,7 @@ package jasmine.autoconfigure.framework;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.context.handler.ContextHandlerFacade;
+import jasmine.framework.context.handler.ContextHandlerFacade;
 import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.handler.ContextInitAndClearHelper;
 import jasmine.framework.context.InitSupportScanBean;

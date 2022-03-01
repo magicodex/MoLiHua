@@ -1,6 +1,6 @@
 package jasmine.autoconfigure.framework.support;
 
-import jasmine.core.context.handler.ContextHandlerFacade;
+import jasmine.framework.context.handler.ContextHandlerFacade;
 import jasmine.framework.concurrent.AsyncExecutorBuilder;
 import jasmine.framework.concurrent.AsyncExecutorTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskDecorator;

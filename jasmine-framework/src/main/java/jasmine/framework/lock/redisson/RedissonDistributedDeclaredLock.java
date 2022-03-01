@@ -1,4 +1,4 @@
-package jasmine.framework.lock.redis;
+package jasmine.framework.lock.redisson;
 
 
 import jasmine.core.exception.InvalidPropertyException;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author mh.z
  */
-public class RedisDistributedDeclaredLock implements DistributedDeclaredLock {
+public class RedissonDistributedDeclaredLock implements DistributedDeclaredLock {
     private RedissonClient redisson;
     private List<String> lockKeys;
 
@@ -24,7 +24,7 @@ public class RedisDistributedDeclaredLock implements DistributedDeclaredLock {
     /** 默认释放锁的时间 */
     private static final long DEFAULT_LEASE_TIME = -1;
 
-    public RedisDistributedDeclaredLock(RedissonClient redisson, List<String> lockKeys) {
+    public RedissonDistributedDeclaredLock(RedissonClient redisson, List<String> lockKeys) {
         this.redisson = redisson;
         this.lockKeys = lockKeys;
     }

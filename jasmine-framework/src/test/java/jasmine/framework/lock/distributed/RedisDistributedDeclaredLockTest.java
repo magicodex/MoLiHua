@@ -1,6 +1,6 @@
 package jasmine.framework.lock.distributed;
 
-import jasmine.framework.lock.redis.RedisDistributedDeclaredLock;
+import jasmine.framework.lock.redisson.RedissonDistributedDeclaredLock;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -19,7 +19,7 @@ public class RedisDistributedDeclaredLockTest {
         // 成功获取锁
         {
             RedissonClient client = mockRedissonClient(true);
-            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client,
+            RedissonDistributedDeclaredLock lock = new RedissonDistributedDeclaredLock(client,
                     Collections.singletonList("testLock"));
             boolean actual = lock.lock(() -> true);
 
@@ -29,7 +29,7 @@ public class RedisDistributedDeclaredLockTest {
         // 获取不到锁会报错
         {
             RedissonClient client = mockRedissonClient(false);
-            RedisDistributedDeclaredLock lock = new RedisDistributedDeclaredLock(client,
+            RedissonDistributedDeclaredLock lock = new RedissonDistributedDeclaredLock(client,
                     Collections.singletonList("testLock"));
 
             Assert.assertThrows(RuntimeException.class, () -> {

@@ -1,4 +1,4 @@
-package jasmine.core.context.handler;
+package jasmine.framework.context.handler;
 
 import java.util.Collection;
 
