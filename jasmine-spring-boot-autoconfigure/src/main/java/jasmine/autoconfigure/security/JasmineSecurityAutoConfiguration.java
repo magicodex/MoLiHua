@@ -3,12 +3,14 @@ package jasmine.autoconfigure.security;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
+import jasmine.security.config.JasmineSecurityConfig;
 import jasmine.security.rbac.service.SecFunctionService;
 import jasmine.security.rbac.service.SecResourceService;
 import jasmine.security.strategy.DynamicRbacCheckStrategy;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.support.SecurityContextHandler;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,10 @@ import org.springframework.security.web.access.expression.WebExpressionVoter;
 
 import java.util.Arrays;
 
+/**
+ * @author mh.z
+ */
+@ConditionalOnClass(JasmineSecurityConfig.class)
 @Configuration
 public class JasmineSecurityAutoConfiguration {
 

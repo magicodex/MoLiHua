@@ -1,6 +1,8 @@
 package jasmine.autoconfigure.security.oauth2;
 
+import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -18,6 +20,7 @@ import org.springframework.security.oauth2.provider.client.InMemoryClientDetails
  *
  * @author mh.z
  */
+@ConditionalOnClass(JasmineSecurityConfig.class)
 @EnableAuthorizationServer
 @Configuration
 public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerConfigurerAdapter {

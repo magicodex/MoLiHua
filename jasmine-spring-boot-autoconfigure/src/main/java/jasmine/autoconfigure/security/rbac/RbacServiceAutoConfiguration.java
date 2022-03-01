@@ -1,5 +1,6 @@
 package jasmine.autoconfigure.security.rbac;
 
+import jasmine.security.config.JasmineSecurityConfig;
 import jasmine.security.rbac.mapper.SecFunctionMapper;
 import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.mapper.SecRoleMapper;
@@ -16,12 +17,14 @@ import jasmine.security.rbac.service.SecRoleFunctionRelationService;
 import jasmine.security.rbac.service.SecRoleService;
 import jasmine.security.rbac.service.SecUserRoleRelationService;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * @author mh.z
  */
+@ConditionalOnClass(JasmineSecurityConfig.class)
 @MapperScan("jasmine.security.**.mapper")
 @Configuration
 public class RbacServiceAutoConfiguration {

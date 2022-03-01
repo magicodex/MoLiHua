@@ -2,6 +2,8 @@ package jasmine.autoconfigure.security.oauth2;
 
 import jasmine.core.util.QStringUtil;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
+import jasmine.security.config.JasmineSecurityConfig;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,6 +17,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
  *
  * @author mh.z
  */
+@ConditionalOnClass(JasmineSecurityConfig.class)
 @EnableResourceServer
 @Configuration
 public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAdapter {

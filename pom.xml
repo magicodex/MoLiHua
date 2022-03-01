@@ -20,6 +20,7 @@
         <module>jasmine-demo</module>
         <module>jasmine-spring-boot-autoconfigure</module>
         <module>jasmine-spring-boot-starter</module>
+        <module>jasmine-spring-boot-starter-security</module>
     </modules>
 
     <properties>

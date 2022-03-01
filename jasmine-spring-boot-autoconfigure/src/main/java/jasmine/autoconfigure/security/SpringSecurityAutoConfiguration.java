@@ -1,6 +1,8 @@
 package jasmine.autoconfigure.security;
 
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
+import jasmine.security.config.JasmineSecurityConfig;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionManager;
@@ -16,6 +18,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  *
  * @author mh.z
  */
+@ConditionalOnClass(JasmineSecurityConfig.class)
 @EnableWebSecurity
 @Configuration
 public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
