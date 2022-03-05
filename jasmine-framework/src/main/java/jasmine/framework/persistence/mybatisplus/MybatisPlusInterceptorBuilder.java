@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInt
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import jasmine.core.context.SubjectProvider;
 import jasmine.core.util.QCheckUtil;
+import jasmine.framework.persistence.mybatisplus.context.ContextParameter;
+import jasmine.framework.persistence.mybatisplus.context.ContextParameterInnerInterceptor;
+import jasmine.framework.persistence.mybatisplus.context.DefaultContextParameter;
 
 /**
  * @author mh.z

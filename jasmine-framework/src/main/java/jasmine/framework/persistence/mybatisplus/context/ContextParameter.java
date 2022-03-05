@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus;
+package jasmine.framework.persistence.mybatisplus.context;
 
 /**
  * <p>
