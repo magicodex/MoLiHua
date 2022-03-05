@@ -20,7 +20,7 @@ public class MybatisPlusInterceptorBuilder {
     private Boolean tenantEnabled;
     private TenantLineHandler tenantLineHandler;
 
-    public MybatisPlusInterceptorBuilder(SubjectProvider subjectProvider) {
+    public void setSubjectProvider(SubjectProvider subjectProvider) {
         this.subjectProvider = subjectProvider;
     }
 

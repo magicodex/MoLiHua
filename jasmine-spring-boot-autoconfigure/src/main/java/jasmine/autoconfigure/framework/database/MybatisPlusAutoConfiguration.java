@@ -16,7 +16,8 @@ public class MybatisPlusAutoConfiguration {
 
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor(SubjectProvider subjectProvider) {
-        MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder(subjectProvider);
+        MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder();
+        builder.setSubjectProvider(subjectProvider);
 
         return builder.build();
     }
