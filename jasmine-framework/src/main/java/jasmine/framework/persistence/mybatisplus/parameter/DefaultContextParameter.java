@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus.context;
+package jasmine.framework.persistence.mybatisplus.parameter;
 
 import jasmine.core.context.SubjectProvider;
 
