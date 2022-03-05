@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus.helper;
+package jasmine.framework.persistence.mybatisplus.auth;
 
 /**
  * @author mh.z
