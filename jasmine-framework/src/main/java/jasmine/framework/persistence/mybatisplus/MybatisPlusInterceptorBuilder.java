@@ -39,20 +39,23 @@ public class MybatisPlusInterceptorBuilder {
      */
     public MybatisPlusInterceptor build() {
         QCheckUtil.notNullProp(subjectProvider, "subjectProvider null");
-
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        // 乐观锁插件
-        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
-        // 分页插件
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor());
-        // 防止全表更新与删除插件
-        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
+
+        // 如果用了分页插件注意先 add TenantLineInnerInterceptor 再 add PaginationInnerInterceptor
+        // 用了分页插件必须设置 MybatisConfiguration#useDeprecatedExecutor = false
 
         // 租户拦截器
         if (Boolean.TRUE.equals(tenantEnabled)) {
             QCheckUtil.notNullProp(tenantLineHandler, "tenantLineHandler null");
             interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(tenantLineHandler));
         }
+
+        // 乐观锁插件
+        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+        // 分页插件
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+        // 防止全表更新与删除插件
+        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
 
         ContextParameter contextParameter = new DefaultContextParameter(subjectProvider);
         interceptor.addInnerInterceptor(new ContextParameterInnerInterceptor(contextParameter));
