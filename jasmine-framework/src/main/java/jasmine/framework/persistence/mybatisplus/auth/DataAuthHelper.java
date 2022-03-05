@@ -12,6 +12,13 @@ public class DataAuthHelper {
         DataAuthHelper.provider = provider;
     }
 
+    /**
+     * 生成SQL
+     *
+     * @param tableName
+     * @param aliasName
+     * @return
+     */
     public static String generateSql(String tableName, String aliasName) {
         QCheckUtil.notNullProp(provider, "provider null");
 
