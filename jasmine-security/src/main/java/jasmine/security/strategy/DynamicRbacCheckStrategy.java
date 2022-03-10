@@ -211,7 +211,7 @@ public class DynamicRbacCheckStrategy implements AccessDecisionStrategy, InitSup
             });
 
             // 获取角色被授予的所有功能
-            return functionDao.listFunctionBaseInfoDTOsByRoleIds(roleIdList);
+            return functionDao.listAllTenantFunctionBaseInfoDTOsByRoleIds(roleIdList);
         }, SecFunctionBaseInfoDTO.class);
 
         return functionList;

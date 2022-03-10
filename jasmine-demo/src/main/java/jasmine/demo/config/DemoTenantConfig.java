@@ -12,7 +12,7 @@ public class DemoTenantConfig implements TenantConfigProcessor {
 
     @Override
     public void ignoreTable(IgnoreTableStrategy strategy) {
-        strategy.addIgnoreTable("sys_user");
+
     }
 
 }

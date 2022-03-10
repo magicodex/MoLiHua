@@ -1,15 +1,13 @@
 package jasmine.demo.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.demo.entity.User;
 import jasmine.demo.mapper.UserMapper;
 import jasmine.security.authorization.RoleAuthority;
-import jasmine.security.rbac.model.SecRole;
 import jasmine.security.rbac.dao.SecRoleDao;
+import jasmine.security.rbac.model.SecRole;
 import jasmine.security.subject.UserSubject;
 import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.security.core.GrantedAuthority;
@@ -43,10 +41,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        LambdaQueryWrapper<User> wrapper = Wrappers.lambdaQuery();
-        wrapper.eq(User::getUserName, username);
-        User user = userMapper.selectOne(wrapper);
-
+        User user = userMapper.getAllTenantUserByName(username);
         if (user == null) {
             throw new UsernameNotFoundException("username '" + username + "' not found");
         }
@@ -64,7 +59,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
     @Override
     public UserSubject loadUserByUserId(Long userId) throws UsernameNotFoundException {
         // 获取用户
-        User user = userMapper.selectById(userId);
+        User user = userMapper.getAllTenantUserById(userId);
         if (user == null) {
             throw new UsernameNotFoundException("userId '" + userId + "' not found");
         }
@@ -80,10 +75,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
-        LambdaQueryWrapper<User> wrapper = Wrappers.lambdaQuery();
-        wrapper.eq(User::getUserName, clientId);
-        User user = userMapper.selectOne(wrapper);
-
+        User user = userMapper.getAllTenantUserByName(clientId);
         if (user == null) {
             return null;
         }

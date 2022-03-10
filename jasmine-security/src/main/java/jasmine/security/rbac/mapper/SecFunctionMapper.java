@@ -1,5 +1,6 @@
 package jasmine.security.rbac.mapper;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
 import jasmine.security.rbac.model.SecFunction;
@@ -18,5 +19,6 @@ public interface SecFunctionMapper extends BaseMapper<SecFunction> {
      * @param roleIds
      * @return
      */
-    List<SecFunctionBaseInfoDTO> listFunctionBaseInfoDTOsByRoleIds(@Param("roleIds") List<Long> roleIds);
+    @InterceptorIgnore(tenantLine = "true")
+    List<SecFunctionBaseInfoDTO> listAllTenantFunctionBaseInfoDTOsByRoleIds(@Param("roleIds") List<Long> roleIds);
 }
