@@ -6,12 +6,17 @@ import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 /**
  * @author mh.z
  */
-public class DefaultTenantLineHandler implements TenantLineHandler {
+public class DefaultTenantLineHandler implements TenantLineHandler, IgnoreTableStrategy {
     private Collection<String> tableNamesWithoutTenant;
+
+    public DefaultTenantLineHandler() {
+        this.tableNamesWithoutTenant = new LinkedHashSet<>();
+    }
 
     public DefaultTenantLineHandler(Collection<String> tableNamesWithoutTenant) {
         this.tableNamesWithoutTenant = tableNamesWithoutTenant;
@@ -27,6 +32,11 @@ public class DefaultTenantLineHandler implements TenantLineHandler {
     @Override
     public boolean ignoreTable(String tableName) {
         return tableNamesWithoutTenant.contains(tableName);
+    }
+
+    @Override
+    public void addIgnoreTable(String tableName) {
+        tableNamesWithoutTenant.add(tableName);
     }
 
 }

@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
  * @author mh.z
  */
 @Configuration
-public class JasmineFrameworkTestConfig {
+public class JasmineFrameworkTestConfiguration {
 
     @Bean
     public SpringRuntimeProvider runtimeProvider() {
