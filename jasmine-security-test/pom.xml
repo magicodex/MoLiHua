@@ -40,6 +40,14 @@
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- MyBatis-Plus持久层框架 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.magicodex</groupId>
             <artifactId>jasmine-test</artifactId>

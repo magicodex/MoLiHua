@@ -13,6 +13,11 @@ import java.util.Map;
  * @author mh.z
  */
 public class I18nEntityHelper {
+    private static I18nEntityFacade i18nEntityFacade;
+
+    public static void initUtil(I18nEntityFacade i18nEntityFacade) {
+        I18nEntityHelper.i18nEntityFacade = i18nEntityFacade;
+    }
 
     /**
      * 插入多语言
@@ -22,8 +27,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> T insertI18n(T entity) {
-        // TODO
-        return null;
+        return i18nEntityFacade.insertI18n(entity);
     }
 
     /**
@@ -34,8 +38,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> T updateI18n(T entity) {
-        // TODO
-        return null;
+        return i18nEntityFacade.updateI18n(entity);
     }
 
     /**
@@ -46,8 +49,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> T populateI18n(T entity) {
-        // TODO
-        return null;
+        return i18nEntityFacade.populateI18n(entity);
     }
 
     /**
@@ -58,8 +60,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> List<T> populateI18n(Collection<T> entities) {
-        // TODO
-        return null;
+        return i18nEntityFacade.populateI18n(entities);
     }
 
     /**
@@ -70,8 +71,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> IPage<T> populateI18n(IPage<T> page) {
-        // TODO
-        return null;
+        return i18nEntityFacade.populateI18n(page);
     }
 
     /**
@@ -81,8 +81,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static int deleteI18nById(Serializable id) {
-        // TODO
-        return 0;
+        return i18nEntityFacade.deleteI18nById(id);
     }
 
     /**
@@ -92,8 +91,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static int deleteI18nByEntity(BaseEntity entity) {
-        // TODO
-        return 0;
+        return i18nEntityFacade.deleteI18nByEntity(entity);
     }
 
     /**
@@ -103,8 +101,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static int deleteI18nByIds(Collection<? extends Serializable> ids) {
-        // TODO
-        return 0;
+        return i18nEntityFacade.deleteI18nByIds(ids);
     }
 
     /**
@@ -114,8 +111,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static int deleteI18nByEntities(Collection<? extends BaseEntity> entities) {
-        // TODO
-        return 0;
+        return i18nEntityFacade.deleteI18nByEntities(entities);
     }
 
     /**
@@ -125,8 +121,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static int deleteI18nByWrapper(Wrapper queryWrapper) {
-        // TODO
-        return 0;
+        return i18nEntityFacade.deleteI18nByWrapper(queryWrapper);
     }
 
     /**
@@ -136,8 +131,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static int deleteI18nByMap(Map<String, Object> queryMap) {
-        // TODO
-        return 0;
+        return i18nEntityFacade.deleteI18nByMap(queryMap);
     }
 
 }
