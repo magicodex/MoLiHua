@@ -1,11 +1,9 @@
 package jasmine.framework.persistence.annotation;
 
-import jasmine.framework.persistence.annotation.ReadOnly;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 
 /**
@@ -19,7 +17,7 @@ import org.springframework.core.Ordered;
 public class ReadOnlyAspectHandler implements Ordered {
     private DataSourceDecideFacade dataSourceDecideFacade;
 
-    public ReadOnlyAspectHandler(@Autowired(required = false) DataSourceDecideFacade dataSourceDecideFacade) {
+    public ReadOnlyAspectHandler(DataSourceDecideFacade dataSourceDecideFacade) {
         this.dataSourceDecideFacade = dataSourceDecideFacade;
     }
 

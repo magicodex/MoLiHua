@@ -8,9 +8,9 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import jasmine.core.context.SubjectProvider;
 import jasmine.core.util.QCheckUtil;
-import jasmine.framework.persistence.mybatisplus.parameter.ContextParameter;
-import jasmine.framework.persistence.mybatisplus.parameter.ContextParameterInnerInterceptor;
-import jasmine.framework.persistence.mybatisplus.parameter.DefaultContextParameter;
+import jasmine.framework.persistence.mybatisplus.context.ContextParameter;
+import jasmine.framework.persistence.mybatisplus.context.ContextParameterInnerInterceptor;
+import jasmine.framework.persistence.mybatisplus.context.DefaultContextParameter;
 
 /**
  * @author mh.z

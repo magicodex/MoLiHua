@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus.parameter;
+package jasmine.framework.persistence.mybatisplus.context;
 
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import org.apache.ibatis.executor.statement.StatementHandler;

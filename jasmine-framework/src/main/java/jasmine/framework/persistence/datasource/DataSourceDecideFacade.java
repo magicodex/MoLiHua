@@ -8,7 +8,7 @@ import jasmine.framework.common.function.FunctionWithResult;
 public interface DataSourceDecideFacade {
 
     /**
-     * 只读数据源
+     * 切换到只读数据源
      *
      * @param action
      * @param <T>

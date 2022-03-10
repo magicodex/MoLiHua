@@ -4,6 +4,7 @@ package jasmine.framework.persistence.datasource.context;
  * @author mh.z
  */
 public class DefaultDataSourceContext implements DataSourceContext {
+    /** 数据源key */
     private String dataSourceKey;
 
     public DefaultDataSourceContext() {
