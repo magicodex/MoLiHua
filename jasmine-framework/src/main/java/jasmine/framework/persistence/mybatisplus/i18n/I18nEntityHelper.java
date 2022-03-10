@@ -22,10 +22,9 @@ public class I18nEntityHelper {
      * 插入多语言
      *
      * @param entity
-     * @param <T>
      * @return
      */
-    public static <T> T insertI18n(T entity) {
+    public static int insertI18n(Object entity) {
         return i18nFacade.insertI18n(entity);
     }
 
@@ -36,8 +35,8 @@ public class I18nEntityHelper {
      * @param <T>
      * @return
      */
-    public static <T> T updateI18n(T entity) {
-        return i18nFacade.updateI18n(entity);
+    public static <T> T updateI18nThenFillEntity(T entity) {
+        return i18nFacade.updateI18nThenFillEntity(entity);
     }
 
     /**

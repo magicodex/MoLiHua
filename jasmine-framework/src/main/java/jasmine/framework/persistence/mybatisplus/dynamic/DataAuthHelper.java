@@ -25,4 +25,17 @@ public class DataAuthHelper {
         return provider.generateSql(tableName, aliasName);
     }
 
+    /**
+     * 生成SQL
+     *
+     * @param entityType
+     * @param aliasName
+     * @return
+     */
+    public static String generateSql(Class<?> entityType, String aliasName) {
+        QCheckUtil.notNullProp(provider, "provider null");
+
+        return provider.generateSql(entityType, aliasName);
+    }
+
 }

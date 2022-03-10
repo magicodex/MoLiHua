@@ -13,10 +13,9 @@ public interface I18nEntityFacade {
      * 插入多语言
      *
      * @param entity
-     * @param <T>
      * @return
      */
-    <T> T insertI18n(T entity);
+    int insertI18n(Object entity);
 
     /**
      * 修改多语言
@@ -25,7 +24,7 @@ public interface I18nEntityFacade {
      * @param <T>
      * @return
      */
-    <T> T updateI18n(T entity);
+    <T> T updateI18nThenFillEntity(T entity);
 
     /**
      * 关联多语言

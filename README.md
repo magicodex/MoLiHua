@@ -77,7 +77,7 @@ spring.datasource.read.password=密码
 | Liquibase | 4.3.5 | 数据库版本管理工具 |
 | Redisson | 3.12.3 | Redis客户端 |
 | amqp-client | 5.12.0 | RabbitMQ客户端 |
-| xxl-job | 2.3.0 | 调度任务 |
+| xxl-job | 2.3.0 | 任务调度 |
 | JUnit | 4.13.2 | 单元测试 |
 | spring-test | 5.3.8 | 单元测试 |
 | mockito | 4.2.0 | 单元测试 |

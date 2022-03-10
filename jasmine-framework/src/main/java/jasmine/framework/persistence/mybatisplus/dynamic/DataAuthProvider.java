@@ -13,4 +13,13 @@ public interface DataAuthProvider {
      * @return
      */
     String generateSql(String tableName, String aliasName);
+
+    /**
+     * 生成SQL
+     *
+     * @param entityType
+     * @param aliasName
+     * @return
+     */
+    String generateSql(Class<?> entityType, String aliasName);
 }
