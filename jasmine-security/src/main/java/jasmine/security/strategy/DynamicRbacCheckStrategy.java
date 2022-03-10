@@ -11,10 +11,10 @@ import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.constant.SecurityCaches;
 import jasmine.security.constant.SecurityConstants;
-import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
-import jasmine.security.rbac.model.SecResource;
 import jasmine.security.rbac.dao.SecFunctionDao;
 import jasmine.security.rbac.dao.SecResourceDao;
+import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
+import jasmine.security.rbac.model.SecResource;
 import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,6 +60,11 @@ public class DynamicRbacCheckStrategy implements AccessDecisionStrategy, InitSup
         // 获取请求对应的资源
         SecResource resource = getMatchedResource(request);
         if (resource == null) {
+            return false;
+        }
+
+        // 不允许访问被冻结的资源
+        if (Boolean.TRUE.equals(resource.getFrozenFlag())) {
             return false;
         }
 
