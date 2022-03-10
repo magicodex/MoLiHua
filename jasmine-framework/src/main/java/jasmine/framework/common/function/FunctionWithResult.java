@@ -1,6 +1,10 @@
 package jasmine.framework.common.function;
 
 /**
+ * <p>
+ * 返回结果。
+ * </p>
+ *
  * @author mh.z
  */
 public interface FunctionWithResult<T> {

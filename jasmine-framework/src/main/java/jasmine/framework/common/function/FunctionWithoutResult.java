@@ -1,6 +1,10 @@
 package jasmine.framework.common.function;
 
 /**
+ * <p>
+ * 没有返回结果。
+ * </p>
+ *
  * @author mh.z
  */
 public interface FunctionWithoutResult {

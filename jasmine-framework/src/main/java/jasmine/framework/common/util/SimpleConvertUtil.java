@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QStringUtil;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +23,19 @@ public class SimpleConvertUtil {
      * @param source
      * @return
      */
-    public static byte[] serialize(Object source) {
+    @Nonnull
+    public static byte[] serialize(@Nullable Object source) {
         if (source == null) {
             return new byte[0];
         }
 
-        ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
+        if (source instanceof String) {
+            // 转换字符串成字节数组
+            return QStringUtil.utf8Bytes((String) source);
+        }
 
+        ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
+        // 转换成 JSON 字符串
         try {
             return objectMapper.writeValueAsBytes(source);
         } catch (IOException e) {
@@ -36,14 +44,15 @@ public class SimpleConvertUtil {
     }
 
     /**
-     * 翻序列化
+     * 反序列化
      *
      * @param source
      * @param type
      * @param <T>
      * @return
      */
-    public static <T> T deserialize(byte[] source, Class<T> type) {
+    @Nullable
+    public static <T> T deserialize(@Nullable byte[] source, Class<T> type) {
         Object object = null;
 
         if (type == String.class) {
@@ -51,14 +60,15 @@ public class SimpleConvertUtil {
                 return null;
             }
 
-            object = QStringUtil.utf8Str(type);
+            // 转换成字符串
+            object = QStringUtil.utf8Str(source);
         } else {
             if (source == null || source.length == 0) {
                 return null;
             }
 
             ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
-
+            // 转换成对象
             try {
                 object = objectMapper.readValue(source, type);
             } catch (IOException e) {
@@ -70,14 +80,15 @@ public class SimpleConvertUtil {
     }
 
     /**
-     * 翻序列化成列表
+     * 反序列化成列表
      *
      * @param source
      * @param type
      * @param <T>
      * @return
      */
-    public static <T> List<T> deserializeToList(byte[] source, Class<T> type) {
+    @Nullable
+    public static <T> List<T> deserializeToList(@Nullable byte[] source, Class<T> type) {
         if (source == null || source.length == 0) {
             return null;
         }

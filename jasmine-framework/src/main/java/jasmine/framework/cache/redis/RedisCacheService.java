@@ -5,7 +5,6 @@ import jasmine.core.util.QStringUtil;
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.common.util.SimpleConvertUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
@@ -34,7 +33,7 @@ public class RedisCacheService implements CacheService {
     private static final long DEFAULT_TIMEOUT = 3600;
 
     public RedisCacheService(RedisTemplate redisTemplate,
-                             @Autowired(required = false) CacheSyncStrategy syncStrategy) {
+                             CacheSyncStrategy syncStrategy) {
         this.redisTemplate = redisTemplate;
         this.valueOperations = redisTemplate.opsForValue();
         this.syncStrategy = syncStrategy;

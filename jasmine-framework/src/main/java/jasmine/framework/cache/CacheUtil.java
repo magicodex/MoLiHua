@@ -2,6 +2,8 @@ package jasmine.framework.cache;
 
 import jasmine.core.util.QCheckUtil;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -35,7 +37,8 @@ public class CacheUtil {
      * @param type
      * @return
      */
-    public static <T> T get(String category, Object key, Class<T> type) {
+    public static <T> T get(@Nonnull String category, @Nonnull Object key,
+                            @Nonnull Class<T> type) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.get(category, key, type);
@@ -50,7 +53,8 @@ public class CacheUtil {
      * @param supplier
      * @return
      */
-    public static <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
+    public static <T> T get(@Nonnull String category, @Nonnull Object key,
+                            @Nonnull Class<T> type, @Nullable Supplier<T> supplier) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.get(category, key, type, supplier);
@@ -65,7 +69,8 @@ public class CacheUtil {
      * @param type
      * @return
      */
-    public static <T> T get(String category, Object key, Supplier<T> supplier, Class<T> type) {
+    public static <T> T get(@Nonnull String category, @Nonnull Object key,
+                            @Nullable Supplier<T> supplier, @Nonnull Class<T> type) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.get(category, key, type, supplier);
@@ -79,7 +84,8 @@ public class CacheUtil {
      * @param type
      * @return
      */
-    public static <T> List<T> getList(String category, Object key, Class<T> type) {
+    public static <T> List<T> getList(@Nonnull String category, @Nonnull Object key,
+                                      @Nonnull Class<T> type) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.getList(category, key, type);
@@ -94,7 +100,8 @@ public class CacheUtil {
      * @param supplier
      * @return
      */
-    public static <T> List<T> getList(String category, Object key, Class<T> type, Supplier<List<T>> supplier) {
+    public static <T> List<T> getList(@Nonnull String category, @Nonnull Object key,
+                                      @Nonnull Class<T> type, @Nullable Supplier<List<T>> supplier) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.getList(category, key, type, supplier);
@@ -109,7 +116,8 @@ public class CacheUtil {
      * @param type
      * @return
      */
-    public static <T> List<T> getList(String category, Object key, Supplier<List<T>> supplier, Class<T> type) {
+    public static <T> List<T> getList(@Nonnull String category, @Nonnull Object key,
+                                      @Nullable Supplier<List<T>> supplier, @Nonnull Class<T> type) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.getList(category, key, type, supplier);
@@ -122,7 +130,8 @@ public class CacheUtil {
      * @param key
      * @param value
      */
-    public static void set(String category, Object key, Object value) {
+    public static void set(@Nonnull String category, @Nonnull Object key,
+                           @Nullable Object value) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         cacheService.set(category, key, value);
@@ -134,7 +143,7 @@ public class CacheUtil {
      * @param category
      * @param key
      */
-    public static void remove(String category, Object key) {
+    public static void remove(@Nonnull String category, @Nonnull Object key) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         cacheService.remove(category, key);
@@ -147,7 +156,8 @@ public class CacheUtil {
      * @param key
      * @param supplier
      */
-    public static void sync(String category, Object key, Supplier<Object> supplier) {
+    public static void sync(@Nonnull String category, @Nonnull Object key,
+                            @Nullable Supplier<Object> supplier) {
         QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         cacheService.sync(category, key, supplier);
