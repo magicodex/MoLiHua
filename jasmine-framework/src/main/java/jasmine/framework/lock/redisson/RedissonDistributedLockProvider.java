@@ -34,6 +34,8 @@ public class RedissonDistributedLockProvider implements DistributedLockProvider 
         List<String> redisKeyList = null;
 
         if (key instanceof Iterable) {
+            // 多个锁的情况
+            //
             Iterable iterable = (Iterable) key;
             redisKeyList = QNewUtil.list();
             final Collection<String> finalRedisKeys = redisKeyList;
@@ -43,6 +45,8 @@ public class RedissonDistributedLockProvider implements DistributedLockProvider 
                 finalRedisKeys.add(redisKey);
             });
         } else {
+            // 单个锁的情况
+            //
             String redisKey = redisKeyPrefix + QStringUtil.toString(key);
             redisKeyList = Collections.singletonList(redisKey);
         }

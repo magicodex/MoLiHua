@@ -23,8 +23,9 @@ public class XxlJobHandlerDelegate extends IJobHandler {
     @Override
     public void execute() throws Exception {
         XxlJobCurrent current = new XxlJobCurrent();
-
         String tenantIdStr = (String) current.getParameter(TENANT_ID_PARAM_NAME);
+
+        // 初始安全上下文
         if (QStringUtil.isNotEmpty(tenantIdStr)) {
             Long tenantId = QObjectUtil.parseLong(tenantIdStr);
 

@@ -5,6 +5,7 @@ import jasmine.core.util.QNewUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.framework.job.JobCurrent;
 
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -23,41 +24,10 @@ public class XxlJobCurrent implements JobCurrent {
     public Object getParameter(String name) {
         if (parameters == null) {
             String jobParam = XxlJobHelper.getJobParam();
-            initParameters(jobParam);
+            parameters = parseParameters(jobParam);
         }
 
         return parameters.get(name);
-    }
-
-    /**
-     * 初始参数
-     *
-     * @param jobParam
-     */
-    protected void initParameters(String jobParam) {
-        parameters = QNewUtil.map();
-
-        if (QStringUtil.isEmpty(jobParam)) {
-            return;
-        }
-
-        // 获取各个参数
-        String[] params = jobParam.split(PARAM_AND_PARAM_SEPARATOR, -1);
-        if (params.length == 0) {
-            return;
-        }
-
-        // 获取参数名和值
-        for (int i = 0; i < params.length; i++) {
-            String param = params[i];
-            String[] pair = param.split(NAME_AND_VALUE_SEPARATOR, -1);
-
-            if (pair.length >= 2) {
-                parameters.put(pair[0], pair[1]);
-            } else {
-                parameters.put(String.valueOf(i), param);
-            }
-        }
     }
 
     @Override
@@ -93,6 +63,39 @@ public class XxlJobCurrent implements JobCurrent {
         trace(text, args);
 
         XxlJobHelper.log(error);
+    }
+
+    /**
+     * 解析参数
+     *
+     * @param jobParam
+     * @return
+     */
+    protected Map<String, Object> parseParameters(String jobParam) {
+        if (QStringUtil.isEmpty(jobParam)) {
+            return Collections.emptyMap();
+        }
+
+        // 获取各个参数
+        String[] params = jobParam.split(PARAM_AND_PARAM_SEPARATOR, -1);
+        if (params.length == 0) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, Object> parameterMap = QNewUtil.map();
+        // 获取参数名和值
+        for (int i = 0; i < params.length; i++) {
+            String param = params[i];
+            String[] pair = param.split(NAME_AND_VALUE_SEPARATOR, -1);
+
+            if (pair.length >= 2) {
+                parameterMap.put(pair[0], pair[1]);
+            } else {
+                parameterMap.put(String.valueOf(i), param);
+            }
+        }
+
+        return parameterMap;
     }
 
 }

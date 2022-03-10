@@ -37,7 +37,7 @@ public void updateUser(User user) {
 
 ```
 @Component
-public class UserSyncJobHandler extends AbstractXxlJobExecutor {
+public class UserSyncJobExecutor implements JobExecutor {
 
     @Override
     public void execute(JobCurrent job) {
@@ -45,7 +45,7 @@ public class UserSyncJobHandler extends AbstractXxlJobExecutor {
     }
 
     @Override
-    protected String getJobName() {
+    protected String getName() {
         // 调度任务名称
         return "userSyncJobHandler";
     }

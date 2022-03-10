@@ -1,5 +1,7 @@
 package jasmine.framework.lock.distributed;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author mh.z
  */
@@ -12,5 +14,5 @@ public interface DistributedLockProvider {
      * @param key
      * @return
      */
-    DistributedDeclaredLock declareLock(String category, Object key);
+    DistributedDeclaredLock declareLock(@Nonnull String category, @Nonnull Object key);
 }

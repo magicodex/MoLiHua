@@ -1,6 +1,10 @@
 package jasmine.framework.job;
 
 /**
+ * <p>
+ * 当前任务。
+ * </p>
+ *
  * @author mh.z
  */
 public interface JobCurrent {

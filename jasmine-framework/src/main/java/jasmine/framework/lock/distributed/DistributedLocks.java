@@ -2,6 +2,8 @@ package jasmine.framework.lock.distributed;
 
 import jasmine.core.util.QCheckUtil;
 
+import javax.annotation.Nonnull;
+
 /**
  * <p>
  * 分布式锁。
@@ -23,7 +25,7 @@ public class DistributedLocks {
      * @param key
      * @return
      */
-    public static DistributedDeclaredLock declare(String category, Object key) {
+    public static DistributedDeclaredLock declare(@Nonnull String category, @Nonnull Object key) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(key, "key null");
         QCheckUtil.notNullProp(provider, "provider null");
@@ -43,7 +45,8 @@ public class DistributedLocks {
      * @param <T>
      * @return
      */
-    public static <T> T lock(String category, Object key, DistributedLockCallback callback) {
+    public static <T> T lock(@Nonnull String category, @Nonnull Object key,
+                             @Nonnull DistributedLockCallback callback) {
         DistributedDeclaredLock lock = declare(category, key);
 
         return lock.lock(callback);
@@ -59,7 +62,8 @@ public class DistributedLocks {
      * @param <T>
      * @return
      */
-    public static <T> T lock(String category, Object key, long waitTime, DistributedLockCallback callback) {
+    public static <T> T lock(@Nonnull String category, @Nonnull Object key,
+                             long waitTime, @Nonnull DistributedLockCallback callback) {
         DistributedDeclaredLock lock = declare(category, key);
 
         return lock.lock(waitTime, callback);

@@ -1,5 +1,7 @@
 package jasmine.framework.lock.distributed;
 
+import javax.annotation.Nonnull;
+
 /**
  * <p>
  * 声明的分布式锁。
@@ -14,7 +16,7 @@ public interface DistributedDeclaredLock {
      *
      * @param callback
      */
-    <T> T lock(DistributedLockCallback callback);
+    <T> T lock(@Nonnull DistributedLockCallback callback);
 
     /**
      * 先加锁后执行
@@ -22,5 +24,5 @@ public interface DistributedDeclaredLock {
      * @param waitTime
      * @param callback
      */
-    <T> T lock(long waitTime, DistributedLockCallback callback);
+    <T> T lock(long waitTime, @Nonnull DistributedLockCallback callback);
 }

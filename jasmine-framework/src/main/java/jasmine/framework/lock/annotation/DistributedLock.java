@@ -29,7 +29,7 @@ public @interface DistributedLock {
     String key();
 
     /**
-     * 等待时间
+     * 等待时间（单位毫秒）
      *
      * @return
      */
