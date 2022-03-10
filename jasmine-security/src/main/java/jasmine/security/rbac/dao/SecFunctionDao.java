@@ -1,4 +1,4 @@
-package jasmine.security.rbac.service;
+package jasmine.security.rbac.dao;
 
 import jasmine.core.util.QCollectionUtil;
 import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
@@ -11,10 +11,10 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecFunctionService {
+public class SecFunctionDao {
     private SecFunctionMapper baseMapper;
 
-    public SecFunctionService(SecFunctionMapper baseMapper) {
+    public SecFunctionDao(SecFunctionMapper baseMapper) {
         this.baseMapper = baseMapper;
     }
 

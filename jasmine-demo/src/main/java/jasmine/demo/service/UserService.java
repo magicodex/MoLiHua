@@ -9,7 +9,7 @@ import jasmine.demo.entity.User;
 import jasmine.demo.mapper.UserMapper;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.model.SecRole;
-import jasmine.security.rbac.service.SecRoleService;
+import jasmine.security.rbac.dao.SecRoleDao;
 import jasmine.security.subject.UserSubject;
 import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,14 +31,14 @@ import java.util.List;
 @Component
 public class UserService implements UserSubjectDetailsService, ClientDetailsService, InitSupport {
     private UserMapper userMapper;
-    private SecRoleService roleService;
+    private SecRoleDao roleDao;
     private PasswordEncoder passwordEncoder;
 
     @Override
     public void init(RuntimeProvider provider) {
         this.userMapper = provider.getByType(UserMapper.class);
         this.passwordEncoder = provider.getByType(PasswordEncoder.class);
-        this.roleService = provider.getByType(SecRoleService.class);
+        this.roleDao = provider.getByType(SecRoleDao.class);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
      */
     protected List<GrantedAuthority> getGrantedAuthorities(Long userId) {
         // 获取角色
-        List<SecRole> roleList = roleService.listRolesByUserId(userId);
+        List<SecRole> roleList = roleDao.listRolesByUserId(userId);
 
         List<GrantedAuthority> authorityList = QCollectionUtil.mapToList(roleList, (role) -> {
             return new RoleAuthority(role.getId(), role.getRoleCode());

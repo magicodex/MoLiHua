@@ -13,8 +13,8 @@ import jasmine.security.constant.SecurityCaches;
 import jasmine.security.constant.SecurityConstants;
 import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
 import jasmine.security.rbac.model.SecResource;
-import jasmine.security.rbac.service.SecFunctionService;
-import jasmine.security.rbac.service.SecResourceService;
+import jasmine.security.rbac.dao.SecFunctionDao;
+import jasmine.security.rbac.dao.SecResourceDao;
 import jasmine.security.subject.UserSubject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,14 +32,14 @@ import java.util.List;
  */
 public class DynamicRbacCheckStrategy implements AccessDecisionStrategy, InitSupport {
     private static final Logger logger = LoggerFactory.getLogger(DynamicRbacCheckStrategy.class);
-    private SecFunctionService functionService;
-    private SecResourceService resourceService;
+    private SecFunctionDao functionDao;
+    private SecResourceDao resourceDao;
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    public DynamicRbacCheckStrategy(SecFunctionService functionService,
-                                    SecResourceService resourceService) {
-        this.functionService = functionService;
-        this.resourceService = resourceService;
+    public DynamicRbacCheckStrategy(SecFunctionDao functionDao,
+                                    SecResourceDao resourceDao) {
+        this.functionDao = functionDao;
+        this.resourceDao = resourceDao;
     }
 
     @Override
@@ -164,7 +164,7 @@ public class DynamicRbacCheckStrategy implements AccessDecisionStrategy, InitSup
 
         SecResource resource = CacheUtil.get(SecurityCaches.RESOURCE_WITH_REQUEST, cacheKey, () -> {
             // 获取指定路径的资源
-            List<SecResource> resourceList = resourceService.listResourcesByPath(urlPattern);
+            List<SecResource> resourceList = resourceDao.listResourcesByPath(urlPattern);
             if (QCollectionUtil.isEmpty(resourceList)) {
                 return null;
             }
@@ -211,7 +211,7 @@ public class DynamicRbacCheckStrategy implements AccessDecisionStrategy, InitSup
             });
 
             // 获取角色被授予的所有功能
-            return functionService.listFunctionBaseInfoDTOsByRoleIds(roleIdList);
+            return functionDao.listFunctionBaseInfoDTOsByRoleIds(roleIdList);
         }, SecFunctionBaseInfoDTO.class);
 
         return functionList;
@@ -229,7 +229,7 @@ public class DynamicRbacCheckStrategy implements AccessDecisionStrategy, InitSup
 
         List<SecFunctionBaseInfoDTO> functionList = CacheUtil.getList(category, resourceId, () -> {
             // 获取该资源被授予给的所有功能
-            return resourceService.listFunctionBaseInfoDTOsById(resourceId);
+            return resourceDao.listFunctionBaseInfoDTOsById(resourceId);
         }, SecFunctionBaseInfoDTO.class);
 
         return functionList;

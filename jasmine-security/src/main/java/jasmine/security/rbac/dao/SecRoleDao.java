@@ -1,4 +1,4 @@
-package jasmine.security.rbac.service;
+package jasmine.security.rbac.dao;
 
 import jasmine.security.rbac.mapper.SecRoleMapper;
 import jasmine.security.rbac.model.SecRole;
@@ -9,10 +9,10 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecRoleService {
+public class SecRoleDao {
     private SecRoleMapper baseMapper;
 
-    public SecRoleService(SecRoleMapper baseMapper) {
+    public SecRoleDao(SecRoleMapper baseMapper) {
         this.baseMapper = baseMapper;
     }
 

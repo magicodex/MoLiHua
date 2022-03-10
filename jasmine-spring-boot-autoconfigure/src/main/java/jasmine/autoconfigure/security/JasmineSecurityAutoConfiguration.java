@@ -4,8 +4,8 @@ import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.config.JasmineSecurityConfig;
-import jasmine.security.rbac.service.SecFunctionService;
-import jasmine.security.rbac.service.SecResourceService;
+import jasmine.security.rbac.dao.SecFunctionDao;
+import jasmine.security.rbac.dao.SecResourceDao;
 import jasmine.security.strategy.DynamicRbacCheckStrategy;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.support.SecurityContextHandler;
@@ -41,9 +41,9 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public DynamicRbacCheckStrategy rbacCheckService(SecFunctionService functionService,
-                                                     SecResourceService resourceService) {
-        return new DynamicRbacCheckStrategy(functionService, resourceService);
+    public DynamicRbacCheckStrategy rbacCheckService(SecFunctionDao functionDao,
+                                                     SecResourceDao resourceDao) {
+        return new DynamicRbacCheckStrategy(functionDao, resourceDao);
     }
 
     @Bean

@@ -10,7 +10,7 @@ jasmine.autoconfigure.framework.middleware.XxlJobAutoConfiguration,\
 jasmine.autoconfigure.framework.database.DataSourceAutoConfiguration,\
 jasmine.autoconfigure.framework.database.MybatisPlusAutoConfiguration,\
 jasmine.autoconfigure.security.JasmineSecurityAutoConfiguration,\
-jasmine.autoconfigure.security.rbac.RbacServiceAutoConfiguration,\
+jasmine.autoconfigure.security.rbac.RbacDaoAutoConfiguration,\
 jasmine.autoconfigure.security.SpringSecurityAutoConfiguration,\
 jasmine.autoconfigure.security.oauth2.OAuth2AuthorizationAutoConfiguration,\
 jasmine.autoconfigure.security.oauth2.OAuth2ResourceAutoConfiguration

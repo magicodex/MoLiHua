@@ -1,4 +1,4 @@
-package jasmine.security.rbac.service;
+package jasmine.security.rbac.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -12,10 +12,10 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecResourceService {
+public class SecResourceDao {
     private SecResourceMapper baseMapper;
 
-    public SecResourceService(SecResourceMapper baseMapper) {
+    public SecResourceDao(SecResourceMapper baseMapper) {
         this.baseMapper = baseMapper;
     }
 
