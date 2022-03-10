@@ -25,11 +25,4 @@ public interface SendInvocationInfo {
      * @return
      */
     Object getMessage();
-
-    /**
-     * 返回错误
-     *
-     * @return
-     */
-    Throwable getError();
 }

@@ -10,8 +10,6 @@ import jasmine.framework.remote.mq.MessageReceiver;
 import jasmine.framework.remote.mq.impl.interceptor.DefaultReceiveInvocationInfo;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 
@@ -19,9 +17,10 @@ import org.springframework.amqp.core.MessageProperties;
  * @author mh.z
  */
 public class DefaultReceiveMessageService extends AbstractReceiveMessageService<Message> {
-    private static final Logger logger = LoggerFactory.getLogger(DefaultReceiveMessageService.class);
     private RuntimeProvider runtimeProvider;
 
+    private static final String HEADER_SUBJECT = "subject";
+    private static final String PARAM_USER_ID = "userId";
     /** 消息接收者 bean 的名称后缀 */
     private static final String RECEIVER_BEAN_SUFFIX = "MessageReceiver";
 
@@ -34,37 +33,23 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
                                               String category, Message message) {
         QCheckUtil.notNull(category, "category null");
         QCheckUtil.notNull(message, "message null");
-        DefaultReceiveInvocationInfo invocationInfo = null;
-        Exception error = null;
 
-        // TODO 此处捕获到异常只是输出日志，实际业务场景中需要做对应的错误处理
-        try {
-            // 初始安全上下文
-            initContext(message);
-            // 获取消息接收者
-            MessageReceiver receiver = getReceiver(category, true);
-            // 获取消息内容
-            Class<?> targetType = receiver.getType();
-            Object content = getContent(message, targetType);
+        // 初始安全上下文
+        initContext(message);
+        // 获取消息接收者
+        MessageReceiver receiver = getReceiver(category, true);
+        // 获取消息内容
+        Class<?> targetType = receiver.getType();
+        Object content = getContent(message, targetType);
+        MessageProperties messageProperties = message.getMessageProperties();
+        String messageId = messageProperties.getMessageId();
 
-            MessageProperties messageProperties = message.getMessageProperties();
-            String messageId = messageProperties.getMessageId();
-            invocationInfo = new DefaultReceiveInvocationInfo(messageId, content, message);
-            // 反序列化消息后调用
-            interceptor.afterDeserialize(invocationInfo);
+        ReceiveInvocationInfo invocationInfo = new DefaultReceiveInvocationInfo(messageId, content, message);
+        // 反序列化消息后调用
+        interceptor.afterDeserialize(invocationInfo);
+        // 接收消息
+        receiver.receive(content);
 
-            // 接收消息
-            receiver.receive(content);
-        } catch (Exception e) {
-            error = e;
-            logger.error("receive failed", e);
-        }
-
-        if (invocationInfo == null) {
-            invocationInfo = new DefaultReceiveInvocationInfo(null, null, message);
-        }
-
-        invocationInfo.setError(error);
         return invocationInfo;
     }
 
@@ -76,11 +61,11 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
     protected void initContext(Message message) {
         QCheckUtil.notNull(message, "message null");
         MessageProperties messageProperties = message.getMessageProperties();
-        String subject = messageProperties.getHeader("subject");
+        String subject = messageProperties.getHeader(HEADER_SUBJECT);
 
         // 初始安全上下文
         if (QStringUtil.isNotEmpty(subject)) {
-            if (subject.startsWith("userId:")) {
+            if (subject.startsWith(PARAM_USER_ID + ":")) {
                 String userIdStr = subject.substring(7);
                 Long userId = QObjectUtil.parseLong(userIdStr);
 
@@ -125,7 +110,8 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
         MessageReceiver receiver = runtimeProvider.getByName(receiverName, false);
 
         if (receiver == null && required) {
-            throw new RuntimeException("not found the MessageReceiver(category=" + category + ")");
+            throw new RuntimeException(String.format("not found the %s(category=%s)",
+                    MessageReceiver.class.getSimpleName(), category));
         }
 
         return receiver;

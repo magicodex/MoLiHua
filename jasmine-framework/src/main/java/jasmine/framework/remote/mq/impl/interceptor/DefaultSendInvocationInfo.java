@@ -6,10 +6,12 @@ import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
  * @author mh.z
  */
 public class DefaultSendInvocationInfo implements SendInvocationInfo {
+    /** 消息key */
     private String key;
+    /** 消息内容 */
     private Object content;
+    /** 消息对象 */
     private Object message;
-    private Throwable error;
 
     public DefaultSendInvocationInfo(String key, Object content, Object message) {
         this.key = key;
@@ -30,15 +32,6 @@ public class DefaultSendInvocationInfo implements SendInvocationInfo {
     @Override
     public Object getMessage() {
         return message;
-    }
-
-    @Override
-    public Throwable getError() {
-        return error;
-    }
-
-    public void setError(Throwable error) {
-        this.error = error;
     }
 
 }
