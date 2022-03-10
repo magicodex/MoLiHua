@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 /**
  * @author mh.z
  */
-public class LambdaQueryWrapperEx<T> extends AbstractLambdaQueryWrapperEx<T> {
+public class LambdaQueryWrapperEx<T> extends AbstractLambdaQueryWrapperEx<T, LambdaQueryWrapperEx<T>> {
 
     public static <T> LambdaQueryWrapper<T> wrapper() {
         return new LambdaQueryWrapperEx<>();

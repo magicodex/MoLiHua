@@ -1,22 +1,21 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.core.util.QCollectionUtil;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author mh.z
  */
 public class I18nEntityHelper {
-    private static I18nEntityFacade i18nEntityFacade;
+    private static I18nEntityFacade i18nFacade;
 
     public static void initUtil(I18nEntityFacade i18nEntityFacade) {
-        I18nEntityHelper.i18nEntityFacade = i18nEntityFacade;
+        I18nEntityHelper.i18nFacade = i18nEntityFacade;
     }
 
     /**
@@ -27,7 +26,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> T insertI18n(T entity) {
-        return i18nEntityFacade.insertI18n(entity);
+        return i18nFacade.insertI18n(entity);
     }
 
     /**
@@ -38,7 +37,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> T updateI18n(T entity) {
-        return i18nEntityFacade.updateI18n(entity);
+        return i18nFacade.updateI18n(entity);
     }
 
     /**
@@ -49,7 +48,9 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> T populateI18n(T entity) {
-        return i18nEntityFacade.populateI18n(entity);
+        List<T> entityList = i18nFacade.populateI18n(Collections.singletonList(entity));
+
+        return QCollectionUtil.getFirst(entityList);
     }
 
     /**
@@ -60,7 +61,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> List<T> populateI18n(Collection<T> entities) {
-        return i18nEntityFacade.populateI18n(entities);
+        return i18nFacade.populateI18n(entities);
     }
 
     /**
@@ -71,7 +72,14 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> IPage<T> populateI18n(IPage<T> page) {
-        return i18nEntityFacade.populateI18n(page);
+        List<T> recordList = page.getRecords();
+
+        if (QCollectionUtil.isNotEmpty(recordList)) {
+            recordList = populateI18n(recordList);
+            page.setRecords(recordList);
+        }
+
+        return page;
     }
 
     /**
@@ -80,18 +88,8 @@ public class I18nEntityHelper {
      * @param id
      * @return
      */
-    public static int deleteI18nById(Serializable id) {
-        return i18nEntityFacade.deleteI18nById(id);
-    }
-
-    /**
-     * 删除多语言
-     *
-     * @param entity
-     * @return
-     */
-    public static int deleteI18nByEntity(BaseEntity entity) {
-        return i18nEntityFacade.deleteI18nByEntity(entity);
+    public static int deleteI18n(Serializable id) {
+        return i18nFacade.deleteI18n(Collections.singletonList(id));
     }
 
     /**
@@ -100,38 +98,8 @@ public class I18nEntityHelper {
      * @param ids
      * @return
      */
-    public static int deleteI18nByIds(Collection<? extends Serializable> ids) {
-        return i18nEntityFacade.deleteI18nByIds(ids);
-    }
-
-    /**
-     * 删除多语言
-     *
-     * @param entities
-     * @return
-     */
-    public static int deleteI18nByEntities(Collection<? extends BaseEntity> entities) {
-        return i18nEntityFacade.deleteI18nByEntities(entities);
-    }
-
-    /**
-     * 删除多语言
-     *
-     * @param queryWrapper
-     * @return
-     */
-    public static int deleteI18nByWrapper(Wrapper queryWrapper) {
-        return i18nEntityFacade.deleteI18nByWrapper(queryWrapper);
-    }
-
-    /**
-     * 删除多语言
-     *
-     * @param queryMap
-     * @return
-     */
-    public static int deleteI18nByMap(Map<String, Object> queryMap) {
-        return i18nEntityFacade.deleteI18nByMap(queryMap);
+    public static int deleteI18n(Collection<? extends Serializable> ids) {
+        return i18nFacade.deleteI18n(ids);
     }
 
 }
