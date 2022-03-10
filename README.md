@@ -26,6 +26,9 @@ jasmine.message-queue.consumer.enabled=true
 # 是否启用RBAC访问控制 (默认false)
 jasmine.security.rbac.enabled=true
 
+# 是否启用租户拦截器 (默认false)
+jasmine.tenant.enabled=true
+
 # 是否启用 XXL-job 任务调度（默认false）
 jasmine.xxl.job.enabled=true
 # XXL-job 配置

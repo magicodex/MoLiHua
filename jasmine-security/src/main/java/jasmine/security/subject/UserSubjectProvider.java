@@ -18,6 +18,8 @@ import java.util.Collections;
 public class UserSubjectProvider implements SubjectProvider {
     private UserSubjectDetailsService subjectDetailsService;
 
+    private static final Long DEFAULT_TENANT_ID = -1L;
+
     public UserSubjectProvider(UserSubjectDetailsService subjectDetailsService) {
         this.subjectDetailsService = subjectDetailsService;
     }
@@ -41,7 +43,7 @@ public class UserSubjectProvider implements SubjectProvider {
             return subject.getTenantId();
         }
 
-        return null;
+        return DEFAULT_TENANT_ID;
     }
 
     @Override

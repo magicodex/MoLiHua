@@ -8,6 +8,7 @@ import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,11 +17,15 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class MybatisPlusAutoConfiguration {
+    @Value("${jasmine.tenant.enabled:false}")
+    private Boolean tenantEnabled;
 
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor(SubjectProvider subjectProvider) {
         MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder();
         builder.setSubjectProvider(subjectProvider);
+        builder.setTenantEnabled(Boolean.TRUE.equals(tenantEnabled));
+        builder.setTenantLineHandler(tenantLineHandler());
 
         return builder.build();
     }

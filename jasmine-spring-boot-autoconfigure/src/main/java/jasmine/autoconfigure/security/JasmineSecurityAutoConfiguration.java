@@ -9,6 +9,7 @@ import jasmine.security.rbac.dao.SecResourceDao;
 import jasmine.security.strategy.DynamicRbacCheckStrategy;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.support.SecurityContextHandler;
+import jasmine.security.support.SecurityTenantConfigProcessor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -79,6 +80,11 @@ public class JasmineSecurityAutoConfiguration {
         ClientDetailsService service = configTemplate.clientDetailsService();
 
         return service;
+    }
+
+    @Bean
+    public SecurityTenantConfigProcessor securityTenantConfigProcessor() {
+        return new SecurityTenantConfigProcessor();
     }
 
 }

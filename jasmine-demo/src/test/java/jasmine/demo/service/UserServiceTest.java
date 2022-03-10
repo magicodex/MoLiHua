@@ -1,5 +1,6 @@
 package jasmine.demo.service;
 
+import jasmine.core.context.CurrentSubject;
 import jasmine.test.context.BeanTestContext;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,6 +19,7 @@ public class UserServiceTest extends BeanTestContext {
 
     @Test
     public void testLoadUserByUsername() {
+        CurrentSubject.setSubject(1L, null);
         UserDetails actual = userService.loadUserByUsername("test");
 
         Assert.assertNotNull(actual);

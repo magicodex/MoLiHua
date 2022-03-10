@@ -1,5 +1,6 @@
 package jasmine.mock.testconfigure;
 
+import jasmine.security.support.SecurityTenantConfigProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,6 +15,11 @@ public class JasmineSecurityTestConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityTenantConfigProcessor securityTenantConfigProcessor() {
+        return new SecurityTenantConfigProcessor();
     }
 
 }
