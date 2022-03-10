@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus.generator;
+package jasmine.framework.persistence.mybatisplus.dynamic;
 
 /**
  * @author mh.z
