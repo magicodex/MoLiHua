@@ -1,5 +1,8 @@
 package jasmine.framework.remote.mq.routing;
 
+/**
+ * @author mh.z
+ */
 public interface PublisherRouting {
 
     /**

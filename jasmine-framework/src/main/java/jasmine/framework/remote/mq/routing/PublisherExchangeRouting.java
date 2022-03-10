@@ -1,6 +1,5 @@
 package jasmine.framework.remote.mq.routing;
 
-import jasmine.framework.remote.mq.routing.PublisherRouting;
 import org.springframework.amqp.core.Exchange;
 
 /**

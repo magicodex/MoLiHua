@@ -2,7 +2,7 @@ package jasmine.framework.remote.mq.impl;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.remote.mq.SendMessageService;
-import jasmine.framework.remote.mq.interceptor.DefaultSendInterceptor;
+import jasmine.framework.remote.mq.impl.interceptor.DefaultSendInterceptor;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import jasmine.framework.remote.mq.interceptor.SendInterceptorDecorator;
 import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
@@ -75,7 +75,7 @@ public abstract class AbstractSendMessageService implements SendMessageService {
         if (Boolean.TRUE.equals(sendEnabled)) {
             // 发送消息
             tempInterceptor.onSend((newCategory, newKey, newContent) -> {
-                return doSend(tempInterceptor, category, newKey, content);
+                return doSend(tempInterceptor, newCategory, newKey, content);
             }, category, key, content);
         } else {
             logger.warn("send skipped(jasmine.message-queue.publisher.enabled=false)");

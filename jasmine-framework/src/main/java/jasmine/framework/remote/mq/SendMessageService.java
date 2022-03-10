@@ -2,6 +2,9 @@ package jasmine.framework.remote.mq;
 
 import jasmine.framework.remote.mq.interceptor.SendInterceptorDecorator;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 发送消息接口。
@@ -18,7 +21,7 @@ public interface SendMessageService {
      * @param key
      * @param content
      */
-    void send(String category, String key, Object content);
+    void send(@Nonnull String category, @Nullable String key, Object content);
 
     /**
      * 发送消息
@@ -28,5 +31,6 @@ public interface SendMessageService {
      * @param content
      * @param decorator
      */
-    void send(String category, String key, Object content, SendInterceptorDecorator decorator);
+    void send(@Nonnull String category, @Nullable String key, Object content,
+              @Nullable SendInterceptorDecorator decorator);
 }

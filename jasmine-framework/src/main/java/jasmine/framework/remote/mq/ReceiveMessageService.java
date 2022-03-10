@@ -2,6 +2,9 @@ package jasmine.framework.remote.mq;
 
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptorDecorator;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 接收消息接口。
@@ -17,13 +20,15 @@ public interface ReceiveMessageService {
      * @param category
      * @param message
      */
-    void receive(String category, Object message);
+    void receive(@Nonnull String category, Object message);
 
     /**
      * 接收消息
      *
      * @param category
      * @param message
+     * @param decorator
      */
-    void receive(String category, Object message, ReceiveInterceptorDecorator decorator);
+    void receive(@Nonnull String category, Object message,
+                 @Nullable ReceiveInterceptorDecorator decorator);
 }

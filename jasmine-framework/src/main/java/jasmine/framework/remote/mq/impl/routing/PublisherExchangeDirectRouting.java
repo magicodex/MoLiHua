@@ -6,6 +6,7 @@ import org.springframework.amqp.core.Exchange;
  * @author mh.z
  */
 public class PublisherExchangeDirectRouting extends AbstractPublisherExchangeRouting {
+    /** 路由key */
     private String routingKey;
 
     public PublisherExchangeDirectRouting(String category, Exchange exchange, String routingKey) {

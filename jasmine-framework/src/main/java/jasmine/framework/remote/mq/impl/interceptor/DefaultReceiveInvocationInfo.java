@@ -1,4 +1,6 @@
-package jasmine.framework.remote.mq.interceptor;
+package jasmine.framework.remote.mq.impl.interceptor;
+
+import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
 
 /**
  * @author mh.z

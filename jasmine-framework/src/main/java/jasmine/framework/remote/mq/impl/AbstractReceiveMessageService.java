@@ -3,7 +3,7 @@ package jasmine.framework.remote.mq.impl;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.context.ContextInitAndClearHelper;
 import jasmine.framework.remote.mq.ReceiveMessageService;
-import jasmine.framework.remote.mq.interceptor.DefaultReceiveInterceptor;
+import jasmine.framework.remote.mq.impl.interceptor.DefaultReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptorDecorator;
 import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;

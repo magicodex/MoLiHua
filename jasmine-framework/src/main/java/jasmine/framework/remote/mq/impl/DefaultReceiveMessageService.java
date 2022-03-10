@@ -7,7 +7,7 @@ import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.remote.mq.MessageReceiver;
-import jasmine.framework.remote.mq.interceptor.DefaultReceiveInvocationInfo;
+import jasmine.framework.remote.mq.impl.interceptor.DefaultReceiveInvocationInfo;
 import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
 import org.slf4j.Logger;
