@@ -17,7 +17,8 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-public class ContextHandlerFacadeBean implements ContextHandlerFacade, SmartInitializingSingleton, ApplicationContextAware {
+public class ContextHandlerFacadeBean implements ContextHandlerFacade,
+        SmartInitializingSingleton, ApplicationContextAware {
     private List<ContextHandler> handlers;
     private static ApplicationContext applicationContext;
 

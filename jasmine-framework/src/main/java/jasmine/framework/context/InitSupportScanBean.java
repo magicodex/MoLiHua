@@ -11,6 +11,11 @@ import org.springframework.context.ApplicationContextAware;
 import java.util.Map;
 
 /**
+ * <p>
+ * 支持 InitSupport 接口，在所有 bean 创建完后
+ * 调用实现 InitSupport 接口的类的 init 方法初始。
+ * </p>
+ *
  * @author mh.z
  */
 public class InitSupportScanBean implements SmartInitializingSingleton, ApplicationContextAware {

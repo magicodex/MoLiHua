@@ -1,6 +1,10 @@
 package jasmine.framework.context.handler;
 
 /**
+ * <p>
+ * 上下文快照。
+ * </p>
+ *
  * @author mh.z
  */
 public interface ContextSnapshot {

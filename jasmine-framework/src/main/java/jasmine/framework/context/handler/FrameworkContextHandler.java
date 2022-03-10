@@ -12,11 +12,13 @@ public class FrameworkContextHandler implements ContextHandler {
     @Override
     public ContextSnapshot copy() {
         DataSourceContext dataSourceContext = DataSourceContextHolder.getContext();
-        // 复制出新的对象
-        dataSourceContext = QMapperUtil.mapTo(dataSourceContext, DataSourceContext.class);
+
+        if (dataSourceContext != null) {
+            // 复制出新的对象
+            dataSourceContext = QMapperUtil.mapTo(dataSourceContext, DataSourceContext.class);
+        }
 
         ContextSnapshot snapshot = new FrameworkContextSnapshot(dataSourceContext);
-
         return snapshot;
     }
 

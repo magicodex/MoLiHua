@@ -9,7 +9,7 @@ import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.framework.context.ContextHandlerFacadeBean;
 import jasmine.framework.context.handler.FrameworkContextHandler;
-import jasmine.framework.context.handler.RequestContextHandler;
+import jasmine.framework.context.handler.web.RequestContextHandler;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.subject.UserSubjectProvider;
 import org.springframework.context.annotation.Bean;
