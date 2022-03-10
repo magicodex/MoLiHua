@@ -3,6 +3,8 @@ package jasmine.core.util;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 字符串工具类。
@@ -19,7 +21,7 @@ public class QStringUtil extends StrUtil {
      * @param other
      * @return
      */
-    public static String orElse(String string, String other) {
+    public static String orElse(@Nullable String string, String other) {
         return ObjectUtil.defaultIfNull(string, other);
     }
 
@@ -29,7 +31,7 @@ public class QStringUtil extends StrUtil {
      * @param string
      * @return
      */
-    public static String orEmpty(String string) {
+    public static String orEmpty(@Nullable String string) {
         return ObjectUtil.defaultIfNull(string, "");
     }
 

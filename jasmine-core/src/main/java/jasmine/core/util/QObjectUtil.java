@@ -2,6 +2,8 @@ package jasmine.core.util;
 
 import cn.hutool.core.util.ObjectUtil;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 对象工具类。
@@ -17,7 +19,7 @@ public class QObjectUtil extends ObjectUtil {
      * @param object
      * @return
      */
-    public static Long parseLong(Object object) {
+    public static Long parseLong(@Nullable Object object) {
         Long returnValue = null;
 
         if (object != null) {
@@ -41,7 +43,7 @@ public class QObjectUtil extends ObjectUtil {
      * @param object
      * @return
      */
-    public static Integer parseInteger(Object object) {
+    public static Integer parseInteger(@Nullable Object object) {
         Integer returnValue = null;
 
         if (object != null) {
@@ -65,7 +67,7 @@ public class QObjectUtil extends ObjectUtil {
      * @param object
      * @return
      */
-    public static Boolean parseBoolean(Object object) {
+    public static Boolean parseBoolean(@Nullable Object object) {
         Boolean returnValue = null;
 
         if (object != null) {

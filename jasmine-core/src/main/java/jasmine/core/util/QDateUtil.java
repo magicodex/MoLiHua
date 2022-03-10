@@ -1,5 +1,6 @@
 package jasmine.core.util;
 
+import javax.annotation.Nullable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -39,7 +40,7 @@ public class QDateUtil {
      * @param text
      * @return
      */
-    public static ZonedDateTime parseYearSecond(String text) {
+    public static ZonedDateTime parseYearSecond(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
         if (QStringUtil.isNotEmpty(text)) {
@@ -55,7 +56,7 @@ public class QDateUtil {
      * @param text
      * @return
      */
-    public static ZonedDateTime parseStartYearDay(String text) {
+    public static ZonedDateTime parseStartYearDay(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
         if (QStringUtil.isNotEmpty(text)) {
@@ -76,7 +77,7 @@ public class QDateUtil {
      * @param text
      * @return
      */
-    public static ZonedDateTime parseEndYearDay(String text) {
+    public static ZonedDateTime parseEndYearDay(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
         if (QStringUtil.isNotEmpty(text)) {
@@ -93,7 +94,7 @@ public class QDateUtil {
      * @param zonedDateTime
      * @return
      */
-    public static String formatYearSecond(ZonedDateTime zonedDateTime) {
+    public static String formatYearSecond(@Nullable ZonedDateTime zonedDateTime) {
         if (zonedDateTime == null) {
             return null;
         }

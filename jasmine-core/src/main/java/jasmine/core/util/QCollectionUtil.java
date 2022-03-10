@@ -3,6 +3,8 @@ package jasmine.core.util;
 import cn.hutool.core.collection.CollStreamUtil;
 import cn.hutool.core.collection.CollUtil;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -30,7 +32,8 @@ public class QCollectionUtil extends CollUtil {
      * @param <R>
      * @return
      */
-    public static <E, R> List<R> mapToList(Collection<E> collection, Function<E, R> function) {
+    public static <E, R> List<R> mapToList(@Nullable Collection<E> collection,
+                                           @Nonnull Function<E, R> function) {
         QCheckUtil.notNull(function, "function null");
 
         if (isEmpty(collection)) {
@@ -51,7 +54,8 @@ public class QCollectionUtil extends CollUtil {
      * @param <T>
      * @return
      */
-    public static <T> List<T> chooseToList(Collection<T> collection, Predicate<T> predicate) {
+    public static <T> List<T> chooseToList(@Nullable Collection<T> collection,
+                                           @Nonnull Predicate<T> predicate) {
         QCheckUtil.notNull(predicate, "predicate null");
 
         if (isEmpty(collection)) {
@@ -71,7 +75,7 @@ public class QCollectionUtil extends CollUtil {
      * @param <T>
      * @return
      */
-    public static <T> List<T> castToList(Collection<T> collection) {
+    public static <T> List<T> castToList(@Nullable Collection<T> collection) {
         if (isEmpty(collection)) {
             return Collections.emptyList();
         }
@@ -96,7 +100,8 @@ public class QCollectionUtil extends CollUtil {
      * @param <V>
      * @return
      */
-    public static <E, K, V> Map<K, E> toMap(Collection<E> collection, Function<E, K> keyMapper) {
+    public static <E, K, V> Map<K, E> toMap(@Nullable Collection<E> collection,
+                                            @Nonnull Function<E, K> keyMapper) {
         QCheckUtil.notNull(keyMapper, "keyMapper null");
 
         if (isEmpty(collection)) {
@@ -117,8 +122,9 @@ public class QCollectionUtil extends CollUtil {
      * @param <V>
      * @return
      */
-    public static <E, K, V> Map<K, V> toMap(Collection<E> collection, Function<E, K> keyMapper,
-                                            Function<E, V> valueMapper) {
+    public static <E, K, V> Map<K, V> toMap(@Nullable Collection<E> collection,
+                                            @Nonnull Function<E, K> keyMapper,
+                                            @Nonnull Function<E, V> valueMapper) {
         QCheckUtil.notNull(keyMapper, "keyMapper null");
         QCheckUtil.notNull(valueMapper, "valueMapper null");
 
@@ -141,7 +147,8 @@ public class QCollectionUtil extends CollUtil {
      * @param <K>
      * @return
      */
-    public static <E, K> Map<K, List<E>> groupBy(Collection<E> collection, Function<E, K> classifier) {
+    public static <E, K> Map<K, List<E>> groupBy(@Nullable Collection<E> collection,
+                                                 @Nonnull Function<E, K> classifier) {
         QCheckUtil.notNull(classifier, "classifier null");
 
         if (isEmpty(collection)) {
@@ -160,7 +167,8 @@ public class QCollectionUtil extends CollUtil {
      * @param <R>
      * @return
      */
-    public static <E, R> List<R> forEach(Collection<E> collection, Function<E, R> function) {
+    public static <E, R> List<R> forEach(@Nullable Collection<E> collection,
+                                         @Nonnull Function<E, R> function) {
         QCheckUtil.notNull(function, "function null");
 
         if (isEmpty(collection)) {
@@ -182,7 +190,8 @@ public class QCollectionUtil extends CollUtil {
      * @param consumer
      * @param <E>
      */
-    public static <E> void forEach(Collection<E> collection, java.util.function.Consumer<E> consumer) {
+    public static <E> void forEach(@Nullable Collection<E> collection,
+                                   @Nonnull java.util.function.Consumer<E> consumer) {
         QCheckUtil.notNull(consumer, "consumer null");
 
         if (isEmpty(collection)) {

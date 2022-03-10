@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -59,6 +61,19 @@ public class QCollectionUtilTest {
 
             Assert.assertTrue(actualList instanceof List);
             Assert.assertEquals(0, actualList.size());
+        }
+    }
+
+    @Test
+    public void testCastToList() {
+        {
+            Collection<?> collection = QCollectionUtil.castToList(new ArrayList<>());
+            Assert.assertTrue(collection instanceof List);
+        }
+
+        {
+            Collection<?> collection = QCollectionUtil.castToList(new HashSet<>());
+            Assert.assertTrue(collection instanceof List);
         }
     }
 

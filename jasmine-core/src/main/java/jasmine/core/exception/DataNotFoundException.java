@@ -8,11 +8,11 @@ package jasmine.core.exception;
  * @author mh.z
  */
 public class DataNotFoundException extends UnexpectedException {
-    // 数据类型
+    /** 数据类型 */
     protected Class<?> dataType;
-    // key名称
+    /** key名称 */
     protected String dataKeyName;
-    // key值
+    /** key值 */
     protected Object dataKey;
 
     /** 默认错误代码 */

@@ -34,6 +34,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- AOP框架 -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Spring框架 -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -60,30 +67,12 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- API文档 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- AOP框架 -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- MyBatis-Plus持久层框架 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <scope>compile</scope>
+            <optional>true</optional>
         </dependency>
 
         <!-- Redis客户端 -->

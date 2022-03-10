@@ -27,6 +27,13 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- 文档注解 -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- 工具类库 -->
         <dependency>
             <groupId>cn.hutool</groupId>

@@ -52,10 +52,11 @@ public class Bean2 implement InitSupport {
 | QStringUtil | 字符串工具类 |
 | QDateUtil | 日期工具类 |
 | QCollectionUtil | 集合工具类 |
-| QObjectUtil | 对象工具类 |
+| QObjectUtil | 对象工具类，提供转换类型等方法 |
 | QJsonUtil | JSON工具类 |
 | QI18nUtil | 多语言工具类 |
 | QSpringUtil | Spring工具类 |
+| QErrorUtil | 提供异常类相关处理方法 |
 
 #### 使用多语言
 
