@@ -32,21 +32,21 @@ public class ContextHandlerFacadeBean implements ContextHandlerFacade, SmartInit
 
 
     @Override
-    public Collection<ContextSnapshot> copyAll() {
+    public Collection<ContextSnapshot> copyAllFromCurrentThread() {
         QCheckUtil.notNullProp(handlers, "handlers null");
 
         return QCollectionUtil.forEach(handlers, ContextHandler::copy);
     }
 
     @Override
-    public void initAll() {
+    public void initAllToCurrentThread() {
         QCheckUtil.notNullProp(handlers, "handlers null");
 
         QCollectionUtil.forEach(handlers, ContextHandler::init);
     }
 
     @Override
-    public void clearAll() {
+    public void clearAllFromCurrentThread() {
         QCheckUtil.notNullProp(handlers, "handlers null");
 
         QCollectionUtil.forEach(handlers, ContextHandler::clear);

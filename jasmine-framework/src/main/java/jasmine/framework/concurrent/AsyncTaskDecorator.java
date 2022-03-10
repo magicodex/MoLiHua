@@ -1,14 +1,18 @@
 package jasmine.framework.concurrent;
 
-import jasmine.framework.context.ContextHandlerFacade;
-import jasmine.framework.context.handler.ContextSnapshot;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
+import jasmine.framework.context.ContextHandlerFacade;
+import jasmine.framework.context.handler.ContextSnapshot;
 import org.springframework.core.task.TaskDecorator;
 
 import java.util.Collection;
 
 /**
+ * <p>
+ * 异步任务装饰器，初始以及清理线程变量。
+ * </p>
+ *
  * @author mh.z
  */
 public class AsyncTaskDecorator implements TaskDecorator {
@@ -21,7 +25,7 @@ public class AsyncTaskDecorator implements TaskDecorator {
     @Override
     public Runnable decorate(Runnable runnable) {
         QCheckUtil.notNullProp(handlerFacade, "handlerFacade null");
-        Collection<ContextSnapshot> snapshots = handlerFacade.copyAll();
+        Collection<ContextSnapshot> snapshots = handlerFacade.copyAllFromCurrentThread();
 
         Runnable proxy = () -> {
             try {
@@ -31,7 +35,7 @@ public class AsyncTaskDecorator implements TaskDecorator {
                 runnable.run();
             } finally {
                 // 清理上下文
-                handlerFacade.clearAll();
+                handlerFacade.clearAllFromCurrentThread();
             }
         };
 

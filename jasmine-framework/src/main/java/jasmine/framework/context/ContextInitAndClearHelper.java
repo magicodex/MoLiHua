@@ -26,13 +26,13 @@ public class ContextInitAndClearHelper {
         QCheckUtil.notNull(function, "function null");
 
         try {
-            handlerFacade.initAll();
+            handlerFacade.initAllToCurrentThread();
 
             return function.call();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         } finally {
-            handlerFacade.clearAll();
+            handlerFacade.clearAllFromCurrentThread();
         }
     }
 
@@ -46,13 +46,13 @@ public class ContextInitAndClearHelper {
         QCheckUtil.notNull(function, "function null");
 
         try {
-            handlerFacade.initAll();
+            handlerFacade.initAllToCurrentThread();
 
             function.call();
         } catch (Throwable e) {
             throw new RuntimeException(e);
         } finally {
-            handlerFacade.clearAll();
+            handlerFacade.clearAllFromCurrentThread();
         }
     }
 

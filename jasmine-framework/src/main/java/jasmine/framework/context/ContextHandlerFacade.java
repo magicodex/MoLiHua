@@ -14,15 +14,15 @@ public interface ContextHandlerFacade {
      *
      * @return
      */
-    Collection<ContextSnapshot> copyAll();
+    Collection<ContextSnapshot> copyAllFromCurrentThread();
 
     /**
      * 初始上下文
      */
-    void initAll();
+    void initAllToCurrentThread();
 
     /**
      * 清除上下文
      */
-    void clearAll();
+    void clearAllFromCurrentThread();
 }
