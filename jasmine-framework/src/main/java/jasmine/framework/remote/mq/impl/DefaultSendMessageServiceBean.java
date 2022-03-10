@@ -33,6 +33,9 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
     private Map<String, PublisherExchangeRouting> routingMap;
     private static ApplicationContext applicationContext;
 
+    private static final String HEADER_SUBJECT = "subject";
+    private static final String PARAM_USER_ID = "userId";
+
     public DefaultSendMessageServiceBean(AmqpTemplate rabbitTemplate) {
         template = rabbitTemplate;
         routingMap = Collections.emptyMap();
@@ -52,7 +55,8 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
         // 获取路由信息
         PublisherExchangeRouting routing = routingMap.get(category);
         if (routing == null) {
-            throw new RuntimeException("not found the PublisherExchangeRouting(category=" + category + ")");
+            throw new RuntimeException(String.format("not found the %s(category=%s)",
+                    PublisherExchangeRouting.class.getSimpleName(), category));
         }
 
         String routingKey = null;
@@ -62,19 +66,8 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
             routingKey = directRouting.getRoutingKey();
         }
 
-        // 保证消息key不能为空
-        if (key == null) {
-            key = QStringUtil.toString(UniqueKeyUtil.nextLong());
-        }
-
-        MessageProperties properties = new MessageProperties();
-        // 设置安全信息
-        properties.setHeader("subject", "userId:" + CurrentSubject.getUserId());
-        // 设置消息ID
-        properties.setMessageId(key);
         // 创建要发送的消息对象
-        byte[] bytes = SimpleConvertUtil.serialize(content);
-        Message message = new Message(bytes, properties);
+        Message message = createMessage(key, content);
 
         DefaultSendInvocationInfo invocationInfo = new DefaultSendInvocationInfo(key, content, message);
         // 序列化消息后调用
@@ -86,6 +79,32 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
         template.send(exchangeName, routingKey, message);
 
         return invocationInfo;
+    }
+
+    /**
+     * 创建消息对象
+     *
+     * @param key
+     * @param content
+     * @return
+     */
+    protected Message createMessage(String key, Object content) {
+        // 保证消息key不能为空
+        if (key == null) {
+            key = QStringUtil.toString(UniqueKeyUtil.nextLong());
+        }
+
+        MessageProperties properties = new MessageProperties();
+        // 设置安全信息
+        String userIdStr = QStringUtil.orEmpty(CurrentSubject.getUserId());
+        properties.setHeader(HEADER_SUBJECT, (PARAM_USER_ID + ":" + userIdStr));
+        // 设置消息ID
+        properties.setMessageId(key);
+        // 创建要发送的消息对象
+        byte[] bytes = SimpleConvertUtil.serialize(content);
+        Message message = new Message(bytes, properties);
+
+        return message;
     }
 
     @Override

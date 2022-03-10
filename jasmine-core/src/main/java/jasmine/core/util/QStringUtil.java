@@ -15,24 +15,32 @@ import javax.annotation.Nullable;
 public class QStringUtil extends StrUtil {
 
     /**
-     * 如果给定字符串为null返回默认值
+     * 如果给定对象为null返回默认值
      *
-     * @param string
+     * @param content
      * @param other
      * @return
      */
-    public static String orElse(@Nullable String string, String other) {
-        return ObjectUtil.defaultIfNull(string, other);
+    public static String orElse(@Nullable Object content, String other) {
+        if (content != null) {
+            content = content.toString();
+        }
+
+        return ObjectUtil.defaultIfNull((String) content, other);
     }
 
     /**
-     * 如果给定字符串为null返回空字符串
+     * 如果给定对象为null返回空字符串
      *
-     * @param string
+     * @param content
      * @return
      */
-    public static String orEmpty(@Nullable String string) {
-        return ObjectUtil.defaultIfNull(string, "");
+    public static String orEmpty(@Nullable Object content) {
+        if (content != null) {
+            content = content.toString();
+        }
+
+        return ObjectUtil.defaultIfNull((String) content, "");
     }
 
 }
