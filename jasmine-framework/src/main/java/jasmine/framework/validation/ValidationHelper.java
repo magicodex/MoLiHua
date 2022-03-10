@@ -13,7 +13,7 @@ import org.springframework.validation.ValidationUtils;
 public class ValidationHelper {
     private Errors errors;
 
-    public ValidationHelper(Errors errors) {
+    protected ValidationHelper(Errors errors) {
         this.errors = errors;
     }
 
@@ -23,6 +23,10 @@ public class ValidationHelper {
 
     public Errors getErrors() {
         return errors;
+    }
+
+    public boolean hasErrors() {
+        return errors.hasErrors();
     }
 
     /**
