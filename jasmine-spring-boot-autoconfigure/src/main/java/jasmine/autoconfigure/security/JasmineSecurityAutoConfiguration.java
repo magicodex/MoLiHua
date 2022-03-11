@@ -10,9 +10,9 @@ import jasmine.security.strategy.DynamicRbacCheckStrategy;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.support.SecurityContextHandler;
 import jasmine.security.support.SecurityTenantConfigProcessor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionManager;
@@ -28,13 +28,10 @@ import java.util.Arrays;
 /**
  * @author mh.z
  */
+@EnableConfigurationProperties(JasmineSecurityProperties.class)
 @ConditionalOnClass(JasmineSecurityConfig.class)
 @Configuration
 public class JasmineSecurityAutoConfiguration {
-
-    /** 是否启用 RBAC 访问控制 */
-    @Value("${jasmine.security.rbac.enabled:false}")
-    private Boolean rbacEnabled;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -53,11 +50,13 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public AccessDecisionManager accessDecisionManager(AccessDecisionStrategy accessDecisionStrategy) {
+    public AccessDecisionManager accessDecisionManager(JasmineSecurityProperties securityProperties,
+                                                       AccessDecisionStrategy accessDecisionStrategy) {
         WebExpressionVoter webExpressionVoter = new WebExpressionVoter();
         webExpressionVoter.setExpressionHandler(new OAuth2WebSecurityExpressionHandler());
 
         // 动态访问决策投票器
+        Boolean rbacEnabled = securityProperties.getRbac().getEnabled();
         DynamicAccessDecisionVoter dynamicVoter = new DynamicAccessDecisionVoter(rbacEnabled, accessDecisionStrategy);
         // 访问决策管理器
         AccessDecisionManager manager = new AffirmativeBased(Arrays.asList(webExpressionVoter, dynamicVoter));

@@ -1,6 +1,6 @@
 package jasmine.autoconfigure.framework.web;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -15,28 +15,21 @@ import springfox.documentation.spring.web.plugins.Docket;
  * 配置Swagger生成API接口文档。
  * </p>
  */
+@EnableConfigurationProperties(SwaggerProperties.class)
 @Configuration
 public class SwaggerAutoConfiguration {
-    @Value("${jasmine.swagger.version:}")
-    private String apiVersion;
-
-    @Value("${jasmine.swagger.title:}")
-    private String apiTitle;
-
-    @Value("${jasmine.swagger.base-package:}")
-    private String apiPackage;
 
     @Bean
-    public Docket docket() {
+    public Docket docket(SwaggerProperties swaggerProperties) {
         ApiInfo apiInfo = new ApiInfoBuilder()
-                .title(apiTitle)
-                .version(apiVersion)
+                .title(swaggerProperties.getTitle())
+                .version(swaggerProperties.getVersion())
                 .build();
 
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(apiPackage))
+                .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()))
                 .paths(PathSelectors.any())
                 .build();
 

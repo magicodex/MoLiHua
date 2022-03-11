@@ -8,8 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.SmartInitializingSingleton;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -20,48 +20,27 @@ import java.util.Map;
 /**
  * @author mh.z
  */
+@EnableConfigurationProperties(XxlJobProperties.class)
 @ConditionalOnProperty(name = {"jasmine.xxl.job.enabled"}, havingValue = "true")
 @Configuration
 public class XxlJobAutoConfiguration implements SmartInitializingSingleton, ApplicationContextAware {
     private Logger logger = LoggerFactory.getLogger(XxlJobAutoConfiguration.class);
     private static ApplicationContext applicationContext;
 
-    @Value("${xxl.job.admin.addresses}")
-    private String adminAddresses;
-
-    @Value("${xxl.job.accessToken}")
-    private String accessToken;
-
-    @Value("${xxl.job.executor.appname}")
-    private String appname;
-
-    @Value("${xxl.job.executor.address}")
-    private String address;
-
-    @Value("${xxl.job.executor.ip}")
-    private String ip;
-
-    @Value("${xxl.job.executor.port}")
-    private int port;
-
-    @Value("${xxl.job.executor.logpath}")
-    private String logPath;
-
-    @Value("${xxl.job.executor.logretentiondays}")
-    private int logRetentionDays;
-
     @Bean
-    public XxlJobSpringExecutor xxlJobExecutor() {
+    public XxlJobSpringExecutor xxlJobExecutor(XxlJobProperties xxlJobProperties) {
         logger.info(">>>>>>>>>>> xxl-job config init.");
+        XxlJobProperties.Executor executor = xxlJobProperties.getExecutor();
+
         XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
-        xxlJobSpringExecutor.setAdminAddresses(adminAddresses);
-        xxlJobSpringExecutor.setAppname(appname);
-        xxlJobSpringExecutor.setAddress(address);
-        xxlJobSpringExecutor.setIp(ip);
-        xxlJobSpringExecutor.setPort(port);
-        xxlJobSpringExecutor.setAccessToken(accessToken);
-        xxlJobSpringExecutor.setLogPath(logPath);
-        xxlJobSpringExecutor.setLogRetentionDays(logRetentionDays);
+        xxlJobSpringExecutor.setAdminAddresses(xxlJobProperties.getAdmin().getAddresses());
+        xxlJobSpringExecutor.setAppname(executor.getAppName());
+        xxlJobSpringExecutor.setAddress(executor.getAddress());
+        xxlJobSpringExecutor.setIp(executor.getIp());
+        xxlJobSpringExecutor.setPort(executor.getPort());
+        xxlJobSpringExecutor.setAccessToken(xxlJobProperties.getAccessToken());
+        xxlJobSpringExecutor.setLogPath(executor.getLogPath());
+        xxlJobSpringExecutor.setLogRetentionDays(executor.getLogRetentionDays());
 
         return xxlJobSpringExecutor;
     }

@@ -3,33 +3,29 @@ package jasmine.autoconfigure.framework.middleware;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;
-import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
-import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import jasmine.framework.remote.mq.impl.DefaultReceiveMessageService;
 import jasmine.framework.remote.mq.impl.DefaultSendMessageServiceBean;
+import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
+import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * @author mh.z
  */
+@EnableConfigurationProperties(MessageQueueProperties.class)
 @Configuration
 public class RabbitAutoConfiguration {
 
-    @Value("${jasmine.message-queue.consumer.enabled:false}")
-    private Boolean receivedEnabled;
-
-    @Value("${jasmine.message-queue.publisher.enabled:false}")
-    private Boolean sendEnabled;
-
     @Bean
     public ReceiveMessageService receiveMessageService(RuntimeProvider runtimeProvider,
+                                                       MessageQueueProperties messageQueueProperties,
                                                        @Autowired(required = false) ReceiveInterceptor interceptor) {
         DefaultReceiveMessageService service = new DefaultReceiveMessageService(runtimeProvider);
-        service.setEnabled(Boolean.TRUE.equals(receivedEnabled));
+        service.setEnabled(Boolean.TRUE.equals(messageQueueProperties.getConsumer().getEnabled()));
         service.setInterceptor(interceptor);
 
         return service;
@@ -37,9 +33,10 @@ public class RabbitAutoConfiguration {
 
     @Bean
     public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate,
+                                                 MessageQueueProperties messageQueueProperties,
                                                  @Autowired(required = false) SendInterceptor interceptor) {
         DefaultSendMessageServiceBean service = new DefaultSendMessageServiceBean(rabbitTemplate);
-        service.setEnabled(Boolean.TRUE.equals(sendEnabled));
+        service.setEnabled(Boolean.TRUE.equals(messageQueueProperties.getPublisher().getEnabled()));
         service.setInterceptor(interceptor);
 
         return service;

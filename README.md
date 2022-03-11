@@ -27,19 +27,19 @@ jasmine.message-queue.consumer.enabled=true
 jasmine.security.rbac.enabled=true
 
 # 是否启用租户拦截器 (默认false)
-jasmine.tenant.enabled=true
+jasmine.data.tenant.enabled=true
 
 # 是否启用 XXL-job 任务调度（默认false）
 jasmine.xxl.job.enabled=true
 # XXL-job 配置
 xxl.job.admin.addresses=http://127.0.0.1:9090/xxl-job-admin
-xxl.job.accessToken=
-xxl.job.executor.appname=xxl-job-executor-sample
+xxl.job.access-token=
+xxl.job.executor.app-name=xxl-job-executor-sample
 xxl.job.executor.address=
 xxl.job.executor.ip=
 xxl.job.executor.port=9999
-xxl.job.executor.logpath=/data/applogs/xxl-job/jobhandler
-xxl.job.executor.logretentiondays=30
+xxl.job.executor.log-path=/data/applogs/xxl-job/jobhandler
+xxl.job.executor.log-retention-days=30
 
 # 是否启用读写分离（默认false）
 jasmine.datasource.readWrite.enabled=true
