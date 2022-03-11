@@ -1,4 +1,4 @@
-package jasmine.demo.service;
+package jasmine.demo.sample;
 
 import jasmine.core.util.QErrorUtil;
 import jasmine.framework.cache.CacheUtil;

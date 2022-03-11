@@ -1,8 +1,7 @@
-package jasmine.demo.controller;
+package jasmine.demo.sample;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import jasmine.demo.service.SampleService;
 import jasmine.framework.web.entity.WebResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
