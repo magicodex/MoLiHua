@@ -9,6 +9,7 @@
 
     <!-- 扫描应用目录 -->
     <context:component-scan base-package="
+        jasmine.demo.config,
         jasmine.demo.controller,
         jasmine.demo.service">
     </context:component-scan>

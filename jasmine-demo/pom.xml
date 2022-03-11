@@ -12,8 +12,6 @@
     <artifactId>jasmine-demo</artifactId>
 
     <properties>
-        <seata.version>1.4.2</seata.version>
-        <lombok.version>1.18.22</lombok.version>
         <spring.boot.version>2.5.4</spring.boot.version>
     </properties>
 

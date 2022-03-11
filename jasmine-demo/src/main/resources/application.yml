@@ -71,7 +71,7 @@ jasmine:
       enabled: false
   xxl:
     job:
-      # 是否启用 xxl-job 调度任务
+      # 是否启用 xxl-job 任务调度
       enabled: false
 
 app:

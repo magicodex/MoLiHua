@@ -12,7 +12,7 @@ public class TenantConfig implements TenantConfigProcessor {
 
     @Override
     public void ignoreTable(IgnoreTableStrategy strategy) {
-
+        //
     }
 
 }

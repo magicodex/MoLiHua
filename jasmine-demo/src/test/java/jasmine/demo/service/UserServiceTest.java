@@ -1,6 +1,6 @@
 package jasmine.demo.service;
 
-import jasmine.test.context.BeanTestContext;
+import jasmine.test.context.AppTestContext;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class UserServiceTest extends BeanTestContext {
+public class UserServiceTest extends AppTestContext {
     @Autowired
     private UserService userService;
 

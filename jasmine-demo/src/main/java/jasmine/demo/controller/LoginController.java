@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-@Api(tags = "认证")
+@Api(tags = "登录")
 @RestController
 public class LoginController {
     private static final String SPRING_SECURITY_LAST_EXCEPTION = "SPRING_SECURITY_LAST_EXCEPTION";
