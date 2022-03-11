@@ -58,6 +58,11 @@ public class MybatisPlusAutoConfiguration {
         return new BaseEntityMetaObjectHandler();
     }
 
+    /**
+     * 支持自定义租户配置
+     *
+     * @return
+     */
     @Bean
     public TenantConfigProcessorScanBean tenantConfigProcessorScanBean() {
         IgnoreTableStrategy ignoreTableStrategy = tenantLineHandler();

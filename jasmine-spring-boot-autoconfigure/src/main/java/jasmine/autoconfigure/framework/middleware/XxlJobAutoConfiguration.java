@@ -35,10 +35,11 @@ public class XxlJobAutoConfiguration implements SmartInitializingSingleton, Appl
     @Bean
     public XxlJobSpringExecutor xxlJobExecutor(XxlJobProperties xxlJobProperties) {
         logger.info(">>>>>>>>>>> xxl-job config init.");
+        XxlJobProperties.Admin admin = xxlJobProperties.getAdmin();
         XxlJobProperties.Executor executor = xxlJobProperties.getExecutor();
 
         XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
-        xxlJobSpringExecutor.setAdminAddresses(xxlJobProperties.getAdmin().getAddresses());
+        xxlJobSpringExecutor.setAdminAddresses(admin.getAddresses());
         xxlJobSpringExecutor.setAppname(executor.getAppName());
         xxlJobSpringExecutor.setAddress(executor.getAddress());
         xxlJobSpringExecutor.setIp(executor.getIp());
@@ -54,6 +55,7 @@ public class XxlJobAutoConfiguration implements SmartInitializingSingleton, Appl
     public void afterSingletonsInstantiated() {
         Map<String, JobExecutor> executorMap = applicationContext.getBeansOfType(JobExecutor.class);
 
+        // 注册 xxl-job 处理器
         executorMap.forEach((name, executor) -> {
             XxlJobHandlerDelegate handler = new XxlJobHandlerDelegate(executor);
             XxlJobExecutor.registJobHandler(executor.getName(), handler);

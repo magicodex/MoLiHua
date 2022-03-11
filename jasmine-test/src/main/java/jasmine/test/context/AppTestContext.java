@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
- * 支持 Spring 应用测试。
+ * 支持 Spring 应用测试（提供租户相关支持）。
  * </p>
  *
  * @author mh.z

@@ -39,17 +39,6 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public DynamicRbacCheckStrategy rbacCheckService(SecFunctionDao functionDao,
-                                                     SecResourceDao resourceDao) {
-        return new DynamicRbacCheckStrategy(functionDao, resourceDao);
-    }
-
-    @Bean
-    public SecurityContextHandler securityContextHandler() {
-        return new SecurityContextHandler();
-    }
-
-    @Bean
     public AccessDecisionManager accessDecisionManager(JasmineSecurityProperties securityProperties,
                                                        AccessDecisionStrategy accessDecisionStrategy) {
         WebExpressionVoter webExpressionVoter = new WebExpressionVoter();
@@ -63,6 +52,12 @@ public class JasmineSecurityAutoConfiguration {
         AccessDecisionManagerProxy managerProxy = new AccessDecisionManagerProxy(manager);
 
         return managerProxy;
+    }
+
+    @Bean
+    public DynamicRbacCheckStrategy rbacCheckService(SecFunctionDao functionDao,
+                                                     SecResourceDao resourceDao) {
+        return new DynamicRbacCheckStrategy(functionDao, resourceDao);
     }
 
     @ConditionalOnMissingBean(UserSubjectDetailsService.class)
@@ -79,6 +74,11 @@ public class JasmineSecurityAutoConfiguration {
         ClientDetailsService service = configTemplate.clientDetailsService();
 
         return service;
+    }
+
+    @Bean
+    public SecurityContextHandler securityContextHandler() {
+        return new SecurityContextHandler();
     }
 
     @Bean

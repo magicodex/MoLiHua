@@ -63,6 +63,7 @@ public class TestDataTaskChange implements CustomTaskChange, ApplicationContextA
             Class<TestDataLoader> clazz = ClassUtil.loadClass(loaderName);
 
             try {
+                // 创建数据加载器
                 Constructor<TestDataLoader> constructor = clazz.getConstructor();
                 loader = constructor.newInstance();
             } catch (Exception e) {
@@ -73,7 +74,9 @@ public class TestDataTaskChange implements CustomTaskChange, ApplicationContextA
         }
 
         try (InputStream inputStream = resourceAccessor.openStream(null, resourcePath)) {
+            // 初始数据加载器
             loader.init(applicationContext, type);
+            // 加载数据
             loader.load(resourcePath, inputStream);
         } catch (Exception e) {
             throw QErrorUtil.sneakyError(e);

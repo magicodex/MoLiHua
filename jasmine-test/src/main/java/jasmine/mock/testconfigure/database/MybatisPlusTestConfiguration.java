@@ -80,6 +80,7 @@ public class MybatisPlusTestConfiguration {
     @Bean
     public DefaultTenantLineHandler tenantLineHandler() {
         DefaultTenantLineHandler handler = new DefaultTenantLineHandler();
+        // 租户拦截器不处理以下的表
         handler.addIgnoreTable("test_data_change_log");
 
         return handler;

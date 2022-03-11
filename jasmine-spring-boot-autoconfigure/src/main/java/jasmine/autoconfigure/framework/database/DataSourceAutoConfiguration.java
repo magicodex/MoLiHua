@@ -40,6 +40,12 @@ public class DataSourceAutoConfiguration {
         return new ReadOnlyAspectHandler(dataSourceDecideFacade);
     }
 
+    /**
+     * 默认数据源
+     *
+     * @param properties
+     * @return
+     */
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
     @Bean
     public HikariDataSource mainDataSource(DataSourceProperties properties) {
@@ -54,6 +60,13 @@ public class DataSourceAutoConfiguration {
         return dataSource;
     }
 
+    /**
+     * 只读数据源
+     *
+     * @param properties
+     * @param readProperties
+     * @return
+     */
     @ConfigurationProperties(prefix = "spring.datasource.hikari.read")
     @Bean
     public HikariDataSource readDataSource(DataSourceProperties properties,

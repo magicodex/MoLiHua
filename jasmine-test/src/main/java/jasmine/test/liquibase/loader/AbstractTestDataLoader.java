@@ -42,6 +42,9 @@ public abstract class AbstractTestDataLoader implements TestDataLoader {
         logWrapper.eq(TestDataChangeLog::getResourcePath, resourcePath);
         List<TestDataChangeLog> logList = logMapper.selectList(logWrapper);
 
+        // 加载数据的逻辑是，1.先根据测试数据变更日志表里的记录删除原表里的记录。
+        // 2.然后把新的数据插入到表里。
+
         if (CollUtil.isNotEmpty(logList)) {
             // 删除原来的数据
             List<Long> recordIdList = CollStreamUtil.toList(logList, TestDataChangeLog::getRecordId);
