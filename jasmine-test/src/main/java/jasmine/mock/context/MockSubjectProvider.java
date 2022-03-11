@@ -5,11 +5,11 @@ import jasmine.core.context.SubjectProvider;
 /**
  * @author mh.z
  */
-public class TestSubjectProvider implements SubjectProvider {
+public class MockSubjectProvider implements SubjectProvider {
     private Long currentUserId;
     private Long currentTenantId;
 
-    public TestSubjectProvider() {
+    public MockSubjectProvider() {
         this.currentUserId = -1L;
         this.currentTenantId = -1L;
     }

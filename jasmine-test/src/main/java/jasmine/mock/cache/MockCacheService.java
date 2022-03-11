@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * @author mh.z
  */
 @Component
-public class TestCacheService implements CacheService {
+public class MockCacheService implements CacheService {
 
     @Override
     public <T> T get(String category, Object key, Class<T> type) {

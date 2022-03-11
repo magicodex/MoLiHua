@@ -6,7 +6,7 @@ import jasmine.core.context.SubjectProvider;
 import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
-import jasmine.mock.context.TestSubjectProvider;
+import jasmine.mock.context.MockSubjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,7 +27,7 @@ public class JasmineFrameworkTestConfiguration {
 
     @Bean
     public SubjectProvider subjectProvider() {
-        SubjectProvider subjectProvider = new TestSubjectProvider();
+        SubjectProvider subjectProvider = new MockSubjectProvider();
         // 初始工具类
         CurrentSubject.initUtil(subjectProvider);
 

@@ -4,8 +4,8 @@ import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.distributed.DistributedLocks;
-import jasmine.mock.cache.TestCacheService;
-import jasmine.mock.lock.TestDistributedLockProvider;
+import jasmine.mock.cache.MockCacheService;
+import jasmine.mock.lock.MockDistributedLockProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,7 +17,7 @@ public class JobTestConfiguration {
 
     @Bean
     public CacheService cacheService() {
-        CacheService cacheService = new TestCacheService();
+        CacheService cacheService = new MockCacheService();
         // 初始工具类
         CacheUtil.initUtil(cacheService);
 
@@ -26,7 +26,7 @@ public class JobTestConfiguration {
 
     @Bean
     public DistributedLockProvider distributedLockProvider() {
-        DistributedLockProvider provider = new TestDistributedLockProvider();
+        DistributedLockProvider provider = new MockDistributedLockProvider();
         // 初始工具类
         DistributedLocks.initUtil(provider);
 

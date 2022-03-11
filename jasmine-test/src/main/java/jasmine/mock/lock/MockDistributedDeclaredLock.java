@@ -6,7 +6,7 @@ import jasmine.framework.lock.distributed.DistributedLockCallback;
 /**
  * @author mh.z
  */
-public class TestDistributedDeclaredLock implements DistributedDeclaredLock {
+public class MockDistributedDeclaredLock implements DistributedDeclaredLock {
 
     @Override
     public <T> T lock(DistributedLockCallback callback) {
