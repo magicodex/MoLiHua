@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerIntercep
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
-import jasmine.core.context.SubjectProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.persistence.mybatisplus.context.ContextParameter;
 import jasmine.framework.persistence.mybatisplus.context.ContextParameterInnerInterceptor;
@@ -16,13 +15,8 @@ import jasmine.framework.persistence.mybatisplus.context.DefaultContextParameter
  * @author mh.z
  */
 public class MybatisPlusInterceptorBuilder {
-    private SubjectProvider subjectProvider;
     private Boolean tenantEnabled;
     private TenantLineHandler tenantLineHandler;
-
-    public void setSubjectProvider(SubjectProvider subjectProvider) {
-        this.subjectProvider = subjectProvider;
-    }
 
     public void setTenantEnabled(Boolean tenantEnabled) {
         this.tenantEnabled = tenantEnabled;
@@ -38,7 +32,6 @@ public class MybatisPlusInterceptorBuilder {
      * @return
      */
     public MybatisPlusInterceptor build() {
-        QCheckUtil.notNullProp(subjectProvider, "subjectProvider null");
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
 
         // 如果用了分页插件注意先 add TenantLineInnerInterceptor 再 add PaginationInnerInterceptor
@@ -57,7 +50,7 @@ public class MybatisPlusInterceptorBuilder {
         // 防止全表更新与删除插件
         interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
 
-        ContextParameter contextParameter = new DefaultContextParameter(subjectProvider);
+        ContextParameter contextParameter = new DefaultContextParameter();
         interceptor.addInnerInterceptor(new ContextParameterInnerInterceptor(contextParameter));
 
         return interceptor;
