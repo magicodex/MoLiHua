@@ -18,6 +18,7 @@ public class CacheTestConfiguration {
     @Bean
     public CacheService cacheService() {
         CacheService cacheService = new TestCacheService();
+        // 初始工具类
         CacheUtil.initUtil(cacheService);
 
         return cacheService;
@@ -26,6 +27,7 @@ public class CacheTestConfiguration {
     @Bean
     public DistributedLockProvider distributedLockProvider() {
         DistributedLockProvider provider = new TestDistributedLockProvider();
+        // 初始工具类
         DistributedLocks.initUtil(provider);
 
         return provider;

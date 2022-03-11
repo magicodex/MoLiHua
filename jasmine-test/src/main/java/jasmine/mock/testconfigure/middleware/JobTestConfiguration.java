@@ -4,11 +4,8 @@ import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.distributed.DistributedLocks;
-import jasmine.framework.remote.mq.ReceiveMessageService;
-import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.mock.cache.TestCacheService;
 import jasmine.mock.lock.TestDistributedLockProvider;
-import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,6 +18,7 @@ public class JobTestConfiguration {
     @Bean
     public CacheService cacheService() {
         CacheService cacheService = new TestCacheService();
+        // 初始工具类
         CacheUtil.initUtil(cacheService);
 
         return cacheService;
@@ -29,19 +27,10 @@ public class JobTestConfiguration {
     @Bean
     public DistributedLockProvider distributedLockProvider() {
         DistributedLockProvider provider = new TestDistributedLockProvider();
+        // 初始工具类
         DistributedLocks.initUtil(provider);
 
         return provider;
-    }
-
-    @Bean
-    public ReceiveMessageService receiveMessageService() {
-        return Mockito.mock(ReceiveMessageService.class);
-    }
-
-    @Bean
-    public SendMessageService sendMessageService() {
-        return Mockito.mock(SendMessageService.class);
     }
 
 }

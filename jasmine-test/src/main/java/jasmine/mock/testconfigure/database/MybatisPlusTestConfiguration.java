@@ -2,7 +2,6 @@ package jasmine.mock.testconfigure.database;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import jasmine.core.context.SubjectProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
@@ -21,9 +20,8 @@ public class MybatisPlusTestConfiguration {
     private Boolean tenantEnabled;
 
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor(SubjectProvider subjectProvider) {
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder();
-        builder.setSubjectProvider(subjectProvider);
         builder.setTenantEnabled(Boolean.TRUE.equals(tenantEnabled));
         builder.setTenantLineHandler(tenantLineHandler());
 

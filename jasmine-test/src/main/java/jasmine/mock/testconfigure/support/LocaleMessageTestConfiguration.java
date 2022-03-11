@@ -15,6 +15,7 @@ public class LocaleMessageTestConfiguration {
     @Bean
     public LocaleMessageProvider localeMessageProvider() {
         LocaleMessageProvider provider = Mockito.mock(LocaleMessageProvider.class);
+        // 初始工具类
         QI18nUtil.initUtil(provider);
 
         return provider;
