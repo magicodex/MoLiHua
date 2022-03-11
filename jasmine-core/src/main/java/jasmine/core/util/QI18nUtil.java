@@ -1,5 +1,6 @@
 package jasmine.core.util;
 
+import jasmine.core.exception.InvalidPropertyException;
 import jasmine.core.i18n.LocaleMessageProvider;
 
 /**
@@ -25,7 +26,7 @@ public class QI18nUtil {
      */
     public static String getMessage(String messageKey, Object... args) {
         if (provider == null) {
-            throw new RuntimeException("QI18nUtil.provider null");
+            throw new InvalidPropertyException("QI18nUtil.provider null");
         }
 
         return provider.getMessage(messageKey, args);

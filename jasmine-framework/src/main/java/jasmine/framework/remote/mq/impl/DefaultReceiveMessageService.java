@@ -2,6 +2,7 @@ package jasmine.framework.remote.mq.impl;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
+import jasmine.core.exception.InvalidParameterException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.QStringUtil;
@@ -110,7 +111,7 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
         MessageReceiver receiver = runtimeProvider.getByName(receiverName, false);
 
         if (receiver == null && required) {
-            throw new RuntimeException(String.format("not found the %s(category=%s)",
+            throw new InvalidParameterException(String.format("not found the %s(category=%s)",
                     MessageReceiver.class.getSimpleName(), category));
         }
 

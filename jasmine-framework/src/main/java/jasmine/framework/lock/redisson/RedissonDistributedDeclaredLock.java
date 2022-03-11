@@ -4,6 +4,7 @@ package jasmine.framework.lock.redisson;
 import jasmine.core.exception.InvalidPropertyException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.QErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 import org.redisson.api.RLock;
@@ -73,7 +74,7 @@ public class RedissonDistributedDeclaredLock implements DistributedDeclaredLock 
 
             return (T) callback.call();
         } catch (Throwable e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         } finally {
             // 释放锁
             if (lockFlag) {

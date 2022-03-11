@@ -1,6 +1,7 @@
 package jasmine.framework.context;
 
 import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QErrorUtil;
 import jasmine.framework.common.function.FunctionWithResult;
 import jasmine.framework.common.function.FunctionWithoutResult;
 
@@ -30,7 +31,7 @@ public class ContextInitAndClearHelper {
 
             return function.call();
         } catch (Throwable e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         } finally {
             handlerFacade.clearAllFromCurrentThread();
         }
@@ -50,7 +51,7 @@ public class ContextInitAndClearHelper {
 
             function.call();
         } catch (Throwable e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         } finally {
             handlerFacade.clearAllFromCurrentThread();
         }

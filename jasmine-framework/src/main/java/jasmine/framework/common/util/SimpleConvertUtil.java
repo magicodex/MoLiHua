@@ -3,6 +3,7 @@ package jasmine.framework.common.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import jasmine.core.util.QErrorUtil;
 import jasmine.core.util.QJsonUtil;
 import jasmine.core.util.QStringUtil;
 
@@ -39,7 +40,7 @@ public class SimpleConvertUtil {
         try {
             return objectMapper.writeValueAsBytes(source);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 
@@ -72,7 +73,7 @@ public class SimpleConvertUtil {
             try {
                 object = objectMapper.readValue(source, type);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw QErrorUtil.sneakyError(e);
             }
         }
 
@@ -102,7 +103,7 @@ public class SimpleConvertUtil {
             List<T> list = objectMapper.readValue(source, collectionType);
             return list;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 

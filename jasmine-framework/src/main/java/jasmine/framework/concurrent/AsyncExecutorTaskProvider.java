@@ -1,6 +1,7 @@
 package jasmine.framework.concurrent;
 
 import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QErrorUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -53,7 +54,7 @@ public class AsyncExecutorTaskProvider implements AsyncTaskProvider {
                 resultList.add(result);
             }
         } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
 
         return resultList;

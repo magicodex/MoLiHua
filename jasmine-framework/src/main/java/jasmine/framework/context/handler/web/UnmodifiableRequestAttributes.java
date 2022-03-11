@@ -1,6 +1,6 @@
 package jasmine.framework.context.handler.web;
 
-import jasmine.core.exception.InvalidPropertyException;
+import jasmine.core.exception.InvalidParameterException;
 import org.springframework.web.context.request.RequestAttributes;
 
 import java.util.Collection;
@@ -30,7 +30,7 @@ public class UnmodifiableRequestAttributes implements RequestAttributes {
         } else if (scope == SCOPE_SESSION) {
             attribute = sessionAttributes.get(name);
         } else {
-            throw new InvalidPropertyException("scope(" + scope + ") invalid");
+            throw new InvalidParameterException("scope(" + scope + ") invalid");
         }
 
         return attribute;
@@ -55,7 +55,7 @@ public class UnmodifiableRequestAttributes implements RequestAttributes {
         } else if (scope == SCOPE_SESSION) {
             attributeNames = sessionAttributes.keySet();
         } else {
-            throw new InvalidPropertyException("scope(" + scope + ") invalid");
+            throw new InvalidParameterException("scope(" + scope + ") invalid");
         }
 
         return attributeNames.toArray(new String[0]);

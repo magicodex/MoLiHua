@@ -1,5 +1,6 @@
 package jasmine.mock.lock;
 
+import jasmine.core.util.QErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 
@@ -13,7 +14,7 @@ public class MockDistributedDeclaredLock implements DistributedDeclaredLock {
         try {
             return (T) callback.call();
         } catch (Throwable e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 
@@ -22,7 +23,7 @@ public class MockDistributedDeclaredLock implements DistributedDeclaredLock {
         try {
             return (T) callback.call();
         } catch (Throwable e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 

@@ -1,6 +1,7 @@
 package jasmine.framework.remote.mq.impl;
 
 import jasmine.core.context.CurrentSubject;
+import jasmine.core.exception.InvalidParameterException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QNewUtil;
 import jasmine.core.util.QStringUtil;
@@ -55,7 +56,7 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
         // 获取路由信息
         PublisherExchangeRouting routing = routingMap.get(category);
         if (routing == null) {
-            throw new RuntimeException(String.format("not found the %s(category=%s)",
+            throw new InvalidParameterException(String.format("not found the %s(category=%s)",
                     PublisherExchangeRouting.class.getSimpleName(), category));
         }
 

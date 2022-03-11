@@ -3,6 +3,7 @@ package jasmine.framework.i18n;
 
 import jasmine.core.i18n.DeclareI18N;
 import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QErrorUtil;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.type.ClassMetadata;
@@ -51,7 +52,7 @@ public class DeclareI18nScanUtil {
                 doScan(properties, clazz);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
 
         return properties;
@@ -90,7 +91,7 @@ public class DeclareI18nScanUtil {
 
                 properties.put(key, value);
             } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
+                throw QErrorUtil.sneakyError(e);
             }
         }
     }

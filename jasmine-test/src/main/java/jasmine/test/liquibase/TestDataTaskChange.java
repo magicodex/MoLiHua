@@ -3,6 +3,7 @@ package jasmine.test.liquibase;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.StrUtil;
+import jasmine.core.util.QErrorUtil;
 import jasmine.test.liquibase.loader.DefaultTestDataLoader;
 import jasmine.test.liquibase.loader.TestDataLoader;
 import liquibase.change.custom.CustomTaskChange;
@@ -65,7 +66,7 @@ public class TestDataTaskChange implements CustomTaskChange, ApplicationContextA
                 Constructor<TestDataLoader> constructor = clazz.getConstructor();
                 loader = constructor.newInstance();
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw QErrorUtil.sneakyError(e);
             }
         } else {
             loader = new DefaultTestDataLoader();
@@ -75,7 +76,7 @@ public class TestDataTaskChange implements CustomTaskChange, ApplicationContextA
             loader.init(applicationContext, type);
             loader.load(resourcePath, inputStream);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 

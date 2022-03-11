@@ -40,7 +40,7 @@ public class QJsonUtil {
         try {
             return OBJECT_MAPPER.writeValueAsString(object);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 
@@ -56,7 +56,7 @@ public class QJsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, type);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 
@@ -76,7 +76,7 @@ public class QJsonUtil {
             List<T> list = OBJECT_MAPPER.readValue(json, collectionType);
             return list;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw QErrorUtil.sneakyError(e);
         }
     }
 
