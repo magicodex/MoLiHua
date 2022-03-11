@@ -1,7 +1,10 @@
 package jasmine.mock.testconfigure.database;
 
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
@@ -10,6 +13,9 @@ import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorSca
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+
+import javax.sql.DataSource;
 
 /**
  * @author mh.z
@@ -18,6 +24,25 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisPlusTestConfiguration {
     @Value("${jasmine.tenant.enabled:false}")
     private Boolean tenantEnabled;
+
+    @Bean
+    public MybatisSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
+        MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
+
+        // 数据源
+        factoryBean.setDataSource(dataSource);
+        // 拦截器
+        factoryBean.setPlugins(mybatisPlusInterceptor());
+        // mapper文件路径
+        ClassPathResource mapperLocation = new ClassPathResource("jasmine/framework/mapper/DataAuthMapper.xml");
+        factoryBean.setMapperLocations(mapperLocation);
+
+        GlobalConfig globalConfig = GlobalConfigUtils.defaults();
+        globalConfig.setMetaObjectHandler(metaObjectHandler());
+        factoryBean.setGlobalConfig(globalConfig);
+
+        return factoryBean;
+    }
 
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {

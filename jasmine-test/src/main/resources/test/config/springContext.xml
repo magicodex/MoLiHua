@@ -32,12 +32,6 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="plugins" ref="mybatisPlusInterceptor"/>
-        <property name="mapperLocations" value="classpath:jasmine/framework/mapper/DataAuthMapper.xml"/>
-    </bean>
-
     <!-- 配置Liquibase -->
     <bean id="springLiquibase" class="liquibase.integration.spring.SpringLiquibase">
         <property name="dataSource" ref="dataSource"/>
