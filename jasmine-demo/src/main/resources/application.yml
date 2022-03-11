@@ -47,14 +47,14 @@ mybatis-plus:
 #  job:
 #    admin:
 #      addresses: http://127.0.0.1:8080/xxl-job-admin
-#    accessToken:
+#    access-token:
 #    executor:
-#      appname: jasmine
+#      app-name: jasmine
 #      address:
 #      ip:
 #      port: 9999
-#      logpath: /data/applogs/xxl-job/jobhandler
-#      logretentiondays: 30
+#      log-path: /data/applogs/xxl-job/jobhandler
+#      log-retention-days: 30
 
 jasmine:
   # 配置 swagger 文档
