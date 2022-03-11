@@ -37,7 +37,7 @@ public class SampleController {
         return ResponseEntity.ok(WebResult.success());
     }
 
-    @ApiOperation("读取指定缓存")
+    @ApiOperation("读取缓存")
     @RequestMapping(value = "/api/sample/cache/get/{name}",
             method = {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<WebResult<String>> cache2(@PathVariable("name") String name) {
@@ -47,13 +47,22 @@ public class SampleController {
         return ResponseEntity.ok(WebResult.success(value));
     }
 
-    @ApiOperation("缓存指定数据")
+    @ApiOperation("设置数据")
     @RequestMapping(value = "/api/sample/cache/set/{name}/{value}",
             method = {RequestMethod.GET, RequestMethod.POST})
     public ResponseEntity<WebResult<String>> cache1(@PathVariable("name") String name,
                                                     @PathVariable("value") String value) {
         // 设置缓存
         sampleService.setToCache(name, value);
+
+        return ResponseEntity.ok(WebResult.success());
+    }
+
+    @ApiOperation("发送消息")
+    @RequestMapping(value = "/api/sample/mq/send/{message}",
+            method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<WebResult<String>> mq1(@PathVariable("message") String message) {
+        sampleService.sendMessage(message);
 
         return ResponseEntity.ok(WebResult.success());
     }
