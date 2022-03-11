@@ -73,6 +73,9 @@ jasmine:
     job:
       # 是否启用 xxl-job 任务调度
       enabled: false
+  data:
+    tenant:
+      enabled: true
 
 app:
   rabbitmq:
