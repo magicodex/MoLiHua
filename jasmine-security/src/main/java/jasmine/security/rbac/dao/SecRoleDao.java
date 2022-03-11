@@ -22,8 +22,8 @@ public class SecRoleDao {
      * @param userId
      * @return
      */
-    public List<SecRole> listRolesByUserId(Long userId) {
-        return baseMapper.listRolesByUserId(userId);
+    public List<SecRole> listAllTenantRolesByUserId(Long userId) {
+        return baseMapper.listAllTenantRolesByUserId(userId);
     }
 
 }

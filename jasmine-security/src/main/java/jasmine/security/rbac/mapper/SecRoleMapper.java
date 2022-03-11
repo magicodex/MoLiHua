@@ -1,5 +1,6 @@
 package jasmine.security.rbac.mapper;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import jasmine.security.rbac.model.SecRole;
 import org.apache.ibatis.annotations.Param;
@@ -17,5 +18,6 @@ public interface SecRoleMapper extends BaseMapper<SecRole> {
      * @param userId
      * @return
      */
-    List<SecRole> listRolesByUserId(@Param("userId") Long userId);
+    @InterceptorIgnore(tenantLine = "true")
+    List<SecRole> listAllTenantRolesByUserId(@Param("userId") Long userId);
 }
