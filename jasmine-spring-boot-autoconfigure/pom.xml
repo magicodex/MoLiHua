@@ -23,6 +23,8 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- 除了必要的依赖外，其它都是可选依赖 -->
+
     <dependencies>
         <dependency>
             <groupId>com.magicodex</groupId>
