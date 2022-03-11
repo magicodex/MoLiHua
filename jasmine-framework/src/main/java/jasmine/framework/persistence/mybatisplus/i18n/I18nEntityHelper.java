@@ -25,7 +25,7 @@ public class I18nEntityHelper {
      * @return
      */
     public static int insertI18n(Object entity) {
-        return i18nFacade.insertI18n(entity);
+        return i18nFacade.insertI18n(Collections.singletonList(entity));
     }
 
     /**
@@ -36,7 +36,9 @@ public class I18nEntityHelper {
      * @return
      */
     public static <T> T updateI18nThenFillEntity(T entity) {
-        return i18nFacade.updateI18nThenFillEntity(entity);
+        List<T> entityList = i18nFacade.updateI18nThenFillEntity(Collections.singletonList(entity));
+
+        return QCollectionUtil.getFirst(entityList);
     }
 
     /**
