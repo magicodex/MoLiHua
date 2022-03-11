@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @Configuration
-public class DemoTenantConfig implements TenantConfigProcessor {
+public class TenantConfig implements TenantConfigProcessor {
 
     @Override
     public void ignoreTable(IgnoreTableStrategy strategy) {
