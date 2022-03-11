@@ -9,10 +9,10 @@ import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.crypto.CryptoProvider;
 import jasmine.framework.persistence.mybatisplus.crypto.CryptoTypeHandler;
-import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
+import jasmine.mock.persistence.MockCryptoProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,12 +27,6 @@ import javax.sql.DataSource;
 public class MybatisPlusTestConfiguration {
     @Value("${jasmine.data.tenant.enabled:false}")
     private Boolean tenantEnabled;
-
-    @Value("${jasmine.data.crypto.password:}")
-    private String cryptoSecret;
-
-    @Value("${jasmine.data.crypto.salt:}")
-    private String cryptoSalt;
 
     @Bean
     public MybatisSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
@@ -55,7 +49,7 @@ public class MybatisPlusTestConfiguration {
 
     @Bean
     public CryptoProvider cryptoProvider() {
-        SymmetricCryptoProvider provider = new SymmetricCryptoProvider(cryptoSecret, cryptoSalt);
+        CryptoProvider provider = new MockCryptoProvider();
         // 初始加密的类型处理器
         CryptoTypeHandler.setCryptoProvider(provider);
 
