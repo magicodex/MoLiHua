@@ -3,12 +3,16 @@ package jasmine.demo.sample;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jasmine.core.util.QI18nUtil;
+import jasmine.demo.sample.dto.Sample1DTO;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.remote.mq.SendMessageService;
+import jasmine.framework.validation.ValidationHelper;
 import jasmine.framework.web.entity.WebResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -95,6 +99,21 @@ public class SampleController {
         cookie.setMaxAge(3600 * 24 * 365);
         cookie.setPath("/");
         response.addCookie(cookie);
+
+        return ResponseEntity.ok(WebResult.success());
+    }
+
+    @ApiOperation("校验参数")
+    @RequestMapping(value = "/api/sample/validation/{param1}",
+            method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<WebResult<String>> validation1(@ModelAttribute Sample1DTO param, Errors errors) {
+        ValidationHelper validationHelper = ValidationHelper.create(errors);
+        validationHelper.rejectIfEmpty("param1");
+        validationHelper.rejectIfEmpty("param2");
+
+        if (validationHelper.hasErrors()) {
+            return ResponseEntity.ok(WebResult.error(null, errors.toString()));
+        }
 
         return ResponseEntity.ok(WebResult.success());
     }
