@@ -6,6 +6,10 @@ import jasmine.framework.common.function.FunctionWithResult;
 import jasmine.framework.common.function.FunctionWithoutResult;
 
 /**
+ * <p>
+ * 提供帮助类用于初始和清理线程变量。
+ * </p>
+ *
  * @author mh.z
  */
 public class ContextInitAndClearHelper {

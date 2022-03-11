@@ -5,6 +5,10 @@ import jasmine.framework.context.handler.ContextSnapshot;
 import java.util.Collection;
 
 /**
+ * <p>
+ * 提供初始和清理线程变量的接口。
+ * </p>
+ *
  * @author mh.z
  */
 public interface ContextHandlerFacade {
