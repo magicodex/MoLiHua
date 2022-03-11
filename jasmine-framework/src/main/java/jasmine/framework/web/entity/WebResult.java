@@ -38,6 +38,17 @@ public class WebResult<T> {
     /**
      * 成功结果
      *
+     * @param <T>
+     * @return
+     */
+    public static <T> WebResult<T> success() {
+        return new WebResult<>(true, null, null);
+    }
+
+
+    /**
+     * 成功结果
+     *
      * @param data
      * @param <T>
      * @return

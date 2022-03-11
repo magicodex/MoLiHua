@@ -1,6 +1,7 @@
 package jasmine.demo.service;
 
 import jasmine.core.util.QErrorUtil;
+import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.lock.annotation.DistributedLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,26 @@ public class SampleService {
         } catch (InterruptedException e) {
             throw QErrorUtil.sneakyError(e);
         }
+    }
+
+    /**
+     * 读取缓存
+     *
+     * @param name
+     * @return
+     */
+    public String getFromCache(String name) {
+        return CacheUtil.get("sample", name, String.class);
+    }
+
+    /**
+     * 添加缓存
+     *
+     * @param name
+     * @param value
+     */
+    public void setToCache(String name, String value) {
+        CacheUtil.set("sample", name, value);
     }
 
 }

@@ -41,7 +41,7 @@ public class RedisCacheService implements CacheService {
 
     @Override
     public <T> T get(String category, Object key, Class<T> type) {
-        return get(category, key, null);
+        return get(category, key, type, null);
     }
 
     @Override
