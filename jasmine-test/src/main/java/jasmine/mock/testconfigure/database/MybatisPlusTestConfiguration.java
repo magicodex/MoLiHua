@@ -7,6 +7,9 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoProvider;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoTypeHandler;
+import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
@@ -22,8 +25,14 @@ import javax.sql.DataSource;
  */
 @Configuration
 public class MybatisPlusTestConfiguration {
-    @Value("${jasmine.tenant.enabled:false}")
+    @Value("${jasmine.data.tenant.enabled:false}")
     private Boolean tenantEnabled;
+
+    @Value("${jasmine.data.crypto.password:}")
+    private String cryptoSecret;
+
+    @Value("${jasmine.data.crypto.salt:}")
+    private String cryptoSalt;
 
     @Bean
     public MybatisSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
@@ -42,6 +51,15 @@ public class MybatisPlusTestConfiguration {
         factoryBean.setGlobalConfig(globalConfig);
 
         return factoryBean;
+    }
+
+    @Bean
+    public CryptoProvider cryptoProvider() {
+        SymmetricCryptoProvider provider = new SymmetricCryptoProvider(cryptoSecret, cryptoSalt);
+        // 初始加密的类型处理器
+        CryptoTypeHandler.setCryptoProvider(provider);
+
+        return provider;
     }
 
     @Bean

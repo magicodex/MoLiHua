@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoProvider;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoTypeHandler;
+import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
@@ -18,6 +21,19 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(MybatisPlusProperties.class)
 @Configuration
 public class MybatisPlusAutoConfiguration {
+
+    @Bean
+    public CryptoProvider cryptoProvider(MybatisPlusProperties mybatisPlusProperties) {
+        MybatisPlusProperties.Crypto crypto = mybatisPlusProperties.getCrypto();
+        String password = crypto.getPassword();
+        String salt = crypto.getSalt();
+        SymmetricCryptoProvider provider = new SymmetricCryptoProvider(password, salt);
+
+        // 初始加密的类型处理器
+        CryptoTypeHandler.setCryptoProvider(provider);
+
+        return provider;
+    }
 
     @Bean
     public DefaultTenantLineHandler tenantLineHandler() {
