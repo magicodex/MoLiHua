@@ -2,7 +2,7 @@ package jasmine.framework.common.util;
 
 import cn.hutool.core.lang.Pair;
 import jasmine.core.util.QStringUtil;
-import jasmine.framework.testdependency.Example1;
+import jasmine.framework.testdependency.Example3;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,7 +45,7 @@ public class SimpleConvertUtilTest {
         {
             String jsonText = "{\"attribute1\":\"value1\"}";
             byte[] bytes = QStringUtil.bytes(jsonText);
-            Example1 actual = SimpleConvertUtil.deserialize(bytes, Example1.class);
+            Example3 actual = SimpleConvertUtil.deserialize(bytes, Example3.class);
 
             Assert.assertNotNull(actual);
             Assert.assertEquals("value1", actual.getAttribute1());

@@ -1,6 +1,6 @@
-package jasmine.test.util;
+package jasmine.framework.common.util;
 
-import jasmine.test.testdependency.Example1;
+import jasmine.framework.testdependency.Example1;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,5 +1,6 @@
-package jasmine.test.csv;
+package jasmine.framework.common.csv;
 
+import jasmine.framework.common.csv.CsvToObject;
 import org.junit.Assert;
 import org.junit.Test;
 

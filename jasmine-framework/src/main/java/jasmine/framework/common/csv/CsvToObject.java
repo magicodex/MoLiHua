@@ -1,4 +1,4 @@
-package jasmine.test.csv;
+package jasmine.framework.common.csv;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
