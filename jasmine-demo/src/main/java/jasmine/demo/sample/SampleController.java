@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author mh.z
  */
@@ -80,6 +84,19 @@ public class SampleController {
         String message = QI18nUtil.getMessage(messageKey);
 
         return ResponseEntity.ok(WebResult.success(message));
+    }
+
+    @ApiOperation("设置语言环境")
+    @RequestMapping(value = "/api/sample/i18n/set/{langCode}",
+            method = {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<WebResult<String>> i18n2(HttpServletRequest request, HttpServletResponse response,
+                                                   @PathVariable("langCode") String langCode) {
+        Cookie cookie = new Cookie("LANG", langCode);
+        cookie.setMaxAge(3600 * 24 * 365);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        return ResponseEntity.ok(WebResult.success());
     }
 
 }

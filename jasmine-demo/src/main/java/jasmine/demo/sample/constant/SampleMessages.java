@@ -1,4 +1,4 @@
-package jasmine.demo.sample;
+package jasmine.demo.sample.constant;
 
 import jasmine.core.i18n.DeclareI18N;
 
