@@ -6,10 +6,10 @@ package jasmine.security.rbac.dto;
 public class SecResourceBaseInfoDTO {
     /** 资源ID */
     private Long resourceId;
-    /** 访问策略 */
-    private String accessPolicy;
-    /** 冻结标志 */
-    private Boolean frozenFlag;
+    /** 访问方式 */
+    private String accessMethod;
+    /** 资源路径 */
+    private String resourcePath;
 
     public Long getResourceId() {
         return resourceId;
@@ -19,20 +19,20 @@ public class SecResourceBaseInfoDTO {
         this.resourceId = resourceId;
     }
 
-    public String getAccessPolicy() {
-        return accessPolicy;
+    public String getAccessMethod() {
+        return accessMethod;
     }
 
-    public void setAccessPolicy(String accessPolicy) {
-        this.accessPolicy = accessPolicy;
+    public void setAccessMethod(String accessMethod) {
+        this.accessMethod = accessMethod;
     }
 
-    public Boolean getFrozenFlag() {
-        return frozenFlag;
+    public String getResourcePath() {
+        return resourcePath;
     }
 
-    public void setFrozenFlag(Boolean frozenFlag) {
-        this.frozenFlag = frozenFlag;
+    public void setResourcePath(String resourcePath) {
+        this.resourcePath = resourcePath;
     }
 
 }
