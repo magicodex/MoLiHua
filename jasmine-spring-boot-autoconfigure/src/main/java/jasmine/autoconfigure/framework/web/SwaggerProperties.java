@@ -9,10 +9,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class SwaggerProperties {
     /** 版本 */
     private String version = "";
-
     /** 标题 */
     private String title = "";
-
     /** 扫描路径 */
     private String basePackage = "";
 

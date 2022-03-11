@@ -2,12 +2,12 @@ package jasmine.autoconfigure.framework;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
-import jasmine.framework.context.ContextHandlerFacade;
 import jasmine.core.util.QSpringUtil;
+import jasmine.framework.context.ContextHandlerFacade;
+import jasmine.framework.context.ContextHandlerFacadeBean;
 import jasmine.framework.context.ContextInitAndClearHelper;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
-import jasmine.framework.context.ContextHandlerFacadeBean;
 import jasmine.framework.context.handler.FrameworkContextHandler;
 import jasmine.framework.context.handler.web.RequestContextHandler;
 import jasmine.security.subject.UserSubjectDetailsService;
@@ -52,6 +52,11 @@ public class JasmineFrameworkAutoConfiguration {
     }
 
     @Bean
+    public FrameworkContextHandler frameworkContextHandler() {
+        return new FrameworkContextHandler();
+    }
+
+    @Bean
     public ContextHandlerFacade contextHandlerFacade() {
         ContextHandlerFacade handlerFacade = new ContextHandlerFacadeBean();
 
@@ -59,11 +64,6 @@ public class JasmineFrameworkAutoConfiguration {
         ContextInitAndClearHelper.initUtil(handlerFacade);
 
         return handlerFacade;
-    }
-
-    @Bean
-    public FrameworkContextHandler frameworkContextHandler() {
-        return new FrameworkContextHandler();
     }
 
 }

@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "jasmine.security")
 public class JasmineSecurityProperties {
+    /** RBAC相关配置 */
     private Rbac rbac = new Rbac();
 
     public Rbac getRbac() {
@@ -18,10 +19,10 @@ public class JasmineSecurityProperties {
     }
 
     /**
-     *
+     * RBAC相关配置
      */
     public static class Rbac {
-        /** 是否启用 */
+        /** 是否启用RBAC访问控制 */
         private Boolean enabled = false;
 
         public Boolean getEnabled() {

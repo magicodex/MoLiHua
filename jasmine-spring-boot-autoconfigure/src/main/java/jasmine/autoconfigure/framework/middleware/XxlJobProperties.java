@@ -8,9 +8,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "xxl.job")
 public class XxlJobProperties {
     private String accessToken;
-
     private Admin admin = new Admin();
-
+    /** 执行器相关配置 */
     private Executor executor = new Executor();
 
     public String getAccessToken() {
@@ -53,7 +52,7 @@ public class XxlJobProperties {
     }
 
     /**
-     *
+     * 执行器相关配置
      */
     public static class Executor {
         private String appName;

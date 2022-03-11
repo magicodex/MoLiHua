@@ -27,6 +27,11 @@ public class XxlJobAutoConfiguration implements SmartInitializingSingleton, Appl
     private Logger logger = LoggerFactory.getLogger(XxlJobAutoConfiguration.class);
     private static ApplicationContext applicationContext;
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        XxlJobAutoConfiguration.applicationContext = applicationContext;
+    }
+
     @Bean
     public XxlJobSpringExecutor xxlJobExecutor(XxlJobProperties xxlJobProperties) {
         logger.info(">>>>>>>>>>> xxl-job config init.");
@@ -43,11 +48,6 @@ public class XxlJobAutoConfiguration implements SmartInitializingSingleton, Appl
         xxlJobSpringExecutor.setLogRetentionDays(executor.getLogRetentionDays());
 
         return xxlJobSpringExecutor;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        XxlJobAutoConfiguration.applicationContext = applicationContext;
     }
 
     @Override

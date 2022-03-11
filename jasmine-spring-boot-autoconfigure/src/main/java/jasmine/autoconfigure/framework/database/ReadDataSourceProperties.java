@@ -7,9 +7,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "spring.datasource.read")
 public class ReadDataSourceProperties {
-
+    /** 数据库连接URL */
     private String url;
+    /** 用户名 */
     private String username;
+    /** 密码 */
     private String password;
 
     public String getUrl() {

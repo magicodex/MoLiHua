@@ -21,8 +21,8 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitAutoConfiguration {
 
     @Bean
-    public ReceiveMessageService receiveMessageService(RuntimeProvider runtimeProvider,
-                                                       MessageQueueProperties messageQueueProperties,
+    public ReceiveMessageService receiveMessageService(MessageQueueProperties messageQueueProperties,
+                                                       RuntimeProvider runtimeProvider,
                                                        @Autowired(required = false) ReceiveInterceptor interceptor) {
         Boolean receiveEnabled = messageQueueProperties.getConsumer().getEnabled();
 
@@ -34,8 +34,8 @@ public class RabbitAutoConfiguration {
     }
 
     @Bean
-    public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate,
-                                                 MessageQueueProperties messageQueueProperties,
+    public SendMessageService sendMessageService(MessageQueueProperties messageQueueProperties,
+                                                 RabbitTemplate rabbitTemplate,
                                                  @Autowired(required = false) SendInterceptor interceptor) {
         Boolean sendEnabled = messageQueueProperties.getPublisher().getEnabled();
 

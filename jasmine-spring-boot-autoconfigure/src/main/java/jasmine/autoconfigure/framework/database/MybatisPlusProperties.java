@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "jasmine.data")
 public class MybatisPlusProperties {
+    /** 租户相关配置 */
     private Tenant tenant = new Tenant();
 
     public Tenant getTenant() {
@@ -21,7 +22,7 @@ public class MybatisPlusProperties {
      *
      */
     public static class Tenant {
-        /** 是否启用 */
+        /** 是否启用租户拦截器 */
         private Boolean enabled = false;
 
         public Boolean getEnabled() {

@@ -7,10 +7,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "jasmine.message-queue")
 public class MessageQueueProperties {
-    /** 消费者 */
+    /** 消费者相关配置 */
     private Consumer consumer = new Consumer();
-
-    /** 发布者 */
+    /** 发布者相关配置 */
     private Publisher publisher = new Publisher();
 
     public Consumer getConsumer() {
@@ -30,10 +29,10 @@ public class MessageQueueProperties {
     }
 
     /**
-     *
+     * 消费者相关配置
      */
     public static class Consumer {
-        /** 是否启用 */
+        /** 是否消费消息队列的消息 */
         private Boolean enabled = false;
 
         public Boolean getEnabled() {
@@ -46,10 +45,10 @@ public class MessageQueueProperties {
     }
 
     /**
-     *
+     * 发布者相关配置
      */
     public static class Publisher {
-        /** 是否启用 */
+        /** 是否发布消息到消息队列 */
         private Boolean enabled = false;
 
         public Boolean getEnabled() {

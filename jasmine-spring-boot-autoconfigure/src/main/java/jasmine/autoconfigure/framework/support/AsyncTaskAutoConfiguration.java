@@ -22,10 +22,15 @@ import java.util.concurrent.Executor;
 @AutoConfigureBefore(TaskExecutionAutoConfiguration.class)
 @Configuration
 public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
-    private ContextHandlerFacade handlerFacade;
+    private ContextHandlerFacade contextHandlerFacade;
 
-    public AsyncTaskAutoConfiguration(ContextHandlerFacade handlerFacade) {
-        this.handlerFacade = handlerFacade;
+    public AsyncTaskAutoConfiguration(ContextHandlerFacade contextHandlerFacade) {
+        this.contextHandlerFacade = contextHandlerFacade;
+    }
+
+    @Bean
+    public TaskDecorator taskDecorator() {
+        return new AsyncTaskDecorator(contextHandlerFacade);
     }
 
     @Bean(AsyncAnnotationBeanPostProcessor.DEFAULT_TASK_EXECUTOR_BEAN_NAME)
@@ -44,11 +49,6 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
         AsyncTaskUtil.initUtil(provider);
 
         return provider;
-    }
-
-    @Bean
-    public TaskDecorator taskDecorator() {
-        return new AsyncTaskDecorator(handlerFacade);
     }
 
 }
