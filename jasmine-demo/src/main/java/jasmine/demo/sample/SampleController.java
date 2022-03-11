@@ -39,7 +39,7 @@ public class SampleController {
 
     @ApiOperation("锁定指定时间")
     @RequestMapping(value = "/api/sample/lock/{lockName}/{lockTime}",
-            method = {RequestMethod.GET, RequestMethod.POST})
+            method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> lock1(@PathVariable("lockName") String lockName,
                                                    @PathVariable("lockTime") Long lockTime) {
         logger.info("lock(" + lockName + ") locking...");
@@ -52,7 +52,7 @@ public class SampleController {
 
     @ApiOperation("读取缓存")
     @RequestMapping(value = "/api/sample/cache/get/{name}",
-            method = {RequestMethod.GET, RequestMethod.POST})
+            method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> cache2(@PathVariable("name") String name) {
         // 获取缓存
         String value = CacheUtil.get("sample", name, String.class);
@@ -62,7 +62,7 @@ public class SampleController {
 
     @ApiOperation("设置数据")
     @RequestMapping(value = "/api/sample/cache/set/{name}/{value}",
-            method = {RequestMethod.GET, RequestMethod.POST})
+            method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> cache1(@PathVariable("name") String name,
                                                     @PathVariable("value") String value) {
         // 设置缓存
@@ -73,7 +73,7 @@ public class SampleController {
 
     @ApiOperation("发送消息")
     @RequestMapping(value = "/api/sample/mq/send/{message}",
-            method = {RequestMethod.GET, RequestMethod.POST})
+            method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> mq1(@PathVariable("message") String message) {
         // 发送消息
         sendMessageService.send("sample", null, message);
@@ -83,7 +83,7 @@ public class SampleController {
 
     @ApiOperation("获取多语言")
     @RequestMapping(value = "/api/sample/i18n/get/{messageKey}",
-            method = {RequestMethod.GET, RequestMethod.POST})
+            method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> i18n1(@PathVariable("messageKey") String messageKey) {
         String message = QI18nUtil.getMessage(messageKey);
 
@@ -92,7 +92,7 @@ public class SampleController {
 
     @ApiOperation("设置语言环境")
     @RequestMapping(value = "/api/sample/i18n/set/{langCode}",
-            method = {RequestMethod.GET, RequestMethod.POST})
+            method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> i18n2(HttpServletRequest request, HttpServletResponse response,
                                                    @PathVariable("langCode") String langCode) {
         Cookie cookie = new Cookie("LANG", langCode);
@@ -105,7 +105,7 @@ public class SampleController {
 
     @ApiOperation("校验参数")
     @RequestMapping(value = "/api/sample/validation/{param1}",
-            method = {RequestMethod.GET, RequestMethod.POST})
+            method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> validation1(@ModelAttribute Sample1DTO param, Errors errors) {
         ValidationHelper validationHelper = ValidationHelper.create(errors);
         validationHelper.rejectIfEmpty("param1");

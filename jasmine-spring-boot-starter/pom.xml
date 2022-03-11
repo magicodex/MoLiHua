@@ -57,13 +57,7 @@
         <!-- API文档 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <scope>compile</scope>
+            <artifactId>springfox-boot-starter</artifactId>
         </dependency>
 
         <!-- Liquibase数据库版本管理工具 -->

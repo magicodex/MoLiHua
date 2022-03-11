@@ -71,7 +71,7 @@ spring.datasource.read.password=密码
 | :----: | :---- | :---- |
 | Spring Boot | 2.5.4 | WEB框架 |
 | Spring Security | 5.5.2 | 安全框架 |
-| Swagger | 2.10.5 | API文档 |
+| Swagger | 3.0.0 | API文档 |
 | SLF4J | 1.7.32 | 日志库 |
 | Jackson | 2.12.4 | JSON库 |
 | Mybatis-Plus | 3.4.3.4 | 持久层框架 |

@@ -20,7 +20,7 @@
         <spring-data-redis.version>2.5.4</spring-data-redis.version>
         <spring-rabbit.version>2.3.10</spring-rabbit.version>
         <spring-security-web.version>5.5.2</spring-security-web.version>
-        <springfox-swagger.version>2.10.5</springfox-swagger.version>
+        <springfox-swagger.version>3.0.0</springfox-swagger.version>
 
         <!--- 工具类库 -->
         <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
@@ -104,6 +104,11 @@
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox-swagger.version}</version>
             </dependency>
 
