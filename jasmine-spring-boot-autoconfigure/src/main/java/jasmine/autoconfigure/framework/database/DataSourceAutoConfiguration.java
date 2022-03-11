@@ -5,7 +5,6 @@ import jasmine.framework.persistence.annotation.ReadOnlyAspectHandler;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import jasmine.framework.persistence.datasource.impl.MultipleDataSource;
 import jasmine.framework.persistence.datasource.impl.ReadWriteDataSourceDecideFacade;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -32,29 +31,13 @@ import java.util.Map;
 public class DataSourceAutoConfiguration {
 
     @Bean
-    public ReadOnlyAspectHandler readOnlyAspectHandler(
-            @Autowired(required = false) DataSourceDecideFacade dataSourceDecideFacade) {
-        return new ReadOnlyAspectHandler(dataSourceDecideFacade);
-    }
-
-    @Bean
     public DataSourceDecideFacade dataSourceDecideFacade() {
         return new ReadWriteDataSourceDecideFacade();
     }
 
-    @Primary
     @Bean
-    public DataSource dataSource(DataSourceProperties properties,
-                                 ReadDataSourceProperties readProperties) {
-        DataSource mainDataSource = mainDataSource(properties);
-        DataSource readDataSource = readDataSource(properties, readProperties);
-
-        Map<Object, Object> dataSourceMap = Map.of("master", mainDataSource,
-                "read", readDataSource);
-        MultipleDataSource multipleDataSource = new MultipleDataSource(dataSourceMap);
-        multipleDataSource.setDefaultTargetDataSource(mainDataSource);
-
-        return multipleDataSource;
+    public ReadOnlyAspectHandler readOnlyAspectHandler(DataSourceDecideFacade dataSourceDecideFacade) {
+        return new ReadOnlyAspectHandler(dataSourceDecideFacade);
     }
 
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
@@ -87,5 +70,16 @@ public class DataSourceAutoConfiguration {
         return dataSource;
     }
 
+    @Primary
+    @Bean
+    public DataSource dataSource(HikariDataSource mainDataSource,
+                                 HikariDataSource readDataSource) {
+        Map<Object, Object> dataSourceMap = Map.of("master", mainDataSource,
+                "read", readDataSource);
+        MultipleDataSource multipleDataSource = new MultipleDataSource(dataSourceMap);
+        multipleDataSource.setDefaultTargetDataSource(mainDataSource);
+
+        return multipleDataSource;
+    }
 
 }

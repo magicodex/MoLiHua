@@ -2,6 +2,7 @@ package jasmine.autoconfigure.framework.database;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import jasmine.core.context.SubjectProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
@@ -20,13 +21,21 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisPlusAutoConfiguration {
 
     @Bean
+    public DefaultTenantLineHandler tenantLineHandler() {
+        return new DefaultTenantLineHandler();
+    }
+
+    @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor(MybatisPlusProperties mybatisPlusProperties,
-                                                         SubjectProvider subjectProvider) {
+                                                         SubjectProvider subjectProvider,
+                                                         TenantLineHandler tenantLineHandler) {
+        Boolean tenantEnabled = mybatisPlusProperties.getTenant().getEnabled();
+
         MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder();
         builder.setSubjectProvider(subjectProvider);
-        Boolean tenantEnabled = mybatisPlusProperties.getTenant().getEnabled();
+        // 是否启用租户拦截器
         builder.setTenantEnabled(Boolean.TRUE.equals(tenantEnabled));
-        builder.setTenantLineHandler(tenantLineHandler());
+        builder.setTenantLineHandler(tenantLineHandler);
 
         return builder.build();
     }
@@ -41,11 +50,6 @@ public class MybatisPlusAutoConfiguration {
         IgnoreTableStrategy ignoreTableStrategy = tenantLineHandler();
 
         return new TenantConfigProcessorScanBean(ignoreTableStrategy);
-    }
-
-    @Bean
-    public DefaultTenantLineHandler tenantLineHandler() {
-        return new DefaultTenantLineHandler();
     }
 
 }

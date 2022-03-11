@@ -24,8 +24,10 @@ public class RabbitAutoConfiguration {
     public ReceiveMessageService receiveMessageService(RuntimeProvider runtimeProvider,
                                                        MessageQueueProperties messageQueueProperties,
                                                        @Autowired(required = false) ReceiveInterceptor interceptor) {
+        Boolean receiveEnabled = messageQueueProperties.getConsumer().getEnabled();
+
         DefaultReceiveMessageService service = new DefaultReceiveMessageService(runtimeProvider);
-        service.setEnabled(Boolean.TRUE.equals(messageQueueProperties.getConsumer().getEnabled()));
+        service.setEnabled(Boolean.TRUE.equals(receiveEnabled));
         service.setInterceptor(interceptor);
 
         return service;
@@ -35,8 +37,10 @@ public class RabbitAutoConfiguration {
     public SendMessageService sendMessageService(RabbitTemplate rabbitTemplate,
                                                  MessageQueueProperties messageQueueProperties,
                                                  @Autowired(required = false) SendInterceptor interceptor) {
+        Boolean sendEnabled = messageQueueProperties.getPublisher().getEnabled();
+
         DefaultSendMessageServiceBean service = new DefaultSendMessageServiceBean(rabbitTemplate);
-        service.setEnabled(Boolean.TRUE.equals(messageQueueProperties.getPublisher().getEnabled()));
+        service.setEnabled(Boolean.TRUE.equals(sendEnabled));
         service.setInterceptor(interceptor);
 
         return service;
