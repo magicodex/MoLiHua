@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,7 +17,7 @@ public interface I18nEntityFacade {
      * @param entities
      * @return
      */
-    <T extends BaseEntity> int insertI18n(Collection<T> entities);
+    <T extends BaseI18nEntity> int insertI18n(Collection<T> entities);
 
     /**
      * 修改多语言
@@ -26,7 +26,7 @@ public interface I18nEntityFacade {
      * @param <T>
      * @return
      */
-    <T extends BaseEntity> List<T> updateI18nThenFillEntity(Collection<T> entities);
+    <T extends BaseI18nEntity> List<T> updateI18nThenFillEntity(Collection<T> entities);
 
     /**
      * 关联多语言
@@ -35,7 +35,7 @@ public interface I18nEntityFacade {
      * @param <T>
      * @return
      */
-    <T extends BaseEntity> List<T> populateI18n(Collection<T> entities);
+    <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities);
 
     /**
      * 删除多语言

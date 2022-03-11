@@ -9,6 +9,11 @@ import org.springframework.context.ApplicationContextAware;
 import java.util.Map;
 
 /**
+ * <p>
+ * 支持 TenantConfigProcessor 接口，在所有 bean 创建完之后，
+ * 调用实现该接口的所有 bean 自定义租户配置。
+ * </p>
+ *
  * @author mh.z
  */
 public class TenantConfigProcessorScanBean implements ApplicationContextAware, SmartInitializingSingleton {

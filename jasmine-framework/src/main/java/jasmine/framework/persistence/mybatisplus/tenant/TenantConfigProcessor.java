@@ -1,6 +1,10 @@
 package jasmine.framework.persistence.mybatisplus.tenant;
 
 /**
+ * <p>
+ * 租户配置处理器。
+ * </p>
+ *
  * @author mh.z
  */
 public interface TenantConfigProcessor {

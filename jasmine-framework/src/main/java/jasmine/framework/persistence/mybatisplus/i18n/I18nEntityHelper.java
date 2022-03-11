@@ -2,7 +2,7 @@ package jasmine.framework.persistence.mybatisplus.i18n;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import jasmine.core.util.QCollectionUtil;
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -25,7 +25,7 @@ public class I18nEntityHelper {
      * @param entity
      * @return
      */
-    public static <T extends BaseEntity> int insertI18n(T entity) {
+    public static <T extends BaseI18nEntity> int insertI18n(T entity) {
         return i18nFacade.insertI18n(Collections.singletonList(entity));
     }
 
@@ -36,7 +36,7 @@ public class I18nEntityHelper {
      * @param <T>
      * @return
      */
-    public static <T extends BaseEntity> T updateI18nThenFillEntity(T entity) {
+    public static <T extends BaseI18nEntity> T updateI18nThenFillEntity(T entity) {
         List<T> entityList = i18nFacade.updateI18nThenFillEntity(Collections.singletonList(entity));
 
         return QCollectionUtil.getFirst(entityList);
@@ -49,7 +49,7 @@ public class I18nEntityHelper {
      * @param <T>
      * @return
      */
-    public static <T extends BaseEntity> T populateI18n(T entity) {
+    public static <T extends BaseI18nEntity> T populateI18n(T entity) {
         List<T> entityList = i18nFacade.populateI18n(Collections.singletonList(entity));
 
         return QCollectionUtil.getFirst(entityList);
@@ -62,7 +62,7 @@ public class I18nEntityHelper {
      * @param <T>
      * @return
      */
-    public static <T extends BaseEntity> List<T> populateI18n(Collection<T> entities) {
+    public static <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities) {
         return i18nFacade.populateI18n(entities);
     }
 
@@ -73,7 +73,7 @@ public class I18nEntityHelper {
      * @param <T>
      * @return
      */
-    public static <T extends BaseEntity> IPage<T> populateI18n(IPage<T> page) {
+    public static <T extends BaseI18nEntity> IPage<T> populateI18n(IPage<T> page) {
         List<T> recordList = page.getRecords();
 
         if (QCollectionUtil.isNotEmpty(recordList)) {
