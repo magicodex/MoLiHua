@@ -84,20 +84,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <resources>
-            <!-- 保留源码目录下的XML文件 -->
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
-
 </project>
