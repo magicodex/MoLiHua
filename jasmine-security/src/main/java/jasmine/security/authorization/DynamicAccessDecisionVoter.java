@@ -4,6 +4,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.FilterInvocation;
 
@@ -33,7 +34,7 @@ public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInv
 
         // 若未开启 RBAC 访问控制则根据是否认证决定是否允许访问
         if (!Boolean.TRUE.equals(rbacEnabled)) {
-            if (authentication.isAuthenticated()) {
+            if (!(authentication instanceof AnonymousAuthenticationToken)) {
                 return AccessDecisionVoter.ACCESS_GRANTED;
             }
 
