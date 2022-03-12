@@ -71,7 +71,7 @@ public class SampleController {
         return ResponseEntity.ok(WebResult.success(value));
     }
 
-    @ApiOperation("设置数据")
+    @ApiOperation("添加缓存")
     @RequestMapping(value = "/api/sample/cache/set/{name}/{value}",
             method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> cache1(@ApiParam("缓存key") @PathVariable("name") String name,
@@ -127,7 +127,7 @@ public class SampleController {
     //
 
     @ApiOperation("校验参数")
-    @RequestMapping(value = "/api/sample/validation/{param1}",
+    @RequestMapping(value = "/api/sample/validation/{param1}/{param2}",
             method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> validation1(@ModelAttribute Sample1DTO param, @ApiIgnore Errors errors) {
         ValidationHelper validationHelper = ValidationHelper.create(errors);
