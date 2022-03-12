@@ -39,7 +39,7 @@ public class AsyncExecutorTaskProvider implements AsyncTaskProvider {
     public <T> List<T> asyncAndGet(Collection<Callable> tasks) {
         QCheckUtil.notNull(tasks, "tasks null");
         QCheckUtil.notNullProp(executor, "executor null");
-        List<T> resultList = new ArrayList<>();
+        List<T> resultList = new ArrayList<>(tasks.size());
 
         // 开线程执行
         CompletionService<T> completionService = new ExecutorCompletionService<>(executor);

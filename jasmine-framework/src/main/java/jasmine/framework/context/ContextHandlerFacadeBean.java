@@ -2,6 +2,7 @@ package jasmine.framework.context;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.QNewUtil;
 import jasmine.framework.context.handler.ContextHandler;
 import jasmine.framework.context.handler.ContextSnapshot;
 import org.springframework.beans.BeansException;
@@ -23,7 +24,7 @@ public class ContextHandlerFacadeBean implements ContextHandlerFacade,
     private static ApplicationContext applicationContext;
 
     public ContextHandlerFacadeBean() {
-        this.handlers = new ArrayList<>();
+        this.handlers = QNewUtil.list();
     }
 
     @Override

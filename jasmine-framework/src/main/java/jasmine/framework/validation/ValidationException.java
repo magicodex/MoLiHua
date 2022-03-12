@@ -12,7 +12,7 @@ public class ValidationException extends ApplicationException {
     private Collection<ObjectError> errors;
 
     /** 默认错误代码 */
-    private static final String DEFAULT_ERROR_CODE = "VALIDATE_FAILED";
+    public static final String DEFAULT_ERROR_CODE = "VALIDATE_FAILED";
 
     public ValidationException(Collection<ObjectError> errors) {
         super();

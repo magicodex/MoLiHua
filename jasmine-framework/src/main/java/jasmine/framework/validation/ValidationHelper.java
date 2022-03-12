@@ -1,52 +1,102 @@
 package jasmine.framework.validation;
 
+import jasmine.core.util.QCheckUtil;
+import jasmine.framework.web.entity.WebResult;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.ObjectError;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
- * <p>
- * 校验帮助类。
- * </p>
- *
  * @author mh.z
  */
 public class ValidationHelper {
+    private ValidationContext context;
     private Errors errors;
 
-    protected ValidationHelper(Errors errors) {
+    public ValidationHelper(ValidationContext context, Errors errors) {
+        this.context = context;
         this.errors = errors;
     }
 
+    public static ValidationHelper create() {
+        ValidationContext context = new ValidationContext();
+        ValidationHelper helper = new ValidationHelper(context, null);
+
+        return helper;
+    }
+
     public static ValidationHelper create(Errors errors) {
-        return new ValidationHelper(errors);
-    }
+        QCheckUtil.notNull(errors, "errors null");
+        ValidationContext context = new ValidationContext();
+        ValidationHelper helper = new ValidationHelper(context, errors);
 
-    public Errors getErrors() {
-        return errors;
-    }
-
-    public boolean hasErrors() {
-        return errors.hasErrors();
+        return helper;
     }
 
     /**
-     * 不能为空
+     * 返回要校验的字段
      *
-     * @param field
+     * @param name
+     * @return
      */
-    public void rejectIfEmpty(String field) {
-        ValidationUtils.rejectIfEmpty(errors, field,
-                "javax.validation.constraints.NotEmpty.message");
+    public ValidationField field(String name) {
+        ValidationField field = null;
+
+        if (errors != null) {
+            field = new ValidationField(this, errors, name);
+        } else {
+            field = new ValidationField(this, context, name);
+        }
+
+        return field;
     }
 
     /**
-     * 不能为空
+     * 返回要校验的字段
      *
-     * @param field
+     * @param name
+     * @param value
+     * @return
      */
-    public void rejectIfBlank(String field) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, field,
-                "javax.validation.constraints.NotBlank.message");
+    public ValidationField field(String name, Object value) {
+        context.setParameter(name, value);
+        ValidationField field = new ValidationField(this, context, name);
+
+        return field;
+    }
+
+    /**
+     * 返回所有的错误
+     *
+     * @return
+     */
+    public Collection<ObjectError> getAllErrors() {
+        List<ObjectError> errorList = new ArrayList<>();
+        errorList.addAll(context.getAllErrors());
+
+        if (errors != null) {
+            errorList.addAll(errors.getAllErrors());
+        }
+
+        return errorList;
+    }
+
+    /**
+     * 转换成 ResponseEntity 对象
+     *
+     * @param <T>
+     * @return
+     */
+    public <T> ResponseEntity<WebResult<T>> toEntity() {
+        WebResult<T> result = WebResult.error(ValidationException.DEFAULT_ERROR_CODE, "validate failed");
+        Collection<ObjectError> allErrors = getAllErrors();
+        result.setErrorDetail(ValidationException.buildErrorDetail(allErrors));
+
+        return result.toEntity();
     }
 
 }
