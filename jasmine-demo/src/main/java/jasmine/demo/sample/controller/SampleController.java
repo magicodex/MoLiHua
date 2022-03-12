@@ -131,11 +131,11 @@ public class SampleController {
             method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> validation1(@ModelAttribute Sample1DTO param, @ApiIgnore Errors errors) {
         ValidationHelper validationHelper = ValidationHelper.create(errors);
-        validationHelper.rejectIfEmpty("param1");
-        validationHelper.rejectIfEmpty("param2");
+        validationHelper.field("param1").rejectIfBlank();
+        validationHelper.field("param2").rejectIfBlank();
 
         if (validationHelper.hasErrors()) {
-            return ResponseEntity.ok(WebResult.error(null, errors.toString()));
+            return validationHelper.toEntity();
         }
 
         return ResponseEntity.ok(WebResult.success());

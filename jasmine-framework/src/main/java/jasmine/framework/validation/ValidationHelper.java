@@ -70,6 +70,23 @@ public class ValidationHelper {
     }
 
     /**
+     * 判断是否有错误
+     *
+     * @return
+     */
+    public boolean hasErrors() {
+        if (context.hasErrors()) {
+            return true;
+        }
+
+        if (errors != null) {
+            return errors.hasErrors();
+        }
+
+        return false;
+    }
+
+    /**
      * 返回所有的错误
      *
      * @return

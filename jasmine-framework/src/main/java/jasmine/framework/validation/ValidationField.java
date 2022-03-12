@@ -29,11 +29,10 @@ public class ValidationField {
     /**
      * 不能为空字符串
      *
-     * @param field
      * @return
      */
-    public ValidationField rejectIfEmpty(String field) {
-        ValidationUtils.rejectIfEmpty(errors, field,
+    public ValidationField rejectIfEmpty() {
+        ValidationUtils.rejectIfEmpty(errors, fieldName,
                 "javax.validation.constraints.NotEmpty.message");
 
         return this;
@@ -42,11 +41,10 @@ public class ValidationField {
     /**
      * 不能为空字符串或空白符
      *
-     * @param field
      * @return
      */
-    public ValidationField rejectIfBlank(String field) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, field,
+    public ValidationField rejectIfBlank() {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, fieldName,
                 "javax.validation.constraints.NotBlank.message");
 
         return this;
