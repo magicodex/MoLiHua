@@ -3,12 +3,15 @@ package jasmine.demo.sample.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import jasmine.core.util.QDateUtil;
 import jasmine.core.util.QI18nUtil;
 import jasmine.demo.sample.dto.Sample1DTO;
 import jasmine.demo.sample.service.SampleService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.framework.validation.ValidationHelper;
+import jasmine.framework.web.annotation.EndDate;
+import jasmine.framework.web.annotation.StartDate;
 import jasmine.framework.web.entity.WebResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.ZonedDateTime;
 
 /**
  * @author mh.z
@@ -139,6 +143,22 @@ public class SampleController {
         }
 
         return ResponseEntity.ok(WebResult.success());
+    }
+
+    //
+    // 转换类型
+    //
+
+    @ApiOperation("转换类型")
+    @RequestMapping(value = "/api/sample/conversion/{startDate}/{endDate}",
+            method = {RequestMethod.GET})
+    public ResponseEntity<WebResult<String>> conversion1(@ApiParam("开始日期") @PathVariable("startDate") @StartDate ZonedDateTime startDate,
+                                                         @ApiParam("结束日期") @PathVariable("endDate") @EndDate ZonedDateTime endDate) {
+        String startDateStr = QDateUtil.formatYearSecond(startDate);
+        String endDateStr = QDateUtil.formatYearSecond(endDate);
+
+        WebResult<String> result = WebResult.success(startDateStr + "~" + endDateStr);
+        return result.toEntity();
     }
 
 }
