@@ -1,4 +1,4 @@
-package jasmine.demo.sample;
+package jasmine.demo.sample.job;
 
 import jasmine.framework.job.JobCurrent;
 import jasmine.framework.job.JobExecutor;

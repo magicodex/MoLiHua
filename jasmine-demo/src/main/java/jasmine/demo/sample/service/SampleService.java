@@ -1,4 +1,4 @@
-package jasmine.demo.sample;
+package jasmine.demo.sample.service;
 
 import jasmine.core.util.QErrorUtil;
 import jasmine.framework.lock.annotation.DistributedLock;

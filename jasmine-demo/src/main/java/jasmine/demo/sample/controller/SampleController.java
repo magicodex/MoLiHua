@@ -1,8 +1,9 @@
-package jasmine.demo.sample;
+package jasmine.demo.sample.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import jasmine.core.util.QI18nUtil;
+import jasmine.demo.sample.service.SampleService;
 import jasmine.demo.sample.dto.Sample1DTO;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.remote.mq.SendMessageService;

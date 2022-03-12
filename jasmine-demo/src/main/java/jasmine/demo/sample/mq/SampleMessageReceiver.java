@@ -1,4 +1,4 @@
-package jasmine.demo.sample;
+package jasmine.demo.sample.mq;
 
 import jasmine.framework.remote.mq.MessageReceiver;
 import org.slf4j.Logger;

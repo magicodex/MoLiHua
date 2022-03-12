@@ -25,9 +25,9 @@ public class ConsumerConfig {
     }
 
     @Bean
-    public MessageListenerContainer journalSyncConsumer(Queue journalSyncQueue) {
+    public MessageListenerContainer sampleConsumer(Queue sampleQueue) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
-        container.setQueues(journalSyncQueue);
+        container.setQueues(sampleQueue);
         container.setConcurrentConsumers(1);
 
         container.setMessageListener((message) -> {
