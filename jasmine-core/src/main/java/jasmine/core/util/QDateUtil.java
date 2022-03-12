@@ -17,6 +17,7 @@ import java.time.temporal.TemporalAccessor;
 public class QDateUtil {
     /** 精确到天的日期格式 */
     private static final DateTimeFormatter YEAR_DAY_FORMATTER_WITH_ZONE;
+    private static final DateTimeFormatter YEAR_DAY_FORMATTER;
     /** 精确到秒的日期格式 */
     private static final DateTimeFormatter YEAR_SECOND_FORMATTER_WITH_ZONE;
     private static final DateTimeFormatter YEAR_SECOND_FORMATTER;
@@ -26,6 +27,7 @@ public class QDateUtil {
                 .appendPattern("yyyy-MM-dd")
                 .appendOffsetId()
                 .toFormatter();
+        YEAR_DAY_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         YEAR_SECOND_FORMATTER_WITH_ZONE = new DateTimeFormatterBuilder()
                 .appendPattern("yyyy-MM-dd HH:mm:ss")
@@ -100,6 +102,20 @@ public class QDateUtil {
         }
 
         return YEAR_SECOND_FORMATTER.format(zonedDateTime);
+    }
+
+    /**
+     * 格式化日期成字符串，格式是yyyy-MM-dd
+     *
+     * @param zonedDateTime
+     * @return
+     */
+    public static String formatYearDay(@Nullable ZonedDateTime zonedDateTime) {
+        if (zonedDateTime == null) {
+            return null;
+        }
+
+        return YEAR_DAY_FORMATTER.format(zonedDateTime);
     }
 
 }
