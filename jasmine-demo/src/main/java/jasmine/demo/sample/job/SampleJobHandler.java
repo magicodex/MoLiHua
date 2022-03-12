@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
+ * <p>
+ * XXL-JOB需要配上任务 sampleJobHandler。
+ * </p>
+ *
  * @author mh.z
  */
 @Component

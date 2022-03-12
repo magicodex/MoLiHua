@@ -17,7 +17,7 @@ public class SampleService {
      * @param lockTime
      */
     @DistributedLock(category = "sample", key = "#lockName")
-    public void lock(String lockName, Long lockTime) {
+    public void lockThenSleep(String lockName, Long lockTime) {
         try {
             Thread.sleep(lockTime);
         } catch (InterruptedException e) {
