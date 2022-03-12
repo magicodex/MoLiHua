@@ -1,6 +1,9 @@
 package jasmine.framework.web.entity;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 /**
  * <p>
  * WEB响应结果。
@@ -107,6 +110,23 @@ public class WebResult<T> {
 
     public void setErrorDetail(String errorDetail) {
         this.errorDetail = errorDetail;
+    }
+
+    /**
+     * 转换成 ResponseEntity 对象
+     *
+     * @return
+     */
+    public ResponseEntity<WebResult<T>> toEntity() {
+        ResponseEntity<WebResult<T>> entity = null;
+
+        if (Boolean.TRUE.equals(success)) {
+            entity = ResponseEntity.ok(this);
+        } else {
+            entity = new ResponseEntity<>(this, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return entity;
     }
 
 }

@@ -106,7 +106,7 @@ public class SampleController {
     public ResponseEntity<WebResult<String>> i18n1(@ApiParam("多语言key") @PathVariable("messageKey") String messageKey) {
         String message = QI18nUtil.getMessage(messageKey);
 
-        return ResponseEntity.ok(WebResult.success(message));
+        return WebResult.success(message).toEntity();
     }
 
     @ApiOperation("设置语言环境")
