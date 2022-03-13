@@ -32,4 +32,13 @@ public class QI18nUtil {
         return provider.getMessage(messageKey, args);
     }
 
+    /**
+     * 返回语言代码
+     *
+     * @return
+     */
+    public static String getLanguage() {
+        return provider.getLanguage();
+    }
+
 }

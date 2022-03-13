@@ -17,4 +17,11 @@ public interface LocaleMessageProvider {
      * @return
      */
     String getMessage(String messageKey, Object... args);
+
+    /**
+     * 返回语言代码
+     *
+     * @return
+     */
+    String getLanguage();
 }

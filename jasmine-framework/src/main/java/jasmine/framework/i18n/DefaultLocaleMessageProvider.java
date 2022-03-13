@@ -35,4 +35,15 @@ public class DefaultLocaleMessageProvider implements LocaleMessageProvider {
         return messageSource.getMessage(messageKey, args, locale);
     }
 
+    @Override
+    public String getLanguage() {
+        Locale locale = LocaleContextHolder.getLocale();
+
+        if (locale != null) {
+            return locale.getLanguage();
+        }
+
+        return Locale.SIMPLIFIED_CHINESE.getLanguage();
+    }
+
 }

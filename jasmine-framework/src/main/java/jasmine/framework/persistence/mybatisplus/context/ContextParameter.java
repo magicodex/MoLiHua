@@ -15,4 +15,11 @@ public interface ContextParameter {
      * @return
      */
     Long getTenantId();
+
+    /**
+     * 返回语言代码
+     *
+     * @return
+     */
+    String getLandCode();
 }
