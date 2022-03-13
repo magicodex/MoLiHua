@@ -1,6 +1,6 @@
 package jasmine.mock.persistence;
 
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoProvider;
+import jasmine.framework.common.crypto.CryptoProvider;
 
 /**
  * @author mh.z

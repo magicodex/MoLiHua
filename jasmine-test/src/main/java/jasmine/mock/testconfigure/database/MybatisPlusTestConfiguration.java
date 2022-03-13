@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import jasmine.framework.common.crypto.CryptoProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoProvider;
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoTypeHandler;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
@@ -50,8 +50,8 @@ public class MybatisPlusTestConfiguration {
     @Bean
     public CryptoProvider cryptoProvider() {
         CryptoProvider provider = new MockCryptoProvider();
-        // 初始加密的类型处理器
-        CryptoTypeHandler.setCryptoProvider(provider);
+        // 初始工具类
+        CryptoFieldHelper.initUtil(provider);
 
         return provider;
     }

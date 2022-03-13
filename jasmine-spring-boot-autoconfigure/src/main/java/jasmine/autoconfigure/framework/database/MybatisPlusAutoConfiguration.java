@@ -3,10 +3,10 @@ package jasmine.autoconfigure.framework.database;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import jasmine.framework.common.crypto.CryptoProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
-import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoHelper;
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoProvider;
+import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
 import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
@@ -30,7 +30,7 @@ public class MybatisPlusAutoConfiguration {
         SymmetricCryptoProvider provider = new SymmetricCryptoProvider(password, salt);
 
         // 初始工具类
-        CryptoHelper.initUtil(provider);
+        CryptoFieldHelper.initUtil(provider);
 
         return provider;
     }
