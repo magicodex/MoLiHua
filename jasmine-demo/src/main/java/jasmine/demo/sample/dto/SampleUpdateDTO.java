@@ -26,7 +26,7 @@ public class SampleUpdateDTO {
     @ApiModelProperty("秘密信息")
     private String secretInfo;
 
-    @NotEmpty
+    @NotNull
     @ApiModelProperty("版本号")
     private Integer versionNumber;
 

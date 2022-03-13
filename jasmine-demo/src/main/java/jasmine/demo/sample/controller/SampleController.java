@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -171,9 +170,9 @@ public class SampleController {
     //
 
     @ApiOperation("查询数据")
-    @RequestMapping(value = "/api/sample/data/query",
+    @RequestMapping(value = "/api/sample/data/query/{sampleId}",
             method = {RequestMethod.GET})
-    public ResponseEntity<WebResult<SampleDTO>> data1(@ApiParam("记录ID") @RequestParam("sampleId") Long sampleId) {
+    public ResponseEntity<WebResult<SampleDTO>> data1(@ApiParam("记录ID") @PathVariable("sampleId") Long sampleId) {
         SampleDTO sample = sampleService.getSampleById(sampleId);
 
         return WebResult.success(sample).toEntity();
