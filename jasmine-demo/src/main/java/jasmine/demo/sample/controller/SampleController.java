@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import jasmine.core.util.QDateUtil;
 import jasmine.core.util.QI18nUtil;
-import jasmine.demo.sample.dto.Sample1DTO;
+import jasmine.demo.sample.dto.ParamsDTO;
 import jasmine.demo.sample.entity.Sample;
 import jasmine.demo.sample.service.SampleService;
 import jasmine.framework.cache.CacheUtil;
@@ -135,7 +135,7 @@ public class SampleController {
     @ApiOperation("校验参数")
     @RequestMapping(value = "/api/sample/validation/{param1}/{param2}",
             method = {RequestMethod.GET})
-    public ResponseEntity<WebResult<String>> validation1(@ModelAttribute Sample1DTO param, @ApiIgnore Errors errors) {
+    public ResponseEntity<WebResult<String>> validation1(@ModelAttribute ParamsDTO param, @ApiIgnore Errors errors) {
         ValidationHelper validationHelper = ValidationHelper.create(errors);
         validationHelper.field("param1").rejectIfBlank();
         validationHelper.field("param2").rejectIfBlank();

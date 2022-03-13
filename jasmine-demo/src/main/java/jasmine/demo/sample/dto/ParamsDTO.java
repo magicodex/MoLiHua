@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * @author mh.z
  */
-@ApiModel(description = "示例DTO")
-public class Sample1DTO {
+@ApiModel(description = "参数DTO")
+public class ParamsDTO {
     @ApiModelProperty("参数1")
     private String param1;
 
