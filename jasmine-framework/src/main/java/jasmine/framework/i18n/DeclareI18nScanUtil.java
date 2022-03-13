@@ -86,8 +86,12 @@ public class DeclareI18nScanUtil {
 
             try {
                 // 获取多语言信息
-                Object key = field.get(null);
+                String key = (String) field.get(null);
                 String value = annotation.value();
+
+                if (key != null && key.startsWith("$")) {
+                    key = key.substring(1);
+                }
 
                 properties.put(key, value);
             } catch (IllegalAccessException e) {

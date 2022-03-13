@@ -4,6 +4,7 @@ import jasmine.core.util.QErrorUtil;
 import jasmine.demo.sample.entity.Sample;
 import jasmine.demo.sample.mapper.SampleMapper;
 import jasmine.framework.lock.annotation.DistributedLock;
+import jasmine.framework.persistence.mybatisplus.BaseMapperHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -64,7 +65,7 @@ public class SampleService {
      */
     @Transactional(rollbackFor = Exception.class)
     public Sample updateSample(Sample sample) {
-        sampleMapper.updateById(sample);
+        BaseMapperHelper.strictUpdateById(sampleMapper, sample);
 
         return sample;
     }
