@@ -44,4 +44,17 @@ public class QMapperUtil {
         return MAPPER_FACADE.mapAsList(source, targetType);
     }
 
+    /**
+     * 映射字段的值
+     *
+     * @param source
+     * @param destination
+     * @return
+     */
+    public static <S, D> D mapFields(S source, D destination) {
+        MAPPER_FACADE.map(source, destination);
+
+        return destination;
+    }
+
 }

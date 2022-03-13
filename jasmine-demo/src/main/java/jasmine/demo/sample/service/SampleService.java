@@ -78,10 +78,7 @@ public class SampleService {
             throw new DataNotFoundException(Sample.class, updateDTO.getId(), null);
         }
 
-        samplePO.setSampleCode(updateDTO.getSampleCode());
-        samplePO.setSampleName(updateDTO.getSampleName());
-        samplePO.setSecretInfo(updateDTO.getSecretInfo());
-        samplePO.setVersionNumber(updateDTO.getVersionNumber());
+        QMapperUtil.mapFields(updateDTO, samplePO);
         BaseMapperHelper.strictUpdateById(sampleMapper, samplePO);
 
         return QMapperUtil.mapTo(samplePO, SampleDTO.class);
