@@ -1,6 +1,11 @@
 package jasmine.demo.sample.service;
 
+import jasmine.core.exception.DataNotFoundException;
 import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.QMapperUtil;
+import jasmine.demo.sample.dto.SampleCreateDTO;
+import jasmine.demo.sample.dto.SampleDTO;
+import jasmine.demo.sample.dto.SampleUpdateDTO;
 import jasmine.demo.sample.entity.Sample;
 import jasmine.demo.sample.mapper.SampleMapper;
 import jasmine.framework.lock.annotation.DistributedLock;
@@ -40,34 +45,46 @@ public class SampleService {
      * @param sampleId
      * @return
      */
-    public Sample getSampleById(Long sampleId) {
-        return sampleMapper.selectById(sampleId);
+    public SampleDTO getSampleById(Long sampleId) {
+        Sample sample = sampleMapper.selectById(sampleId);
+
+        return QMapperUtil.mapTo(sample, SampleDTO.class);
     }
 
     /**
      * 保存数据
      *
-     * @param sample
+     * @param createDTO
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
-    public Sample saveSample(Sample sample) {
+    public SampleDTO saveSample(SampleCreateDTO createDTO) {
+        Sample sample = QMapperUtil.mapTo(createDTO, Sample.class);
         sampleMapper.insert(sample);
 
-        return sample;
+        return QMapperUtil.mapTo(sample, SampleDTO.class);
     }
 
     /**
      * 修改数据
      *
-     * @param sample
+     * @param updateDTO
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
-    public Sample updateSample(Sample sample) {
-        BaseMapperHelper.strictUpdateById(sampleMapper, sample);
+    public SampleDTO updateSample(SampleUpdateDTO updateDTO) {
+        Sample samplePO = sampleMapper.selectById(updateDTO.getId());
+        if (samplePO == null) {
+            throw new DataNotFoundException(Sample.class, updateDTO.getId(), null);
+        }
 
-        return sample;
+        samplePO.setSampleCode(updateDTO.getSampleCode());
+        samplePO.setSampleName(updateDTO.getSampleName());
+        samplePO.setSecretInfo(updateDTO.getSecretInfo());
+        samplePO.setVersionNumber(updateDTO.getVersionNumber());
+        BaseMapperHelper.strictUpdateById(sampleMapper, samplePO);
+
+        return QMapperUtil.mapTo(samplePO, SampleDTO.class);
     }
 
 }

@@ -5,8 +5,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import jasmine.core.util.QDateUtil;
 import jasmine.core.util.QI18nUtil;
-import jasmine.demo.sample.dto.ParamsDTO;
-import jasmine.demo.sample.entity.Sample;
+import jasmine.demo.sample.dto.Params1DTO;
+import jasmine.demo.sample.dto.SampleCreateDTO;
+import jasmine.demo.sample.dto.SampleDTO;
+import jasmine.demo.sample.dto.SampleUpdateDTO;
 import jasmine.demo.sample.service.SampleService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.remote.mq.SendMessageService;
@@ -29,6 +31,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.time.ZonedDateTime;
 
 /**
@@ -135,7 +138,7 @@ public class SampleController {
     @ApiOperation("校验参数")
     @RequestMapping(value = "/api/sample/validation/{param1}/{param2}",
             method = {RequestMethod.GET})
-    public ResponseEntity<WebResult<String>> validation1(@ModelAttribute ParamsDTO param, @ApiIgnore Errors errors) {
+    public ResponseEntity<WebResult<String>> validation1(@ModelAttribute Params1DTO param, @ApiIgnore Errors errors) {
         ValidationHelper validationHelper = ValidationHelper.create(errors);
         validationHelper.field("param1").rejectIfBlank();
         validationHelper.field("param2").rejectIfBlank();
@@ -168,10 +171,10 @@ public class SampleController {
     //
 
     @ApiOperation("查询数据")
-    @RequestMapping(value = "/api/sample/data/get",
+    @RequestMapping(value = "/api/sample/data/query",
             method = {RequestMethod.GET})
-    public ResponseEntity<WebResult<Sample>> data1(@ApiParam("记录ID") @RequestParam("sampleId") Long sampleId) {
-        Sample sample = sampleService.getSampleById(sampleId);
+    public ResponseEntity<WebResult<SampleDTO>> data1(@ApiParam("记录ID") @RequestParam("sampleId") Long sampleId) {
+        SampleDTO sample = sampleService.getSampleById(sampleId);
 
         return WebResult.success(sample).toEntity();
     }
@@ -179,19 +182,19 @@ public class SampleController {
     @ApiOperation("保存数据")
     @RequestMapping(value = "/api/sample/data/create",
             method = {RequestMethod.GET})
-    public ResponseEntity<WebResult<Sample>> data2(@ModelAttribute Sample sample) {
-        sample = sampleService.saveSample(sample);
+    public ResponseEntity<WebResult<SampleDTO>> data2(@Valid @ModelAttribute SampleCreateDTO sample) {
+        SampleDTO sampleDTO = sampleService.saveSample(sample);
 
-        return WebResult.success(sample).toEntity();
+        return WebResult.success(sampleDTO).toEntity();
     }
 
     @ApiOperation("修改数据")
     @RequestMapping(value = "/api/sample/data/update",
             method = {RequestMethod.GET})
-    public ResponseEntity<WebResult<Sample>> data3(@ModelAttribute Sample sample) {
-        sample = sampleService.updateSample(sample);
+    public ResponseEntity<WebResult<SampleDTO>> data3(@Valid @ModelAttribute SampleUpdateDTO sample) {
+        SampleDTO sampleDTO = sampleService.updateSample(sample);
 
-        return WebResult.success(sample).toEntity();
+        return WebResult.success(sampleDTO).toEntity();
     }
 
 }

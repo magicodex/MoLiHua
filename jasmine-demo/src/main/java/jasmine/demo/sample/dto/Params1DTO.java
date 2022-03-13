@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @author mh.z
  */
 @ApiModel(description = "参数DTO")
-public class ParamsDTO {
+public class Params1DTO {
     @ApiModelProperty("参数1")
     private String param1;
 
