@@ -13,6 +13,7 @@
         jasmine.demo.controller,
         jasmine.demo.service,
         jasmine.demo.sample">
+        <context:exclude-filter type="regex" expression=".*\.WebConfig"/>
     </context:component-scan>
     
     <!-- 扫描Mapper接口类 -->
