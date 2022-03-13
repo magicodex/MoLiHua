@@ -77,6 +77,10 @@ jasmine:
     tenant:
       # 是否启用租户拦截器
       enabled: true
+    # 数据加密
+    crypto:
+      password: password1
+      salt: salt1
 
 app:
   message-queue:

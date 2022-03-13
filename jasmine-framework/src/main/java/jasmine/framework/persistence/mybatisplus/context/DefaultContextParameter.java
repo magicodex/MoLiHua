@@ -14,7 +14,7 @@ public class DefaultContextParameter implements ContextParameter {
     }
 
     @Override
-    public String getLandCode() {
+    public String getLangCode() {
         return QI18nUtil.getLanguage();
     }
 

@@ -21,5 +21,5 @@ public interface ContextParameter {
      *
      * @return
      */
-    String getLandCode();
+    String getLangCode();
 }
