@@ -6,11 +6,10 @@ import jasmine.core.util.QNewUtil;
 import jasmine.framework.context.handler.ContextHandler;
 import jasmine.framework.context.handler.ContextSnapshot;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.Ordered;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ import java.util.Map;
  * @author mh.z
  */
 public class ContextHandlerFacadeBean implements ContextHandlerFacade,
-        SmartInitializingSingleton, ApplicationContextAware {
+        CustomInitializingSingleton, ApplicationContextAware {
     private List<ContextHandler> handlers;
     private static ApplicationContext applicationContext;
 
@@ -60,6 +59,11 @@ public class ContextHandlerFacadeBean implements ContextHandlerFacade,
                 .getBeansOfType(ContextHandler.class);
 
         handlers.addAll(handlerMap.values());
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 
 }

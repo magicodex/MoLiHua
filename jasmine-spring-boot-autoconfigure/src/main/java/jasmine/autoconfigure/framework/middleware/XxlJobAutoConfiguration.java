@@ -2,18 +2,19 @@ package jasmine.autoconfigure.framework.middleware;
 
 import com.xxl.job.core.executor.XxlJobExecutor;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
+import jasmine.framework.context.CustomInitializingSingleton;
 import jasmine.framework.job.JobExecutor;
 import jasmine.framework.job.xxljob.XxlJobHandlerDelegate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 
 import java.util.Map;
 
@@ -23,7 +24,7 @@ import java.util.Map;
 @EnableConfigurationProperties(XxlJobProperties.class)
 @ConditionalOnProperty(name = {"jasmine.xxl.job.enabled"}, havingValue = "true")
 @Configuration
-public class XxlJobAutoConfiguration implements SmartInitializingSingleton, ApplicationContextAware {
+public class XxlJobAutoConfiguration implements CustomInitializingSingleton, ApplicationContextAware {
     private Logger logger = LoggerFactory.getLogger(XxlJobAutoConfiguration.class);
     private static ApplicationContext applicationContext;
 
@@ -62,4 +63,8 @@ public class XxlJobAutoConfiguration implements SmartInitializingSingleton, Appl
         });
     }
 
+    @Override
+    public int getOrder() {
+        return Ordered.LOWEST_PRECEDENCE;
+    }
 }

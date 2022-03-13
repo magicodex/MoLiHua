@@ -4,6 +4,7 @@ import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.context.SubjectProvider;
 import jasmine.core.util.QSpringUtil;
+import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.mock.context.MockSubjectProvider;
@@ -37,6 +38,11 @@ public class JasmineFrameworkTestConfiguration {
     @Bean
     public InitSupportScanBean initSupportScanBean(RuntimeProvider runtimeProvider) {
         return new InitSupportScanBean(runtimeProvider);
+    }
+
+    @Bean
+    public CustomInitializingSingletonScanBean customInitializingSingletonScanBean() {
+        return new CustomInitializingSingletonScanBean();
     }
 
 }

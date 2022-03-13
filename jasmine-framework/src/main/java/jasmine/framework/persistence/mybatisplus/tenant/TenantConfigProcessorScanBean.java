@@ -1,10 +1,11 @@
 package jasmine.framework.persistence.mybatisplus.tenant;
 
 import jasmine.core.util.QCollectionUtil;
+import jasmine.framework.context.CustomInitializingSingleton;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.Ordered;
 
 import java.util.Map;
 
@@ -16,7 +17,7 @@ import java.util.Map;
  *
  * @author mh.z
  */
-public class TenantConfigProcessorScanBean implements ApplicationContextAware, SmartInitializingSingleton {
+public class TenantConfigProcessorScanBean implements ApplicationContextAware, CustomInitializingSingleton {
     private static ApplicationContext applicationContext;
     private IgnoreTableStrategy ignoreTableStrategy;
 
@@ -39,6 +40,11 @@ public class TenantConfigProcessorScanBean implements ApplicationContextAware, S
                 processor.ignoreTable(ignoreTableStrategy);
             });
         }
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 
 }

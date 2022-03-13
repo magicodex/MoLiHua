@@ -4,9 +4,9 @@ import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollectionUtil;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.Ordered;
 
 import java.util.Map;
 
@@ -18,7 +18,7 @@ import java.util.Map;
  *
  * @author mh.z
  */
-public class InitSupportScanBean implements SmartInitializingSingleton, ApplicationContextAware {
+public class InitSupportScanBean implements CustomInitializingSingleton, ApplicationContextAware {
     private RuntimeProvider runtimeProvider;
     private static ApplicationContext applicationContext;
 
@@ -41,6 +41,11 @@ public class InitSupportScanBean implements SmartInitializingSingleton, Applicat
                 initSupport.init(runtimeProvider);
             });
         }
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 
 }

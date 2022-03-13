@@ -7,6 +7,7 @@ import jasmine.core.util.QNewUtil;
 import jasmine.core.util.QStringUtil;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.common.util.UniqueKeyUtil;
+import jasmine.framework.context.CustomInitializingSingleton;
 import jasmine.framework.remote.mq.impl.interceptor.DefaultSendInvocationInfo;
 import jasmine.framework.remote.mq.impl.routing.PublisherExchangeDirectRouting;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
@@ -18,9 +19,9 @@ import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.Ordered;
 
 import java.util.Collections;
 import java.util.Map;
@@ -29,7 +30,7 @@ import java.util.Map;
  * @author mh.z
  */
 public class DefaultSendMessageServiceBean extends AbstractSendMessageService
-        implements SmartInitializingSingleton, ApplicationContextAware {
+        implements CustomInitializingSingleton, ApplicationContextAware {
     private AmqpTemplate template;
     private Map<String, PublisherExchangeRouting> routingMap;
     private static ApplicationContext applicationContext;
@@ -121,4 +122,8 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
         });
     }
 
+    @Override
+    public int getOrder() {
+        return Ordered.LOWEST_PRECEDENCE;
+    }
 }

@@ -6,6 +6,7 @@ import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.ContextHandlerFacade;
 import jasmine.framework.context.ContextHandlerFacadeBean;
 import jasmine.framework.context.ContextInitAndClearHelper;
+import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.framework.context.handler.FrameworkContextHandler;
@@ -64,6 +65,11 @@ public class JasmineFrameworkAutoConfiguration {
         ContextInitAndClearHelper.initUtil(handlerFacade);
 
         return handlerFacade;
+    }
+
+    @Bean
+    public CustomInitializingSingletonScanBean customInitializingSingletonScanBean() {
+        return new CustomInitializingSingletonScanBean();
     }
 
 }
