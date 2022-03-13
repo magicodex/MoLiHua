@@ -9,7 +9,7 @@ import jasmine.framework.persistence.mybatisplus.crypto.CryptoTypeHandler;
 /**
  * @author mh.z
  */
-@TableName("demo_sample")
+@TableName(value = "demo_sample", autoResultMap = true)
 public class Sample extends BaseI18nEntity {
     /** 代码 */
     @TableField("sample_code")
@@ -21,7 +21,7 @@ public class Sample extends BaseI18nEntity {
     private String sampleName;
 
     /** 秘密信息 */
-    @TableField(value = "sample_info", typeHandler = CryptoTypeHandler.class)
+    @TableField(value = "secret_info", typeHandler = CryptoTypeHandler.class)
     private String secretInfo;
 
     public String getSampleCode() {

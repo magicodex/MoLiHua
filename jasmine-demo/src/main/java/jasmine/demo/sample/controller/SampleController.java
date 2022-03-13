@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiParam;
 import jasmine.core.util.QDateUtil;
 import jasmine.core.util.QI18nUtil;
 import jasmine.demo.sample.dto.Sample1DTO;
+import jasmine.demo.sample.entity.Sample;
 import jasmine.demo.sample.service.SampleService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.remote.mq.SendMessageService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -159,6 +161,37 @@ public class SampleController {
 
         WebResult<String> result = WebResult.success(startDateStr + "~" + endDateStr);
         return result.toEntity();
+    }
+
+    //
+    // 数据库
+    //
+
+    @ApiOperation("查询数据")
+    @RequestMapping(value = "/api/sample/data/get",
+            method = {RequestMethod.GET})
+    public ResponseEntity<WebResult<Sample>> data1(@ApiParam("记录ID") @RequestParam("sampleId") Long sampleId) {
+        Sample sample = sampleService.getSampleById(sampleId);
+
+        return WebResult.success(sample).toEntity();
+    }
+
+    @ApiOperation("保存数据")
+    @RequestMapping(value = "/api/sample/data/create",
+            method = {RequestMethod.GET})
+    public ResponseEntity<WebResult<Sample>> data2(@ModelAttribute Sample sample) {
+        sample = sampleService.saveSample(sample);
+
+        return WebResult.success(sample).toEntity();
+    }
+
+    @ApiOperation("修改数据")
+    @RequestMapping(value = "/api/sample/data/update",
+            method = {RequestMethod.GET})
+    public ResponseEntity<WebResult<Sample>> data3(@ModelAttribute Sample sample) {
+        sample = sampleService.updateSample(sample);
+
+        return WebResult.success(sample).toEntity();
     }
 
 }

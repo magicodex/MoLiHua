@@ -2,6 +2,7 @@ package jasmine.framework.persistence.mybatisplus;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import jasmine.core.context.CurrentSubject;
+import jasmine.core.util.QI18nUtil;
 import org.apache.ibatis.reflection.MetaObject;
 
 import java.time.ZonedDateTime;
@@ -34,6 +35,9 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
 
         // 版本号
         strictInsertFill(metaObject, "versionNumber", Integer.class, 1);
+
+        // 语言代码
+        strictInsertFill(metaObject, "langCode", String.class, QI18nUtil.getLanguage());
     }
 
     @Override

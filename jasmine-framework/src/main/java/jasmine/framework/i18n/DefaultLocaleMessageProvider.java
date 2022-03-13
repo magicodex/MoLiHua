@@ -40,10 +40,10 @@ public class DefaultLocaleMessageProvider implements LocaleMessageProvider {
         Locale locale = LocaleContextHolder.getLocale();
 
         if (locale != null) {
-            return locale.getLanguage();
+            return locale.toLanguageTag();
         }
 
-        return Locale.SIMPLIFIED_CHINESE.getLanguage();
+        return Locale.SIMPLIFIED_CHINESE.toLanguageTag();
     }
 
 }

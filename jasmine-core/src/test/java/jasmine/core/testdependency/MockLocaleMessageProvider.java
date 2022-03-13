@@ -3,6 +3,7 @@ package jasmine.core.testdependency;
 import jasmine.core.i18n.LocaleMessageProvider;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -36,6 +37,11 @@ public class MockLocaleMessageProvider implements LocaleMessageProvider {
         }
 
         return message;
+    }
+
+    @Override
+    public String getLanguage() {
+        return Locale.SIMPLIFIED_CHINESE.getLanguage();
     }
 
 }
