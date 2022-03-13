@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus.crypto;
+package jasmine.framework.common.crypto;
 
 /**
  * @author mh.z

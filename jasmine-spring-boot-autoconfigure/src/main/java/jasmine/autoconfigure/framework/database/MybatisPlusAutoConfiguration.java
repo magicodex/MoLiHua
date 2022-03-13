@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoHelper;
 import jasmine.framework.persistence.mybatisplus.crypto.CryptoProvider;
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoTypeHandler;
 import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
@@ -29,8 +29,8 @@ public class MybatisPlusAutoConfiguration {
         String salt = crypto.getSalt();
         SymmetricCryptoProvider provider = new SymmetricCryptoProvider(password, salt);
 
-        // 初始加密的类型处理器
-        CryptoTypeHandler.setCryptoProvider(provider);
+        // 初始工具类
+        CryptoHelper.initUtil(provider);
 
         return provider;
     }
