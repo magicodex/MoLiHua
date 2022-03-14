@@ -13,8 +13,9 @@
     <modules>
         <module>jasmine-bom</module>
         <module>jasmine-core</module>
-        <module>jasmine-framework</module>
         <module>jasmine-test</module>
+        <module>jasmine-framework</module>
+        <module>jasmine-framework-test</module>
         <module>jasmine-security</module>
         <module>jasmine-security-test</module>
         <module>jasmine-spring-boot-autoconfigure</module>
