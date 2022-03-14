@@ -1,4 +1,4 @@
-package jasmine.mock.testconfigure.database;
+package jasmine.mock.framework.testconfigure.database;
 
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
@@ -12,7 +12,7 @@ import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
-import jasmine.mock.persistence.MockCryptoProvider;
+import jasmine.mock.framework.common.MockCryptoProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

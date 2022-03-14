@@ -1,4 +1,4 @@
-package jasmine.mock.persistence;
+package jasmine.mock.framework.common;
 
 import jasmine.framework.common.crypto.CryptoProvider;
 

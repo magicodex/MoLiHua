@@ -1,4 +1,4 @@
-package jasmine.mock.testconfigure;
+package jasmine.mock.security.testconfigure;
 
 import jasmine.security.support.SecurityTenantConfigProcessor;
 import org.springframework.context.annotation.Bean;

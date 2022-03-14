@@ -1,4 +1,4 @@
-package jasmine.mock.lock;
+package jasmine.mock.framework.lock;
 
 import jasmine.core.util.QErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;

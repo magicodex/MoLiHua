@@ -1,8 +1,8 @@
-package jasmine.mock.testconfigure.support;
+package jasmine.mock.framework.testconfigure.support;
 
 import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
-import jasmine.mock.concurrent.MockAsyncTaskProvider;
+import jasmine.mock.framework.concurrent.MockAsyncTaskProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

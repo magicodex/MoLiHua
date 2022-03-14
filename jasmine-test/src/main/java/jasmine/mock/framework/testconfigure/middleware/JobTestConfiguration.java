@@ -1,11 +1,11 @@
-package jasmine.mock.testconfigure.middleware;
+package jasmine.mock.framework.testconfigure.middleware;
 
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.distributed.DistributedLocks;
-import jasmine.mock.cache.MockCacheService;
-import jasmine.mock.lock.MockDistributedLockProvider;
+import jasmine.mock.framework.cache.MockCacheService;
+import jasmine.mock.framework.lock.MockDistributedLockProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

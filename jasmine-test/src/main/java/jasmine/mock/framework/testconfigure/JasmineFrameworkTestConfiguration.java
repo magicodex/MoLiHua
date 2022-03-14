@@ -1,4 +1,4 @@
-package jasmine.mock.testconfigure;
+package jasmine.mock.framework.testconfigure;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
@@ -7,7 +7,7 @@ import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
-import jasmine.mock.context.MockSubjectProvider;
+import jasmine.mock.framework.context.MockSubjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
