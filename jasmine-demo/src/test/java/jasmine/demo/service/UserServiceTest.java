@@ -1,6 +1,6 @@
 package jasmine.demo.service;
 
-import jasmine.test.context.AppTestContext;
+import jasmine.framework.test.context.AppTestContext;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
