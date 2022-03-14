@@ -1,4 +1,4 @@
-package jasmine.test.testdependency;
+package jasmine.framework.test.testdependency;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

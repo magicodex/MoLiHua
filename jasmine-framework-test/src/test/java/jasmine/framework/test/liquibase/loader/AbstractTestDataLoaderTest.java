@@ -1,9 +1,8 @@
-package jasmine.framework.test.loader;
+package jasmine.framework.test.liquibase.loader;
 
-import jasmine.framework.test.liquibase.loader.AbstractTestDataLoader;
 import jasmine.framework.test.liquibase.log.TestDataChangeLog;
 import jasmine.framework.test.liquibase.log.TestDataChangeLogMapper;
-import jasmine.test.testdependency.Example1;
+import jasmine.framework.test.testdependency.Example1;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
