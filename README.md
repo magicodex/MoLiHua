@@ -63,8 +63,6 @@ spring.datasource.read.password=密码
 - 多租户支持
 - 数据权限支持
 
-备注：目前已有功能的技术设计，包括接口和类设计相对成熟可靠，具体的代码实现仍需通过完善单测用例逐步稳定。
-
 ## 集成框架
 
 | 框架 | 版本 | 说明 |
@@ -91,12 +89,14 @@ spring.datasource.read.password=密码
 | :----: | :---- |
 | jasmine-bom | 依赖管理 |
 | jasmine-core | 基本模块 |
-| jasmine-framework | 框架模块 |
 | jasmine-test | 支持单元测试 |
+| jasmine-framework | 框架模块 |
+| jasmine-framework-test | 支持单元测试 |
 | jasmine-security | 安全模块 |
 | jasmine-security-test | 支持单元测试 |
 | jasmine-spring-boot-autoconfigure | 自动配置 |
 | jasmine-spring-boot-starter | 自动配置 |
+| jasmine-spring-boot-starter-security | 自动配置 |
 | jasmine-demo | DEMO模块 |
 
 
