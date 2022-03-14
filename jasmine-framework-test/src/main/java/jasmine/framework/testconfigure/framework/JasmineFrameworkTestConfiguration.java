@@ -1,4 +1,4 @@
-package jasmine.framework.mock.testconfigure;
+package jasmine.framework.testconfigure.framework;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;

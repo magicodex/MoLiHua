@@ -1,4 +1,4 @@
-package jasmine.framework.mock.testconfigure.database;
+package jasmine.framework.testconfigure.framework.database;
 
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;

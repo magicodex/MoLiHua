@@ -1,4 +1,4 @@
-package jasmine.security.mock.testconfigure.rbac;
+package jasmine.testconfigure.security.rbac;
 
 import jasmine.security.rbac.dao.SecFunctionDao;
 import jasmine.security.rbac.dao.SecMenuDao;

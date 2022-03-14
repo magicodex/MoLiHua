@@ -1,4 +1,4 @@
-package jasmine.framework.mock.testconfigure.middleware;
+package jasmine.framework.testconfigure.framework.middleware;
 
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;

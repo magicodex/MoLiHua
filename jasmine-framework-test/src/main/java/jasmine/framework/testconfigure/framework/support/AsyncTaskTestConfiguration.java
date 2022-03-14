@@ -1,4 +1,4 @@
-package jasmine.framework.mock.testconfigure.support;
+package jasmine.framework.testconfigure.framework.support;
 
 import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
