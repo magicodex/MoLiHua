@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author mh.z
  */
 @Transactional(rollbackFor = Exception.class)
-@ContextConfiguration(locations = "classpath:/test/config/springContext.xml")
+@ContextConfiguration(locations = "classpath:/jasmine/framework/test/config/springContext.xml")
 public class AppTestContext {
 
     @Before

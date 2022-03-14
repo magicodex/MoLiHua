@@ -7,13 +7,13 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:property-placeholder location="classpath:/test/config/application.properties,
+    <context:property-placeholder location="classpath:/jasmine/framework/test/config/application.properties,
         classpath:/test-config.properties"/>
 
 
     <!-- 注册测试相关bean -->
     <bean class="jasmine.framework.test.liquibase.TestDataTaskChange"/>
-    <context:component-scan base-package="jasmine.mock"/>
+    <context:component-scan base-package="jasmine.framework.mock"/>
     <!-- 注册测试相关bean -->
 
     <!-- 测试上下文 -->
@@ -36,6 +36,6 @@
     <bean id="springLiquibase" class="jasmine.framework.test.liquibase.CustomSpringLiquibase">
         <property name="dataSource" ref="dataSource"/>
         <property name="shouldRun" value="${liquibase.enabled}"/>
-        <property name="changeLog" value="classpath:test/config/liquibaseMaster.xml"/>
+        <property name="changeLog" value="classpath:jasmine/framework/test/config/liquibaseMaster.xml"/>
     </bean>
 </beans>
