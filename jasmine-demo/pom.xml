@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-test</artifactId>
+            <artifactId>jasmine-framework-test</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>

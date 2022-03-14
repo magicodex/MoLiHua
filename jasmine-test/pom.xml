@@ -9,6 +9,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jasmine-framework-test</artifactId>
+    <artifactId>jasmine-test</artifactId>
 
 </project>

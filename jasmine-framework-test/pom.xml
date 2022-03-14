@@ -9,7 +9,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jasmine-test</artifactId>
+    <artifactId>jasmine-framework-test</artifactId>
 
     <properties>
     </properties>
