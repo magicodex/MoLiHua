@@ -6,7 +6,9 @@ import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.config.JasmineSecurityConfig;
 import jasmine.security.rbac.dao.SecFunctionDao;
 import jasmine.security.rbac.dao.SecResourceDao;
-import jasmine.security.strategy.DynamicRbacCheckStrategy;
+import jasmine.security.strategy.CacheRbacQueryService;
+import jasmine.security.strategy.RbacAccessDecisionStrategy;
+import jasmine.security.strategy.RbacQueryService;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.support.SecurityContextHandler;
 import jasmine.security.support.SecurityTenantConfigProcessor;
@@ -55,9 +57,10 @@ public class JasmineSecurityAutoConfiguration {
     }
 
     @Bean
-    public DynamicRbacCheckStrategy rbacCheckService(SecFunctionDao functionDao,
-                                                     SecResourceDao resourceDao) {
-        return new DynamicRbacCheckStrategy(functionDao, resourceDao);
+    public RbacAccessDecisionStrategy accessDecisionStrategy(SecFunctionDao functionDao,
+                                                             SecResourceDao resourceDao) {
+        RbacQueryService rbacQueryService = new CacheRbacQueryService(functionDao, resourceDao);
+        return new RbacAccessDecisionStrategy(rbacQueryService);
     }
 
     @ConditionalOnMissingBean(UserSubjectDetailsService.class)
