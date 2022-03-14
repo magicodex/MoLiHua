@@ -12,7 +12,7 @@ import java.util.List;
  * @author mh.z
  */
 public class StreamUtilTest {
-    private static final String EXAMPLE1_PATH = "/csv/Example1_1.csv";
+    private static final String EXAMPLE1_PATH = "/test/csv/Example1_1.csv";
 
     @Test
     public void testReadCSV() throws IOException {

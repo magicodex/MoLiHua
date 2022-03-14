@@ -1,4 +1,4 @@
-package jasmine.test.mock.core.context;
+package jasmine.mock.context;
 
 import jasmine.core.context.SubjectProvider;
 

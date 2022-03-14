@@ -1,8 +1,5 @@
-package jasmine.subject;
+package jasmine.security.subject;
 
-import jasmine.security.subject.UserSubject;
-import jasmine.security.subject.UserSubjectDetailsService;
-import jasmine.security.subject.UserSubjectProvider;
 import jasmine.test.mockito.MockUtil;
 import org.junit.Assert;
 import org.junit.Test;
