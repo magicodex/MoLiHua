@@ -13,7 +13,7 @@
 
     <!-- 注册测试相关bean -->
     <bean class="jasmine.framework.test.liquibase.TestDataTaskChange"/>
-    <context:component-scan base-package="jasmine.framework.mock"/>
+    <context:component-scan base-package="jasmine.testconfigure"/>
     <!-- 注册测试相关bean -->
 
     <!-- 测试上下文 -->
