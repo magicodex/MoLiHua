@@ -1,4 +1,4 @@
-package jasmine.framework.testconfigure.framework.middleware;
+package jasmine.testconfigure.framework.middleware;
 
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.SendMessageService;

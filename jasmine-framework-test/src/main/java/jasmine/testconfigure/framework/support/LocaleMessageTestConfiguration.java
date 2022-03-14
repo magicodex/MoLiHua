@@ -1,4 +1,4 @@
-package jasmine.framework.testconfigure.framework.support;
+package jasmine.testconfigure.framework.support;
 
 import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.QI18nUtil;

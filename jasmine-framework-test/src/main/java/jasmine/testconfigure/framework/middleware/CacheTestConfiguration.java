@@ -1,4 +1,4 @@
-package jasmine.framework.testconfigure.framework.middleware;
+package jasmine.testconfigure.framework.middleware;
 
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheUtil;
