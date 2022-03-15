@@ -1,17 +1,16 @@
 package jasmine.demo.sample.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * @author mh.z
  */
-@ApiModel(description = "参数DTO")
+@Schema(title = "参数DTO")
 public class Params1DTO {
-    @ApiModelProperty("参数1")
+    @Schema(title = "参数1")
     private String param1;
 
-    @ApiModelProperty("参数2")
+    @Schema(title = "参数2")
     private String param2;
 
     public String getParam1() {

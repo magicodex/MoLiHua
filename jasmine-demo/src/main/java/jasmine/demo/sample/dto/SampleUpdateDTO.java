@@ -1,7 +1,6 @@
 package jasmine.demo.sample.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -9,25 +8,25 @@ import javax.validation.constraints.NotNull;
 /**
  * @author mh.z
  */
-@ApiModel(description = "sample更新DTO")
+@Schema(title = "sample更新DTO")
 public class SampleUpdateDTO {
     @NotNull
-    @ApiModelProperty("记录ID")
+    @Schema(title = "记录ID")
     private String id;
 
     @NotEmpty
-    @ApiModelProperty("代码")
+    @Schema(title = "代码")
     private String sampleCode;
 
     @NotEmpty
-    @ApiModelProperty("名称")
+    @Schema(title = "名称")
     private String sampleName;
 
-    @ApiModelProperty("秘密信息")
+    @Schema(title = "秘密信息")
     private String secretInfo;
 
     @NotNull
-    @ApiModelProperty("版本号")
+    @Schema(title = "版本号")
     private Integer versionNumber;
 
     public String getId() {

@@ -42,6 +42,10 @@ mybatis-plus:
   # 自定义 mapper 文件路径
   mapper-locations: jasmine/**/*.xml
 
+# API文档
+springdoc:
+  packages-to-scan: jasmine.demo
+
 # 任务调度
 #xxl:
 #  job:
@@ -57,11 +61,6 @@ mybatis-plus:
 #      log-retention-days: 30
 
 jasmine:
-  # 配置 swagger 文档
-  swagger:
-    version: 0.1
-    title: 茉莉花
-    base-package: jasmine
   message-queue:
     # 是否发送消息到消息队列
     publisher:
