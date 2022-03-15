@@ -6,9 +6,12 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import jasmine.framework.common.crypto.CryptoProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
-import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;;
+import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
 import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
+import jasmine.framework.persistence.mybatisplus.i18n.FakeI18nEntityFacade;
+import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityFacade;
+import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
@@ -36,6 +39,16 @@ public class MybatisPlusAutoConfiguration {
         CryptoFieldHelper.initUtil(provider);
 
         return provider;
+    }
+
+    @Bean
+    public I18nEntityFacade i18nEntityFacade() {
+        FakeI18nEntityFacade facade = new FakeI18nEntityFacade();
+
+        // 初始工具类
+        I18nEntityHelper.initUtil(facade);
+
+        return facade;
     }
 
     @Bean
