@@ -1,6 +1,5 @@
 package jasmine.autoconfigure.framework;
 
-import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QSpringUtil;
 import jasmine.framework.context.ContextHandlerFacade;
@@ -11,8 +10,6 @@ import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.framework.context.handler.FrameworkContextHandler;
 import jasmine.framework.context.handler.web.RequestContextHandler;
-import jasmine.security.subject.UserSubjectDetailsService;
-import jasmine.security.subject.UserSubjectProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,16 +27,6 @@ public class JasmineFrameworkAutoConfiguration {
         QSpringUtil.initUtil(runtimeProvider);
 
         return runtimeProvider;
-    }
-
-    @Bean
-    public UserSubjectProvider subjectProvider(UserSubjectDetailsService userSubjectDetailsService) {
-        UserSubjectProvider subjectProvider = new UserSubjectProvider(userSubjectDetailsService);
-
-        // 初始工具类
-        CurrentSubject.initUtil(subjectProvider);
-
-        return subjectProvider;
     }
 
     @Bean

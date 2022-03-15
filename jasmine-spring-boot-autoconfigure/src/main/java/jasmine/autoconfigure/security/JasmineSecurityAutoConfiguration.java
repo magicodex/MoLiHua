@@ -1,5 +1,6 @@
 package jasmine.autoconfigure.security;
 
+import jasmine.core.context.CurrentSubject;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
@@ -10,6 +11,7 @@ import jasmine.security.strategy.CacheRbacQueryService;
 import jasmine.security.strategy.RbacAccessDecisionStrategy;
 import jasmine.security.strategy.RbacQueryService;
 import jasmine.security.subject.UserSubjectDetailsService;
+import jasmine.security.subject.UserSubjectProvider;
 import jasmine.security.support.SecurityContextHandler;
 import jasmine.security.support.SecurityTenantConfigProcessor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -77,6 +79,16 @@ public class JasmineSecurityAutoConfiguration {
         ClientDetailsService service = configTemplate.clientDetailsService();
 
         return service;
+    }
+
+    @Bean
+    public UserSubjectProvider subjectProvider(UserSubjectDetailsService userSubjectDetailsService) {
+        UserSubjectProvider subjectProvider = new UserSubjectProvider(userSubjectDetailsService);
+
+        // 初始工具类
+        CurrentSubject.initUtil(subjectProvider);
+
+        return subjectProvider;
     }
 
     @Bean
