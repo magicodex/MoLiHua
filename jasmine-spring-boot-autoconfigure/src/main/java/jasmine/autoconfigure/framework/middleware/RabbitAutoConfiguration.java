@@ -9,6 +9,7 @@ import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author mh.z
  */
+@ConditionalOnClass(RabbitTemplate.class)
 @EnableConfigurationProperties(MessageQueueProperties.class)
 @Configuration
 public class RabbitAutoConfiguration {

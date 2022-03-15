@@ -10,10 +10,12 @@ import jasmine.framework.lock.distributed.DistributedLocks;
 import jasmine.framework.lock.redisson.RedissonDistributedLockProvider;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 
+@ConditionalOnClass(RedisTemplate.class)
 @Configuration
 public class RedisAutoConfiguration {
 
