@@ -1,3 +1,3 @@
-INSERT INTO `sys_user` VALUES (100001, 'MoLiHua', '123456', 1, '2022-02-16 12:30:00', -1, '2022-02-16 12:30:00', -1, 1);
-INSERT INTO `sec_resource` VALUES (1, 'API', 'ANONYMOUS', '*', '/login', 0, NULL, '2022-02-16 12:30:00', -1, '2022-02-16 12:30:00', -1, 1);
-INSERT INTO `sec_resource` VALUES (2, 'PAGE', 'AUTHENTICATED', 'GET', '/home', 0, NULL, '2022-02-16 12:30:00', -1, '2022-02-16 12:30:00', -1, 1);
+INSERT INTO `sys_user`(`id`, `user_name`, `password`, `tenant_id`, `created_date`, `created_by`, `last_updated_date`, `last_updated_by`, `version_number`) VALUES (100001, 'MoLiHua', '123456', 1, '2022-02-16 12:30:00', -1, '2022-02-16 12:30:00', -1, 1);
+INSERT INTO `sec_resource`(`id`, `resource_type`, `access_policy`, `access_method`, `resource_path`, `frozen_flag`, `remark`, `created_date`, `created_by`, `last_updated_date`, `last_updated_by`, `version_number`) VALUES (1, 'API', 'ANONYMOUS', '*', '/login', 0, NULL, '2022-02-16 12:30:00', -1, '2022-02-16 12:30:00', -1, 1);
+INSERT INTO `sec_resource`(`id`, `resource_type`, `access_policy`, `access_method`, `resource_path`, `frozen_flag`, `remark`, `created_date`, `created_by`, `last_updated_date`, `last_updated_by`, `version_number`) VALUES (2, 'PAGE', 'AUTHENTICATED', 'GET', '/home', 0, NULL, '2022-02-16 12:30:00', -1, '2022-02-16 12:30:00', -1, 1);
