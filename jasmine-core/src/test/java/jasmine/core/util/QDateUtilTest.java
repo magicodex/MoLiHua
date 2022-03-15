@@ -3,6 +3,7 @@ package jasmine.core.util;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 /**
@@ -50,6 +51,24 @@ public class QDateUtilTest {
             Assert.assertEquals(0, dateTime.getMinute());
             Assert.assertEquals(0, dateTime.getSecond());
         }
+    }
+
+    @Test
+    public void testFormatYearSecond() {
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(2022, 2, 4,
+                12, 30, 59, 0, ZoneId.systemDefault());
+        String actual = QDateUtil.formatYearSecond(zonedDateTime);
+
+        Assert.assertEquals("2022-02-04 12:30:59", actual);
+    }
+
+    @Test
+    public void testFormatYearDay() {
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(2022, 2, 4,
+                12, 30, 59, 0, ZoneId.systemDefault());
+        String actual = QDateUtil.formatYearDay(zonedDateTime);
+
+        Assert.assertEquals("2022-02-04", actual);
     }
 
 }

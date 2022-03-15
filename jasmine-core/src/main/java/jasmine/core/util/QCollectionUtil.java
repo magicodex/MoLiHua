@@ -97,11 +97,10 @@ public class QCollectionUtil extends CollUtil {
      * @param keyMapper
      * @param <E>
      * @param <K>
-     * @param <V>
      * @return
      */
-    public static <E, K, V> Map<K, E> toMap(@Nullable Collection<E> collection,
-                                            @Nonnull Function<E, K> keyMapper) {
+    public static <E, K> Map<K, E> toMap(@Nullable Collection<E> collection,
+                                         @Nonnull Function<E, K> keyMapper) {
         QCheckUtil.notNull(keyMapper, "keyMapper null");
 
         if (isEmpty(collection)) {
