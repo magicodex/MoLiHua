@@ -20,7 +20,7 @@ public interface SecFunctionMapper extends BaseMapper<SecFunction> {
      * @return
      */
     @InterceptorIgnore(tenantLine = "true")
-    List<SecFunctionBaseInfoDTO> listAllTenantFunctionBaseInfoDTOsByRoleIds(@Param("roleIds") List<Long> roleIds);
+    List<SecFunctionBaseInfoDTO> listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(@Param("roleIds") List<Long> roleIds);
 
     /**
      * 查找指定资源被授予给的所有功能
@@ -28,5 +28,5 @@ public interface SecFunctionMapper extends BaseMapper<SecFunction> {
      * @param resourceId
      * @return
      */
-    List<SecFunctionBaseInfoDTO> listFunctionBaseInfoDTOsById(@Param("resourceId") Long resourceId);
+    List<SecFunctionBaseInfoDTO> listFunctionBaseInfoDTOsByIdNoI18n(@Param("resourceId") Long resourceId);
 }

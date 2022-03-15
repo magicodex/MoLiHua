@@ -24,12 +24,12 @@ public class SecFunctionDao {
      * @param roleIds
      * @return
      */
-    public List<SecFunctionBaseInfoDTO> listAllTenantFunctionBaseInfoDTOsByRoleIds(List<Long> roleIds) {
+    public List<SecFunctionBaseInfoDTO> listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(List<Long> roleIds) {
         if (QCollectionUtil.isEmpty(roleIds)) {
             return Collections.emptyList();
         }
 
-        return baseMapper.listAllTenantFunctionBaseInfoDTOsByRoleIds(roleIds);
+        return baseMapper.listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(roleIds);
     }
 
     /**
@@ -38,8 +38,8 @@ public class SecFunctionDao {
      * @param resourceId
      * @return
      */
-    public List<SecFunctionBaseInfoDTO> listFunctionBaseInfoDTOsById(Long resourceId) {
-        return baseMapper.listFunctionBaseInfoDTOsById(resourceId);
+    public List<SecFunctionBaseInfoDTO> listFunctionBaseInfoDTOsByIdNoI18n(Long resourceId) {
+        return baseMapper.listFunctionBaseInfoDTOsByIdNoI18n(resourceId);
     }
 
 }

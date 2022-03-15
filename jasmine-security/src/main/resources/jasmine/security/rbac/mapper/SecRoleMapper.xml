@@ -6,7 +6,7 @@
     <resultMap id="securityRole" type="jasmine.security.rbac.model.SecRole">
     </resultMap>
 
-    <select id="listAllTenantRolesByUserId" resultMap="securityRole">
+    <select id="listAllTenantRolesByUserIdNoI18n" resultMap="securityRole">
         select t_role.*
         from sec_role t_role,
         sec_user_role_rel t_user_role_rel

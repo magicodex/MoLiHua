@@ -32,7 +32,7 @@ public class DefaultRbacQueryService implements RbacQueryService {
         QCheckUtil.notNull(urlPattern, "urlPattern null");
 
         // 获取指定路径的资源
-        List<SecResource> resourceList = resourceDao.listResourcesByPath(urlPattern);
+        List<SecResource> resourceList = resourceDao.listResourcesByPathNoI18n(urlPattern);
         if (QCollectionUtil.isEmpty(resourceList)) {
             return null;
         }
@@ -58,7 +58,7 @@ public class DefaultRbacQueryService implements RbacQueryService {
         List<Long> roleIdList = QCollectionUtil.castToList(roleIds);
         // 获取角色被授予的所有功能
         List<SecFunctionBaseInfoDTO> functionList = functionDao
-                .listAllTenantFunctionBaseInfoDTOsByRoleIds(roleIdList);
+                .listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(roleIdList);
 
         List<Long> functionIdList = QCollectionUtil.mapToList(functionList,
                 SecFunctionBaseInfoDTO::getFunctionId);
@@ -72,7 +72,7 @@ public class DefaultRbacQueryService implements RbacQueryService {
 
         // 获取该资源被授予给的所有功能
         List<SecFunctionBaseInfoDTO> functionList = functionDao
-                .listFunctionBaseInfoDTOsById(resourceId);
+                .listFunctionBaseInfoDTOsByIdNoI18n(resourceId);
         if (QCollectionUtil.isEmpty(functionList)) {
             return Collections.emptyList();
         }

@@ -24,7 +24,7 @@ public class SecResourceDao {
      * @param path
      * @return
      */
-    public List<SecResource> listResourcesByPath(String path) {
+    public List<SecResource> listResourcesByPathNoI18n(String path) {
         LambdaQueryWrapper<SecResource> wrapper = Wrappers.lambdaQuery();
         wrapper.eq(SecResource::getResourcePath, path);
         wrapper.orderByAsc(SecResource::getResourcePath);

@@ -104,7 +104,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
      */
     protected List<GrantedAuthority> getGrantedAuthorities(Long userId) {
         // 获取角色
-        List<SecRole> roleList = roleDao.listAllTenantRolesByUserId(userId);
+        List<SecRole> roleList = roleDao.listAllTenantRolesByUserIdNoI18n(userId);
 
         List<GrantedAuthority> authorityList = QCollectionUtil.mapToList(roleList, (role) -> {
             return new RoleAuthority(role.getId(), role.getRoleCode());

@@ -19,5 +19,5 @@ public interface SecRoleMapper extends BaseMapper<SecRole> {
      * @return
      */
     @InterceptorIgnore(tenantLine = "true")
-    List<SecRole> listAllTenantRolesByUserId(@Param("userId") Long userId);
+    List<SecRole> listAllTenantRolesByUserIdNoI18n(@Param("userId") Long userId);
 }

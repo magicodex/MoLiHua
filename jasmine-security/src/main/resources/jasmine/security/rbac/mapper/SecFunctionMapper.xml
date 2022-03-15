@@ -6,7 +6,7 @@
     <resultMap id="securityFunctionBaseInfoDTO" type="jasmine.security.rbac.dto.SecFunctionBaseInfoDTO">
     </resultMap>
 
-    <select id="listAllTenantFunctionBaseInfoDTOsByRoleIds" resultMap="securityFunctionBaseInfoDTO">
+    <select id="listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n" resultMap="securityFunctionBaseInfoDTO">
         select
         t_function.id function_id,
         t_function.function_code,
@@ -25,7 +25,7 @@
         order by t_function.function_code asc
     </select>
 
-    <select id="listFunctionBaseInfoDTOsById" resultMap="securityFunctionBaseInfoDTO">
+    <select id="listFunctionBaseInfoDTOsByIdNoI18n" resultMap="securityFunctionBaseInfoDTO">
         select
         t_outer.function_id,
         t_outer.function_code,
