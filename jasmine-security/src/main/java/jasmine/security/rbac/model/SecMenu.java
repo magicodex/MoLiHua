@@ -3,7 +3,8 @@ package jasmine.security.rbac.model;
 import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.framework.persistence.annotation.I18n;
+import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 /**
  * <p>
@@ -13,7 +14,7 @@ import jasmine.framework.persistence.entity.BaseEntity;
  * @author mh.z
  */
 @TableName("sec_menu")
-public class SecMenu extends BaseEntity {
+public class SecMenu extends BaseI18nEntity {
 
     /** 模板ID */
     @TableField("template_id")
@@ -28,6 +29,7 @@ public class SecMenu extends BaseEntity {
     private String menuCode;
 
     /** 菜单名称 */
+    @I18n
     @TableField("menu_name")
     private String menuName;
 

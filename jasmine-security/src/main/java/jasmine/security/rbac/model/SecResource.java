@@ -2,7 +2,8 @@ package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.framework.persistence.annotation.I18n;
+import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 /**
  * <p>
@@ -12,7 +13,7 @@ import jasmine.framework.persistence.entity.BaseEntity;
  * @author mh.z
  */
 @TableName("sec_resource")
-public class SecResource extends BaseEntity {
+public class SecResource extends BaseI18nEntity {
 
     /** 资源类型 */
     @TableField("resource_type")
@@ -35,6 +36,7 @@ public class SecResource extends BaseEntity {
     private Boolean frozenFlag;
 
     /** 备注 */
+    @I18n
     @TableField("remark")
     private String remark;
 

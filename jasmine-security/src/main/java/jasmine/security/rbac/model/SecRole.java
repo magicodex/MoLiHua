@@ -2,7 +2,8 @@ package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.framework.persistence.annotation.I18n;
+import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 /**
  * <p>
@@ -12,13 +13,14 @@ import jasmine.framework.persistence.entity.BaseEntity;
  * @author mh.z
  */
 @TableName("sec_role")
-public class SecRole extends BaseEntity {
+public class SecRole extends BaseI18nEntity {
 
     /** 角色代码 */
     @TableField("role_code")
     private String roleCode;
 
     /** 角色名称 */
+    @I18n
     @TableField("role_name")
     private String roleName;
 
@@ -27,6 +29,7 @@ public class SecRole extends BaseEntity {
     private Boolean enableFlag;
 
     /** 备注 */
+    @I18n
     @TableField("remark")
     private String remark;
 

@@ -2,7 +2,8 @@ package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.framework.persistence.annotation.I18n;
+import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 /**
  * <p>
@@ -12,13 +13,14 @@ import jasmine.framework.persistence.entity.BaseEntity;
  * @author mh.z
  */
 @TableName("sec_function")
-public class SecFunction extends BaseEntity {
+public class SecFunction extends BaseI18nEntity {
 
     /** 功能代码 */
     @TableField("function_code")
     private String functionCode;
 
     /** 功能名称 */
+    @I18n
     @TableField("function_name")
     private String functionName;
 

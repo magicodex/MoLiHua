@@ -2,7 +2,8 @@ package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.framework.persistence.entity.BaseEntity;
+import jasmine.framework.persistence.annotation.I18n;
+import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 /**
  * <p>
@@ -12,13 +13,14 @@ import jasmine.framework.persistence.entity.BaseEntity;
  * @author mh.z
  */
 @TableName("sec_menu_template")
-public class SecMenuTemplate extends BaseEntity {
+public class SecMenuTemplate extends BaseI18nEntity {
 
     /** 模板代码 */
     @TableField("template_code")
     private String templateCode;
 
     /** 模板名称 */
+    @I18n
     @TableField("template_name")
     private String templateName;
 

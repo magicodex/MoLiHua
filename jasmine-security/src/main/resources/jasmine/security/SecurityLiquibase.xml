@@ -24,6 +24,9 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
             <column name="created_date" type="timestamp" remarks="创建日期">
                 <constraints nullable="false"/>
             </column>
@@ -53,6 +56,9 @@
             <column name="function_name" type="varchar(100)" remarks="功能名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
             <column name="created_date" type="timestamp" remarks="创建日期">
                 <constraints nullable="false"/>
             </column>
@@ -80,6 +86,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="permission_name" type="varchar(100)" remarks="权限名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
             <column name="created_date" type="timestamp" remarks="创建日期">
@@ -122,6 +131,9 @@
             </column>
             <column name="remark" type="varchar(1000)" remarks="备注">
                 <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
             </column>
             <column name="created_date" type="timestamp" remarks="创建日期">
                 <constraints nullable="false"/>
@@ -306,6 +318,9 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
             <column name="created_date" type="timestamp" remarks="创建日期">
                 <constraints nullable="false"/>
             </column>
@@ -348,6 +363,9 @@
                 <constraints nullable="true"/>
             </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
             <column name="created_date" type="timestamp" remarks="创建日期">
