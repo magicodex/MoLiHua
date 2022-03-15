@@ -43,7 +43,7 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy, InitS
         }
 
         // 获取请求对应的 URL 模式
-        String urlPattern = SecResourceUtil.getUrlPattern(requestMappingHandlerMapping, request);
+        String urlPattern = SecurityResourceUtil.getUrlPattern(requestMappingHandlerMapping, request);
         if (urlPattern == null) {
             return false;
         }

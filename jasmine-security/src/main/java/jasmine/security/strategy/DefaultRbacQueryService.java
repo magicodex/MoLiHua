@@ -43,7 +43,7 @@ public class DefaultRbacQueryService implements RbacQueryService {
 
             if (SecurityConstants.RESOURCE_ACCESS_METHOD_ANY.equals(accessMethod)
                     || QStringUtil.equals(requestMethod, accessMethod)) {
-                return SecResourceUtil.toResourceBaseInfoDTO(current);
+                return SecurityResourceUtil.toResourceBaseInfoDTO(current);
             }
         }
 

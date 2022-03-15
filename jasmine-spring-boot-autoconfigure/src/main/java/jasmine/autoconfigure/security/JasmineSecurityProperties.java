@@ -7,31 +7,23 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "jasmine.security")
 public class JasmineSecurityProperties {
-    /** RBAC相关配置 */
-    private Rbac rbac = new Rbac();
+    /** 授权相关配置 */
+    private Authorization authorization = new Authorization();
 
-    public Rbac getRbac() {
-        return rbac;
+    public Authorization getAuthorization() {
+        return authorization;
     }
 
-    public void setRbac(Rbac rbac) {
-        this.rbac = rbac;
+    public void setAuthorization(Authorization authorization) {
+        this.authorization = authorization;
     }
 
     /**
-     * RBAC相关配置
+     * 授权相关配置
      */
-    public static class Rbac {
-        /** 是否启用RBAC访问控制 */
-        private Boolean enabled = false;
-
-        public Boolean getEnabled() {
-            return enabled;
-        }
-
-        public void setEnabled(Boolean enabled) {
-            this.enabled = enabled;
-        }
+    public static class Authorization {
+        /** 授权策略 */
+        private String strategy = "default";
     }
 
 }

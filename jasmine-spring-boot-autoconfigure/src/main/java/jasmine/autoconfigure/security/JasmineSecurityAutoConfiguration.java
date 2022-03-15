@@ -14,8 +14,10 @@ import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.subject.UserSubjectProvider;
 import jasmine.security.support.SecurityContextHandler;
 import jasmine.security.support.SecurityTenantConfigProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,13 +46,12 @@ public class JasmineSecurityAutoConfiguration {
 
     @Bean
     public AccessDecisionManager accessDecisionManager(JasmineSecurityProperties securityProperties,
-                                                       AccessDecisionStrategy accessDecisionStrategy) {
+                                                       @Autowired(required = false) AccessDecisionStrategy accessDecisionStrategy) {
         WebExpressionVoter webExpressionVoter = new WebExpressionVoter();
         webExpressionVoter.setExpressionHandler(new OAuth2WebSecurityExpressionHandler());
 
         // 动态访问决策投票器
-        Boolean rbacEnabled = securityProperties.getRbac().getEnabled();
-        DynamicAccessDecisionVoter dynamicVoter = new DynamicAccessDecisionVoter(rbacEnabled, accessDecisionStrategy);
+        DynamicAccessDecisionVoter dynamicVoter = new DynamicAccessDecisionVoter(accessDecisionStrategy);
         // 访问决策管理器
         AccessDecisionManager manager = new AffirmativeBased(Arrays.asList(webExpressionVoter, dynamicVoter));
         AccessDecisionManagerProxy managerProxy = new AccessDecisionManagerProxy(manager);
@@ -58,6 +59,8 @@ public class JasmineSecurityAutoConfiguration {
         return managerProxy;
     }
 
+    @ConditionalOnProperty(value = "jasmine.security.authorization.strategy",
+            havingValue = "rbac", matchIfMissing = false)
     @Bean
     public RbacAccessDecisionStrategy accessDecisionStrategy(SecFunctionDao functionDao,
                                                              SecResourceDao resourceDao) {

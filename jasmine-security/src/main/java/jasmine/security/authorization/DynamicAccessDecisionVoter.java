@@ -15,13 +15,10 @@ import java.util.Collection;
  * @author mh.z
  */
 public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInvocation> {
-    /** 是否启用 RBAC 访问控制 */
-    private Boolean rbacEnabled;
     /** 访问决策策略 */
     private AccessDecisionStrategy accessDecisionStrategy;
 
-    public DynamicAccessDecisionVoter(Boolean rbacEnabled, AccessDecisionStrategy accessDecisionStrategy) {
-        this.rbacEnabled = rbacEnabled;
+    public DynamicAccessDecisionVoter(AccessDecisionStrategy accessDecisionStrategy) {
         this.accessDecisionStrategy = accessDecisionStrategy;
     }
 
@@ -32,17 +29,13 @@ public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInv
         QCheckUtil.notNull(invocation, "invocation null");
         Object principal = authentication.getPrincipal();
 
-        // 若未开启 RBAC 访问控制则根据是否认证决定是否允许访问
-        if (!Boolean.TRUE.equals(rbacEnabled)) {
+        // 若未指定访问策略则根据是否认证决定是否允许访问
+        if (accessDecisionStrategy == null) {
             if (!(authentication instanceof AnonymousAuthenticationToken)) {
                 return AccessDecisionVoter.ACCESS_GRANTED;
             }
 
             return AccessDecisionVoter.ACCESS_DENIED;
-        }
-
-        if (accessDecisionStrategy == null) {
-            return AccessDecisionVoter.ACCESS_GRANTED;
         }
 
         if (principal instanceof UserSubject) {

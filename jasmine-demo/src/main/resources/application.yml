@@ -81,6 +81,10 @@ jasmine:
     crypto:
       password: password1
       salt: salt1
+  security:
+    authorization:
+      # 访问策略
+      strategy: default
 
 app:
   message-queue:

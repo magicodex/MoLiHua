@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author mh.z
  */
-public class SecResourceUtil {
-    private static final Logger logger = LoggerFactory.getLogger(SecResourceUtil.class);
+public class SecurityResourceUtil {
+    private static final Logger logger = LoggerFactory.getLogger(SecurityResourceUtil.class);
 
     /**
      * 返回 URL 模式

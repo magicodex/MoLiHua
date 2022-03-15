@@ -23,8 +23,8 @@ jasmine.message-queue.publisher.enabled=true
 # 是否消费消息队列的消息 (默认false)
 jasmine.message-queue.consumer.enabled=true
 
-# 是否启用RBAC访问控制 (默认false)
-jasmine.security.rbac.enabled=true
+# 是否启用RBAC访问控制 (默认default)
+jasmine.security.authorization.strategy=rbac
 
 # 是否启用租户拦截器 (默认false)
 jasmine.data.tenant.enabled=true
