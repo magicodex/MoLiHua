@@ -71,7 +71,7 @@ public class DefaultRbacQueryService implements RbacQueryService {
         QCheckUtil.notNull(resourceId, "resourceId null");
 
         // 获取该资源被授予给的所有功能
-        List<SecFunctionBaseInfoDTO> functionList = resourceDao
+        List<SecFunctionBaseInfoDTO> functionList = functionDao
                 .listFunctionBaseInfoDTOsById(resourceId);
         if (QCollectionUtil.isEmpty(functionList)) {
             return Collections.emptyList();

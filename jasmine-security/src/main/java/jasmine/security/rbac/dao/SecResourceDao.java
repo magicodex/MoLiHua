@@ -2,7 +2,6 @@ package jasmine.security.rbac.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
 import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.model.SecResource;
 
@@ -32,16 +31,6 @@ public class SecResourceDao {
         wrapper.orderByAsc(SecResource::getAccessMethod);
 
         return baseMapper.selectList(wrapper);
-    }
-
-    /**
-     * 查找指定资源被授予给的所有功能
-     *
-     * @param resourceId
-     * @return
-     */
-    public List<SecFunctionBaseInfoDTO> listFunctionBaseInfoDTOsById(Long resourceId) {
-        return baseMapper.listFunctionBaseInfoDTOsById(resourceId);
     }
 
 }

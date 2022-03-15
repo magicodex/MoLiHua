@@ -32,4 +32,14 @@ public class SecFunctionDao {
         return baseMapper.listAllTenantFunctionBaseInfoDTOsByRoleIds(roleIds);
     }
 
+    /**
+     * 查找指定资源被授予给的所有功能
+     *
+     * @param resourceId
+     * @return
+     */
+    public List<SecFunctionBaseInfoDTO> listFunctionBaseInfoDTOsById(Long resourceId) {
+        return baseMapper.listFunctionBaseInfoDTOsById(resourceId);
+    }
+
 }
