@@ -13,6 +13,8 @@
 
     <properties>
         <spring.boot.version>2.5.4</spring.boot.version>
+        <springfox-swagger.version>3.0.0</springfox-swagger.version>
+        <springdoc.version>1.6.6</springdoc.version>
     </properties>
 
     <dependencyManagement>
@@ -49,6 +51,23 @@
             <artifactId>jasmine-security-test</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- API文档 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
 
         <!-- 模板引擎 -->

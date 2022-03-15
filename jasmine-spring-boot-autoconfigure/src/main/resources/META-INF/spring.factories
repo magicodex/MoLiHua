@@ -2,7 +2,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 jasmine.autoconfigure.framework.JasmineFrameworkAutoConfiguration,\
 jasmine.autoconfigure.framework.support.LocaleMessageAutoConfiguration,\
-jasmine.autoconfigure.framework.web.SwaggerAutoConfiguration,\
 jasmine.autoconfigure.framework.support.AsyncTaskAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.RabbitAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.RedisAutoConfiguration,\

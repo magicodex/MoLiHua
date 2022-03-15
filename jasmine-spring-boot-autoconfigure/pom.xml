@@ -88,20 +88,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- API文档 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-
         <!-- Redis客户端 -->
         <dependency>
             <groupId>org.redisson</groupId>

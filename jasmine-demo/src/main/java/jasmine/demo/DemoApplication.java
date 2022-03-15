@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import springfox.documentation.oas.annotations.EnableOpenApi;
 
 /**
  * <p>
@@ -18,7 +17,6 @@ import springfox.documentation.oas.annotations.EnableOpenApi;
  *
  * @author mh.z
  */
-@EnableOpenApi
 @MapperScan("jasmine.demo.**.mapper")
 @EnableAutoConfiguration
 @SpringBootApplication(scanBasePackages = {"jasmine.demo"})

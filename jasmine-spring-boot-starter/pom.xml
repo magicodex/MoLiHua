@@ -54,12 +54,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- API文档 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-        </dependency>
-
         <!-- Liquibase数据库版本管理工具 -->
         <dependency>
             <groupId>org.liquibase</groupId>
