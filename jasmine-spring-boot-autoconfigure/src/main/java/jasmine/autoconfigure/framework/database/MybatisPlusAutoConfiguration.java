@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import jasmine.core.context.CurrentSubject;
 import jasmine.framework.common.crypto.CryptoProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
@@ -15,6 +16,7 @@ import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
+import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(MybatisConfiguration.class)
 @EnableConfigurationProperties(MybatisPlusProperties.class)
 @Configuration
-public class MybatisPlusAutoConfiguration {
+public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton {
 
     @Bean
     public CryptoProvider cryptoProvider(MybatisPlusProperties mybatisPlusProperties) {
@@ -84,6 +86,13 @@ public class MybatisPlusAutoConfiguration {
         IgnoreTableStrategy ignoreTableStrategy = tenantLineHandler();
 
         return new TenantConfigProcessorScanBean(ignoreTableStrategy);
+    }
+
+    @Override
+    public void afterSingletonsInstantiated() {
+        if (!CurrentSubject.isInitialized()) {
+            throw new RuntimeException("please call method CurrentSubject.initUtil to initialize");
+        }
     }
 
 }

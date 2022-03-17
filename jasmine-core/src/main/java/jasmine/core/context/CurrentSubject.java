@@ -23,6 +23,10 @@ public class CurrentSubject {
         CurrentSubject.subjectProvider = subjectProvider;
     }
 
+    public static boolean isInitialized() {
+        return subjectProvider != null;
+    }
+
     /**
      * 返回用户ID
      *
