@@ -13,7 +13,40 @@
 2. 修改 jasmine-demo/src/test/resources/test-config.properties 的数据库连接参数。
 3. 通过命令 mvn test 或其它途径执行单元测试。
 
-## 配置参数
+## 使用说明
+
+```
+<dependency>
+    <groupId>com.magicodex</groupId>
+    <artifactId>jasmine-spring-boot-starter</artifactId>
+    <version>最新版本</version>
+</dependency>
+
+<!-- 可选，权限认证框架 -->
+<dependency>
+    <groupId>com.magicodex</groupId>
+    <artifactId>jasmine-spring-boot-starter-security</artifactId>
+    <version>最新版本</version>
+</dependency>
+
+<!-- 可选，支持单元测试 -->
+<dependency>
+    <groupId>com.magicodex</groupId>
+    <artifactId>jasmine-framework-test</artifactId>
+    <version>最新版本</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- 可选，支持单元测试 -->
+<dependency>
+    <groupId>com.magicodex</groupId>
+    <artifactId>jasmine-security-test</artifactId>
+    <version>最新版本</version>
+    <scope>test</scope>
+</dependency>
+```
+
+## 参数配置
 
 ```
 # 是否自动创建交换器和队列 (默认false)
@@ -48,6 +81,11 @@ spring.datasource.read.url=数据库连接字符串
 spring.datasource.read.username=用户名
 spring.datasource.read.password=密码
 ```
+
+## 文档链接
+
+- [jasmine-core 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-core/doc.md)
+- [jasmine-framework 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-framework/doc.md)
 
 ## 已有功能
 
@@ -99,3 +137,6 @@ spring.datasource.read.password=密码
 
 ![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "MODULE.png")
 
+## 开源协议
+
+使用 MIT 开源协议，点击 [LICENSE](https://github.com/magicodex/MoLiHua/blob/main/LICENSE) 了解协议详情。
