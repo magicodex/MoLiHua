@@ -1,4 +1,5 @@
 # MoLiHua
+![茉莉花](https://github.com/magicodex/MoLiHua/blob/main/logo.png "茉莉花")
 
 ## 启动服务
 
@@ -135,7 +136,7 @@ spring.datasource.read.password=密码
 | jasmine-spring-boot-starter-security | 自动配置 |
 | jasmine-demo | DEMO模块 |
 
-![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "MODULE.png")
+![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "模块划分")
 
 ## 开源协议
 
