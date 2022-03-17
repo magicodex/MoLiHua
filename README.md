@@ -57,7 +57,7 @@ spring.datasource.read.password=密码
 - 任务调度
 - 读写分离
 - 基于角色的访问控制
-- 多线程工具类
+- 多线程并发工具类
 - 单元测试支持
 - 多语言支持
 - 多租户支持
@@ -68,13 +68,11 @@ spring.datasource.read.password=密码
 | 框架 | 版本 | 说明 |
 | :----: | :---- | :---- |
 | Spring Boot | 2.5.4 | WEB框架 |
-| Spring Security | 5.5.2 | 安全框架 |
-| Swagger | 3.0.0 | API文档 |
+| Spring Security | 5.5.2 | 权限认证框架 |
 | SLF4J | 1.7.32 | 日志库 |
 | Jackson | 2.12.4 | JSON库 |
 | Mybatis-Plus | 3.4.3.4 | 持久层框架 |
 | HikariCP | 4.0.3 | 数据库连接池 |
-| mysql-connector-java | 8.0.28 | MySql JDBC驱动 |
 | Liquibase | 4.3.5 | 数据库版本管理工具 |
 | Redisson | 3.12.3 | Redis客户端 |
 | amqp-client | 5.12.0 | RabbitMQ客户端 |
@@ -99,4 +97,5 @@ spring.datasource.read.password=密码
 | jasmine-spring-boot-starter-security | 自动配置 |
 | jasmine-demo | DEMO模块 |
 
+![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "MODULE.png")
 
