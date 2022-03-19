@@ -11,6 +11,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,8 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author mh.z
  */
+@ConditionalOnProperty(value = "jasmine.message-queue.type",
+        havingValue = "default", matchIfMissing = true)
 @ConditionalOnClass(RabbitTemplate.class)
 @EnableConfigurationProperties(MessageQueueProperties.class)
 @Configuration
