@@ -7,19 +7,19 @@ import java.util.Map;
  * @author mh.z
  */
 public class DefaultCacheExpirationStrategy implements CacheExpirationStrategy {
-    private Map<String, Long> timeoutConfig;
+    private Map<String, Long> expirations;
     private Long defaultTimeout;
-    /** 默认超时时间 */
+    /** 默认过期时间 */
     private static final long DEFAULT_TIMEOUT = 3600;
 
     public DefaultCacheExpirationStrategy() {
-        this.timeoutConfig = Collections.emptyMap();
+        this.expirations = Collections.emptyMap();
         this.defaultTimeout = DEFAULT_TIMEOUT;
     }
 
-    public DefaultCacheExpirationStrategy(Map<String, Long> timeoutConfig,
+    public DefaultCacheExpirationStrategy(Map<String, Long> expirations,
                                           Long defaultTimeout) {
-        this.timeoutConfig = timeoutConfig;
+        this.expirations = expirations;
         this.defaultTimeout = defaultTimeout;
     }
 
@@ -28,7 +28,7 @@ public class DefaultCacheExpirationStrategy implements CacheExpirationStrategy {
         Long timeout = null;
 
         if (category != null) {
-            timeout = timeoutConfig.get(category);
+            timeout = expirations.get(category);
         }
 
         if (timeout == null) {
