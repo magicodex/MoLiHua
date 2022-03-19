@@ -15,7 +15,7 @@ public class DefaultReceiveInterceptor implements ReceiveInterceptor {
     }
 
     @Override
-    public void afterDeserialize(ReceiveInvocationInfo callInfo) {
+    public void afterConvert(ReceiveInvocationInfo callInfo) {
         //
     }
 

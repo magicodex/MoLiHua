@@ -46,8 +46,8 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
         String messageId = messageProperties.getMessageId();
 
         ReceiveInvocationInfo invocationInfo = new DefaultReceiveInvocationInfo(messageId, content, message);
-        // 反序列化消息后调用
-        interceptor.afterDeserialize(invocationInfo);
+        // 转化消息后调用
+        interceptor.afterConvert(invocationInfo);
         // 接收消息
         receiver.receive(content);
 

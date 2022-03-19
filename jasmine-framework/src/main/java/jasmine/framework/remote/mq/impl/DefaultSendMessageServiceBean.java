@@ -72,8 +72,8 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
         Message message = createMessage(key, content);
 
         DefaultSendInvocationInfo invocationInfo = new DefaultSendInvocationInfo(key, content, message);
-        // 序列化消息后调用
-        interceptor.afterSerialize(invocationInfo);
+        // 转化消息后调用
+        interceptor.afterConvert(invocationInfo);
 
         Exchange exchange = routing.getExchange();
         String exchangeName = exchange.getName();

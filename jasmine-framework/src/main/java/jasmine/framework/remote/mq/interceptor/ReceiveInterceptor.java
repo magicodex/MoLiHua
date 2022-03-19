@@ -15,9 +15,9 @@ public interface ReceiveInterceptor {
     void onReceive(ReceiveInvocation invocation, String category, Object content);
 
     /**
-     * 反序列化消息后调用
+     * 转化消息后调用
      *
      * @param invocationInfo
      */
-    void afterDeserialize(ReceiveInvocationInfo invocationInfo);
+    void afterConvert(ReceiveInvocationInfo invocationInfo);
 }

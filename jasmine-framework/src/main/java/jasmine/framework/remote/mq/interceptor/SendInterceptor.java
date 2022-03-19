@@ -16,9 +16,9 @@ public interface SendInterceptor {
     void onSend(SendInvocation invocation, String category, String key, Object message);
 
     /**
-     * 序列化消息后调用
+     * 转化消息后调用
      *
      * @param invocationInfo
      */
-    void afterSerialize(SendInvocationInfo invocationInfo);
+    void afterConvert(SendInvocationInfo invocationInfo);
 }

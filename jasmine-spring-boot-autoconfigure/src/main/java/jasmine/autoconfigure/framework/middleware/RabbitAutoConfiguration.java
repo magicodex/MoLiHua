@@ -10,6 +10,7 @@ import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitAutoConfiguration {
 
+    @ConditionalOnMissingBean(ReceiveMessageService.class)
     @Bean
     public ReceiveMessageService receiveMessageService(MessageQueueProperties messageQueueProperties,
                                                        RuntimeProvider runtimeProvider,
@@ -35,6 +37,7 @@ public class RabbitAutoConfiguration {
         return service;
     }
 
+    @ConditionalOnMissingBean(SendMessageService.class)
     @Bean
     public SendMessageService sendMessageService(MessageQueueProperties messageQueueProperties,
                                                  RabbitTemplate rabbitTemplate,
