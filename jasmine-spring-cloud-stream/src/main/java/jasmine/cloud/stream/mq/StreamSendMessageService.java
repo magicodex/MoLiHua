@@ -21,6 +21,7 @@ public class StreamSendMessageService extends AbstractSendMessageService {
     private static final String HEADER_SUBJECT = "subject";
     private static final String PARAM_USER_ID = "userId";
     private static final String MESSAGE_KEY = "messageKey";
+    private static final String OUTPUT_PREFIX = "-out-0";
 
     public StreamSendMessageService(StreamBridge streamBridge) {
         this.streamBridge = streamBridge;
@@ -40,7 +41,7 @@ public class StreamSendMessageService extends AbstractSendMessageService {
         interceptor.afterConvert(invocationInfo);
 
         // 发送消息
-        String bindingName = category;
+        String bindingName = category + OUTPUT_PREFIX;
         streamBridge.send(bindingName, message);
 
         return invocationInfo;
