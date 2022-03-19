@@ -2,8 +2,10 @@ package jasmine.framework.cache.redis;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QStringUtil;
+import jasmine.framework.cache.CacheExpirationStrategy;
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheSyncStrategy;
+import jasmine.framework.cache.DefaultCacheExpirationStrategy;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -24,19 +26,37 @@ public class RedisCacheService implements CacheService {
     private ValueOperations valueOperations;
     /** 缓存同步策略 */
     private CacheSyncStrategy syncStrategy;
+    /** 缓存过期策略 */
+    private CacheExpirationStrategy expirationStrategy;
 
     /** 缓存key的分隔符 */
     private static final String CACHE_KEY_SEPARATOR = ":";
     /** 缓存key的前缀 */
     private static final String CACHE_KEY_PREFIX = "CACHE:";
-    /** 默认超时时间 */
-    private static final long DEFAULT_TIMEOUT = 3600;
 
-    public RedisCacheService(RedisTemplate redisTemplate,
-                             CacheSyncStrategy syncStrategy) {
+    public RedisCacheService(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
         this.valueOperations = redisTemplate.opsForValue();
+        this.expirationStrategy = new DefaultCacheExpirationStrategy();
+        this.syncStrategy = null;
+    }
+
+    public CacheSyncStrategy getSyncStrategy() {
+        return syncStrategy;
+    }
+
+    public void setSyncStrategy(CacheSyncStrategy syncStrategy) {
         this.syncStrategy = syncStrategy;
+    }
+
+    public CacheExpirationStrategy getExpirationStrategy() {
+        return expirationStrategy;
+    }
+
+    public void setExpirationStrategy(CacheExpirationStrategy expirationStrategy) {
+        this.expirationStrategy = (expirationStrategy != null)
+                ? expirationStrategy
+                : (new DefaultCacheExpirationStrategy());
     }
 
     @Override
@@ -107,7 +127,8 @@ public class RedisCacheService implements CacheService {
         // 缓存数据
         valueOperations.set(cacheKey, bytes);
         // 设置缓存时间
-        redisTemplate.expire(cacheKey, DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+        long timeout = expirationStrategy.getTimeout(category);
+        redisTemplate.expire(cacheKey, timeout, TimeUnit.SECONDS);
     }
 
     @Override

@@ -22,7 +22,8 @@ public class RedisAutoConfiguration {
     @Bean
     public CacheService cacheService(RedisTemplate redisTemplate,
                                      @Autowired(required = false) CacheSyncStrategy syncStrategy) {
-        CacheService cacheService = new RedisCacheService(redisTemplate, syncStrategy);
+        RedisCacheService cacheService = new RedisCacheService(redisTemplate);
+        cacheService.setSyncStrategy(syncStrategy);
 
         // 初始工具类
         CacheUtil.initUtil(cacheService);
