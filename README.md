@@ -1,5 +1,5 @@
 # MoLiHua
-![茉莉花](blob/main/logo.png "茉莉花")
+![茉莉花](./blob/main/logo.png "茉莉花")
 
 ## 启动服务
 
@@ -85,8 +85,8 @@ spring.datasource.read.password=密码
 
 ## 文档链接
 
-- [jasmine-core 文档](blob/main/jasmine-core/doc.md)
-- [jasmine-framework 文档](blob/main/jasmine-framework/doc.md)
+- [jasmine-core 文档](./blob/main/jasmine-core/doc.md)
+- [jasmine-framework 文档](./blob/main/jasmine-framework/doc.md)
 
 ## 已有功能
 
@@ -136,8 +136,8 @@ spring.datasource.read.password=密码
 | jasmine-spring-boot-starter-security | 自动配置 |
 | jasmine-demo | DEMO模块 |
 
-![模块划分](blob/main/MODULE.png "模块划分")
+![模块划分](./blob/main/MODULE.png "模块划分")
 
 ## 开源协议
 
-使用 MIT 开源协议，点击 [LICENSE](blob/main/LICENSE) 了解协议详情。
+使用 MIT 开源协议，点击 [LICENSE](./blob/main/LICENSE) 了解协议详情。
