@@ -79,6 +79,7 @@ public class DataSourceAutoConfiguration {
                 .type(HikariDataSource.class)
                 .build();
         dataSource.setPoolName("read");
+        dataSource.setReadOnly(true);
 
         return dataSource;
     }

@@ -75,7 +75,8 @@ xxl.job.executor.port=9999
 xxl.job.executor.log-path=/data/applogs/xxl-job/jobhandler
 xxl.job.executor.log-retention-days=30
 
-# 是否启用读写分离（默认false）
+# 是否启用读写分离（默认false），若启用读写分离则 spring.datasource.type 设置无效，
+# 目前读写分离的数据源使用 hikari 连接池。
 jasmine.datasource.readWrite.enabled=true
 # 只读数据源配置
 spring.datasource.read.url=数据库连接字符串
