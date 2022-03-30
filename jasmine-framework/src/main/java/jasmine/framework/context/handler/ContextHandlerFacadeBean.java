@@ -1,10 +1,9 @@
-package jasmine.framework.context;
+package jasmine.framework.context.handler;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QNewUtil;
-import jasmine.framework.context.handler.ContextHandler;
-import jasmine.framework.context.handler.ContextSnapshot;
+import jasmine.framework.context.CustomInitializingSingleton;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

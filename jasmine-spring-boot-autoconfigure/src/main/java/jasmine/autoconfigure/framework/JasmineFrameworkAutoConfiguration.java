@@ -2,13 +2,13 @@ package jasmine.autoconfigure.framework;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QSpringUtil;
-import jasmine.framework.context.ContextHandlerFacade;
-import jasmine.framework.context.ContextHandlerFacadeBean;
-import jasmine.framework.context.ContextInitAndClearHelper;
+import jasmine.framework.context.handler.ContextHandlerFacade;
+import jasmine.framework.context.handler.ContextHandlerFacadeBean;
+import jasmine.framework.context.ContextManagementHelper;
 import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
-import jasmine.framework.context.handler.FrameworkContextHandler;
+import jasmine.framework.context.handler.framework.FrameworkContextHandler;
 import jasmine.framework.context.handler.web.RequestContextHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,7 +49,7 @@ public class JasmineFrameworkAutoConfiguration {
         ContextHandlerFacade handlerFacade = new ContextHandlerFacadeBean();
 
         // 初始工具类
-        ContextInitAndClearHelper.initUtil(handlerFacade);
+        ContextManagementHelper.initUtil(handlerFacade);
 
         return handlerFacade;
     }

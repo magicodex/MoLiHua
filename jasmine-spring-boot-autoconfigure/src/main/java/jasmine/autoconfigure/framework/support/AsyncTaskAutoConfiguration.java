@@ -5,7 +5,7 @@ import jasmine.framework.concurrent.AsyncExecutorTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskDecorator;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
-import jasmine.framework.context.ContextHandlerFacade;
+import jasmine.framework.context.handler.ContextHandlerFacade;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
 import org.springframework.context.annotation.Bean;

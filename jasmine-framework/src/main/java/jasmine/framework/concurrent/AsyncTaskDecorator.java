@@ -2,7 +2,7 @@ package jasmine.framework.concurrent;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
-import jasmine.framework.context.ContextHandlerFacade;
+import jasmine.framework.context.handler.ContextHandlerFacade;
 import jasmine.framework.context.handler.ContextSnapshot;
 import org.springframework.core.task.TaskDecorator;
 

@@ -135,6 +135,7 @@ spring.datasource.read.password=密码
 | jasmine-spring-boot-autoconfigure | 自动配置 |
 | jasmine-spring-boot-starter | 自动配置 |
 | jasmine-spring-boot-starter-security | 自动配置 |
+| jasmine-spring-cloud-stream | 整合Spring Cloud Stream |
 | jasmine-demo | DEMO模块 |
 
 ![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "模块划分")

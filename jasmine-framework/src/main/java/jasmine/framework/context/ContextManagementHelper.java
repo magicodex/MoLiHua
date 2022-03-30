@@ -4,6 +4,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QErrorUtil;
 import jasmine.framework.common.function.FunctionWithResult;
 import jasmine.framework.common.function.FunctionWithoutResult;
+import jasmine.framework.context.handler.ContextHandlerFacade;
 
 /**
  * <p>
@@ -12,11 +13,11 @@ import jasmine.framework.common.function.FunctionWithoutResult;
  *
  * @author mh.z
  */
-public class ContextInitAndClearHelper {
+public class ContextManagementHelper {
     private static ContextHandlerFacade handlerFacade;
 
     public static void initUtil(ContextHandlerFacade handlerFacade) {
-        ContextInitAndClearHelper.handlerFacade = handlerFacade;
+        ContextManagementHelper.handlerFacade = handlerFacade;
     }
 
     /**
