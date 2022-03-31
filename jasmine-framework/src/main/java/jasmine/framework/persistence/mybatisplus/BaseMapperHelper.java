@@ -1,9 +1,14 @@
 package jasmine.framework.persistence.mybatisplus;
 
+import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.common.constant.CommonMessages;
+import jasmine.framework.common.util.number.LongValue;
+import org.apache.ibatis.binding.MapperMethod;
 
 import javax.annotation.Nonnull;
 import java.io.Serializable;
@@ -13,6 +18,8 @@ import java.util.Collection;
  * @author mh.z
  */
 public class BaseMapperHelper {
+    private static final int INSERT_BATCH_SIZE = 1000;
+    private static final int UPDATE_BATCH_SIZE = 1000;
 
     /**
      * 批量保存记录
@@ -31,8 +38,14 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        // TODO
-        return 0;
+        String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.INSERT_ONE);
+        LongValue rowCount = new LongValue(0);
+
+        SqlHelper.executeBatch(null, null, entities, INSERT_BATCH_SIZE, (sqlSession, entity) -> {
+            rowCount.add(sqlSession.insert(sqlStatement, entity));
+        });
+
+        return (int) rowCount.get();
     }
 
     /**
@@ -52,8 +65,16 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        // TODO
-        return 0;
+        String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.UPDATE_BY_ID);
+        LongValue rowCount = new LongValue(0);
+
+        SqlHelper.executeBatch(null, null, entities, UPDATE_BATCH_SIZE, (sqlSession, entity) -> {
+            MapperMethod.ParamMap<T> param = new MapperMethod.ParamMap<>();
+            param.put(Constants.ENTITY, entity);
+            rowCount.add(sqlSession.update(sqlStatement, param));
+        });
+
+        return (int) rowCount.get();
     }
 
     /**
