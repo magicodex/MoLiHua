@@ -1,6 +1,9 @@
 package jasmine.framework.persistence.mybatisplus.dao;
 
+import javax.annotation.Nonnull;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author mh.z
@@ -13,15 +16,15 @@ public interface BaseDAO<T> {
      * @param entity
      * @return
      */
-    boolean save(T entity);
+    boolean save(@Nonnull T entity);
 
     /**
-     * 查询记录
+     * 保存记录
      *
-     * @param id
+     * @param entities
      * @return
      */
-    T getById(Serializable id);
+    boolean saveBatch(@Nonnull Collection<T> entities);
 
     /**
      * 更新记录
@@ -29,7 +32,15 @@ public interface BaseDAO<T> {
      * @param entity
      * @return
      */
-    boolean updateById(T entity);
+    boolean updateById(@Nonnull T entity);
+
+    /**
+     * 更新记录
+     *
+     * @param entities
+     * @return
+     */
+    boolean updateBatchById(@Nonnull Collection<T> entities);
 
     /**
      * 删除记录
@@ -37,5 +48,29 @@ public interface BaseDAO<T> {
      * @param id
      * @return
      */
-    boolean deleteById(Serializable id);
+    boolean deleteById(@Nonnull Serializable id);
+
+    /**
+     * 删除记录
+     *
+     * @param ids
+     * @return
+     */
+    boolean deleteByIds(@Nonnull Collection<Serializable> ids);
+
+    /**
+     * 查询记录
+     *
+     * @param id
+     * @return
+     */
+    T getById(@Nonnull Serializable id);
+
+    /**
+     * 查询记录
+     *
+     * @param ids
+     * @return
+     */
+    List<T> listByIds(@Nonnull Collection<Serializable> ids);
 }

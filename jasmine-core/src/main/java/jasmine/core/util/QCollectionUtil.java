@@ -24,6 +24,40 @@ import java.util.stream.Collectors;
 public class QCollectionUtil extends CollUtil {
 
     /**
+     * 判断是否集合的数量相同
+     *
+     * @param collection1
+     * @param collection2
+     * @return
+     */
+    public static boolean isSizeEquals(@Nullable Collection<?> collection1,
+                                       @Nullable Collection<?> collection2) {
+        int size1 = (collection1 != null)
+                ? collection1.size() : 0;
+        int size2 = (collection2 != null)
+                ? collection2.size() : 0;
+
+        return (size1 == size2);
+    }
+
+    /**
+     * 判断是否集合的数量不同
+     *
+     * @param collection1
+     * @param collection2
+     * @return
+     */
+    public static boolean isSizeNotEquals(@Nullable Collection<?> collection1,
+                                          @Nullable Collection<?> collection2) {
+        int size1 = (collection1 != null)
+                ? collection1.size() : 0;
+        int size2 = (collection2 != null)
+                ? collection2.size() : 0;
+
+        return (size1 != size2);
+    }
+
+    /**
      * 映射集合里的元素成其它类型的元素
      *
      * @param collection
