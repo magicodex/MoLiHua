@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,22 @@ import java.util.Set;
  * @author mh.z
  */
 public class QCollectionUtilTest {
+
+    @Test
+    public void testIsSizeEquals() {
+        Assert.assertTrue(QCollectionUtil.isSizeEquals(Arrays.asList(null, null),
+                Arrays.asList(null, null)));
+        Assert.assertFalse(QCollectionUtil.isSizeEquals(Arrays.asList(null, null, null),
+                Arrays.asList(null, null)));
+    }
+
+    @Test
+    public void testIsSizeNotEquals() {
+        Assert.assertFalse(QCollectionUtil.isSizeNotEquals(Arrays.asList(null, null),
+                Arrays.asList(null, null)));
+        Assert.assertTrue(QCollectionUtil.isSizeNotEquals(Arrays.asList(null, null, null),
+                Arrays.asList(null, null)));
+    }
 
     @Test
     public void testMapToList() {
