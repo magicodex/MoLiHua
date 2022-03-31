@@ -1,4 +1,4 @@
-package jasmine.framework.common.crypto;
+package jasmine.framework.common.security;
 
 /**
  * @author mh.z

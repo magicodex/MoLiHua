@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.datasource;
 
-import jasmine.framework.common.function.FunctionWithResult;
+import jasmine.framework.common.util.function.FunctionWithResult;
 
 /**
  * @author mh.z

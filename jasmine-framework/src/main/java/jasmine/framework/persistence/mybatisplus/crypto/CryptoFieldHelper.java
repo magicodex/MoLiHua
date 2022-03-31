@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.crypto;
 
 import jasmine.core.util.QCheckUtil;
-import jasmine.framework.common.crypto.CryptoProvider;
+import jasmine.framework.common.security.CryptoProvider;
 
 /**
  * @author mh.z

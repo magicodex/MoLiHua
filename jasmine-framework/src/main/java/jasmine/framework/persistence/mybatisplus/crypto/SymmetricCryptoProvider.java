@@ -6,7 +6,7 @@ import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.crypto.symmetric.AES;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import jasmine.core.util.QStringUtil;
-import jasmine.framework.common.crypto.CryptoProvider;
+import jasmine.framework.common.security.CryptoProvider;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

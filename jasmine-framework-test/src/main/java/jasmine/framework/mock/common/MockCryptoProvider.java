@@ -1,6 +1,6 @@
 package jasmine.framework.mock.common;
 
-import jasmine.framework.common.crypto.CryptoProvider;
+import jasmine.framework.common.security.CryptoProvider;
 
 /**
  * @author mh.z
