@@ -1,4 +1,4 @@
-package jasmine.framework.common.util;
+package jasmine.framework.persistence.mybatisplus.util;
 
 import jasmine.framework.testdependency.Example1;
 import org.junit.Assert;
@@ -11,13 +11,13 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class StreamUtilTest {
+public class MybatisPlusCsvUtilTest {
     private static final String EXAMPLE1_PATH = "/test/csv/Example1_1.csv";
 
     @Test
     public void testReadCSV() throws IOException {
-        try (InputStream inputStream = StreamUtilTest.class.getResourceAsStream(EXAMPLE1_PATH)) {
-            List<Example1> actualList = StreamUtil.readCSV(inputStream, Example1.class);
+        try (InputStream inputStream = MybatisPlusCsvUtilTest.class.getResourceAsStream(EXAMPLE1_PATH)) {
+            List<Example1> actualList = MybatisPlusCsvUtil.readCSV(inputStream, Example1.class);
 
             Assert.assertEquals(10, actualList.size());
             Assert.assertEquals(Long.valueOf(1), actualList.get(0).getId());

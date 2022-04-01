@@ -1,4 +1,4 @@
-package jasmine.framework.common.util.function;
+package jasmine.core.util.function;
 
 /**
  * <p>

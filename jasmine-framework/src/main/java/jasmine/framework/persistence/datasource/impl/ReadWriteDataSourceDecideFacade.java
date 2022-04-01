@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.datasource.impl;
 
 import jasmine.core.util.QErrorUtil;
-import jasmine.framework.common.util.function.FunctionWithResult;
+import jasmine.core.util.function.FunctionWithResult;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import jasmine.framework.persistence.datasource.context.DataSourceContext;
 import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;

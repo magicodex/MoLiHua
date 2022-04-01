@@ -1,4 +1,4 @@
-package jasmine.framework.common.util.number;
+package jasmine.core.util.number;
 
 /**
  * @author mh.z

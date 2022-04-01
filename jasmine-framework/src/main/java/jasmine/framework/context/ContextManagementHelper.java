@@ -2,8 +2,8 @@ package jasmine.framework.context;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QErrorUtil;
-import jasmine.framework.common.util.function.FunctionWithResult;
-import jasmine.framework.common.util.function.FunctionWithoutResult;
+import jasmine.core.util.function.FunctionWithResult;
+import jasmine.core.util.function.FunctionWithoutResult;
 import jasmine.framework.context.handler.ContextHandlerFacade;
 
 /**

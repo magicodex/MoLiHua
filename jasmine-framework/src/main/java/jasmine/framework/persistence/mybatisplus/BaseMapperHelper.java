@@ -8,7 +8,7 @@ import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.framework.common.constant.CommonMessages;
-import jasmine.framework.common.util.number.LongValue;
+import jasmine.core.util.number.LongValue;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;

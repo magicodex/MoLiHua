@@ -1,4 +1,4 @@
-package jasmine.framework.common.util;
+package jasmine.framework.persistence.mybatisplus.util;
 
 import cn.hutool.core.lang.Assert;
 import jasmine.framework.common.util.csv.CsvToObject;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class StreamUtil {
+public class MybatisPlusCsvUtil {
 
     /**
      * 读取CSV
