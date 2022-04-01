@@ -2,6 +2,8 @@ package jasmine.core.util;
 
 import cn.hutool.core.collection.CollStreamUtil;
 import cn.hutool.core.collection.CollUtil;
+import jasmine.core.util.sort.CollectionSortUtil;
+import jasmine.core.util.sort.SortKey;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -189,6 +191,20 @@ public class QCollectionUtil extends CollUtil {
         }
 
         return CollStreamUtil.groupByKey(collection, classifier);
+    }
+
+    /**
+     * 排序
+     *
+     * @param collection
+     * @param keys
+     * @param <T>
+     * @param <K>
+     * @return
+     */
+    public static <T, K extends Comparable> List<T> sortBy(@Nonnull Collection<T> collection,
+                                                           @Nonnull SortKey<T, K>... keys) {
+        return CollectionSortUtil.sort(collection, keys);
     }
 
     /**
