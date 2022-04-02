@@ -1,4 +1,5 @@
 # MoLiHua
+
 ![茉莉花](https://github.com/magicodex/MoLiHua/blob/main/logo.png "茉莉花")
 
 ## 启动服务
@@ -16,97 +17,27 @@
 
 ## 使用说明
 
+### 1.添加依赖
+
 ```
 <dependency>
     <groupId>com.magicodex</groupId>
     <artifactId>jasmine-spring-boot-starter</artifactId>
     <version>最新版本</version>
 </dependency>
-
-<!-- 可选，权限认证框架 -->
-<dependency>
-    <groupId>com.magicodex</groupId>
-    <artifactId>jasmine-spring-boot-starter-security</artifactId>
-    <version>最新版本</version>
-</dependency>
-
-<!-- 可选，支持单元测试 -->
-<dependency>
-    <groupId>com.magicodex</groupId>
-    <artifactId>jasmine-framework-test</artifactId>
-    <version>最新版本</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- 可选，支持单元测试 -->
-<dependency>
-    <groupId>com.magicodex</groupId>
-    <artifactId>jasmine-security-test</artifactId>
-    <version>最新版本</version>
-    <scope>test</scope>
-</dependency>
 ```
 
-## 参数配置
+### 2.参考示例
 
-```
-# 是否自动创建交换器和队列 (默认false)
-app.message-queue.rabbitmq.auto-declare=true
-# 是否发布消息到消息队列 (默认false)
-jasmine.message-queue.publisher.enabled=true
-# 是否消费消息队列的消息 (默认false)
-jasmine.message-queue.consumer.enabled=true
-# 使用 RabbitMQ 的配置参考
-spring.rabbitmq.host=127.0.0.1
-spring.rabbitmq.port=5672
-spring.rabbitmq.username=用户名
-spring.rabbitmq.password=密码
-
-# 是否启用RBAC访问控制 (默认default)
-jasmine.security.authorization.strategy=rbac
-
-# 是否启用租户拦截器 (默认false)
-jasmine.data.tenant.enabled=true
-
-# 是否启用 XXL-job 任务调度（默认false）
-jasmine.xxl.job.enabled=true
-# XXL-job 配置
-xxl.job.admin.addresses=http://127.0.0.1:9090/xxl-job-admin
-xxl.job.access-token=
-xxl.job.executor.app-name=xxl-job-executor-sample
-xxl.job.executor.address=
-xxl.job.executor.ip=
-xxl.job.executor.port=9999
-xxl.job.executor.log-path=/data/applogs/xxl-job/jobhandler
-xxl.job.executor.log-retention-days=30
-
-# 是否启用读写分离（默认false），若启用读写分离则 spring.datasource.type 设置无效，
-# 目前读写分离的数据源使用 hikari 连接池。
-jasmine.datasource.readWrite.enabled=true
-# 只读数据源配置
-spring.datasource.read.url=数据库连接字符串
-spring.datasource.read.username=用户名
-spring.datasource.read.password=密码
-```
-
-## 文档链接
-
-- [jasmine-core 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-core/doc.md)
-- [jasmine-framework 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-framework/doc.md)
-
-## 已有功能
-
-- 分布式缓存
-- 分布式锁
-- 消息队列
-- 任务调度
-- 读写分离
-- 基于角色的访问控制
-- 多线程工具类
-- 单元测试支持
-- 多语言支持
-- 多租户支持
-- 数据权限支持
+- [分布式缓存](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/cache-doc.md)
+- [分布式锁](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/lock-doc.md)
+- [消息队列](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/message-queue-doc.md)
+- [任务调度](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/job-doc.md)
+- [多线程工具类](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/async-task-doc.md)
+- [校验参数](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/validation-doc.md)
+- [权限认证](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/security-doc.md)
+- [读写分离](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/read-write-doc.md)
+- [扩展Mybatis-Plus](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/mybatis-plus-extersnion.md)
 
 ## 集成框架
 
