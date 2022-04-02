@@ -1,6 +1,7 @@
 # 配置
 
-默认是基于 org.springframework.task 实现，相关配置参考 org.springframework.boot.autoconfigure.task.TaskExecutionProperties。
+默认是基于 org.springframework.task 实现，相关配置参考 
+org.springframework.boot.autoconfigure.task.TaskExecutionProperties。
 
 # 示例
 

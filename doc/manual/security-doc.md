@@ -12,6 +12,6 @@
 # 配置
 
 ```
-# 是否启用RBAC访问控制 (默认default)
+# 是否启用RBAC访问控制 (默认default不启用)
 jasmine.security.authorization.strategy=rbac
 ```

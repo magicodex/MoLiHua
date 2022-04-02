@@ -6,6 +6,7 @@ import jasmine.framework.i18n.DefaultLocaleMessageProvider;
 import jasmine.framework.i18n.MessageSourceBuilder;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 /**
  * @author mh.z
  */
+@EnableConfigurationProperties(LocaleMessageProperties.class)
 @AutoConfigureBefore(WebMvcAutoConfiguration.class)
 @Configuration
 public class LocaleMessageAutoConfiguration {
@@ -22,8 +24,14 @@ public class LocaleMessageAutoConfiguration {
     private static final String COOKIE_LANGUAGE = "LANG";
 
     @Bean
-    public MessageSource messageSource() {
+    public MessageSource messageSource(LocaleMessageProperties properties) {
         MessageSourceBuilder builder = new MessageSourceBuilder();
+        // 多语言资源路径
+        builder.setResourcePrefix(properties.getResourcePrefix());
+        // 多语言资源编码
+        builder.setEncoding(properties.getEncoding());
+        // 多语言常量路径
+        builder.setConstantPattern(properties.getConstantPattern());
 
         return builder.build();
     }
