@@ -76,6 +76,11 @@
 
 ![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "模块划分")
 
+## 文档链接
+
+- [jasmine-core 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-core/doc.md)
+- [jasmine-framework 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-framework/doc.md)
+
 ## 开源协议
 
 使用 MIT 开源协议，点击 [LICENSE](https://github.com/magicodex/MoLiHua/blob/main/LICENSE) 了解协议详情。
