@@ -29,14 +29,15 @@
 
 ### 2.参考示例
 
+- [国际化](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/i18n-doc.md)
 - [分布式缓存](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/cache-doc.md)
 - [分布式锁](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/lock-doc.md)
 - [消息队列](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/message-queue-doc.md)
 - [任务调度](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/job-doc.md)
 - [多线程工具类](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/async-task-doc.md)
-- [校验参数](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/validation-doc.md)
-- [权限认证](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/security-doc.md)
-- [读写分离](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/read-write-doc.md)
+- [校验工具类](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/validation-doc.md)
+- [权限访问控制](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/security-doc.md)
+- [读写分离](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/read-write-splitting-doc.md)
 - [扩展Mybatis-Plus](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/mybatis-plus-extersnion.md)
 
 ## 集成框架
@@ -62,9 +63,9 @@
 | 目录 | 说明 |
 | :----: | :---- |
 | jasmine-bom | 依赖管理 |
-| jasmine-core | 基本模块 |
+| jasmine-core | 公共模块 |
 | jasmine-test | 支持单元测试 |
-| jasmine-framework | 框架模块 |
+| jasmine-framework | 框架相关功能 |
 | jasmine-framework-test | 支持单元测试 |
 | jasmine-security | 安全模块 |
 | jasmine-security-test | 支持单元测试 |
@@ -72,7 +73,7 @@
 | jasmine-spring-boot-starter | 自动配置 |
 | jasmine-spring-boot-starter-security | 自动配置 |
 | jasmine-spring-cloud-stream | 整合Spring Cloud Stream |
-| jasmine-demo | DEMO模块 |
+| jasmine-demo | DEMO示例 |
 
 ![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "模块划分")
 
