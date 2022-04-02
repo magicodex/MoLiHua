@@ -56,6 +56,11 @@ app.message-queue.rabbitmq.auto-declare=true
 jasmine.message-queue.publisher.enabled=true
 # 是否消费消息队列的消息 (默认false)
 jasmine.message-queue.consumer.enabled=true
+# 使用 RabbitMQ 的配置参考
+spring.rabbitmq.host=127.0.0.1
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=用户名
+spring.rabbitmq.password=密码
 
 # 是否启用RBAC访问控制 (默认default)
 jasmine.security.authorization.strategy=rbac
@@ -97,7 +102,7 @@ spring.datasource.read.password=密码
 - 任务调度
 - 读写分离
 - 基于角色的访问控制
-- 多线程并发工具类
+- 多线程工具类
 - 单元测试支持
 - 多语言支持
 - 多租户支持
