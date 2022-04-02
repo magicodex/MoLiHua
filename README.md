@@ -11,7 +11,19 @@
 
 ## 单元测试
 
+```
 通过命令 mvn test 或其它途径执行单元测试。
+
+备注：需要连接数据库的测试用例必须指定数据库连接参数，比如 mvn test -Ddb.username=root -Ddb.password=123456
+#JDBC驱动，默认com.mysql.cj.jdbc.Driver
+-Ddb.driver= 
+#数据库连接URL，默认mysql://127.0.0.1:3306/test_jasmine
+-Ddb.url=
+#数据库用户名，默认root
+-Ddb.username=
+#数据库密码，默认123456
+-Ddb.password=
+```
 
 ## 使用说明
 
