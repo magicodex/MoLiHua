@@ -25,12 +25,7 @@
 </dependency>
 ```
 
-### 2.修改配置
-```
-
-```
-
-参考示例
+### 2.参考示例
 - [国际化](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/i18n-doc.md)
 - [分布式缓存](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/cache-doc.md)
 - [分布式锁](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/lock-doc.md)

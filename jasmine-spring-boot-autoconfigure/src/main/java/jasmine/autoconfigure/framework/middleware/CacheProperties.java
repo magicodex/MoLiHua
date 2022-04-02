@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-@ConfigurationProperties(prefix = "cache")
+@ConfigurationProperties(prefix = "jasmine.cache")
 public class CacheProperties {
     /** 默认过期时间 */
     private Long defaultTimeout = 3600L;
