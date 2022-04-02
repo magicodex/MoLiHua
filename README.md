@@ -2,7 +2,7 @@
 
 ![茉莉花](https://github.com/magicodex/MoLiHua/blob/main/logo.png "茉莉花")
 
-## 启动服务
+## 启动 DEMO 示例
 
 1. 修改 jasmine-demo/src/main/resources/application.yml 的数据库连接参数。
 2. 浏览器输入 http://127.0.0.1:8080 访问。
@@ -11,9 +11,7 @@
 
 ## 单元测试
 
-1. 新建测试用的数据库。
-2. 修改 jasmine-demo/src/test/resources/test-config.properties 的数据库连接参数。
-3. 通过命令 mvn test 或其它途径执行单元测试。
+通过命令 mvn test 或其它途径执行单元测试。
 
 ## 使用说明
 
@@ -44,18 +42,18 @@
 
 | 框架 | 版本 | 说明 |
 | :----: | :---- | :---- |
-| Spring Boot | 2.5.4 | WEB框架 |
-| Spring Security | 5.5.2 | 权限认证框架 |
-| SLF4J | 1.7.32 | 日志库 |
-| Jackson | 2.12.4 | JSON库 |
+| Spring Boot | 2.6.3 | WEB框架 |
+| Spring Security | 5.6.1 | 权限认证框架 |
+| SLF4J | - | 日志库 |
+| Jackson | - | JSON库 |
 | Mybatis-Plus | 3.4.3.4 | 持久层框架 |
-| HikariCP | 4.0.3 | 数据库连接池 |
+| HikariCP | - | 数据库连接池 |
 | Liquibase | 4.3.5 | 数据库版本管理工具 |
 | Redisson | 3.12.3 | Redis客户端 |
-| amqp-client | 5.12.0 | RabbitMQ客户端 |
+| amqp-client | 5.13.1 | RabbitMQ客户端 |
 | xxl-job | 2.3.0 | 任务调度 |
-| JUnit | 4.13.2 | 单元测试 |
-| spring-test | 5.3.8 | 单元测试 |
+| JUnit | - | 单元测试 |
+| spring-test | 5.3.15 | 单元测试 |
 | mockito | 4.2.0 | 单元测试 |
 
 ## 模块划分
