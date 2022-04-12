@@ -175,11 +175,12 @@ public class BaseMapperHelper {
             rowCount.add(baseMapper.deleteBatchIds(part));
         });
 
-        if (rowCount.get() < ids.size()) {
+        long countValue = rowCount.get();
+        if (countValue < ids.size()) {
             throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH);
         }
 
-        return (int) rowCount.get();
+        return (int) countValue;
     }
 
 }
