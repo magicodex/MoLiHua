@@ -7,8 +7,10 @@ import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
-import jasmine.framework.common.constant.CommonMessages;
+import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
+import jasmine.framework.common.constant.CommonMessages;
+import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -22,8 +24,9 @@ import java.util.Collection;
  */
 public class BaseMapperHelper {
     private static final Log log = LogFactory.getLog(BaseMapperHelper.class);
-    private static final int INSERT_BATCH_SIZE = 1000;
-    private static final int UPDATE_BATCH_SIZE = 1000;
+    private static final int INSERT_BATCH_SIZE = PersistenceConstants.INSERT_BATCH_SIZE;
+    private static final int UPDATE_BATCH_SIZE = PersistenceConstants.UPDATE_BATCH_SIZE;
+    private static final int DELETE_BATCH_SIZE = PersistenceConstants.DELETE_BATCH_SIZE;
 
     /**
      * 批量保存记录
@@ -167,12 +170,16 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        int rowCount = baseMapper.deleteBatchIds(ids);
-        if (rowCount < ids.size()) {
+        LongValue rowCount = new LongValue(0);
+        BatchCallUtil.call(ids, DELETE_BATCH_SIZE, (part) -> {
+            rowCount.add(baseMapper.deleteBatchIds(part));
+        });
+
+        if (rowCount.get() < ids.size()) {
             throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH);
         }
 
-        return rowCount;
+        return (int) rowCount.get();
     }
 
 }
