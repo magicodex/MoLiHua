@@ -31,11 +31,13 @@ public interface I18nEntityFacade {
     /**
      * 关联多语言
      *
-     * @param entities
+     * @param collection
+     * @param entityType
      * @param <T>
+     * @param <R>
      * @return
      */
-    <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities);
+    <T extends BaseI18nEntity, R> List<R> populateI18n(Collection<R> collection, Class<T> entityType);
 
     /**
      * 删除多语言
