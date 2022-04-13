@@ -28,8 +28,8 @@ public class FakeI18nEntityFacade implements I18nEntityFacade {
     }
 
     @Override
-    public <T> List<T> populateI18n(Collection<T> collection, Class<? extends BaseI18nEntity> entityType) {
-        return QCollectionUtil.castToList(collection);
+    public <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities) {
+        return QCollectionUtil.castToList(entities);
     }
 
 }

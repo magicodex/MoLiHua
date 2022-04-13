@@ -11,9 +11,9 @@
         created_by,
         last_updated_date,
         last_updated_by,
-        version_number,
-        <foreach item="column" collection="columns" separator=",">
-            #{column, jdbcType=VARCHAR}
+        version_number
+        <foreach item="column" collection="columns" separator="">
+            ,#{column, jdbcType=VARCHAR}
         </foreach>
         ) values (
         #{id, jdbcType=BIGINT},
@@ -22,9 +22,9 @@
         #{createdBy, jdbcType=BIGINT}，
         #{lastUpdatedDate, jdbcType=TIMESTAMP}，
         #{lastUpdatedBy, jdbcType=BIGINT}，
-        #{versionNumber, jdbcType=INTEGER},
-        <foreach item="value" collection="values" separator=",">
-            #{value, jdbcType=VARCHAR}
+        #{versionNumber, jdbcType=INTEGER}
+        <foreach item="value" collection="values" separator="">
+            ,#{value, jdbcType=VARCHAR}
         </foreach>
         )
     </insert>
@@ -33,30 +33,35 @@
         update #{table, jdbcType=VARCHAR} set
         last_updated_date = #{lastUpdatedDate, jdbcType=TIMESTAMP},
         last_updated_by = #{lastUpdatedBy, jdbcType=BIGINT}
-        version_number = #{versionNumber, jdbcType=INTEGER},
-        <foreach item="value" collection="values" separator=",">
-            #{value.key, jdbcType=VARCHAR} = #{value.value, jdbcType=VARCHAR}
+        version_number = version_number + 1
+        <foreach item="value" collection="values" separator="">
+            ,#{value.key, jdbcType=VARCHAR} = #{value.value, jdbcType=VARCHAR}
         </foreach>
         where id = #{id, jdbcType=BIGINT}
+        and lang_code = #{langCode, jdbcType=VARCHAR}
         and version_number = #{version_number, jdbcType=INTEGER}
     </delete>
 
     <delete id="deleteI18n" parameterType="map">
         delete from #{table, jdbcType=VARCHAR}
-        where id in (
-        <foreach item="id" collection="ids" separator=",">
+        where id in
+        <foreach item="id" collection="ids" open="(" separator="," close=")">
             #{id, jdbcType=BIGINT}
         </foreach>
-        ) and lang_code = #{langCode, jdbcType=VARCHAR}
+        <if test="langCode != null">
+            and lang_code = #{langCode, jdbcType=VARCHAR}
+        </if>
     </delete>
 
     <select id="selectI18n" parameterType="map" resultType="map">
         select * from #{table, jdbcType=VARCHAR}
-        where id in (
-        <foreach item="id" collection="ids" separator=",">
+        where id in
+        <foreach item="id" collection="ids" open="(" separator="," close=")">
             #{id, jdbcType=BIGINT}
         </foreach>
-        ) and lang_code = #{langCode, jdbcType=VARCHAR}
+        <if test="langCode != null">
+            and lang_code = #{langCode, jdbcType=VARCHAR}
+        </if>
     </select>
 
 </mapper>
