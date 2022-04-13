@@ -31,7 +31,7 @@ public class MybatisPlusColumnMapping extends LinkedHashMap<String, String> {
      * @param field
      * @return
      */
-    protected String getColumnName(Field field) {
+    public String getColumnName(Field field) {
         Assert.notNull(field, "field null");
         String columnName = null;
         TableField tableField = field.getAnnotation(TableField.class);
