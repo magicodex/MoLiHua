@@ -5,10 +5,24 @@
 
     <insert id="insertI18n" parameterType="map">
         insert into #{table, jdbcType=VARCHAR} (
+        id,
+        lang_code,
+        created_date,
+        created_by,
+        last_updated_date,
+        last_updated_by,
+        version_number,
         <foreach item="column" collection="columns" separator=",">
             #{column, jdbcType=VARCHAR}
         </foreach>
         ) values (
+        #{id, jdbcType=BIGINT},
+        #{langCode, jdbcType=VARCHAR},
+        #{createdDate, jdbcType=TIMESTAMP}，
+        #{createdBy, jdbcType=BIGINT}，
+        #{lastUpdatedDate, jdbcType=TIMESTAMP}，
+        #{lastUpdatedBy, jdbcType=BIGINT}，
+        #{versionNumber, jdbcType=INTEGER},
         <foreach item="value" collection="values" separator=",">
             #{value, jdbcType=VARCHAR}
         </foreach>
@@ -17,6 +31,9 @@
 
     <delete id="updateI18n" parameterType="map">
         update #{table, jdbcType=VARCHAR} set
+        last_updated_date = #{lastUpdatedDate, jdbcType=TIMESTAMP},
+        last_updated_by = #{lastUpdatedBy, jdbcType=BIGINT}
+        version_number = #{versionNumber, jdbcType=INTEGER},
         <foreach item="value" collection="values" separator=",">
             #{value.key, jdbcType=VARCHAR} = #{value.value, jdbcType=VARCHAR}
         </foreach>
