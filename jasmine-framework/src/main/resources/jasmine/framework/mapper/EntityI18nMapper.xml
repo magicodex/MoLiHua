@@ -1,0 +1,45 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jasmine.EntityI18n">
+
+    <insert id="insertI18n" parameterType="map">
+        insert into #{table, jdbcType=VARCHAR} (
+        <foreach item="column" collection="columns" separator=",">
+            #{column, jdbcType=VARCHAR}
+        </foreach>
+        ) values (
+        <foreach item="value" collection="values" separator=",">
+            #{value, jdbcType=VARCHAR}
+        </foreach>
+        )
+    </insert>
+
+    <delete id="updateI18n" parameterType="map">
+        update #{table, jdbcType=VARCHAR} set
+        <foreach item="value" collection="values" separator=",">
+            #{value.key, jdbcType=VARCHAR} = #{value.value, jdbcType=VARCHAR}
+        </foreach>
+        where id = #{id, jdbcType=BIGINT}
+        and version_number = #{version_number, jdbcType=INTEGER}
+    </delete>
+
+    <delete id="deleteI18n" parameterType="map">
+        delete from #{table, jdbcType=VARCHAR}
+        where id in (
+        <foreach item="id" collection="ids" separator=",">
+            #{id, jdbcType=BIGINT}
+        </foreach>
+        ) and lang_code = #{langCode, jdbcType=VARCHAR}
+    </delete>
+
+    <select id="selectI18n" parameterType="map" resultType="map">
+        select * from #{table, jdbcType=VARCHAR}
+        where id in (
+        <foreach item="id" collection="ids" separator=",">
+            #{id, jdbcType=BIGINT}
+        </foreach>
+        ) and lang_code = #{langCode, jdbcType=VARCHAR}
+    </select>
+
+</mapper>
