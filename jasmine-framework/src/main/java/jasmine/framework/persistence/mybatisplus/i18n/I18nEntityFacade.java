@@ -17,27 +17,15 @@ public interface I18nEntityFacade {
      * @param entities
      * @return
      */
-    <T extends BaseI18nEntity> int insertI18n(Collection<T> entities);
+    int insertI18n(Collection<? extends BaseI18nEntity> entities);
 
     /**
      * 修改多语言
      *
      * @param entities
-     * @param <T>
      * @return
      */
-    <T extends BaseI18nEntity> List<T> updateI18nThenFillEntity(Collection<T> entities);
-
-    /**
-     * 关联多语言
-     *
-     * @param collection
-     * @param entityType
-     * @param <T>
-     * @param <R>
-     * @return
-     */
-    <T extends BaseI18nEntity, R> List<R> populateI18n(Collection<R> collection, Class<T> entityType);
+    int updateI18n(Collection<? extends BaseI18nEntity> entities);
 
     /**
      * 删除多语言
@@ -46,4 +34,14 @@ public interface I18nEntityFacade {
      * @return
      */
     int deleteI18n(Collection<? extends Serializable> ids);
+
+    /**
+     * 关联多语言
+     *
+     * @param collection
+     * @param entityType
+     * @param <T>
+     * @return
+     */
+    <T> List<T> populateI18n(Collection<T> collection, Class<? extends BaseI18nEntity> entityType);
 }

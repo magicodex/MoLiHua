@@ -13,23 +13,23 @@ import java.util.List;
 public class FakeI18nEntityFacade implements I18nEntityFacade {
 
     @Override
-    public <T extends BaseI18nEntity> int insertI18n(Collection<T> entities) {
-        return 0;
+    public int insertI18n(Collection<? extends BaseI18nEntity> entities) {
+        return entities.size();
     }
 
     @Override
-    public <T extends BaseI18nEntity> List<T> updateI18nThenFillEntity(Collection<T> entities) {
-        return QCollectionUtil.castToList(entities);
-    }
-
-    @Override
-    public <T extends BaseI18nEntity, R> List<R> populateI18n(Collection<R> collection, Class<T> entityType) {
-        return QCollectionUtil.castToList(collection);
+    public int updateI18n(Collection<? extends BaseI18nEntity> entities) {
+        return entities.size();
     }
 
     @Override
     public int deleteI18n(Collection<? extends Serializable> ids) {
-        return 0;
+        return ids.size();
+    }
+
+    @Override
+    public <T> List<T> populateI18n(Collection<T> collection, Class<? extends BaseI18nEntity> entityType) {
+        return QCollectionUtil.castToList(collection);
     }
 
 }
