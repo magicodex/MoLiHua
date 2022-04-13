@@ -3,6 +3,7 @@ package jasmine.framework.persistence.mybatisplus.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.util.QCheckUtil;
+import jasmine.framework.persistence.entity.BaseEntity;
 import jasmine.framework.persistence.mybatisplus.BaseMapperHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,7 +15,8 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class BaseTemplateDAO<M extends BaseMapper<T>, T> implements BaseDAO<T>, BaseBatchDAO<T> {
+public class BaseTemplateDAO<M extends BaseMapper<T>, T extends BaseEntity>
+        implements BaseDAO<T>, BaseBatchDAO<T> {
     @Autowired
     protected M baseMapper;
 
