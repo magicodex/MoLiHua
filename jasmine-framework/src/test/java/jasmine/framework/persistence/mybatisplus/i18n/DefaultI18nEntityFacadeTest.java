@@ -29,7 +29,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
             entity.setId(1L);
             entity.setLangCode("zh-CN");
             entity.setCode1("code1");
-            entity.setName1("old");
+            entity.setName1("name1");
 
             facade.insertI18n(Collections.singletonList(entity));
         }
@@ -40,7 +40,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
             entity.setId(1L);
             entity.setLangCode("zh-CN");
             entity.setCode1("code1");
-            entity.setName1("new");
+            entity.setName1("NAME1");
 
             facade.updateI18n(Collections.singletonList(entity));
         }
@@ -55,7 +55,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
 
             facade.populateI18n(Collections.singletonList(entity));
             Assert.assertEquals("code1", entity.getCode1());
-            Assert.assertEquals("new", entity.getName1());
+            Assert.assertEquals("NAME1", entity.getName1());
         }
 
         // 删除多语言信息

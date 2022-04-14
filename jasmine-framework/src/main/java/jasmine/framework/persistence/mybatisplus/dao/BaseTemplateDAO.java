@@ -20,6 +20,10 @@ public class BaseTemplateDAO<M extends BaseMapper<T>, T extends BaseEntity>
     @Autowired
     protected M baseMapper;
 
+    protected void setBaseMapper(M baseMapper) {
+        this.baseMapper = baseMapper;
+    }
+
     @Override
     public boolean save(T entity) {
         return SqlHelper.retBool(baseMapper.insert(entity));
