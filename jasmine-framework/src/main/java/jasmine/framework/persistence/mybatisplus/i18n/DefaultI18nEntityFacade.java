@@ -112,10 +112,12 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         Class<?> entityType = getEntityType(entities);
         I18nMeta i18nMeta = getI18nMeta(entityType);
         String langCode = QI18nUtil.getLanguage();
+        String i18nTable = getI18nTable(entityType);
 
         // 组装查询参数
         List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
-        Object parameter = Map.of(MapperConstants.SQL_PARAM_IDS, idList,
+        Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, i18nTable,
+                MapperConstants.SQL_PARAM_IDS, idList,
                 MapperConstants.SQL_PARAM_LANG_CODE, langCode);
 
         // 查询多语言记录
@@ -157,11 +159,12 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put(MapperConstants.SQL_PARAM_TABLE, i18nTable);
+        paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, entity.getLangCode());
         paramMap.put(MapperConstants.SQL_PARAM_ID, entity.getId());
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
         paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, versionNumber);
-        paramMap.put(MapperConstants.SQL_PARAM_VALUES, i18nDataMap.entrySet());
+        paramMap.put(MapperConstants.SQL_PARAM_VALUES, i18nDataMap);
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);

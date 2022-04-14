@@ -32,14 +32,14 @@
     <delete id="updateI18n" parameterType="map">
         update ${table} set
         last_updated_date = #{lastUpdatedDate, jdbcType=TIMESTAMP},
-        last_updated_by = #{lastUpdatedBy, jdbcType=BIGINT}
+        last_updated_by = #{lastUpdatedBy, jdbcType=BIGINT},
         version_number = version_number + 1
-        <foreach item="value" collection="values" separator="">
-            ,${value.key} = #{value.value, jdbcType=VARCHAR}
+        <foreach index="column" item="value" collection="values" separator="">
+            ,${column} = #{value, jdbcType=VARCHAR}
         </foreach>
         where id = #{id, jdbcType=BIGINT}
         and lang_code = #{langCode, jdbcType=VARCHAR}
-        and version_number = #{version_number, jdbcType=INTEGER}
+        and version_number = #{versionNumber, jdbcType=INTEGER}
     </delete>
 
     <delete id="deleteI18n" parameterType="map">
