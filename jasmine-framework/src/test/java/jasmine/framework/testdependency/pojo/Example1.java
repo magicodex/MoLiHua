@@ -1,4 +1,4 @@
-package jasmine.framework.testdependency;
+package jasmine.framework.testdependency.pojo;
 
 /**
  * @author mh.z

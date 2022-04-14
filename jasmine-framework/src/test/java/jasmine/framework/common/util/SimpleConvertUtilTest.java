@@ -2,7 +2,7 @@ package jasmine.framework.common.util;
 
 import cn.hutool.core.lang.Pair;
 import jasmine.core.util.QStringUtil;
-import jasmine.framework.testdependency.Example3;
+import jasmine.framework.testdependency.pojo.Example3;
 import org.junit.Assert;
 import org.junit.Test;
 

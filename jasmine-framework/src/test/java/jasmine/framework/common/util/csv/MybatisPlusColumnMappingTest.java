@@ -1,6 +1,6 @@
 package jasmine.framework.common.util.csv;
 
-import jasmine.framework.testdependency.Example2;
+import jasmine.framework.testdependency.pojo.Example2;
 import org.junit.Assert;
 import org.junit.Test;
 
