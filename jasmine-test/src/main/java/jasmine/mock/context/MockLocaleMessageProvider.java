@@ -15,7 +15,7 @@ public class MockLocaleMessageProvider implements LocaleMessageProvider {
 
     public MockLocaleMessageProvider() {
         this.messages = new HashMap<>();
-        this.language = Locale.SIMPLIFIED_CHINESE.getLanguage();
+        this.language = Locale.SIMPLIFIED_CHINESE.toLanguageTag();
     }
 
     @Override

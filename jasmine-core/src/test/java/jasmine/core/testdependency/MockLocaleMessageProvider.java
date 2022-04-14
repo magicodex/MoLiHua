@@ -41,7 +41,7 @@ public class MockLocaleMessageProvider implements LocaleMessageProvider {
 
     @Override
     public String getLanguage() {
-        return Locale.SIMPLIFIED_CHINESE.getLanguage();
+        return Locale.SIMPLIFIED_CHINESE.toLanguageTag();
     }
 
 }
