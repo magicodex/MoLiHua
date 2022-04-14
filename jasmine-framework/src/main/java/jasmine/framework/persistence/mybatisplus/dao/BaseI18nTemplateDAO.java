@@ -1,6 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
@@ -14,6 +15,12 @@ import java.util.List;
  */
 public class BaseI18nTemplateDAO<M extends BaseMapper<T>, T extends BaseI18nEntity>
         extends BaseTemplateDAO<M, T> {
+    private Class<T> entityClass;
+
+    public BaseI18nTemplateDAO() {
+        this.entityClass = (Class<T>) ReflectionKit
+                .getSuperClassGenericType(getClass(), BaseI18nTemplateDAO.class, 1);
+    }
 
     @Override
     public boolean save(T entity) {
@@ -60,7 +67,7 @@ public class BaseI18nTemplateDAO<M extends BaseMapper<T>, T extends BaseI18nEnti
         QCheckUtil.notNull(id, "id null");
 
         boolean result = super.deleteById(id);
-        I18nEntityHelper.deleteI18n(id);
+        I18nEntityHelper.deleteI18n(entityClass, id);
 
         return result;
     }
@@ -70,7 +77,7 @@ public class BaseI18nTemplateDAO<M extends BaseMapper<T>, T extends BaseI18nEnti
         QCheckUtil.notNull(ids, "ids null");
 
         boolean result = super.deleteByIds(ids);
-        I18nEntityHelper.deleteI18n(ids);
+        I18nEntityHelper.deleteI18n(entityClass, ids);
 
         return result;
     }
