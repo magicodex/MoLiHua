@@ -4,7 +4,7 @@
 <mapper namespace="jasmine.EntityI18n">
 
     <insert id="insertI18n" parameterType="map">
-        insert into #{table, jdbcType=VARCHAR} (
+        insert into ${table, jdbcType=VARCHAR} (
         id,
         lang_code,
         created_date,
@@ -13,7 +13,7 @@
         last_updated_by,
         version_number
         <foreach item="column" collection="columns" separator="">
-            ,#{column, jdbcType=VARCHAR}
+            ,${column, jdbcType=VARCHAR}
         </foreach>
         ) values (
         #{id, jdbcType=BIGINT},
@@ -30,12 +30,12 @@
     </insert>
 
     <delete id="updateI18n" parameterType="map">
-        update #{table, jdbcType=VARCHAR} set
+        update ${table, jdbcType=VARCHAR} set
         last_updated_date = #{lastUpdatedDate, jdbcType=TIMESTAMP},
         last_updated_by = #{lastUpdatedBy, jdbcType=BIGINT}
         version_number = version_number + 1
         <foreach item="value" collection="values" separator="">
-            ,#{value.key, jdbcType=VARCHAR} = #{value.value, jdbcType=VARCHAR}
+            ,${value.key, jdbcType=VARCHAR} = #{value.value, jdbcType=VARCHAR}
         </foreach>
         where id = #{id, jdbcType=BIGINT}
         and lang_code = #{langCode, jdbcType=VARCHAR}
@@ -43,7 +43,7 @@
     </delete>
 
     <delete id="deleteI18n" parameterType="map">
-        delete from #{table, jdbcType=VARCHAR}
+        delete from ${table, jdbcType=VARCHAR}
         where id in
         <foreach item="id" collection="ids" open="(" separator="," close=")">
             #{id, jdbcType=BIGINT}
@@ -54,7 +54,7 @@
     </delete>
 
     <select id="selectI18n" parameterType="map" resultType="map">
-        select * from #{table, jdbcType=VARCHAR}
+        select * from ${table, jdbcType=VARCHAR}
         where id in
         <foreach item="id" collection="ids" open="(" separator="," close=")">
             #{id, jdbcType=BIGINT}
