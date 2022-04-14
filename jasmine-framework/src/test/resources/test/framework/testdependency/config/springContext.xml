@@ -7,7 +7,8 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:property-placeholder location="classpath:/test-config.properties"/>
+    <context:property-placeholder location="classpath:test/framework/testdependency/config/application.properties,
+    classpath:/test-config.properties"/>
 
     <!-- 测试上下文 -->
     <import resource="classpath:/test-context.xml"/>
@@ -28,7 +29,7 @@
     <!-- 配置Liquibase -->
     <bean id="springLiquibase" class="liquibase.integration.spring.SpringLiquibase">
         <property name="dataSource" ref="dataSource"/>
-        <property name="shouldRun" value="${liquibase.enabled:true}"/>
+        <property name="shouldRun" value="${liquibase.enabled}"/>
         <property name="changeLog" value="classpath:test/framework/testdependency/config/liquibaseMaster.xml"/>
     </bean>
 </beans>

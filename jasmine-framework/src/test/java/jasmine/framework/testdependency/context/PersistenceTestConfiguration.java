@@ -19,20 +19,28 @@ import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorSca
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 
 /**
  * @author mh.z
  */
 @Configuration
 public class PersistenceTestConfiguration {
+    @Value("${jasmine.data.tenant.enabled:false}")
+    private Boolean tenantEnabled;
+
+    @Value("${mybatis.mapper.path:}")
+    private String mapperPath;
 
     @Bean
-    public MybatisSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
+    public MybatisSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) throws IOException {
         MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
 
         // 数据源
@@ -40,8 +48,9 @@ public class PersistenceTestConfiguration {
         // 拦截器
         factoryBean.setPlugins(mybatisPlusInterceptor());
         // mapper文件路径
-        ClassPathResource mapperLocation = new ClassPathResource("jasmine/framework/mapper/DataAuthMapper.xml");
-        factoryBean.setMapperLocations(mapperLocation);
+        PathMatchingResourcePatternResolver pathResolver = new PathMatchingResourcePatternResolver();
+        Resource[] resources = pathResolver.getResources(mapperPath);
+        factoryBean.setMapperLocations(resources);
 
         GlobalConfig globalConfig = GlobalConfigUtils.defaults();
         globalConfig.setMetaObjectHandler(metaObjectHandler());
@@ -76,7 +85,7 @@ public class PersistenceTestConfiguration {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder();
-        builder.setTenantEnabled(true);
+        builder.setTenantEnabled(Boolean.TRUE.equals(tenantEnabled));
         builder.setTenantLineHandler(tenantLineHandler());
 
         return builder.build();
