@@ -12,4 +12,5 @@
         <property name="basePackage" value="jasmine.**.mapper"/>
     </bean>
 
+    <bean class="jasmine.framework.testdependency.context.PersistenceTestConfiguration" />
 </beans>
