@@ -1,6 +1,9 @@
 package jasmine.framework.testdependency.context;
 
 import jasmine.core.context.CurrentSubject;
+import jasmine.core.util.QI18nUtil;
+import jasmine.mock.context.MockLocaleMessageProvider;
+import jasmine.mock.context.MockSubjectProvider;
 import org.junit.Before;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 @ContextConfiguration(locations = "classpath:/test/framework/testdependency/config/springContext.xml")
 public class FrameworkTestContext {
+
+    static {
+        CurrentSubject.initUtil(new MockSubjectProvider());
+        QI18nUtil.initUtil(new MockLocaleMessageProvider());
+    }
 
     @Before
     public void initOrResetBeforeTest() {

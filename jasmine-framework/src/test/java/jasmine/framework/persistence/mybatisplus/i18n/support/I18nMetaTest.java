@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.i18n.support;
 
-import jasmine.framework.persistence.mybatisplus.testdependency.TestEntity2;
+import jasmine.framework.persistence.mybatisplus.testdependency.entity.TestEntity2;
 import org.junit.Assert;
 import org.junit.Test;
 

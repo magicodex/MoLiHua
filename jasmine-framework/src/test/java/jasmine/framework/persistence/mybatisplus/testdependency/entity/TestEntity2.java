@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus.testdependency;
+package jasmine.framework.persistence.mybatisplus.testdependency.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
