@@ -4,6 +4,4 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <include file="classpath:/test/framework/persistence/liquibase/MybatisPlusTestLiquibase.xml"
-             relativeToChangelogFile="false"/>
 </databaseChangeLog>

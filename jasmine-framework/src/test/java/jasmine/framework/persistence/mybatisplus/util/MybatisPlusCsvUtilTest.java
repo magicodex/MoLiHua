@@ -12,7 +12,7 @@ import java.util.List;
  * @author mh.z
  */
 public class MybatisPlusCsvUtilTest {
-    private static final String EXAMPLE1_PATH = "/test/csv/Example1_1.csv";
+    private static final String EXAMPLE1_PATH = "/test/framework/persistence/csv/Example1_1.csv";
 
     @Test
     public void testReadCSV() throws IOException {

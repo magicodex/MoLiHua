@@ -29,6 +29,6 @@
     <bean id="springLiquibase" class="jasmine.framework.test.liquibase.CustomSpringLiquibase">
         <property name="dataSource" ref="dataSource"/>
         <property name="shouldRun" value="${liquibase.enabled:true}"/>
-        <property name="changeLog" value="classpath:test/config/liquibaseMaster.xml"/>
+        <property name="changeLog" value="classpath:test/framework/testdependency/config/liquibaseMaster.xml"/>
     </bean>
 </beans>
