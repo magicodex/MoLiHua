@@ -18,41 +18,42 @@ public class I18nMetaTest {
 
         Map<String, Field> fieldMap = meta.getFields();
         Assert.assertEquals(2, fieldMap.size());
-        Assert.assertTrue(fieldMap.containsKey("field_2"));
-        Assert.assertEquals("field2", fieldMap.get("field_2").getName());
-        Assert.assertTrue(fieldMap.containsKey("field_5"));
-        Assert.assertEquals("field5", fieldMap.get("field_5").getName());
+        Assert.assertTrue(fieldMap.containsKey("name_1"));
+        Assert.assertEquals("name1", fieldMap.get("name_1").getName());
+        Assert.assertTrue(fieldMap.containsKey("name_2"));
+        Assert.assertEquals("name2", fieldMap.get("name_2").getName());
     }
 
     @Test
     public void testGetI18nData() {
         TestEntity2 entity = new TestEntity2();
-        entity.setField1("value1");
-        entity.setField2("value2");
-        entity.setField3("value3");
-        entity.setField4("value4");
-        entity.setField5("value5");
+        entity.setCode1("code1Value");
+        entity.setName1("name1Value");
+        entity.setAttr1("attr1Value");
+        entity.setCode2("code2Value");
+        entity.setName2("name2Value");
+        entity.setAttr2("attr2Value");
 
         I18nMeta meta = I18nMeta.create(TestEntity2.class);
         Map<String, String> actualMap = meta.getI18nData(entity);
 
         Assert.assertEquals(2, actualMap.size());
-        Assert.assertEquals("value2", actualMap.get("field_2"));
-        Assert.assertEquals("value5", actualMap.get("field_5"));
+        Assert.assertEquals("name1Value", actualMap.get("name_1"));
+        Assert.assertEquals("name2Value", actualMap.get("name_2"));
     }
 
     @Test
     public void testPopulateI18n() {
-        Map<String, Object> valueMap = Map.of("field_2", "value2",
-                "field_5", "value5");
+        Map<String, Object> valueMap = Map.of("name_1", "name1Value",
+                "name_2", "name2Value");
         I18nRecord record = new I18nRecord(valueMap);
 
         I18nMeta meta = I18nMeta.create(TestEntity2.class);
         TestEntity2 entity = new TestEntity2();
         meta.populateI18n(entity, record);
 
-        Assert.assertEquals("value2", entity.getField2());
-        Assert.assertEquals("value5", entity.getField5());
+        Assert.assertEquals("name1Value", entity.getName1());
+        Assert.assertEquals("name2Value", entity.getName2());
     }
 
 }
