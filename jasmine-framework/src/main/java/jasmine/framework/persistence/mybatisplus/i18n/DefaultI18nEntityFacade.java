@@ -1,5 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.exception.ApplicationException;
@@ -80,8 +81,10 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
         Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
+        String i18nTable = getI18nTable(entity.getClass());
 
         Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put(MapperConstants.SQL_PARAM_TABLE, i18nTable);
         paramMap.put(MapperConstants.SQL_PARAM_ID, entity.getId());
         paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, entity.getLangCode());
         paramMap.put(MapperConstants.SQL_PARAM_CREATED_DATE, currentTime);
@@ -150,8 +153,10 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
         Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
+        String i18nTable = getI18nTable(entity.getClass());
 
         Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put(MapperConstants.SQL_PARAM_TABLE, i18nTable);
         paramMap.put(MapperConstants.SQL_PARAM_ID, entity.getId());
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
@@ -169,7 +174,8 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
 
     @Override
-    public int deleteI18n(Collection<? extends Serializable> ids) {
+    public int deleteI18n(Class<? extends BaseI18nEntity> entityType, Collection<? extends Serializable> ids) {
+        QCheckUtil.notNull(entityType, "entityType null");
         QCheckUtil.notNull(ids, "ids null");
 
         if (QCollUtil.isEmpty(ids)) {
@@ -177,9 +183,13 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         }
 
         LongValue rowCount = new LongValue(0);
+        String i18nTable = getI18nTable(entityType);
+
         // 删除多语言记录
         BatchCallUtil.call(ids, BATCH_DELETE_SIZE, (part) -> {
-            Object parameter = Map.of(MapperConstants.SQL_PARAM_IDS, part);
+            Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, i18nTable,
+                    MapperConstants.SQL_PARAM_IDS, part);
+
             rowCount.add(sqlSession.delete(STATEMENT_DELETE, parameter));
         });
 
@@ -194,10 +204,14 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             return Collections.emptyList();
         }
 
-        // 组装查询参数
         String langCode = QI18nUtil.getLanguage();
+        Class<?> entityType = getEntityType(entities);
+        String i18nTable = getI18nTable(entityType);
+
+        // 组装查询参数
         List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
-        Object parameter = Map.of(MapperConstants.SQL_PARAM_IDS, idList,
+        Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, i18nTable,
+                MapperConstants.SQL_PARAM_IDS, idList,
                 MapperConstants.SQL_PARAM_LANG_CODE, langCode);
 
         // 查询多语言记录
@@ -206,7 +220,6 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         // 填充多语言的值
         if (QCollUtil.isNotEmpty(recordList)) {
-            Class<?> entityType = getEntityType(entities);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             entities.forEach((entity) -> {
@@ -237,6 +250,28 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         Class<?> entityType = entity.getClass();
 
         return entityType;
+    }
+
+    /**
+     * 返回多语言表
+     *
+     * @param entityType
+     * @return
+     */
+    protected String getI18nTable(Class<?> entityType) {
+        QCheckUtil.notNull(entityType, "entityType null");
+
+        TableName annotation = entityType.getAnnotation(TableName.class);
+        if (annotation == null) {
+            return null;
+        }
+
+        String tableName = annotation.value();
+        if (tableName == null) {
+            return null;
+        }
+
+        return (tableName + MapperConstants.I18N_TABLE_NAME_SUFFIX);
     }
 
     /**

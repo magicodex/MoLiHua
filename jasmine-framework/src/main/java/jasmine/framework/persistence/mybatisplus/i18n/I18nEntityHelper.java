@@ -1,6 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import io.reactivex.annotations.NonNull;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
@@ -72,13 +73,15 @@ public class I18nEntityHelper {
     /**
      * 删除多语言
      *
+     * @param entityType
      * @param id
      * @return
      */
-    public static int deleteI18n(@Nonnull Serializable id) {
+    public static int deleteI18n(@NonNull Class<? extends BaseI18nEntity> entityType, @Nonnull Serializable id) {
+        QCheckUtil.notNull(entityType, "entityType null");
         QCheckUtil.notNull(id, "id null");
 
-        return i18nFacade.deleteI18n(Collections.singletonList(id));
+        return i18nFacade.deleteI18n(entityType, Collections.singletonList(id));
     }
 
     /**
@@ -87,10 +90,12 @@ public class I18nEntityHelper {
      * @param ids
      * @return
      */
-    public static int deleteI18n(@Nonnull Collection<? extends Serializable> ids) {
+    public static int deleteI18n(@NonNull Class<? extends BaseI18nEntity> entityType,
+                                 @Nonnull Collection<? extends Serializable> ids) {
+        QCheckUtil.notNull(entityType, "entityType null");
         QCheckUtil.notNull(ids, "ids null");
 
-        return i18nFacade.deleteI18n(ids);
+        return i18nFacade.deleteI18n(entityType, ids);
     }
 
     /**

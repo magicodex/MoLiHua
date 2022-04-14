@@ -13,6 +13,7 @@ public interface MapperConstants {
     int BATCH_DELETE_SIZE = 1000;
 
     /** SQL参数名 */
+    String SQL_PARAM_TABLE = "table";
     String SQL_PARAM_ID = "id";
     String SQL_PARAM_IDS = "ids";
     String SQL_PARAM_COLUMNS = "columns";
@@ -27,4 +28,7 @@ public interface MapperConstants {
     /** SQL列名 */
     String SQL_COLUMN_ID = "id";
     String SQL_COLUMN_VERSION_NUMBER = "version_number";
+
+    /** 多语言表名称后缀 */
+    String I18N_TABLE_NAME_SUFFIX = "_i18n";
 }

@@ -30,10 +30,11 @@ public interface I18nEntityFacade {
     /**
      * 删除多语言
      *
+     * @param entityType
      * @param ids
      * @return
      */
-    int deleteI18n(Collection<? extends Serializable> ids);
+    int deleteI18n(Class<? extends BaseI18nEntity> entityType, Collection<? extends Serializable> ids);
 
     /**
      * 关联多语言

@@ -23,7 +23,7 @@ public class FakeI18nEntityFacade implements I18nEntityFacade {
     }
 
     @Override
-    public int deleteI18n(Collection<? extends Serializable> ids) {
+    public int deleteI18n(Class<? extends BaseI18nEntity> entityType, Collection<? extends Serializable> ids) {
         return ids.size();
     }
 
