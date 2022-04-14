@@ -24,6 +24,10 @@ public class I18nRecord {
         this.values = new HashMap<>(values);
     }
 
+    protected Map<String, Object> getValues() {
+        return values;
+    }
+
     public Long getId() {
         return getValueAsLong(MapperConstants.SQL_COLUMN_ID);
     }

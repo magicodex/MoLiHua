@@ -24,6 +24,10 @@ public class I18nMeta {
         this.fields = new LinkedHashMap<>(fields);
     }
 
+    protected Map<String, Field> getFields() {
+        return fields;
+    }
+
     /**
      * 创建多语言信息
      *
