@@ -10,9 +10,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * <p>
+ * 多语言信息。
+ * </p>
+ *
  * @author mh.z
  */
 public class I18nMeta {
+    /** 列名与字段的映射集 */
     private Map<String, Field> fields;
 
     public I18nMeta(Map<String, Field> fields) {
@@ -20,6 +25,7 @@ public class I18nMeta {
     }
 
     /**
+     * 创建多语言信息
      *
      * @param entityType
      * @return
@@ -27,7 +33,6 @@ public class I18nMeta {
     public static I18nMeta create(Class<?> entityType) {
         QCheckUtil.notNull(entityType, "entityType null");
         Map<String, Field> fieldMap = new LinkedHashMap<>();
-
         Field[] fields = ReflectUtil.getFields(entityType);
         MybatisPlusColumnMapping columnMapping = new MybatisPlusColumnMapping(entityType);
 
@@ -44,6 +49,7 @@ public class I18nMeta {
     }
 
     /**
+     * 返回多语言数据
      *
      * @param entity
      * @return
@@ -62,6 +68,7 @@ public class I18nMeta {
     }
 
     /**
+     * 填充多语言的值
      *
      * @param entity
      * @param record

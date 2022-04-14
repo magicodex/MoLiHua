@@ -10,9 +10,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * <p>
+ * 多语言记录。
+ * </p>
+ *
  * @author mh.z
  */
 public class I18nRecord {
+    /** 列名与值的映射集 */
     private Map<String, Object> values;
 
     public I18nRecord(Map<String, Object> values) {
@@ -40,6 +45,7 @@ public class I18nRecord {
     }
 
     /**
+     * 转换成多语言记录映射集
      *
      * @param records
      * @return

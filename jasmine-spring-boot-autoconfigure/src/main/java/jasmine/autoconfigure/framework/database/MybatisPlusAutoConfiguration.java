@@ -10,12 +10,13 @@ import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
 import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
-import jasmine.framework.persistence.mybatisplus.i18n.FakeI18nEntityFacade;
+import jasmine.framework.persistence.mybatisplus.i18n.DefaultI18nEntityFacade;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityFacade;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -44,8 +45,8 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
     }
 
     @Bean
-    public I18nEntityFacade i18nEntityFacade() {
-        FakeI18nEntityFacade facade = new FakeI18nEntityFacade();
+    public I18nEntityFacade i18nEntityFacade(SqlSession sqlSession) {
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSession);
 
         // 初始工具类
         I18nEntityHelper.initUtil(facade);

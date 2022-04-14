@@ -6,16 +6,17 @@ import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import jasmine.framework.common.security.CryptoProvider;
+import jasmine.framework.mock.common.MockCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
-import jasmine.framework.persistence.mybatisplus.i18n.FakeI18nEntityFacade;
+import jasmine.framework.persistence.mybatisplus.i18n.DefaultI18nEntityFacade;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityFacade;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
-import jasmine.framework.mock.common.MockCryptoProvider;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,8 +61,8 @@ public class MybatisPlusTestConfiguration {
     }
 
     @Bean
-    public I18nEntityFacade i18nEntityFacade() {
-        FakeI18nEntityFacade facade = new FakeI18nEntityFacade();
+    public I18nEntityFacade i18nEntityFacade(SqlSession sqlSession) {
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSession);
 
         // 初始工具类
         I18nEntityHelper.initUtil(facade);
