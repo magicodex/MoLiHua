@@ -6,6 +6,7 @@ import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.MapperConstants;
@@ -39,6 +40,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
     private static final int BATCH_INSERT_SIZE = MapperConstants.BATCH_INSERT_SIZE;
     private static final int BATCH_UPDATE_SIZE = MapperConstants.BATCH_UPDATE_SIZE;
+    private static final int BATCH_DELETE_SIZE = MapperConstants.BATCH_DELETE_SIZE;
 
     public DefaultI18nEntityFacade(SqlSession sqlSession) {
         this.sqlSession = sqlSession;
@@ -174,11 +176,14 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             return 0;
         }
 
-        Object parameter = Map.of(MapperConstants.SQL_PARAM_IDS, ids);
+        LongValue rowCount = new LongValue(0);
         // 删除多语言记录
-        int rowCount = sqlSession.delete(STATEMENT_DELETE, parameter);
+        BatchCallUtil.call(ids, BATCH_DELETE_SIZE, (part) -> {
+            Object parameter = Map.of(MapperConstants.SQL_PARAM_IDS, part);
+            rowCount.add(sqlSession.delete(STATEMENT_DELETE, parameter));
+        });
 
-        return rowCount;
+        return (int) rowCount.get();
     }
 
     @Override
