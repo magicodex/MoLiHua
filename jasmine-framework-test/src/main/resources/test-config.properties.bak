@@ -1,11 +1,11 @@
 # JDBC驱动
-database.driver=com.mysql.cj.jdbc.Driver
+database.driver=${db.driver:com.mysql.cj.jdbc.Driver}
 
 # 连接URL
-database.url=jdbc:mysql://127.0.0.1:3306/????
+database.url=${db.url:jdbc:mysql://127.0.0.1:3306/test_jasmine}
 
 # 用户名
-database.username=????
+database.username=${db.username:root}
 
 # 密码
-database.password=????
+database.password=${db.password:123456}
