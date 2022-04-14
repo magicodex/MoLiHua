@@ -18,10 +18,10 @@
         ) values (
         #{id, jdbcType=BIGINT},
         #{langCode, jdbcType=VARCHAR},
-        #{createdDate, jdbcType=TIMESTAMP}，
-        #{createdBy, jdbcType=BIGINT}，
-        #{lastUpdatedDate, jdbcType=TIMESTAMP}，
-        #{lastUpdatedBy, jdbcType=BIGINT}，
+        #{createdDate, jdbcType=TIMESTAMP},
+        #{createdBy, jdbcType=BIGINT},
+        #{lastUpdatedDate, jdbcType=TIMESTAMP},
+        #{lastUpdatedBy, jdbcType=BIGINT},
         #{versionNumber, jdbcType=INTEGER}
         <foreach item="value" collection="values" separator="">
             ,#{value, jdbcType=VARCHAR}
