@@ -75,29 +75,14 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         LongValue rowCount = new LongValue(0);
         Class<?> entityType = getEntityType(entities);
         I18nMeta i18nMeta = getI18nMeta(entityType);
-        String langCode = QI18nUtil.getLanguage();
         String i18nTable = getI18nTable(entityType);
 
-        // 组装查询参数
-        List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
-        // 查询多语言记录
-        List<I18nRecord> recordList = i18nRecordFacade.select(sqlSessionTemplate, i18nTable, idList, langCode);
-        Map<Long, I18nRecord> recordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
-
         SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_UPDATE_SIZE, (sqlSession, entity) -> {
-            Long id = entity.getId();
-            I18nRecord record = recordMap.get(id);
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
 
-            if (record != null) {
-                // 更新多语言记录
-                rowCount.add(i18nRecordFacade.update(sqlSession, i18nTable, entity.getId(),
-                        entity.getLangCode(), i18nDataMap, record.getVersionNumber()));
-            } else {
-                // 插入多语言记录
-                rowCount.add(i18nRecordFacade.insert(sqlSession, i18nTable, entity.getId(),
-                        entity.getLangCode(), i18nDataMap));
-            }
+            // 更新多语言记录
+            rowCount.add(i18nRecordFacade.update(sqlSession, i18nTable, entity.getId(),
+                    entity.getLangCode(), i18nDataMap, entity.getVersionNumber()));
         });
 
         return (int) rowCount.get();
