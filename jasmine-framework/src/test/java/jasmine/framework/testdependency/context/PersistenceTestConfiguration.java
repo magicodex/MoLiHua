@@ -35,7 +35,7 @@ public class PersistenceTestConfiguration {
     @Value("${jasmine.data.tenant.enabled:false}")
     private Boolean tenantEnabled;
 
-    @Value("${mybatis.mapper.path:}")
+    @Value("${jasmine.mybatis.mapper.path:}")
     private String mapperPath;
 
     @Bean
