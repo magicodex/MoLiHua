@@ -39,7 +39,9 @@
         </foreach>
         where id = #{id, jdbcType=BIGINT}
         and lang_code = #{langCode, jdbcType=VARCHAR}
-        and version_number = #{versionNumber, jdbcType=INTEGER}
+        <if test="versionNumber != null">
+            and version_number = #{versionNumber, jdbcType=INTEGER}
+        </if>
     </delete>
 
     <delete id="deleteI18n" parameterType="map">

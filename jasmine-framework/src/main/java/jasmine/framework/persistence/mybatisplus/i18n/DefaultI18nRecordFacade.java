@@ -1,12 +1,11 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
 import jasmine.core.context.CurrentSubject;
-import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
+import jasmine.core.util.QNewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
-import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.MapperConstants;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nRecord;
 import org.apache.ibatis.session.SqlSession;
@@ -57,6 +56,9 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
 
         // 新增多语言记录
         int rowCount = sqlSession.insert(STATEMENT_INSERT, paramMap);
+        if (rowCount < 0) {
+            rowCount = 1;
+        }
 
         return rowCount;
     }
@@ -79,15 +81,13 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
         // 审计字段
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
-        // 乐观锁版本
-        paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, versionNumber);
         // 多语言列
         paramMap.put(MapperConstants.SQL_PARAM_VALUES, data);
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
-        if (rowCount < 1) {
-            throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
+        if (rowCount < 0) {
+            rowCount = 1;
         }
 
         return rowCount;
@@ -106,11 +106,12 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
         LongValue rowCount = new LongValue(0);
         // 删除多语言记录
         BatchCallUtil.call(ids, MapperConstants.BATCH_DELETE_SIZE, (partIds) -> {
-            Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, tableName,
-                    MapperConstants.SQL_PARAM_IDS, partIds,
-                    MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+            Map<String, Object> paramMap = QNewUtil.map();
+            paramMap.put(MapperConstants.SQL_PARAM_TABLE, tableName);
+            paramMap.put(MapperConstants.SQL_PARAM_IDS, partIds);
+            paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, langCode);
 
-            rowCount.add(sqlSession.delete(STATEMENT_DELETE, parameter));
+            rowCount.add(sqlSession.delete(STATEMENT_DELETE, paramMap));
         });
 
         return (int) rowCount.get();
