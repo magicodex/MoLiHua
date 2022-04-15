@@ -80,18 +80,18 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         List<I18nRecord> recordList = i18nRecordFacade.select(sqlSessionTemplate, i18nTable, idList, langCode);
         Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
 
-        entities.forEach((entity) -> {
+        SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_UPDATE_SIZE, (sqlSession, entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
             Long recordId = entity.getId();
             I18nRecord i18nRecord = i18nRecordMap.get(recordId);
 
             if (i18nRecord != null) {
                 // 更新多语言记录
-                rowCount.add(i18nRecordFacade.update(sqlSessionTemplate, i18nTable, recordId,
+                rowCount.add(i18nRecordFacade.update(sqlSession, i18nTable, recordId,
                         langCode, i18nDataMap, i18nRecord.getVersionNumber()));
             } else {
                 // 新增多语言记录
-                rowCount.add(i18nRecordFacade.insert(sqlSessionTemplate, i18nTable, recordId,
+                rowCount.add(i18nRecordFacade.insert(sqlSession, i18nTable, recordId,
                         langCode, i18nDataMap));
             }
         });

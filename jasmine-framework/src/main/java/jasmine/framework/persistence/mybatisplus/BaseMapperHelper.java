@@ -2,6 +2,7 @@ package jasmine.framework.persistence.mybatisplus;
 
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
@@ -10,6 +11,7 @@ import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.MapperConstants;
+import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
@@ -70,9 +72,14 @@ public class BaseMapperHelper {
             return 0;
         }
 
+        String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.UPDATE_BY_ID);
+        Class<?> entityClass = QCollUtil.getFirst(entities).getClass();
         LongValue rowCount = new LongValue(0);
-        entities.forEach((entity) -> {
-            rowCount.add(baseMapper.updateById(entity));
+
+        SqlHelper.executeBatch(entityClass, log, entities, UPDATE_BATCH_SIZE, (sqlSession, entity) -> {
+            MapperMethod.ParamMap<T> param = new MapperMethod.ParamMap<>();
+            param.put(Constants.ENTITY, entity);
+            rowCount.add(sqlSession.update(sqlStatement, param));
         });
 
         return (int) rowCount.get();
@@ -116,12 +123,17 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        int rowCount = updateBatchById(baseMapper, entities);
-        if (rowCount < entities.size()) {
+        LongValue rowCount = new LongValue(0);
+        entities.forEach((entity) -> {
+            rowCount.add(baseMapper.updateById(entity));
+        });
+
+        int countValue = (int) rowCount.get();
+        if (countValue < entities.size()) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
 
-        return rowCount;
+        return countValue;
     }
 
     /**
