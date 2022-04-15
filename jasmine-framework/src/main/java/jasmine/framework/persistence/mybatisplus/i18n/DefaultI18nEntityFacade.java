@@ -76,13 +76,27 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         Class<?> entityType = getEntityType(entities);
         I18nMeta i18nMeta = getI18nMeta(entityType);
         String i18nTable = getI18nTable(entityType);
+        String langCode = QI18nUtil.getLanguage();
+
+        // 查询多语言记录
+        List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
+        List<I18nRecord> recordList = i18nRecordFacade.select(sqlSessionTemplate, i18nTable, idList, langCode);
+        Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
 
         SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_UPDATE_SIZE, (sqlSession, entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
+            Long recordId = entity.getId();
+            I18nRecord i18nRecord = i18nRecordMap.get(recordId);
 
-            // 更新多语言记录
-            rowCount.add(i18nRecordFacade.update(sqlSession, i18nTable, entity.getId(),
-                    entity.getLangCode(), i18nDataMap, entity.getVersionNumber()));
+            if (i18nRecord != null) {
+                // 更新多语言记录
+                rowCount.add(i18nRecordFacade.update(sqlSession, i18nTable, recordId,
+                        langCode, i18nDataMap, i18nRecord.getVersionNumber()));
+            } else {
+                // 新增多语言记录
+                rowCount.add(i18nRecordFacade.insert(sqlSession, i18nTable, recordId,
+                        langCode, i18nDataMap));
+            }
         });
 
         return (int) rowCount.get();
@@ -118,16 +132,16 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         // 查询多语言记录
         List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
-        List<I18nRecord> recordList = i18nRecordFacade.select(sqlSessionTemplate, i18nTable, idList, langCode);
+        List<I18nRecord> i18nRecordList = i18nRecordFacade.select(sqlSessionTemplate, i18nTable, idList, langCode);
 
         // 填充多语言字段
-        if (QCollUtil.isNotEmpty(recordList)) {
-            Map<Long, I18nRecord> recordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
+        if (QCollUtil.isNotEmpty(i18nRecordList)) {
+            Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(i18nRecordList, I18nRecord::getId);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             entities.forEach((entity) -> {
                 Long id = entity.getId();
-                I18nRecord record = recordMap.get(id);
+                I18nRecord record = i18nRecordMap.get(id);
 
                 i18nMeta.populateI18nField(entity, record);
             });
