@@ -55,12 +55,9 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
         paramMap.put(MapperConstants.SQL_PARAM_VALUES, data.values());
 
         // 新增多语言记录
-        int rowCount = sqlSession.insert(STATEMENT_INSERT, paramMap);
-        if (rowCount < 0) {
-            rowCount = 1;
-        }
+        sqlSession.insert(STATEMENT_INSERT, paramMap);
 
-        return rowCount;
+        return 1;
     }
 
     @Override
@@ -86,9 +83,6 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
-        if (rowCount < 0) {
-            rowCount = 1;
-        }
 
         return rowCount;
     }

@@ -47,7 +47,6 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             return 0;
         }
 
-        LongValue rowCount = new LongValue(0);
         Class<?> entityType = getEntityType(entities);
         I18nMeta i18nMeta = getI18nMeta(entityType);
         String i18nTable = getI18nTable(entityType);
@@ -55,13 +54,11 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         // 新增多语言记录
         SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_INSERT_SIZE, (sqlSession, entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
-            int countValue = i18nRecordFacade.insert(sqlSession, i18nTable, entity.getId(),
+            i18nRecordFacade.insert(sqlSession, i18nTable, entity.getId(),
                     entity.getLangCode(), i18nDataMap);
-
-            rowCount.add(countValue);
         });
 
-        return (int) rowCount.get();
+        return entities.size();
     }
 
     @Override
@@ -83,18 +80,18 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         List<I18nRecord> recordList = i18nRecordFacade.select(sqlSessionTemplate, i18nTable, idList, langCode);
         Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
 
-        SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_UPDATE_SIZE, (sqlSession, entity) -> {
+        entities.forEach((entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
             Long recordId = entity.getId();
             I18nRecord i18nRecord = i18nRecordMap.get(recordId);
 
             if (i18nRecord != null) {
                 // 更新多语言记录
-                rowCount.add(i18nRecordFacade.update(sqlSession, i18nTable, recordId,
+                rowCount.add(i18nRecordFacade.update(sqlSessionTemplate, i18nTable, recordId,
                         langCode, i18nDataMap, i18nRecord.getVersionNumber()));
             } else {
                 // 新增多语言记录
-                rowCount.add(i18nRecordFacade.insert(sqlSession, i18nTable, recordId,
+                rowCount.add(i18nRecordFacade.insert(sqlSessionTemplate, i18nTable, recordId,
                         langCode, i18nDataMap));
             }
         });

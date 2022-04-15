@@ -2,7 +2,6 @@ package jasmine.framework.persistence.mybatisplus;
 
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
@@ -11,7 +10,6 @@ import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.MapperConstants;
-import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
@@ -47,13 +45,12 @@ public class BaseMapperHelper {
 
         String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.INSERT_ONE);
         Class<?> entityClass = QCollUtil.getFirst(entities).getClass();
-        LongValue rowCount = new LongValue(0);
 
         SqlHelper.executeBatch(entityClass, log, entities, INSERT_BATCH_SIZE, (sqlSession, entity) -> {
-            rowCount.add(sqlSession.insert(sqlStatement, entity));
+            sqlSession.insert(sqlStatement, entity);
         });
 
-        return (int) rowCount.get();
+        return entities.size();
     }
 
     /**
@@ -73,14 +70,9 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.UPDATE_BY_ID);
-        Class<?> entityClass = QCollUtil.getFirst(entities).getClass();
         LongValue rowCount = new LongValue(0);
-
-        SqlHelper.executeBatch(entityClass, log, entities, UPDATE_BATCH_SIZE, (sqlSession, entity) -> {
-            MapperMethod.ParamMap<T> param = new MapperMethod.ParamMap<>();
-            param.put(Constants.ENTITY, entity);
-            rowCount.add(sqlSession.update(sqlStatement, param));
+        entities.forEach((entity) -> {
+            rowCount.add(baseMapper.updateById(entity));
         });
 
         return (int) rowCount.get();
