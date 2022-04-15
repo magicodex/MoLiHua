@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus.i18n;
+package jasmine.framework.persistence.mybatisplus.i18n.support;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
@@ -7,7 +7,6 @@ import jasmine.core.util.QNewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
 import jasmine.framework.persistence.constant.MapperConstants;
-import jasmine.framework.persistence.mybatisplus.i18n.support.I18nRecord;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.Serializable;
@@ -21,16 +20,25 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-public class DefaultI18nRecordFacade implements I18nRecordFacade {
+public class I18nCRUD {
 
     private static final String STATEMENT_INSERT = "jasmine.EntityI18n.insertI18n";
     private static final String STATEMENT_UPDATE = "jasmine.EntityI18n.updateI18n";
     private static final String STATEMENT_DELETE = "jasmine.EntityI18n.deleteI18n";
     private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
 
-    @Override
-    public int insert(SqlSession sqlSession, String tableName, Long id,
-                      String langCode, Map<String, String> data) {
+    /**
+     * 新增多语言
+     *
+     * @param sqlSession
+     * @param tableName
+     * @param id
+     * @param langCode
+     * @param data
+     * @return
+     */
+    public static int insert(SqlSession sqlSession, String tableName, Long id,
+                             String langCode, Map<String, String> data) {
         QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(data, "data null");
 
@@ -60,9 +68,19 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
         return 1;
     }
 
-    @Override
-    public int update(SqlSession sqlSession, String tableName, Long id,
-                      String langCode, Map<String, String> data, Integer versionNumber) {
+    /**
+     * 更新多语言
+     *
+     * @param sqlSession
+     * @param tableName
+     * @param id
+     * @param langCode
+     * @param data
+     * @param versionNumber
+     * @return
+     */
+    public static int update(SqlSession sqlSession, String tableName, Long id,
+                             String langCode, Map<String, String> data, Integer versionNumber) {
         QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(data, "data null");
 
@@ -87,9 +105,17 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
         return rowCount;
     }
 
-    @Override
-    public int delete(SqlSession sqlSession, String tableName,
-                      Collection<? extends Serializable> ids, String langCode) {
+    /**
+     * 删除多语言
+     *
+     * @param sqlSession
+     * @param tableName
+     * @param ids
+     * @param langCode
+     * @return
+     */
+    public static int delete(SqlSession sqlSession, String tableName,
+                             Collection<? extends Serializable> ids, String langCode) {
         QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(ids, "ids null");
 
@@ -111,9 +137,17 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
         return (int) rowCount.get();
     }
 
-    @Override
-    public List<I18nRecord> select(SqlSession sqlSession, String tableName,
-                                   Collection<? extends Serializable> ids, String langCode) {
+    /**
+     * 查询多语言
+     *
+     * @param sqlSession
+     * @param tableName
+     * @param ids
+     * @param langCode
+     * @return
+     */
+    public static List<I18nRecord> select(SqlSession sqlSession, String tableName,
+                                          Collection<? extends Serializable> ids, String langCode) {
         QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(ids, "ids null");
 
