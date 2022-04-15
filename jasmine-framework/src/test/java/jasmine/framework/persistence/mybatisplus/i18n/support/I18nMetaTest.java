@@ -13,8 +13,8 @@ import java.util.Map;
 public class I18nMetaTest {
 
     @Test
-    public void testCreate() {
-        I18nMeta meta = I18nMeta.create(TestEntity2.class);
+    public void testCreateI8nMeta() {
+        I18nMeta meta = I18nMeta.createI18nMeta(TestEntity2.class);
 
         Map<String, Field> fieldMap = meta.getFields();
         Assert.assertEquals(2, fieldMap.size());
@@ -34,7 +34,7 @@ public class I18nMetaTest {
         entity.setName2("name2Value");
         entity.setAttr2("attr2Value");
 
-        I18nMeta meta = I18nMeta.create(TestEntity2.class);
+        I18nMeta meta = I18nMeta.createI18nMeta(TestEntity2.class);
         Map<String, String> actualMap = meta.getI18nData(entity);
 
         Assert.assertEquals(2, actualMap.size());
@@ -43,14 +43,14 @@ public class I18nMetaTest {
     }
 
     @Test
-    public void testPopulateI18n() {
+    public void testPopulateI18nField() {
         Map<String, Object> valueMap = Map.of("name_1", "name1Value",
                 "name_2", "name2Value");
         I18nRecord record = new I18nRecord(valueMap);
 
-        I18nMeta meta = I18nMeta.create(TestEntity2.class);
+        I18nMeta meta = I18nMeta.createI18nMeta(TestEntity2.class);
         TestEntity2 entity = new TestEntity2();
-        meta.populateI18n(entity, record);
+        meta.populateI18nField(entity, record);
 
         Assert.assertEquals("name1Value", entity.getName1());
         Assert.assertEquals("name2Value", entity.getName2());

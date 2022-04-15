@@ -16,7 +16,7 @@ import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
-import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -45,8 +45,8 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
     }
 
     @Bean
-    public I18nEntityFacade i18nEntityFacade(SqlSession sqlSession) {
-        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSession);
+    public I18nEntityFacade i18nEntityFacade(SqlSessionTemplate sqlSessionTemplate) {
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
 
         // 初始工具类
         I18nEntityHelper.initUtil(facade);

@@ -14,53 +14,53 @@ import java.util.Map;
 public interface I18nRecordFacade {
 
     /**
-     * 插入多语言
+     * 新增多语言
      *
-     * @param session
-     * @param table
+     * @param sqlSession
+     * @param tableName
      * @param id
-     * @param language
+     * @param langCode
      * @param data
      * @return
      */
-    int insert(SqlSession session, String table, Long id,
-               String language, Map<String, String> data);
+    int insert(SqlSession sqlSession, String tableName, Long id,
+               String langCode, Map<String, String> data);
 
     /**
-     * 修改多语言
+     * 更新多语言
      *
-     * @param session
-     * @param table
+     * @param sqlSession
+     * @param tableName
      * @param id
-     * @param language
+     * @param langCode
      * @param data
-     * @param version
+     * @param versionNumber
      * @return
      */
-    int update(SqlSession session, String table, Long id,
-               String language, Map<String, String> data, Integer version);
+    int update(SqlSession sqlSession, String tableName, Long id,
+               String langCode, Map<String, String> data, Integer versionNumber);
 
     /**
      * 删除多语言
      *
-     * @param session
-     * @param table
+     * @param sqlSession
+     * @param tableName
      * @param ids
-     * @param language
+     * @param langCode
      * @return
      */
-    int delete(SqlSession session, String table, Collection<? extends Serializable> ids,
-               String language);
+    int delete(SqlSession sqlSession, String tableName,
+               Collection<? extends Serializable> ids, String langCode);
 
     /**
      * 查询多语言
      *
-     * @param session
-     * @param table
+     * @param sqlSession
+     * @param tableName
      * @param ids
-     * @param language
+     * @param langCode
      * @return
      */
-    List<I18nRecord> select(SqlSession session, String table, Collection<? extends Serializable> ids,
-                            String language);
+    List<I18nRecord> select(SqlSession sqlSession, String tableName,
+                            Collection<? extends Serializable> ids, String langCode);
 }

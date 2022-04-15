@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -17,11 +18,11 @@ import java.util.Collections;
 @RunWith(SpringRunner.class)
 public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
     @Autowired
-    private SqlSession sqlSession;
+    private SqlSessionTemplate sqlSessionTemplate;
 
     @Test
     public void test() {
-        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSession);
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
 
         // 新增多语言信息
         {

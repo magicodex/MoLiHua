@@ -34,9 +34,10 @@ public class I18nMeta {
      * @param entityType
      * @return
      */
-    public static I18nMeta create(Class<?> entityType) {
+    public static I18nMeta createI18nMeta(Class<?> entityType) {
         QCheckUtil.notNull(entityType, "entityType null");
         Map<String, Field> fieldMap = new LinkedHashMap<>();
+
         Field[] fields = ReflectUtil.getFields(entityType);
         MybatisPlusColumnMapping columnMapping = new MybatisPlusColumnMapping(entityType);
 
@@ -77,7 +78,7 @@ public class I18nMeta {
      * @param entity
      * @param record
      */
-    public void populateI18n(Object entity, I18nRecord record) {
+    public void populateI18nField(Object entity, I18nRecord record) {
         QCheckUtil.notNull(entity, "entity null");
 
         if (record != null) {

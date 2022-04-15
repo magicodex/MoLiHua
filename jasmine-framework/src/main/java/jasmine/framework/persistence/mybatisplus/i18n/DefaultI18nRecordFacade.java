@@ -23,58 +23,69 @@ import java.util.Map;
  * @author mh.z
  */
 public class DefaultI18nRecordFacade implements I18nRecordFacade {
+
     private static final String STATEMENT_INSERT = "jasmine.EntityI18n.insertI18n";
     private static final String STATEMENT_UPDATE = "jasmine.EntityI18n.updateI18n";
     private static final String STATEMENT_DELETE = "jasmine.EntityI18n.deleteI18n";
     private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
-    private static final int BATCH_DELETE_SIZE = MapperConstants.BATCH_DELETE_SIZE;
 
     @Override
-    public int insert(SqlSession session, String table, Long id,
-                      String language, Map<String, String> data) {
-        QCheckUtil.notNull(session, "session null");
+    public int insert(SqlSession sqlSession, String tableName, Long id,
+                      String langCode, Map<String, String> data) {
+        QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(data, "data null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
 
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put(MapperConstants.SQL_PARAM_TABLE, table);
+        // 多语言表
+        paramMap.put(MapperConstants.SQL_PARAM_TABLE, tableName);
+        // 记录主键
         paramMap.put(MapperConstants.SQL_PARAM_ID, id);
-        paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, language);
+        paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+        // 审计字段
         paramMap.put(MapperConstants.SQL_PARAM_CREATED_DATE, currentTime);
         paramMap.put(MapperConstants.SQL_PARAM_CREATED_BY, userId);
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
+        // 乐观锁版本
         paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, 1);
+        // 多语言列
         paramMap.put(MapperConstants.SQL_PARAM_COLUMNS, data.keySet());
         paramMap.put(MapperConstants.SQL_PARAM_VALUES, data.values());
 
-        // 插入多语言记录
-        int rowCount = session.insert(STATEMENT_INSERT, paramMap);
+        // 新增多语言记录
+        int rowCount = sqlSession.insert(STATEMENT_INSERT, paramMap);
+
         return rowCount;
     }
 
     @Override
-    public int update(SqlSession session, String table, Long id,
-                      String language, Map<String, String> data, Integer version) {
-        QCheckUtil.notNull(session, "session null");
+    public int update(SqlSession sqlSession, String tableName, Long id,
+                      String langCode, Map<String, String> data, Integer versionNumber) {
+        QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(data, "data null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
 
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put(MapperConstants.SQL_PARAM_TABLE, table);
-        paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, language);
+        // 多语言表
+        paramMap.put(MapperConstants.SQL_PARAM_TABLE, tableName);
+        // 记录主键
         paramMap.put(MapperConstants.SQL_PARAM_ID, id);
+        paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+        // 审计字段
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
-        paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, version);
+        // 乐观锁版本
+        paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, versionNumber);
+        // 多语言列
         paramMap.put(MapperConstants.SQL_PARAM_VALUES, data);
 
         // 更新多语言记录
-        int rowCount = session.update(STATEMENT_UPDATE, paramMap);
+        int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
         if (rowCount < 1) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
@@ -83,9 +94,9 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
     }
 
     @Override
-    public int delete(SqlSession session, String table, Collection<? extends Serializable> ids,
-                      String language) {
-        QCheckUtil.notNull(session, "session null");
+    public int delete(SqlSession sqlSession, String tableName,
+                      Collection<? extends Serializable> ids, String langCode) {
+        QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(ids, "ids null");
 
         if (QCollUtil.isEmpty(ids)) {
@@ -94,34 +105,37 @@ public class DefaultI18nRecordFacade implements I18nRecordFacade {
 
         LongValue rowCount = new LongValue(0);
         // 删除多语言记录
-        BatchCallUtil.call(ids, BATCH_DELETE_SIZE, (part) -> {
-            Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, table,
-                    MapperConstants.SQL_PARAM_IDS, part,
-                    MapperConstants.SQL_PARAM_LANG_CODE, language);
+        BatchCallUtil.call(ids, MapperConstants.BATCH_DELETE_SIZE, (partIds) -> {
+            Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, tableName,
+                    MapperConstants.SQL_PARAM_IDS, partIds,
+                    MapperConstants.SQL_PARAM_LANG_CODE, langCode);
 
-            rowCount.add(session.delete(STATEMENT_DELETE, parameter));
+            rowCount.add(sqlSession.delete(STATEMENT_DELETE, parameter));
         });
 
         return (int) rowCount.get();
     }
 
     @Override
-    public List<I18nRecord> select(SqlSession session, String table, Collection<? extends Serializable> ids,
-                                   String language) {
-        QCheckUtil.notNull(session, "session null");
+    public List<I18nRecord> select(SqlSession sqlSession, String tableName,
+                                   Collection<? extends Serializable> ids, String langCode) {
+        QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(ids, "ids null");
 
         if (QCollUtil.isEmpty(ids)) {
             return Collections.emptyList();
         }
 
-        // 组装查询参数
-        Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, table,
-                MapperConstants.SQL_PARAM_IDS, ids,
-                MapperConstants.SQL_PARAM_LANG_CODE, language);
-
         // 查询多语言记录
-        List<Map> recordList = session.selectList(STATEMENT_SELECT, parameter);
+        Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, tableName,
+                MapperConstants.SQL_PARAM_IDS, ids,
+                MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, parameter);
+
+        if (QCollUtil.isEmpty(recordList)) {
+            return Collections.emptyList();
+        }
+
         List<I18nRecord> i18nRecordList = QCollUtil.mapToList(recordList, (record) -> {
             return new I18nRecord(record);
         });
