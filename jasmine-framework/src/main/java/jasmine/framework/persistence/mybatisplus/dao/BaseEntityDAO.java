@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class BaseTemplateDAO<M extends BaseMapper<T>, T extends BaseEntity>
+public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
         implements BaseDAO<T>, BaseBatchDAO<T> {
     @Autowired
     protected M baseMapper;

@@ -19,7 +19,7 @@ public class BaseI18nTemplateDaoTest extends FrameworkTestContext {
 
     @Test
     public void test() {
-        BaseI18nTemplateDAO<TestEntity1Mapper, TestEntity1> dao = new BaseI18nTemplateDAO<>();
+        BaseI18nEntityDAO<TestEntity1Mapper, TestEntity1> dao = new BaseI18nEntityDAO<>();
         dao.setBaseMapper(testEntity1Mapper);
 
         // 保存记录

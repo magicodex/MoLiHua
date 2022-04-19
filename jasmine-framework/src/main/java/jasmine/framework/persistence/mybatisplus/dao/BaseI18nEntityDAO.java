@@ -13,13 +13,13 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class BaseI18nTemplateDAO<M extends BaseMapper<T>, T extends BaseI18nEntity>
-        extends BaseTemplateDAO<M, T> {
+public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity>
+        extends BaseEntityDAO<M, T> {
     private Class<T> entityClass;
 
-    public BaseI18nTemplateDAO() {
+    public BaseI18nEntityDAO() {
         this.entityClass = (Class<T>) ReflectionKit
-                .getSuperClassGenericType(getClass(), BaseI18nTemplateDAO.class, 1);
+                .getSuperClassGenericType(getClass(), BaseI18nEntityDAO.class, 1);
     }
 
     @Override
