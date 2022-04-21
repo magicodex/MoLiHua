@@ -12,17 +12,15 @@ public interface BaseDAO<T> {
      * 保存记录
      *
      * @param entity
-     * @return
      */
-    boolean save(@Nonnull T entity);
+    void save(@Nonnull T entity);
 
     /**
      * 更新记录
      *
      * @param entity
-     * @return
      */
-    boolean updateById(@Nonnull T entity);
+    void updateById(@Nonnull T entity);
 
     /**
      * 删除记录
@@ -31,6 +29,13 @@ public interface BaseDAO<T> {
      * @return
      */
     boolean deleteById(@Nonnull Serializable id);
+
+    /**
+     * 删除记录
+     *
+     * @param id
+     */
+    void strictDeleteById(@Nonnull Serializable id);
 
     /**
      * 查询记录

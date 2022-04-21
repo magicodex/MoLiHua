@@ -23,43 +23,35 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     }
 
     @Override
-    public boolean save(T entity) {
+    public void save(T entity) {
         QCheckUtil.notNull(entity, "entity null");
 
-        boolean result = super.save(entity);
+        super.save(entity);
         I18nEntityHelper.insertI18n(entity);
-
-        return result;
     }
 
     @Override
-    public boolean saveBatch(Collection<T> entities) {
+    public void saveBatch(Collection<T> entities) {
         QCheckUtil.notNull(entities, "entities null");
 
-        boolean result = super.saveBatch(entities);
+        super.saveBatch(entities);
         I18nEntityHelper.insertI18n(entities);
-
-        return result;
     }
 
     @Override
-    public boolean updateById(T entity) {
+    public void updateById(T entity) {
         QCheckUtil.notNull(entity, "entity null");
 
-        boolean result = super.updateById(entity);
+        super.updateById(entity);
         I18nEntityHelper.updateI18n(entity);
-
-        return result;
     }
 
     @Override
-    public boolean updateBatchById(Collection<T> entities) {
+    public void updateBatchById(Collection<T> entities) {
         QCheckUtil.notNull(entities, "entities null");
 
-        boolean result = super.updateBatchById(entities);
+        super.updateBatchById(entities);
         I18nEntityHelper.updateI18n(entities);
-
-        return result;
     }
 
     @Override
@@ -73,10 +65,10 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     }
 
     @Override
-    public boolean deleteByIds(Collection<Serializable> ids) {
+    public int deleteByIds(Collection<? extends Serializable> ids) {
         QCheckUtil.notNull(ids, "ids null");
 
-        boolean result = super.deleteByIds(ids);
+        int result = super.deleteByIds(ids);
         I18nEntityHelper.deleteI18n(entityClass, ids);
 
         return result;
@@ -93,7 +85,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     }
 
     @Override
-    public List<T> listByIds(Collection<Serializable> ids) {
+    public List<T> listByIds(Collection<? extends Serializable> ids) {
         QCheckUtil.notNull(ids, "ids null");
 
         List<T> recordList = super.listByIds(ids);

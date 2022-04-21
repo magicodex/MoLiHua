@@ -7,6 +7,7 @@ import jasmine.framework.persistence.entity.BaseEntity;
 import jasmine.framework.persistence.mybatisplus.BaseMapperHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
@@ -25,33 +26,43 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
     }
 
     @Override
-    public boolean save(T entity) {
-        return SqlHelper.retBool(baseMapper.insert(entity));
+    public void save(T entity) {
+        SqlHelper.retBool(baseMapper.insert(entity));
     }
 
     @Override
-    public boolean saveBatch(Collection<T> entities) {
-        return SqlHelper.retBool(BaseMapperHelper.saveBatch(baseMapper, entities));
+    public void saveBatch(Collection<T> entities) {
+        BaseMapperHelper.saveBatch(baseMapper, entities);
     }
 
     @Override
-    public boolean updateById(T entity) {
-        return SqlHelper.retBool(BaseMapperHelper.strictUpdateById(baseMapper, entity));
+    public void updateById(T entity) {
+        SqlHelper.retBool(BaseMapperHelper.strictUpdateById(baseMapper, entity));
     }
 
     @Override
-    public boolean updateBatchById(Collection<T> entities) {
-        return SqlHelper.retBool(BaseMapperHelper.strictUpdateBatchById(baseMapper, entities));
+    public void updateBatchById(Collection<T> entities) {
+        BaseMapperHelper.strictUpdateBatchById(baseMapper, entities);
     }
 
     @Override
     public boolean deleteById(Serializable id) {
-        return SqlHelper.retBool(BaseMapperHelper.strictDeleteById(baseMapper, id));
+        return SqlHelper.retBool(baseMapper.deleteById(id));
     }
 
     @Override
-    public boolean deleteByIds(Collection<Serializable> ids) {
-        return SqlHelper.retBool(BaseMapperHelper.strictDeleteByIds(baseMapper, ids));
+    public void strictDeleteById(@Nonnull Serializable id) {
+        SqlHelper.retBool(BaseMapperHelper.strictDeleteById(baseMapper, id));
+    }
+
+    @Override
+    public int deleteByIds(Collection<? extends Serializable> ids) {
+        return BaseMapperHelper.strictDeleteByIds(baseMapper, ids);
+    }
+
+    @Override
+    public void strictDeleteByIds(@Nonnull Collection<? extends Serializable> ids) {
+        BaseMapperHelper.strictDeleteByIds(baseMapper, ids);
     }
 
     @Override
@@ -62,7 +73,7 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
     }
 
     @Override
-    public List<T> listByIds(Collection<Serializable> ids) {
+    public List<T> listByIds(Collection<? extends Serializable> ids) {
         QCheckUtil.notNull(ids, "ids null");
 
         if (ids.isEmpty()) {

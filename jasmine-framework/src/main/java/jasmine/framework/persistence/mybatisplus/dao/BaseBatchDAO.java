@@ -14,17 +14,15 @@ public interface BaseBatchDAO<T> {
      * 保存记录
      *
      * @param entities
-     * @return
      */
-    boolean saveBatch(@Nonnull Collection<T> entities);
+    void saveBatch(@Nonnull Collection<T> entities);
 
     /**
      * 更新记录
      *
      * @param entities
-     * @return
      */
-    boolean updateBatchById(@Nonnull Collection<T> entities);
+    void updateBatchById(@Nonnull Collection<T> entities);
 
     /**
      * 删除记录
@@ -32,7 +30,14 @@ public interface BaseBatchDAO<T> {
      * @param ids
      * @return
      */
-    boolean deleteByIds(@Nonnull Collection<Serializable> ids);
+    int deleteByIds(@Nonnull Collection<? extends Serializable> ids);
+
+    /**
+     * 删除记录
+     *
+     * @param ids
+     */
+    void strictDeleteByIds(@Nonnull Collection<? extends Serializable> ids);
 
     /**
      * 查询记录
@@ -40,5 +45,5 @@ public interface BaseBatchDAO<T> {
      * @param ids
      * @return
      */
-    List<T> listByIds(@Nonnull Collection<Serializable> ids);
+    List<T> listByIds(@Nonnull Collection<? extends Serializable> ids);
 }

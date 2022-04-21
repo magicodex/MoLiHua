@@ -56,36 +56,6 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 批量更新记录
-     *
-     * @param baseMapper
-     * @param entities
-     * @param <T>
-     * @return
-     */
-    public static <T> int updateBatchById(@Nonnull BaseMapper<T> baseMapper,
-                                          @Nonnull Collection<T> entities) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(entities, "entities null");
-
-        if (entities.isEmpty()) {
-            return 0;
-        }
-
-        String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.UPDATE_BY_ID);
-        Class<?> entityClass = QCollUtil.getFirst(entities).getClass();
-        LongValue rowCount = new LongValue(0);
-
-        SqlHelper.executeBatch(entityClass, log, entities, UPDATE_BATCH_SIZE, (sqlSession, entity) -> {
-            MapperMethod.ParamMap<T> param = new MapperMethod.ParamMap<>();
-            param.put(Constants.ENTITY, entity);
-            rowCount.add(sqlSession.update(sqlStatement, param));
-        });
-
-        return (int) rowCount.get();
-    }
-
-    /**
      * 更新记录并检查影响的行数
      *
      * @param baseMapper
@@ -114,13 +84,13 @@ public class BaseMapperHelper {
      * @param <T>
      * @return
      */
-    public static <T> int strictUpdateBatchById(@Nonnull BaseMapper<T> baseMapper,
-                                                @Nonnull Collection<T> entities) {
+    public static <T> void strictUpdateBatchById(@Nonnull BaseMapper<T> baseMapper,
+                                                 @Nonnull Collection<T> entities) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
         QCheckUtil.notNull(entities, "entities null");
 
         if (entities.isEmpty()) {
-            return 0;
+            return;
         }
 
         LongValue rowCount = new LongValue(0);
@@ -132,8 +102,6 @@ public class BaseMapperHelper {
         if (countValue < entities.size()) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
-
-        return countValue;
     }
 
     /**
@@ -166,7 +134,7 @@ public class BaseMapperHelper {
      * @return
      */
     public static <T> int strictDeleteByIds(@Nonnull BaseMapper<T> baseMapper,
-                                            @Nonnull Collection<Serializable> ids) {
+                                            @Nonnull Collection<? extends Serializable> ids) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
         QCheckUtil.notNull(ids, "ids null");
 
