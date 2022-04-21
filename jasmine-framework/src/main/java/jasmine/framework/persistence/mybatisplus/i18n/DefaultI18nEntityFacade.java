@@ -11,6 +11,7 @@ import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCRUD;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nMeta;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nRecord;
+import liquibase.pro.packaged.I;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -53,8 +54,8 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         // 新增多语言记录
         SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_INSERT_SIZE, (sqlSession, entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
-            I18nCRUD.insert(sqlSession, i18nTable, entity.getId(),
-                    entity.getLangCode(), i18nDataMap);
+            I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
+            i18nCRUD.insert(entity.getId(), entity.getLangCode(), i18nDataMap);
         });
 
         return entities.size();
@@ -76,22 +77,21 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         // 查询多语言记录
         List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
-        List<I18nRecord> recordList = I18nCRUD.select(sqlSessionTemplate, i18nTable, idList, langCode);
+        List<I18nRecord> recordList = new I18nCRUD(sqlSessionTemplate, i18nTable).select(idList, langCode);
         Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
 
         SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_UPDATE_SIZE, (sqlSession, entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
             Long recordId = entity.getId();
             I18nRecord i18nRecord = i18nRecordMap.get(recordId);
+            I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
 
             if (i18nRecord != null) {
                 // 更新多语言记录
-                rowCount.add(I18nCRUD.update(sqlSession, i18nTable, recordId,
-                        langCode, i18nDataMap, i18nRecord.getVersionNumber()));
+                rowCount.add(i18nCRUD.update(recordId, langCode, i18nDataMap, i18nRecord.getVersionNumber()));
             } else {
                 // 新增多语言记录
-                rowCount.add(I18nCRUD.insert(sqlSession, i18nTable, recordId,
-                        langCode, i18nDataMap));
+                rowCount.add(i18nCRUD.insert(recordId, langCode, i18nDataMap));
             }
         });
 
@@ -109,7 +109,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         String i18nTable = getI18nTable(entityType);
         // 删除多语言记录
-        int rowCount = I18nCRUD.delete(sqlSessionTemplate, i18nTable, ids, null);
+        int rowCount = new I18nCRUD(sqlSessionTemplate, i18nTable).delete(ids, null);
 
         return rowCount;
     }
@@ -128,7 +128,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         // 查询多语言记录
         List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
-        List<I18nRecord> i18nRecordList = I18nCRUD.select(sqlSessionTemplate, i18nTable, idList, langCode);
+        List<I18nRecord> i18nRecordList = new I18nCRUD(sqlSessionTemplate, i18nTable).select(idList, langCode);
 
         // 填充多语言字段
         if (QCollUtil.isNotEmpty(i18nRecordList)) {

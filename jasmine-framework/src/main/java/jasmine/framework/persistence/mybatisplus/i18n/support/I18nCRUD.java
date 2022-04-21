@@ -21,25 +21,28 @@ import java.util.Map;
  * @author mh.z
  */
 public class I18nCRUD {
+    private SqlSession sqlSession;
+    private String tableName;
 
     private static final String STATEMENT_INSERT = "jasmine.EntityI18n.insertI18n";
     private static final String STATEMENT_UPDATE = "jasmine.EntityI18n.updateI18n";
     private static final String STATEMENT_DELETE = "jasmine.EntityI18n.deleteI18n";
     private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
 
+    public I18nCRUD(SqlSession sqlSession, String tableName) {
+        this.sqlSession = sqlSession;
+        this.tableName = tableName;
+    }
+
     /**
      * 新增多语言
      *
-     * @param sqlSession
-     * @param tableName
      * @param id
      * @param langCode
      * @param data
      * @return
      */
-    public static int insert(SqlSession sqlSession, String tableName, Long id,
-                             String langCode, Map<String, String> data) {
-        QCheckUtil.notNull(sqlSession, "sqlSession null");
+    public int insert(Long id, String langCode, Map<String, String> data) {
         QCheckUtil.notNull(data, "data null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
@@ -71,16 +74,13 @@ public class I18nCRUD {
     /**
      * 更新多语言
      *
-     * @param sqlSession
-     * @param tableName
      * @param id
      * @param langCode
      * @param data
      * @param versionNumber
      * @return
      */
-    public static int update(SqlSession sqlSession, String tableName, Long id,
-                             String langCode, Map<String, String> data, Integer versionNumber) {
+    public int update(Serializable id, String langCode, Map<String, String> data, Integer versionNumber) {
         QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(data, "data null");
 
@@ -108,14 +108,11 @@ public class I18nCRUD {
     /**
      * 删除多语言
      *
-     * @param sqlSession
-     * @param tableName
      * @param ids
      * @param langCode
      * @return
      */
-    public static int delete(SqlSession sqlSession, String tableName,
-                             Collection<? extends Serializable> ids, String langCode) {
+    public int delete(Collection<? extends Serializable> ids, String langCode) {
         QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(ids, "ids null");
 
@@ -140,14 +137,11 @@ public class I18nCRUD {
     /**
      * 查询多语言
      *
-     * @param sqlSession
-     * @param tableName
      * @param ids
      * @param langCode
      * @return
      */
-    public static List<I18nRecord> select(SqlSession sqlSession, String tableName,
-                                          Collection<? extends Serializable> ids, String langCode) {
+    public List<I18nRecord> select(Collection<? extends Serializable> ids, String langCode) {
         QCheckUtil.notNull(sqlSession, "sqlSession null");
         QCheckUtil.notNull(ids, "ids null");
 
