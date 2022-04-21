@@ -84,13 +84,13 @@ public class BaseMapperHelper {
      * @param <T>
      * @return
      */
-    public static <T> void strictUpdateBatchById(@Nonnull BaseMapper<T> baseMapper,
+    public static <T> int strictUpdateBatchById(@Nonnull BaseMapper<T> baseMapper,
                                                  @Nonnull Collection<T> entities) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
         QCheckUtil.notNull(entities, "entities null");
 
         if (entities.isEmpty()) {
-            return;
+            return 0;
         }
 
         LongValue rowCount = new LongValue(0);
@@ -102,6 +102,8 @@ public class BaseMapperHelper {
         if (countValue < entities.size()) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
+
+        return countValue;
     }
 
     /**
