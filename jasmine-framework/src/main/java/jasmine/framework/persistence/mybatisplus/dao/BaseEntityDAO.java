@@ -27,7 +27,9 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
 
     @Override
     public void save(T entity) {
-        SqlHelper.retBool(baseMapper.insert(entity));
+        QCheckUtil.notNull(entity, "entity null");
+
+        baseMapper.insert(entity);
     }
 
     @Override
@@ -37,7 +39,7 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
 
     @Override
     public void updateById(T entity) {
-        SqlHelper.retBool(BaseMapperHelper.strictUpdateById(baseMapper, entity));
+        BaseMapperHelper.strictUpdateById(baseMapper, entity);
     }
 
     @Override
@@ -47,12 +49,14 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
 
     @Override
     public boolean deleteById(Serializable id) {
+        QCheckUtil.notNull(id, "id null");
+
         return SqlHelper.retBool(baseMapper.deleteById(id));
     }
 
     @Override
     public void strictDeleteById(@Nonnull Serializable id) {
-        SqlHelper.retBool(BaseMapperHelper.strictDeleteById(baseMapper, id));
+        BaseMapperHelper.strictDeleteById(baseMapper, id);
     }
 
     @Override

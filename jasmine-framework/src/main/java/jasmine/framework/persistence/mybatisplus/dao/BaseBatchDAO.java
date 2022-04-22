@@ -6,26 +6,30 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * <p>
+ * 批量CRUD接口。
+ * </p>
+ *
  * @author mh.z
  */
 public interface BaseBatchDAO<T> {
 
     /**
-     * 保存记录
+     * 批量保存记录
      *
      * @param entities
      */
     void saveBatch(@Nonnull Collection<T> entities);
 
     /**
-     * 更新记录
+     * 批量更新记录
      *
      * @param entities
      */
     void updateBatchById(@Nonnull Collection<T> entities);
 
     /**
-     * 删除记录
+     * 批量删除记录
      *
      * @param ids
      * @return
@@ -33,14 +37,14 @@ public interface BaseBatchDAO<T> {
     int deleteByIds(@Nonnull Collection<? extends Serializable> ids);
 
     /**
-     * 删除记录
+     * 批量删除记录并检查是否删除成功
      *
      * @param ids
      */
     void strictDeleteByIds(@Nonnull Collection<? extends Serializable> ids);
 
     /**
-     * 查询记录
+     * 批量查询记录
      *
      * @param ids
      * @return

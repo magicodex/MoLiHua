@@ -19,6 +19,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * <p>
+ * 扩展 BaseMapper 提供的功能。
+ * </p>
+ *
  * @author mh.z
  */
 public class BaseMapperHelper {
@@ -53,7 +57,7 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 更新记录并检查影响的行数
+     * 更新记录并检查是否更新成功
      *
      * @param baseMapper
      * @param entity
@@ -66,7 +70,7 @@ public class BaseMapperHelper {
         QCheckUtil.notNull(entity, "entity null");
 
         int rowCount = baseMapper.updateById(entity);
-        if (rowCount == 0) {
+        if (rowCount != 1) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
 
@@ -74,7 +78,7 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 更新记录并检查影响的行数
+     * 更新记录并检查是否更新成功
      *
      * @param baseMapper
      * @param entities
@@ -98,7 +102,7 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 删除记录并检查影响的行数
+     * 删除记录并检查是否删除成功
      *
      * @param baseMapper
      * @param id
@@ -111,7 +115,7 @@ public class BaseMapperHelper {
         QCheckUtil.notNull(id, "id null");
 
         int rowCount = baseMapper.deleteById(id);
-        if (rowCount == 0) {
+        if (rowCount != 1) {
             throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH);
         }
 
@@ -119,7 +123,7 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 删除记录并检查影响的行数
+     * 删除记录并检查是否删除成功
      *
      * @param baseMapper
      * @param ids
@@ -136,6 +140,7 @@ public class BaseMapperHelper {
         }
 
         Set<? extends Serializable> idSet = new HashSet<>(ids);
+        // 分批删除记录
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             int deleteTotal = baseMapper.deleteBatchIds(partialIds);
             if (deleteTotal != partialIds.size()) {

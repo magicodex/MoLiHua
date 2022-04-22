@@ -4,6 +4,10 @@ import javax.annotation.Nonnull;
 import java.io.Serializable;
 
 /**
+ * <p>
+ * CRUD接口。
+ * </p>
+ *
  * @author mh.z
  */
 public interface BaseDAO<T> {
@@ -31,7 +35,7 @@ public interface BaseDAO<T> {
     boolean deleteById(@Nonnull Serializable id);
 
     /**
-     * 删除记录
+     * 删除记录并检查是否删除成功
      *
      * @param id
      */

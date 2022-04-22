@@ -15,6 +15,12 @@ import java.time.ZonedDateTime;
  * @author mh.z
  */
 public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
+    private static final String FIELD_CREATED_BY = "createdBy";
+    private static final String FIELD_CREATED_DATE = "createdDate";
+    private static final String FIELD_LAST_UPDATED_BY = "lastUpdatedBy";
+    private static final String FIELD_LAST_UPDATED_DATE = "lastUpdatedDate";
+    private static final String FIELD_VERSION_NUMBER = "versionNumber";
+    private static final String FIELD_LANG_CODE = "langCode";
 
     @Override
     public void insertFill(MetaObject metaObject) {
@@ -22,22 +28,22 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
 
         if (userId != null) {
             // 创建人ID
-            strictInsertFill(metaObject, "createdBy", Long.class, userId);
+            strictInsertFill(metaObject, FIELD_CREATED_BY, Long.class, userId);
             // 最后更新人ID
-            strictInsertFill(metaObject, "lastUpdatedBy", Long.class, userId);
+            strictInsertFill(metaObject, FIELD_LAST_UPDATED_BY, Long.class, userId);
         }
 
         ZonedDateTime now = ZonedDateTime.now();
         // 创建日期
-        strictInsertFill(metaObject, "createdDate", ZonedDateTime.class, now);
+        strictInsertFill(metaObject, FIELD_CREATED_DATE, ZonedDateTime.class, now);
         // 最后更新日期
-        strictInsertFill(metaObject, "lastUpdatedDate", ZonedDateTime.class, now);
+        strictInsertFill(metaObject, FIELD_LAST_UPDATED_DATE, ZonedDateTime.class, now);
 
         // 版本号
-        strictInsertFill(metaObject, "versionNumber", Integer.class, 1);
+        strictInsertFill(metaObject, FIELD_VERSION_NUMBER, Integer.class, 1);
 
         // 语言代码
-        strictInsertFill(metaObject, "langCode", String.class, QI18nUtil.getLanguage());
+        strictInsertFill(metaObject, FIELD_LANG_CODE, String.class, QI18nUtil.getLanguage());
     }
 
     @Override
@@ -46,12 +52,12 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
 
         if (userId != null) {
             // 最后更新人ID
-            strictInsertFill(metaObject, "lastUpdatedBy", Long.class, userId);
+            strictInsertFill(metaObject, FIELD_LAST_UPDATED_BY, Long.class, userId);
         }
 
         ZonedDateTime now = ZonedDateTime.now();
         // 最后更新日期
-        strictUpdateFill(metaObject, "lastUpdatedDate", ZonedDateTime.class, now);
+        strictUpdateFill(metaObject, FIELD_LAST_UPDATED_DATE, ZonedDateTime.class, now);
     }
 
 }

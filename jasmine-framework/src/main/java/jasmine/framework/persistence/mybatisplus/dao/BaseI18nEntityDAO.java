@@ -42,24 +42,24 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     public void updateById(T entity) {
         QCheckUtil.notNull(entity, "entity null");
 
+        I18nEntityHelper.updateI18nThenFillEntity(entity);
         super.updateById(entity);
-        I18nEntityHelper.updateI18n(entity);
     }
 
     @Override
     public void updateBatchById(Collection<T> entities) {
         QCheckUtil.notNull(entities, "entities null");
 
-        super.updateBatchById(entities);
         I18nEntityHelper.updateI18nThenFillEntities(entities);
+        super.updateBatchById(entities);
     }
 
     @Override
     public boolean deleteById(Serializable id) {
         QCheckUtil.notNull(id, "id null");
 
-        boolean result = super.deleteById(id);
         I18nEntityHelper.deleteI18n(entityClass, id);
+        boolean result = super.deleteById(id);
 
         return result;
     }
@@ -68,8 +68,8 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     public int deleteByIds(Collection<? extends Serializable> ids) {
         QCheckUtil.notNull(ids, "ids null");
 
-        int result = super.deleteByIds(ids);
         I18nEntityHelper.deleteI18n(entityClass, ids);
+        int result = super.deleteByIds(ids);
 
         return result;
     }
