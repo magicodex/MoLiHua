@@ -7,7 +7,6 @@ import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.batch.BatchCallUtil;
-import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.logging.Log;
@@ -16,14 +15,14 @@ import org.apache.ibatis.logging.LogFactory;
 import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author mh.z
  */
 public class BaseMapperHelper {
     private static final Log log = LogFactory.getLog(BaseMapperHelper.class);
-    private static final int INSERT_BATCH_SIZE = PersistenceConstants.BATCH_INSERT_SIZE;
-    private static final int DELETE_BATCH_SIZE = PersistenceConstants.BATCH_DELETE_SIZE;
 
     /**
      * 批量保存记录
@@ -45,9 +44,10 @@ public class BaseMapperHelper {
         String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.INSERT_ONE);
         Class<?> entityClass = QCollUtil.getFirst(entities).getClass();
 
-        SqlHelper.executeBatch(entityClass, log, entities, INSERT_BATCH_SIZE, (sqlSession, entity) -> {
-            sqlSession.insert(sqlStatement, entity);
-        });
+        SqlHelper.executeBatch(entityClass, log, entities, PersistenceConstants.BATCH_INSERT_SIZE,
+                (sqlSession, entity) -> {
+                    sqlSession.insert(sqlStatement, entity);
+                });
 
         return entities.size();
     }
@@ -90,17 +90,11 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        LongValue rowCount = new LongValue(0);
         entities.forEach((entity) -> {
-            rowCount.add(baseMapper.updateById(entity));
+            strictUpdateById(baseMapper, entity);
         });
 
-        int countValue = (int) rowCount.get();
-        if (countValue < entities.size()) {
-            throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
-        }
-
-        return countValue;
+        return entities.size();
     }
 
     /**
@@ -141,17 +135,15 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        LongValue rowCount = new LongValue(0);
-        BatchCallUtil.call(ids, DELETE_BATCH_SIZE, (part) -> {
-            rowCount.add(baseMapper.deleteBatchIds(part));
+        Set<? extends Serializable> idSet = new HashSet<>(ids);
+        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
+            int deleteTotal = baseMapper.deleteBatchIds(partialIds);
+            if (deleteTotal != partialIds.size()) {
+                throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH);
+            }
         });
 
-        long countValue = rowCount.get();
-        if (countValue < ids.size()) {
-            throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH);
-        }
-
-        return (int) countValue;
+        return idSet.size();
     }
 
 }

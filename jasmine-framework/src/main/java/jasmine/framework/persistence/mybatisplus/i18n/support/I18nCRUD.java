@@ -6,7 +6,6 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.QNewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
-import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.session.SqlSession;
@@ -16,8 +15,10 @@ import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author mh.z
@@ -31,7 +32,6 @@ public class I18nCRUD {
     private static final String STATEMENT_DELETE = "jasmine.EntityI18n.deleteI18n";
     private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
 
-    /** SQL参数名 */
     private static final String PARAM_TABLE = "table";
     private static final String PARAM_ID = "id";
     private static final String PARAM_IDS = "ids";
@@ -118,12 +118,11 @@ public class I18nCRUD {
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
-
         if (rowCount < 1) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
 
-        return rowCount;
+        return 1;
     }
 
     /**
@@ -141,18 +140,18 @@ public class I18nCRUD {
             return 0;
         }
 
-        LongValue rowCount = new LongValue(0);
+        Set<? extends Serializable> idSet = new HashSet<>(ids);
         // 删除多语言记录
-        BatchCallUtil.call(ids, PersistenceConstants.BATCH_DELETE_SIZE, (partIds) -> {
+        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             Map<String, Object> paramMap = QNewUtil.map();
             paramMap.put(PARAM_TABLE, tableName);
-            paramMap.put(PARAM_IDS, partIds);
+            paramMap.put(PARAM_IDS, partialIds);
             paramMap.put(PARAM_LANG_CODE, langCode);
 
-            rowCount.add(sqlSession.delete(STATEMENT_DELETE, paramMap));
+            sqlSession.delete(STATEMENT_DELETE, paramMap);
         });
 
-        return (int) rowCount.get();
+        return idSet.size();
     }
 
     /**

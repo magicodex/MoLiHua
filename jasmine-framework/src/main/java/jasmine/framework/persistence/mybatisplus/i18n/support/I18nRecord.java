@@ -14,7 +14,7 @@ public class I18nRecord {
     /** 列名与值的映射集 */
     private Map<String, Object> values;
 
-    /** SQL列名 */
+    /** 列名 */
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_VERSION_NUMBER = "version_number";
 
