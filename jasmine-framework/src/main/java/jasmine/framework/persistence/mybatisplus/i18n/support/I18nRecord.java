@@ -1,7 +1,5 @@
 package jasmine.framework.persistence.mybatisplus.i18n.support;
 
-import jasmine.framework.persistence.constant.MapperConstants;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +14,10 @@ public class I18nRecord {
     /** 列名与值的映射集 */
     private Map<String, Object> values;
 
+    /** SQL列名 */
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_VERSION_NUMBER = "version_number";
+
     public I18nRecord(Map<String, Object> values) {
         this.values = new HashMap<>(values);
     }
@@ -25,11 +27,11 @@ public class I18nRecord {
     }
 
     public Long getId() {
-        return getValueAsLong(MapperConstants.SQL_COLUMN_ID);
+        return getValueAsLong(COLUMN_ID);
     }
 
     public Integer getVersionNumber() {
-        return getValueAsInteger(MapperConstants.SQL_COLUMN_VERSION_NUMBER);
+        return getValueAsInteger(COLUMN_VERSION_NUMBER);
     }
 
     public String getValueAsString(String name) {

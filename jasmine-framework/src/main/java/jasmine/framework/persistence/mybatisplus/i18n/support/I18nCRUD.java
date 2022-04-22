@@ -8,7 +8,7 @@ import jasmine.core.util.QNewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
-import jasmine.framework.persistence.constant.MapperConstants;
+import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.Serializable;
@@ -31,6 +31,19 @@ public class I18nCRUD {
     private static final String STATEMENT_DELETE = "jasmine.EntityI18n.deleteI18n";
     private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
 
+    /** SQL参数名 */
+    private static final String PARAM_TABLE = "table";
+    private static final String PARAM_ID = "id";
+    private static final String PARAM_IDS = "ids";
+    private static final String PARAM_COLUMNS = "columns";
+    private static final String PARAM_VALUES = "values";
+    private static final String PARAM_LANG_CODE = "langCode";
+    private static final String PARAM_CREATED_DATE = "createdDate";
+    private static final String PARAM_CREATED_BY = "createdBy";
+    private static final String PARAM_LAST_UPDATED_DATE = "lastUpdatedDate";
+    private static final String PARAM_LAST_UPDATED_BY = "lastUpdatedBy";
+    private static final String PARAM_VERSION_NUMBER = "versionNumber";
+
     public I18nCRUD(SqlSession sqlSession, String tableName) {
         this.sqlSession = sqlSession;
         this.tableName = tableName;
@@ -52,20 +65,20 @@ public class I18nCRUD {
 
         Map<String, Object> paramMap = new HashMap<>();
         // 多语言表
-        paramMap.put(MapperConstants.SQL_PARAM_TABLE, tableName);
+        paramMap.put(PARAM_TABLE, tableName);
         // 记录主键
-        paramMap.put(MapperConstants.SQL_PARAM_ID, id);
-        paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+        paramMap.put(PARAM_ID, id);
+        paramMap.put(PARAM_LANG_CODE, langCode);
         // 审计字段
-        paramMap.put(MapperConstants.SQL_PARAM_CREATED_DATE, currentTime);
-        paramMap.put(MapperConstants.SQL_PARAM_CREATED_BY, userId);
-        paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
-        paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
+        paramMap.put(PARAM_CREATED_DATE, currentTime);
+        paramMap.put(PARAM_CREATED_BY, userId);
+        paramMap.put(PARAM_LAST_UPDATED_DATE, currentTime);
+        paramMap.put(PARAM_LAST_UPDATED_BY, userId);
         // 乐观锁版本
-        paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, 1);
+        paramMap.put(PARAM_VERSION_NUMBER, 1);
         // 多语言列
-        paramMap.put(MapperConstants.SQL_PARAM_COLUMNS, data.keySet());
-        paramMap.put(MapperConstants.SQL_PARAM_VALUES, data.values());
+        paramMap.put(PARAM_COLUMNS, data.keySet());
+        paramMap.put(PARAM_VALUES, data.values());
 
         // 新增多语言记录
         sqlSession.insert(STATEMENT_INSERT, paramMap);
@@ -91,17 +104,17 @@ public class I18nCRUD {
 
         Map<String, Object> paramMap = new HashMap<>();
         // 多语言表
-        paramMap.put(MapperConstants.SQL_PARAM_TABLE, tableName);
+        paramMap.put(PARAM_TABLE, tableName);
         // 记录主键
-        paramMap.put(MapperConstants.SQL_PARAM_ID, id);
-        paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+        paramMap.put(PARAM_ID, id);
+        paramMap.put(PARAM_LANG_CODE, langCode);
         // 审计字段
-        paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
-        paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
+        paramMap.put(PARAM_LAST_UPDATED_DATE, currentTime);
+        paramMap.put(PARAM_LAST_UPDATED_BY, userId);
         // 版本字段
-        paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, versionNumber);
+        paramMap.put(PARAM_VERSION_NUMBER, versionNumber);
         // 多语言列
-        paramMap.put(MapperConstants.SQL_PARAM_VALUES, data);
+        paramMap.put(PARAM_VALUES, data);
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
@@ -130,11 +143,11 @@ public class I18nCRUD {
 
         LongValue rowCount = new LongValue(0);
         // 删除多语言记录
-        BatchCallUtil.call(ids, MapperConstants.BATCH_DELETE_SIZE, (partIds) -> {
+        BatchCallUtil.call(ids, PersistenceConstants.BATCH_DELETE_SIZE, (partIds) -> {
             Map<String, Object> paramMap = QNewUtil.map();
-            paramMap.put(MapperConstants.SQL_PARAM_TABLE, tableName);
-            paramMap.put(MapperConstants.SQL_PARAM_IDS, partIds);
-            paramMap.put(MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+            paramMap.put(PARAM_TABLE, tableName);
+            paramMap.put(PARAM_IDS, partIds);
+            paramMap.put(PARAM_LANG_CODE, langCode);
 
             rowCount.add(sqlSession.delete(STATEMENT_DELETE, paramMap));
         });
@@ -158,9 +171,9 @@ public class I18nCRUD {
         }
 
         // 查询多语言记录
-        Object parameter = Map.of(MapperConstants.SQL_PARAM_TABLE, tableName,
-                MapperConstants.SQL_PARAM_IDS, ids,
-                MapperConstants.SQL_PARAM_LANG_CODE, langCode);
+        Object parameter = Map.of(PARAM_TABLE, tableName,
+                PARAM_IDS, ids,
+                PARAM_LANG_CODE, langCode);
         List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, parameter);
 
         if (QCollUtil.isEmpty(recordList)) {

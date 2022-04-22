@@ -6,7 +6,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.QI18nUtil;
 import jasmine.core.util.number.LongValue;
-import jasmine.framework.persistence.constant.MapperConstants;
+import jasmine.framework.persistence.constant.PersistenceConstants;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCRUD;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nMeta;
@@ -30,8 +30,10 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     private SqlSessionTemplate sqlSessionTemplate;
     private Map<Class<?>, I18nMeta> i18nMetaOfEntities;
 
-    private static final int BATCH_INSERT_SIZE = MapperConstants.BATCH_INSERT_SIZE;
-    private static final int BATCH_UPDATE_SIZE = MapperConstants.BATCH_UPDATE_SIZE;
+    private static final int BATCH_INSERT_SIZE = PersistenceConstants.BATCH_INSERT_SIZE;
+    private static final int BATCH_UPDATE_SIZE = PersistenceConstants.BATCH_UPDATE_SIZE;
+    /** 多语言表名称后缀 */
+    private static final String I18N_TABLE_NAME_SUFFIX = "_i18n";
 
     public DefaultI18nEntityFacade(SqlSessionTemplate sqlSessionTemplate) {
         this.sqlSessionTemplate = sqlSessionTemplate;
@@ -183,7 +185,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             return null;
         }
 
-        return (tableName + MapperConstants.I18N_TABLE_NAME_SUFFIX);
+        return (tableName + I18N_TABLE_NAME_SUFFIX);
     }
 
     /**

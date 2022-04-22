@@ -9,7 +9,7 @@ import jasmine.core.util.QCollUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
-import jasmine.framework.persistence.constant.MapperConstants;
+import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
@@ -22,8 +22,8 @@ import java.util.Collection;
  */
 public class BaseMapperHelper {
     private static final Log log = LogFactory.getLog(BaseMapperHelper.class);
-    private static final int INSERT_BATCH_SIZE = MapperConstants.BATCH_INSERT_SIZE;
-    private static final int DELETE_BATCH_SIZE = MapperConstants.BATCH_DELETE_SIZE;
+    private static final int INSERT_BATCH_SIZE = PersistenceConstants.BATCH_INSERT_SIZE;
+    private static final int DELETE_BATCH_SIZE = PersistenceConstants.BATCH_DELETE_SIZE;
 
     /**
      * 批量保存记录
