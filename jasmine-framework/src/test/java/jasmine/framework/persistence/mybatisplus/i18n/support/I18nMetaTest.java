@@ -50,7 +50,7 @@ public class I18nMetaTest {
 
         I18nMeta meta = I18nMeta.createI18nMeta(TestEntity2.class);
         TestEntity2 entity = new TestEntity2();
-        meta.populateI18nField(entity, record);
+        meta.populateI18nData(entity, record);
 
         Assert.assertEquals("name1Value", entity.getName1());
         Assert.assertEquals("name2Value", entity.getName2());

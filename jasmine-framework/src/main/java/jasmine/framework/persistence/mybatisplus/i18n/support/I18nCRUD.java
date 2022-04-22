@@ -10,6 +10,8 @@ import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.session.SqlSession;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Collection;
@@ -21,6 +23,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * <p>
+ * 多语言CRUD。
+ * </p>
+ *
  * @author mh.z
  */
 public class I18nCRUD {
@@ -33,17 +39,17 @@ public class I18nCRUD {
     private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
 
     private static final String PARAM_TABLE = "table";
-    private static final String PARAM_ID = "id";
-    private static final String PARAM_IDS = "ids";
     private static final String PARAM_COLUMNS = "columns";
     private static final String PARAM_VALUES = "values";
+    private static final String PARAM_ID = "id";
+    private static final String PARAM_IDS = "ids";
     private static final String PARAM_LANG_CODE = "langCode";
+    private static final String PARAM_DEFAULT_FLAG = "defaultFlag";
     private static final String PARAM_CREATED_DATE = "createdDate";
     private static final String PARAM_CREATED_BY = "createdBy";
     private static final String PARAM_LAST_UPDATED_DATE = "lastUpdatedDate";
     private static final String PARAM_LAST_UPDATED_BY = "lastUpdatedBy";
     private static final String PARAM_VERSION_NUMBER = "versionNumber";
-    private static final String PARAM_DEFAULT_FLAG = "defaultFlag";
 
     public I18nCRUD(SqlSession sqlSession, String tableName) {
         this.sqlSession = sqlSession;
@@ -59,7 +65,10 @@ public class I18nCRUD {
      * @param defaultFlag
      * @return
      */
-    public int insert(Long id, String langCode, Map<String, String> data, boolean defaultFlag) {
+    public int insert(@Nonnull Long id, @Nonnull String langCode,
+                      @Nonnull Map<String, String> data, boolean defaultFlag) {
+        QCheckUtil.notNull(id, "id null");
+        QCheckUtil.notNull(langCode, "langCode null");
         QCheckUtil.notNull(data, "data null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
@@ -78,7 +87,7 @@ public class I18nCRUD {
         paramMap.put(PARAM_CREATED_BY, userId);
         paramMap.put(PARAM_LAST_UPDATED_DATE, currentTime);
         paramMap.put(PARAM_LAST_UPDATED_BY, userId);
-        // 乐观锁版本
+        // 版本字段
         paramMap.put(PARAM_VERSION_NUMBER, 1);
         // 多语言列
         paramMap.put(PARAM_COLUMNS, data.keySet());
@@ -99,14 +108,17 @@ public class I18nCRUD {
      * @param versionNumber
      * @return
      */
-    public int update(Serializable id, String langCode, Map<String, String> data, Integer versionNumber) {
-        QCheckUtil.notNull(sqlSession, "sqlSession null");
+    public int update(@Nonnull Serializable id, @Nonnull String langCode,
+                      @Nonnull Map<String, String> data, @Nonnull Integer versionNumber) {
+        QCheckUtil.notNull(id, "id null");
+        QCheckUtil.notNull(langCode, "langCode null");
         QCheckUtil.notNull(data, "data null");
+        QCheckUtil.notNull(versionNumber, "versionNumber null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
 
-        Map<String, Object> paramMap = new HashMap<>();
+        Map<String, Object> paramMap = QNewUtil.map();
         // 多语言表
         paramMap.put(PARAM_TABLE, tableName);
         // 记录主键
@@ -122,7 +134,7 @@ public class I18nCRUD {
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
-        if (rowCount < 1) {
+        if (rowCount != 1) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
 
@@ -136,8 +148,8 @@ public class I18nCRUD {
      * @param langCode
      * @return
      */
-    public int delete(Collection<? extends Serializable> ids, String langCode) {
-        QCheckUtil.notNull(sqlSession, "sqlSession null");
+    public int delete(@Nonnull Collection<? extends Serializable> ids,
+                      @Nullable String langCode) {
         QCheckUtil.notNull(ids, "ids null");
 
         if (QCollUtil.isEmpty(ids)) {
@@ -165,20 +177,21 @@ public class I18nCRUD {
      * @param langCode
      * @return
      */
-    public List<I18nRecord> select(Collection<? extends Serializable> ids, String langCode) {
-        QCheckUtil.notNull(sqlSession, "sqlSession null");
+    public List<I18nRecord> select(@Nonnull Collection<? extends Serializable> ids,
+                                   @Nullable String langCode) {
         QCheckUtil.notNull(ids, "ids null");
 
         if (QCollUtil.isEmpty(ids)) {
             return Collections.emptyList();
         }
 
-        // 查询多语言记录
-        Object parameter = Map.of(PARAM_TABLE, tableName,
-                PARAM_IDS, ids,
-                PARAM_LANG_CODE, langCode);
-        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, parameter);
+        Map<String, Object> paramMap = QNewUtil.map();
+        paramMap.put(PARAM_TABLE, tableName);
+        paramMap.put(PARAM_IDS, ids);
+        paramMap.put(PARAM_LANG_CODE, langCode);
 
+        // 查询多语言记录
+        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
         if (QCollUtil.isEmpty(recordList)) {
             return Collections.emptyList();
         }
@@ -196,20 +209,20 @@ public class I18nCRUD {
      * @param ids
      * @return
      */
-    public List<I18nRecord> selectDefault(Collection<? extends Serializable> ids) {
-        QCheckUtil.notNull(sqlSession, "sqlSession null");
+    public List<I18nRecord> selectDefault(@Nonnull Collection<? extends Serializable> ids) {
         QCheckUtil.notNull(ids, "ids null");
 
         if (QCollUtil.isEmpty(ids)) {
             return Collections.emptyList();
         }
 
-        // 查询多语言记录
-        Object parameter = Map.of(PARAM_TABLE, tableName,
-                PARAM_IDS, ids,
-                PARAM_DEFAULT_FLAG, true);
-        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, parameter);
+        Map<String, Object> paramMap = QNewUtil.map();
+        paramMap.put(PARAM_TABLE, tableName);
+        paramMap.put(PARAM_IDS, ids);
+        paramMap.put(PARAM_DEFAULT_FLAG, true);
 
+        // 查询多语言记录
+        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
         if (QCollUtil.isEmpty(recordList)) {
             return Collections.emptyList();
         }

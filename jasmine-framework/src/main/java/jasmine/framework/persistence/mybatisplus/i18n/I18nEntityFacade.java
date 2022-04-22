@@ -12,7 +12,7 @@ import java.util.List;
 public interface I18nEntityFacade {
 
     /**
-     * 插入多语言
+     * 插入多语言记录
      *
      * @param entities
      * @return
@@ -20,15 +20,7 @@ public interface I18nEntityFacade {
     int insertI18n(Collection<? extends BaseI18nEntity> entities);
 
     /**
-     * 修改多语言
-     *
-     * @param entities
-     * @return
-     */
-    int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities);
-
-    /**
-     * 修改多语言
+     * 更新多语言记录
      *
      * @param entities
      * @return
@@ -36,7 +28,15 @@ public interface I18nEntityFacade {
     int updateI18n(Collection<? extends BaseI18nEntity> entities);
 
     /**
-     * 删除多语言
+     * 更新多语言记录以及填充实体多语言数据
+     *
+     * @param entities
+     * @return
+     */
+    int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities);
+
+    /**
+     * 删除多语言记录
      *
      * @param entityType
      * @param ids
@@ -45,7 +45,7 @@ public interface I18nEntityFacade {
     int deleteI18n(Class<? extends BaseI18nEntity> entityType, Collection<? extends Serializable> ids);
 
     /**
-     * 关联多语言
+     * 关联多语言记录
      *
      * @param entities
      * @param <T>
@@ -54,7 +54,7 @@ public interface I18nEntityFacade {
     <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities);
 
     /**
-     * 关联默认多语言
+     * 关联默认多语言记录
      *
      * @param entities
      * @param <T>

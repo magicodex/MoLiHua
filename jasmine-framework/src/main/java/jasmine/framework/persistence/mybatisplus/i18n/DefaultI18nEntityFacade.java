@@ -30,8 +30,6 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     private SqlSessionTemplate sqlSessionTemplate;
     private Map<Class<?>, I18nMeta> i18nMetaOfEntities;
 
-    private static final int BATCH_INSERT_SIZE = PersistenceConstants.BATCH_INSERT_SIZE;
-    private static final int BATCH_UPDATE_SIZE = PersistenceConstants.BATCH_UPDATE_SIZE;
     /** 多语言表名称后缀 */
     private static final String I18N_TABLE_NAME_SUFFIX = "_i18n";
 
@@ -53,21 +51,14 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         String i18nTable = getI18nTable(entityType);
 
         // 新增多语言记录
-        SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_INSERT_SIZE, (sqlSession, entity) -> {
-            Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
-            I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
-            i18nCRUD.insert(entity.getId(), entity.getLangCode(), i18nDataMap, true);
-        });
+        SqlHelper.executeBatch(entityType, mybatisLog, entities, PersistenceConstants.BATCH_INSERT_SIZE,
+                (sqlSession, entity) -> {
+                    Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
+                    I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
+                    i18nCRUD.insert(entity.getId(), entity.getLangCode(), i18nDataMap, true);
+                });
 
         return entities.size();
-    }
-
-    @Override
-    public int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities) {
-        int result = updateI18n(entities);
-        populateDefaultI18n(entities);
-
-        return result;
     }
 
     @Override
@@ -105,6 +96,14 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         });
 
         return (int) rowCount.get();
+    }
+
+    @Override
+    public int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities) {
+        int result = updateI18n(entities);
+        populateDefaultI18n(entities);
+
+        return result;
     }
 
     @Override
@@ -148,7 +147,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
                 Long id = entity.getId();
                 I18nRecord record = i18nRecordMap.get(id);
 
-                i18nMeta.populateI18nField(entity, record);
+                i18nMeta.populateI18nData(entity, record);
             });
         }
 
@@ -179,7 +178,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
                 Long id = entity.getId();
                 I18nRecord record = i18nRecordMap.get(id);
 
-                i18nMeta.populateI18nField(entity, record);
+                i18nMeta.populateI18nData(entity, record);
             });
         }
 

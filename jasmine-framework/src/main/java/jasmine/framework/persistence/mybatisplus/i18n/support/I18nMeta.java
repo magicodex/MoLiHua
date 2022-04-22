@@ -73,12 +73,12 @@ public class I18nMeta {
     }
 
     /**
-     * 填充多语言的值
+     * 填充多语言数据
      *
      * @param entity
      * @param record
      */
-    public void populateI18nField(Object entity, I18nRecord record) {
+    public void populateI18nData(Object entity, I18nRecord record) {
         QCheckUtil.notNull(entity, "entity null");
 
         if (record != null) {
