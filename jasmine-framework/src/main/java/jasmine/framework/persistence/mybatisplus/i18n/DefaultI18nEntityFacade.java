@@ -11,7 +11,6 @@ import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCRUD;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nMeta;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nRecord;
-import liquibase.pro.packaged.I;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -80,11 +79,11 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         List<I18nRecord> recordList = new I18nCRUD(sqlSessionTemplate, i18nTable).select(idList, langCode);
         Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
 
-        SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_UPDATE_SIZE, (sqlSession, entity) -> {
+        recordList.forEach((entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
             Long recordId = entity.getId();
             I18nRecord i18nRecord = i18nRecordMap.get(recordId);
-            I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
+            I18nCRUD i18nCRUD = new I18nCRUD(sqlSessionTemplate, i18nTable);
 
             if (i18nRecord != null) {
                 // 更新多语言记录

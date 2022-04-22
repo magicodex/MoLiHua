@@ -2,7 +2,6 @@ package jasmine.framework.persistence.mybatisplus;
 
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
@@ -11,7 +10,6 @@ import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.MapperConstants;
-import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
@@ -25,7 +23,6 @@ import java.util.Collection;
 public class BaseMapperHelper {
     private static final Log log = LogFactory.getLog(BaseMapperHelper.class);
     private static final int INSERT_BATCH_SIZE = MapperConstants.BATCH_INSERT_SIZE;
-    private static final int UPDATE_BATCH_SIZE = MapperConstants.BATCH_UPDATE_SIZE;
     private static final int DELETE_BATCH_SIZE = MapperConstants.BATCH_DELETE_SIZE;
 
     /**
@@ -85,7 +82,7 @@ public class BaseMapperHelper {
      * @return
      */
     public static <T> int strictUpdateBatchById(@Nonnull BaseMapper<T> baseMapper,
-                                                 @Nonnull Collection<T> entities) {
+                                                @Nonnull Collection<T> entities) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
         QCheckUtil.notNull(entities, "entities null");
 

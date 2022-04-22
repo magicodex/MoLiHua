@@ -1,11 +1,13 @@
 package jasmine.framework.persistence.mybatisplus.i18n.support;
 
 import jasmine.core.context.CurrentSubject;
+import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.QNewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.number.LongValue;
+import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.MapperConstants;
 import org.apache.ibatis.session.SqlSession;
 
@@ -96,11 +98,17 @@ public class I18nCRUD {
         // 审计字段
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_DATE, currentTime);
         paramMap.put(MapperConstants.SQL_PARAM_LAST_UPDATED_BY, userId);
+        // 版本字段
+        paramMap.put(MapperConstants.SQL_PARAM_VERSION_NUMBER, versionNumber);
         // 多语言列
         paramMap.put(MapperConstants.SQL_PARAM_VALUES, data);
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
+
+        if (rowCount < 1) {
+            throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
+        }
 
         return rowCount;
     }
