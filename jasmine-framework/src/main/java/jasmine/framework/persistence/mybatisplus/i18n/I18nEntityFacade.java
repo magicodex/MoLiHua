@@ -25,6 +25,14 @@ public interface I18nEntityFacade {
      * @param entities
      * @return
      */
+    int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities);
+
+    /**
+     * 修改多语言
+     *
+     * @param entities
+     * @return
+     */
     int updateI18n(Collection<? extends BaseI18nEntity> entities);
 
     /**
@@ -44,4 +52,13 @@ public interface I18nEntityFacade {
      * @return
      */
     <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities);
+
+    /**
+     * 关联默认多语言
+     *
+     * @param entities
+     * @param <T>
+     * @return
+     */
+    <T extends BaseI18nEntity> List<T> populateDefaultI18n(Collection<T> entities);
 }

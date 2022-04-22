@@ -66,6 +66,9 @@
         <if test="langCode != null">
             and lang_code = #{langCode, jdbcType=VARCHAR}
         </if>
+        <if test="defaultFlag != null">
+            and default_flag = #{defaultFlag, jdbcType=TINYINT}
+        </if>
     </select>
 
 </mapper>

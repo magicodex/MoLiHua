@@ -51,7 +51,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
         QCheckUtil.notNull(entities, "entities null");
 
         super.updateBatchById(entities);
-        I18nEntityHelper.updateI18n(entities);
+        I18nEntityHelper.updateI18nThenFillEntities(entities);
     }
 
     @Override

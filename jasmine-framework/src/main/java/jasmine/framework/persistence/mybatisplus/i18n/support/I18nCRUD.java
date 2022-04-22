@@ -190,4 +190,35 @@ public class I18nCRUD {
         return i18nRecordList;
     }
 
+    /**
+     * 查询多语言
+     *
+     * @param ids
+     * @return
+     */
+    public List<I18nRecord> selectDefault(Collection<? extends Serializable> ids) {
+        QCheckUtil.notNull(sqlSession, "sqlSession null");
+        QCheckUtil.notNull(ids, "ids null");
+
+        if (QCollUtil.isEmpty(ids)) {
+            return Collections.emptyList();
+        }
+
+        // 查询多语言记录
+        Object parameter = Map.of(PARAM_TABLE, tableName,
+                PARAM_IDS, ids,
+                PARAM_DEFAULT_FLAG, true);
+        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, parameter);
+
+        if (QCollUtil.isEmpty(recordList)) {
+            return Collections.emptyList();
+        }
+
+        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(recordList, (record) -> {
+            return new I18nRecord(record);
+        });
+
+        return i18nRecordList;
+    }
+
 }

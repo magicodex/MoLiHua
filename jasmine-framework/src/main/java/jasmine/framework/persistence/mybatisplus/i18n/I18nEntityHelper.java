@@ -61,6 +61,18 @@ public class I18nEntityHelper {
     /**
      * 修改多语言
      *
+     * @param entity
+     * @return
+     */
+    public static int updateI18nThenFillEntity(@Nonnull BaseI18nEntity entity) {
+        QCheckUtil.notNull(entity, "entity null");
+
+        return i18nFacade.updateI18nThenFillEntities(Collections.singletonList(entity));
+    }
+
+    /**
+     * 修改多语言
+     *
      * @param entities
      * @return
      */
@@ -68,6 +80,18 @@ public class I18nEntityHelper {
         QCheckUtil.notNull(entities, "entities null");
 
         return i18nFacade.updateI18n(entities);
+    }
+
+    /**
+     * 修改多语言
+     *
+     * @param entities
+     * @return
+     */
+    public static int updateI18nThenFillEntities(@Nonnull Collection<? extends BaseI18nEntity> entities) {
+        QCheckUtil.notNull(entities, "entities null");
+
+        return i18nFacade.updateI18nThenFillEntities(entities);
     }
 
     /**
