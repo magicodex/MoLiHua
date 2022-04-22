@@ -109,7 +109,8 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     }
 
     @Override
-    public int deleteI18n(Class<? extends BaseI18nEntity> entityType, Collection<? extends Serializable> ids) {
+    public int deleteI18n(Class<? extends BaseI18nEntity> entityType,
+                          Collection<? extends Serializable> ids) {
         QCheckUtil.notNull(entityType, "entityType null");
         QCheckUtil.notNull(ids, "ids null");
 
