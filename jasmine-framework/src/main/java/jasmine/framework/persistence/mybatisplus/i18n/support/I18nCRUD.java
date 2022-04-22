@@ -43,6 +43,7 @@ public class I18nCRUD {
     private static final String PARAM_LAST_UPDATED_DATE = "lastUpdatedDate";
     private static final String PARAM_LAST_UPDATED_BY = "lastUpdatedBy";
     private static final String PARAM_VERSION_NUMBER = "versionNumber";
+    private static final String PARAM_DEFAULT_FLAG = "defaultFlag";
 
     public I18nCRUD(SqlSession sqlSession, String tableName) {
         this.sqlSession = sqlSession;
@@ -55,9 +56,10 @@ public class I18nCRUD {
      * @param id
      * @param langCode
      * @param data
+     * @param defaultFlag
      * @return
      */
-    public int insert(Long id, String langCode, Map<String, String> data) {
+    public int insert(Long id, String langCode, Map<String, String> data, boolean defaultFlag) {
         QCheckUtil.notNull(data, "data null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
@@ -69,6 +71,8 @@ public class I18nCRUD {
         // 记录主键
         paramMap.put(PARAM_ID, id);
         paramMap.put(PARAM_LANG_CODE, langCode);
+        // 默认标志
+        paramMap.put(PARAM_DEFAULT_FLAG, defaultFlag);
         // 审计字段
         paramMap.put(PARAM_CREATED_DATE, currentTime);
         paramMap.put(PARAM_CREATED_BY, userId);

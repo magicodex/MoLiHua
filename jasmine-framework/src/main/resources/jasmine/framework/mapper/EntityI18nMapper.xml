@@ -7,6 +7,7 @@
         insert into ${table} (
         id,
         lang_code,
+        default_flag,
         created_date,
         created_by,
         last_updated_date,
@@ -18,6 +19,7 @@
         ) values (
         #{id, jdbcType=BIGINT},
         #{langCode, jdbcType=VARCHAR},
+        #{defaultFlag, jdbcType=TINYINT},
         #{createdDate, jdbcType=TIMESTAMP},
         #{createdBy, jdbcType=BIGINT},
         #{lastUpdatedDate, jdbcType=TIMESTAMP},

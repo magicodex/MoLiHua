@@ -56,7 +56,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         SqlHelper.executeBatch(entityType, mybatisLog, entities, BATCH_INSERT_SIZE, (sqlSession, entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
             I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
-            i18nCRUD.insert(entity.getId(), entity.getLangCode(), i18nDataMap);
+            i18nCRUD.insert(entity.getId(), entity.getLangCode(), i18nDataMap, true);
         });
 
         return entities.size();
@@ -92,7 +92,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
                 rowCount.add(i18nCRUD.update(recordId, langCode, i18nDataMap, i18nRecord.getVersionNumber()));
             } else {
                 // 新增多语言记录
-                rowCount.add(i18nCRUD.insert(recordId, langCode, i18nDataMap));
+                rowCount.add(i18nCRUD.insert(recordId, langCode, i18nDataMap, false));
             }
         });
 
