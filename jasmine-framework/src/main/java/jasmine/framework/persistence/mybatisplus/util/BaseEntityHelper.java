@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus;
+package jasmine.framework.persistence.mybatisplus.util;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;

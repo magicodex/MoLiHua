@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.mybatisplus;
+package jasmine.framework.persistence.mybatisplus.util;
 
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

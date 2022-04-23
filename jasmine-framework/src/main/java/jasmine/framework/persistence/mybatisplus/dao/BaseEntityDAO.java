@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.persistence.entity.BaseEntity;
-import jasmine.framework.persistence.mybatisplus.BaseMapperHelper;
+import jasmine.framework.persistence.mybatisplus.util.BaseMapperHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nonnull;
