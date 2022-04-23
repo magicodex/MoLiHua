@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
  */
 public class BaseI18nEntity extends BaseEntity {
     /** 语言代码 */
-    @TableField(value = "lang_code", fill = FieldFill.INSERT)
+    @TableField(value = "lang_code")
     private String langCode;
 
     public String getLangCode() {

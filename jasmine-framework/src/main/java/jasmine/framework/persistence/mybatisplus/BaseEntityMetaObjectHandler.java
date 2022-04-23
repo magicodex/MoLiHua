@@ -41,9 +41,6 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
 
         // 版本号
         strictInsertFill(metaObject, FIELD_VERSION_NUMBER, Integer.class, 1);
-
-        // 语言代码
-        strictInsertFill(metaObject, FIELD_LANG_CODE, String.class, QI18nUtil.getLanguage());
     }
 
     @Override
