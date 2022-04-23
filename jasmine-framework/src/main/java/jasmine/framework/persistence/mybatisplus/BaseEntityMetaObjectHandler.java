@@ -38,11 +38,13 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
         strictInsertFill(metaObject, FIELD_CREATED_DATE, ZonedDateTime.class, now);
         // 最后更新日期
         strictInsertFill(metaObject, FIELD_LAST_UPDATED_DATE, ZonedDateTime.class, now);
-
         // 版本号
         strictInsertFill(metaObject, FIELD_VERSION_NUMBER, Integer.class, 1);
+
         // 语言代码
-        strictInsertFill(metaObject, FIELD_CREATED_LANG, String.class, QI18nUtil.getLanguage());
+        if (metaObject.hasSetter(FIELD_CREATED_LANG)) {
+            strictInsertFill(metaObject, FIELD_CREATED_LANG, String.class, QI18nUtil.getLanguage());
+        }
     }
 
     @Override
