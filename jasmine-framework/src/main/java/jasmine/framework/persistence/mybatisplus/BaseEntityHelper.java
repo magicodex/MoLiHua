@@ -92,12 +92,6 @@ public class BaseEntityHelper {
         entity.setLastUpdatedBy(CurrentSubject.getUserId());
         // 最后更新日期
         entity.setLastUpdatedDate(ZonedDateTime.now());
-
-        if (entity instanceof BaseI18nEntity) {
-            BaseI18nEntity baseI18nEntity = (BaseI18nEntity) entity;
-            // 语言代码
-            baseI18nEntity.setLangCode(QI18nUtil.getLanguage());
-        }
     }
 
     /**
@@ -115,26 +109,12 @@ public class BaseEntityHelper {
         Long userId = CurrentSubject.getUserId();
         ZonedDateTime nowTime = ZonedDateTime.now();
 
-        if (QCollUtil.getFirst(entities) instanceof BaseI18nEntity) {
-            String langCode = QI18nUtil.getLanguage();
-
-            entities.forEach((entity) -> {
-                // 最后更新人ID
-                entity.setLastUpdatedBy(userId);
-                // 最后更新日期
-                entity.setLastUpdatedDate(nowTime);
-                // 语言代码
-                BaseI18nEntity baseI18nEntity = (BaseI18nEntity) entity;
-                baseI18nEntity.setLangCode(langCode);
-            });
-        } else {
-            entities.forEach((entity) -> {
-                // 最后更新人ID
-                entity.setLastUpdatedBy(userId);
-                // 最后更新日期
-                entity.setLastUpdatedDate(nowTime);
-            });
-        }
+        entities.forEach((entity) -> {
+            // 最后更新人ID
+            entity.setLastUpdatedBy(userId);
+            // 最后更新日期
+            entity.setLastUpdatedDate(nowTime);
+        });
     }
 
 }
