@@ -48,6 +48,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         Class<?> entityType = getEntityType(entities);
         I18nMeta i18nMeta = getI18nMeta(entityType);
         String i18nTable = getI18nTable(entityType);
+        String langCode = QI18nUtil.getLanguage();
 
         // 新增多语言记录
         SqlHelper.executeBatch(entityType, mybatisLog, entities, PersistenceConstants.BATCH_INSERT_SIZE,
@@ -55,7 +56,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
                     Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
                     I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
 
-                    i18nCRUD.insert(entity.getId(), entity.getCreatedLang(), i18nDataMap, true);
+                    i18nCRUD.insert(entity.getId(), langCode, i18nDataMap, true);
                 });
 
         return entities.size();

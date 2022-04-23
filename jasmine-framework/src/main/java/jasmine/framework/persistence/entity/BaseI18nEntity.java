@@ -1,5 +1,6 @@
 package jasmine.framework.persistence.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 /**
@@ -7,7 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
  */
 public class BaseI18nEntity extends BaseEntity {
     /** 语言代码 */
-    @TableField(value = "created_lang")
+    @TableField(value = "created_lang", fill = FieldFill.INSERT)
     private String createdLang;
 
     public String getCreatedLang() {

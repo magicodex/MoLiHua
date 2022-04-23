@@ -3,9 +3,7 @@ package jasmine.framework.persistence.mybatisplus;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
-import jasmine.core.util.QI18nUtil;
 import jasmine.framework.persistence.entity.BaseEntity;
-import jasmine.framework.persistence.entity.BaseI18nEntity;
 
 import java.time.ZonedDateTime;
 import java.util.Collection;
@@ -50,34 +48,16 @@ public class BaseEntityHelper {
         Long userId = CurrentSubject.getUserId();
         ZonedDateTime nowTime = ZonedDateTime.now();
 
-        if (QCollUtil.getFirst(entities) instanceof BaseI18nEntity) {
-            String langCode = QI18nUtil.getLanguage();
-
-            entities.forEach((entity) -> {
-                // 创建人ID
-                entity.setCreatedBy(userId);
-                // 创建日期
-                entity.setCreatedDate(nowTime);
-                // 最后更新人ID
-                entity.setLastUpdatedBy(userId);
-                // 最后更新日期
-                entity.setLastUpdatedDate(nowTime);
-                // 语言代码
-                BaseI18nEntity baseI18nEntity = (BaseI18nEntity) entity;
-                baseI18nEntity.setCreatedLang(langCode);
-            });
-        } else {
-            entities.forEach((entity) -> {
-                // 创建人ID
-                entity.setCreatedBy(userId);
-                // 创建日期
-                entity.setCreatedDate(nowTime);
-                // 最后更新人ID
-                entity.setLastUpdatedBy(userId);
-                // 最后更新日期
-                entity.setLastUpdatedDate(nowTime);
-            });
-        }
+        entities.forEach((entity) -> {
+            // 创建人ID
+            entity.setCreatedBy(userId);
+            // 创建日期
+            entity.setCreatedDate(nowTime);
+            // 最后更新人ID
+            entity.setLastUpdatedBy(userId);
+            // 最后更新日期
+            entity.setLastUpdatedDate(nowTime);
+        });
     }
 
     /**

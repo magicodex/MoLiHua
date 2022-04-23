@@ -20,7 +20,7 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
     private static final String FIELD_LAST_UPDATED_BY = "lastUpdatedBy";
     private static final String FIELD_LAST_UPDATED_DATE = "lastUpdatedDate";
     private static final String FIELD_VERSION_NUMBER = "versionNumber";
-    private static final String FIELD_LANG_CODE = "langCode";
+    private static final String FIELD_CREATED_LANG = "createdLang";
 
     @Override
     public void insertFill(MetaObject metaObject) {
@@ -41,6 +41,8 @@ public class BaseEntityMetaObjectHandler implements MetaObjectHandler {
 
         // 版本号
         strictInsertFill(metaObject, FIELD_VERSION_NUMBER, Integer.class, 1);
+        // 语言代码
+        strictInsertFill(metaObject, FIELD_CREATED_LANG, String.class, QI18nUtil.getLanguage());
     }
 
     @Override

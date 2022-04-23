@@ -88,8 +88,6 @@ public class I18nMeta {
 
                 ReflectUtil.setFieldValue(entity, field, value);
             });
-
-            entity.setCreatedLang(record.getLangCode());
         }
     }
 

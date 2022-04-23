@@ -53,7 +53,7 @@
             <column name="name_1" type="varchar(500)" remarks="名称1">
                 <constraints nullable="true"/>
             </column>
-            <column name="created_lang" type="varchar(50)" remarks="语言代码">
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
