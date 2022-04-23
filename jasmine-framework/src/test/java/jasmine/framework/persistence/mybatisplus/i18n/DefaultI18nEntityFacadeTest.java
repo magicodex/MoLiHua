@@ -2,7 +2,6 @@ package jasmine.framework.persistence.mybatisplus.i18n;
 
 import jasmine.framework.persistence.mybatisplus.testdependency.entity.TestEntity1;
 import jasmine.framework.testdependency.context.FrameworkTestContext;
-import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +27,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
         {
             TestEntity1 entity = new TestEntity1();
             entity.setId(1L);
-            entity.setLangCode("zh-CN");
+            entity.setCreatedLang("zh-CN");
             entity.setCode1("code1");
             entity.setName1("name1");
 
@@ -39,7 +38,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
         {
             TestEntity1 entity = new TestEntity1();
             entity.setId(1L);
-            entity.setLangCode("zh-CN");
+            entity.setCreatedLang("zh-CN");
             entity.setCode1("code1");
             entity.setName1("NAME1");
 
@@ -50,7 +49,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
         {
             TestEntity1 entity = new TestEntity1();
             entity.setId(1L);
-            entity.setLangCode("zh-CN");
+            entity.setCreatedLang("zh-CN");
             entity.setCode1("code1");
             entity.setName1("");
 
@@ -68,7 +67,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
         {
             TestEntity1 entity = new TestEntity1();
             entity.setId(1L);
-            entity.setLangCode("zh-CN");
+            entity.setCreatedLang("zh-CN");
             entity.setCode1("code1");
             entity.setName1("");
 

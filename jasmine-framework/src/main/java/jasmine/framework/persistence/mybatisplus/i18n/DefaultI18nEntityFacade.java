@@ -55,7 +55,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
                     Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
                     I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
 
-                    i18nCRUD.insert(entity.getId(), entity.getLangCode(), i18nDataMap, true);
+                    i18nCRUD.insert(entity.getId(), entity.getCreatedLang(), i18nDataMap, true);
                 });
 
         return entities.size();

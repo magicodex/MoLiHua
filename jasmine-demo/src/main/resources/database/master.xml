@@ -55,7 +55,7 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+            <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
             <column name="created_date" type="timestamp" remarks="创建日期">

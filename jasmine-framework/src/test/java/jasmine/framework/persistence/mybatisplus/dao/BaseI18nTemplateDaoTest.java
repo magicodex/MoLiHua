@@ -26,7 +26,7 @@ public class BaseI18nTemplateDaoTest extends FrameworkTestContext {
         TestEntity1 newEntity = new TestEntity1();
         newEntity.setCode1("code1");
         newEntity.setName1("name1");
-        newEntity.setLangCode("zh-CN");
+        newEntity.setCreatedLang("zh-CN");
         dao.save(newEntity);
 
         TestEntity1 entityPO = dao.getById(newEntity.getId());

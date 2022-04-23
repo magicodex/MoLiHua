@@ -64,7 +64,7 @@ public class BaseEntityHelper {
                 entity.setLastUpdatedDate(nowTime);
                 // 语言代码
                 BaseI18nEntity baseI18nEntity = (BaseI18nEntity) entity;
-                baseI18nEntity.setLangCode(langCode);
+                baseI18nEntity.setCreatedLang(langCode);
             });
         } else {
             entities.forEach((entity) -> {

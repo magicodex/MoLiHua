@@ -27,8 +27,8 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     public void save(T entity) {
         QCheckUtil.notNull(entity, "entity null");
 
-        if (entity.getLangCode() == null) {
-            entity.setLangCode(QI18nUtil.getLanguage());
+        if (entity.getCreatedLang() == null) {
+            entity.setCreatedLang(QI18nUtil.getLanguage());
         }
 
         super.save(entity);
@@ -41,8 +41,8 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
         String defaultLangCode = QI18nUtil.getLanguage();
 
         entities.forEach((entity) -> {
-            if (entity.getLangCode() == null) {
-                entity.setLangCode(defaultLangCode);
+            if (entity.getCreatedLang() == null) {
+                entity.setCreatedLang(defaultLangCode);
             }
         });
 
