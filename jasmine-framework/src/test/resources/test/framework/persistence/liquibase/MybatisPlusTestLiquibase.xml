@@ -21,9 +21,6 @@
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
-            <column name="default_flag" type="tinyint" remarks="默认标志">
-                <constraints nullable="false"/>
-            </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
@@ -54,6 +51,9 @@
                 <constraints nullable="true"/>
             </column>
             <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
                 <constraints nullable="false"/>
             </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
