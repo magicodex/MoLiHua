@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.QObjectUtil;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCRUD;
@@ -101,10 +102,17 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     @Override
     public int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities) {
         QCheckUtil.notNull(entities, "entities null");
+        String langCode = QI18nUtil.getLanguage();
 
         int result = updateI18n(entities);
-        // 填充默认多语言数据
-        populateDefaultI18n(entities);
+        List<? extends BaseI18nEntity> populateList = QCollUtil.chooseToList(entities, (entity) -> {
+            return QObjectUtil.notEqual(entity.getCreatedLang(), langCode);
+        });
+
+        if (QCollUtil.isNotEmpty(populateList)) {
+            // 填充默认多语言数据
+            populateDefaultI18n(populateList);
+        }
 
         return result;
     }
