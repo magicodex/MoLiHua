@@ -3,6 +3,7 @@ package jasmine.framework.persistence.mybatisplus.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.QI18nUtil;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
 
@@ -26,6 +27,10 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     public void save(T entity) {
         QCheckUtil.notNull(entity, "entity null");
 
+        if (entity.getLangCode() == null) {
+            entity.setLangCode(QI18nUtil.getLanguage());
+        }
+
         super.save(entity);
         I18nEntityHelper.insertI18n(entity);
     }
@@ -33,6 +38,13 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     @Override
     public void saveBatch(Collection<T> entities) {
         QCheckUtil.notNull(entities, "entities null");
+        String defaultLangCode = QI18nUtil.getLanguage();
+
+        entities.forEach((entity) -> {
+            if (entity.getLangCode() == null) {
+                entity.setLangCode(defaultLangCode);
+            }
+        });
 
         super.saveBatch(entities);
         I18nEntityHelper.insertI18n(entities);
