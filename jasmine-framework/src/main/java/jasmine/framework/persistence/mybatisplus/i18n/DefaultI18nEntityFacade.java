@@ -90,7 +90,11 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             if (i18nRecord != null) {
                 i18nCRUD.update(recordId, langCode, i18nDataMap, i18nRecord.getVersionNumber());
             } else {
-                i18nCRUD.update(recordId, entity.getCreatedLang(), i18nDataMap, entity.getVersionNumber());
+                String createdLang = entity.getCreatedLang();
+                List<I18nRecord> tempRecordList = i18nCRUD.select(idList, createdLang);
+                I18nRecord tempRecord = QCollUtil.getFirst(tempRecordList);
+
+                i18nCRUD.update(recordId, createdLang, i18nDataMap, tempRecord.getVersionNumber());
             }
         });
 
