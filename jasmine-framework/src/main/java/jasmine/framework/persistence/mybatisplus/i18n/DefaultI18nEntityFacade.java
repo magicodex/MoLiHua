@@ -88,11 +88,9 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             I18nRecord i18nRecord = i18nRecordMap.get(recordId);
 
             if (i18nRecord != null) {
-                // 更新多语言记录
                 i18nCRUD.update(recordId, langCode, i18nDataMap, i18nRecord.getVersionNumber());
             } else {
-                // 新增多语言记录
-                i18nCRUD.insert(recordId, langCode, i18nDataMap, false);
+                i18nCRUD.update(recordId, entity.getCreatedLang(), i18nDataMap, entity.getVersionNumber());
             }
         });
 
