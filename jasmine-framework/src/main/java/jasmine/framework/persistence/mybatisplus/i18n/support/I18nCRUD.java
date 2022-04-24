@@ -34,23 +34,23 @@ public class I18nCRUD {
     /** 表名 */
     private String tableName;
 
-    private static final String STATEMENT_INSERT = "jasmine.EntityI18n.insertI18n";
-    private static final String STATEMENT_UPDATE = "jasmine.EntityI18n.updateI18n";
-    private static final String STATEMENT_DELETE = "jasmine.EntityI18n.deleteI18n";
-    private static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
+    protected static final String STATEMENT_INSERT = "jasmine.EntityI18n.insertI18n";
+    protected static final String STATEMENT_UPDATE = "jasmine.EntityI18n.updateI18n";
+    protected static final String STATEMENT_DELETE = "jasmine.EntityI18n.deleteI18n";
+    protected static final String STATEMENT_SELECT = "jasmine.EntityI18n.selectI18n";
 
-    private static final String PARAM_TABLE = "table";
-    private static final String PARAM_COLUMNS = "columns";
-    private static final String PARAM_VALUES = "values";
-    private static final String PARAM_ID = "id";
-    private static final String PARAM_IDS = "ids";
-    private static final String PARAM_LANG_CODE = "langCode";
-    private static final String PARAM_DEFAULT_FLAG = "defaultFlag";
-    private static final String PARAM_CREATED_DATE = "createdDate";
-    private static final String PARAM_CREATED_BY = "createdBy";
-    private static final String PARAM_LAST_UPDATED_DATE = "lastUpdatedDate";
-    private static final String PARAM_LAST_UPDATED_BY = "lastUpdatedBy";
-    private static final String PARAM_VERSION_NUMBER = "versionNumber";
+    protected static final String PARAM_TABLE = "table";
+    protected static final String PARAM_COLUMNS = "columns";
+    protected static final String PARAM_VALUES = "values";
+    protected static final String PARAM_ID = "id";
+    protected static final String PARAM_IDS = "ids";
+    protected static final String PARAM_LANG_CODE = "langCode";
+    protected static final String PARAM_DEFAULT_FLAG = "defaultFlag";
+    protected static final String PARAM_CREATED_DATE = "createdDate";
+    protected static final String PARAM_CREATED_BY = "createdBy";
+    protected static final String PARAM_LAST_UPDATED_DATE = "lastUpdatedDate";
+    protected static final String PARAM_LAST_UPDATED_BY = "lastUpdatedBy";
+    protected static final String PARAM_VERSION_NUMBER = "versionNumber";
 
     public I18nCRUD(SqlSession sqlSession, String tableName) {
         this.sqlSession = sqlSession;
