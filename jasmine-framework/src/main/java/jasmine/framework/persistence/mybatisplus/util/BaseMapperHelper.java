@@ -45,7 +45,9 @@ public class BaseMapperHelper {
             return 0;
         }
 
-        String sqlStatement = SqlHelper.getSqlStatement(baseMapper.getClass(), SqlMethod.INSERT_ONE);
+        Class<?>[] interfaces = baseMapper.getClass().getInterfaces();
+        Class<?> mapperClass = interfaces[0];
+        String sqlStatement = SqlHelper.getSqlStatement(mapperClass, SqlMethod.INSERT_ONE);
         Class<?> entityClass = QCollUtil.getFirst(entities).getClass();
 
         SqlHelper.executeBatch(entityClass, log, entities, PersistenceConstants.BATCH_INSERT_SIZE,
