@@ -20,36 +20,58 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
     private SqlSessionTemplate sqlSessionTemplate;
 
     @Test
-    public void test() {
+    public void testInsertI18n() {
         DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
 
         // 新增多语言信息
         {
             TestEntity1 entity = new TestEntity1();
             entity.setId(1L);
-            entity.setCreatedLang("zh-CN");
             entity.setCode1("code1");
             entity.setName1("name1");
 
             facade.insertI18n(Collections.singletonList(entity));
         }
+    }
+
+    @Test
+    public void testUpdateI18n() {
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
 
         // 修改多语言信息
         {
             TestEntity1 entity = new TestEntity1();
             entity.setId(1L);
-            entity.setCreatedLang("zh-CN");
             entity.setCode1("code1");
             entity.setName1("NAME1");
 
             facade.updateI18n(Collections.singletonList(entity));
         }
+    }
+
+    @Test
+    public void testUpdateI18nThenFillEntities() {
+        // TODO
+    }
+
+    @Test
+    public void testDeleteI18n() {
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
+
+        // 删除多语言信息
+        {
+            facade.deleteI18n(TestEntity1.class, Collections.singletonList(1L));
+        }
+    }
+
+    @Test
+    public void testPopulateI18n() {
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
 
         // 查询多语言信息
         {
             TestEntity1 entity = new TestEntity1();
             entity.setId(1L);
-            entity.setCreatedLang("zh-CN");
             entity.setCode1("code1");
             entity.setName1("");
 
@@ -57,24 +79,26 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
             Assert.assertEquals("code1", entity.getCode1());
             Assert.assertEquals("NAME1", entity.getName1());
         }
+    }
 
-        // 删除多语言信息
-        {
-            facade.deleteI18n(TestEntity1.class, Collections.singletonList(1L));
-        }
+    @Test
+    public void testPopulateDefaultI18n() {
+        // TODO
+    }
 
-        // 查询多语言信息
-        {
-            TestEntity1 entity = new TestEntity1();
-            entity.setId(1L);
-            entity.setCreatedLang("zh-CN");
-            entity.setCode1("code1");
-            entity.setName1("");
+    @Test
+    public void testGetEntityType() {
+        // TODO
+    }
 
-            facade.populateI18n(Collections.singletonList(entity));
-            Assert.assertEquals("code1", entity.getCode1());
-            Assert.assertEquals("", entity.getName1());
-        }
+    @Test
+    public void testGetI18nMeta() {
+        // TODO
+    }
+
+    @Test
+    public void testGetI18nTable() {
+        // TODO
     }
 
 }

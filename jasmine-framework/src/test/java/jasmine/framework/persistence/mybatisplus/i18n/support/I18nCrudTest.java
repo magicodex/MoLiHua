@@ -13,27 +13,27 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testInsert() {
-
+        // TODO
     }
 
     @Test
     public void testUpdate() {
-
+        // TODO
     }
 
     @Test
     public void testDelete() {
-
+        // TODO
     }
 
     @Test
     public void testSelect() {
-
+        // TODO
     }
 
     @Test
     public void testSelectDefault() {
-
+        // TODO
     }
 
 }
