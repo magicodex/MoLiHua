@@ -17,6 +17,7 @@ public class I18nMetaTest {
         I18nMeta meta = I18nMeta.createI18nMeta(TestEntity2.class);
 
         Map<String, Field> fieldMap = meta.getFields();
+        // TestEntity2 只有 name1 和 name2 加 @I18n 注解
         Assert.assertEquals(2, fieldMap.size());
         Assert.assertTrue(fieldMap.containsKey("name_1"));
         Assert.assertEquals("name1", fieldMap.get("name_1").getName());
@@ -37,6 +38,7 @@ public class I18nMetaTest {
         I18nMeta meta = I18nMeta.createI18nMeta(TestEntity2.class);
         Map<String, String> actualMap = meta.getI18nData(entity);
 
+        // TestEntity2 只有 name1 和 name2 加 @I18n 注解
         Assert.assertEquals(2, actualMap.size());
         Assert.assertEquals("name1Value", actualMap.get("name_1"));
         Assert.assertEquals("name2Value", actualMap.get("name_2"));
@@ -52,6 +54,7 @@ public class I18nMetaTest {
         TestEntity2 entity = new TestEntity2();
         meta.populateI18nData(entity, record);
 
+        // TestEntity2 只有 name1 和 name2 加 @I18n 注解
         Assert.assertEquals("name1Value", entity.getName1());
         Assert.assertEquals("name2Value", entity.getName2());
     }

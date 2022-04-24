@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class BaseI18nTemplateDaoTest extends FrameworkTestContext {
+public class BaseI18nEntityDaoTest extends FrameworkTestContext {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
 
@@ -26,7 +26,6 @@ public class BaseI18nTemplateDaoTest extends FrameworkTestContext {
         TestEntity1 newEntity = new TestEntity1();
         newEntity.setCode1("code1");
         newEntity.setName1("name1");
-        newEntity.setCreatedLang("zh-CN");
         dao.save(newEntity);
 
         TestEntity1 entityPO = dao.getById(newEntity.getId());

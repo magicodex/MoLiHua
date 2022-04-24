@@ -18,10 +18,10 @@ public class I18nRecord {
     private Map<String, Object> values;
 
     /** 列名 */
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_VERSION_NUMBER = "version_number";
-    private static final String COLUMN_LANG_CODE = "lang_code";
-    private static final String COLUMN_DEFAULT_FLAG = "default_flag";
+    protected static final String COLUMN_ID = "id";
+    protected static final String COLUMN_VERSION_NUMBER = "version_number";
+    protected static final String COLUMN_LANG_CODE = "lang_code";
+    protected static final String COLUMN_DEFAULT_FLAG = "default_flag";
 
     public I18nRecord(Map<String, Object> values) {
         this.values = new HashMap<>(values);
@@ -44,7 +44,14 @@ public class I18nRecord {
     }
 
     public Boolean getValueAsBoolean(String name) {
-        return QObjectUtil.parseBoolean(values.get(name));
+        Object value = values.get(name);
+
+        if (value == null) {
+            return null;
+        }
+
+        return ("1".equals(value.toString()))
+                ? true : false;
     }
 
     public Long getId() {

@@ -15,6 +15,16 @@ import javax.annotation.Nullable;
 public class QStringUtil extends StrUtil {
 
     /**
+     * 转换成字符串
+     *
+     * @param obj
+     * @return
+     */
+    public static String toString(Object obj) {
+        return (obj == null) ? null : obj.toString();
+    }
+
+    /**
      * 如果给定对象为null返回默认值
      *
      * @param content
