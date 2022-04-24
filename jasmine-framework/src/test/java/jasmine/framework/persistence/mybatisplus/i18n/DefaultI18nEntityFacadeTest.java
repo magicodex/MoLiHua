@@ -3,8 +3,10 @@ package jasmine.framework.persistence.mybatisplus.i18n;
 import jasmine.core.util.QCollUtil;
 import jasmine.framework.common.constant.LangConstants;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCRUD;
+import jasmine.framework.persistence.mybatisplus.i18n.support.I18nMeta;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nRecord;
 import jasmine.framework.persistence.mybatisplus.testdependency.entity.TestEntity1;
+import jasmine.framework.persistence.mybatisplus.testdependency.entity.TestEntity2;
 import jasmine.framework.persistence.mybatisplus.testdependency.mapper.TestEntity1Mapper;
 import jasmine.framework.testdependency.context.FrameworkTestContext;
 import org.junit.Assert;
@@ -84,38 +86,58 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
     }
 
     @Test
-    public void testUpdateI18nThenFillEntities() {
-        // TODO
-    }
-
-    @Test
-    public void testDeleteI18n() {
-        // TODO
-    }
-
-    @Test
     public void testPopulateI18n() {
-        // TODO
+        initI18n(1L);
+
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
+        TestEntity1 entity = createEntity(1L, "code1", "name1", "attr1");
+
+        List<TestEntity1> actualList = facade.populateI18n(Collections.singletonList(entity));
+        Assert.assertEquals(1, actualList.size());
+        Assert.assertEquals("名称1", entity.getName1());
     }
 
     @Test
     public void testPopulateDefaultI18n() {
-        // TODO
+        initI18n(1L);
+
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
+        TestEntity1 entity = createEntity(1L, "code1", "name1", "attr1");
+
+        List<TestEntity1> actualList = facade.populateDefaultI18n(Collections.singletonList(entity));
+        Assert.assertEquals(1, actualList.size());
+        Assert.assertEquals("名称1", entity.getName1());
     }
 
     @Test
     public void testGetEntityType() {
-        // TODO
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
+
+        {
+            Class<?> actual = facade.getEntityType(Collections.singletonList(new TestEntity1()));
+            Assert.assertEquals(TestEntity1.class, actual);
+        }
+
+        {
+            Class<?> actual = facade.getEntityType(Collections.emptyList());
+            Assert.assertNull(actual);
+        }
     }
 
     @Test
     public void testGetI18nMeta() {
-        // TODO
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
+
+        I18nMeta meta = facade.getI18nMeta(TestEntity1.class);
+        Assert.assertSame(meta, facade.getI18nMeta(TestEntity1.class));
     }
 
     @Test
     public void testGetI18nTable() {
-        // TODO
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
+
+        Assert.assertEquals("test_entity1_i18n", facade.getI18nTable(TestEntity1.class));
+        Assert.assertEquals("test_entity2_i18n", facade.getI18nTable(TestEntity2.class));
     }
 
     /**
