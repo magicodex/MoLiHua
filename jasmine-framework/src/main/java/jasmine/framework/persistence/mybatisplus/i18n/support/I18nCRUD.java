@@ -109,11 +109,10 @@ public class I18nCRUD {
      * @return
      */
     public int update(@Nonnull Serializable id, @Nonnull String langCode,
-                      @Nonnull Map<String, String> data, @Nonnull Integer versionNumber) {
+                      @Nonnull Map<String, String> data, @Nullable Integer versionNumber) {
         QCheckUtil.notNull(id, "id null");
         QCheckUtil.notNull(langCode, "langCode null");
         QCheckUtil.notNull(data, "data null");
-        QCheckUtil.notNull(versionNumber, "versionNumber null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
