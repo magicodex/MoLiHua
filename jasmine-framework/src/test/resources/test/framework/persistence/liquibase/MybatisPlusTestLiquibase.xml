@@ -45,9 +45,94 @@
     <changeSet id="jasmine_20220414222702" author="mh.z">
         <createTable tableName="test_entity1_i18n" remarks="测试表1的多语言表">
             <column name="id" type="bigint" remarks="主键id">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_test_entity1_i18n"/>
+                <constraints nullable="false"/>
             </column>
             <column name="name_1" type="varchar(500)" remarks="名称1">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220424180101" author="mh.z">
+        <createTable tableName="test_entity2" remarks="测试表2">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_test_entity2"/>
+            </column>
+            <column name="code_1" type="varchar(500)" remarks="代码1">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name_1" type="varchar(500)" remarks="名称1">
+                <constraints nullable="true"/>
+            </column>
+            <column name="attr_1" type="varchar(500)" remarks="属性1">
+                <constraints nullable="true"/>
+            </column>
+            <column name="code_2" type="varchar(500)" remarks="代码2">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name_2" type="varchar(500)" remarks="名称2">
+                <constraints nullable="true"/>
+            </column>
+            <column name="attr_2" type="varchar(500)" remarks="属性2">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_lang" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20220424180102" author="mh.z">
+        <createTable tableName="test_entity2_i18n" remarks="测试表2的多语言表">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_1" type="varchar(500)" remarks="名称1">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name_2" type="varchar(500)" remarks="名称2">
                 <constraints nullable="true"/>
             </column>
             <column name="lang_code" type="varchar(50)" remarks="语言代码">

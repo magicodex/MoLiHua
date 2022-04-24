@@ -23,15 +23,15 @@ public class I18nCrudTest extends FrameworkTestContext {
     @Autowired
     private SqlSessionTemplate sqlSession;
 
-    private static final String I18N_TABLE = "test_entity1_i18n";
+    private static final String I18N_TABLE = "test_entity2_i18n";
 
     @Test
     public void testInsert() {
         I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
 
         Map<String, String> data = new HashMap<>() {{
-            put("name", "名称1");
-            put("desc", "描述1");
+            put("name_1", "名称1");
+            put("name_2", "名称2");
         }};
         // 新增多语言记录
         int rowCount = crud.insert(1L, "zh-CN", data, true);
@@ -45,8 +45,8 @@ public class I18nCrudTest extends FrameworkTestContext {
         Assert.assertEquals(Long.valueOf(1), record.getId());
         Assert.assertEquals("zh-CN", record.getLangCode());
         Assert.assertTrue(record.getDefaultFlag());
-        Assert.assertEquals("名称1", record.getValueAsString("name"));
-        Assert.assertEquals("描述1", record.getValueAsString("desc"));
+        Assert.assertEquals("名称1", record.getValueAsString("name_1"));
+        Assert.assertEquals("名称2", record.getValueAsString("name_2"));
     }
 
     @Test
@@ -55,8 +55,8 @@ public class I18nCrudTest extends FrameworkTestContext {
         initI18n(1L);
 
         Map<String, String> data = new HashMap<>() {{
-            put("name", "名称2");
-            put("desc", "描述2");
+            put("name_1", "新名称1");
+            put("name_2", "新名称2");
         }};
         // 新增多语言记录
         int rowCount = crud.update(1L, "zh-CN", data, null);
@@ -69,8 +69,8 @@ public class I18nCrudTest extends FrameworkTestContext {
 
             I18nRecord record = QCollUtil.getFirst(recordList);
             Assert.assertTrue(record.getDefaultFlag());
-            Assert.assertEquals("名称2", record.getValueAsString("name"));
-            Assert.assertEquals("描述2", record.getValueAsString("desc"));
+            Assert.assertEquals("新名称1", record.getValueAsString("name_1"));
+            Assert.assertEquals("新名称2", record.getValueAsString("name_2"));
         }
 
         // 英文多语言应当未被修改
@@ -80,8 +80,8 @@ public class I18nCrudTest extends FrameworkTestContext {
 
             I18nRecord record = QCollUtil.getFirst(recordList);
             Assert.assertFalse(record.getDefaultFlag());
-            Assert.assertEquals("name1", record.getValueAsString("name"));
-            Assert.assertEquals("desc1", record.getValueAsString("desc"));
+            Assert.assertEquals("name1", record.getValueAsString("name_1"));
+            Assert.assertEquals("name2", record.getValueAsString("name_2"));
         }
     }
 
@@ -110,8 +110,8 @@ public class I18nCrudTest extends FrameworkTestContext {
 
         {
             Map<String, String> data = new HashMap<>() {{
-                put("name", "名称1");
-                put("desc", "描述1");
+                put("name_1", "名称1");
+                put("name_2", "名称2");
             }};
 
             // 新增多语言记录
@@ -120,8 +120,8 @@ public class I18nCrudTest extends FrameworkTestContext {
 
         {
             Map<String, String> data = new HashMap<>() {{
-                put("name", "name1");
-                put("desc", "desc1");
+                put("name_1", "name1");
+                put("name_2", "name2");
             }};
             // 新增多语言记录
             crud.insert(1L, "en-US", data, false);
@@ -137,11 +137,12 @@ public class I18nCrudTest extends FrameworkTestContext {
      */
     private List<I18nRecord> selectI18n(Collection<Long> ids, String langCode) {
         Object parameter = new HashMap<>() {{
+            put(I18nCRUD.PARAM_TABLE, I18N_TABLE);
             put(I18nCRUD.PARAM_IDS, ids);
             put(I18nCRUD.PARAM_LANG_CODE, langCode);
         }};
 
-        List<Map> recordList = sqlSession.selectOne(I18nCRUD.STATEMENT_SELECT, parameter);
+        List<Map> recordList = sqlSession.selectList(I18nCRUD.STATEMENT_SELECT, parameter);
         List<I18nRecord> i18nRecordList = QCollUtil.mapToList(recordList, (record) -> {
             return new I18nRecord(record);
         });
