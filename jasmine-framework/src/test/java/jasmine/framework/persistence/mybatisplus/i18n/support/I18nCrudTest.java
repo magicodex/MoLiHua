@@ -109,12 +109,30 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testSelect() {
-        // TODO
+        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        initI18n(1L);
+
+        {
+            List<I18nRecord> recordList = crud.select(Collections.singletonList(1L), null);
+            Assert.assertEquals(2, recordList.size());
+        }
+
+        {
+            List<I18nRecord> recordList = crud.select(Collections.singletonList(1L), "zh-CN");
+            Assert.assertEquals(1, recordList.size());
+        }
     }
 
     @Test
     public void testSelectDefault() {
-        // TODO
+        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        initI18n(1L);
+
+        List<I18nRecord> recordList = crud.selectDefault(Collections.singletonList(1L));
+        Assert.assertEquals(1, recordList.size());
+
+        I18nRecord record = QCollUtil.getFirst(recordList);
+        Assert.assertEquals("zh-CN", record.getLangCode());
     }
 
     /**
