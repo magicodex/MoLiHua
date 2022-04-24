@@ -23,16 +23,16 @@ public class BaseEntityHelper {
     public static void fillInsert(BaseEntity entity) {
         QCheckUtil.notNull(entity, "entity null");
         Long userId = CurrentSubject.getUserId();
-        ZonedDateTime nowTime = ZonedDateTime.now();
+        ZonedDateTime currentTime = ZonedDateTime.now();
 
         // 创建人ID
         entity.setCreatedBy(userId);
         // 创建日期
-        entity.setCreatedDate(nowTime);
+        entity.setCreatedDate(currentTime);
         // 最后更新人ID
         entity.setLastUpdatedBy(userId);
         // 最后更新日期
-        entity.setLastUpdatedDate(nowTime);
+        entity.setLastUpdatedDate(currentTime);
 
         if (entity instanceof BaseI18nEntity) {
             BaseI18nEntity baseI18nEntity = (BaseI18nEntity) entity;
@@ -54,7 +54,7 @@ public class BaseEntityHelper {
         }
 
         Long userId = CurrentSubject.getUserId();
-        ZonedDateTime nowTime = ZonedDateTime.now();
+        ZonedDateTime currentTime = ZonedDateTime.now();
 
         if (QCollUtil.getFirst(entities) instanceof BaseI18nEntity) {
             String langCode = QI18nUtil.getLanguage();
@@ -63,11 +63,11 @@ public class BaseEntityHelper {
                 // 创建人ID
                 entity.setCreatedBy(userId);
                 // 创建日期
-                entity.setCreatedDate(nowTime);
+                entity.setCreatedDate(currentTime);
                 // 最后更新人ID
                 entity.setLastUpdatedBy(userId);
                 // 最后更新日期
-                entity.setLastUpdatedDate(nowTime);
+                entity.setLastUpdatedDate(currentTime);
                 // 语言代码
                 BaseI18nEntity baseI18nEntity = (BaseI18nEntity) entity;
                 baseI18nEntity.setCreatedLang(langCode);
@@ -77,11 +77,11 @@ public class BaseEntityHelper {
                 // 创建人ID
                 entity.setCreatedBy(userId);
                 // 创建日期
-                entity.setCreatedDate(nowTime);
+                entity.setCreatedDate(currentTime);
                 // 最后更新人ID
                 entity.setLastUpdatedBy(userId);
                 // 最后更新日期
-                entity.setLastUpdatedDate(nowTime);
+                entity.setLastUpdatedDate(currentTime);
             });
         }
     }
@@ -113,13 +113,13 @@ public class BaseEntityHelper {
         }
 
         Long userId = CurrentSubject.getUserId();
-        ZonedDateTime nowTime = ZonedDateTime.now();
+        ZonedDateTime currentTime = ZonedDateTime.now();
 
         entities.forEach((entity) -> {
             // 最后更新人ID
             entity.setLastUpdatedBy(userId);
             // 最后更新日期
-            entity.setLastUpdatedDate(nowTime);
+            entity.setLastUpdatedDate(currentTime);
         });
     }
 

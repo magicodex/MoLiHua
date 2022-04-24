@@ -31,6 +31,7 @@ import java.util.Set;
  */
 public class I18nCRUD {
     private SqlSession sqlSession;
+    /** 表名 */
     private String tableName;
 
     private static final String STATEMENT_INSERT = "jasmine.EntityI18n.insertI18n";
@@ -159,8 +160,11 @@ public class I18nCRUD {
         // 删除多语言记录
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             Map<String, Object> paramMap = QNewUtil.map();
+            // 多语言表
             paramMap.put(PARAM_TABLE, tableName);
+            // 记录ID
             paramMap.put(PARAM_IDS, partialIds);
+            // 语言代码
             paramMap.put(PARAM_LANG_CODE, langCode);
 
             sqlSession.delete(STATEMENT_DELETE, paramMap);
@@ -185,8 +189,11 @@ public class I18nCRUD {
         }
 
         Map<String, Object> paramMap = QNewUtil.map();
+        // 多语言表
         paramMap.put(PARAM_TABLE, tableName);
+        // 记录ID
         paramMap.put(PARAM_IDS, ids);
+        // 语言代码
         paramMap.put(PARAM_LANG_CODE, langCode);
 
         // 查询多语言记录
@@ -216,8 +223,11 @@ public class I18nCRUD {
         }
 
         Map<String, Object> paramMap = QNewUtil.map();
+        // 多语言表
         paramMap.put(PARAM_TABLE, tableName);
+        // 记录ID
         paramMap.put(PARAM_IDS, ids);
+        // 默认标志
         paramMap.put(PARAM_DEFAULT_FLAG, true);
 
         // 查询多语言记录

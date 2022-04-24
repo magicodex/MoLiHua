@@ -56,8 +56,9 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
                 (sqlSession, entity) -> {
                     Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
                     I18nCRUD i18nCRUD = new I18nCRUD(sqlSession, i18nTable);
+                    Long entityId = QCheckUtil.notNull(entity.getId());
 
-                    i18nCRUD.insert(entity.getId(), langCode, i18nDataMap, true);
+                    i18nCRUD.insert(entityId, langCode, i18nDataMap, true);
                 });
 
         return entities.size();
@@ -84,14 +85,15 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         entities.forEach((entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
-            Long recordId = entity.getId();
-            I18nRecord i18nRecord = i18nRecordMap.get(recordId);
+            Long entityId = entity.getId();
+            I18nRecord i18nRecord = i18nRecordMap.get(entityId);
 
+            // 更新多语言记录
             if (i18nRecord != null) {
-                i18nCRUD.update(recordId, langCode, i18nDataMap, null);
+                i18nCRUD.update(entityId, langCode, i18nDataMap, null);
             } else {
                 String createdLang = entity.getCreatedLang();
-                i18nCRUD.update(recordId, createdLang, i18nDataMap, null);
+                i18nCRUD.update(entityId, createdLang, i18nDataMap, null);
             }
         });
 
@@ -101,9 +103,12 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     @Override
     public int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities) {
         QCheckUtil.notNull(entities, "entities null");
-        String langCode = QI18nUtil.getLanguage();
 
+        // 更新多语言记录
         int result = updateI18n(entities);
+
+        String langCode = QI18nUtil.getLanguage();
+        // 过滤出需要填充的记录
         List<? extends BaseI18nEntity> populateList = QCollUtil.chooseToList(entities, (entity) -> {
             return QObjectUtil.notEqual(entity.getCreatedLang(), langCode);
         });
