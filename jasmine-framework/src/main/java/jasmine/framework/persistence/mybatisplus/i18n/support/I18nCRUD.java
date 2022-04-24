@@ -6,6 +6,7 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.QNewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
+import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.session.SqlSession;
@@ -157,6 +158,8 @@ public class I18nCRUD {
         }
 
         Set<? extends Serializable> idSet = new HashSet<>(ids);
+        LongValue rowCount = new LongValue(0);
+
         // 删除多语言记录
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             Map<String, Object> paramMap = QNewUtil.map();
@@ -167,10 +170,10 @@ public class I18nCRUD {
             // 语言代码
             paramMap.put(PARAM_LANG_CODE, langCode);
 
-            sqlSession.delete(STATEMENT_DELETE, paramMap);
+            rowCount.add(sqlSession.delete(STATEMENT_DELETE, paramMap));
         });
 
-        return idSet.size();
+        return (int) rowCount.get();
     }
 
     /**

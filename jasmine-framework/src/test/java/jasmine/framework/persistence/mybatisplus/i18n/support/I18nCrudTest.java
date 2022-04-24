@@ -87,7 +87,24 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testDelete() {
-        // TODO
+        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        initI18n(1L);
+
+        {
+            // 删除前应当查询到两条
+            List<I18nRecord> recordList = selectI18n(Collections.singletonList(1L), null);
+            Assert.assertEquals(2, recordList.size());
+        }
+
+        // 删除指定的多语言记录
+        int rowCount = crud.delete(Collections.singletonList(1L), null);
+        Assert.assertEquals(2, rowCount);
+
+        {
+            // 删除后应当查询不到记录
+            List<I18nRecord> recordList = selectI18n(Collections.singletonList(1L), null);
+            Assert.assertEquals(0, recordList.size());
+        }
     }
 
     @Test
