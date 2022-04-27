@@ -200,12 +200,12 @@ public class I18nCRUD {
         paramMap.put(PARAM_LANG_CODE, langCode);
 
         // 查询多语言记录
-        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
-        if (QCollUtil.isEmpty(recordList)) {
+        List<Map> mapList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
+        if (QCollUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(recordList, (record) -> {
+        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (record) -> {
             return new I18nRecord(record);
         });
 
@@ -234,12 +234,12 @@ public class I18nCRUD {
         paramMap.put(PARAM_DEFAULT_FLAG, true);
 
         // 查询多语言记录
-        List<Map> recordList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
-        if (QCollUtil.isEmpty(recordList)) {
+        List<Map> mapList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
+        if (QCollUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(recordList, (record) -> {
+        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (record) -> {
             return new I18nRecord(record);
         });
 

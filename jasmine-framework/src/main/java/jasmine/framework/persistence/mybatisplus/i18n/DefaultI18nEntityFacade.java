@@ -80,8 +80,8 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
         I18nCRUD i18nCRUD = new I18nCRUD(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
-        List<I18nRecord> recordList = i18nCRUD.select(idList, langCode);
-        Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(recordList, I18nRecord::getId);
+        List<I18nRecord> i18nRecordList = i18nCRUD.select(idList, langCode);
+        Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(i18nRecordList, I18nRecord::getId);
 
         entities.forEach((entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
