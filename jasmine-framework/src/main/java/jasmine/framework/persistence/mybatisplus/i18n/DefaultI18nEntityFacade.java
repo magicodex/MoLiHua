@@ -109,13 +109,13 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         String langCode = QI18nUtil.getLanguage();
         // 过滤出需要填充的记录
-        List<? extends BaseI18nEntity> populateList = QCollUtil.chooseToList(entities, (entity) -> {
+        List<? extends BaseI18nEntity> targetList = QCollUtil.chooseToList(entities, (entity) -> {
             return QObjectUtil.notEqual(entity.getCreatedLang(), langCode);
         });
 
-        if (QCollUtil.isNotEmpty(populateList)) {
+        if (QCollUtil.isNotEmpty(targetList)) {
             // 填充默认多语言数据
-            populateDefaultI18n(populateList);
+            populateDefaultI18n(targetList);
         }
 
         return result;
