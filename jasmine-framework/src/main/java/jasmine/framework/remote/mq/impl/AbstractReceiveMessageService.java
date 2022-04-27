@@ -72,7 +72,7 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
      */
     protected void receive(ReceiveInterceptor tempInterceptor, String category, Object message) {
         if (Boolean.TRUE.equals(receiveEnabled)) {
-            ContextManagementHelper.initThenClear(() -> {
+            ContextManagementHelper.manageContext(() -> {
                 // 接收消息
                 tempInterceptor.onReceive((newCategory, newMessage) -> {
                     return doReceive(tempInterceptor, newCategory, (T) newMessage);

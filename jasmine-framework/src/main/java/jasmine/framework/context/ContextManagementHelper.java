@@ -27,7 +27,7 @@ public class ContextManagementHelper {
      * @param <T>
      * @return
      */
-    public static <T> T initThenClear(FunctionWithResult<T> function) {
+    public static <T> T manageContext(FunctionWithResult<T> function) {
         QCheckUtil.notNullProp(handlerFacade, "handlerFacade null");
         QCheckUtil.notNull(function, "function null");
 
@@ -47,7 +47,7 @@ public class ContextManagementHelper {
      *
      * @param function
      */
-    public static void initThenClear(FunctionWithoutResult function) {
+    public static void manageContext(FunctionWithoutResult function) {
         QCheckUtil.notNullProp(handlerFacade, "handlerFacade null");
         QCheckUtil.notNull(function, "function null");
 

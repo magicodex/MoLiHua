@@ -32,7 +32,7 @@ public class XxlJobHandlerDelegate extends IJobHandler {
             CurrentSubject.setSubject(tenantId, null);
         }
 
-        ContextManagementHelper.initThenClear(() -> {
+        ContextManagementHelper.manageContext(() -> {
             jobExecutor.execute(current);
         });
     }
