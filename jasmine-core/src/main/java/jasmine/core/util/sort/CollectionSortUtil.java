@@ -30,7 +30,7 @@ public class CollectionSortUtil {
         Comparator<T> comparator = null;
 
         if (keys.length == 0) {
-            return QCollUtil.castToList(collection);
+            return QCollUtil.toList(collection);
         }
 
         for (SortKey<T, K> key : keys) {

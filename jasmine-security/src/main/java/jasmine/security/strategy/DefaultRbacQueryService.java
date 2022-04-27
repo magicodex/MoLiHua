@@ -55,7 +55,7 @@ public class DefaultRbacQueryService implements RbacQueryService {
         QCheckUtil.notNull(userId, "userId null");
         QCheckUtil.notNull(roleIds, "roleIds null");
 
-        List<Long> roleIdList = QCollectionUtil.castToList(roleIds);
+        List<Long> roleIdList = QCollectionUtil.toList(roleIds);
         // 获取角色被授予的所有功能
         List<SecFunctionBaseInfoDTO> functionList = functionDAO
                 .listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(roleIdList);

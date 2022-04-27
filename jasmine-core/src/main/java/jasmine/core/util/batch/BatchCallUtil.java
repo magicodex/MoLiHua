@@ -24,7 +24,7 @@ public class BatchCallUtil {
                                 Consumer<List<T>> function) {
         QCheckUtil.notNull(collection, "collection null");
         QCheckUtil.notNull(function, "function null");
-        List<T> list = QCollUtil.castToList(collection);
+        List<T> list = QCollUtil.toList(collection);
 
         if (collection.size() > batchSize) {
             List<List<T>> partList = QCollUtil.splitList(list, batchSize);

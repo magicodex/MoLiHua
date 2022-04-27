@@ -169,7 +169,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return QCollUtil.castToList(entities);
+        return QCollUtil.toList(entities);
     }
 
     @Override
@@ -201,7 +201,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return QCollUtil.castToList(entities);
+        return QCollUtil.toList(entities);
     }
 
     /**

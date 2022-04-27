@@ -44,7 +44,7 @@ public class BatchMap<K, V> extends AbstractBatchMap<K, V> {
     @Override
     protected void forceLoad() {
         if (QCollUtil.isNotEmpty(lazyKeys)) {
-            List<K> keyList = QCollUtil.castToList(lazyKeys);
+            List<K> keyList = QCollUtil.toList(lazyKeys);
             List<V> valueList = loadFunction.apply(keyList);
 
             for (V value : valueList) {

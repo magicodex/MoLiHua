@@ -84,12 +84,12 @@ public class QCollectionUtilTest {
     @Test
     public void testCastToList() {
         {
-            Collection<?> collection = QCollectionUtil.castToList(new ArrayList<>());
+            Collection<?> collection = QCollectionUtil.toList(new ArrayList<>());
             Assert.assertTrue(collection instanceof List);
         }
 
         {
-            Collection<?> collection = QCollectionUtil.castToList(Set.of("value1", "value2"));
+            Collection<?> collection = QCollectionUtil.toList(Set.of("value1", "value2"));
             Assert.assertTrue(collection instanceof List);
         }
     }

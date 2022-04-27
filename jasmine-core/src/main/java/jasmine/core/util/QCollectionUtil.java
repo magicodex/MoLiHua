@@ -111,7 +111,7 @@ public class QCollectionUtil extends CollUtil {
      * @param <T>
      * @return
      */
-    public static <T> List<T> castToList(@Nullable Collection<T> collection) {
+    public static <T> List<T> toList(@Nullable Collection<T> collection) {
         if (isEmpty(collection)) {
             return Collections.emptyList();
         }
