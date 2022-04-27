@@ -47,7 +47,7 @@
 - [校验工具类](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/validation-doc.md)
 - [权限访问控制](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/security-doc.md)
 - [读写分离](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/read-write-splitting-doc.md)
-- [扩展Mybatis-Plus](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/mybatis-plus-extersnion.md)
+- [扩展Mybatis-Plus](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/mybatis-plus-extersnion-doc.md)
 
 ## 集成框架
 
