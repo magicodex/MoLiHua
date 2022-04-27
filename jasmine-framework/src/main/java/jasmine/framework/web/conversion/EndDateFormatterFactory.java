@@ -1,4 +1,4 @@
-package jasmine.framework.web.converter;
+package jasmine.framework.web.conversion;
 
 import jasmine.framework.web.annotation.EndDate;
 import org.springframework.format.AnnotationFormatterFactory;
