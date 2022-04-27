@@ -11,10 +11,10 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecResourceDao {
+public class SecResourceDAO {
     private SecResourceMapper baseMapper;
 
-    public SecResourceDao(SecResourceMapper baseMapper) {
+    public SecResourceDAO(SecResourceMapper baseMapper) {
         this.baseMapper = baseMapper;
     }
 

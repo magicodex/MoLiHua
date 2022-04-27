@@ -11,10 +11,10 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecFunctionDao {
+public class SecFunctionDAO {
     private SecFunctionMapper baseMapper;
 
-    public SecFunctionDao(SecFunctionMapper baseMapper) {
+    public SecFunctionDAO(SecFunctionMapper baseMapper) {
         this.baseMapper = baseMapper;
     }
 

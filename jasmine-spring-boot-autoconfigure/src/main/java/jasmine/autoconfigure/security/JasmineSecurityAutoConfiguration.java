@@ -5,8 +5,8 @@ import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.config.JasmineSecurityConfig;
-import jasmine.security.rbac.dao.SecFunctionDao;
-import jasmine.security.rbac.dao.SecResourceDao;
+import jasmine.security.rbac.dao.SecFunctionDAO;
+import jasmine.security.rbac.dao.SecResourceDAO;
 import jasmine.security.strategy.CacheRbacQueryService;
 import jasmine.security.strategy.RbacAccessDecisionStrategy;
 import jasmine.security.strategy.RbacQueryService;
@@ -62,9 +62,9 @@ public class JasmineSecurityAutoConfiguration {
     @ConditionalOnProperty(value = "jasmine.security.authorization.strategy",
             havingValue = "rbac", matchIfMissing = false)
     @Bean
-    public RbacAccessDecisionStrategy accessDecisionStrategy(SecFunctionDao functionDao,
-                                                             SecResourceDao resourceDao) {
-        RbacQueryService rbacQueryService = new CacheRbacQueryService(functionDao, resourceDao);
+    public RbacAccessDecisionStrategy accessDecisionStrategy(SecFunctionDAO functionDAO,
+                                                             SecResourceDAO resourceDAO) {
+        RbacQueryService rbacQueryService = new CacheRbacQueryService(functionDAO, resourceDAO);
         return new RbacAccessDecisionStrategy(rbacQueryService);
     }
 

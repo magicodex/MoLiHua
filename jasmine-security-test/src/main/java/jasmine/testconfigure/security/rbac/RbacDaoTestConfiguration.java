@@ -1,11 +1,11 @@
 package jasmine.testconfigure.security.rbac;
 
-import jasmine.security.rbac.dao.SecFunctionDao;
-import jasmine.security.rbac.dao.SecMenuDao;
-import jasmine.security.rbac.dao.SecMenuTemplateDao;
-import jasmine.security.rbac.dao.SecPermissionDao;
-import jasmine.security.rbac.dao.SecResourceDao;
-import jasmine.security.rbac.dao.SecRoleDao;
+import jasmine.security.rbac.dao.SecFunctionDAO;
+import jasmine.security.rbac.dao.SecMenuDAO;
+import jasmine.security.rbac.dao.SecMenuTemplateDAO;
+import jasmine.security.rbac.dao.SecPermissionDAO;
+import jasmine.security.rbac.dao.SecResourceDAO;
+import jasmine.security.rbac.dao.SecRoleDAO;
 import jasmine.security.rbac.mapper.SecFunctionMapper;
 import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.mapper.SecRoleMapper;
@@ -23,23 +23,23 @@ public class RbacDaoTestConfiguration {
     //
 
     @Bean
-    public SecRoleDao secRoleDao(SecRoleMapper baseMapper) {
-        return new SecRoleDao(baseMapper);
+    public SecRoleDAO secRoleDAO(SecRoleMapper baseMapper) {
+        return new SecRoleDAO(baseMapper);
     }
 
     @Bean
-    public SecFunctionDao secFunctionDao(SecFunctionMapper baseMapper) {
-        return new SecFunctionDao(baseMapper);
+    public SecFunctionDAO secFunctionDAO(SecFunctionMapper baseMapper) {
+        return new SecFunctionDAO(baseMapper);
     }
 
     @Bean
-    public SecPermissionDao secPermissionDao() {
-        return new SecPermissionDao();
+    public SecPermissionDAO secPermissionDAO() {
+        return new SecPermissionDAO();
     }
 
     @Bean
-    public SecResourceDao secResourceDao(SecResourceMapper baseMapper) {
-        return new SecResourceDao(baseMapper);
+    public SecResourceDAO secResourceDAO(SecResourceMapper baseMapper) {
+        return new SecResourceDAO(baseMapper);
     }
 
     //
@@ -47,13 +47,13 @@ public class RbacDaoTestConfiguration {
     //
 
     @Bean
-    public SecMenuDao secMenuDao() {
-        return new SecMenuDao();
+    public SecMenuDAO secMenuDAO() {
+        return new SecMenuDAO();
     }
 
     @Bean
-    public SecMenuTemplateDao secMenuTemplateDao() {
-        return new SecMenuTemplateDao();
+    public SecMenuTemplateDAO secMenuTemplateDAO() {
+        return new SecMenuTemplateDAO();
     }
 
 }

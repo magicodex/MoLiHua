@@ -3,8 +3,8 @@ package jasmine.security.strategy;
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.security.constant.SecurityCaches;
-import jasmine.security.rbac.dao.SecFunctionDao;
-import jasmine.security.rbac.dao.SecResourceDao;
+import jasmine.security.rbac.dao.SecFunctionDAO;
+import jasmine.security.rbac.dao.SecResourceDAO;
 import jasmine.security.rbac.dto.SecResourceBaseInfoDTO;
 
 import java.util.Collection;
@@ -15,8 +15,8 @@ import java.util.List;
  */
 public class CacheRbacQueryService extends DefaultRbacQueryService {
 
-    public CacheRbacQueryService(SecFunctionDao functionDao, SecResourceDao resourceDao) {
-        super(functionDao, resourceDao);
+    public CacheRbacQueryService(SecFunctionDAO functionDAO, SecResourceDAO resourceDAO) {
+        super(functionDAO, resourceDAO);
     }
 
     @Override
