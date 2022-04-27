@@ -29,6 +29,9 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
 
     private ClientDetailsService clientDetailsService;
 
+    private static final String TOKEN_KEY_ACCESS = "permitAll()";
+    private static final String CHECK_TOKEN_ACCESS = "isAuthenticated()";
+
     public OAuth2AuthorizationAutoConfiguration(AuthenticationManager authenticationManager,
                                                 @Autowired(required = false) ClientDetailsService clientDetailsService) {
         this.authenticationManager = authenticationManager;
@@ -38,9 +41,9 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // 开启 /oauth/token_key 验证端口成无权限访问
-        security.tokenKeyAccess("permitAll()")
+        security.tokenKeyAccess(TOKEN_KEY_ACCESS)
                 // 开启 /oauth/check_token 验证端口成认证权限访问
-                .checkTokenAccess("isAuthenticated()")
+                .checkTokenAccess(CHECK_TOKEN_ACCESS)
                 // 主要是让 /oauth/token 支持 client_id 以及 client_secret 做登录认证
                 .allowFormAuthenticationForClients();
     }

@@ -29,6 +29,9 @@ import java.util.Map;
 @EnableConfigurationProperties({DataSourceProperties.class, ReadDataSourceProperties.class})
 @Configuration
 public class DataSourceAutoConfiguration {
+    private static final String MAIN_DATA_SOURCE_NAME = "master";
+    private static final String READ_DATA_SOURCE_NAME = "read";
+    private static final String READ_CONNECTION_POOL_NAME = "read";
 
     @Bean
     public DataSourceDecideFacade dataSourceDecideFacade() {
@@ -78,7 +81,7 @@ public class DataSourceAutoConfiguration {
                 .password(readProperties.getPassword())
                 .type(HikariDataSource.class)
                 .build();
-        dataSource.setPoolName("read");
+        dataSource.setPoolName(READ_CONNECTION_POOL_NAME);
         dataSource.setReadOnly(true);
 
         return dataSource;
@@ -88,8 +91,8 @@ public class DataSourceAutoConfiguration {
     @Bean
     public DataSource dataSource(HikariDataSource mainDataSource,
                                  HikariDataSource readDataSource) {
-        Map<Object, Object> dataSourceMap = Map.of("master", mainDataSource,
-                "read", readDataSource);
+        Map<Object, Object> dataSourceMap = Map.of(MAIN_DATA_SOURCE_NAME, mainDataSource,
+                READ_DATA_SOURCE_NAME, readDataSource);
         MultipleDataSource multipleDataSource = new MultipleDataSource(dataSourceMap);
         multipleDataSource.setDefaultTargetDataSource(mainDataSource);
 
