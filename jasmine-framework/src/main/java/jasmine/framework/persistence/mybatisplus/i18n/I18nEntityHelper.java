@@ -123,7 +123,7 @@ public class I18nEntityHelper {
     }
 
     /**
-     * 关联多语言
+     * 填充多语言
      *
      * @param entity
      * @param <T>
@@ -137,7 +137,7 @@ public class I18nEntityHelper {
     }
 
     /**
-     * 关联多语言
+     * 填充多语言
      *
      * @param entities
      * @param <T>
@@ -150,7 +150,7 @@ public class I18nEntityHelper {
     }
 
     /**
-     * 关联多语言
+     * 填充多语言
      *
      * @param page
      * @param <T>

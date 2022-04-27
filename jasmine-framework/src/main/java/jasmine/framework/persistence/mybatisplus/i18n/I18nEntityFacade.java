@@ -45,7 +45,7 @@ public interface I18nEntityFacade {
     int deleteI18n(Class<? extends BaseI18nEntity> entityType, Collection<? extends Serializable> ids);
 
     /**
-     * 关联多语言记录
+     * 填充多语言记录
      *
      * @param entities
      * @param <T>
@@ -54,7 +54,7 @@ public interface I18nEntityFacade {
     <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities);
 
     /**
-     * 关联默认多语言记录
+     * 填充默认多语言记录
      *
      * @param entities
      * @param <T>

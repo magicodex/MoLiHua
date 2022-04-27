@@ -205,8 +205,8 @@ public class I18nCRUD {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (record) -> {
-            return new I18nRecord(record);
+        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (map) -> {
+            return new I18nRecord(map);
         });
 
         return i18nRecordList;
@@ -239,8 +239,8 @@ public class I18nCRUD {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (record) -> {
-            return new I18nRecord(record);
+        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (map) -> {
+            return new I18nRecord(map);
         });
 
         return i18nRecordList;
