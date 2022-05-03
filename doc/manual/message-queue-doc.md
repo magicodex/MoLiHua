@@ -23,20 +23,23 @@ spring.rabbitmq.password=密码
 
 ```
 // 接收消息
-public class XxxxMessageReceiver implements MessageReceiver<XXXX> {
-    ...
-}
+@Component
+public class SampleMessageReceiver implements MessageReceiver<Sample> {
+ 
+    @Override
+    public Class<Sample> getType() {
+        return Sample.class;
+    }
 
-// 发送消息
-public class Xxxx {
-    @Autowired
-    private SendMessageService sendMessageService;
-    
-    public xxxx xxxx(...) {
-        ...
-        // 发送类别是 sample 的消息
-        sendMessageService.send("sample", null, message);
+    @Override
+    public void receive(Sample sample) {
         ...
     }
 }
+
+// 发送消息
+SendMessageService sendMessageService = ...
+Object message = ...
+sendMessageService.send("sample", null, message);
+
 ```
