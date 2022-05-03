@@ -18,7 +18,7 @@ spring.datasource.read.password=密码
 ```
 // 在控制器方法上加上该注解则表明该方法是只读模式
 @ReadOnly
-public XXXX XXXX(...) {
+public String sample(...) {
     ...
 }
 ```

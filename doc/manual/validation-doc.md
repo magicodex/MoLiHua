@@ -1,11 +1,11 @@
 # 示例
 
 ```
-// 以下是 SpringMVC 校验数据
-public XXXX XXXX(..., Errors errors, ...) {
+// 以下是使用 SpringMVC 校验参数
+public String sample(..., Errors errors, ...) {
     ValidationHelper helper = ValidationHelper.create(errors);
-    helper.field("param1", "").rejectIfEmpty();
-    
+    // 参数 param1 不能为空
+    helper.field("param1").rejectIfEmpty();
     ...
 }
 ```
