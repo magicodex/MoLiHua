@@ -24,6 +24,8 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
     private static final String PARAM_USER_ID = "userId";
     /** 消息接收者 bean 的名称后缀 */
     private static final String RECEIVER_BEAN_SUFFIX = "MessageReceiver";
+    /** 请求头分隔符 */
+    private static final String HEADER_SEPARATOR_SYMBOL = ":";
 
     public DefaultReceiveMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
@@ -66,7 +68,7 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
 
         // 初始安全上下文
         if (QStringUtil.isNotEmpty(subject)) {
-            if (subject.startsWith(PARAM_USER_ID + ":")) {
+            if (subject.startsWith(PARAM_USER_ID + HEADER_SEPARATOR_SYMBOL)) {
                 String userIdStr = subject.substring(7);
                 Long userId = QObjectUtil.parseLong(userIdStr);
 

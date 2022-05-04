@@ -18,6 +18,10 @@ import java.time.ZonedDateTime;
  * @author mh.z
  */
 public class CsvToObject<T> extends CsvToBean<T> {
+    private static final String TRUE_TEXT = "true";
+    private static final String FALSE_TEXT = "false";
+    private static final String TRUE_VALUE = "1";
+    private static final String FALSE_VALUE = "0";
 
     @Override
     protected Object convertValue(String value, PropertyDescriptor prop) throws ReflectiveOperationException {
@@ -50,9 +54,9 @@ public class CsvToObject<T> extends CsvToBean<T> {
     protected Boolean toBoolean(String value) {
         Boolean result = null;
 
-        if ("1".equals(value) || "true".equals(value)) {
+        if (TRUE_VALUE.equals(value) || TRUE_TEXT.equals(value)) {
             result = Boolean.TRUE;
-        } else if ("0".equals(value) || "false".equals(value)) {
+        } else if (FALSE_VALUE.equals(value) || FALSE_TEXT.equals(value)) {
             result = Boolean.FALSE;
         }
 
