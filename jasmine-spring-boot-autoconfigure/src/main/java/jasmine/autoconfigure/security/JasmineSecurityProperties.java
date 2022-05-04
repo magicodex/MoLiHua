@@ -14,8 +14,8 @@ public class JasmineSecurityProperties {
     /** 注销相关配置 */
     private Logout logout = new Logout();
 
-    /** 静态资源 */
-    private String[] staticLocations = new String[]{"/static/**"};
+    /** 公开资源 */
+    private String[] publicLocations = new String[]{"/static/**"};
 
 
     public Authorization getAuthorization() {
@@ -42,12 +42,12 @@ public class JasmineSecurityProperties {
         this.logout = logout;
     }
 
-    public String[] getStaticLocations() {
-        return staticLocations;
+    public String[] getPublicLocations() {
+        return publicLocations;
     }
 
-    public void setStaticLocations(String[] staticLocations) {
-        this.staticLocations = staticLocations;
+    public void setPublicLocations(String[] publicLocations) {
+        this.publicLocations = publicLocations;
     }
 
     /**

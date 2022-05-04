@@ -84,8 +84,8 @@ jasmine:
     authorization:
       # 访问策略
       strategy: default
-    # 静态资源
-    staticLocations: /static/**,/swagger-ui/**
+    # 公开资源
+    publicLocations: /static/**,/swagger-ui/**
 
 app:
   message-queue:

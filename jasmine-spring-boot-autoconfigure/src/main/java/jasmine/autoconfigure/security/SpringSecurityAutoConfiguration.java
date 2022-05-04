@@ -36,8 +36,8 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                // 允许所有人访问静态目录 /static/
-                .antMatchers(securityProperties.getStaticLocations())
+                // 允许所有人访问公开资源
+                .antMatchers(securityProperties.getPublicLocations())
                 .permitAll()
                 // 没有特别说明的其它请求由访问决策管理器决定能否访问
                 .anyRequest()
