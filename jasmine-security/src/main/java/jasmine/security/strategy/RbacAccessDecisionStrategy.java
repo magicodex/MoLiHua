@@ -4,6 +4,7 @@ import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.QStringUtil;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.constant.SecurityConstants;
@@ -49,7 +50,7 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy, InitS
         }
 
         // 获取请求对应的资源
-        String requestMethod = request.getMethod();
+        String requestMethod = QStringUtil.orEmpty(request.getMethod());
         SecResourceBaseInfoDTO resource = rbacQueryService.queryResourceByRequest(requestMethod, urlPattern);
         if (resource == null) {
             return false;
