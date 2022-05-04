@@ -24,6 +24,8 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy, InitS
     private RbacQueryService rbacQueryService;
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
+    private static final String SLASH_SYMBOL = "/";
+
     public RbacAccessDecisionStrategy(RbacQueryService rbacQueryService) {
         this.rbacQueryService = rbacQueryService;
     }
@@ -39,7 +41,7 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy, InitS
         QCheckUtil.notNull(request, "request null");
         String servletPath = request.getServletPath();
 
-        if (servletPath.isEmpty() || servletPath.equals("/")) {
+        if (servletPath.isEmpty() || servletPath.equals(SLASH_SYMBOL)) {
             return true;
         }
 

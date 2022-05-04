@@ -11,6 +11,8 @@ public interface FunctionWithoutResult {
 
     /**
      * 调用
+     *
+     * @throws Throwable
      */
     void call() throws Throwable;
 }

@@ -89,6 +89,7 @@ public abstract class AbstractSendMessageService implements SendMessageService {
      * @param category
      * @param key
      * @param content
+     * @return
      */
     protected abstract SendInvocationInfo doSend(SendInterceptor interceptor,
                                                  String category, String key, Object content);

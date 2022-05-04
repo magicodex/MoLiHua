@@ -16,7 +16,7 @@ public interface TestDataLoader {
     /**
      * 初始
      *
-     * @param
+     * @param applicationContext
      * @param type
      */
     void init(ApplicationContext applicationContext, Class<?> type);

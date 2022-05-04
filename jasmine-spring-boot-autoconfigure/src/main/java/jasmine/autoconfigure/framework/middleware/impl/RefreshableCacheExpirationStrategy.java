@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.framework.middleware.impl;
 
 import jasmine.autoconfigure.framework.middleware.CacheProperties;
+import jasmine.core.util.QObjectUtil;
 import jasmine.framework.cache.CacheExpirationStrategy;
 
 /**
@@ -8,6 +9,9 @@ import jasmine.framework.cache.CacheExpirationStrategy;
  */
 public class RefreshableCacheExpirationStrategy implements CacheExpirationStrategy {
     private CacheProperties cacheProperties;
+
+    /** 默认过期时间 */
+    private static final long DEFAULT_TIMEOUT = 3600;
 
     public RefreshableCacheExpirationStrategy(CacheProperties cacheProperties) {
         this.cacheProperties = cacheProperties;
@@ -25,7 +29,7 @@ public class RefreshableCacheExpirationStrategy implements CacheExpirationStrate
             timeout = cacheProperties.getDefaultTimeout();
         }
 
-        return timeout;
+        return QObjectUtil.defaultIfNull(timeout, DEFAULT_TIMEOUT);
     }
 
 }

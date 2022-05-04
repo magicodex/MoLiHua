@@ -13,6 +13,7 @@ public interface UserSubjectDetailsService extends UserDetailsService {
      *
      * @param userId
      * @return
+     * @throws UsernameNotFoundException
      */
     UserSubject loadUserByUserId(Long userId) throws UsernameNotFoundException;
 }

@@ -15,6 +15,8 @@ public interface DistributedDeclaredLock {
      * 先加锁后执行
      *
      * @param callback
+     * @param <T>
+     * @return
      */
     <T> T lock(@Nonnull DistributedLockCallback callback);
 
@@ -23,6 +25,8 @@ public interface DistributedDeclaredLock {
      *
      * @param waitTime
      * @param callback
+     * @param <T>
+     * @return
      */
     <T> T lock(long waitTime, @Nonnull DistributedLockCallback callback);
 }

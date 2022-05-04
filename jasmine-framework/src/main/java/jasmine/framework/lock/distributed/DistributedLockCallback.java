@@ -11,6 +11,9 @@ public interface DistributedLockCallback<T> {
 
     /**
      * 调用加锁后的逻辑
+     *
+     * @return
+     * @throws Throwable
      */
     T call() throws Throwable;
 }

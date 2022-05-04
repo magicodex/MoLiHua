@@ -89,6 +89,7 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
      * @param interceptor
      * @param category
      * @param message
+     * @return
      */
     protected abstract ReceiveInvocationInfo doReceive(ReceiveInterceptor interceptor, String category, T message);
 
