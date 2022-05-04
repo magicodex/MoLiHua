@@ -2,6 +2,7 @@ package jasmine.framework.i18n;
 
 
 import jasmine.core.i18n.DeclareI18N;
+import jasmine.core.i18n.I18nConstants;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QErrorUtil;
 import org.springframework.core.io.Resource;
@@ -89,7 +90,7 @@ public class DeclareI18nScanUtil {
                 String key = (String) field.get(null);
                 String value = annotation.value();
 
-                if (key != null && key.startsWith("$")) {
+                if (key != null && key.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
                     key = key.substring(1);
                 }
 

@@ -1,5 +1,6 @@
 package jasmine.core.exception;
 
+import jasmine.core.i18n.I18nConstants;
 import jasmine.core.util.QI18nUtil;
 import jasmine.core.util.QStringUtil;
 
@@ -15,9 +16,6 @@ public class ApplicationException extends RuntimeException {
     protected String errorCode;
     /** 错误详情  */
     protected String errorDetail;
-
-    /** 多语言key前缀 */
-    private static final String I18N_MESSAGE_KEY_PREFIX = "$";
 
     public ApplicationException() {
         //
@@ -73,7 +71,7 @@ public class ApplicationException extends RuntimeException {
             return null;
         }
 
-        if (!messageOrKey.startsWith(I18N_MESSAGE_KEY_PREFIX)) {
+        if (!messageOrKey.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
             if (args.length > 0) {
                 returnErrorMessage = String.format(messageOrKey, args);
             } else {

@@ -1,5 +1,6 @@
 package jasmine.core.testdependency;
 
+import jasmine.core.i18n.I18nConstants;
 import jasmine.core.i18n.LocaleMessageProvider;
 
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class MockLocaleMessageProvider implements LocaleMessageProvider {
         String message = null;
 
         if (messageKey != null) {
-            if (messageKey.startsWith("$")) {
+            if (messageKey.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
                 messageKey = messageKey.substring(1);
             }
 
