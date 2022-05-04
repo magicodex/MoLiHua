@@ -6,6 +6,7 @@ import jasmine.security.rbac.model.SecResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.util.ServletRequestPathUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +27,7 @@ public class SecurityResourceUtil {
 
         // 计算请求的最佳匹配模式
         try {
+            ServletRequestPathUtils.parseAndCache(request);
             handlerMapping.getHandler(request);
         } catch (Exception e) {
             logger.warn("HandlerMapping.getHandler failed", e);
