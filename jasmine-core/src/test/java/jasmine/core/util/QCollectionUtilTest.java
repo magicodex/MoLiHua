@@ -82,7 +82,7 @@ public class QCollectionUtilTest {
     }
 
     @Test
-    public void testCastToList() {
+    public void testToList() {
         {
             Collection<?> collection = QCollectionUtil.toList(new ArrayList<>());
             Assert.assertTrue(collection instanceof List);
