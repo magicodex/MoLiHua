@@ -61,7 +61,7 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
 
     @Override
     public int deleteByIds(Collection<? extends Serializable> ids) {
-        return BaseMapperHelper.deleteByIds(baseMapper, ids);
+        return baseMapper.deleteBatchIds(ids);
     }
 
     @Override
