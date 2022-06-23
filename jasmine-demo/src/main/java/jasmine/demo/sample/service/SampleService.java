@@ -79,7 +79,7 @@ public class SampleService {
         }
 
         QMapperUtil.mapFields(updateDTO, samplePO);
-        BaseMapperHelper.strictUpdateById(sampleMapper, samplePO);
+        BaseMapperHelper.updateById(sampleMapper, samplePO, true);
 
         return QMapperUtil.mapTo(samplePO, SampleDTO.class);
     }

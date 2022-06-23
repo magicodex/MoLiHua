@@ -12,4 +12,7 @@ public interface CommonMessages {
 
     @DeclareI18N("删除出错")
     String DELETE_ROW_COUNT_MISMATCH = "$jasmine.mybatisPlus.deleteRowCountMismatch";
+
+    @DeclareI18N("查询出错")
+    String SELECT_ROW_COUNT_MISMATCH = "$jasmine.mybatisPlus.selectRowCountMismatch";
 }

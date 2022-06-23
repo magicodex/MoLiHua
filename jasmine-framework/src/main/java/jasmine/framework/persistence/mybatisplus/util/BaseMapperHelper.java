@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
+import jasmine.core.util.QObjectUtil;
 import jasmine.core.util.batch.BatchCallUtil;
+import jasmine.core.util.number.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.logging.Log;
@@ -15,7 +17,9 @@ import org.apache.ibatis.logging.LogFactory;
 import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -27,6 +31,22 @@ import java.util.Set;
  */
 public class BaseMapperHelper {
     private static final Log log = LogFactory.getLog(BaseMapperHelper.class);
+
+    /**
+     * 保存记录
+     *
+     * @param baseMapper
+     * @param entity
+     * @param <T>
+     * @return
+     */
+    public static <T> int save(@Nonnull BaseMapper<T> baseMapper,
+                               @Nonnull T entity) {
+        QCheckUtil.notNull(baseMapper, "baseMapper null");
+        QCheckUtil.notNull(entity, "entity null");
+
+        return baseMapper.insert(entity);
+    }
 
     /**
      * 批量保存记录
@@ -59,20 +79,21 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 更新记录并检查是否更新成功
+     * 更新记录
      *
      * @param baseMapper
      * @param entity
+     * @param strict
      * @param <T>
      * @return
      */
-    public static <T> int strictUpdateById(@Nonnull BaseMapper<T> baseMapper,
-                                           @Nonnull T entity) {
+    public static <T> int updateById(@Nonnull BaseMapper<T> baseMapper,
+                                     @Nonnull T entity, boolean strict) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
         QCheckUtil.notNull(entity, "entity null");
 
         int rowCount = baseMapper.updateById(entity);
-        if (rowCount != 1) {
+        if (strict && rowCount != 1) {
             throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
         }
 
@@ -80,15 +101,16 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 更新记录并检查是否更新成功
+     * 批量更新记录
      *
      * @param baseMapper
      * @param entities
+     * @param strict
      * @param <T>
      * @return
      */
-    public static <T> int strictUpdateBatchById(@Nonnull BaseMapper<T> baseMapper,
-                                                @Nonnull Collection<T> entities) {
+    public static <T> int updateBatchById(@Nonnull BaseMapper<T> baseMapper,
+                                          @Nonnull Collection<T> entities, boolean strict) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
         QCheckUtil.notNull(entities, "entities null");
 
@@ -96,28 +118,29 @@ public class BaseMapperHelper {
             return 0;
         }
 
+        LongValue rowCount = new LongValue(0);
         entities.forEach((entity) -> {
-            strictUpdateById(baseMapper, entity);
+            rowCount.add(updateById(baseMapper, entity, strict));
         });
 
-        return entities.size();
+        return (int) rowCount.get();
     }
 
     /**
-     * 删除记录并检查是否删除成功
+     * 删除记录
      *
      * @param baseMapper
      * @param id
+     * @param strict
      * @param <T>
      * @return
      */
-    public static <T> int strictDeleteById(@Nonnull BaseMapper<T> baseMapper,
-                                           @Nonnull Serializable id) {
+    public static <T> int deleteById(@Nonnull BaseMapper<T> baseMapper,
+                                     @Nonnull Serializable id, boolean strict) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(id, "id null");
 
         int rowCount = baseMapper.deleteById(id);
-        if (rowCount != 1) {
+        if (strict && rowCount != 1) {
             throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH);
         }
 
@@ -125,15 +148,17 @@ public class BaseMapperHelper {
     }
 
     /**
-     * 删除记录并检查是否删除成功
+     * 批量删除记录
      *
      * @param baseMapper
      * @param ids
+     * @param strict
      * @param <T>
      * @return
      */
-    public static <T> int strictDeleteByIds(@Nonnull BaseMapper<T> baseMapper,
-                                            @Nonnull Collection<? extends Serializable> ids) {
+    public static <T> int deleteByIds(@Nonnull BaseMapper<T> baseMapper,
+                                      @Nonnull Collection<? extends Serializable> ids,
+                                      boolean strict) {
         QCheckUtil.notNull(baseMapper, "baseMapper null");
         QCheckUtil.notNull(ids, "ids null");
 
@@ -142,15 +167,68 @@ public class BaseMapperHelper {
         }
 
         Set<? extends Serializable> idSet = new HashSet<>(ids);
+        LongValue rowCount = new LongValue(0);
         // 分批删除记录
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             int deleteTotal = baseMapper.deleteBatchIds(partialIds);
-            if (deleteTotal != partialIds.size()) {
+            if (strict && deleteTotal != partialIds.size()) {
                 throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH);
             }
+
+            rowCount.add(deleteTotal);
         });
 
-        return idSet.size();
+        return (int) rowCount.get();
+    }
+
+    /**
+     * 查询记录
+     *
+     * @param baseMapper
+     * @param id
+     * @param strict
+     * @param <T>
+     * @return
+     */
+    public static <T> T getById(@Nonnull BaseMapper<T> baseMapper,
+                                @Nonnull Serializable id, boolean strict) {
+        QCheckUtil.notNull(baseMapper, "baseMapper null");
+
+        T entity = baseMapper.selectById(id);
+        if (strict && entity == null) {
+            throw new ApplicationException(CommonMessages.SELECT_ROW_COUNT_MISMATCH);
+        }
+
+        return entity;
+    }
+
+    /**
+     * 批量查询记录
+     *
+     * @param baseMapper
+     * @param ids
+     * @param strict
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> listByIds(@Nonnull BaseMapper<T> baseMapper,
+                                        @Nonnull Collection<? extends Serializable> ids,
+                                        boolean strict) {
+        QCheckUtil.notNull(baseMapper, "baseMapper null");
+        QCheckUtil.notNull(ids, "ids null");
+
+        if (ids.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        Set<? extends Serializable> idSet = new HashSet<>(ids);
+        List<T> entityList = baseMapper.selectBatchIds(idSet);
+
+        if (strict && QObjectUtil.notEqual(idSet.size(), entityList.size())) {
+            throw new ApplicationException(CommonMessages.SELECT_ROW_COUNT_MISMATCH);
+        }
+
+        return entityList;
     }
 
 }
