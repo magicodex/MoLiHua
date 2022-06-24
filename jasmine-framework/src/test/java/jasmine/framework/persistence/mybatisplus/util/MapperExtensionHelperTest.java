@@ -17,7 +17,7 @@ import java.util.List;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class BaseMapperHelperTest extends FrameworkTestContext {
+public class MapperExtensionHelperTest extends FrameworkTestContext {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
 
@@ -27,7 +27,7 @@ public class BaseMapperHelperTest extends FrameworkTestContext {
         list.add(createEntity("code1", "name1", "attr1"));
         list.add(createEntity("code2", "name2", "attr2"));
 
-        BaseMapperHelper.saveBatch(testEntity1Mapper, list);
+        MapperExtensionHelper.saveBatch(testEntity1Mapper, list);
     }
 
     @Test
@@ -39,13 +39,13 @@ public class BaseMapperHelperTest extends FrameworkTestContext {
         // 版本不对无法更新
         Assert.assertThrows(RuntimeException.class, () -> {
             entity.setVersionNumber(versionNumber + 1);
-            BaseMapperHelper.updateById(testEntity1Mapper, entity, true);
+            MapperExtensionHelper.updateById(testEntity1Mapper, entity, true);
         });
 
         // 版本正确可以更新
         {
             entity.setVersionNumber(versionNumber);
-            BaseMapperHelper.updateById(testEntity1Mapper, entity, true);
+            MapperExtensionHelper.updateById(testEntity1Mapper, entity, true);
         }
     }
 
@@ -60,13 +60,13 @@ public class BaseMapperHelperTest extends FrameworkTestContext {
         // 部分版本不对无法更新
         Assert.assertThrows(RuntimeException.class, () -> {
             entity2.setVersionNumber(versionNumber2 + 1);
-            BaseMapperHelper.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
+            MapperExtensionHelper.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
         });
 
         // 全部版本正确才能更新
         {
             entity2.setVersionNumber(versionNumber2);
-            BaseMapperHelper.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
+            MapperExtensionHelper.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
         }
     }
 
@@ -77,12 +77,12 @@ public class BaseMapperHelperTest extends FrameworkTestContext {
 
         // 删除不存在的记录会报错
         Assert.assertThrows(RuntimeException.class, () -> {
-            BaseMapperHelper.deleteById(testEntity1Mapper, -1, true);
+            MapperExtensionHelper.deleteById(testEntity1Mapper, -1, true);
         });
 
         // 删除存在的记录
         {
-            BaseMapperHelper.deleteById(testEntity1Mapper, entity1.getId(), true);
+            MapperExtensionHelper.deleteById(testEntity1Mapper, entity1.getId(), true);
         }
     }
 
@@ -98,13 +98,13 @@ public class BaseMapperHelperTest extends FrameworkTestContext {
         // 删除不存在的记录会报错
         Assert.assertThrows(RuntimeException.class, () -> {
             List<Long> idList = Arrays.asList(-1L, entity1.getId());
-            BaseMapperHelper.deleteByIds(testEntity1Mapper, idList, true);
+            MapperExtensionHelper.deleteByIds(testEntity1Mapper, idList, true);
         });
 
         // 删除的所有记录都存在
         {
             List<Long> idList = Arrays.asList(entity2.getId(), entity3.getId());
-            BaseMapperHelper.deleteByIds(testEntity1Mapper, idList, true);
+            MapperExtensionHelper.deleteByIds(testEntity1Mapper, idList, true);
         }
     }
 

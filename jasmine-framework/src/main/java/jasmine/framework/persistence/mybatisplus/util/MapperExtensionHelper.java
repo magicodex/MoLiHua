@@ -29,8 +29,8 @@ import java.util.Set;
  *
  * @author mh.z
  */
-public class BaseMapperHelper {
-    private static final Log log = LogFactory.getLog(BaseMapperHelper.class);
+public class MapperExtensionHelper {
+    private static final Log log = LogFactory.getLog(MapperExtensionHelper.class);
 
     /**
      * 保存记录

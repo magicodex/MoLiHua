@@ -15,6 +15,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -191,16 +192,23 @@ public class I18nCRUD {
             return Collections.emptyList();
         }
 
-        Map<String, Object> paramMap = QNewUtil.map();
-        // 多语言表
-        paramMap.put(PARAM_TABLE, tableName);
-        // 记录ID
-        paramMap.put(PARAM_IDS, ids);
-        // 语言代码
-        paramMap.put(PARAM_LANG_CODE, langCode);
+        Set<? extends Serializable> idSet = new HashSet<>(ids);
+        List<Map> mapList = new ArrayList<>();
 
-        // 查询多语言记录
-        List<Map> mapList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
+        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
+            Map<String, Object> paramMap = QNewUtil.map();
+            // 多语言表
+            paramMap.put(PARAM_TABLE, tableName);
+            // 记录ID
+            paramMap.put(PARAM_IDS, partialIds);
+            // 语言代码
+            paramMap.put(PARAM_LANG_CODE, langCode);
+
+            // 查询多语言记录
+            List<Map> newList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
+            mapList.addAll(newList);
+        });
+
         if (QCollUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
@@ -225,16 +233,23 @@ public class I18nCRUD {
             return Collections.emptyList();
         }
 
-        Map<String, Object> paramMap = QNewUtil.map();
-        // 多语言表
-        paramMap.put(PARAM_TABLE, tableName);
-        // 记录ID
-        paramMap.put(PARAM_IDS, ids);
-        // 默认标志
-        paramMap.put(PARAM_DEFAULT_FLAG, true);
+        Set<? extends Serializable> idSet = new HashSet<>(ids);
+        List<Map> mapList = new ArrayList<>();
 
-        // 查询多语言记录
-        List<Map> mapList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
+        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
+            Map<String, Object> paramMap = QNewUtil.map();
+            // 多语言表
+            paramMap.put(PARAM_TABLE, tableName);
+            // 记录ID
+            paramMap.put(PARAM_IDS, partialIds);
+            // 默认标志
+            paramMap.put(PARAM_DEFAULT_FLAG, true);
+
+            // 查询多语言记录
+            List<Map> newList = sqlSession.selectList(STATEMENT_SELECT, paramMap);
+            mapList.addAll(newList);
+        });
+
         if (QCollUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
