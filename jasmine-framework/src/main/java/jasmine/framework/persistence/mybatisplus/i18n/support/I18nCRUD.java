@@ -171,7 +171,8 @@ public class I18nCRUD {
             // 语言代码
             paramMap.put(PARAM_LANG_CODE, langCode);
 
-            rowCount.add(sqlSession.delete(STATEMENT_DELETE, paramMap));
+            int result = sqlSession.delete(STATEMENT_DELETE, paramMap);
+            rowCount.add(result);
         });
 
         return (int) rowCount.get();
