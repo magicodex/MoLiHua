@@ -1,4 +1,4 @@
-package jasmine.framework.mock.common;
+package jasmine.mock.framework.common;
 
 import jasmine.framework.common.security.CryptoProvider;
 

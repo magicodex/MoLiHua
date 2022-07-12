@@ -1,4 +1,4 @@
-package jasmine.framework.mock.concurrent;
+package jasmine.mock.framework.concurrent;
 
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QErrorUtil;
