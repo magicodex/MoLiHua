@@ -16,6 +16,7 @@ import org.apache.ibatis.logging.LogFactory;
 
 import javax.annotation.Nonnull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -222,7 +223,12 @@ public class MapperExtensionHelper {
         }
 
         Set<? extends Serializable> idSet = new HashSet<>(ids);
-        List<T> entityList = baseMapper.selectBatchIds(idSet);
+        List<T> entityList = new ArrayList<>();
+
+        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
+            List<T> newList = baseMapper.selectBatchIds(partialIds);
+            entityList.addAll(newList);
+        });
 
         if (strict && QObjectUtil.notEqual(idSet.size(), entityList.size())) {
             throw new ApplicationException(CommonMessages.SELECT_ROW_COUNT_MISMATCH);
