@@ -6,7 +6,7 @@ org.redisson.spring.starter.RedissonProperties。
 # 示例
 
 ```
-// 使用注解 @DistributedLock 加锁
+// 使用注解 @DistributedLock 加锁，属性 key 使用 SpEL表达式。
 @DistributedLock(category = "USER", key = "#user.id")
 public void updateUser(User user) {
   ...

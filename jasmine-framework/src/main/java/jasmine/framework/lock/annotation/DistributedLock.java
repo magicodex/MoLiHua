@@ -22,7 +22,7 @@ public @interface DistributedLock {
     String category();
 
     /**
-     * 锁key
+     * 锁key，SpEL表达式
      *
      * @return
      */

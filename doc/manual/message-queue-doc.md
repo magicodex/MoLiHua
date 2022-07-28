@@ -68,7 +68,7 @@ public class ConsumerConfig {
 # 示例
 
 ```
-// 接收消息
+// 接收消息，要求 bean 名是 MessageReceiver 作为后缀
 @Component
 public class SampleMessageReceiver implements MessageReceiver<Sample> {
  
