@@ -129,4 +129,13 @@ public class WebResult<T> {
         return entity;
     }
 
+    /**
+     * 转换成 ResponseEntity 对象
+     *
+     * @return
+     */
+    public ResponseEntity<WebResult<T>> toOkEntity() {
+        return ResponseEntity.ok(this);
+    }
+
 }

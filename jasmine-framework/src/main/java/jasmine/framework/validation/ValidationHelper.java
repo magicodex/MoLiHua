@@ -116,4 +116,18 @@ public class ValidationHelper {
         return result.toEntity();
     }
 
+    /**
+     * 转换成 ResponseEntity 对象
+     *
+     * @param <T>
+     * @return
+     */
+    public <T> ResponseEntity<WebResult<T>> toOkEntity() {
+        WebResult<T> result = WebResult.error(ValidationException.DEFAULT_ERROR_CODE, "validate failed");
+        Collection<ObjectError> allErrors = getAllErrors();
+        result.setErrorDetail(ValidationException.buildErrorDetail(allErrors));
+
+        return result.toOkEntity();
+    }
+
 }
