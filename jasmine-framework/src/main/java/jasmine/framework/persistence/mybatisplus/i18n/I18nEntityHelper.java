@@ -6,12 +6,14 @@ import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
+import jasmine.framework.persistence.mybatisplus.i18n.support.PopulateFunction;
 
 import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * @author mh.z
@@ -169,6 +171,36 @@ public class I18nEntityHelper {
         }
 
         List<T> recordList = i18nFacade.populateI18n(Collections.singletonList(entity));
+
+        return QCollectionUtil.getFirst(recordList);
+    }
+
+    /**
+     * 填充多语言
+     *
+     * @param target
+     * @param entityType
+     * @param keyMapper
+     * @param populateFunction
+     * @param <T>
+     * @param <E>
+     * @return
+     */
+    public static <T, E extends BaseI18nEntity> T populateI18n(@Nonnull T target, @Nonnull Class<E> entityType,
+                                                               @Nonnull Function<T, Serializable> keyMapper,
+                                                               @Nonnull PopulateFunction<T, E> populateFunction) {
+        QCheckUtil.notNull(target, "target null");
+        QCheckUtil.notNull(entityType, "entityType null");
+        QCheckUtil.notNull(keyMapper, "keyMapper null");
+        QCheckUtil.notNull(populateFunction, "populateFunction null");
+
+        if (i18nFacade == null) {
+            return target;
+        }
+
+        List<T> recordList = i18nFacade.populateI18n(Collections.singletonList(target),
+                entityType, keyMapper, populateFunction);
+
         return QCollectionUtil.getFirst(recordList);
     }
 
@@ -192,6 +224,33 @@ public class I18nEntityHelper {
     /**
      * 填充多语言
      *
+     * @param targets
+     * @param entityType
+     * @param keyMapper
+     * @param populateFunction
+     * @param <T>
+     * @param <E>
+     * @return
+     */
+    public static <T, E extends BaseI18nEntity> List<T> populateI18n(@Nonnull Collection<T> targets,
+                                                                     @Nonnull Class<E> entityType,
+                                                                     @Nonnull Function<T, Serializable> keyMapper,
+                                                                     @Nonnull PopulateFunction<T, E> populateFunction) {
+        QCheckUtil.notNull(targets, "targets null");
+        QCheckUtil.notNull(entityType, "entityType null");
+        QCheckUtil.notNull(keyMapper, "keyMapper null");
+        QCheckUtil.notNull(populateFunction, "populateFunction null");
+
+        if (i18nFacade == null) {
+            return QCollUtil.toList(targets);
+        }
+
+        return i18nFacade.populateI18n(targets, entityType, keyMapper, populateFunction);
+    }
+
+    /**
+     * 填充多语言
+     *
      * @param page
      * @param <T>
      * @return
@@ -206,6 +265,39 @@ public class I18nEntityHelper {
         List<T> recordList = page.getRecords();
         if (QCollectionUtil.isNotEmpty(recordList)) {
             recordList = i18nFacade.populateI18n(recordList);
+            page.setRecords(recordList);
+        }
+
+        return page;
+    }
+
+    /**
+     * 填充多语言
+     *
+     * @param page
+     * @param entityType
+     * @param keyMapper
+     * @param populateFunction
+     * @param <T>
+     * @param <E>
+     * @return
+     */
+    public static <T, E extends BaseI18nEntity> IPage<T> populateI18n(@Nonnull IPage<T> page,
+                                                                      @Nonnull Class<E> entityType,
+                                                                      @Nonnull Function<T, Serializable> keyMapper,
+                                                                      @Nonnull PopulateFunction<T, E> populateFunction) {
+        QCheckUtil.notNull(page, "page null");
+        QCheckUtil.notNull(entityType, "entityType null");
+        QCheckUtil.notNull(keyMapper, "keyMapper null");
+        QCheckUtil.notNull(populateFunction, "populateFunction null");
+
+        if (i18nFacade == null) {
+            return page;
+        }
+
+        List<T> recordList = page.getRecords();
+        if (QCollectionUtil.isNotEmpty(recordList)) {
+            recordList = i18nFacade.populateI18n(recordList, entityType, keyMapper, populateFunction);
             page.setRecords(recordList);
         }
 

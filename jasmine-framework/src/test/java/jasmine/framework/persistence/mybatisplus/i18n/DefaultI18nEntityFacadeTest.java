@@ -2,7 +2,7 @@ package jasmine.framework.persistence.mybatisplus.i18n;
 
 import jasmine.core.util.QCollUtil;
 import jasmine.framework.common.constant.LangConstants;
-import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCRUD;
+import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCrud;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nMeta;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nRecord;
 import jasmine.framework.persistence.mybatisplus.testdependency.entity.TestEntity1;
@@ -166,7 +166,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
      * @param id
      */
     private void initI18n(Long id) {
-        I18nCRUD crud = new I18nCRUD(sqlSessionTemplate, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSessionTemplate, I18N_TABLE);
 
         {
             Map<String, String> data = new HashMap<>() {{
@@ -194,7 +194,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
      * @return
      */
     private List<I18nRecord> selectI18n(Collection<Long> ids, String langCode) {
-        I18nCRUD crud = new I18nCRUD(sqlSessionTemplate, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSessionTemplate, I18N_TABLE);
 
         return crud.select(ids, langCode);
     }

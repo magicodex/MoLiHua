@@ -27,7 +27,7 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testInsert() {
-        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
 
         Map<String, String> data = new HashMap<>() {{
             put("name_1", "名称1");
@@ -51,7 +51,7 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testUpdate() {
-        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
         initI18n(1L);
 
         Map<String, String> data = new HashMap<>() {{
@@ -87,7 +87,7 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testDelete() {
-        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
         initI18n(1L);
 
         {
@@ -109,7 +109,7 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testSelect() {
-        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
         initI18n(1L);
 
         {
@@ -125,7 +125,7 @@ public class I18nCrudTest extends FrameworkTestContext {
 
     @Test
     public void testSelectDefault() {
-        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
         initI18n(1L);
 
         List<I18nRecord> recordList = crud.selectDefault(Collections.singletonList(1L));
@@ -141,7 +141,7 @@ public class I18nCrudTest extends FrameworkTestContext {
      * @param id
      */
     private void initI18n(Long id) {
-        I18nCRUD crud = new I18nCRUD(sqlSession, I18N_TABLE);
+        I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
 
         {
             Map<String, String> data = new HashMap<>() {{
@@ -172,12 +172,12 @@ public class I18nCrudTest extends FrameworkTestContext {
      */
     private List<I18nRecord> selectI18n(Collection<Long> ids, String langCode) {
         Object parameter = new HashMap<>() {{
-            put(I18nCRUD.PARAM_TABLE, I18N_TABLE);
-            put(I18nCRUD.PARAM_IDS, ids);
-            put(I18nCRUD.PARAM_LANG_CODE, langCode);
+            put(I18nCrud.PARAM_TABLE, I18N_TABLE);
+            put(I18nCrud.PARAM_IDS, ids);
+            put(I18nCrud.PARAM_LANG_CODE, langCode);
         }};
 
-        List<Map> recordList = sqlSession.selectList(I18nCRUD.STATEMENT_SELECT, parameter);
+        List<Map> recordList = sqlSession.selectList(I18nCrud.STATEMENT_SELECT, parameter);
         List<I18nRecord> i18nRecordList = QCollUtil.mapToList(recordList, (record) -> {
             return new I18nRecord(record);
         });

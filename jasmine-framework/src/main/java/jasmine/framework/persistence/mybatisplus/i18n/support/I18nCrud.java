@@ -31,7 +31,7 @@ import java.util.Set;
  *
  * @author mh.z
  */
-public class I18nCRUD {
+public class I18nCrud {
     private SqlSession sqlSession;
     /** 表名 */
     private String tableName;
@@ -54,7 +54,7 @@ public class I18nCRUD {
     protected static final String PARAM_LAST_UPDATED_BY = "lastUpdatedBy";
     protected static final String PARAM_VERSION_NUMBER = "versionNumber";
 
-    public I18nCRUD(SqlSession sqlSession, String tableName) {
+    public I18nCrud(SqlSession sqlSession, String tableName) {
         this.sqlSession = sqlSession;
         this.tableName = tableName;
     }

@@ -1,10 +1,12 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
 import jasmine.framework.persistence.entity.BaseI18nEntity;
+import jasmine.framework.persistence.mybatisplus.i18n.support.PopulateFunction;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * @author mh.z
@@ -52,6 +54,21 @@ public interface I18nEntityFacade {
      * @return
      */
     <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities);
+
+    /**
+     * 填充多语言记录
+     *
+     * @param targets
+     * @param entityType
+     * @param keyMapper
+     * @param populateFunction
+     * @param <T>
+     * @param <E>
+     * @return
+     */
+    <T, E extends BaseI18nEntity> List<T> populateI18n(Collection<T> targets, Class<E> entityType,
+                                                       Function<T, Serializable> keyMapper,
+                                                       PopulateFunction<T, E> populateFunction);
 
     /**
      * 填充默认多语言记录
