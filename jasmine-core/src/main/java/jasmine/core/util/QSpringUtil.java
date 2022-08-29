@@ -17,6 +17,10 @@ public class QSpringUtil {
         QSpringUtil.runtimeProvider = runtimeProvider;
     }
 
+    public static RuntimeProvider getRuntimeProvider() {
+        return runtimeProvider;
+    }
+
     /**
      * 查找 bean 对象
      *

@@ -27,6 +27,10 @@ public class CurrentSubject {
         return subjectProvider != null;
     }
 
+    public static SubjectProvider getSubjectProvider() {
+        return subjectProvider;
+    }
+
     /**
      * 返回用户ID
      *

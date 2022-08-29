@@ -9,6 +9,13 @@ import org.junit.Test;
 public class QStringUtilTest {
 
     @Test
+    public void testToString() {
+        Assert.assertNull(QStringUtil.toString(null));
+        Assert.assertEquals("1001", QStringUtil.toString(1001));
+        Assert.assertEquals("1001", QStringUtil.toString("1001"));
+    }
+
+    @Test
     public void testOrElse() {
         Assert.assertEquals("value2", QStringUtil.orElse(null, "value2"));
         Assert.assertEquals("", QStringUtil.orElse("", "value2"));
