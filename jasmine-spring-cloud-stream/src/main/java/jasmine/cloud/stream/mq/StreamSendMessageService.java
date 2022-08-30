@@ -1,5 +1,6 @@
 package jasmine.cloud.stream.mq;
 
+import jasmine.cloud.stream.mq.sender.StreamBridgeInvoker;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QStringUtil;
@@ -8,7 +9,6 @@ import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
 import jasmine.framework.remote.mq.impl.interceptor.DefaultSendInvocationInfo;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
 import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
-import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
 
@@ -16,15 +16,16 @@ import org.springframework.messaging.Message;
  * @author mh.z
  */
 public class StreamSendMessageService extends AbstractSendMessageService {
-    private StreamBridge streamBridge;
+    private StreamBridgeInvoker streamBridgeInvoker;
 
     private static final String HEADER_SUBJECT = "subject";
     private static final String PARAM_USER_ID = "userId";
     private static final String MESSAGE_KEY = "messageKey";
     private static final String OUTPUT_PREFIX = "-out-0";
+    private static final String HEADER_SEPARATOR_SYMBOL = ":";
 
-    public StreamSendMessageService(StreamBridge streamBridge) {
-        this.streamBridge = streamBridge;
+    public StreamSendMessageService(StreamBridgeInvoker streamBridgeInvoker) {
+        this.streamBridgeInvoker = streamBridgeInvoker;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class StreamSendMessageService extends AbstractSendMessageService {
 
         // 发送消息
         String bindingName = category + OUTPUT_PREFIX;
-        streamBridge.send(bindingName, message);
+        streamBridgeInvoker.send(bindingName, message);
 
         return invocationInfo;
     }
@@ -63,7 +64,7 @@ public class StreamSendMessageService extends AbstractSendMessageService {
         MessageBuilder builder = MessageBuilder.withPayload(content);
         // 设置安全信息
         String userIdStr = QStringUtil.orEmpty(CurrentSubject.getUserId());
-        builder.setHeader(HEADER_SUBJECT, (PARAM_USER_ID + ":" + userIdStr));
+        builder.setHeader(HEADER_SUBJECT, (PARAM_USER_ID + HEADER_SEPARATOR_SYMBOL + userIdStr));
         // 设置消息ID
         builder.setHeader(MESSAGE_KEY, key);
 

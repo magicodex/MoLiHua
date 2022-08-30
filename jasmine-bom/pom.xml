@@ -26,6 +26,7 @@
         <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
         <orika.version>1.5.4</orika.version>
         <hutool.version>5.6.6</hutool.version>
+        <guava.version>31.1-jre</guava.version>
         <aspectj.version>1.9.7</aspectj.version>
         <jakarta.xml.bind-api.version>2.3.3</jakarta.xml.bind-api.version>
         <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
@@ -38,6 +39,7 @@
         <xxl-job.version>2.3.0</xxl-job.version>
         <!-- 持久层框架 -->
         <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
+        <h2.version>2.1.214</h2.version>
         <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
         <hikari.version>4.0.3</hikari.version>
         <liquibase.version>4.3.5</liquibase.version>
@@ -112,6 +114,11 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
             <!-- XML类库 -->
             <dependency>
@@ -189,6 +196,13 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
             </dependency>
+            <!-- H2数据库驱动 -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+
             <!-- MyBatis-Plus持久层框架 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
