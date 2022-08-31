@@ -15,11 +15,11 @@
 通过命令 mvn test 或其它途径执行单元测试。
 
 备注：目前已经内嵌H2数据库做单元测试，若改用其它数据库做单元测试则可以指定数据库连接参数，
-比如 mvn test -Ddb.driver=com.mysql.cj.jdbc.Driver -Ddb.url=mysql://127.0.0.1:3306/test_jasmine -Ddb.username=root -Ddb.password=123456
+比如 mvn test -Ddb.driver=com.mysql.cj.jdbc.Driver -Ddb.url=jdbc:mysql://127.0.0.1:3306/test_jasmine -Ddb.username=root -Ddb.password=123456
 
 #JDBC驱动，默认org.h2.Driver
 -Ddb.driver= 
-#数据库连接URL，默认h2:mem:test_jasmine;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+#数据库连接URL，默认jdbc:h2:mem:test_jasmine;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
 -Ddb.url=
 #数据库用户名
 -Ddb.username=
