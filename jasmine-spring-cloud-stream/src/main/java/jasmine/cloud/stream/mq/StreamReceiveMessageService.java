@@ -39,7 +39,7 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
         QCheckUtil.notNull(message, "message null");
 
         // 初始安全上下文
-        initContext(message);
+        initCurrentContext(message);
         // 获取消息接收者
         MessageReceiver receiver = getReceiver(category, true);
         // 获取消息内容
@@ -61,7 +61,7 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
      *
      * @param message
      */
-    protected void initContext(Message message) {
+    protected void initCurrentContext(Message message) {
         QCheckUtil.notNull(message, "message null");
         MessageHeaders headers = message.getHeaders();
         String subject = headers.get(HEADER_SUBJECT, String.class);

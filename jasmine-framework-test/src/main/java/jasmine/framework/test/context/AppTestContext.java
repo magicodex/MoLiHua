@@ -18,7 +18,7 @@ public class AppTestContext {
 
     @Before
     public void initOrResetBeforeTest() {
-        CurrentSubject.setSubject(1L, null);
+        CurrentSubject.setSubject(1L, 1L);
     }
 
 }
