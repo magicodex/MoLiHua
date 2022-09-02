@@ -2,8 +2,6 @@ package jasmine.security.support;
 
 import jasmine.framework.context.handler.ContextSnapshot;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * @author mh.z
@@ -15,10 +13,13 @@ public class SecurityContextSnapshot implements ContextSnapshot {
         this.authentication = authentication;
     }
 
+    public Authentication getAuthentication() {
+        return authentication;
+    }
+
     @Override
     public void copyToCurrentThread() {
-        SecurityContext targetSecurityContext = SecurityContextHolder.getContext();
-        targetSecurityContext.setAuthentication(authentication);
+        SecurityContextUtil.setCurrentAuthentication(authentication);
     }
 
 }

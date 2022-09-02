@@ -5,4 +5,5 @@
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <include file="classpath:jasmine/security/SecurityLiquibase.xml"/>
+    <include file="classpath:test/security/rbac/liquibase/securityTestLiquibase.xml"/>
 </databaseChangeLog>

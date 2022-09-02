@@ -17,15 +17,15 @@ public class UserSubjectProviderTest {
                     .thenAnswer((invocationOnMock) -> {
                         Long userId = invocationOnMock.getArgument(0);
 
-                        return new UserSubject(100001L, userId);
+                        return new UserSubject(1L, userId);
                     });
         });
 
         UserSubjectProvider provider = new UserSubjectProvider(service);
-        provider.setCurrentSubject(null, 100100L);
+        provider.setCurrentSubject(null, 100001L);
 
-        Assert.assertEquals(Long.valueOf(100001L), provider.getCurrentTenantId());
-        Assert.assertEquals(Long.valueOf(100100L), provider.getCurrentUserId());
+        Assert.assertEquals(Long.valueOf(1L), provider.getCurrentTenantId());
+        Assert.assertEquals(Long.valueOf(100001L), provider.getCurrentUserId());
     }
 
 }

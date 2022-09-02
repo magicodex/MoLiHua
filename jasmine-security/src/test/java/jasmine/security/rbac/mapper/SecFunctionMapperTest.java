@@ -22,7 +22,7 @@ public class SecFunctionMapperTest extends AppTestContext {
     @Test
     public void testListAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n() {
         List<SecFunctionBaseInfoDTO> actualList = testMapper
-                .listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(Collections.singletonList(100001L));
+                .listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(Collections.singletonList(1L));
 
         Assert.assertNotNull(actualList);
     }
@@ -30,7 +30,7 @@ public class SecFunctionMapperTest extends AppTestContext {
     @Test
     public void testListFunctionBaseInfoDTOsByIdNoI18n() {
         List<SecFunctionBaseInfoDTO> actualList = testMapper
-                .listFunctionBaseInfoDTOsByIdNoI18n(100001L);
+                .listFunctionBaseInfoDTOsByIdNoI18n(1L);
 
         Assert.assertNotNull(actualList);
     }
