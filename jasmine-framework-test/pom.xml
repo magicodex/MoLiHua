@@ -68,6 +68,12 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Mysql数据库驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>compile</scope>
+        </dependency>
         <!-- H2数据库驱动 -->
         <dependency>
             <groupId>com.h2database</groupId>
