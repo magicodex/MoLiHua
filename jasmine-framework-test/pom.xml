@@ -67,6 +67,13 @@
             <artifactId>liquibase-core</artifactId>
             <scope>compile</scope>
         </dependency>
+
+        <!-- H2数据库驱动 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

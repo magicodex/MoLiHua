@@ -1,13 +1,15 @@
-package jasmine.framework.test.testdependency;
+package jasmine.framework.test.testdependency.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.ZonedDateTime;
 
 /**
  * @author mh.z
  */
+@TableName("test_example2")
 public class Example2 extends Example1 {
     @TableId
     private Long key;

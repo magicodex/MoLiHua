@@ -1,13 +1,17 @@
 package jasmine.framework.test.liquibase.loader;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import jasmine.framework.context.SpringRuntimeProvider;
+import jasmine.framework.test.context.AppTestContext;
 import jasmine.framework.test.liquibase.log.TestDataChangeLogMapper;
-import jasmine.framework.test.testdependency.Example1;
-import jasmine.test.mockito.MockUtil;
+import jasmine.framework.test.testdependency.mapper.Example1Mapper;
+import jasmine.framework.test.testdependency.pojo.Example1;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,28 +19,32 @@ import java.io.InputStream;
 /**
  * @author mh.z
  */
-public class DefaultTestDataLoaderTest {
-    private static final String PATH = "/test/framework/test/liquibase/csv/Example1_1.csv";
+@RunWith(SpringRunner.class)
+public class DefaultTestDataLoaderTest extends AppTestContext {
+    @Autowired
+    private TestDataChangeLogMapper logMapper;
+    @Autowired
+    private Example1Mapper exampleMapper;
+
+    private static final String EXAMPLE1_1_PATH = "/test/framework/test/liquibase/csv/Example1_1.csv";
 
     @Test
     public void test() throws IOException {
-        ApplicationContext applicationContext = MockUtil.mock(ApplicationContext.class, (target) -> {
-            Mockito.when(target.getBean(Mockito.anyString())).then((answer) -> {
-                return Mockito.mock(BaseMapper.class);
-            });
-
-            Mockito.when(target.getBean(Mockito.any(Class.class))).then((answer) -> {
-                return Mockito.mock(TestDataChangeLogMapper.class);
-            });
-        });
-
+        ApplicationContext applicationContext = SpringRuntimeProvider.getApplicationContext();
         DefaultTestDataLoader loader = createTestObject();
         loader.init(applicationContext, Example1.class);
 
-        try (InputStream inputStream = getClass().getResourceAsStream(PATH)) {
-            // 加载数据
-            loader.load(PATH, inputStream);
+        try (InputStream inputStream = getClass().getResourceAsStream(EXAMPLE1_1_PATH)) {
+            loader.load(EXAMPLE1_1_PATH, inputStream);
         }
+
+        // 检查日志记录
+        long logTotal = logMapper.selectCount(Wrappers.query());
+        Assert.assertEquals(10L, logTotal);
+
+        // 检查数据记录
+        long dataTotal = exampleMapper.selectCount(Wrappers.query());
+        Assert.assertEquals(10L, dataTotal);
     }
 
     @Test
