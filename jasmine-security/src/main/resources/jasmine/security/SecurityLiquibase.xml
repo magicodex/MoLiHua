@@ -5,6 +5,12 @@
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="jasmine_20220128222301" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_role"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_role" remarks="角色">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_role"/>
@@ -46,6 +52,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222302" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_function"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_function" remarks="功能">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_function"/>
@@ -78,6 +90,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222303" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_permission"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_permission" remarks="权限">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_permission"/>
@@ -110,6 +128,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222304" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_resource"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_resource" remarks="资源">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_resource"/>
@@ -154,6 +178,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222305" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_user_role_rel"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_user_role_rel" remarks="关联用户和角色">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_user_role_rel"/>
@@ -186,6 +216,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222306" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_role_function_rel"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_role_function_rel" remarks="关联角色和功能">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_role_function_rel"/>
@@ -218,6 +254,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222307" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_function_permission_rel"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_function_permission_rel" remarks="关联功能和权限">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_function_perm_rel"/>
@@ -247,6 +289,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222308" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_function_resource_rel"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_function_resource_rel" remarks="关联功能和资源">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_function_resource_rel"/>
@@ -276,6 +324,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222309" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_permission_resource_rel"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_permission_resource_rel" remarks="关联权限和资源">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_permission_res_rel"/>
@@ -305,6 +359,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222310" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_menu_template"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_menu_template" remarks="菜单模板">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_menu_template"/>
@@ -340,6 +400,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222311" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_menu"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_menu" remarks="菜单">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_menu"/>
@@ -387,6 +453,12 @@
     </changeSet>
 
     <changeSet id="jasmine_20220128222312" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_menu_function_rel"/>
+            </not>
+        </preConditions>
+
         <createTable tableName="sec_menu_function_rel" remarks="关联菜单和功能">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_menu_function_rel"/>
