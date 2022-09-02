@@ -51,6 +51,7 @@
 - [权限访问控制](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/security-doc.md)
 - [读写分离](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/read-write-splitting-doc.md)
 - [扩展Mybatis-Plus](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/mybatis-plus-extersnion-doc.md)
+- [单元测试](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/test-doc.md)
 
 ## 集成框架
 

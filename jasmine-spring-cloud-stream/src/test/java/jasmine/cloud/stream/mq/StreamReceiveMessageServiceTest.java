@@ -36,7 +36,7 @@ public class StreamReceiveMessageServiceTest extends AppTestContext {
         MockReceiveInterceptor mockInterceptor = new MockReceiveInterceptor();
 
         Message message = MessageBuilder.withPayload("Hello, world!")
-                .setHeader("subject", "userId:1231")
+                .setHeader("subject", "userId:666666")
                 .build();
 
         StreamReceiveMessageService testService = new StreamReceiveMessageService(mockProvider);
@@ -57,7 +57,7 @@ public class StreamReceiveMessageServiceTest extends AppTestContext {
                 Map.of("testMessageReceiver", mockReceiver));
 
         Message message = MessageBuilder.withPayload("Hello, world!")
-                .setHeader("subject", "userId:1231")
+                .setHeader("subject", "userId:666666")
                 .build();
 
         StreamReceiveMessageService testService = new StreamReceiveMessageService(mockProvider);
@@ -65,7 +65,7 @@ public class StreamReceiveMessageServiceTest extends AppTestContext {
 
         // 当前的用户ID应当是消息头里的用户ID
         Long userId = CurrentSubject.getUserId();
-        Assert.assertEquals(Long.valueOf(1231L), userId);
+        Assert.assertEquals(Long.valueOf(666666L), userId);
     }
 
     @Test
