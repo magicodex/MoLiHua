@@ -15,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -33,7 +34,21 @@ public class RbacAccessDecisionStrategyTest extends AppTestContext {
 
     @Test
     public void testCheck() {
-        // TODO
+        RbacAccessDecisionStrategy strategy = createTestObject();
+
+        Collection<GrantedAuthority> authorities = Arrays.asList(
+                new RoleAuthority(100001L, "ROLE1"),
+                new RoleAuthority(100002L, "ROLE1"));
+        UserSubject userSubject = new UserSubject(TestConstants.TEST_TENANT_ID_1,
+                101001L, "test", "secret", authorities);
+
+        {
+            MockHttpServletRequest request = new MockHttpServletRequest("GET", "/api/test/path1");
+            request.setServletPath("/api/test/path1");
+            boolean actual = strategy.check(userSubject, request);
+
+            Assert.assertTrue(actual);
+        }
     }
 
     @Test
