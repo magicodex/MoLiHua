@@ -8,6 +8,7 @@ import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.mock.core.context.MockSubjectProvider;
+import jasmine.test.constant.TestConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,7 +29,8 @@ public class JasmineFrameworkTestConfiguration {
 
     @Bean
     public SubjectProvider subjectProvider() {
-        SubjectProvider subjectProvider = new MockSubjectProvider();
+        SubjectProvider subjectProvider = new MockSubjectProvider(TestConstants.TEST_USER_ID_UNKNOWN,
+                TestConstants.TEST_TENANT_ID_1);
         // 初始工具类
         CurrentSubject.initUtil(subjectProvider);
 

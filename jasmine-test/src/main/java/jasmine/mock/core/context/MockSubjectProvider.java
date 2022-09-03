@@ -14,6 +14,11 @@ public class MockSubjectProvider implements SubjectProvider {
         this.currentTenantId = -1L;
     }
 
+    public MockSubjectProvider(Long currentUserId, Long currentTenantId) {
+        this.currentUserId = currentUserId;
+        this.currentTenantId = currentTenantId;
+    }
+
     public void reset() {
         currentUserId = -1L;
         currentTenantId = -1L;

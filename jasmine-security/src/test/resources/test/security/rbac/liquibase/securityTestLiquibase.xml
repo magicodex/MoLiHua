@@ -72,4 +72,13 @@
         </customChange>
     </changeSet>
 
+    <changeSet id="jasmine_test_20220903112209_v2" author="mh.z">
+        <comment>用户关联角色测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecUserRoleRelation"/>
+            <param name="resourcePath"
+                   value="classpath:test/security/rbac/liquibase/SecUserRoleRelation_1.csv"/>
+        </customChange>
+    </changeSet>
+
 </databaseChangeLog>
