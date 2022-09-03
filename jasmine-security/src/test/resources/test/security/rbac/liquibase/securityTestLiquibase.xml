@@ -4,4 +4,72 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
+
+    <changeSet id="jasmine_test_20220903112201" author="mh.z">
+        <comment>角色测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecRole"/>
+            <param name="resourcePath" value="classpath:test/security/rbac/liquibase/SecRole_1.csv"/>
+        </customChange>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220903112202" author="mh.z">
+        <comment>功能测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecFunction"/>
+            <param name="resourcePath" value="classpath:test/security/rbac/liquibase/SecFunction_1.csv"/>
+        </customChange>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220903112203" author="mh.z">
+        <comment>权限测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecPermission"/>
+            <param name="resourcePath" value="classpath:test/security/rbac/liquibase/SecPermission_1.csv"/>
+        </customChange>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220903112204" author="mh.z">
+        <comment>资源测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecResource"/>
+            <param name="resourcePath" value="classpath:test/security/rbac/liquibase/SecResource_1.csv"/>
+        </customChange>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220903112205" author="mh.z">
+        <comment>角色关联功能测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecRoleFunctionRelation"/>
+            <param name="resourcePath" value="classpath:test/security/rbac/liquibase/SecRoleFunctionRelation_1.csv"/>
+        </customChange>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220903112206" author="mh.z">
+        <comment>功能关联权限测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecFunctionPermissionRelation"/>
+            <param name="resourcePath"
+                   value="classpath:test/security/rbac/liquibase/SecFunctionPermissionRelation_1.csv"/>
+        </customChange>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220903112207" author="mh.z">
+        <comment>权限关联资源测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecPermissionResourceRelation"/>
+            <param name="resourcePath"
+                   value="classpath:test/security/rbac/liquibase/SecPermissionResourceRelation_1.csv"/>
+        </customChange>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220903112208" author="mh.z">
+        <comment>功能关联资源测试数据</comment>
+        <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
+            <param name="className" value="jasmine.security.rbac.model.SecFunctionResourceRelation"/>
+            <param name="resourcePath"
+                   value="classpath:test/security/rbac/liquibase/SecFunctionResourceRelation_1.csv"/>
+        </customChange>
+    </changeSet>
+
 </databaseChangeLog>

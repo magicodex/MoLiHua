@@ -1,0 +1,3 @@
+id,role_code,role_name,enable_flag,remark,tenant_id,created_lang,created_date,created_by,last_updated_date,last_updated_by,version_number
+100001,ROLE_1,ROLE_1,1,,1,zh-CN,"2022-09-02 12:30:00",-1,"2022-09-02 12:30:00",-1,1
+100002,ROLE_2,ROLE_2,1,,1,zh-CN,"2022-09-02 12:30:00",-1,"2022-09-02 12:30:00",-1,1

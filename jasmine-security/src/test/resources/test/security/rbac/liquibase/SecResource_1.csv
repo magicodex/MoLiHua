@@ -1,0 +1,9 @@
+id,resource_type,access_policy,access_method,resource_path,frozen_flag,remark,created_lang,created_date,created_by,last_updated_date,last_updated_by,version_number
+100001,API,AUTHENTICATED,*,/api/test/path1,0,,zh-CN,"2022-09-02 21:02:43",-1,"2022-09-02 12:30:00",-1,1
+100002,API,AUTHENTICATED,*,/api/test/path2,0,,zh-CN,"2022-09-02 21:02:43",-1,"2022-09-02 12:30:00",-1,1
+100003,API,AUTHENTICATED,*,/api/test/path3,0,,zh-CN,"2022-09-02 21:02:43",-1,"2022-09-02 12:30:00",-1,1
+100004,API,AUTHENTICATED,*,/api/test/path4,1,,zh-CN,"2022-09-03 11:10:14",-1,"2022-09-02 12:30:00",-1,1
+100005,API,AUTHENTICATED,*,/api/test/path5,0,,zh-CN,"2022-09-02 21:02:43",-1,"2022-09-02 12:30:00",-1,1
+100006,API,AUTHENTICATED,*,/api/test/path6,0,,zh-CN,"2022-09-02 21:02:43",-1,"2022-09-02 12:30:00",-1,1
+100007,API,AUTHENTICATED,*,/api/test/path7,0,,zh-CN,"2022-09-02 21:02:43",-1,"2022-09-02 12:30:00",-1,1
+100008,API,ANONYMOUS,*,/api/test/path8,0,,zh-CN,"2022-09-03 11:05:46",-1,"2022-09-02 12:30:00",-1,1

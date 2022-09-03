@@ -1,0 +1,5 @@
+id,permission_code,permission_name,created_lang,created_date,created_by,last_updated_date,last_updated_by,version_number
+100001,PERMISSION_1,PERMISSION_1,zh-CN,"2022-09-02 12:30:00",-1,"2022-09-02 12:30:00",-1,1
+100002,PERMISSION_2,PERMISSION_2,zh-CN,"2022-09-02 12:30:00",-1,"2022-09-02 12:30:00",-1,1
+100003,PERMISSION_3,PERMISSION_3,zh-CN,"2022-09-02 12:30:00",-1,"2022-09-02 12:30:00",-1,1
+100004,PERMISSION_4,PERMISSION_4,zh-CN,"2022-09-02 12:30:00",-1,"2022-09-02 12:30:00",-1,1
