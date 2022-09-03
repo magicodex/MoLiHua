@@ -28,7 +28,7 @@ public class DefaultRbacQueryServiceTest extends AppTestContext {
 
     @Test
     public void testQueryResourceByRequest() {
-        DefaultRbacQueryService service = getTestService();
+        DefaultRbacQueryService service = createTestObject();
 
         SecResourceBaseInfoDTO actual = service.queryResourceByRequest(
                 SecurityConstants.RESOURCE_ACCESS_METHOD_GET, "/api/test/path1");
@@ -38,7 +38,7 @@ public class DefaultRbacQueryServiceTest extends AppTestContext {
 
     @Test
     public void testQueryFunctionsByUser() {
-        DefaultRbacQueryService service = getTestService();
+        DefaultRbacQueryService service = createTestObject();
 
         // 角色1和角色2被授权功能加起来有功能1和功能2
         {
@@ -72,7 +72,7 @@ public class DefaultRbacQueryServiceTest extends AppTestContext {
 
     @Test
     public void tesQueryFunctionsByResource() {
-        DefaultRbacQueryService service = getTestService();
+        DefaultRbacQueryService service = createTestObject();
 
         // 资源1只授权给功能1
         {
@@ -110,11 +110,11 @@ public class DefaultRbacQueryServiceTest extends AppTestContext {
     }
 
     /**
-     * 返回测试对象
+     * 创建测试对象
      *
      * @return
      */
-    private DefaultRbacQueryService getTestService() {
+    private DefaultRbacQueryService createTestObject() {
         SecResourceDAO resourceDAO = new SecResourceDAO(resourceMapper);
         SecFunctionDAO functionDAO = new SecFunctionDAO(functionMapper);
         DefaultRbacQueryService testService = new DefaultRbacQueryService(functionDAO, resourceDAO);
