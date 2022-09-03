@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <changeSet id="jasmine_20220414222701" author="mh.z">
+    <changeSet id="jasmine_test_20220414222701" author="mh.z">
         <createTable tableName="test_entity1" remarks="测试表1">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_test_entity1"/>
@@ -42,7 +42,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="jasmine_20220414222702" author="mh.z">
+    <changeSet id="jasmine_test_20220414222702" author="mh.z">
         <createTable tableName="test_entity1_i18n" remarks="测试表1的多语言表">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false"/>
@@ -77,7 +77,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="jasmine_20220424180101" author="mh.z">
+    <changeSet id="jasmine_test_20220424180101" author="mh.z">
         <createTable tableName="test_entity2" remarks="测试表2">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_test_entity2"/>
@@ -124,7 +124,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="jasmine_20220424180102" author="mh.z">
+    <changeSet id="jasmine_test_20220424180102" author="mh.z">
         <createTable tableName="test_entity2_i18n" remarks="测试表2的多语言表">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false"/>

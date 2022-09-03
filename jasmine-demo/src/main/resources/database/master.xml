@@ -6,7 +6,7 @@
 
     <include file="classpath:jasmine/security/SecurityLiquibase.xml"/>
 
-    <changeSet id="demo_20220205194301" author="mh.z">
+    <changeSet id="jasmine_demo_20220205194301" author="mh.z">
         <createTable tableName="sys_user" remarks="用户">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sys_user"/>
@@ -38,7 +38,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="demo_20220313150701" author="mh.z">
+    <changeSet id="jasmine_demo_20220313150701" author="mh.z">
         <createTable tableName="demo_sample" remarks="示例">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_demo_sample"/>
@@ -77,7 +77,7 @@
     </changeSet>
 
     <!-- 预置数据 -->
-    <changeSet id="demo_20220214122301" author="mh.z">
+    <changeSet id="jasmine_demo_20220214122301" author="mh.z">
         <sqlFile encoding="UTF-8"
                  path="init-data.sql"
                  relativeToChangelogFile="true"
