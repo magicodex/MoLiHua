@@ -29,7 +29,7 @@
         </customChange>
     </changeSet>
 
-    <changeSet id="jasmine_test_20220903112204" author="mh.z">
+    <changeSet id="jasmine_test_20220903112204_v1" author="mh.z">
         <comment>资源测试数据</comment>
         <customChange class="jasmine.framework.test.liquibase.TestDataTaskChange">
             <param name="className" value="jasmine.security.rbac.model.SecResource"/>

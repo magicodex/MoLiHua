@@ -8,8 +8,10 @@ import jasmine.security.config.JasmineSecurityConfig;
 import jasmine.security.rbac.dao.SecFunctionDAO;
 import jasmine.security.rbac.dao.SecResourceDAO;
 import jasmine.security.strategy.CacheRbacQueryService;
+import jasmine.security.strategy.DefaultUrlPatternMatcher;
 import jasmine.security.strategy.RbacAccessDecisionStrategy;
 import jasmine.security.strategy.RbacQueryService;
+import jasmine.security.strategy.UrlPatternMatcher;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.subject.UserSubjectProvider;
 import jasmine.security.support.SecurityContextHandler;
@@ -59,13 +61,19 @@ public class JasmineSecurityAutoConfiguration {
         return managerProxy;
     }
 
+    @Bean
+    public UrlPatternMatcher urlPatternMatcher() {
+        return new DefaultUrlPatternMatcher();
+    }
+
     @ConditionalOnProperty(value = "jasmine.security.authorization.strategy",
             havingValue = "rbac", matchIfMissing = false)
     @Bean
     public RbacAccessDecisionStrategy accessDecisionStrategy(SecFunctionDAO functionDAO,
-                                                             SecResourceDAO resourceDAO) {
+                                                             SecResourceDAO resourceDAO,
+                                                             UrlPatternMatcher urlPatternMatcher) {
         RbacQueryService rbacQueryService = new CacheRbacQueryService(functionDAO, resourceDAO);
-        return new RbacAccessDecisionStrategy(rbacQueryService);
+        return new RbacAccessDecisionStrategy(rbacQueryService, urlPatternMatcher);
     }
 
     @ConditionalOnMissingBean(UserSubjectDetailsService.class)

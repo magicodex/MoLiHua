@@ -1,7 +1,5 @@
 package jasmine.security.strategy;
 
-import jasmine.core.context.InitSupport;
-import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollectionUtil;
 import jasmine.core.util.QStringUtil;
@@ -11,7 +9,6 @@ import jasmine.security.constant.SecurityConstants;
 import jasmine.security.rbac.dto.SecResourceBaseInfoDTO;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
@@ -20,19 +17,16 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class RbacAccessDecisionStrategy implements AccessDecisionStrategy, InitSupport {
+public class RbacAccessDecisionStrategy implements AccessDecisionStrategy {
     private RbacQueryService rbacQueryService;
-    private RequestMappingHandlerMapping requestMappingHandlerMapping;
+    private UrlPatternMatcher urlPatternMatcher;
 
     private static final String SLASH_SYMBOL = "/";
 
-    public RbacAccessDecisionStrategy(RbacQueryService rbacQueryService) {
+    public RbacAccessDecisionStrategy(RbacQueryService rbacQueryService,
+                                      UrlPatternMatcher urlPatternMatcher) {
         this.rbacQueryService = rbacQueryService;
-    }
-
-    @Override
-    public void init(RuntimeProvider provider) {
-        requestMappingHandlerMapping = provider.getByType(RequestMappingHandlerMapping.class);
+        this.urlPatternMatcher = urlPatternMatcher;
     }
 
     @Override
@@ -46,7 +40,7 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy, InitS
         }
 
         // 获取请求对应的 URL 模式
-        String urlPattern = SecurityResourceUtil.getUrlPattern(requestMappingHandlerMapping, request);
+        String urlPattern = urlPatternMatcher.getUrlPattern(request);
         if (urlPattern == null) {
             return false;
         }
