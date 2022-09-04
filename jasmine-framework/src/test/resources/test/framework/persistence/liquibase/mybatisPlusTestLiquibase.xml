@@ -18,6 +18,9 @@
             <column name="attr_1" type="varchar(500)" remarks="属性1">
                 <constraints nullable="true"/>
             </column>
+            <column name="secret_1" type="varchar(500)" remarks="加密字段1">
+                <constraints nullable="true"/>
+            </column>
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
@@ -86,6 +89,9 @@
                 <constraints nullable="true"/>
             </column>
             <column name="name_1" type="varchar(500)" remarks="名称1">
+                <constraints nullable="true"/>
+            </column>
+            <column name="secret_1" type="varchar(500)" remarks="加密字段1">
                 <constraints nullable="true"/>
             </column>
             <column name="attr_1" type="varchar(500)" remarks="属性1">
@@ -160,6 +166,14 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_test_20220904215601" author="mh.z">
+        <sqlFile encoding="UTF-8"
+                 path="TestEntity_1.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
     </changeSet>
 
 </databaseChangeLog>

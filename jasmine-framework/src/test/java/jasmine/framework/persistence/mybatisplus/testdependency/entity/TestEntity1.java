@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import jasmine.framework.persistence.annotation.I18n;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
+import jasmine.q.CryptoTypeHandler;
 
 /**
  * @author mh.z
  */
-@TableName("test_entity1")
+@TableName(value = "test_entity1", autoResultMap = true)
 public class TestEntity1 extends BaseI18nEntity {
 
     @TableField("code_1")
@@ -20,6 +21,9 @@ public class TestEntity1 extends BaseI18nEntity {
 
     @TableField("attr_1")
     String attr1;
+
+    @TableField(value = "secret_1", typeHandler = CryptoTypeHandler.class)
+    String secret1;
 
     public String getCode1() {
         return code1;
@@ -43,6 +47,14 @@ public class TestEntity1 extends BaseI18nEntity {
 
     public void setAttr1(String attr1) {
         this.attr1 = attr1;
+    }
+
+    public String getSecret1() {
+        return secret1;
+    }
+
+    public void setSecret1(String secret1) {
+        this.secret1 = secret1;
     }
 
 }

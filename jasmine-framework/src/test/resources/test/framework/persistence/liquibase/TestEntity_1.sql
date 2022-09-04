@@ -1,0 +1,1 @@
+INSERT INTO `test_entity1`(`id`, `code_1`, `name_1`, `attr_1`, `secret_1`, `created_lang`, `tenant_id`, `created_date`, `created_by`, `last_updated_date`, `last_updated_by`, `version_number`) VALUES (100001, 'CODE1', 'NAME1', 'ATTR1', 'QUuUuQx9vh+HoFZo6iEOpg==', 'zh-CN', 1, '2022-09-04 12:30:00', -1, '2022-09-04 12:30:00', -1, 1);
