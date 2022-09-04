@@ -13,6 +13,10 @@ public class CryptoFieldHelper {
         CryptoFieldHelper.cryptoProvider = cryptoProvider;
     }
 
+    public static CryptoProvider getCryptoProvider() {
+        return cryptoProvider;
+    }
+
     /**
      * 加密
      *
