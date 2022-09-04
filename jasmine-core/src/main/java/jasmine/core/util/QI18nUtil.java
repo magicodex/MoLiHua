@@ -17,6 +17,10 @@ public class QI18nUtil {
         QI18nUtil.provider = provider;
     }
 
+    public static LocaleMessageProvider getProvider() {
+        return provider;
+    }
+
     /**
      * 查找多语言并返回
      *

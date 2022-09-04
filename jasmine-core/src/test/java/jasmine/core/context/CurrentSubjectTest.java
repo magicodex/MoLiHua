@@ -15,6 +15,7 @@ public class CurrentSubjectTest {
     @Before
     public void setUp() {
         prevSubjectProvider = CurrentSubject.getSubjectProvider();
+        CurrentSubject.initUtil(null);
     }
 
     @After

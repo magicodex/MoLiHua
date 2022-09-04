@@ -16,6 +16,7 @@ public class SecurityContextHandlerTest {
     @Before
     public void setUp() {
         previousAuthentication = SecurityContextUtil.getCurrentAuthentication();
+        SecurityContextUtil.setCurrentAuthentication(null);
     }
 
     @After

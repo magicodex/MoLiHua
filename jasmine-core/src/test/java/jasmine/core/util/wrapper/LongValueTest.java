@@ -1,4 +1,4 @@
-package jasmine.core.util.number;
+package jasmine.core.util.wrapper;
 
 import org.junit.Assert;
 import org.junit.Test;

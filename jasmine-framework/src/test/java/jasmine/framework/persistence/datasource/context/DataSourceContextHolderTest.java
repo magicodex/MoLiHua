@@ -14,6 +14,7 @@ public class DataSourceContextHolderTest {
     @Before
     public void setUp() {
         previousContext = DataSourceContextHolder.getContext();
+        DataSourceContextHolder.setContext(null);
     }
 
     @After

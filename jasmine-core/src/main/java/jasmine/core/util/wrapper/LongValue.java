@@ -1,4 +1,4 @@
-package jasmine.core.util.number;
+package jasmine.core.util.wrapper;
 
 /**
  * @author mh.z
