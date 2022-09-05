@@ -20,6 +20,10 @@ public class AsyncTaskUtil {
         AsyncTaskUtil.provider = provider;
     }
 
+    public static AsyncTaskProvider getProvider() {
+        return provider;
+    }
+
     /**
      * 异步执行
      *
