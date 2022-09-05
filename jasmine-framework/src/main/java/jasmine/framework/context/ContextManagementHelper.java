@@ -20,6 +20,10 @@ public class ContextManagementHelper {
         ContextManagementHelper.handlerFacade = handlerFacade;
     }
 
+    public static ContextHandlerFacade getHandlerFacade() {
+        return handlerFacade;
+    }
+
     /**
      * 初始然后清理
      *
