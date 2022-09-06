@@ -25,6 +25,10 @@ public class ContextHandlerFacadeBean implements ContextHandlerFacade,
         this.handlers = QNewUtil.list();
     }
 
+    public List<ContextHandler> getHandlers() {
+        return handlers;
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         ContextHandlerFacadeBean.applicationContext = applicationContext;
