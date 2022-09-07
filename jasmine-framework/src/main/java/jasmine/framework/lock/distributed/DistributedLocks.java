@@ -18,6 +18,10 @@ public class DistributedLocks {
         DistributedLocks.provider = provider;
     }
 
+    public static DistributedLockProvider getProvider() {
+        return provider;
+    }
+
     /**
      * 声明分布式锁
      *

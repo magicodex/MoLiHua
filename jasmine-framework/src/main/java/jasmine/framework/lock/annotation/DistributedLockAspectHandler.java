@@ -1,5 +1,6 @@
 package jasmine.framework.lock.annotation;
 
+import jasmine.core.util.QCheckUtil;
 import jasmine.framework.lock.distributed.DistributedLocks;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -35,12 +36,7 @@ public class DistributedLockAspectHandler implements Ordered {
 
     @Around("@annotation(lock)")
     public Object around(ProceedingJoinPoint joinPoint, DistributedLock lock) {
-        // 创建解析上下文
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        Method method = signature.getMethod();
-        Object[] arguments = joinPoint.getArgs();
-        EvaluationContext context = new MethodBasedEvaluationContext(null,
-                method, arguments, PARAMETER_NAME_DISCOVERER);
+        EvaluationContext context = getEvaluationContext(joinPoint);
 
         // 解析表达式
         String key = lock.key();
@@ -56,6 +52,25 @@ public class DistributedLockAspectHandler implements Ordered {
         });
 
         return result;
+    }
+
+    /**
+     * 返回执行上下文
+     *
+     * @param joinPoint
+     * @return
+     */
+    protected EvaluationContext getEvaluationContext(ProceedingJoinPoint joinPoint) {
+        QCheckUtil.notNull(joinPoint, "joinPoint null");
+
+        // 创建解析上下文
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        Object[] arguments = joinPoint.getArgs();
+        EvaluationContext context = new MethodBasedEvaluationContext(null,
+                method, arguments, PARAMETER_NAME_DISCOVERER);
+
+        return context;
     }
 
     @Override
