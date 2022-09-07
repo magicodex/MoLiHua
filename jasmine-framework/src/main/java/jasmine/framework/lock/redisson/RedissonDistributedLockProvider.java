@@ -31,6 +31,22 @@ public class RedissonDistributedLockProvider implements DistributedLockProvider 
         QCheckUtil.notNull(key, "key null");
 
         String redisKeyPrefix = REDIS_KEY_PREFIX + category + REDIS_KEY_SEPARATOR;
+        List<String> redisKeyList = getRedisKeys(redisKeyPrefix, key);
+
+        DistributedDeclaredLock lock = new RedissonDistributedDeclaredLock(redisson, redisKeyList);
+        return lock;
+    }
+
+    /**
+     * 返回 redis 的 key
+     *
+     * @param redisKeyPrefix
+     * @param key
+     * @return
+     */
+    protected List<String> getRedisKeys(String redisKeyPrefix, Object key) {
+        QCheckUtil.notNull(redisKeyPrefix, "redisKeyPrefix null");
+        QCheckUtil.notNull(key, "key null");
         List<String> redisKeyList = null;
 
         if (key instanceof Iterable) {
@@ -41,7 +57,7 @@ public class RedissonDistributedLockProvider implements DistributedLockProvider 
             final Collection<String> finalRedisKeys = redisKeyList;
 
             iterable.forEach((current) -> {
-                String redisKey = redisKeyPrefix + QStringUtil.toString(key);
+                String redisKey = redisKeyPrefix + QStringUtil.toString(current);
                 finalRedisKeys.add(redisKey);
             });
         } else {
@@ -51,8 +67,7 @@ public class RedissonDistributedLockProvider implements DistributedLockProvider 
             redisKeyList = Collections.singletonList(redisKey);
         }
 
-        DistributedDeclaredLock lock = new RedissonDistributedDeclaredLock(redisson, redisKeyList);
-        return lock;
+        return redisKeyList;
     }
 
 }

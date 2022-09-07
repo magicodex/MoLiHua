@@ -1,4 +1,4 @@
-package jasmine.framework.lock.distributed;
+package jasmine.framework.lock.redisson;
 
 import jasmine.core.util.QErrorUtil;
 import jasmine.framework.lock.redisson.RedissonDistributedDeclaredLock;
