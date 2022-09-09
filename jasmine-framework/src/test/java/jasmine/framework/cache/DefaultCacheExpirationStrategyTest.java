@@ -1,4 +1,4 @@
-package jasmine.framework.cache.redis;
+package jasmine.framework.cache;
 
 import jasmine.framework.cache.DefaultCacheExpirationStrategy;
 import org.junit.Assert;

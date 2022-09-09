@@ -7,8 +7,6 @@ import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.cache.DefaultCacheExpirationStrategy;
 import jasmine.framework.common.util.SimpleConvertUtil;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -22,8 +20,7 @@ import java.util.function.Supplier;
  * @author mh.z
  */
 public class RedisCacheService implements CacheService {
-    private RedisTemplate redisTemplate;
-    private ValueOperations valueOperations;
+    private RedisTemplateInvoker redisTemplateInvoker;
     /** 缓存同步策略 */
     private CacheSyncStrategy syncStrategy;
     /** 缓存过期策略 */
@@ -34,9 +31,8 @@ public class RedisCacheService implements CacheService {
     /** 缓存key的前缀 */
     private static final String CACHE_KEY_PREFIX = "CACHE:";
 
-    public RedisCacheService(RedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
-        this.valueOperations = redisTemplate.opsForValue();
+    public RedisCacheService(RedisTemplateInvoker redisTemplateInvoker) {
+        this.redisTemplateInvoker = redisTemplateInvoker;
         this.expirationStrategy = new DefaultCacheExpirationStrategy();
         this.syncStrategy = null;
     }
@@ -72,7 +68,7 @@ public class RedisCacheService implements CacheService {
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
         // 获取缓存的值
-        Object value = valueOperations.get(cacheKey);
+        Object value = redisTemplateInvoker.get(cacheKey);
 
         if (value == null && supplier != null) {
             // 获取值
@@ -100,7 +96,7 @@ public class RedisCacheService implements CacheService {
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
         // 获取缓存的值
-        Object value = valueOperations.get(cacheKey);
+        Object value = redisTemplateInvoker.get(cacheKey);
 
         if (value == null && supplier != null) {
             // 获取值
@@ -125,10 +121,10 @@ public class RedisCacheService implements CacheService {
         String cacheKey = getCacheKey(category, key);
 
         // 缓存数据
-        valueOperations.set(cacheKey, bytes);
+        redisTemplateInvoker.set(cacheKey, bytes);
         // 设置缓存时间
         long timeout = expirationStrategy.getTimeout(category);
-        redisTemplate.expire(cacheKey, timeout, TimeUnit.SECONDS);
+        redisTemplateInvoker.expire(cacheKey, timeout, TimeUnit.SECONDS);
     }
 
     @Override
@@ -139,7 +135,7 @@ public class RedisCacheService implements CacheService {
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
         // 删除缓存
-        redisTemplate.delete(cacheKey);
+        redisTemplateInvoker.delete(cacheKey);
     }
 
     @Override

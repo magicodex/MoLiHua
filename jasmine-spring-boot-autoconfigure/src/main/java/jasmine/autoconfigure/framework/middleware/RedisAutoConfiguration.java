@@ -4,7 +4,9 @@ import jasmine.autoconfigure.framework.middleware.impl.RefreshableCacheExpiratio
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheSyncStrategy;
 import jasmine.framework.cache.CacheUtil;
+import jasmine.framework.cache.redis.DefaultRedisTemplateInvoker;
 import jasmine.framework.cache.redis.RedisCacheService;
+import jasmine.framework.cache.redis.RedisTemplateInvoker;
 import jasmine.framework.lock.annotation.DistributedLockAspectHandler;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.distributed.DistributedLocks;
@@ -29,7 +31,8 @@ public class RedisAutoConfiguration {
     public CacheService cacheService(CacheProperties cacheProperties,
                                      RedisTemplate redisTemplate,
                                      @Autowired(required = false) CacheSyncStrategy syncStrategy) {
-        RedisCacheService cacheService = new RedisCacheService(redisTemplate);
+        RedisTemplateInvoker redisTemplateInvoker = new DefaultRedisTemplateInvoker(redisTemplate);
+        RedisCacheService cacheService = new RedisCacheService(redisTemplateInvoker);
         cacheService.setSyncStrategy(syncStrategy);
         // 缓存过期策略
         RefreshableCacheExpirationStrategy expirationStrategy =
