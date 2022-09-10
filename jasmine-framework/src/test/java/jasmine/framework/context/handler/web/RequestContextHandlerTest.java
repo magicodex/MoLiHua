@@ -17,7 +17,7 @@ public class RequestContextHandlerTest {
         RequestContextHandler handler = new RequestContextHandler();
 
         Map<String, Object> attributeMap = Map.of("key1", "value1", "key2", "value2");
-        RequestAttributes requestAttributes = new CopiedRequestAttributes("session1",
+        RequestAttributes requestAttributes = new SimpleRequestAttributes("session1",
                 Collections.emptyMap(), attributeMap);
 
         // 请求作用域

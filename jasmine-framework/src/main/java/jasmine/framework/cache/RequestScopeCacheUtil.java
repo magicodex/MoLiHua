@@ -39,7 +39,7 @@ public class RequestScopeCacheUtil {
      * @param key
      * @param value
      */
-    public void set(String key, Object value) {
+    public static void set(String key, Object value) {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 
         if (requestAttributes == null) {

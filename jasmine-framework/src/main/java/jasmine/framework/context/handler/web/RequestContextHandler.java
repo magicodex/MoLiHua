@@ -27,7 +27,7 @@ public class RequestContextHandler implements ContextHandler {
             Map<String, Object> sessionAttributeMap = copyAttributes(requestAttributes,
                     RequestAttributes.SCOPE_SESSION);
 
-            requestAttributes = new CopiedRequestAttributes(sessionId,
+            requestAttributes = new SimpleRequestAttributes(sessionId,
                     requestAttributeMap, sessionAttributeMap);
         }
 

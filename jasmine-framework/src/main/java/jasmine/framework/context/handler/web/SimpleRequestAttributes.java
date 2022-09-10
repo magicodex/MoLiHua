@@ -4,17 +4,24 @@ import jasmine.core.exception.InvalidParameterException;
 import org.springframework.web.context.request.RequestAttributes;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author mh.z
  */
-public class CopiedRequestAttributes implements RequestAttributes {
+public class SimpleRequestAttributes implements RequestAttributes {
     private String sessionId;
     private Map<String, Object> sessionAttributes;
     private Map<String, Object> requestAttributes;
 
-    public CopiedRequestAttributes(String sessionId, Map<String, Object> sessionAttributes,
+    public SimpleRequestAttributes(String sessionId) {
+        this.sessionId = sessionId;
+        this.sessionAttributes = new HashMap<>();
+        this.requestAttributes = new HashMap<>();
+    }
+
+    public SimpleRequestAttributes(String sessionId, Map<String, Object> sessionAttributes,
                                    Map<String, Object> requestAttributes) {
         this.sessionId = sessionId;
         this.sessionAttributes = sessionAttributes;
