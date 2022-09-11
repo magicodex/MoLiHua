@@ -1,4 +1,4 @@
-package jasmine.cloud.stream.testdependency;
+package jasmine.mock.core.context;
 
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCheckUtil;
@@ -42,7 +42,9 @@ public class MockRuntimeProvider implements RuntimeProvider {
         Object object = objects.get(name);
 
         if (object == null) {
-            object = runtimeProvider.getByName(name, required);
+            if (runtimeProvider != null) {
+                object = runtimeProvider.getByName(name, required);
+            }
         }
 
         return (T) object;

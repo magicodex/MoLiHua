@@ -2,13 +2,13 @@ package jasmine.cloud.stream.mq;
 
 import jasmine.cloud.stream.testdependency.MockMessageReceiver;
 import jasmine.cloud.stream.testdependency.MockReceiveInterceptor;
-import jasmine.cloud.stream.testdependency.MockRuntimeProvider;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.QCollUtil;
 import jasmine.framework.remote.mq.MessageReceiver;
 import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
 import jasmine.framework.test.context.AppTestContext;
+import jasmine.mock.core.context.MockRuntimeProvider;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
