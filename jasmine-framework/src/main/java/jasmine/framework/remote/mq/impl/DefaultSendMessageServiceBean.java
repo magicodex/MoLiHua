@@ -43,6 +43,14 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
         routingMap = Collections.emptyMap();
     }
 
+    public Map<String, PublisherExchangeRouting> getRoutingMap() {
+        return routingMap;
+    }
+
+    protected void setRoutingMap(Map<String, PublisherExchangeRouting> routingMap) {
+        this.routingMap = routingMap;
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         DefaultSendMessageServiceBean.applicationContext = applicationContext;
