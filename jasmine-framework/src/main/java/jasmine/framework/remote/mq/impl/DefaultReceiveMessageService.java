@@ -38,7 +38,7 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
         QCheckUtil.notNull(message, "message null");
 
         // 初始安全上下文
-        initContext(message);
+        initCurrentContext(message);
         // 获取消息接收者
         MessageReceiver receiver = getReceiver(category, true);
         // 获取消息内容
@@ -61,7 +61,7 @@ public class DefaultReceiveMessageService extends AbstractReceiveMessageService<
      *
      * @param message
      */
-    protected void initContext(Message message) {
+    protected void initCurrentContext(Message message) {
         QCheckUtil.notNull(message, "message null");
         MessageProperties messageProperties = message.getMessageProperties();
         String subject = messageProperties.getHeader(HEADER_SUBJECT);
