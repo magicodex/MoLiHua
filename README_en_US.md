@@ -59,5 +59,5 @@
 
 ## License
 
-MoLiHua is under the Apache 2.0 license. 
+MoLiHua is under the MIT license. 
 See the [LICENSE](https://github.com/magicodex/MoLiHua/blob/main/LICENSE) file for details.
