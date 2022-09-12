@@ -32,10 +32,12 @@
 ### 1.添加依赖
 
 ```
+<jasmine.version>1.0.0</jasmine.version>
+
 <dependency>
     <groupId>com.magicodex</groupId>
     <artifactId>jasmine-spring-boot-starter</artifactId>
-    <version>最新版本</version>
+    <version>${jasmine.version}</version>
 </dependency>
 ```
 

@@ -11,7 +11,7 @@
 ## Maven dependency
 
 ```
-<jasmine.version>1.0-SNAPSHOT</jasmine.version>
+<jasmine.version>1.0.0</jasmine.version>
 
 <dependency>
     <groupId>com.magicodex</groupId>
