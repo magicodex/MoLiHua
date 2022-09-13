@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>MoLiHua</name>
+    <name>Jasmine Parent</name>
     <groupId>com.magicodex</groupId>
     <artifactId>jasmine-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.1.0-SNAPSHOT</version>
 
-    <description>MoLiHua, Java web framework.</description>
+    <description>Jasmine, Java web framework.</description>
     <url>https://github.com/magicodex/MoLiHua/wiki</url>
 
     <licenses>

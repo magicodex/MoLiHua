@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>Jasmine Spring Boot Starter</name>
     <artifactId>jasmine-spring-boot-starter</artifactId>
 
     <properties>
