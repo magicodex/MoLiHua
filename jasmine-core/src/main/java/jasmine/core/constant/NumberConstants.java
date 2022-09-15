@@ -5,6 +5,12 @@ package jasmine.core.constant;
  */
 public interface NumberConstants {
 
+    /** 负数-1 */
+    int NUMBER_NEG_1 = -1;
+
+    /** 数字0 */
+    int NUMBER_0 = 0;
+
     /** 数字1 */
     int NUMBER_1 = 1;
 
@@ -19,9 +25,6 @@ public interface NumberConstants {
 
     /** 数字5 */
     int NUMBER_5 = 5;
-
-    /** 数字0 */
-    int NUMBER_0 = 0;
 
     /** 数字10 */
     int NUMBER_10 = 10;

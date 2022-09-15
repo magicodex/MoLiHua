@@ -1,5 +1,6 @@
 package jasmine.core.util.sort;
 
+import jasmine.core.constant.NumberConstants;
 import jasmine.core.util.QCheckUtil;
 import jasmine.core.util.QCollUtil;
 
@@ -29,7 +30,7 @@ public class CollectionSortUtil {
         QCheckUtil.notNull(keys, "keys null");
         Comparator<T> comparator = null;
 
-        if (keys.length == 0) {
+        if (keys.length == NumberConstants.NUMBER_0) {
             return QCollUtil.toList(collection);
         }
 

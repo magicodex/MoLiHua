@@ -2,6 +2,7 @@ package jasmine.core.util;
 
 import cn.hutool.core.collection.CollStreamUtil;
 import cn.hutool.core.collection.CollUtil;
+import jasmine.core.constant.NumberConstants;
 import jasmine.core.util.sort.CollectionSortUtil;
 import jasmine.core.util.sort.SortKey;
 
@@ -35,9 +36,9 @@ public class QCollectionUtil extends CollUtil {
     public static boolean isSizeEquals(@Nullable Collection<?> collection1,
                                        @Nullable Collection<?> collection2) {
         int size1 = (collection1 != null)
-                ? collection1.size() : 0;
+                ? collection1.size() : NumberConstants.NUMBER_0;
         int size2 = (collection2 != null)
-                ? collection2.size() : 0;
+                ? collection2.size() : NumberConstants.NUMBER_0;
 
         return (size1 == size2);
     }
@@ -52,9 +53,9 @@ public class QCollectionUtil extends CollUtil {
     public static boolean isSizeNotEquals(@Nullable Collection<?> collection1,
                                           @Nullable Collection<?> collection2) {
         int size1 = (collection1 != null)
-                ? collection1.size() : 0;
+                ? collection1.size() : NumberConstants.NUMBER_0;
         int size2 = (collection2 != null)
-                ? collection2.size() : 0;
+                ? collection2.size() : NumberConstants.NUMBER_0;
 
         return (size1 != size2);
     }
