@@ -1,5 +1,7 @@
 package jasmine.core.util;
 
+import jasmine.core.constant.DateConstants;
+
 import javax.annotation.Nullable;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -24,16 +26,16 @@ public class QDateUtil {
 
     static {
         YEAR_DAY_FORMATTER_WITH_ZONE = new DateTimeFormatterBuilder()
-                .appendPattern("yyyy-MM-dd")
+                .appendPattern(DateConstants.YEAR_DAY)
                 .appendOffsetId()
                 .toFormatter();
-        YEAR_DAY_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        YEAR_DAY_FORMATTER = DateTimeFormatter.ofPattern(DateConstants.YEAR_DAY);
 
         YEAR_SECOND_FORMATTER_WITH_ZONE = new DateTimeFormatterBuilder()
-                .appendPattern("yyyy-MM-dd HH:mm:ss")
+                .appendPattern(DateConstants.YEAR_SECOND)
                 .appendOffsetId()
                 .toFormatter();
-        YEAR_SECOND_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        YEAR_SECOND_FORMATTER = DateTimeFormatter.ofPattern(DateConstants.YEAR_SECOND);
     }
 
     /**

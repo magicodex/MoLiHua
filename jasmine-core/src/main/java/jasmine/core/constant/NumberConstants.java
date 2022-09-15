@@ -19,4 +19,19 @@ public interface NumberConstants {
 
     /** 数字5 */
     int NUMBER_5 = 5;
+
+    /** 数字0 */
+    int NUMBER_0 = 0;
+
+    /** 数字10 */
+    int NUMBER_10 = 10;
+
+    /** 数字20 */
+    int NUMBER_20 = 20;
+
+    /** 数字50 */
+    int NUMBER_50 = 50;
+
+    /** 数字100 */
+    int NUMBER_100 = 100;
 }
