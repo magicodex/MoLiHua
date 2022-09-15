@@ -6,6 +6,7 @@ import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import jasmine.framework.persistence.datasource.impl.MultipleDataSource;
 import jasmine.framework.persistence.datasource.impl.ReadWriteDataSourceDecideFacade;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -49,6 +50,7 @@ public class DataSourceAutoConfiguration {
      * @param properties
      * @return
      */
+    @ConditionalOnMissingBean(name = "mainDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
     @Bean
     public HikariDataSource mainDataSource(DataSourceProperties properties) {
@@ -70,6 +72,7 @@ public class DataSourceAutoConfiguration {
      * @param readProperties
      * @return
      */
+    @ConditionalOnMissingBean(name = "readDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.hikari.read")
     @Bean
     public HikariDataSource readDataSource(DataSourceProperties properties,
@@ -89,8 +92,8 @@ public class DataSourceAutoConfiguration {
 
     @Primary
     @Bean
-    public DataSource dataSource(HikariDataSource mainDataSource,
-                                 HikariDataSource readDataSource) {
+    public DataSource dataSource(DataSource mainDataSource,
+                                 DataSource readDataSource) {
         Map<Object, Object> dataSourceMap = Map.of(MAIN_DATA_SOURCE_NAME, mainDataSource,
                 READ_DATA_SOURCE_NAME, readDataSource);
         MultipleDataSource multipleDataSource = new MultipleDataSource(dataSourceMap);
