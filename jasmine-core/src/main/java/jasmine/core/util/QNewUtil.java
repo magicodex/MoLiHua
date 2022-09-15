@@ -1,5 +1,7 @@
 package jasmine.core.util;
 
+import jasmine.core.constant.CollectionConstants;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +29,7 @@ public class QNewUtil {
      * @return
      */
     public static <K, V> Map<K, V> map() {
-        return new HashMap<>(16);
+        return new HashMap<>(CollectionConstants.DEFAULT_MAP_INITIAL_CAPACITY);
     }
 
     /**
@@ -49,7 +51,7 @@ public class QNewUtil {
      * @return
      */
     public static <T> List<T> list() {
-        return new ArrayList<>(10);
+        return new ArrayList<>(CollectionConstants.DEFAULT_LIST_INITIAL_CAPACITY);
     }
 
     /**
@@ -60,7 +62,7 @@ public class QNewUtil {
      * @return
      */
     public static <T> List<T> list(int initialCapacity) {
-        return new ArrayList<>(10);
+        return new ArrayList<>(initialCapacity);
     }
 
 }
