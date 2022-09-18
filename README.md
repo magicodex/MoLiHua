@@ -27,6 +27,9 @@
 -Ddb.password=
 ```
 
+### 单元测试覆盖率(2022.9.18)
+![单元测试覆盖率](https://github.com/magicodex/MoLiHua/blob/main/doc/images/jacoco-code-coverage-report.png "单元测试覆盖率")
+
 ## 使用说明
 
 ### 1.添加依赖

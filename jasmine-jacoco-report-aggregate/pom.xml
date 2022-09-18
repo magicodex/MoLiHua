@@ -55,12 +55,12 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.magicodex</groupId>
             <artifactId>jasmine-spring-boot-autoconfigure</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.magicodex</groupId>
@@ -83,12 +83,12 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.magicodex</groupId>
             <artifactId>jasmine-demo</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 </project>
