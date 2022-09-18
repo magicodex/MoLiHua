@@ -55,6 +55,7 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     </properties>
 
     <distributionManagement>
@@ -69,6 +70,7 @@
     </distributionManagement>
 
     <profiles>
+        <!-- 部署到Maven仓库 -->
         <profile>
             <id>deployToMavenCenter</id>
             <activation>
@@ -141,6 +143,44 @@
                         </executions>
                     </plugin>
                     <!-- END 签名插件 -->
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- 统计代码测试覆盖率 -->
+        <profile>
+            <id>runAllTestsWithCoverage</id>
+            <activation>
+                <property>
+                    <name>coverageReport</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- 代码覆盖率统计插件 -->
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>jacoco-agent</id>
+                                <phase>test-compile</phase>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>jacoco-report</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- END 代码覆盖率统计插件 -->
                 </plugins>
             </build>
         </profile>
