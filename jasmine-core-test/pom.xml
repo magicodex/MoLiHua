@@ -10,7 +10,7 @@
 
     <name>Jasmine Test</name>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>jasmine-test</artifactId>
+    <artifactId>jasmine-core-test</artifactId>
 
     <dependencyManagement>
         <dependencies>

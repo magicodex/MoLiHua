@@ -9,7 +9,7 @@ import jasmine.security.rbac.mapper.SecFunctionMapper;
 import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.model.SecResource;
 import jasmine.security.subject.UserSubject;
-import jasmine.test.constant.TestConstants;
+import jasmine.core.test.constant.TestConstants;
 import jasmine.testconfigure.security.MockUrlPatternMatcher;
 import org.junit.Assert;
 import org.junit.Test;

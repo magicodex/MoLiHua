@@ -1,6 +1,6 @@
-package jasmine.test.mockito;
+package jasmine.core.test.mockito;
 
-import jasmine.test.testdependency.Example1;
+import jasmine.core.test.testdependency.Example1;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;

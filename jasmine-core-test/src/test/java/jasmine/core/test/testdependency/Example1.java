@@ -1,4 +1,4 @@
-package jasmine.test.testdependency;
+package jasmine.core.test.testdependency;
 
 /**
  * @author mh.z

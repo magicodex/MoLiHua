@@ -8,7 +8,7 @@ import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
 import jasmine.mock.core.context.MockSubjectProvider;
-import jasmine.test.constant.TestConstants;
+import jasmine.core.test.constant.TestConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

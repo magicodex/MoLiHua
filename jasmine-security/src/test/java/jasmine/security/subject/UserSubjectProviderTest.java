@@ -1,6 +1,6 @@
 package jasmine.security.subject;
 
-import jasmine.test.mockito.MockUtil;
+import jasmine.core.test.mockito.MockUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;

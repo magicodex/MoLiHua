@@ -8,7 +8,7 @@ import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.strategy.DefaultRbacQueryService;
 import jasmine.security.strategy.RbacAccessDecisionStrategy;
 import jasmine.security.subject.UserSubject;
-import jasmine.test.constant.TestConstants;
+import jasmine.core.test.constant.TestConstants;
 import jasmine.testconfigure.security.MockUrlPatternMatcher;
 import org.junit.Assert;
 import org.junit.Test;

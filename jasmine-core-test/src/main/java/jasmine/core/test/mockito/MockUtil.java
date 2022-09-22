@@ -1,4 +1,4 @@
-package jasmine.test.mockito;
+package jasmine.core.test.mockito;
 
 import jasmine.core.util.QCheckUtil;
 import org.mockito.Mockito;
