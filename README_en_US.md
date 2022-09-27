@@ -1,6 +1,6 @@
 # MoLiHua
 
-![Jasmine](https://github.com/magicodex/MoLiHua/blob/main/logo.png "Jasmine")
+![Jasmine](https://s3.bmp.ovh/imgs/2022/09/27/84641e2691bad544.png "Jasmine")
 
 ## Quick Start
 1. Modify the database connection parameters of jasmine-demo/src/main/resources/application.yml.
@@ -55,7 +55,7 @@
 | jasmine-spring-cloud-stream |  |
 | jasmine-demo | DEMO |
 
-![Module](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "Module")
+![Module](https://s3.bmp.ovh/imgs/2022/09/27/fd72e1da6c00119e.png "Module")
 
 ## License
 

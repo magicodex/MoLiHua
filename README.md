@@ -1,6 +1,6 @@
 # MoLiHua
 
-![茉莉花](https://github.com/magicodex/MoLiHua/blob/main/logo.png "茉莉花")
+![茉莉花](https://s3.bmp.ovh/imgs/2022/09/27/84641e2691bad544.png "茉莉花")
 
 ## 启动 DEMO 示例
 
@@ -28,7 +28,7 @@
 ```
 
 ### 单元测试覆盖率(2022.9.18)
-![单元测试覆盖率](https://github.com/magicodex/MoLiHua/blob/main/doc/images/jacoco-code-coverage-report.png "单元测试覆盖率")
+![单元测试覆盖率](https://s3.bmp.ovh/imgs/2022/09/27/2d6e79f6122b4487.png "单元测试覆盖率")
 
 ## 使用说明
 
@@ -93,7 +93,7 @@
 | jasmine-spring-cloud-stream | 整合Spring Cloud Stream |
 | jasmine-demo | DEMO示例 |
 
-![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "模块划分")
+![模块划分](https://s3.bmp.ovh/imgs/2022/09/27/fd72e1da6c00119e.png "模块划分")
 
 ## 文档链接
 
