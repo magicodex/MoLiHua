@@ -1,3 +1,14 @@
+# 依赖
+
+```
+<!-- XXL-JOB任务调度 -->
+<dependency>
+    <groupId>com.xuxueli</groupId>
+    <artifactId>xxl-job-core</artifactId>
+    <scope>compile</scope>
+</dependency>
+```
+
 # 配置
 
 ```

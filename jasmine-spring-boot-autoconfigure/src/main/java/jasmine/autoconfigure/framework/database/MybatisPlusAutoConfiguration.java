@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import jasmine.core.context.CurrentSubject;
 import jasmine.framework.common.security.CryptoProvider;
+import jasmine.framework.context.FixedSubjectProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
 import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
@@ -92,7 +93,7 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
     @Override
     public void afterSingletonsInstantiated() {
         if (!CurrentSubject.isInitialized()) {
-            throw new RuntimeException("please call method CurrentSubject.initUtil to initialize");
+            CurrentSubject.initUtil(new FixedSubjectProvider());
         }
     }
 

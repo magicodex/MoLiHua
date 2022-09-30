@@ -1,3 +1,14 @@
+# 依赖
+
+```
+<!-- MyBatis-Plus持久层框架 -->
+<dependency>
+    <groupId>com.baomidou</groupId>
+    <artifactId>mybatis-plus-boot-starter</artifactId>
+    <scope>compile</scope>
+</dependency>
+```
+
 # 配置
 
 ```

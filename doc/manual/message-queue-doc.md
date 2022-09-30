@@ -14,6 +14,13 @@ jasmine.message-queue.consumer.enabled=true
 # spring-amqp版配置示例（RabbitMQ）
 
 ```
+<!-- 添加依赖 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+    <scope>compile</scope>
+</dependency>
+
 spring.rabbitmq.host=127.0.0.1
 spring.rabbitmq.port=5672
 spring.rabbitmq.username=用户名

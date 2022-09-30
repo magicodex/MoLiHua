@@ -5,7 +5,7 @@
 <dependency>
     <groupId>com.magicodex</groupId>
     <artifactId>jasmine-spring-boot-starter-security</artifactId>
-    <version>最新版本</version>
+    <scope>compile</scope>
 </dependency>
 ```
 

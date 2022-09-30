@@ -1,3 +1,14 @@
+# 依赖
+
+```
+<!-- Redis客户端 -->
+<dependency>
+    <groupId>org.redisson</groupId>
+    <artifactId>redisson-spring-boot-starter</artifactId>
+    <scope>compile</scope>
+</dependency>
+```
+
 # 配置
 
 默认是基于 spring-data-redis 实现，相关配置参考 org.springframework.boot.autoconfigure.data.redis.RedisProperties，以下几个配置仅供参考。
