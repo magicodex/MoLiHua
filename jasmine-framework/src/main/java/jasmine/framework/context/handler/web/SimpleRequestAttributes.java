@@ -92,7 +92,7 @@ public class SimpleRequestAttributes implements RequestAttributes {
         } else if (scope == SCOPE_SESSION) {
             attributeMap = sessionAttributes;
         } else {
-            throw new InvalidParameterException("scope(" + scope + ") invalid");
+            throw new InvalidParameterException("scope(" + scope + ") invalid", null);
         }
 
         return attributeMap;

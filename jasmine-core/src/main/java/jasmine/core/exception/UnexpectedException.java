@@ -8,29 +8,22 @@ package jasmine.core.exception;
  * @author mh.z
  */
 public class UnexpectedException extends ApplicationException {
+    /** 默认错误代码 */
+    public static final String DEFAULT_ERROR_CODE = "UNEXPECTED_ERROR";
 
-    public UnexpectedException() {
-        //
+    public UnexpectedException(Throwable cause) {
+        super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public UnexpectedException(String messageOrKey, Object... args) {
-        super(messageOrKey, args);
+    public UnexpectedException(String messageOrKey, Object[] args) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, args);
     }
 
-    public UnexpectedException(String errorCode, String messageOrKey, Object... args) {
+    public UnexpectedException(String errorCode, String messageOrKey, Object[] args) {
         super(errorCode, messageOrKey, args);
     }
 
-    public UnexpectedException(String messageOrKey, Throwable cause) {
-        super(messageOrKey, cause);
+    public UnexpectedException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
+        super(errorCode, messageOrKey, args, cause);
     }
-
-    public UnexpectedException(String errorCode, String messageOrKey, Throwable cause) {
-        super(errorCode, messageOrKey, cause);
-    }
-
-    public UnexpectedException(Throwable cause) {
-        super(cause);
-    }
-
 }

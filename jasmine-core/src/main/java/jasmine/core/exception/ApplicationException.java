@@ -17,30 +17,27 @@ public class ApplicationException extends RuntimeException {
     /** 错误详情  */
     protected String errorDetail;
 
-    public ApplicationException() {
-        //
-    }
-
-    public ApplicationException(String messageOrKey, Object... args) {
-        super(buildErrorMessage(messageOrKey, args));
-    }
-
-    public ApplicationException(String errorCode, String messageOrKey, Object... args) {
-        super(buildErrorMessage(messageOrKey, args));
-        this.errorCode = errorCode;
-    }
-
-    public ApplicationException(String messageOrKey, Throwable cause) {
-        super(buildErrorMessage(messageOrKey, new Object[0]), cause);
-    }
-
-    public ApplicationException(String errorCode, String messageOrKey, Throwable cause) {
-        super(buildErrorMessage(messageOrKey, new Object[0]), cause);
-        this.errorCode = errorCode;
-    }
+    /** 默认错误代码 */
+    public static final String DEFAULT_ERROR_CODE = "APPLICATION_ERROR";
 
     public ApplicationException(Throwable cause) {
         super(cause);
+        this.errorCode = DEFAULT_ERROR_CODE;
+    }
+
+    public ApplicationException(String messageOrKey, Object[] args) {
+        super(buildErrorMessage(messageOrKey, args));
+        this.errorCode = DEFAULT_ERROR_CODE;
+    }
+
+    public ApplicationException(String errorCode, String messageOrKey, Object[] args) {
+        super(buildErrorMessage(messageOrKey, args));
+        this.errorCode = errorCode;
+    }
+
+    public ApplicationException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
+        super(buildErrorMessage(messageOrKey, args), cause);
+        this.errorCode = errorCode;
     }
 
     public ApplicationException detail(String detail) {
@@ -72,7 +69,7 @@ public class ApplicationException extends RuntimeException {
         }
 
         if (!messageOrKey.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
-            if (args.length > 0) {
+            if (args != null && args.length > 0) {
                 returnErrorMessage = String.format(messageOrKey, args);
             } else {
                 returnErrorMessage = messageOrKey;

@@ -40,7 +40,7 @@ public class RedissonDistributedDeclaredLock implements DistributedDeclaredLock 
         QCheckUtil.notNull(callback, "callback null");
 
         if (QCollectionUtil.isEmpty(lockKeys)) {
-            throw new InvalidPropertyException("lockKeys empty");
+            throw new InvalidPropertyException("lockKeys empty", null);
         }
 
         RLock lock = null;

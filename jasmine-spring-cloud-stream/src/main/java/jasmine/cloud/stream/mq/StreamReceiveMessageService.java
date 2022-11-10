@@ -92,7 +92,7 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
 
         if (receiver == null && required) {
             throw new InvalidParameterException(String.format("not found the %s(category=%s)",
-                    MessageReceiver.class.getSimpleName(), category));
+                    MessageReceiver.class.getSimpleName(), category), null);
         }
 
         return receiver;

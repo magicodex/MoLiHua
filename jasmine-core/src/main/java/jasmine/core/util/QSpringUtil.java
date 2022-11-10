@@ -30,7 +30,7 @@ public class QSpringUtil {
      */
     public static <T> T getBean(String name) {
         if (runtimeProvider == null) {
-            throw new InvalidPropertyException("QSpringUtil.runtimeProvider null");
+            throw new InvalidPropertyException("QSpringUtil.runtimeProvider null", null);
         }
 
         return (T) runtimeProvider.getByName(name);
@@ -45,7 +45,7 @@ public class QSpringUtil {
      */
     public static <T> T getBean(Class<T> type) {
         if (runtimeProvider == null) {
-            throw new InvalidPropertyException("QSpringUtil.runtimeProvider null");
+            throw new InvalidPropertyException("QSpringUtil.runtimeProvider null", null);
         }
 
         return runtimeProvider.getByType(type);

@@ -30,7 +30,7 @@ public class QI18nUtil {
      */
     public static String getMessage(String messageKey, Object... args) {
         if (provider == null) {
-            throw new InvalidPropertyException("QI18nUtil.provider null");
+            throw new InvalidPropertyException("QI18nUtil.provider null", null);
         }
 
         return provider.getMessage(messageKey, args);

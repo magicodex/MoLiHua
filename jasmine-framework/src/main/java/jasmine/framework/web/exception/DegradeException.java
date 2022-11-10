@@ -10,29 +10,23 @@ import jasmine.core.exception.ApplicationException;
  * @author mh.z
  */
 public class DegradeException extends ApplicationException {
+    /** 默认错误代码 */
+    public static final String DEFAULT_ERROR_CODE = "DEGRADE_ERROR";
 
-    public DegradeException() {
-        //
+    public DegradeException(Throwable cause) {
+        super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public DegradeException(String messageOrKey, Object... args) {
-        super(messageOrKey, args);
+    public DegradeException(String messageOrKey, Object[] args) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, args);
     }
 
-    public DegradeException(String errorCode, String messageOrKey, Object... args) {
+    public DegradeException(String errorCode, String messageOrKey, Object[] args) {
         super(errorCode, messageOrKey, args);
     }
 
-    public DegradeException(String messageOrKey, Throwable cause) {
-        super(messageOrKey, cause);
-    }
-
-    public DegradeException(String errorCode, String messageOrKey, Throwable cause) {
-        super(errorCode, messageOrKey, cause);
-    }
-
-    public DegradeException(Throwable cause) {
-        super(cause);
+    public DegradeException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
+        super(errorCode, messageOrKey, args, cause);
     }
 
 }

@@ -137,7 +137,7 @@ public class I18nCrud {
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
         if (rowCount != 1) {
-            throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH);
+            throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH, null);
         }
 
         return 1;

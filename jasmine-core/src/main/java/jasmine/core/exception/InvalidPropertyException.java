@@ -8,29 +8,23 @@ package jasmine.core.exception;
  * @author mh.z
  */
 public class InvalidPropertyException extends UnexpectedException {
+    /** 默认错误代码 */
+    public static final String DEFAULT_ERROR_CODE = "INVALID_PROPERTY";
 
-    public InvalidPropertyException() {
-        //
+    public InvalidPropertyException(Throwable cause) {
+        super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public InvalidPropertyException(String messageOrKey, Object... args) {
-        super(messageOrKey, args);
+    public InvalidPropertyException(String messageOrKey, Object[] args) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, args);
     }
 
-    public InvalidPropertyException(String errorCode, String messageOrKey, Object... args) {
+    public InvalidPropertyException(String errorCode, String messageOrKey, Object[] args) {
         super(errorCode, messageOrKey, args);
     }
 
-    public InvalidPropertyException(String messageOrKey, Throwable cause) {
-        super(messageOrKey, cause);
+    public InvalidPropertyException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
+        super(errorCode, messageOrKey, args, cause);
     }
 
-    public InvalidPropertyException(String errorCode, String messageOrKey, Throwable cause) {
-        super(errorCode, messageOrKey, cause);
-    }
-
-    public InvalidPropertyException(Throwable cause) {
-        super(cause);
-    }
-    
 }

@@ -8,29 +8,23 @@ package jasmine.core.exception;
  * @author mh.z
  */
 public class BusinessException extends ApplicationException {
+    /** 默认错误代码 */
+    public static final String DEFAULT_ERROR_CODE = "BUSINESS_ERROR";
 
-    public BusinessException() {
-        //
+    public BusinessException(Throwable cause) {
+        super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public BusinessException(String messageOrKey, Object... args) {
-        super(messageOrKey, args);
+    public BusinessException(String messageOrKey, Object[] args) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, args);
     }
 
-    public BusinessException(String errorCode, String messageOrKey, Object... args) {
+    public BusinessException(String errorCode, String messageOrKey, Object[] args) {
         super(errorCode, messageOrKey, args);
     }
 
-    public BusinessException(String messageOrKey, Throwable cause) {
-        super(messageOrKey, cause);
-    }
-
-    public BusinessException(String errorCode, String messageOrKey, Throwable cause) {
-        super(errorCode, messageOrKey, cause);
-    }
-
-    public BusinessException(Throwable cause) {
-        super(cause);
+    public BusinessException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
+        super(errorCode, messageOrKey, args, cause);
     }
 
 }

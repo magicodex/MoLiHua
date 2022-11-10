@@ -27,7 +27,7 @@
 throw new ApplicationException("hello");
 => 错误信息是 "hello"
 
-throw new ApplicationException("$hello");
+throw new ApplicationException("$hello", null);
 => 错误信息是多语言key "hello" 对应的多语言信息
 ```
 

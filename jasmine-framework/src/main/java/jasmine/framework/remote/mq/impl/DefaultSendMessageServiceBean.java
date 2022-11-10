@@ -66,7 +66,7 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
         PublisherExchangeRouting routing = routingMap.get(category);
         if (routing == null) {
             throw new InvalidParameterException(String.format("not found the %s(category=%s)",
-                    PublisherExchangeRouting.class.getSimpleName(), category));
+                    PublisherExchangeRouting.class.getSimpleName(), category), null);
         }
 
         String routingKey = null;

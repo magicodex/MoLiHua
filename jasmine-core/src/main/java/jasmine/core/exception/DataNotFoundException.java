@@ -16,40 +16,40 @@ public class DataNotFoundException extends UnexpectedException {
     protected Object dataKey;
 
     /** 默认错误代码 */
-    private static final String DEFAULT_ERROR_CODE = "DATA_NOT_FOUND";
+    public static final String DEFAULT_ERROR_CODE = "DATA_NOT_FOUND";
     /** 默认key名称 */
-    private static final String DEFAULT_KEY_NAME = "key";
+    public static final String DEFAULT_KEY_NAME = "key";
 
-    public DataNotFoundException() {
-        //
+    public DataNotFoundException(Throwable cause) {
+        super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public DataNotFoundException(String messageOrKey, Object... args) {
+    public DataNotFoundException(String messageOrKey, Object[] args) {
         super(DEFAULT_ERROR_CODE, messageOrKey, args);
     }
 
-    public DataNotFoundException(String errorCode, String messageOrKey, Object... args) {
+    public DataNotFoundException(String errorCode, String messageOrKey, Object[] args) {
         super(errorCode, messageOrKey, args);
     }
 
-    public DataNotFoundException(String messageOrKey, Throwable cause) {
-        super(DEFAULT_ERROR_CODE, messageOrKey, cause);
+    public DataNotFoundException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
+        super(errorCode, messageOrKey, args, cause);
     }
 
-    public DataNotFoundException(String errorCode, String messageOrKey, Throwable cause) {
-        super(errorCode, messageOrKey, cause);
+    public DataNotFoundException(Class<?> dataType, Object dataKey) {
+        this(dataType, DEFAULT_KEY_NAME, dataKey, null, null);
     }
 
-    public DataNotFoundException(Throwable cause) {
-        super(DEFAULT_ERROR_CODE, cause);
+    public DataNotFoundException(Class<?> dataType, String dataKeyName, Object dataKey) {
+        this(dataType, dataKeyName, dataKey, null, null);
     }
 
-    public DataNotFoundException(Class<?> dataType, Object dataKey, String messageOrKey, Object... args) {
+    public DataNotFoundException(Class<?> dataType, Object dataKey, String messageOrKey, Object[] args) {
         this(dataType, DEFAULT_KEY_NAME, dataKey, messageOrKey, args);
     }
 
     public DataNotFoundException(Class<?> dataType, String dataKeyName, Object dataKey,
-                                 String messageOrKey, Object... args) {
+                                 String messageOrKey, Object[] args) {
         super(DEFAULT_ERROR_CODE, messageOrKey, args);
         this.dataType = dataType;
         this.dataKeyName = dataKeyName;

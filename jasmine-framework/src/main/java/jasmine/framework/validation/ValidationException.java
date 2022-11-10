@@ -15,16 +15,14 @@ public class ValidationException extends ApplicationException {
     public static final String DEFAULT_ERROR_CODE = "VALIDATE_FAILED";
 
     public ValidationException(Collection<ObjectError> errors) {
-        super();
+        super(DEFAULT_ERROR_CODE, null, null);
         this.errors = errors;
-        this.errorCode = DEFAULT_ERROR_CODE;
         this.errorDetail = buildErrorDetail(errors);
     }
 
-    public ValidationException(String messageOrKey, Collection<ObjectError> errors) {
-        super(messageOrKey);
+    public ValidationException(String errorCode, Collection<ObjectError> errors) {
+        super(errorCode, null, null);
         this.errors = errors;
-        this.errorCode = DEFAULT_ERROR_CODE;
         this.errorDetail = buildErrorDetail(errors);
     }
 

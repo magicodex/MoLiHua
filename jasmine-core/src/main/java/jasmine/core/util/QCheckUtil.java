@@ -21,7 +21,7 @@ public class QCheckUtil {
      */
     public static <T> T notNull(T value) {
         if (value == null) {
-            throw new UnexpectedException("expected not null, but actual null");
+            throw new UnexpectedException("expected not null, but actual null", null);
         }
 
         return value;
@@ -37,7 +37,7 @@ public class QCheckUtil {
      */
     public static <T> T notNull(T value, String message) {
         if (value == null) {
-            throw new UnexpectedException(message);
+            throw new UnexpectedException(message, null);
         }
 
         return value;
@@ -70,7 +70,7 @@ public class QCheckUtil {
      */
     public static <T> T notNullProp(T value, String message) {
         if (value == null) {
-            throw new InvalidPropertyException(message);
+            throw new InvalidPropertyException(message, null);
         }
 
         return value;
