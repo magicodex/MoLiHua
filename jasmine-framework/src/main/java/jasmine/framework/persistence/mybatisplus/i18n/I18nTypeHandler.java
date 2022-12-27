@@ -1,5 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
+import jasmine.core.constant.NumberConstants;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
@@ -21,7 +22,7 @@ public class I18nTypeHandler implements TypeHandler<String> {
     @Override
     public String getResult(ResultSet rs, String columnName) throws SQLException {
         String[] parts = columnName.split(",", -1);
-        if (parts.length < 2) {
+        if (parts.length < NumberConstants.NUMBER_2) {
             return rs.getString(columnName);
         }
 
@@ -29,7 +30,7 @@ public class I18nTypeHandler implements TypeHandler<String> {
         String result = rs.getString(part);
 
         if (result == null) {
-            part = parts[1];
+            part = parts[NumberConstants.NUMBER_1];
             result = rs.getString(part);
         }
 

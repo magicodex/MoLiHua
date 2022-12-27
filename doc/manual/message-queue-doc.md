@@ -72,7 +72,7 @@ public class ConsumerConfig {
 }
 ```
 
-# 示例
+# 使用示例
 
 ```
 // 接收消息，要求 bean 名是 MessageReceiver 作为后缀

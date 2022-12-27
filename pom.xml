@@ -71,7 +71,7 @@
     </distributionManagement>
 
     <profiles>
-        <!-- 部署到Maven仓库 -->
+        <!-- 部署到Maven仓库，示例 mvn deploy -DmavenCenter=true -->
         <profile>
             <id>deployToMavenCenter</id>
             <activation>
@@ -148,7 +148,7 @@
             </build>
         </profile>
 
-        <!-- 统计代码测试覆盖率 -->
+        <!-- 统计代码测试覆盖率，示例 mvn test -DcoverageReport=true -->
         <profile>
             <id>runAllTestsWithCoverage</id>
             <activation>
