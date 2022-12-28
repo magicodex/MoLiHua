@@ -11,8 +11,8 @@ public class FixedSubjectProvider implements SubjectProvider {
     /** 租户ID */
     private Long tenantId;
 
-    private static final Long DEFAULT_USER_ID = -1L;
-    private static final Long DEFAULT_TENANT_ID = -1L;
+    public static final Long DEFAULT_USER_ID = -1L;
+    public static final Long DEFAULT_TENANT_ID = -1L;
 
     public FixedSubjectProvider() {
         this(DEFAULT_USER_ID, DEFAULT_TENANT_ID);

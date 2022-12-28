@@ -26,6 +26,19 @@ public class XxlJobCurrentTest {
     }
 
     @Test
+    public void test() {
+        XxlJobContext jobContext = new XxlJobContext(-1L,
+                "", null, -1, -1);
+        XxlJobContext.setXxlJobContext(jobContext);
+
+        XxlJobCurrent jobCurrent = new XxlJobCurrent();
+        jobCurrent.trace("test trace!");
+        jobCurrent.setResult(true, "test result!");
+
+        Assert.assertEquals(200, jobContext.getHandleCode());
+    }
+
+    @Test
     public void testGetParameter() {
         XxlJobContext jobContext = new XxlJobContext(1L, "param1:value1,param2:value2",
                 "", -1, -1);

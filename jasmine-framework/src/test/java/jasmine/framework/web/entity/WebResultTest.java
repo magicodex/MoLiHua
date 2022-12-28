@@ -28,6 +28,17 @@ public class WebResultTest {
             Assert.assertEquals("test", result.getErrorCode());
             Assert.assertEquals("Hello, test!", result.getMessage());
         }
+
+        {
+            WebResult<String> result = WebResult.error("test", "Hello, test!");
+            result.setErrorDetail("test error!");
+            result.setData("test data!");
+
+            Assert.assertEquals("test", result.getErrorCode());
+            Assert.assertEquals("Hello, test!", result.getMessage());
+            Assert.assertEquals("test error!", result.getErrorDetail());
+            Assert.assertEquals("test data!", result.getData());
+        }
     }
 
     @Test

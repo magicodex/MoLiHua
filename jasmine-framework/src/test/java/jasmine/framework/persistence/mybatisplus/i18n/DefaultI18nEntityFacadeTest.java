@@ -86,13 +86,28 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
     }
 
     @Test
-    public void testPopulateI18n() {
+    public void testPopulateI18n_1() {
         initI18n(1L);
 
         DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
         TestEntity1 entity = createEntity(1L, "code1", "name1", "attr1");
 
         List<TestEntity1> actualList = facade.populateI18n(Collections.singletonList(entity));
+        Assert.assertEquals(1, actualList.size());
+        Assert.assertEquals("名称1", entity.getName1());
+    }
+
+    @Test
+    public void testPopulateI18n_2() {
+        initI18n(1L);
+
+        DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
+        TestEntity1 entity = createEntity(1L, "code1", "name1", "attr1");
+
+        List<TestEntity1> actualList = facade.populateI18n(Collections.singletonList(entity), TestEntity1.class,
+                TestEntity1::getId, (target, source) -> {
+                    target.setName1(source.getName1());
+                });
         Assert.assertEquals(1, actualList.size());
         Assert.assertEquals("名称1", entity.getName1());
     }

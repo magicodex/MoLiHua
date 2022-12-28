@@ -1,5 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.util;
 
+import cn.hutool.core.collection.CollStreamUtil;
 import jasmine.framework.persistence.mybatisplus.testdependency.entity.TestEntity1;
 import jasmine.framework.persistence.mybatisplus.testdependency.mapper.TestEntity1Mapper;
 import jasmine.framework.testdependency.context.FrameworkTestContext;
@@ -106,6 +107,20 @@ public class MapperExtensionHelperTest extends FrameworkTestContext {
             List<Long> idList = Arrays.asList(entity2.getId(), entity3.getId());
             MapperExtensionHelper.deleteByIds(testEntity1Mapper, idList, true);
         }
+    }
+
+    @Test
+    public void testListByIds() {
+        List<TestEntity1> list = new ArrayList<>();
+        list.add(createEntity("code1", "name1", "attr1"));
+        list.add(createEntity("code2", "name2", "attr2"));
+        MapperExtensionHelper.saveBatch(testEntity1Mapper, list);
+
+        // 批量查询记录
+        List<Long> idList = CollStreamUtil.toList(list, TestEntity1::getId);
+        List<TestEntity1> entityList = MapperExtensionHelper.listByIds(testEntity1Mapper, idList, true);
+
+        Assert.assertEquals(2, entityList.size());
     }
 
     /**

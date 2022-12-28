@@ -9,6 +9,7 @@ import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.support.PopulateFunction;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
@@ -163,8 +164,10 @@ public class I18nEntityHelper {
      * @param <T>
      * @return
      */
-    public static <T extends BaseI18nEntity> T populateI18n(@Nonnull T entity) {
-        QCheckUtil.notNull(entity, "entity null");
+    public static <T extends BaseI18nEntity> T populateI18n(@Nullable T entity) {
+        if (entity == null) {
+            return null;
+        }
 
         if (i18nFacade == null) {
             return entity;

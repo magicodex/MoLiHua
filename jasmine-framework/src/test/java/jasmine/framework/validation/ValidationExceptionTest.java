@@ -18,8 +18,15 @@ public class ValidationExceptionTest {
                 new ObjectError("field1", "error1"),
                 new ObjectError("field2", "error2"));
 
-        ValidationException exception = new ValidationException(errors);
-        Assert.assertEquals(ValidationException.DEFAULT_ERROR_CODE, exception.getErrorCode());
+        {
+            ValidationException exception = new ValidationException(errors);
+            Assert.assertEquals(ValidationException.DEFAULT_ERROR_CODE, exception.getErrorCode());
+        }
+
+        {
+            ValidationException exception = new ValidationException("test_error", errors);
+            Assert.assertEquals("test_error", exception.getErrorCode());
+        }
     }
 
     @Test
