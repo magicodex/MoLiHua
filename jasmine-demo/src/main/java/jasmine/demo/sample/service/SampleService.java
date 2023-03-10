@@ -1,8 +1,8 @@
 package jasmine.demo.sample.service;
 
 import jasmine.core.exception.DataNotFoundException;
-import jasmine.core.util.QErrorUtil;
-import jasmine.core.util.QMapperUtil;
+import jasmine.core.util.ErrorUtil;
+import jasmine.core.util.MapperUtil;
 import jasmine.demo.sample.dto.SampleCreateDTO;
 import jasmine.demo.sample.dto.SampleDTO;
 import jasmine.demo.sample.dto.SampleUpdateDTO;
@@ -35,7 +35,7 @@ public class SampleService {
         try {
             Thread.sleep(lockTime);
         } catch (InterruptedException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 
@@ -48,7 +48,7 @@ public class SampleService {
     public SampleDTO getSampleById(Long sampleId) {
         Sample sample = sampleMapper.selectById(sampleId);
 
-        return QMapperUtil.mapTo(sample, SampleDTO.class);
+        return MapperUtil.mapTo(sample, SampleDTO.class);
     }
 
     /**
@@ -59,10 +59,10 @@ public class SampleService {
      */
     @Transactional(rollbackFor = Exception.class)
     public SampleDTO saveSample(SampleCreateDTO createDTO) {
-        Sample sample = QMapperUtil.mapTo(createDTO, Sample.class);
+        Sample sample = MapperUtil.mapTo(createDTO, Sample.class);
         sampleMapper.insert(sample);
 
-        return QMapperUtil.mapTo(sample, SampleDTO.class);
+        return MapperUtil.mapTo(sample, SampleDTO.class);
     }
 
     /**
@@ -78,10 +78,10 @@ public class SampleService {
             throw new DataNotFoundException(Sample.class, updateDTO.getId(), null);
         }
 
-        QMapperUtil.mapFields(updateDTO, samplePO);
+        MapperUtil.mapFields(updateDTO, samplePO);
         MapperExtensionHelper.updateById(sampleMapper, samplePO, true);
 
-        return QMapperUtil.mapTo(samplePO, SampleDTO.class);
+        return MapperUtil.mapTo(samplePO, SampleDTO.class);
     }
 
 }

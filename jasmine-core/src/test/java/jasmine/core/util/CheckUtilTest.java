@@ -8,60 +8,60 @@ import org.junit.Test;
 /**
  * @author mh.z
  */
-public class QCheckUtilTest {
+public class CheckUtilTest {
 
     @Test
     public void testNotNull1() {
         // 校验通过
-        QCheckUtil.notNull(new Object());
+        CheckUtil.notNull(new Object());
 
         // 校验不通过报错
         Assert.assertThrows(UnexpectedException.class, () -> {
-            QCheckUtil.notNull(null);
+            CheckUtil.notNull(null);
         });
     }
 
     @Test
     public void testNotNull2() {
         // 校验通过
-        QCheckUtil.notNull(new Object(), "value null");
+        CheckUtil.notNull(new Object(), "value null");
 
         // 校验不通过报错
         Assert.assertThrows(UnexpectedException.class, () -> {
-            QCheckUtil.notNull(null, "value null");
+            CheckUtil.notNull(null, "value null");
         });
     }
 
     @Test
     public void testNotNullFmt() {
         // 校验通过
-        QCheckUtil.notNullFmt(new Object(), "%s null", "value");
+        CheckUtil.notNullFmt(new Object(), "%s null", "value");
 
         // 校验不通过报错
         Assert.assertThrows(UnexpectedException.class, () -> {
-            QCheckUtil.notNullFmt(null, "%s null", "value");
+            CheckUtil.notNullFmt(null, "%s null", "value");
         });
     }
 
     @Test
     public void testNotNullProp() {
         // 校验通过
-        QCheckUtil.notNullProp(new Object(), "value null");
+        CheckUtil.notNullProp(new Object(), "value null");
 
         // 校验不通过报错
         Assert.assertThrows(InvalidPropertyException.class, () -> {
-            QCheckUtil.notNullProp(null, "value null");
+            CheckUtil.notNullProp(null, "value null");
         });
     }
 
     @Test
     public void testNotNullPropFmt() {
         // 校验通过
-        QCheckUtil.notNullPropFmt(new Object(), "%s null", "value");
+        CheckUtil.notNullPropFmt(new Object(), "%s null", "value");
 
         // 校验不通过报错
         Assert.assertThrows(InvalidPropertyException.class, () -> {
-            QCheckUtil.notNullPropFmt(null, "%s null", "value");
+            CheckUtil.notNullPropFmt(null, "%s null", "value");
         });
     }
 

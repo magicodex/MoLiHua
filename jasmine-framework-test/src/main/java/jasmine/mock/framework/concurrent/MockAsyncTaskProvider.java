@@ -1,7 +1,7 @@
 package jasmine.mock.framework.concurrent;
 
-import jasmine.core.util.QCollectionUtil;
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.CollectionUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 
 import java.util.Collection;
@@ -21,11 +21,11 @@ public class MockAsyncTaskProvider implements AsyncTaskProvider {
 
     @Override
     public <T> List<T> asyncAndGet(Collection<Callable> tasks) {
-        List<Object> resultList = QCollectionUtil.forEach(tasks, (task) -> {
+        List<Object> resultList = CollectionUtil.forEach(tasks, (task) -> {
             try {
                 return task.call();
             } catch (Exception e) {
-                throw QErrorUtil.sneakyError(e);
+                throw ErrorUtil.sneakyError(e);
             }
         });
 

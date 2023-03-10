@@ -1,8 +1,8 @@
 package jasmine.framework.lock.redisson;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QNewUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.NewUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import org.redisson.api.RedissonClient;
@@ -27,8 +27,8 @@ public class RedissonDistributedLockProvider implements DistributedLockProvider 
 
     @Override
     public DistributedDeclaredLock declareLock(String category, Object key) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
 
         String redisKeyPrefix = REDIS_KEY_PREFIX + category + REDIS_KEY_SEPARATOR;
         List<String> redisKeyList = getRedisKeys(redisKeyPrefix, key);
@@ -45,25 +45,25 @@ public class RedissonDistributedLockProvider implements DistributedLockProvider 
      * @return
      */
     protected List<String> getRedisKeys(String redisKeyPrefix, Object key) {
-        QCheckUtil.notNull(redisKeyPrefix, "redisKeyPrefix null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(redisKeyPrefix, "redisKeyPrefix null");
+        CheckUtil.notNull(key, "key null");
         List<String> redisKeyList = null;
 
         if (key instanceof Iterable) {
             // 多个锁的情况
             //
             Iterable iterable = (Iterable) key;
-            redisKeyList = QNewUtil.list();
+            redisKeyList = NewUtil.list();
             final Collection<String> finalRedisKeys = redisKeyList;
 
             iterable.forEach((current) -> {
-                String redisKey = redisKeyPrefix + QStringUtil.toString(current);
+                String redisKey = redisKeyPrefix + StringUtil.toString(current);
                 finalRedisKeys.add(redisKey);
             });
         } else {
             // 单个锁的情况
             //
-            String redisKey = redisKeyPrefix + QStringUtil.toString(key);
+            String redisKey = redisKeyPrefix + StringUtil.toString(key);
             redisKeyList = Collections.singletonList(redisKey);
         }
 

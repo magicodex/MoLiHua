@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollUtil;
-import jasmine.core.util.QObjectUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollUtil;
+import jasmine.core.util.ObjectUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.wrapper.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
@@ -43,8 +43,8 @@ public class MapperExtensionHelper {
      */
     public static <T> int save(@Nonnull BaseMapper<T> baseMapper,
                                @Nonnull T entity) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(entity, "entity null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(entity, "entity null");
 
         return baseMapper.insert(entity);
     }
@@ -59,8 +59,8 @@ public class MapperExtensionHelper {
      */
     public static <T> int saveBatch(@Nonnull BaseMapper<T> baseMapper,
                                     @Nonnull Collection<T> entities) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(entities, "entities null");
 
         if (entities.isEmpty()) {
             return 0;
@@ -69,7 +69,7 @@ public class MapperExtensionHelper {
         Class<?>[] interfaces = baseMapper.getClass().getInterfaces();
         Class<?> mapperClass = interfaces[0];
         String sqlStatement = SqlHelper.getSqlStatement(mapperClass, SqlMethod.INSERT_ONE);
-        Class<?> entityClass = QCollUtil.getFirst(entities).getClass();
+        Class<?> entityClass = CollUtil.getFirst(entities).getClass();
 
         SqlHelper.executeBatch(entityClass, log, entities, PersistenceConstants.BATCH_INSERT_SIZE,
                 (sqlSession, entity) -> {
@@ -90,8 +90,8 @@ public class MapperExtensionHelper {
      */
     public static <T> int updateById(@Nonnull BaseMapper<T> baseMapper,
                                      @Nonnull T entity, boolean strict) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(entity, "entity null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(entity, "entity null");
 
         int rowCount = baseMapper.updateById(entity);
         if (strict && rowCount != 1) {
@@ -112,8 +112,8 @@ public class MapperExtensionHelper {
      */
     public static <T> int updateBatchById(@Nonnull BaseMapper<T> baseMapper,
                                           @Nonnull Collection<T> entities, boolean strict) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(entities, "entities null");
 
         if (entities.isEmpty()) {
             return 0;
@@ -138,7 +138,7 @@ public class MapperExtensionHelper {
      */
     public static <T> int deleteById(@Nonnull BaseMapper<T> baseMapper,
                                      @Nonnull Serializable id, boolean strict) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
 
         int rowCount = baseMapper.deleteById(id);
         if (strict && rowCount != 1) {
@@ -160,8 +160,8 @@ public class MapperExtensionHelper {
     public static <T> int deleteByIds(@Nonnull BaseMapper<T> baseMapper,
                                       @Nonnull Collection<? extends Serializable> ids,
                                       boolean strict) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(ids, "ids null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(ids, "ids null");
 
         if (ids.isEmpty()) {
             return 0;
@@ -193,7 +193,7 @@ public class MapperExtensionHelper {
      */
     public static <T> T getById(@Nonnull BaseMapper<T> baseMapper,
                                 @Nonnull Serializable id, boolean strict) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
 
         T entity = baseMapper.selectById(id);
         if (strict && entity == null) {
@@ -215,8 +215,8 @@ public class MapperExtensionHelper {
     public static <T> List<T> listByIds(@Nonnull BaseMapper<T> baseMapper,
                                         @Nonnull Collection<? extends Serializable> ids,
                                         boolean strict) {
-        QCheckUtil.notNull(baseMapper, "baseMapper null");
-        QCheckUtil.notNull(ids, "ids null");
+        CheckUtil.notNull(baseMapper, "baseMapper null");
+        CheckUtil.notNull(ids, "ids null");
 
         if (ids.isEmpty()) {
             return Collections.emptyList();
@@ -230,7 +230,7 @@ public class MapperExtensionHelper {
             entityList.addAll(newList);
         });
 
-        if (strict && QObjectUtil.notEqual(idSet.size(), entityList.size())) {
+        if (strict && ObjectUtil.notEqual(idSet.size(), entityList.size())) {
             throw new ApplicationException(CommonMessages.SELECT_ROW_COUNT_MISMATCH, null);
         }
 

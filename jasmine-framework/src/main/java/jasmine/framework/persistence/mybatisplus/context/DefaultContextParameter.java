@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.context;
 
 import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.I18nUtil;
 
 /**
  * @author mh.z
@@ -15,7 +15,7 @@ public class DefaultContextParameter implements ContextParameter {
 
     @Override
     public String getLangCode() {
-        return QI18nUtil.getLanguage();
+        return I18nUtil.getLanguage();
     }
 
 }

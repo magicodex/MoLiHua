@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.i18n.support;
 
 import cn.hutool.core.util.ReflectUtil;
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.common.util.csv.MybatisPlusColumnMapping;
 import jasmine.framework.persistence.annotation.I18n;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
@@ -36,7 +36,7 @@ public class I18nMeta {
      * @return
      */
     public static I18nMeta createI18nMeta(Class<?> entityType) {
-        QCheckUtil.notNull(entityType, "entityType null");
+        CheckUtil.notNull(entityType, "entityType null");
         Map<String, Field> fieldMap = new LinkedHashMap<>();
 
         Field[] fields = ReflectUtil.getFields(entityType);
@@ -61,7 +61,7 @@ public class I18nMeta {
      * @return
      */
     public Map<String, String> getI18nData(BaseI18nEntity entity) {
-        QCheckUtil.notNull(entity, "entity null");
+        CheckUtil.notNull(entity, "entity null");
         Map<String, String> i18nDataMap = new LinkedHashMap<>();
 
         fields.forEach((column, field) -> {
@@ -80,7 +80,7 @@ public class I18nMeta {
      * @param record
      */
     public void populateI18nData(BaseI18nEntity entity, I18nRecord record) {
-        QCheckUtil.notNull(entity, "entity null");
+        CheckUtil.notNull(entity, "entity null");
 
         if (record != null) {
             fields.forEach((column, field) -> {

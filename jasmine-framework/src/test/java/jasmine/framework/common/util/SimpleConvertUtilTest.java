@@ -1,7 +1,7 @@
 package jasmine.framework.common.util;
 
 import cn.hutool.core.lang.Pair;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.testdependency.pojo.Example3;
 import org.junit.Assert;
 import org.junit.Test;
@@ -35,7 +35,7 @@ public class SimpleConvertUtilTest {
     public void testDeserialize() {
         // 字符串
         {
-            byte[] bytes = QStringUtil.bytes("value1");
+            byte[] bytes = StringUtil.bytes("value1");
             String actual = SimpleConvertUtil.deserialize(bytes, String.class);
 
             Assert.assertEquals("value1", actual);
@@ -44,7 +44,7 @@ public class SimpleConvertUtilTest {
         // 对象
         {
             String jsonText = "{\"attribute1\":\"value1\"}";
-            byte[] bytes = QStringUtil.bytes(jsonText);
+            byte[] bytes = StringUtil.bytes(jsonText);
             Example3 actual = SimpleConvertUtil.deserialize(bytes, Example3.class);
 
             Assert.assertNotNull(actual);
@@ -55,7 +55,7 @@ public class SimpleConvertUtilTest {
     @Test
     public void testDeserializeToList() {
         String jsonText = "[\"value1\",\"value2\"]";
-        byte[] bytes = QStringUtil.bytes(jsonText);
+        byte[] bytes = StringUtil.bytes(jsonText);
         List<String> actualList = SimpleConvertUtil.deserializeToList(bytes, String.class);
 
         Assert.assertNotNull(actualList);

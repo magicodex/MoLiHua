@@ -1,6 +1,6 @@
 package jasmine.framework.cache;
 
-import jasmine.core.util.QObjectUtil;
+import jasmine.core.util.ObjectUtil;
 
 import java.util.Collections;
 import java.util.Map;
@@ -37,7 +37,7 @@ public class DefaultCacheExpirationStrategy implements CacheExpirationStrategy {
             timeout = defaultTimeout;
         }
 
-        return QObjectUtil.defaultIfNull(timeout, DEFAULT_TIMEOUT);
+        return ObjectUtil.defaultIfNull(timeout, DEFAULT_TIMEOUT);
     }
 
 }

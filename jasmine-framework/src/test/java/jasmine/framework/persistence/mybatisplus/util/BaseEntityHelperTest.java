@@ -3,7 +3,7 @@ package jasmine.framework.persistence.mybatisplus.util;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.SubjectProvider;
 import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.I18nUtil;
 import jasmine.framework.persistence.mybatisplus.testdependency.entity.TestEntity1;
 import jasmine.mock.core.context.MockLocaleMessageProvider;
 import jasmine.mock.core.context.MockSubjectProvider;
@@ -23,8 +23,8 @@ public class BaseEntityHelperTest {
 
     @Before
     public void setUp() {
-        prevLocalMessageProvider = QI18nUtil.getProvider();
-        QI18nUtil.initUtil(new MockLocaleMessageProvider());
+        prevLocalMessageProvider = I18nUtil.getProvider();
+        I18nUtil.initUtil(new MockLocaleMessageProvider());
 
         prevSubjectProvider = CurrentSubject.getSubjectProvider();
         CurrentSubject.initUtil(new MockSubjectProvider());
@@ -32,7 +32,7 @@ public class BaseEntityHelperTest {
 
     @After
     public void tearDown() {
-        QI18nUtil.initUtil(prevLocalMessageProvider);
+        I18nUtil.initUtil(prevLocalMessageProvider);
         CurrentSubject.initUtil(prevSubjectProvider);
     }
 

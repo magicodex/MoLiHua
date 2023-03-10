@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author mh.z
  */
-public class QNewUtil {
+public class NewUtil {
 
     //
     // TreeMap 的 key 不能为 null。

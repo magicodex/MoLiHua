@@ -2,8 +2,8 @@ package jasmine.framework.job.xxljob;
 
 import com.xxl.job.core.handler.IJobHandler;
 import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.QObjectUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.ObjectUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.context.ContextManagementHelper;
 import jasmine.framework.job.JobExecutor;
 
@@ -26,8 +26,8 @@ public class XxlJobHandlerDelegate extends IJobHandler {
         String tenantIdStr = (String) current.getParameter(TENANT_ID_PARAM_NAME);
 
         // 初始安全上下文
-        if (QStringUtil.isNotEmpty(tenantIdStr)) {
-            Long tenantId = QObjectUtil.parseLong(tenantIdStr);
+        if (StringUtil.isNotEmpty(tenantIdStr)) {
+            Long tenantId = ObjectUtil.parseLong(tenantIdStr);
 
             CurrentSubject.setSubject(tenantId, null);
         }

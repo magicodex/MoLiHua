@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class QJsonUtilTest {
+public class JsonUtilTest {
 
     @Test
     public void testToJson() throws JSONException {
@@ -20,14 +20,14 @@ public class QJsonUtilTest {
         example.setBoolean1(false);
 
         String expected = "{\"string1\":\"1\",\"boolean1\":false}";
-        String actual = QJsonUtil.toJson(example);
+        String actual = JsonUtil.toJson(example);
         JSONAssert.assertEquals(expected, actual, false);
     }
 
     @Test
     public void testFromJson() {
         String json = "{\"string1\":\"1\",\"boolean1\":false}";
-        Example1 example = QJsonUtil.fromJson(json, Example1.class);
+        Example1 example = JsonUtil.fromJson(json, Example1.class);
 
         Assert.assertEquals("1", example.getString1());
         Assert.assertFalse(example.getBoolean1());
@@ -37,7 +37,7 @@ public class QJsonUtilTest {
     public void testFromArray() {
         String json = "[{\"string1\":\"1\",\"boolean1\":true}," +
                 "{\"string1\":\"0\",\"boolean1\":false}]";
-        List<Example1> actualList = QJsonUtil.fromArray(json, Example1.class);
+        List<Example1> actualList = JsonUtil.fromArray(json, Example1.class);
 
         Assert.assertEquals(2, actualList.size());
         Assert.assertTrue(actualList.get(0).getBoolean1());

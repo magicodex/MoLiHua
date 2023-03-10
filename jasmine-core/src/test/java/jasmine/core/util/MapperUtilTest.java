@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author mh.z
  */
-public class QMapperUtilTest {
+public class MapperUtilTest {
 
     @Test
     public void testMapTo() {
@@ -21,7 +21,7 @@ public class QMapperUtilTest {
             source.setString1("Y");
             source.setBoolean1(true);
 
-            Example2 actual = QMapperUtil.mapTo(source, Example2.class);
+            Example2 actual = MapperUtil.mapTo(source, Example2.class);
             Assert.assertEquals(Integer.valueOf(1), actual.getInteger1());
             Assert.assertEquals(true, actual.getBoolean1());
         }
@@ -31,7 +31,7 @@ public class QMapperUtilTest {
             source.setInteger1(1);
             source.setBoolean1(true);
 
-            Example1 actual = QMapperUtil.mapTo(source, Example1.class);
+            Example1 actual = MapperUtil.mapTo(source, Example1.class);
             Assert.assertNull(actual.getString1());
             Assert.assertEquals(Integer.valueOf(1), actual.getInteger1());
             Assert.assertEquals(true, actual.getBoolean1());
@@ -44,7 +44,7 @@ public class QMapperUtilTest {
         sourceList.add(Example1.create("Y", 1, true));
         sourceList.add(Example1.create("N", 0, false));
 
-        List<Example2> actualList = QMapperUtil.mapToList(sourceList, Example2.class);
+        List<Example2> actualList = MapperUtil.mapToList(sourceList, Example2.class);
         Assert.assertEquals(2, actualList.size());
 
         Assert.assertEquals(Integer.valueOf(1), actualList.get(0).getInteger1());
@@ -64,7 +64,7 @@ public class QMapperUtilTest {
         example2.setBoolean1(true);
         example2.setInteger1(1000);
 
-        QMapperUtil.mapFields(example2, example1);
+        MapperUtil.mapFields(example2, example1);
         Assert.assertEquals("value1", example1.getString1());
         Assert.assertEquals(true, example1.getBoolean1());
         Assert.assertEquals(Integer.valueOf(1000), example1.getInteger1());

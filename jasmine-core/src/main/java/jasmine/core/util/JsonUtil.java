@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author mh.z
  */
-public class QJsonUtil {
+public class JsonUtil {
     private static final ObjectMapper OBJECT_MAPPER;
 
     static {
@@ -40,7 +40,7 @@ public class QJsonUtil {
         try {
             return OBJECT_MAPPER.writeValueAsString(object);
         } catch (IOException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 
@@ -56,7 +56,7 @@ public class QJsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, type);
         } catch (IOException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 
@@ -76,7 +76,7 @@ public class QJsonUtil {
             List<T> list = OBJECT_MAPPER.readValue(json, collectionType);
             return list;
         } catch (IOException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 

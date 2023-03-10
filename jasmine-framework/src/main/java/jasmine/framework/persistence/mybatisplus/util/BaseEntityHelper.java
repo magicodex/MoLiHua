@@ -1,9 +1,9 @@
 package jasmine.framework.persistence.mybatisplus.util;
 
 import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollUtil;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollUtil;
+import jasmine.core.util.I18nUtil;
 import jasmine.framework.persistence.entity.BaseEntity;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
 
@@ -21,7 +21,7 @@ public class BaseEntityHelper {
      * @param entity
      */
     public static void fillInsert(BaseEntity entity) {
-        QCheckUtil.notNull(entity, "entity null");
+        CheckUtil.notNull(entity, "entity null");
         Long userId = CurrentSubject.getUserId();
         ZonedDateTime currentTime = ZonedDateTime.now();
 
@@ -37,7 +37,7 @@ public class BaseEntityHelper {
         if (entity instanceof BaseI18nEntity) {
             BaseI18nEntity baseI18nEntity = (BaseI18nEntity) entity;
             // 语言代码
-            baseI18nEntity.setCreatedLang(QI18nUtil.getLanguage());
+            baseI18nEntity.setCreatedLang(I18nUtil.getLanguage());
         }
     }
 
@@ -47,17 +47,17 @@ public class BaseEntityHelper {
      * @param entities
      */
     public static void fillInsert(Collection<? extends BaseEntity> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
-        if (QCollUtil.isEmpty(entities)) {
+        if (CollUtil.isEmpty(entities)) {
             return;
         }
 
         Long userId = CurrentSubject.getUserId();
         ZonedDateTime currentTime = ZonedDateTime.now();
 
-        if (QCollUtil.getFirst(entities) instanceof BaseI18nEntity) {
-            String langCode = QI18nUtil.getLanguage();
+        if (CollUtil.getFirst(entities) instanceof BaseI18nEntity) {
+            String langCode = I18nUtil.getLanguage();
 
             entities.forEach((entity) -> {
                 // 创建人ID
@@ -92,7 +92,7 @@ public class BaseEntityHelper {
      * @param entity
      */
     public static void fillUpdate(BaseEntity entity) {
-        QCheckUtil.notNull(entity, "entity null");
+        CheckUtil.notNull(entity, "entity null");
 
         // 最后更新人ID
         entity.setLastUpdatedBy(CurrentSubject.getUserId());
@@ -106,9 +106,9 @@ public class BaseEntityHelper {
      * @param entities
      */
     public static void fillUpdate(Collection<? extends BaseEntity> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
-        if (QCollUtil.isEmpty(entities)) {
+        if (CollUtil.isEmpty(entities)) {
             return;
         }
 

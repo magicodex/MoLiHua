@@ -1,7 +1,7 @@
 package jasmine.autoconfigure.framework;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.QSpringUtil;
+import jasmine.core.util.SpringUtil;
 import jasmine.framework.cache.context.RequestScopeCacheContextHandler;
 import jasmine.framework.context.ContextManagementHelper;
 import jasmine.framework.context.CustomInitializingSingletonScanBean;
@@ -25,7 +25,7 @@ public class JasmineFrameworkAutoConfiguration {
         SpringRuntimeProvider runtimeProvider = new SpringRuntimeProvider();
 
         // 初始工具类
-        QSpringUtil.initUtil(runtimeProvider);
+        SpringUtil.initUtil(runtimeProvider);
 
         return runtimeProvider;
     }

@@ -1,7 +1,7 @@
 package jasmine.autoconfigure.framework.support;
 
 import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.I18nUtil;
 import jasmine.framework.i18n.DefaultLocaleMessageProvider;
 import jasmine.framework.i18n.MessageSourceBuilder;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -54,7 +54,7 @@ public class LocaleMessageAutoConfiguration {
         LocaleMessageProvider localeMessageProvider = new DefaultLocaleMessageProvider(messageSource);
 
         // 初始多语言工具类
-        QI18nUtil.initUtil(localeMessageProvider);
+        I18nUtil.initUtil(localeMessageProvider);
 
         return localeMessageProvider;
     }

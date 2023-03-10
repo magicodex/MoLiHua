@@ -3,9 +3,9 @@ package jasmine.framework.common.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import jasmine.core.util.QErrorUtil;
-import jasmine.core.util.QJsonUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.ErrorUtil;
+import jasmine.core.util.JsonUtil;
+import jasmine.core.util.StringUtil;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -32,15 +32,15 @@ public class SimpleConvertUtil {
 
         if (source instanceof String) {
             // 转换字符串成字节数组
-            return QStringUtil.utf8Bytes((String) source);
+            return StringUtil.utf8Bytes((String) source);
         }
 
-        ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
+        ObjectMapper objectMapper = JsonUtil.getObjectMapper();
         // 转换成 JSON 字符串
         try {
             return objectMapper.writeValueAsBytes(source);
         } catch (IOException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 
@@ -62,18 +62,18 @@ public class SimpleConvertUtil {
             }
 
             // 转换成字符串
-            object = QStringUtil.utf8Str(source);
+            object = StringUtil.utf8Str(source);
         } else {
             if (source == null || source.length == 0) {
                 return null;
             }
 
-            ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
+            ObjectMapper objectMapper = JsonUtil.getObjectMapper();
             // 转换成对象
             try {
                 object = objectMapper.readValue(source, type);
             } catch (IOException e) {
-                throw QErrorUtil.sneakyError(e);
+                throw ErrorUtil.sneakyError(e);
             }
         }
 
@@ -94,7 +94,7 @@ public class SimpleConvertUtil {
             return null;
         }
 
-        ObjectMapper objectMapper = QJsonUtil.getObjectMapper();
+        ObjectMapper objectMapper = JsonUtil.getObjectMapper();
         TypeFactory typeFactory = objectMapper.getTypeFactory();
         CollectionType collectionType = typeFactory.constructCollectionType(ArrayList.class, type);
 
@@ -103,7 +103,7 @@ public class SimpleConvertUtil {
             List<T> list = objectMapper.readValue(source, collectionType);
             return list;
         } catch (IOException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 

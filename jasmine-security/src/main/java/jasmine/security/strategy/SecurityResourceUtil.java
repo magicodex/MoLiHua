@@ -1,6 +1,6 @@
 package jasmine.security.strategy;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.security.rbac.dto.SecResourceBaseInfoDTO;
 import jasmine.security.rbac.model.SecResource;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ public class SecurityResourceUtil {
      * @return
      */
     public static String getUrlPattern(HandlerMapping handlerMapping, HttpServletRequest request) {
-        QCheckUtil.notNull(handlerMapping, "handlerMapping null");
+        CheckUtil.notNull(handlerMapping, "handlerMapping null");
 
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         HttpServletRequest realRequest = ((ServletRequestAttributes) requestAttributes).getRequest();

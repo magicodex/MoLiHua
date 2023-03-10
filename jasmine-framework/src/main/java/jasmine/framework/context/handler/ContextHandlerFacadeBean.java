@@ -1,8 +1,8 @@
 package jasmine.framework.context.handler;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollectionUtil;
-import jasmine.core.util.QNewUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollectionUtil;
+import jasmine.core.util.NewUtil;
 import jasmine.framework.context.CustomInitializingSingleton;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -22,7 +22,7 @@ public class ContextHandlerFacadeBean implements ContextHandlerFacade,
     private static ApplicationContext applicationContext;
 
     public ContextHandlerFacadeBean() {
-        this.handlers = QNewUtil.list();
+        this.handlers = NewUtil.list();
     }
 
     public List<ContextHandler> getHandlers() {
@@ -37,23 +37,23 @@ public class ContextHandlerFacadeBean implements ContextHandlerFacade,
 
     @Override
     public Collection<ContextSnapshot> copyAllFromCurrentThread() {
-        QCheckUtil.notNullProp(handlers, "handlers null");
+        CheckUtil.notNullProp(handlers, "handlers null");
 
-        return QCollectionUtil.forEach(handlers, ContextHandler::copy);
+        return CollectionUtil.forEach(handlers, ContextHandler::copy);
     }
 
     @Override
     public void initAllToCurrentThread() {
-        QCheckUtil.notNullProp(handlers, "handlers null");
+        CheckUtil.notNullProp(handlers, "handlers null");
 
-        QCollectionUtil.forEach(handlers, ContextHandler::init);
+        CollectionUtil.forEach(handlers, ContextHandler::init);
     }
 
     @Override
     public void clearAllFromCurrentThread() {
-        QCheckUtil.notNullProp(handlers, "handlers null");
+        CheckUtil.notNullProp(handlers, "handlers null");
 
-        QCollectionUtil.forEach(handlers, ContextHandler::clear);
+        CollectionUtil.forEach(handlers, ContextHandler::clear);
     }
 
     @Override

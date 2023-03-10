@@ -2,8 +2,8 @@ package jasmine.cloud.stream.mq;
 
 import jasmine.cloud.stream.mq.sender.StreamBridgeInvoker;
 import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.common.util.UniqueKeyUtil;
 import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
 import jasmine.framework.remote.mq.impl.interceptor.DefaultSendInvocationInfo;
@@ -31,8 +31,8 @@ public class StreamSendMessageService extends AbstractSendMessageService {
     @Override
     protected SendInvocationInfo doSend(SendInterceptor interceptor, String category,
                                         String key, Object content) {
-        QCheckUtil.notNull(interceptor, "interceptor null");
-        QCheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(interceptor, "interceptor null");
+        CheckUtil.notNull(category, "category null");
 
         // 创建要发送的消息对象
         Message message = createMessage(key, content);
@@ -58,12 +58,12 @@ public class StreamSendMessageService extends AbstractSendMessageService {
     protected Message createMessage(String key, Object content) {
         // 保证消息key不能为空
         if (key == null) {
-            key = QStringUtil.toString(UniqueKeyUtil.nextLong());
+            key = StringUtil.toString(UniqueKeyUtil.nextLong());
         }
 
         MessageBuilder builder = MessageBuilder.withPayload(content);
         // 设置安全信息
-        String userIdStr = QStringUtil.orEmpty(CurrentSubject.getUserId());
+        String userIdStr = StringUtil.orEmpty(CurrentSubject.getUserId());
         builder.setHeader(HEADER_SUBJECT, (PARAM_USER_ID + HEADER_SEPARATOR_SYMBOL + userIdStr));
         // 设置消息ID
         builder.setHeader(MESSAGE_KEY, key);

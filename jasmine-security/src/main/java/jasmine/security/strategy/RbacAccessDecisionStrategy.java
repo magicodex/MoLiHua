@@ -1,8 +1,8 @@
 package jasmine.security.strategy;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollectionUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollectionUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.constant.SecurityConstants;
@@ -31,8 +31,8 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy {
 
     @Override
     public boolean check(UserSubject subject, HttpServletRequest request) {
-        QCheckUtil.notNull(subject, "subject null");
-        QCheckUtil.notNull(request, "request null");
+        CheckUtil.notNull(subject, "subject null");
+        CheckUtil.notNull(request, "request null");
         String servletPath = request.getServletPath();
 
         if (servletPath.isEmpty() || servletPath.equals(SLASH_SYMBOL)) {
@@ -46,7 +46,7 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy {
         }
 
         // 获取请求对应的资源
-        String requestMethod = QStringUtil.orEmpty(request.getMethod());
+        String requestMethod = StringUtil.orEmpty(request.getMethod());
         SecResourceBaseInfoDTO resource = rbacQueryService.queryResourceByRequest(requestMethod, urlPattern);
         if (resource == null) {
             return false;
@@ -84,36 +84,36 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy {
      * @return
      */
     protected boolean checkGrant(UserSubject subject, SecResourceBaseInfoDTO resource) {
-        QCheckUtil.notNull(subject, "subject null");
-        QCheckUtil.notNull(resource, "resource null");
-        Long userId = QCheckUtil.notNull(subject.getUserId(),
+        CheckUtil.notNull(subject, "subject null");
+        CheckUtil.notNull(resource, "resource null");
+        Long userId = CheckUtil.notNull(subject.getUserId(),
                 "subject.userId null");
-        Long resourceId = QCheckUtil.notNull(resource.getResourceId(),
+        Long resourceId = CheckUtil.notNull(resource.getResourceId(),
                 "resource.resourceId null");
 
         Collection<GrantedAuthority> authorities = subject.getAuthorities();
-        if (QCollectionUtil.isEmpty(authorities)) {
+        if (CollectionUtil.isEmpty(authorities)) {
             return false;
         }
 
-        List<Long> roleIdList = QCollectionUtil.mapToList(authorities, (authority) -> {
+        List<Long> roleIdList = CollectionUtil.mapToList(authorities, (authority) -> {
             return ((RoleAuthority) authority).getRoleId();
         });
 
         // 获取该用户被授予的所有功能
         List<Long> userFunctionList = rbacQueryService.queryFunctionsByUser(userId, roleIdList);
-        if (QCollectionUtil.isEmpty(userFunctionList)) {
+        if (CollectionUtil.isEmpty(userFunctionList)) {
             return false;
         }
 
         // 获取该资源被授予给的所有功能
         List<Long> resourceFunctionList = rbacQueryService.queryFunctionsByResource(resourceId);
-        if (QCollectionUtil.isEmpty(resourceFunctionList)) {
+        if (CollectionUtil.isEmpty(resourceFunctionList)) {
             return false;
         }
 
         // 若两个集合存在交集则该用户允许访问该资源
-        boolean checkResult = QCollectionUtil.containsAny(userFunctionList, resourceFunctionList);
+        boolean checkResult = CollectionUtil.containsAny(userFunctionList, resourceFunctionList);
 
         return checkResult;
     }

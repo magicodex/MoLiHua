@@ -2,7 +2,7 @@ package jasmine.framework.context;
 
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.CollectionUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -36,7 +36,7 @@ public class InitSupportScanBean implements CustomInitializingSingleton, Applica
         Map<String, InitSupport> beanMap = applicationContext.getBeansOfType(InitSupport.class);
 
         // 调用初始方法
-        if (QCollectionUtil.isNotEmpty(beanMap)) {
+        if (CollectionUtil.isNotEmpty(beanMap)) {
             beanMap.forEach((beanName, initSupport) -> {
                 initSupport.init(runtimeProvider);
             });

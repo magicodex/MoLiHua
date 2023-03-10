@@ -2,9 +2,9 @@ package jasmine.framework.persistence.mybatisplus.i18n.support;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.exception.ApplicationException;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollUtil;
-import jasmine.core.util.QNewUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollUtil;
+import jasmine.core.util.NewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.wrapper.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
@@ -70,9 +70,9 @@ public class I18nCrud {
      */
     public int insert(@Nonnull Long id, @Nonnull String langCode,
                       @Nonnull Map<String, String> data, boolean defaultFlag) {
-        QCheckUtil.notNull(id, "id null");
-        QCheckUtil.notNull(langCode, "langCode null");
-        QCheckUtil.notNull(data, "data null");
+        CheckUtil.notNull(id, "id null");
+        CheckUtil.notNull(langCode, "langCode null");
+        CheckUtil.notNull(data, "data null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
@@ -113,14 +113,14 @@ public class I18nCrud {
      */
     public int update(@Nonnull Serializable id, @Nonnull String langCode,
                       @Nonnull Map<String, String> data, @Nullable Integer versionNumber) {
-        QCheckUtil.notNull(id, "id null");
-        QCheckUtil.notNull(langCode, "langCode null");
-        QCheckUtil.notNull(data, "data null");
+        CheckUtil.notNull(id, "id null");
+        CheckUtil.notNull(langCode, "langCode null");
+        CheckUtil.notNull(data, "data null");
 
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
 
-        Map<String, Object> paramMap = QNewUtil.map();
+        Map<String, Object> paramMap = NewUtil.map();
         // 多语言表
         paramMap.put(PARAM_TABLE, tableName);
         // 记录主键
@@ -152,9 +152,9 @@ public class I18nCrud {
      */
     public int delete(@Nonnull Collection<? extends Serializable> ids,
                       @Nullable String langCode) {
-        QCheckUtil.notNull(ids, "ids null");
+        CheckUtil.notNull(ids, "ids null");
 
-        if (QCollUtil.isEmpty(ids)) {
+        if (CollUtil.isEmpty(ids)) {
             return 0;
         }
 
@@ -163,7 +163,7 @@ public class I18nCrud {
 
         // 删除多语言记录
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
-            Map<String, Object> paramMap = QNewUtil.map();
+            Map<String, Object> paramMap = NewUtil.map();
             // 多语言表
             paramMap.put(PARAM_TABLE, tableName);
             // 记录ID
@@ -187,9 +187,9 @@ public class I18nCrud {
      */
     public List<I18nRecord> select(@Nonnull Collection<? extends Serializable> ids,
                                    @Nullable String langCode) {
-        QCheckUtil.notNull(ids, "ids null");
+        CheckUtil.notNull(ids, "ids null");
 
-        if (QCollUtil.isEmpty(ids)) {
+        if (CollUtil.isEmpty(ids)) {
             return Collections.emptyList();
         }
 
@@ -197,7 +197,7 @@ public class I18nCrud {
         List<Map> mapList = new ArrayList<>();
 
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
-            Map<String, Object> paramMap = QNewUtil.map();
+            Map<String, Object> paramMap = NewUtil.map();
             // 多语言表
             paramMap.put(PARAM_TABLE, tableName);
             // 记录ID
@@ -210,11 +210,11 @@ public class I18nCrud {
             mapList.addAll(newList);
         });
 
-        if (QCollUtil.isEmpty(mapList)) {
+        if (CollUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (map) -> {
+        List<I18nRecord> i18nRecordList = CollUtil.mapToList(mapList, (map) -> {
             return new I18nRecord(map);
         });
 
@@ -228,9 +228,9 @@ public class I18nCrud {
      * @return
      */
     public List<I18nRecord> selectDefault(@Nonnull Collection<? extends Serializable> ids) {
-        QCheckUtil.notNull(ids, "ids null");
+        CheckUtil.notNull(ids, "ids null");
 
-        if (QCollUtil.isEmpty(ids)) {
+        if (CollUtil.isEmpty(ids)) {
             return Collections.emptyList();
         }
 
@@ -238,7 +238,7 @@ public class I18nCrud {
         List<Map> mapList = new ArrayList<>();
 
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
-            Map<String, Object> paramMap = QNewUtil.map();
+            Map<String, Object> paramMap = NewUtil.map();
             // 多语言表
             paramMap.put(PARAM_TABLE, tableName);
             // 记录ID
@@ -251,11 +251,11 @@ public class I18nCrud {
             mapList.addAll(newList);
         });
 
-        if (QCollUtil.isEmpty(mapList)) {
+        if (CollUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(mapList, (map) -> {
+        List<I18nRecord> i18nRecordList = CollUtil.mapToList(mapList, (map) -> {
             return new I18nRecord(map);
         });
 

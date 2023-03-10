@@ -2,9 +2,9 @@ package jasmine.framework.remote.mq.impl;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.exception.InvalidParameterException;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QNewUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.NewUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.common.util.UniqueKeyUtil;
 import jasmine.framework.context.CustomInitializingSingleton;
@@ -59,8 +59,8 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
     @Override
     protected SendInvocationInfo doSend(SendInterceptor interceptor, String key,
                                         String category, Object content) {
-        QCheckUtil.notNull(interceptor, "interceptor null");
-        QCheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(interceptor, "interceptor null");
+        CheckUtil.notNull(category, "category null");
 
         // 获取路由信息
         PublisherExchangeRouting routing = routingMap.get(category);
@@ -101,12 +101,12 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
     protected Message createMessage(String key, Object content) {
         // 保证消息key不能为空
         if (key == null) {
-            key = QStringUtil.toString(UniqueKeyUtil.nextLong());
+            key = StringUtil.toString(UniqueKeyUtil.nextLong());
         }
 
         MessageProperties properties = new MessageProperties();
         // 设置安全信息
-        String userIdStr = QStringUtil.orEmpty(CurrentSubject.getUserId());
+        String userIdStr = StringUtil.orEmpty(CurrentSubject.getUserId());
         properties.setHeader(HEADER_SUBJECT, (PARAM_USER_ID + ":" + userIdStr));
         // 设置消息ID
         properties.setMessageId(key);
@@ -120,7 +120,7 @@ public class DefaultSendMessageServiceBean extends AbstractSendMessageService
     @Override
     public void afterSingletonsInstantiated() {
         Map<String, PublisherRouting> routingMap = applicationContext.getBeansOfType(PublisherRouting.class);
-        this.routingMap = QNewUtil.map();
+        this.routingMap = NewUtil.map();
 
         // 获取路由信息
         routingMap.forEach((name, routing) -> {

@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.testpendency;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.core.util.function.FunctionWithResult;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 
@@ -22,7 +22,7 @@ public class MockDataSourceDecideFacade implements DataSourceDecideFacade {
 
     @Override
     public <T> T readOny(FunctionWithResult<T> action) {
-        QCheckUtil.notNull(action, "action null");
+        CheckUtil.notNull(action, "action null");
         lastAction = action;
 
         try {
@@ -30,7 +30,7 @@ public class MockDataSourceDecideFacade implements DataSourceDecideFacade {
 
             return (T) lastResult;
         } catch (Throwable throwable) {
-            throw QErrorUtil.sneakyError(throwable);
+            throw ErrorUtil.sneakyError(throwable);
         }
     }
 

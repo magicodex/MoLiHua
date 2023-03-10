@@ -1,6 +1,6 @@
 package jasmine.core.test.mockito;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import org.mockito.Mockito;
 
 /**
@@ -21,7 +21,7 @@ public class MockUtil {
      * @return
      */
     public static <T> T mock(Class<T> classToMock, CustomMock<T> mock) {
-        QCheckUtil.notNull(classToMock, "classToMock null");
+        CheckUtil.notNull(classToMock, "classToMock null");
 
         CustomAnswer<T> answer = new CustomAnswer<>();
         T target = Mockito.mock(classToMock, answer);

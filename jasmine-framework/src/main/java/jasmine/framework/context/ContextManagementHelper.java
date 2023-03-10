@@ -1,7 +1,7 @@
 package jasmine.framework.context;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.core.util.function.FunctionWithResult;
 import jasmine.core.util.function.FunctionWithoutResult;
 import jasmine.framework.context.handler.ContextHandlerFacade;
@@ -32,15 +32,15 @@ public class ContextManagementHelper {
      * @return
      */
     public static <T> T manageContext(FunctionWithResult<T> function) {
-        QCheckUtil.notNullProp(handlerFacade, "handlerFacade null");
-        QCheckUtil.notNull(function, "function null");
+        CheckUtil.notNullProp(handlerFacade, "handlerFacade null");
+        CheckUtil.notNull(function, "function null");
 
         try {
             handlerFacade.initAllToCurrentThread();
 
             return function.call();
         } catch (Throwable e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         } finally {
             handlerFacade.clearAllFromCurrentThread();
         }
@@ -52,15 +52,15 @@ public class ContextManagementHelper {
      * @param function
      */
     public static void manageContext(FunctionWithoutResult function) {
-        QCheckUtil.notNullProp(handlerFacade, "handlerFacade null");
-        QCheckUtil.notNull(function, "function null");
+        CheckUtil.notNullProp(handlerFacade, "handlerFacade null");
+        CheckUtil.notNull(function, "function null");
 
         try {
             handlerFacade.initAllToCurrentThread();
 
             function.call();
         } catch (Throwable e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         } finally {
             handlerFacade.clearAllFromCurrentThread();
         }

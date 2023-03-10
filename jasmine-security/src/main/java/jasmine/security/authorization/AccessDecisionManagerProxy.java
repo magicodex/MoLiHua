@@ -1,6 +1,6 @@
 package jasmine.security.authorization;
 
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDecisionManager;
@@ -29,7 +29,7 @@ public class AccessDecisionManagerProxy implements AccessDecisionManager {
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
             throws AccessDeniedException, InsufficientAuthenticationException {
         HttpServletRequest request = ((FilterInvocation) object).getRequest();
-        String requestMethod = QStringUtil.orEmpty(request.getMethod());
+        String requestMethod = StringUtil.orEmpty(request.getMethod());
         String requestURI = request.getRequestURI();
 
         try {

@@ -14,21 +14,21 @@ import java.util.Set;
 /**
  * @author mh.z
  */
-public class QCollectionUtilTest {
+public class CollectionUtilTest {
 
     @Test
     public void testIsSizeEquals() {
-        Assert.assertTrue(QCollectionUtil.isSizeEquals(Arrays.asList(null, null),
+        Assert.assertTrue(CollectionUtil.isSizeEquals(Arrays.asList(null, null),
                 Arrays.asList(null, null)));
-        Assert.assertFalse(QCollectionUtil.isSizeEquals(Arrays.asList(null, null, null),
+        Assert.assertFalse(CollectionUtil.isSizeEquals(Arrays.asList(null, null, null),
                 Arrays.asList(null, null)));
     }
 
     @Test
     public void testIsSizeNotEquals() {
-        Assert.assertFalse(QCollectionUtil.isSizeNotEquals(Arrays.asList(null, null),
+        Assert.assertFalse(CollectionUtil.isSizeNotEquals(Arrays.asList(null, null),
                 Arrays.asList(null, null)));
-        Assert.assertTrue(QCollectionUtil.isSizeNotEquals(Arrays.asList(null, null, null),
+        Assert.assertTrue(CollectionUtil.isSizeNotEquals(Arrays.asList(null, null, null),
                 Arrays.asList(null, null)));
     }
 
@@ -39,7 +39,7 @@ public class QCollectionUtilTest {
             exampleList.add(Example1.create("1", 1, true));
             exampleList.add(Example1.create("2", 2, false));
 
-            List<String> actualList = QCollectionUtil.mapToList(exampleList, Example1::getString1);
+            List<String> actualList = CollectionUtil.mapToList(exampleList, Example1::getString1);
             Assert.assertEquals(2, actualList.size());
             Assert.assertEquals("1", actualList.get(0));
             Assert.assertEquals("2", actualList.get(1));
@@ -47,7 +47,7 @@ public class QCollectionUtilTest {
 
         // 集合为空的情况
         {
-            List<String> actualList = QCollectionUtil.mapToList(null, Example1::getString1);
+            List<String> actualList = CollectionUtil.mapToList(null, Example1::getString1);
             Assert.assertTrue(actualList instanceof List);
             Assert.assertEquals(0, actualList.size());
         }
@@ -61,7 +61,7 @@ public class QCollectionUtilTest {
             exampleList.add(Example1.create("2", 2, false));
             exampleList.add(Example1.create("3", 3, true));
 
-            List<Example1> actualList = QCollectionUtil.chooseToList(exampleList, (item) -> {
+            List<Example1> actualList = CollectionUtil.chooseToList(exampleList, (item) -> {
                 return Boolean.TRUE.equals(item.getBoolean1());
             });
 
@@ -72,7 +72,7 @@ public class QCollectionUtilTest {
 
         // 集合为空的情况
         {
-            List<Example1> actualList = QCollectionUtil.chooseToList(null, (item) -> {
+            List<Example1> actualList = CollectionUtil.chooseToList(null, (item) -> {
                 return Boolean.TRUE.equals(item.getBoolean1());
             });
 
@@ -84,12 +84,12 @@ public class QCollectionUtilTest {
     @Test
     public void testToList() {
         {
-            Collection<?> collection = QCollectionUtil.toList(new ArrayList<>());
+            Collection<?> collection = CollectionUtil.toList(new ArrayList<>());
             Assert.assertTrue(collection instanceof List);
         }
 
         {
-            Collection<?> collection = QCollectionUtil.toList(Set.of("value1", "value2"));
+            Collection<?> collection = CollectionUtil.toList(Set.of("value1", "value2"));
             Assert.assertTrue(collection instanceof List);
         }
     }
@@ -100,7 +100,7 @@ public class QCollectionUtilTest {
         exampleList.add(Example1.create("1", 1, true));
         exampleList.add(Example1.create("2", 2, false));
 
-        Map<String, Example1> actualMap = QCollectionUtil.toMap(exampleList, Example1::getString1);
+        Map<String, Example1> actualMap = CollectionUtil.toMap(exampleList, Example1::getString1);
         Assert.assertEquals(2, actualMap.size());
         Assert.assertEquals(Integer.valueOf(1), actualMap.get("1").getInteger1());
         Assert.assertEquals(Integer.valueOf(2), actualMap.get("2").getInteger1());
@@ -113,7 +113,7 @@ public class QCollectionUtilTest {
             exampleList.add(Example1.create("1", 1, true));
             exampleList.add(Example1.create("2", 2, false));
 
-            Map<String, Integer> actualMap = QCollectionUtil.toMap(exampleList,
+            Map<String, Integer> actualMap = CollectionUtil.toMap(exampleList,
                     Example1::getString1, Example1::getInteger1);
             Assert.assertEquals(2, actualMap.size());
             Assert.assertEquals(Integer.valueOf(1), actualMap.get("1"));
@@ -122,7 +122,7 @@ public class QCollectionUtilTest {
 
         // 集合为空的情况
         {
-            Map<String, Integer> actualMap = QCollectionUtil.toMap(null,
+            Map<String, Integer> actualMap = CollectionUtil.toMap(null,
                     Example1::getString1, Example1::getInteger1);
             Assert.assertTrue(actualMap instanceof Map);
             Assert.assertEquals(0, actualMap.size());
@@ -136,7 +136,7 @@ public class QCollectionUtilTest {
         exampleList.add(Example1.create("2", 2, false));
         exampleList.add(Example1.create("3", 1, false));
 
-        Map<Integer, List<Example1>> actualMap = QCollectionUtil.groupBy(exampleList, Example1::getInteger1);
+        Map<Integer, List<Example1>> actualMap = CollectionUtil.groupBy(exampleList, Example1::getInteger1);
         Assert.assertEquals(2, actualMap.size());
         Assert.assertEquals(2, actualMap.get(1).size());
         Assert.assertEquals(1, actualMap.get(2).size());
@@ -148,7 +148,7 @@ public class QCollectionUtilTest {
         exampleList.add(Example1.create("1", 1, true));
         exampleList.add(Example1.create("2", 2, false));
 
-        List<Integer> actualList = QCollectionUtil.forEach(exampleList, Example1::getInteger1);
+        List<Integer> actualList = CollectionUtil.forEach(exampleList, Example1::getInteger1);
         Assert.assertEquals(2, actualList.size());
         Assert.assertEquals(Integer.valueOf(1), actualList.get(0));
         Assert.assertEquals(Integer.valueOf(2), actualList.get(1));
@@ -160,7 +160,7 @@ public class QCollectionUtilTest {
         exampleList.add(Example1.create("1", 1, true));
         exampleList.add(Example1.create("2", 2, false));
 
-        QCollectionUtil.forEach(exampleList, (example) -> {
+        CollectionUtil.forEach(exampleList, (example) -> {
             example.setInteger1(example.getInteger1() + 1000);
         });
 

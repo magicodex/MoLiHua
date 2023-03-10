@@ -3,8 +3,8 @@ package jasmine.framework.i18n;
 
 import jasmine.core.i18n.DeclareI18N;
 import jasmine.core.i18n.I18nConstants;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.ErrorUtil;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.type.ClassMetadata;
@@ -31,7 +31,7 @@ public class DeclareI18nScanUtil {
      * @return
      */
     public static Properties scan(String locationPattern) {
-        QCheckUtil.notNull(locationPattern, "locationPattern null");
+        CheckUtil.notNull(locationPattern, "locationPattern null");
         Properties properties = new Properties();
 
         PathMatchingResourcePatternResolver pathResolver = new PathMatchingResourcePatternResolver();
@@ -53,7 +53,7 @@ public class DeclareI18nScanUtil {
                 doScan(properties, clazz);
             }
         } catch (Exception e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
 
         return properties;
@@ -66,8 +66,8 @@ public class DeclareI18nScanUtil {
      * @param clazz
      */
     protected static void doScan(Properties properties, Class<?> clazz) {
-        QCheckUtil.notNull(properties, "properties null");
-        QCheckUtil.notNull(clazz, "clazz null");
+        CheckUtil.notNull(properties, "properties null");
+        CheckUtil.notNull(clazz, "clazz null");
 
         if (!clazz.isInterface()) {
             return;
@@ -96,7 +96,7 @@ public class DeclareI18nScanUtil {
 
                 properties.put(key, value);
             } catch (IllegalAccessException e) {
-                throw QErrorUtil.sneakyError(e);
+                throw ErrorUtil.sneakyError(e);
             }
         }
     }

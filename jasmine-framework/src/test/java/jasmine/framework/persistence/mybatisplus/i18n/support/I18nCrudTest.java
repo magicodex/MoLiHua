@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.i18n.support;
 
-import jasmine.core.util.QCollUtil;
+import jasmine.core.util.CollUtil;
 import jasmine.framework.testdependency.context.FrameworkTestContext;
 import org.junit.Assert;
 import org.junit.Test;
@@ -41,7 +41,7 @@ public class I18nCrudTest extends FrameworkTestContext {
         List<I18nRecord> recordList = selectI18n(Collections.singletonList(1L), null);
         Assert.assertEquals(1, recordList.size());
 
-        I18nRecord record = QCollUtil.getFirst(recordList);
+        I18nRecord record = CollUtil.getFirst(recordList);
         Assert.assertEquals(Long.valueOf(1), record.getId());
         Assert.assertEquals("zh-CN", record.getLangCode());
         Assert.assertTrue(record.getDefaultFlag());
@@ -67,7 +67,7 @@ public class I18nCrudTest extends FrameworkTestContext {
             List<I18nRecord> recordList = selectI18n(Collections.singletonList(1L), "zh-CN");
             Assert.assertEquals(1, recordList.size());
 
-            I18nRecord record = QCollUtil.getFirst(recordList);
+            I18nRecord record = CollUtil.getFirst(recordList);
             Assert.assertTrue(record.getDefaultFlag());
             Assert.assertEquals("新名称1", record.getValueAsString("name_1"));
             Assert.assertEquals("新名称2", record.getValueAsString("name_2"));
@@ -78,7 +78,7 @@ public class I18nCrudTest extends FrameworkTestContext {
             List<I18nRecord> recordList = selectI18n(Collections.singletonList(1L), "en-US");
             Assert.assertEquals(1, recordList.size());
 
-            I18nRecord record = QCollUtil.getFirst(recordList);
+            I18nRecord record = CollUtil.getFirst(recordList);
             Assert.assertFalse(record.getDefaultFlag());
             Assert.assertEquals("name1", record.getValueAsString("name_1"));
             Assert.assertEquals("name2", record.getValueAsString("name_2"));
@@ -131,7 +131,7 @@ public class I18nCrudTest extends FrameworkTestContext {
         List<I18nRecord> recordList = crud.selectDefault(Collections.singletonList(1L));
         Assert.assertEquals(1, recordList.size());
 
-        I18nRecord record = QCollUtil.getFirst(recordList);
+        I18nRecord record = CollUtil.getFirst(recordList);
         Assert.assertEquals("zh-CN", record.getLangCode());
     }
 
@@ -178,7 +178,7 @@ public class I18nCrudTest extends FrameworkTestContext {
         }};
 
         List<Map> recordList = sqlSession.selectList(I18nCrud.STATEMENT_SELECT, parameter);
-        List<I18nRecord> i18nRecordList = QCollUtil.mapToList(recordList, (record) -> {
+        List<I18nRecord> i18nRecordList = CollUtil.mapToList(recordList, (record) -> {
             return new I18nRecord(record);
         });
 

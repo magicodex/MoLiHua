@@ -1,6 +1,6 @@
 package jasmine.security.authorization;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.security.subject.UserSubject;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.ConfigAttribute;
@@ -25,8 +25,8 @@ public class DynamicAccessDecisionVoter implements AccessDecisionVoter<FilterInv
     @Override
     public int vote(Authentication authentication, FilterInvocation invocation,
                     Collection<ConfigAttribute> attributes) {
-        QCheckUtil.notNull(authentication, "authentication null");
-        QCheckUtil.notNull(invocation, "invocation null");
+        CheckUtil.notNull(authentication, "authentication null");
+        CheckUtil.notNull(invocation, "invocation null");
         Object principal = authentication.getPrincipal();
 
         // 若未指定访问策略则根据是否认证决定是否允许访问

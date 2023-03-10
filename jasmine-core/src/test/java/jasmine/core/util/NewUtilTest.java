@@ -6,26 +6,26 @@ import org.junit.Test;
 /**
  * @author mh.z
  */
-public class QNewUtilTest {
+public class NewUtilTest {
 
     @Test
     public void testMap1() {
-        Assert.assertTrue(QNewUtil.map().isEmpty());
+        Assert.assertTrue(NewUtil.map().isEmpty());
     }
 
     @Test
     public void testMap2() {
-        Assert.assertTrue(QNewUtil.map(10).isEmpty());
+        Assert.assertTrue(NewUtil.map(10).isEmpty());
     }
 
     @Test
     public void testList1() {
-        Assert.assertTrue(QNewUtil.list().isEmpty());
+        Assert.assertTrue(NewUtil.list().isEmpty());
     }
 
     @Test
     public void testList2() {
-        Assert.assertTrue(QNewUtil.list(10).isEmpty());
+        Assert.assertTrue(NewUtil.list(10).isEmpty());
     }
 
 }

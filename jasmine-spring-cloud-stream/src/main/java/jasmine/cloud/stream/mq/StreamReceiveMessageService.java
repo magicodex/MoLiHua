@@ -3,9 +3,9 @@ package jasmine.cloud.stream.mq;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.exception.InvalidParameterException;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QObjectUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.ObjectUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.remote.mq.MessageReceiver;
 import jasmine.framework.remote.mq.impl.AbstractReceiveMessageService;
 import jasmine.framework.remote.mq.impl.interceptor.DefaultReceiveInvocationInfo;
@@ -35,8 +35,8 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
     @Override
     protected ReceiveInvocationInfo doReceive(ReceiveInterceptor interceptor,
                                               String category, Message message) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(message, "message null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(message, "message null");
 
         // 初始安全上下文
         initCurrentContext(message);
@@ -62,15 +62,15 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
      * @param message
      */
     protected void initCurrentContext(Message message) {
-        QCheckUtil.notNull(message, "message null");
+        CheckUtil.notNull(message, "message null");
         MessageHeaders headers = message.getHeaders();
         String subject = headers.get(HEADER_SUBJECT, String.class);
 
         // 初始安全上下文
-        if (QStringUtil.isNotEmpty(subject)) {
+        if (StringUtil.isNotEmpty(subject)) {
             if (subject.startsWith(PARAM_USER_ID + HEADER_SEPARATOR_SYMBOL)) {
                 String userIdStr = subject.substring(7);
-                Long userId = QObjectUtil.parseLong(userIdStr);
+                Long userId = ObjectUtil.parseLong(userIdStr);
 
                 CurrentSubject.setSubject(null, userId);
             }
@@ -85,7 +85,7 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
      * @return
      */
     protected MessageReceiver getReceiver(String category, boolean required) {
-        QCheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(category, "category null");
 
         String receiverName = category + RECEIVER_BEAN_SUFFIX;
         MessageReceiver receiver = runtimeProvider.getByName(receiverName, false);

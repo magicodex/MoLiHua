@@ -1,8 +1,8 @@
 package jasmine.framework.concurrent.testdependency;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollUtil;
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 
 import java.util.Collection;
@@ -16,20 +16,20 @@ public class MockAsyncTaskProvider implements AsyncTaskProvider {
 
     @Override
     public void async(Runnable task) {
-        QCheckUtil.notNull(task, "task null");
+        CheckUtil.notNull(task, "task null");
 
         task.run();
     }
 
     @Override
     public <T> List<T> asyncAndGet(Collection<Callable> tasks) {
-        QCheckUtil.notNull(tasks, "tasks null");
+        CheckUtil.notNull(tasks, "tasks null");
 
-        List<T> resultList = (List<T>) QCollUtil.mapToList(tasks, (callable) -> {
+        List<T> resultList = (List<T>) CollUtil.mapToList(tasks, (callable) -> {
             try {
                 return callable.call();
             } catch (Exception e) {
-                throw QErrorUtil.sneakyError(e);
+                throw ErrorUtil.sneakyError(e);
             }
         });
 

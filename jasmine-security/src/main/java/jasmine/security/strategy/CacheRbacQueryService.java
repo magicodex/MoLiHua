@@ -1,6 +1,6 @@
 package jasmine.security.strategy;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.security.constant.SecurityCaches;
 import jasmine.security.rbac.dao.SecFunctionDAO;
@@ -21,8 +21,8 @@ public class CacheRbacQueryService extends DefaultRbacQueryService {
 
     @Override
     public SecResourceBaseInfoDTO queryResourceByRequest(String requestMethod, String urlPattern) {
-        QCheckUtil.notNull(requestMethod, "requestMethod null");
-        QCheckUtil.notNull(urlPattern, "urlPattern null");
+        CheckUtil.notNull(requestMethod, "requestMethod null");
+        CheckUtil.notNull(urlPattern, "urlPattern null");
         String cacheKey = requestMethod + "&" + urlPattern;
 
         SecResourceBaseInfoDTO resource = CacheUtil.get(SecurityCaches.RESOURCE_WITH_REQUEST, cacheKey, () -> {
@@ -34,8 +34,8 @@ public class CacheRbacQueryService extends DefaultRbacQueryService {
 
     @Override
     public List<Long> queryFunctionsByUser(Long userId, Collection<Long> roleIds) {
-        QCheckUtil.notNull(userId, "userId null");
-        QCheckUtil.notNull(roleIds, "roleIds null");
+        CheckUtil.notNull(userId, "userId null");
+        CheckUtil.notNull(roleIds, "roleIds null");
 
         List<Long> functionIdList = CacheUtil.getList(SecurityCaches.FUNCTIONS_WITH_USER_ID, userId, () -> {
             return super.queryFunctionsByUser(userId, roleIds);
@@ -46,7 +46,7 @@ public class CacheRbacQueryService extends DefaultRbacQueryService {
 
     @Override
     public List<Long> queryFunctionsByResource(Long resourceId) {
-        QCheckUtil.notNull(resourceId, "resourceId null");
+        CheckUtil.notNull(resourceId, "resourceId null");
 
         List<Long> functionIdList = CacheUtil.getList(SecurityCaches.FUNCTIONS_WITH_RESOURCE_ID, resourceId, () -> {
             return super.queryFunctionsByResource(resourceId);

@@ -1,6 +1,6 @@
 package jasmine.framework.remote.mq.impl;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.remote.mq.SendMessageService;
 import jasmine.framework.remote.mq.impl.interceptor.DefaultSendInterceptor;
 import jasmine.framework.remote.mq.interceptor.SendInterceptor;
@@ -41,8 +41,8 @@ public abstract class AbstractSendMessageService implements SendMessageService {
 
     @Override
     public void send(String category, String key, Object content) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(content, "content null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(content, "content null");
 
         // 发送消息
         send(interceptor, category, key, content);
@@ -50,8 +50,8 @@ public abstract class AbstractSendMessageService implements SendMessageService {
 
     @Override
     public void send(String category, String key, Object content, SendInterceptorDecorator decorator) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(content, "content null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(content, "content null");
 
         SendInterceptor tempInterceptor = interceptor;
         if (decorator != null) {

@@ -1,6 +1,6 @@
 package jasmine.framework.web.validation.helper;
 
-import jasmine.core.util.QNewUtil;
+import jasmine.core.util.NewUtil;
 import org.springframework.validation.AbstractBindingResult;
 
 import java.util.Map;
@@ -17,7 +17,7 @@ public class ValidationContext extends AbstractBindingResult {
 
     public ValidationContext() {
         super("request parameters");
-        this.parameters = QNewUtil.map();
+        this.parameters = NewUtil.map();
     }
 
     public void setParameter(String name, Object value) {

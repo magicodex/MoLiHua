@@ -1,7 +1,7 @@
 package jasmine.framework.cache.redis;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.cache.CacheExpirationStrategy;
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheSyncStrategy;
@@ -62,8 +62,8 @@ public class RedisCacheService implements CacheService {
 
     @Override
     public <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
 
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
@@ -90,8 +90,8 @@ public class RedisCacheService implements CacheService {
 
     @Override
     public <T> List<T> getList(String category, Object key, Class<T> type, Supplier<List<T>> supplier) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
 
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
@@ -112,8 +112,8 @@ public class RedisCacheService implements CacheService {
 
     @Override
     public void set(String category, Object key, Object value) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
 
         // 序列化成字节
         byte[] bytes = SimpleConvertUtil.serialize(value);
@@ -129,8 +129,8 @@ public class RedisCacheService implements CacheService {
 
     @Override
     public void remove(String category, Object key) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
 
         // 获取缓存key
         String cacheKey = getCacheKey(category, key);
@@ -140,8 +140,8 @@ public class RedisCacheService implements CacheService {
 
     @Override
     public void sync(String category, Object key, Supplier<Object> supplier) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
 
         if (supplier != null) {
             if (syncStrategy != null) {
@@ -162,10 +162,10 @@ public class RedisCacheService implements CacheService {
      * @return
      */
     protected String getCacheKey(String category, Object key) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
 
-        return (CACHE_KEY_PREFIX + category + CACHE_KEY_SEPARATOR + QStringUtil.toString(key));
+        return (CACHE_KEY_PREFIX + category + CACHE_KEY_SEPARATOR + StringUtil.toString(key));
     }
 
 }

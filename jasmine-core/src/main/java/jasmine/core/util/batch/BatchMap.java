@@ -1,7 +1,7 @@
 package jasmine.core.util.batch;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollUtil;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -25,26 +25,26 @@ public class BatchMap<K, V> extends AbstractBatchMap<K, V> {
 
     @Override
     public <T> void lazyLoad(Collection<T> collection, Function<T, K> keyMapper) {
-        QCheckUtil.notNull(collection, "collection null");
-        QCheckUtil.notNull(keyMapper, "keyMapper null");
+        CheckUtil.notNull(collection, "collection null");
+        CheckUtil.notNull(keyMapper, "keyMapper null");
 
         if (collection.isEmpty()) {
             return;
         }
 
-        List<K> keyList = QCollUtil.mapToList(collection, keyMapper);
+        List<K> keyList = CollUtil.mapToList(collection, keyMapper);
         Set<K> keySet = new HashSet<>(keyList);
         keySet.remove(null);
 
-        if (QCollUtil.isNotEmpty(keySet)) {
+        if (CollUtil.isNotEmpty(keySet)) {
             lazyKeys.addAll(keySet);
         }
     }
 
     @Override
     protected void forceLoad() {
-        if (QCollUtil.isNotEmpty(lazyKeys)) {
-            List<K> keyList = QCollUtil.toList(lazyKeys);
+        if (CollUtil.isNotEmpty(lazyKeys)) {
+            List<K> keyList = CollUtil.toList(lazyKeys);
             List<V> valueList = loadFunction.apply(keyList);
 
             for (V value : valueList) {

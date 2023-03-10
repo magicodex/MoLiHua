@@ -1,6 +1,6 @@
 package jasmine.security.rbac.dao;
 
-import jasmine.core.util.QCollUtil;
+import jasmine.core.util.CollUtil;
 import jasmine.framework.test.context.AppTestContext;
 import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
 import jasmine.security.rbac.mapper.SecFunctionMapper;
@@ -33,7 +33,7 @@ public class SecFunctionDaoTest extends AppTestContext {
             Assert.assertNotNull(actualList);
             Assert.assertEquals(2, actualList.size());
 
-            Map<String, SecFunctionBaseInfoDTO> actualMap = QCollUtil.toMap(actualList,
+            Map<String, SecFunctionBaseInfoDTO> actualMap = CollUtil.toMap(actualList,
                     SecFunctionBaseInfoDTO::getFunctionCode);
             Assert.assertTrue(actualMap.containsKey("FUNCTION_1"));
             Assert.assertTrue(actualMap.containsKey("FUNCTION_2"));
@@ -46,7 +46,7 @@ public class SecFunctionDaoTest extends AppTestContext {
             Assert.assertNotNull(actualList);
             Assert.assertEquals(1, actualList.size());
 
-            Map<String, SecFunctionBaseInfoDTO> actualMap = QCollUtil.toMap(actualList,
+            Map<String, SecFunctionBaseInfoDTO> actualMap = CollUtil.toMap(actualList,
                     SecFunctionBaseInfoDTO::getFunctionCode);
             Assert.assertTrue(actualMap.containsKey("FUNCTION_2"));
         }
@@ -63,7 +63,7 @@ public class SecFunctionDaoTest extends AppTestContext {
             Assert.assertNotNull(actualList);
             Assert.assertEquals(1, actualList.size());
 
-            Map<String, SecFunctionBaseInfoDTO> actualMap = QCollUtil.toMap(actualList,
+            Map<String, SecFunctionBaseInfoDTO> actualMap = CollUtil.toMap(actualList,
                     SecFunctionBaseInfoDTO::getFunctionCode);
             Assert.assertTrue(actualMap.containsKey("FUNCTION_1"));
         }
@@ -75,7 +75,7 @@ public class SecFunctionDaoTest extends AppTestContext {
             Assert.assertNotNull(actualList);
             Assert.assertEquals(1, actualList.size());
 
-            Map<String, SecFunctionBaseInfoDTO> actualMap = QCollUtil.toMap(actualList,
+            Map<String, SecFunctionBaseInfoDTO> actualMap = CollUtil.toMap(actualList,
                     SecFunctionBaseInfoDTO::getFunctionCode);
             Assert.assertTrue(actualMap.containsKey("FUNCTION_2"));
         }
@@ -87,7 +87,7 @@ public class SecFunctionDaoTest extends AppTestContext {
             Assert.assertNotNull(actualList);
             Assert.assertEquals(1, actualList.size());
 
-            Map<String, SecFunctionBaseInfoDTO> actualMap = QCollUtil.toMap(actualList,
+            Map<String, SecFunctionBaseInfoDTO> actualMap = CollUtil.toMap(actualList,
                     SecFunctionBaseInfoDTO::getFunctionCode);
             Assert.assertTrue(actualMap.containsKey("FUNCTION_2"));
         }

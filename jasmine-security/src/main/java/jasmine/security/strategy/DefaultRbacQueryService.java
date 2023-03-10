@@ -1,8 +1,8 @@
 package jasmine.security.strategy;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollectionUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollectionUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.security.constant.SecurityConstants;
 import jasmine.security.rbac.dao.SecFunctionDAO;
 import jasmine.security.rbac.dao.SecResourceDAO;
@@ -28,12 +28,12 @@ public class DefaultRbacQueryService implements RbacQueryService {
 
     @Override
     public SecResourceBaseInfoDTO queryResourceByRequest(String requestMethod, String urlPattern) {
-        QCheckUtil.notNull(requestMethod, "requestMethod null");
-        QCheckUtil.notNull(urlPattern, "urlPattern null");
+        CheckUtil.notNull(requestMethod, "requestMethod null");
+        CheckUtil.notNull(urlPattern, "urlPattern null");
 
         // 获取指定路径的资源
         List<SecResource> resourceList = resourceDAO.listResourcesByPathNoI18n(urlPattern);
-        if (QCollectionUtil.isEmpty(resourceList)) {
+        if (CollectionUtil.isEmpty(resourceList)) {
             return null;
         }
 
@@ -42,7 +42,7 @@ public class DefaultRbacQueryService implements RbacQueryService {
             String accessMethod = current.getAccessMethod();
 
             if (SecurityConstants.RESOURCE_ACCESS_METHOD_ANY.equals(accessMethod)
-                    || QStringUtil.equals(requestMethod, accessMethod)) {
+                    || StringUtil.equals(requestMethod, accessMethod)) {
                 return SecurityResourceUtil.toResourceBaseInfoDTO(current);
             }
         }
@@ -52,15 +52,15 @@ public class DefaultRbacQueryService implements RbacQueryService {
 
     @Override
     public List<Long> queryFunctionsByUser(Long userId, Collection<Long> roleIds) {
-        QCheckUtil.notNull(userId, "userId null");
-        QCheckUtil.notNull(roleIds, "roleIds null");
+        CheckUtil.notNull(userId, "userId null");
+        CheckUtil.notNull(roleIds, "roleIds null");
 
-        List<Long> roleIdList = QCollectionUtil.toList(roleIds);
+        List<Long> roleIdList = CollectionUtil.toList(roleIds);
         // 获取角色被授予的所有功能
         List<SecFunctionBaseInfoDTO> functionList = functionDAO
                 .listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(roleIdList);
 
-        List<Long> functionIdList = QCollectionUtil.mapToList(functionList,
+        List<Long> functionIdList = CollectionUtil.mapToList(functionList,
                 SecFunctionBaseInfoDTO::getFunctionId);
 
         return functionIdList;
@@ -68,16 +68,16 @@ public class DefaultRbacQueryService implements RbacQueryService {
 
     @Override
     public List<Long> queryFunctionsByResource(Long resourceId) {
-        QCheckUtil.notNull(resourceId, "resourceId null");
+        CheckUtil.notNull(resourceId, "resourceId null");
 
         // 获取该资源被授予给的所有功能
         List<SecFunctionBaseInfoDTO> functionList = functionDAO
                 .listFunctionBaseInfoDTOsByIdNoI18n(resourceId);
-        if (QCollectionUtil.isEmpty(functionList)) {
+        if (CollectionUtil.isEmpty(functionList)) {
             return Collections.emptyList();
         }
 
-        List<Long> functionIdList = QCollectionUtil.mapToList(functionList,
+        List<Long> functionIdList = CollectionUtil.mapToList(functionList,
                 SecFunctionBaseInfoDTO::getFunctionId);
 
         return functionIdList;

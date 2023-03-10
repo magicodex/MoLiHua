@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  *
  * @author mh.z
  */
-public class QCollectionUtil extends CollUtil {
+public class CollectionUtil extends CollUtil {
 
     /**
      * 判断是否集合的数量相同
@@ -71,7 +71,7 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <E, R> List<R> mapToList(@Nullable Collection<E> collection,
                                            @Nonnull Function<E, R> function) {
-        QCheckUtil.notNull(function, "function null");
+        CheckUtil.notNull(function, "function null");
 
         if (isEmpty(collection)) {
             return Collections.emptyList();
@@ -93,7 +93,7 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <T> List<T> chooseToList(@Nullable Collection<T> collection,
                                            @Nonnull Predicate<T> predicate) {
-        QCheckUtil.notNull(predicate, "predicate null");
+        CheckUtil.notNull(predicate, "predicate null");
 
         if (isEmpty(collection)) {
             return Collections.emptyList();
@@ -138,7 +138,7 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <E, K> Map<K, E> toMap(@Nullable Collection<E> collection,
                                          @Nonnull Function<E, K> keyMapper) {
-        QCheckUtil.notNull(keyMapper, "keyMapper null");
+        CheckUtil.notNull(keyMapper, "keyMapper null");
 
         if (isEmpty(collection)) {
             return Collections.emptyMap();
@@ -161,8 +161,8 @@ public class QCollectionUtil extends CollUtil {
     public static <E, K, V> Map<K, V> toMap(@Nullable Collection<E> collection,
                                             @Nonnull Function<E, K> keyMapper,
                                             @Nonnull Function<E, V> valueMapper) {
-        QCheckUtil.notNull(keyMapper, "keyMapper null");
-        QCheckUtil.notNull(valueMapper, "valueMapper null");
+        CheckUtil.notNull(keyMapper, "keyMapper null");
+        CheckUtil.notNull(valueMapper, "valueMapper null");
 
         if (isEmpty(collection)) {
             return Collections.emptyMap();
@@ -185,7 +185,7 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <E, K> Map<K, List<E>> groupBy(@Nullable Collection<E> collection,
                                                  @Nonnull Function<E, K> classifier) {
-        QCheckUtil.notNull(classifier, "classifier null");
+        CheckUtil.notNull(classifier, "classifier null");
 
         if (isEmpty(collection)) {
             return Collections.emptyMap();
@@ -219,7 +219,7 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <E, R> List<R> forEach(@Nullable Collection<E> collection,
                                          @Nonnull Function<E, R> function) {
-        QCheckUtil.notNull(function, "function null");
+        CheckUtil.notNull(function, "function null");
 
         if (isEmpty(collection)) {
             return Collections.emptyList();
@@ -242,7 +242,7 @@ public class QCollectionUtil extends CollUtil {
      */
     public static <E> void forEach(@Nullable Collection<E> collection,
                                    @Nonnull java.util.function.Consumer<E> consumer) {
-        QCheckUtil.notNull(consumer, "consumer null");
+        CheckUtil.notNull(consumer, "consumer null");
 
         if (isEmpty(collection)) {
             return;

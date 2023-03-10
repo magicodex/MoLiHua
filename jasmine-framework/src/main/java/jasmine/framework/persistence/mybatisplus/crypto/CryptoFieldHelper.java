@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.crypto;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.common.security.CryptoProvider;
 
 /**
@@ -24,7 +24,7 @@ public class CryptoFieldHelper {
      * @return
      */
     public static String encrypt(String source) {
-        QCheckUtil.notNullProp(cryptoProvider, "cryptoProvider null");
+        CheckUtil.notNullProp(cryptoProvider, "cryptoProvider null");
 
         return cryptoProvider.encrypt(source);
     }
@@ -36,7 +36,7 @@ public class CryptoFieldHelper {
      * @return
      */
     public static String decrypt(String source) {
-        QCheckUtil.notNullProp(cryptoProvider, "cryptoProvider null");
+        CheckUtil.notNullProp(cryptoProvider, "cryptoProvider null");
 
         return cryptoProvider.decrypt(source);
     }

@@ -10,7 +10,7 @@ import jasmine.core.exception.UnexpectedException;
  *
  * @author mh.z
  */
-public class QCheckUtil {
+public class CheckUtil {
 
     /**
      * 期望不为null

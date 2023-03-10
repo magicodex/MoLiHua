@@ -3,7 +3,7 @@ package jasmine.cloud.stream.testdependency;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import jasmine.cloud.stream.mq.sender.StreamBridgeInvoker;
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 
 import java.util.Collection;
 
@@ -23,7 +23,7 @@ public class MockStreamBridgeInvoker implements StreamBridgeInvoker {
 
     @Override
     public boolean send(String bindingName, Object data) {
-        QCheckUtil.notNull(bindingName, "bindingName null");
+        CheckUtil.notNull(bindingName, "bindingName null");
 
         sentData.put(bindingName, data);
         return true;

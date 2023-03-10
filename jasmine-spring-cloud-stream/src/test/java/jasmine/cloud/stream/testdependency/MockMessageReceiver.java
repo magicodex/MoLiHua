@@ -1,6 +1,6 @@
 package jasmine.cloud.stream.testdependency;
 
-import jasmine.core.util.QNewUtil;
+import jasmine.core.util.NewUtil;
 import jasmine.framework.remote.mq.MessageReceiver;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class MockMessageReceiver<T> implements MessageReceiver<T> {
 
     public MockMessageReceiver(Class<T> type) {
         this.type = type;
-        this.receivedContents = QNewUtil.list();
+        this.receivedContents = NewUtil.list();
     }
 
     public List<T> getReceivedContents() {

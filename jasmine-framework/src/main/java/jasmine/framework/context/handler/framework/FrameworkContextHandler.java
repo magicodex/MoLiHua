@@ -1,6 +1,6 @@
 package jasmine.framework.context.handler.framework;
 
-import jasmine.core.util.QMapperUtil;
+import jasmine.core.util.MapperUtil;
 import jasmine.framework.context.handler.ContextHandler;
 import jasmine.framework.context.handler.ContextSnapshot;
 import jasmine.framework.persistence.datasource.context.DataSourceContext;
@@ -17,7 +17,7 @@ public class FrameworkContextHandler implements ContextHandler {
 
         if (dataSourceContext != null) {
             // 复制出新的对象
-            dataSourceContext = QMapperUtil.mapTo(dataSourceContext, DataSourceContext.class);
+            dataSourceContext = MapperUtil.mapTo(dataSourceContext, DataSourceContext.class);
         }
 
         ContextSnapshot snapshot = new FrameworkContextSnapshot(dataSourceContext);

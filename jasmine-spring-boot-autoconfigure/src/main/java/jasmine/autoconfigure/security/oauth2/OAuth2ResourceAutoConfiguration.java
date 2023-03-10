@@ -1,6 +1,6 @@
 package jasmine.autoconfigure.security.oauth2;
 
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -34,7 +34,7 @@ public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAda
         // 只处理请求头中带有 "Authorization" 参数的请求，
         // 其它请求交给 Spring Security 过滤器鉴权。
         http.requestMatcher((request) -> {
-            return QStringUtil.isNotEmpty(request.getHeader(AUTHORIZATION_HEADER));
+            return StringUtil.isNotEmpty(request.getHeader(AUTHORIZATION_HEADER));
         });
 
         http.authorizeRequests()

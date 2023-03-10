@@ -1,7 +1,7 @@
 package jasmine.core.util.sort;
 
 import jasmine.core.constant.NumberConstants;
-import jasmine.core.util.QObjectUtil;
+import jasmine.core.util.ObjectUtil;
 
 import java.util.Comparator;
 import java.util.function.Function;
@@ -25,7 +25,7 @@ public class KeyComparator<T, K extends Comparable> implements Comparator<T> {
         Comparable leftKey = keyFunction.apply(left);
         Comparable rightKey = keyFunction.apply(right);
 
-        int result = QObjectUtil.compare(leftKey, rightKey);
+        int result = ObjectUtil.compare(leftKey, rightKey);
         if (result != NumberConstants.NUMBER_0 && !asc) {
             result = (NumberConstants.NUMBER_NEG_1) * result;
         }

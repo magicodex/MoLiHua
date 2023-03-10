@@ -1,6 +1,6 @@
 package jasmine.framework.lock.distributed;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 
 import javax.annotation.Nonnull;
 
@@ -30,9 +30,9 @@ public class DistributedLocks {
      * @return
      */
     public static DistributedDeclaredLock declare(@Nonnull String category, @Nonnull Object key) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(key, "key null");
-        QCheckUtil.notNullProp(provider, "provider null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
+        CheckUtil.notNullProp(provider, "provider null");
 
         // 获取分布式锁的实现
         DistributedDeclaredLock lock = provider.declareLock(category, key);

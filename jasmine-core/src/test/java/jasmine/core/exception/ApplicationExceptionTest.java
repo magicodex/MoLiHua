@@ -1,7 +1,7 @@
 package jasmine.core.exception;
 
 import jasmine.core.testdependency.MockLocaleMessageProvider;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.I18nUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class ApplicationExceptionTest {
     @Test
     public void testBuildErrorMessage() {
         MockLocaleMessageProvider provider = new MockLocaleMessageProvider();
-        QI18nUtil.initUtil(provider);
+        I18nUtil.initUtil(provider);
         provider.addMessage("message1", "%s + %s = %s");
         provider.addMessage("message2", "%s - %s = %s");
 

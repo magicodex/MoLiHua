@@ -5,7 +5,7 @@ import cn.hutool.crypto.Padding;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.crypto.symmetric.AES;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.common.security.CryptoProvider;
 
 import java.nio.charset.StandardCharsets;
@@ -31,7 +31,7 @@ public class SymmetricCryptoProvider implements CryptoProvider {
     public SymmetricCryptoProvider(String secret, String salt) {
         keyBytes = DigestUtil.sha256(secret);
 
-        if (QStringUtil.isNotEmpty(salt)) {
+        if (StringUtil.isNotEmpty(salt)) {
             ivBytes = DigestUtil.md5(salt);
         } else {
             ivBytes = DigestUtil.md5(secret);
@@ -40,7 +40,7 @@ public class SymmetricCryptoProvider implements CryptoProvider {
 
     @Override
     public String encrypt(String source) {
-        if (QStringUtil.isEmpty(source)) {
+        if (StringUtil.isEmpty(source)) {
             return source;
         }
 
@@ -58,7 +58,7 @@ public class SymmetricCryptoProvider implements CryptoProvider {
 
     @Override
     public String decrypt(String source) {
-        if (QStringUtil.isEmpty(source)) {
+        if (StringUtil.isEmpty(source)) {
             return source;
         }
 

@@ -1,6 +1,6 @@
 package jasmine.framework.web.conversion.formatter;
 
-import jasmine.core.util.QDateUtil;
+import jasmine.core.util.DateUtil;
 import jasmine.framework.web.annotation.StartDate;
 import org.springframework.format.Formatter;
 
@@ -22,12 +22,12 @@ public class StartDateFormatter implements Formatter<ZonedDateTime> {
 
     @Override
     public ZonedDateTime parse(String text, Locale locale) throws ParseException {
-        return QDateUtil.parseStartYearDay(text);
+        return DateUtil.parseStartYearDay(text);
     }
 
     @Override
     public String print(ZonedDateTime object, Locale locale) {
-        return QDateUtil.formatYearDay(object);
+        return DateUtil.formatYearDay(object);
     }
 
 }

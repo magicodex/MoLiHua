@@ -1,6 +1,6 @@
 package jasmine.framework.concurrent;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 
 import java.util.Collection;
 import java.util.List;
@@ -30,8 +30,8 @@ public class AsyncTaskUtil {
      * @param task
      */
     public static void async(Runnable task) {
-        QCheckUtil.notNull(task, "task null");
-        QCheckUtil.notNullProp(provider, "provider null");
+        CheckUtil.notNull(task, "task null");
+        CheckUtil.notNullProp(provider, "provider null");
 
         provider.async(task);
     }
@@ -44,8 +44,8 @@ public class AsyncTaskUtil {
      * @return
      */
     public static <T> List<T> asyncAndGet(Collection<Callable> tasks) {
-        QCheckUtil.notNull(tasks, "tasks null");
-        QCheckUtil.notNullProp(provider, "provider null");
+        CheckUtil.notNull(tasks, "tasks null");
+        CheckUtil.notNullProp(provider, "provider null");
 
         return provider.asyncAndGet(tasks);
     }

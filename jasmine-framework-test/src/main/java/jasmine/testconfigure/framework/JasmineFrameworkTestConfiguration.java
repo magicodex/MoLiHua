@@ -3,7 +3,7 @@ package jasmine.testconfigure.framework;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.context.SubjectProvider;
-import jasmine.core.util.QSpringUtil;
+import jasmine.core.util.SpringUtil;
 import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
@@ -22,7 +22,7 @@ public class JasmineFrameworkTestConfiguration {
     public SpringRuntimeProvider runtimeProvider() {
         SpringRuntimeProvider runtimeProvider = new SpringRuntimeProvider();
         // 初始工具类
-        QSpringUtil.initUtil(runtimeProvider);
+        SpringUtil.initUtil(runtimeProvider);
 
         return runtimeProvider;
     }

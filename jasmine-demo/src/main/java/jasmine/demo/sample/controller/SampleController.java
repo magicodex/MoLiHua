@@ -3,8 +3,8 @@ package jasmine.demo.sample.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jasmine.core.util.QDateUtil;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.DateUtil;
+import jasmine.core.util.I18nUtil;
 import jasmine.demo.sample.dto.Params1DTO;
 import jasmine.demo.sample.dto.SampleCreateDTO;
 import jasmine.demo.sample.dto.SampleDTO;
@@ -111,7 +111,7 @@ public class SampleController {
     @RequestMapping(value = "/api/sample/i18n/get/{messageKey}",
             method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> i18n1(@Parameter(name = "多语言key") @PathVariable("messageKey") String messageKey) {
-        String message = QI18nUtil.getMessage(messageKey);
+        String message = I18nUtil.getMessage(messageKey);
 
         return WebResult.success(message).toEntity();
     }
@@ -157,8 +157,8 @@ public class SampleController {
             method = {RequestMethod.GET})
     public ResponseEntity<WebResult<String>> conversion1(@Parameter(name = "开始日期") @PathVariable("startDate") @StartDate ZonedDateTime startDate,
                                                          @Parameter(name = "结束日期") @PathVariable("endDate") @EndDate ZonedDateTime endDate) {
-        String startDateStr = QDateUtil.formatYearSecond(startDate);
-        String endDateStr = QDateUtil.formatYearSecond(endDate);
+        String startDateStr = DateUtil.formatYearSecond(startDate);
+        String endDateStr = DateUtil.formatYearSecond(endDate);
 
         WebResult<String> result = WebResult.success(startDateStr + "~" + endDateStr);
         return result.toEntity();

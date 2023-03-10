@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.annotation;
 
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -34,7 +34,7 @@ public class ReadOnlyAspectHandler implements Ordered {
             try {
                 result = joinPoint.proceed();
             } catch (Throwable e) {
-                throw QErrorUtil.sneakyError(e);
+                throw ErrorUtil.sneakyError(e);
             }
         }
 

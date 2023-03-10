@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.dao;
 
 import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.I18nUtil;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCrud;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nMeta;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nRecord;
@@ -38,12 +38,12 @@ public class BaseI18nEntityDaoTest extends FrameworkTestContext {
 
     @Before
     public void setUp() {
-        previousLocalMessageProvider = QI18nUtil.getProvider();
+        previousLocalMessageProvider = I18nUtil.getProvider();
     }
 
     @After
     public void tearDown() {
-        QI18nUtil.initUtil(previousLocalMessageProvider);
+        I18nUtil.initUtil(previousLocalMessageProvider);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class BaseI18nEntityDaoTest extends FrameworkTestContext {
         Assert.assertEquals(1, i18nRecordList.size());
         // 检查多语言记录
         I18nRecord i18nRecord = i18nRecordList.get(0);
-        Assert.assertEquals(QI18nUtil.getLanguage(), i18nRecord.getLangCode());
+        Assert.assertEquals(I18nUtil.getLanguage(), i18nRecord.getLangCode());
         Assert.assertEquals("name1", i18nRecord.getValueAsString("name_1"));
         Assert.assertEquals(true, i18nRecord.getDefaultFlag());
     }
@@ -97,7 +97,7 @@ public class BaseI18nEntityDaoTest extends FrameworkTestContext {
         Assert.assertEquals(1, i18nRecordList.size());
         // 检查多语言记录
         I18nRecord i18nRecord = i18nRecordList.get(0);
-        Assert.assertEquals(QI18nUtil.getLanguage(), i18nRecord.getLangCode());
+        Assert.assertEquals(I18nUtil.getLanguage(), i18nRecord.getLangCode());
         Assert.assertEquals("newName1", i18nRecord.getValueAsString("name_1"));
         Assert.assertEquals(true, i18nRecord.getDefaultFlag());
     }
@@ -137,7 +137,7 @@ public class BaseI18nEntityDaoTest extends FrameworkTestContext {
         I18nMeta i18nMeta = I18nMeta.createI18nMeta(TestEntity1.class);
 
         MockLocaleMessageProvider mockLocaleMessageProvider = new MockLocaleMessageProvider();
-        QI18nUtil.initUtil(mockLocaleMessageProvider);
+        I18nUtil.initUtil(mockLocaleMessageProvider);
 
         // SIMPLIFIED_CHINESE语言环境下保存记录
         mockLocaleMessageProvider.setLanguage(Locale.SIMPLIFIED_CHINESE.toLanguageTag());

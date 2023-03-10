@@ -1,6 +1,6 @@
 package jasmine.framework.lock.testdependency;
 
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 
@@ -14,7 +14,7 @@ public class MockDistributedDeclaredLock implements DistributedDeclaredLock {
         try {
             return (T) callback.call();
         } catch (Throwable e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 
@@ -23,7 +23,7 @@ public class MockDistributedDeclaredLock implements DistributedDeclaredLock {
         try {
             return (T) callback.call();
         } catch (Throwable e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 

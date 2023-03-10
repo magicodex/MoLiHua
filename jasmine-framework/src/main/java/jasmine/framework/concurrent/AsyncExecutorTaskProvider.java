@@ -1,7 +1,7 @@
 package jasmine.framework.concurrent;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.ErrorUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,8 +28,8 @@ public class AsyncExecutorTaskProvider implements AsyncTaskProvider {
 
     @Override
     public void async(Runnable task) {
-        QCheckUtil.notNull(task, "task null");
-        QCheckUtil.notNullProp(executor, "executor null");
+        CheckUtil.notNull(task, "task null");
+        CheckUtil.notNullProp(executor, "executor null");
 
         // 开线程执行
         executor.execute(task);
@@ -37,8 +37,8 @@ public class AsyncExecutorTaskProvider implements AsyncTaskProvider {
 
     @Override
     public <T> List<T> asyncAndGet(Collection<Callable> tasks) {
-        QCheckUtil.notNull(tasks, "tasks null");
-        QCheckUtil.notNullProp(executor, "executor null");
+        CheckUtil.notNull(tasks, "tasks null");
+        CheckUtil.notNullProp(executor, "executor null");
         List<T> resultList = new ArrayList<>(tasks.size());
 
         // 开线程执行
@@ -54,7 +54,7 @@ public class AsyncExecutorTaskProvider implements AsyncTaskProvider {
                 resultList.add(result);
             }
         } catch (InterruptedException | ExecutionException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
 
         return resultList;

@@ -1,8 +1,8 @@
 package jasmine.framework.job.xxljob;
 
 import com.xxl.job.core.context.XxlJobHelper;
-import jasmine.core.util.QNewUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.NewUtil;
+import jasmine.core.util.StringUtil;
 import jasmine.framework.job.JobCurrent;
 
 import java.util.Collections;
@@ -72,7 +72,7 @@ public class XxlJobCurrent implements JobCurrent {
      * @return
      */
     protected Map<String, Object> parseParameters(String jobParam) {
-        if (QStringUtil.isEmpty(jobParam)) {
+        if (StringUtil.isEmpty(jobParam)) {
             return Collections.emptyMap();
         }
 
@@ -82,7 +82,7 @@ public class XxlJobCurrent implements JobCurrent {
             return Collections.emptyMap();
         }
 
-        Map<String, Object> parameterMap = QNewUtil.map();
+        Map<String, Object> parameterMap = NewUtil.map();
         // 获取参数名和值
         for (int i = 0; i < params.length; i++) {
             String param = params[i];

@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author mh.z
  */
-public class QMapperUtil {
+public class MapperUtil {
     private static final MapperFacade MAPPER_FACADE;
 
     static {

@@ -1,6 +1,6 @@
 package jasmine.framework.cache;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -39,7 +39,7 @@ public class CacheUtil {
      */
     public static <T> T get(@Nonnull String category, @Nonnull Object key,
                             @Nonnull Class<T> type) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.get(category, key, type);
     }
@@ -55,7 +55,7 @@ public class CacheUtil {
      */
     public static <T> T get(@Nonnull String category, @Nonnull Object key,
                             @Nonnull Class<T> type, @Nullable Supplier<T> supplier) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.get(category, key, type, supplier);
     }
@@ -71,7 +71,7 @@ public class CacheUtil {
      */
     public static <T> T get(@Nonnull String category, @Nonnull Object key,
                             @Nullable Supplier<T> supplier, @Nonnull Class<T> type) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.get(category, key, type, supplier);
     }
@@ -86,7 +86,7 @@ public class CacheUtil {
      */
     public static <T> List<T> getList(@Nonnull String category, @Nonnull Object key,
                                       @Nonnull Class<T> type) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.getList(category, key, type);
     }
@@ -102,7 +102,7 @@ public class CacheUtil {
      */
     public static <T> List<T> getList(@Nonnull String category, @Nonnull Object key,
                                       @Nonnull Class<T> type, @Nullable Supplier<List<T>> supplier) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.getList(category, key, type, supplier);
     }
@@ -118,7 +118,7 @@ public class CacheUtil {
      */
     public static <T> List<T> getList(@Nonnull String category, @Nonnull Object key,
                                       @Nullable Supplier<List<T>> supplier, @Nonnull Class<T> type) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         return cacheService.getList(category, key, type, supplier);
     }
@@ -132,7 +132,7 @@ public class CacheUtil {
      */
     public static void set(@Nonnull String category, @Nonnull Object key,
                            @Nullable Object value) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         cacheService.set(category, key, value);
     }
@@ -144,7 +144,7 @@ public class CacheUtil {
      * @param key
      */
     public static void remove(@Nonnull String category, @Nonnull Object key) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         cacheService.remove(category, key);
     }
@@ -158,7 +158,7 @@ public class CacheUtil {
      */
     public static void sync(@Nonnull String category, @Nonnull Object key,
                             @Nullable Supplier<Object> supplier) {
-        QCheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
 
         cacheService.sync(category, key, supplier);
     }

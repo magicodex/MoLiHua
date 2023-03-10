@@ -1,7 +1,7 @@
 package jasmine.demo.util;
 
-import jasmine.core.util.QI18nUtil;
-import jasmine.core.util.QNewUtil;
+import jasmine.core.util.I18nUtil;
+import jasmine.core.util.NewUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class Q {
      * @return
      */
     public static String tr(String messageKey, Object... args) {
-        return QI18nUtil.getMessage(messageKey, args);
+        return I18nUtil.getMessage(messageKey, args);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Q {
      * @return
      */
     public static <K, V> Map<K, V> map() {
-        return QNewUtil.map();
+        return NewUtil.map();
     }
 
     /**
@@ -40,7 +40,7 @@ public class Q {
      * @return
      */
     public static <T> List<T> list() {
-        return QNewUtil.list();
+        return NewUtil.list();
     }
 
 }

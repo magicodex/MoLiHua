@@ -1,8 +1,8 @@
 package jasmine.core.exception;
 
 import jasmine.core.i18n.I18nConstants;
-import jasmine.core.util.QI18nUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.I18nUtil;
+import jasmine.core.util.StringUtil;
 
 /**
  * <p>
@@ -76,7 +76,7 @@ public class ApplicationException extends RuntimeException {
             }
         } else {
             // 获取多语言信息
-            returnErrorMessage = QI18nUtil.getMessage(messageOrKey, args);
+            returnErrorMessage = I18nUtil.getMessage(messageOrKey, args);
         }
 
         return returnErrorMessage;
@@ -86,7 +86,7 @@ public class ApplicationException extends RuntimeException {
     public String toString() {
         StringBuilder builder = new StringBuilder(super.toString());
 
-        if (QStringUtil.isNotEmpty(errorDetail)) {
+        if (StringUtil.isNotEmpty(errorDetail)) {
             builder.append(" (");
             builder.append(errorDetail);
             builder.append(")");

@@ -1,7 +1,7 @@
 package jasmine.framework.concurrent;
 
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.framework.context.handler.ContextHandlerFacade;
 import jasmine.framework.context.handler.ContextSnapshot;
 import org.springframework.core.task.TaskDecorator;
@@ -24,13 +24,13 @@ public class AsyncTaskDecorator implements TaskDecorator {
 
     @Override
     public Runnable decorate(Runnable runnable) {
-        QCheckUtil.notNullProp(handlerFacade, "handlerFacade null");
+        CheckUtil.notNullProp(handlerFacade, "handlerFacade null");
         Collection<ContextSnapshot> snapshots = handlerFacade.copyAllFromCurrentThread();
 
         Runnable proxy = () -> {
             try {
                 // 设置上下文
-                QCollectionUtil.forEach(snapshots, ContextSnapshot::copyToCurrentThread);
+                CollectionUtil.forEach(snapshots, ContextSnapshot::copyToCurrentThread);
 
                 runnable.run();
             } finally {

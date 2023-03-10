@@ -1,6 +1,6 @@
 package jasmine.core.context;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 
 /**
  * <p>
@@ -37,7 +37,7 @@ public class CurrentSubject {
      * @return
      */
     public static Long getUserId() {
-        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
+        CheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
 
         return subjectProvider.getCurrentUserId();
     }
@@ -48,7 +48,7 @@ public class CurrentSubject {
      * @return
      */
     public static Long getTenantId() {
-        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
+        CheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
 
         return subjectProvider.getCurrentTenantId();
     }
@@ -59,7 +59,7 @@ public class CurrentSubject {
      * @return
      */
     public static Object getSubject() {
-        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
+        CheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
 
         return subjectProvider.getCurrentSubject();
     }
@@ -71,7 +71,7 @@ public class CurrentSubject {
      * @param userId
      */
     public static void setSubject(Long tenantId, Long userId) {
-        QCheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
+        CheckUtil.notNullProp(subjectProvider, SUBJECT_PROVIDER_NULL_MESSAGE);
 
         subjectProvider.setCurrentSubject(tenantId, userId);
     }

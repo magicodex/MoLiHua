@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
  *
  * @author mh.z
  */
-public class QStringUtil extends StrUtil {
+public class StringUtil extends StrUtil {
 
     /**
      * 转换成字符串

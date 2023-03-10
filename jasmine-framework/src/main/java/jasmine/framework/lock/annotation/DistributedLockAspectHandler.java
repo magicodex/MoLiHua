@@ -1,6 +1,6 @@
 package jasmine.framework.lock.annotation;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.lock.distributed.DistributedLocks;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -61,7 +61,7 @@ public class DistributedLockAspectHandler implements Ordered {
      * @return
      */
     protected EvaluationContext getEvaluationContext(ProceedingJoinPoint joinPoint) {
-        QCheckUtil.notNull(joinPoint, "joinPoint null");
+        CheckUtil.notNull(joinPoint, "joinPoint null");
 
         // 创建解析上下文
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();

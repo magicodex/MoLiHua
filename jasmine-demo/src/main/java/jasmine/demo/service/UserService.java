@@ -2,7 +2,7 @@ package jasmine.demo.service;
 
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.demo.entity.User;
 import jasmine.demo.mapper.UserMapper;
 import jasmine.security.authorization.RoleAuthority;
@@ -106,7 +106,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
         // 获取角色
         List<SecRole> roleList = roleDAO.listAllTenantRolesByUserIdNoI18n(userId);
 
-        List<GrantedAuthority> authorityList = QCollectionUtil.mapToList(roleList, (role) -> {
+        List<GrantedAuthority> authorityList = CollectionUtil.mapToList(roleList, (role) -> {
             return new RoleAuthority(role.getId(), role.getRoleCode());
         });
 

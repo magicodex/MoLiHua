@@ -1,6 +1,6 @@
 package jasmine.framework.web.validation.helper;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.web.entity.WebResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -30,7 +30,7 @@ public class ValidationHelper {
     }
 
     public static ValidationHelper create(Errors errors) {
-        QCheckUtil.notNull(errors, "errors null");
+        CheckUtil.notNull(errors, "errors null");
         ValidationContext context = new ValidationContext();
         ValidationHelper helper = new ValidationHelper(context, errors);
 

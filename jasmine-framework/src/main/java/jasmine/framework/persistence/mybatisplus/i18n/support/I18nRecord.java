@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.i18n.support;
 
-import jasmine.core.util.QObjectUtil;
-import jasmine.core.util.QStringUtil;
+import jasmine.core.util.ObjectUtil;
+import jasmine.core.util.StringUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,15 +32,15 @@ public class I18nRecord {
     }
 
     public String getValueAsString(String name) {
-        return QStringUtil.toString(values.get(name));
+        return StringUtil.toString(values.get(name));
     }
 
     public Integer getValueAsInteger(String name) {
-        return QObjectUtil.parseInteger(values.get(name));
+        return ObjectUtil.parseInteger(values.get(name));
     }
 
     public Long getValueAsLong(String name) {
-        return QObjectUtil.parseLong(values.get(name));
+        return ObjectUtil.parseLong(values.get(name));
     }
 
     public Boolean getValueAsBoolean(String name) {

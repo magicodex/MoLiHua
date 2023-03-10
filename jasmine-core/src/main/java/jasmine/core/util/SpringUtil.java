@@ -10,11 +10,11 @@ import jasmine.core.exception.InvalidPropertyException;
  *
  * @author mh.z
  */
-public class QSpringUtil {
+public class SpringUtil {
     private static RuntimeProvider runtimeProvider;
 
     public static void initUtil(RuntimeProvider runtimeProvider) {
-        QSpringUtil.runtimeProvider = runtimeProvider;
+        SpringUtil.runtimeProvider = runtimeProvider;
     }
 
     public static RuntimeProvider getRuntimeProvider() {

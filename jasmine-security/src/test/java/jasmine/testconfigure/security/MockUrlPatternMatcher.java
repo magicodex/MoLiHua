@@ -1,6 +1,6 @@
 package jasmine.testconfigure.security;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.security.strategy.UrlPatternMatcher;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ public class MockUrlPatternMatcher implements UrlPatternMatcher {
 
     @Override
     public String getUrlPattern(HttpServletRequest request) {
-        QCheckUtil.notNull(request, "request null");
+        CheckUtil.notNull(request, "request null");
 
         return request.getRequestURI();
     }

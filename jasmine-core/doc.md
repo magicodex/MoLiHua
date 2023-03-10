@@ -42,18 +42,18 @@ throw new ApplicationException("$hello", null);
 
 | 名称 | 说明 |
 | --- | --- |
-| QCheckUtil | 可用于检查参数、返回值等 |
-| QNewUtil | 提供常见类的创建方法 |
-| QMapperUtil | 映射对象的工具类 |
-| QStringUtil | 字符串工具类 |
-| QDateUtil | 日期工具类 |
-| QCollectionUtil | 集合工具类 |
-| QCollUtil | 继承QCollectionUtil，缩短集合工具类的类名 |
-| QObjectUtil | 对象工具类，提供转换类型等方法 |
-| QJsonUtil | JSON工具类 |
-| QI18nUtil | 多语言工具类 |
-| QSpringUtil | Spring工具类 |
-| QErrorUtil | 提供异常类相关处理方法 |
+| CheckUtil | 可用于检查参数、返回值等 |
+| NewUtil | 提供常见类的创建方法 |
+| MapperUtil | 映射对象的工具类 |
+| StringUtil | 字符串工具类 |
+| DateUtil | 日期工具类 |
+| CollectionUtil | 集合工具类 |
+| CollUtil | 继承QCollectionUtil，缩短集合工具类的类名 |
+| ObjectUtil | 对象工具类，提供转换类型等方法 |
+| JsonUtil | JSON工具类 |
+| I18nUtil | 多语言工具类 |
+| SpringUtil | Spring工具类 |
+| ErrorUtil | 提供异常类相关处理方法 |
 | ... | ... |
 
 ## 示例

@@ -16,7 +16,7 @@ import java.time.temporal.TemporalAccessor;
  * 日期工具类
  * @author mh.z
  */
-public class QDateUtil {
+public class DateUtil {
     /** 精确到天的日期格式 */
     private static final DateTimeFormatter YEAR_DAY_FORMATTER_WITH_ZONE;
     private static final DateTimeFormatter YEAR_DAY_FORMATTER;
@@ -47,7 +47,7 @@ public class QDateUtil {
     public static ZonedDateTime parseYearSecond(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
-        if (QStringUtil.isNotEmpty(text)) {
+        if (StringUtil.isNotEmpty(text)) {
             zonedDateTime = ZonedDateTime.parse(text, YEAR_SECOND_FORMATTER_WITH_ZONE);
         }
 
@@ -63,7 +63,7 @@ public class QDateUtil {
     public static ZonedDateTime parseStartYearDay(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
-        if (QStringUtil.isNotEmpty(text)) {
+        if (StringUtil.isNotEmpty(text)) {
             TemporalAccessor temporalAccessor = YEAR_DAY_FORMATTER_WITH_ZONE.parse(text);
             LocalDate localDate = LocalDate.from(temporalAccessor);
 
@@ -84,7 +84,7 @@ public class QDateUtil {
     public static ZonedDateTime parseEndYearDay(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
-        if (QStringUtil.isNotEmpty(text)) {
+        if (StringUtil.isNotEmpty(text)) {
             zonedDateTime = parseStartYearDay(text);
             zonedDateTime = zonedDateTime.plusDays(1);
         }

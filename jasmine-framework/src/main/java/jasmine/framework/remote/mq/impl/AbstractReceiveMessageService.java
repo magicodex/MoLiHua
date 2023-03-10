@@ -1,6 +1,6 @@
 package jasmine.framework.remote.mq.impl;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.context.ContextManagementHelper;
 import jasmine.framework.remote.mq.ReceiveMessageService;
 import jasmine.framework.remote.mq.impl.interceptor.DefaultReceiveInterceptor;
@@ -42,8 +42,8 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
 
     @Override
     public void receive(String category, Object message) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(message, "message null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(message, "message null");
 
         // 接收消息
         receive(interceptor, category, message);
@@ -51,8 +51,8 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
 
     @Override
     public void receive(String category, Object message, ReceiveInterceptorDecorator decorator) {
-        QCheckUtil.notNull(category, "category null");
-        QCheckUtil.notNull(message, "message null");
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(message, "message null");
 
         ReceiveInterceptor tempInterceptor = interceptor;
         if (decorator != null) {

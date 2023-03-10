@@ -3,10 +3,10 @@ package jasmine.framework.persistence.mybatisplus.i18n;
 import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollUtil;
-import jasmine.core.util.QI18nUtil;
-import jasmine.core.util.QObjectUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollUtil;
+import jasmine.core.util.I18nUtil;
+import jasmine.core.util.ObjectUtil;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCrud;
@@ -43,23 +43,23 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
     @Override
     public int insertI18n(Collection<? extends BaseI18nEntity> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
-        if (QCollUtil.isEmpty(entities)) {
+        if (CollUtil.isEmpty(entities)) {
             return 0;
         }
 
         Class<?> entityType = getEntityType(entities);
         I18nMeta i18nMeta = getI18nMeta(entityType);
         String i18nTable = getI18nTable(entityType);
-        String langCode = QI18nUtil.getLanguage();
+        String langCode = I18nUtil.getLanguage();
 
         // 新增多语言记录
         SqlHelper.executeBatch(entityType, mybatisLog, entities, PersistenceConstants.BATCH_INSERT_SIZE,
                 (sqlSession, entity) -> {
                     Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
                     I18nCrud i18nCRUD = new I18nCrud(sqlSession, i18nTable);
-                    Long entityId = QCheckUtil.notNull(entity.getId());
+                    Long entityId = CheckUtil.notNull(entity.getId());
 
                     i18nCRUD.insert(entityId, langCode, i18nDataMap, true);
                 });
@@ -69,22 +69,22 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
     @Override
     public int updateI18n(Collection<? extends BaseI18nEntity> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
-        if (QCollUtil.isEmpty(entities)) {
+        if (CollUtil.isEmpty(entities)) {
             return 0;
         }
 
         Class<?> entityType = getEntityType(entities);
         I18nMeta i18nMeta = getI18nMeta(entityType);
         String i18nTable = getI18nTable(entityType);
-        String langCode = QI18nUtil.getLanguage();
+        String langCode = I18nUtil.getLanguage();
 
-        List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
+        List<Long> idList = CollUtil.mapToList(entities, BaseI18nEntity::getId);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.select(idList, langCode);
-        Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
 
         entities.forEach((entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
@@ -105,18 +105,18 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
     @Override
     public int updateI18nThenFillEntities(Collection<? extends BaseI18nEntity> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
         // 更新多语言记录
         int result = updateI18n(entities);
 
-        String langCode = QI18nUtil.getLanguage();
+        String langCode = I18nUtil.getLanguage();
         // 过滤出需要填充的记录
-        List<? extends BaseI18nEntity> targetList = QCollUtil.chooseToList(entities, (entity) -> {
-            return QObjectUtil.notEqual(entity.getCreatedLang(), langCode);
+        List<? extends BaseI18nEntity> targetList = CollUtil.chooseToList(entities, (entity) -> {
+            return ObjectUtil.notEqual(entity.getCreatedLang(), langCode);
         });
 
-        if (QCollUtil.isNotEmpty(targetList)) {
+        if (CollUtil.isNotEmpty(targetList)) {
             // 填充默认多语言数据
             populateDefaultI18n(targetList);
         }
@@ -127,10 +127,10 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     @Override
     public int deleteI18n(Class<? extends BaseI18nEntity> entityType,
                           Collection<? extends Serializable> ids) {
-        QCheckUtil.notNull(entityType, "entityType null");
-        QCheckUtil.notNull(ids, "ids null");
+        CheckUtil.notNull(entityType, "entityType null");
+        CheckUtil.notNull(ids, "ids null");
 
-        if (QCollUtil.isEmpty(ids)) {
+        if (CollUtil.isEmpty(ids)) {
             return 0;
         }
 
@@ -144,24 +144,24 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
     @Override
     public <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
-        if (QCollUtil.isEmpty(entities)) {
+        if (CollUtil.isEmpty(entities)) {
             return Collections.emptyList();
         }
 
         Class<?> entityType = getEntityType(entities);
         String i18nTable = getI18nTable(entityType);
-        String langCode = QI18nUtil.getLanguage();
+        String langCode = I18nUtil.getLanguage();
 
-        List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
+        List<Long> idList = CollUtil.mapToList(entities, BaseI18nEntity::getId);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.select(idList, langCode);
 
         // 填充多语言字段
-        if (QCollUtil.isNotEmpty(i18nRecordList)) {
-            Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        if (CollUtil.isNotEmpty(i18nRecordList)) {
+            Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             entities.forEach((entity) -> {
@@ -172,33 +172,33 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return QCollUtil.toList(entities);
+        return CollUtil.toList(entities);
     }
 
     @Override
     public <T, E extends BaseI18nEntity> List<T> populateI18n(Collection<T> targets, Class<E> entityType,
                                                               Function<T, Serializable> keyMapper,
                                                               PopulateFunction<T, E> populateFunction) {
-        QCheckUtil.notNull(targets, "targets null");
-        QCheckUtil.notNull(entityType, "entityType null");
-        QCheckUtil.notNull(keyMapper, "keyMapper null");
-        QCheckUtil.notNull(populateFunction, "populateFunction null");
+        CheckUtil.notNull(targets, "targets null");
+        CheckUtil.notNull(entityType, "entityType null");
+        CheckUtil.notNull(keyMapper, "keyMapper null");
+        CheckUtil.notNull(populateFunction, "populateFunction null");
 
-        if (QCollUtil.isEmpty(targets)) {
+        if (CollUtil.isEmpty(targets)) {
             return Collections.emptyList();
         }
 
         String i18nTable = getI18nTable(entityType);
-        String langCode = QI18nUtil.getLanguage();
+        String langCode = I18nUtil.getLanguage();
 
-        List<Serializable> idList = QCollUtil.mapToList(targets, keyMapper);
+        List<Serializable> idList = CollUtil.mapToList(targets, keyMapper);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.select(idList, langCode);
 
         // 填充多语言字段
-        if (QCollUtil.isNotEmpty(i18nRecordList)) {
-            Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        if (CollUtil.isNotEmpty(i18nRecordList)) {
+            Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             targets.forEach((target) -> {
@@ -214,28 +214,28 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return QCollUtil.toList(targets);
+        return CollUtil.toList(targets);
     }
 
     @Override
     public <T extends BaseI18nEntity> List<T> populateDefaultI18n(Collection<T> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
-        if (QCollUtil.isEmpty(entities)) {
+        if (CollUtil.isEmpty(entities)) {
             return Collections.emptyList();
         }
 
         Class<?> entityType = getEntityType(entities);
         String i18nTable = getI18nTable(entityType);
 
-        List<Long> idList = QCollUtil.mapToList(entities, BaseI18nEntity::getId);
+        List<Long> idList = CollUtil.mapToList(entities, BaseI18nEntity::getId);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.selectDefault(idList);
 
         // 填充多语言字段
-        if (QCollUtil.isNotEmpty(i18nRecordList)) {
-            Map<Long, I18nRecord> i18nRecordMap = QCollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        if (CollUtil.isNotEmpty(i18nRecordList)) {
+            Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             entities.forEach((entity) -> {
@@ -246,7 +246,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return QCollUtil.toList(entities);
+        return CollUtil.toList(entities);
     }
 
     /**
@@ -256,13 +256,13 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
      * @return
      */
     protected Class<?> getEntityType(Collection<?> entities) {
-        QCheckUtil.notNull(entities, "entities null");
+        CheckUtil.notNull(entities, "entities null");
 
-        if (QCollUtil.isEmpty(entities)) {
+        if (CollUtil.isEmpty(entities)) {
             return null;
         }
 
-        Object entity = QCollUtil.getFirst(entities);
+        Object entity = CollUtil.getFirst(entities);
         Class<?> entityType = entity.getClass();
 
         return entityType;
@@ -275,7 +275,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
      * @return
      */
     protected I18nMeta getI18nMeta(Class<?> entityType) {
-        QCheckUtil.notNull(entityType, "entityType null");
+        CheckUtil.notNull(entityType, "entityType null");
 
         I18nMeta i18nMeta = i18nMetaOfEntities.computeIfAbsent(entityType, (mappingKey) -> {
             return I18nMeta.createI18nMeta(mappingKey);
@@ -291,7 +291,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
      * @return
      */
     protected String getI18nTable(Class<?> entityType) {
-        QCheckUtil.notNull(entityType, "entityType null");
+        CheckUtil.notNull(entityType, "entityType null");
 
         TableName annotation = entityType.getAnnotation(TableName.class);
         if (annotation == null) {

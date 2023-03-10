@@ -7,7 +7,7 @@ package jasmine.core.util;
  *
  * @author mh.z
  */
-public class QErrorUtil {
+public class ErrorUtil {
 
     /**
      * 抛出异常，比如以下示例：

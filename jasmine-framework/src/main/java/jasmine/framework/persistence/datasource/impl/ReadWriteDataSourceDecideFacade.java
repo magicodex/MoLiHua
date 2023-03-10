@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.datasource.impl;
 
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.core.util.function.FunctionWithResult;
 import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
 import jasmine.framework.persistence.datasource.context.DataSourceContext;
@@ -21,7 +21,7 @@ public class ReadWriteDataSourceDecideFacade implements DataSourceDecideFacade {
 
             return action.call();
         } catch (Throwable e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         } finally {
             context.setDataSourceKey(null);
         }

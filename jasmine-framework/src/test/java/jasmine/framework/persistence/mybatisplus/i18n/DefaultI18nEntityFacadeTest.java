@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.i18n;
 
-import jasmine.core.util.QCollUtil;
+import jasmine.core.util.CollUtil;
 import jasmine.framework.common.constant.LangConstants;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nCrud;
 import jasmine.framework.persistence.mybatisplus.i18n.support.I18nMeta;
@@ -46,7 +46,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
         int rowCount = facade.insertI18n(entityList);
         Assert.assertEquals(2, rowCount);
 
-        List<Long> idList = QCollUtil.mapToList(entityList, TestEntity1::getId);
+        List<Long> idList = CollUtil.mapToList(entityList, TestEntity1::getId);
         List<I18nRecord> actualList = selectI18n(idList, null);
         // 应当只会查到两条多语言记录
         Assert.assertEquals(2, actualList.size());
@@ -67,7 +67,7 @@ public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
         Assert.assertEquals(1, rowCount);
 
         List<I18nRecord> actualList = selectI18n(Collections.singletonList(1L), null);
-        Map<String, I18nRecord> actualMap = QCollUtil.toMap(actualList, I18nRecord::getLangCode);
+        Map<String, I18nRecord> actualMap = CollUtil.toMap(actualList, I18nRecord::getLangCode);
         Assert.assertEquals(2L, actualMap.size());
 
         // 检查中文多语言

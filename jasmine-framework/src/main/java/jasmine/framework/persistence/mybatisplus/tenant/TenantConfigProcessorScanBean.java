@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.tenant;
 
-import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.framework.context.CustomInitializingSingleton;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -35,7 +35,7 @@ public class TenantConfigProcessorScanBean implements ApplicationContextAware, C
         Map<String, TenantConfigProcessor> beanMap = applicationContext
                 .getBeansOfType(TenantConfigProcessor.class);
 
-        if (QCollectionUtil.isNotEmpty(beanMap)) {
+        if (CollectionUtil.isNotEmpty(beanMap)) {
             beanMap.forEach((beanName, processor) -> {
                 processor.ignoreTable(ignoreTableStrategy);
             });

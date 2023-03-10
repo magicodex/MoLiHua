@@ -10,11 +10,11 @@ import jasmine.core.i18n.LocaleMessageProvider;
  *
  * @author mh.z
  */
-public class QI18nUtil {
+public class I18nUtil {
     private static LocaleMessageProvider provider;
 
     public static void initUtil(LocaleMessageProvider provider) {
-        QI18nUtil.provider = provider;
+        I18nUtil.provider = provider;
     }
 
     public static LocaleMessageProvider getProvider() {

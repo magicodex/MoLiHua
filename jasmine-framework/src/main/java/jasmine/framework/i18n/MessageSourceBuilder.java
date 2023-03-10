@@ -1,6 +1,6 @@
 package jasmine.framework.i18n;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
@@ -45,9 +45,9 @@ public class MessageSourceBuilder {
      * @return
      */
     public MessageSource build() {
-        QCheckUtil.notNullProp(resourcePrefix, "resourcePrefix null");
-        QCheckUtil.notNullProp(encoding, "encoding null");
-        QCheckUtil.notNullProp(constantPattern, "constantPattern null");
+        CheckUtil.notNullProp(resourcePrefix, "resourcePrefix null");
+        CheckUtil.notNullProp(encoding, "encoding null");
+        CheckUtil.notNullProp(constantPattern, "constantPattern null");
 
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename(resourcePrefix);

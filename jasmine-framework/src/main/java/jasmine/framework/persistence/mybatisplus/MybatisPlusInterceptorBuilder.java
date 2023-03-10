@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerIntercep
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.persistence.mybatisplus.context.ContextParameter;
 import jasmine.framework.persistence.mybatisplus.context.ContextParameterInnerInterceptor;
 import jasmine.framework.persistence.mybatisplus.context.DefaultContextParameter;
@@ -39,7 +39,7 @@ public class MybatisPlusInterceptorBuilder {
 
         // 租户拦截器
         if (Boolean.TRUE.equals(tenantEnabled)) {
-            QCheckUtil.notNullProp(tenantLineHandler, "tenantLineHandler null");
+            CheckUtil.notNullProp(tenantLineHandler, "tenantLineHandler null");
             interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(tenantLineHandler));
         }
 

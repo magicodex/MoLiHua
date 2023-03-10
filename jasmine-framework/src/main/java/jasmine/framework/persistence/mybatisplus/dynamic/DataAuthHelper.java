@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.dynamic;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 
 /**
  * @author mh.z
@@ -20,7 +20,7 @@ public class DataAuthHelper {
      * @return
      */
     public static String generateSql(String tableName, String aliasName) {
-        QCheckUtil.notNullProp(provider, "provider null");
+        CheckUtil.notNullProp(provider, "provider null");
 
         return provider.generateSql(tableName, aliasName);
     }
@@ -33,7 +33,7 @@ public class DataAuthHelper {
      * @return
      */
     public static String generateSql(Class<?> entityType, String aliasName) {
-        QCheckUtil.notNullProp(provider, "provider null");
+        CheckUtil.notNullProp(provider, "provider null");
 
         return provider.generateSql(entityType, aliasName);
     }

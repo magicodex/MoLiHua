@@ -7,6 +7,6 @@ package jasmine.core.util;
  *
  * @author mh.z
  */
-public class QCollUtil extends QCollectionUtil {
+public class CollUtil extends CollectionUtil {
 
 }

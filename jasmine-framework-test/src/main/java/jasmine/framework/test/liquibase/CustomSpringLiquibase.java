@@ -1,6 +1,6 @@
 package jasmine.framework.test.liquibase;
 
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.framework.context.CustomInitializingSingleton;
 import liquibase.exception.LiquibaseException;
 import liquibase.integration.spring.SpringLiquibase;
@@ -20,7 +20,7 @@ public class CustomSpringLiquibase extends SpringLiquibase implements CustomInit
         try {
             super.afterPropertiesSet();
         } catch (LiquibaseException e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 

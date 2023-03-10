@@ -2,7 +2,7 @@ package jasmine.framework.i18n;
 
 import jasmine.core.i18n.I18nConstants;
 import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -20,7 +20,7 @@ public class DefaultLocaleMessageProvider implements LocaleMessageProvider {
 
     @Override
     public String getMessage(String messageKey, Object... args) {
-        QCheckUtil.notNull(messageKey, "messageKey null");
+        CheckUtil.notNull(messageKey, "messageKey null");
 
         if (messageKey != null && messageKey.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
             messageKey = messageKey.substring(1);

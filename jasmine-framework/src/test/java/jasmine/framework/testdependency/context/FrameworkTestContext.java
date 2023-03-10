@@ -1,7 +1,7 @@
 package jasmine.framework.testdependency.context;
 
 import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.QI18nUtil;
+import jasmine.core.util.I18nUtil;
 import jasmine.mock.core.context.MockLocaleMessageProvider;
 import jasmine.mock.core.context.MockSubjectProvider;
 import org.junit.Before;
@@ -21,7 +21,7 @@ public class FrameworkTestContext {
 
     static {
         CurrentSubject.initUtil(new MockSubjectProvider());
-        QI18nUtil.initUtil(new MockLocaleMessageProvider());
+        I18nUtil.initUtil(new MockLocaleMessageProvider());
     }
 
     @Before

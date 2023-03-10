@@ -1,6 +1,6 @@
 package jasmine.security.rbac.dao;
 
-import jasmine.core.util.QCollectionUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
 import jasmine.security.rbac.mapper.SecFunctionMapper;
 
@@ -25,7 +25,7 @@ public class SecFunctionDAO {
      * @return
      */
     public List<SecFunctionBaseInfoDTO> listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(List<Long> roleIds) {
-        if (QCollectionUtil.isEmpty(roleIds)) {
+        if (CollectionUtil.isEmpty(roleIds)) {
             return Collections.emptyList();
         }
 

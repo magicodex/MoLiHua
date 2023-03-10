@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * @author mh.z
  */
-public class QErrorUtilTest {
+public class ErrorUtilTest {
 
     @Test
     public void testSneakyThrow() {
@@ -14,7 +14,7 @@ public class QErrorUtilTest {
             try {
                 throw new Exception();
             } catch (Exception e) {
-                throw QErrorUtil.sneakyError(e);
+                throw ErrorUtil.sneakyError(e);
             }
         });
     }

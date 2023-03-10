@@ -2,9 +2,9 @@ package jasmine.framework.lock.redisson;
 
 
 import jasmine.core.exception.InvalidPropertyException;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollectionUtil;
-import jasmine.core.util.QErrorUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollectionUtil;
+import jasmine.core.util.ErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 import org.redisson.api.RLock;
@@ -37,9 +37,9 @@ public class RedissonDistributedDeclaredLock implements DistributedDeclaredLock 
 
     @Override
     public <T> T lock(long waitTime, DistributedLockCallback callback) {
-        QCheckUtil.notNull(callback, "callback null");
+        CheckUtil.notNull(callback, "callback null");
 
-        if (QCollectionUtil.isEmpty(lockKeys)) {
+        if (CollectionUtil.isEmpty(lockKeys)) {
             throw new InvalidPropertyException("lockKeys empty", null);
         }
 
@@ -74,7 +74,7 @@ public class RedissonDistributedDeclaredLock implements DistributedDeclaredLock 
 
             return (T) callback.call();
         } catch (Throwable e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         } finally {
             // 释放锁
             if (lockFlag) {

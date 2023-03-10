@@ -1,8 +1,8 @@
 package jasmine.core.util.sort;
 
 import jasmine.core.constant.NumberConstants;
-import jasmine.core.util.QCheckUtil;
-import jasmine.core.util.QCollUtil;
+import jasmine.core.util.CheckUtil;
+import jasmine.core.util.CollUtil;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
@@ -26,12 +26,12 @@ public class CollectionSortUtil {
      */
     public static <T, K extends Comparable> List<T> sort(@Nonnull Collection<T> collection,
                                                          @Nonnull SortKey<T, K>... keys) {
-        QCheckUtil.notNull(collection, "collection null");
-        QCheckUtil.notNull(keys, "keys null");
+        CheckUtil.notNull(collection, "collection null");
+        CheckUtil.notNull(keys, "keys null");
         Comparator<T> comparator = null;
 
         if (keys.length == NumberConstants.NUMBER_0) {
-            return QCollUtil.toList(collection);
+            return CollUtil.toList(collection);
         }
 
         for (SortKey<T, K> key : keys) {

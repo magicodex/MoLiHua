@@ -1,6 +1,6 @@
 package jasmine.security.authorization;
 
-import jasmine.core.util.QObjectUtil;
+import jasmine.core.util.ObjectUtil;
 import org.springframework.security.core.GrantedAuthority;
 
 /**
@@ -16,7 +16,7 @@ public class RoleAuthority implements GrantedAuthority {
     public RoleAuthority(Long roleId, String roleCode) {
         this.roleId = roleId;
         this.roleCode = roleCode;
-        this.authority = QObjectUtil.defaultIfNull(roleId, "") + ":" + roleCode;
+        this.authority = ObjectUtil.defaultIfNull(roleId, "") + ":" + roleCode;
     }
 
     public Long getRoleId() {

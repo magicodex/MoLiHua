@@ -1,7 +1,6 @@
 package jasmine.framework.lock.redisson;
 
-import jasmine.core.util.QErrorUtil;
-import jasmine.framework.lock.redisson.RedissonDistributedDeclaredLock;
+import jasmine.core.util.ErrorUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -57,7 +56,7 @@ public class RedisDistributedDeclaredLockTest {
 
             return redisson;
         } catch (Exception e) {
-            throw QErrorUtil.sneakyError(e);
+            throw ErrorUtil.sneakyError(e);
         }
     }
 

@@ -1,7 +1,7 @@
 package jasmine.mock.core.context;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 
 import java.util.Map;
 
@@ -20,14 +20,14 @@ public class MockRuntimeProvider implements RuntimeProvider {
 
     @Override
     public <T> T getByType(Class<T> type) {
-        QCheckUtil.notNull(type, "type null");
+        CheckUtil.notNull(type, "type null");
 
         return getByName(type.getName());
     }
 
     @Override
     public <T> T getByType(Class<T> type, boolean required) {
-        QCheckUtil.notNull(type, "type null");
+        CheckUtil.notNull(type, "type null");
 
         return getByName(type.getName(), required);
     }

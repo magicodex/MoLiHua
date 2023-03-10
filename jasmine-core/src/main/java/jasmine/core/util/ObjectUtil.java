@@ -1,7 +1,5 @@
 package jasmine.core.util;
 
-import cn.hutool.core.util.ObjectUtil;
-
 import javax.annotation.Nullable;
 
 /**
@@ -11,7 +9,7 @@ import javax.annotation.Nullable;
  *
  * @author mh.z
  */
-public class QObjectUtil extends ObjectUtil {
+public class ObjectUtil extends cn.hutool.core.util.ObjectUtil {
 
     /**
      * 解析成 Long 类型
@@ -28,7 +26,7 @@ public class QObjectUtil extends ObjectUtil {
             } else {
                 String string = object.toString();
 
-                if (QStringUtil.isNotBlank(string)) {
+                if (StringUtil.isNotBlank(string)) {
                     returnValue = Long.parseLong(string);
                 }
             }
@@ -52,7 +50,7 @@ public class QObjectUtil extends ObjectUtil {
             } else {
                 String string = object.toString();
 
-                if (QStringUtil.isNotBlank(string)) {
+                if (StringUtil.isNotBlank(string)) {
                     returnValue = Integer.parseInt(string);
                 }
             }
@@ -76,7 +74,7 @@ public class QObjectUtil extends ObjectUtil {
             } else {
                 String string = object.toString();
 
-                if (QStringUtil.isNotBlank(string)) {
+                if (StringUtil.isNotBlank(string)) {
                     returnValue = Boolean.parseBoolean(string);
                 }
             }

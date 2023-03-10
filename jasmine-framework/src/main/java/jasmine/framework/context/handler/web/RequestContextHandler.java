@@ -1,6 +1,6 @@
 package jasmine.framework.context.handler.web;
 
-import jasmine.core.util.QCheckUtil;
+import jasmine.core.util.CheckUtil;
 import jasmine.framework.context.handler.ContextHandler;
 import jasmine.framework.context.handler.ContextSnapshot;
 import org.springframework.web.context.request.RequestAttributes;
@@ -53,7 +53,7 @@ public class RequestContextHandler implements ContextHandler {
      * @return
      */
     protected Map<String, Object> copyAttributes(RequestAttributes attributes, int scope) {
-        QCheckUtil.notNull(attributes, "attributes null");
+        CheckUtil.notNull(attributes, "attributes null");
         String[] attributeNames = attributes.getAttributeNames(scope);
 
         if (attributeNames == null || attributeNames.length == 0) {
