@@ -1,4 +1,4 @@
-package jasmine.framework.validation;
+package jasmine.framework.web.validation.helper;
 
 import jasmine.framework.web.entity.WebResult;
 import org.junit.Assert;

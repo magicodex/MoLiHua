@@ -1,4 +1,4 @@
-package jasmine.framework.validation;
+package jasmine.framework.web.validation.helper;
 
 import jasmine.core.util.QCheckUtil;
 import jasmine.framework.web.entity.WebResult;

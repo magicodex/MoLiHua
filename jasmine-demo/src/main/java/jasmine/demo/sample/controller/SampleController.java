@@ -12,7 +12,7 @@ import jasmine.demo.sample.dto.SampleUpdateDTO;
 import jasmine.demo.sample.service.SampleService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.remote.mq.SendMessageService;
-import jasmine.framework.validation.ValidationHelper;
+import jasmine.framework.web.validation.helper.ValidationHelper;
 import jasmine.framework.web.annotation.EndDate;
 import jasmine.framework.web.annotation.StartDate;
 import jasmine.framework.web.entity.WebResult;
