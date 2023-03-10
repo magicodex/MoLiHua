@@ -1,6 +1,6 @@
-package jasmine.framework.web.conversion;
+package jasmine.framework.web.conversion.formatter;
 
-import jasmine.framework.web.annotation.StartDate;
+import jasmine.framework.web.annotation.EndDate;
 import jasmine.core.test.mockito.MockUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,15 +13,15 @@ import java.util.Locale;
 /**
  * @author mh.z
  */
-public class StartDateFormatterTest {
+public class EndDateFormatterTest {
 
     @Test
     public void testParse() throws ParseException {
-        StartDate startDate = MockUtil.mock(StartDate.class, (target) -> {
+        EndDate endDate = MockUtil.mock(EndDate.class, (target) -> {
             Mockito.when(target.value()).thenReturn("");
         });
 
-        StartDateFormatter formatter = new StartDateFormatter(startDate, ZonedDateTime.class);
+        EndDateFormatter formatter = new EndDateFormatter(endDate, ZonedDateTime.class);
         ZonedDateTime actual = formatter.parse("2020-12-31+08:00", Locale.getDefault());
 
         Assert.assertNotNull(actual);
@@ -29,11 +29,11 @@ public class StartDateFormatterTest {
 
     @Test
     public void testPrint() {
-        StartDate startDate = MockUtil.mock(StartDate.class, (target) -> {
+        EndDate endDate = MockUtil.mock(EndDate.class, (target) -> {
             Mockito.when(target.value()).thenReturn("");
         });
 
-        StartDateFormatter formatter = new StartDateFormatter(startDate, ZonedDateTime.class);
+        EndDateFormatter formatter = new EndDateFormatter(endDate, ZonedDateTime.class);
         String actual = formatter.print(ZonedDateTime.now(), Locale.getDefault());
 
         Assert.assertNotNull(actual);

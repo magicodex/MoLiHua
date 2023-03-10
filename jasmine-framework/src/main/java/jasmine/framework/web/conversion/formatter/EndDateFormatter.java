@@ -1,4 +1,4 @@
-package jasmine.framework.web.conversion;
+package jasmine.framework.web.conversion.formatter;
 
 import jasmine.core.util.QDateUtil;
 import jasmine.framework.web.annotation.EndDate;

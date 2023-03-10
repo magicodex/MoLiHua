@@ -1,4 +1,4 @@
-package jasmine.framework.web.conversion;
+package jasmine.framework.web.conversion.formatter;
 
 import jasmine.framework.web.annotation.StartDate;
 import org.springframework.format.AnnotationFormatterFactory;
