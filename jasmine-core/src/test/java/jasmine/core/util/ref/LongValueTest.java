@@ -1,4 +1,4 @@
-package jasmine.core.util.wrapper;
+package jasmine.core.util.ref;
 
 import org.junit.Assert;
 import org.junit.Test;

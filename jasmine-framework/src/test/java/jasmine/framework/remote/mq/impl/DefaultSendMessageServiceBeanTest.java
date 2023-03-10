@@ -2,7 +2,7 @@ package jasmine.framework.remote.mq.impl;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.SubjectProvider;
-import jasmine.core.util.wrapper.ObjectValue;
+import jasmine.core.util.ref.ObjectValue;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.remote.mq.impl.routing.PublisherExchangeDirectRouting;
 import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;

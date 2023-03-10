@@ -1,6 +1,6 @@
 package jasmine.framework.context.handler;
 
-import jasmine.core.util.wrapper.ObjectValue;
+import jasmine.core.util.ref.ObjectValue;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

@@ -1,7 +1,7 @@
 package jasmine.framework.concurrent;
 
 import jasmine.core.util.CollectionUtil;
-import jasmine.core.util.wrapper.ObjectValue;
+import jasmine.core.util.ref.ObjectValue;
 import jasmine.framework.concurrent.testdependency.MockAsyncTaskProvider;
 import org.junit.After;
 import org.junit.Assert;

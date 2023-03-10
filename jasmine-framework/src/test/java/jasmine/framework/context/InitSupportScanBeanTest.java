@@ -2,7 +2,7 @@ package jasmine.framework.context;
 
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.wrapper.ObjectValue;
+import jasmine.core.util.ref.ObjectValue;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;

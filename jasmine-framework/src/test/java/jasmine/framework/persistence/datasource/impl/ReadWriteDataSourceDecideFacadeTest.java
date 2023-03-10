@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.datasource.impl;
 
 import jasmine.core.util.function.FunctionWithResult;
-import jasmine.core.util.wrapper.ObjectValue;
+import jasmine.core.util.ref.ObjectValue;
 import jasmine.framework.persistence.datasource.context.DataSourceContext;
 import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;
 import org.junit.After;

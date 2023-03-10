@@ -6,7 +6,7 @@ import jasmine.core.util.CheckUtil;
 import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.NewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
-import jasmine.core.util.wrapper.LongValue;
+import jasmine.core.util.ref.LongValue;
 import jasmine.framework.common.constant.CommonMessages;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.session.SqlSession;
