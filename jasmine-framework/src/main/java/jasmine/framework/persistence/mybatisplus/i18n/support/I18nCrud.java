@@ -3,7 +3,7 @@ package jasmine.framework.persistence.mybatisplus.i18n.support;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.NewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.wrapper.LongValue;
@@ -154,7 +154,7 @@ public class I18nCrud {
                       @Nullable String langCode) {
         CheckUtil.notNull(ids, "ids null");
 
-        if (CollUtil.isEmpty(ids)) {
+        if (CollectionUtil.isEmpty(ids)) {
             return 0;
         }
 
@@ -189,7 +189,7 @@ public class I18nCrud {
                                    @Nullable String langCode) {
         CheckUtil.notNull(ids, "ids null");
 
-        if (CollUtil.isEmpty(ids)) {
+        if (CollectionUtil.isEmpty(ids)) {
             return Collections.emptyList();
         }
 
@@ -210,11 +210,11 @@ public class I18nCrud {
             mapList.addAll(newList);
         });
 
-        if (CollUtil.isEmpty(mapList)) {
+        if (CollectionUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = CollUtil.mapToList(mapList, (map) -> {
+        List<I18nRecord> i18nRecordList = CollectionUtil.mapToList(mapList, (map) -> {
             return new I18nRecord(map);
         });
 
@@ -230,7 +230,7 @@ public class I18nCrud {
     public List<I18nRecord> selectDefault(@Nonnull Collection<? extends Serializable> ids) {
         CheckUtil.notNull(ids, "ids null");
 
-        if (CollUtil.isEmpty(ids)) {
+        if (CollectionUtil.isEmpty(ids)) {
             return Collections.emptyList();
         }
 
@@ -251,11 +251,11 @@ public class I18nCrud {
             mapList.addAll(newList);
         });
 
-        if (CollUtil.isEmpty(mapList)) {
+        if (CollectionUtil.isEmpty(mapList)) {
             return Collections.emptyList();
         }
 
-        List<I18nRecord> i18nRecordList = CollUtil.mapToList(mapList, (map) -> {
+        List<I18nRecord> i18nRecordList = CollectionUtil.mapToList(mapList, (map) -> {
             return new I18nRecord(map);
         });
 

@@ -1,7 +1,7 @@
 package jasmine.core.util.batch;
 
 import jasmine.core.testdependency.Example1;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class BatchMapTest {
     @Test
     public void test() {
         BatchMap<Integer, Example1> exampleMap = new BatchMap<>(Example1::getInteger1, (keys) -> {
-            return CollUtil.mapToList(keys, (key) -> {
+            return CollectionUtil.mapToList(keys, (key) -> {
                 return Example1.create(("example" + key), key, null);
             });
         });

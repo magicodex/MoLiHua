@@ -2,7 +2,7 @@ package jasmine.framework.persistence.mybatisplus.util;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.I18nUtil;
 import jasmine.framework.persistence.entity.BaseEntity;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
@@ -49,14 +49,14 @@ public class BaseEntityHelper {
     public static void fillInsert(Collection<? extends BaseEntity> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        if (CollUtil.isEmpty(entities)) {
+        if (CollectionUtil.isEmpty(entities)) {
             return;
         }
 
         Long userId = CurrentSubject.getUserId();
         ZonedDateTime currentTime = ZonedDateTime.now();
 
-        if (CollUtil.getFirst(entities) instanceof BaseI18nEntity) {
+        if (CollectionUtil.getFirst(entities) instanceof BaseI18nEntity) {
             String langCode = I18nUtil.getLanguage();
 
             entities.forEach((entity) -> {
@@ -108,7 +108,7 @@ public class BaseEntityHelper {
     public static void fillUpdate(Collection<? extends BaseEntity> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        if (CollUtil.isEmpty(entities)) {
+        if (CollectionUtil.isEmpty(entities)) {
             return;
         }
 

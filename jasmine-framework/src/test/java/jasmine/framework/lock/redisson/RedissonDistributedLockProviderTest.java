@@ -1,6 +1,6 @@
 package jasmine.framework.lock.redisson;
 
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -24,7 +24,7 @@ public class RedissonDistributedLockProviderTest {
             List<String> actualList = provider.getRedisKeys("test:", "lock1");
 
             Assert.assertNotNull(actualList);
-            Assert.assertEquals("test:lock1", CollUtil.getFirst(actualList));
+            Assert.assertEquals("test:lock1", CollectionUtil.getFirst(actualList));
         }
 
         {

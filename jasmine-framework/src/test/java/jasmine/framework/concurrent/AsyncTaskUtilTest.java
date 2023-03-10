@@ -1,6 +1,6 @@
 package jasmine.framework.concurrent;
 
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.wrapper.ObjectValue;
 import jasmine.framework.concurrent.testdependency.MockAsyncTaskProvider;
 import org.junit.After;
@@ -52,7 +52,7 @@ public class AsyncTaskUtilTest {
 
         Assert.assertNotNull(actualList);
         Assert.assertEquals(1, actualList.size());
-        Assert.assertEquals("task.call called", CollUtil.getFirst(actualList));
+        Assert.assertEquals("task.call called", CollectionUtil.getFirst(actualList));
     }
 
 }

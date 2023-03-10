@@ -2,7 +2,7 @@ package jasmine.core.util.sort;
 
 import jasmine.core.constant.NumberConstants;
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
@@ -31,7 +31,7 @@ public class CollectionSortUtil {
         Comparator<T> comparator = null;
 
         if (keys.length == NumberConstants.NUMBER_0) {
-            return CollUtil.toList(collection);
+            return CollectionUtil.toList(collection);
         }
 
         for (SortKey<T, K> key : keys) {

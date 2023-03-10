@@ -1,7 +1,7 @@
 package jasmine.core.util.batch;
 
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 
 import java.util.Collection;
 import java.util.List;
@@ -24,10 +24,10 @@ public class BatchCallUtil {
                                 Consumer<List<T>> function) {
         CheckUtil.notNull(collection, "collection null");
         CheckUtil.notNull(function, "function null");
-        List<T> list = CollUtil.toList(collection);
+        List<T> list = CollectionUtil.toList(collection);
 
         if (collection.size() > batchSize) {
-            List<List<T>> partList = CollUtil.splitList(list, batchSize);
+            List<List<T>> partList = CollectionUtil.splitList(list, batchSize);
 
             partList.forEach((part) -> {
                 function.accept(part);

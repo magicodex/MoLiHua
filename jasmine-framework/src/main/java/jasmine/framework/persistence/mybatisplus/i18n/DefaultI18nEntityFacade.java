@@ -4,7 +4,7 @@ import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.I18nUtil;
 import jasmine.core.util.ObjectUtil;
 import jasmine.framework.persistence.constant.PersistenceConstants;
@@ -45,7 +45,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     public int insertI18n(Collection<? extends BaseI18nEntity> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        if (CollUtil.isEmpty(entities)) {
+        if (CollectionUtil.isEmpty(entities)) {
             return 0;
         }
 
@@ -71,7 +71,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     public int updateI18n(Collection<? extends BaseI18nEntity> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        if (CollUtil.isEmpty(entities)) {
+        if (CollectionUtil.isEmpty(entities)) {
             return 0;
         }
 
@@ -80,11 +80,11 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         String i18nTable = getI18nTable(entityType);
         String langCode = I18nUtil.getLanguage();
 
-        List<Long> idList = CollUtil.mapToList(entities, BaseI18nEntity::getId);
+        List<Long> idList = CollectionUtil.mapToList(entities, BaseI18nEntity::getId);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.select(idList, langCode);
-        Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        Map<Long, I18nRecord> i18nRecordMap = CollectionUtil.toMap(i18nRecordList, I18nRecord::getId);
 
         entities.forEach((entity) -> {
             Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
@@ -112,11 +112,11 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
         String langCode = I18nUtil.getLanguage();
         // 过滤出需要填充的记录
-        List<? extends BaseI18nEntity> targetList = CollUtil.chooseToList(entities, (entity) -> {
+        List<? extends BaseI18nEntity> targetList = CollectionUtil.chooseToList(entities, (entity) -> {
             return ObjectUtil.notEqual(entity.getCreatedLang(), langCode);
         });
 
-        if (CollUtil.isNotEmpty(targetList)) {
+        if (CollectionUtil.isNotEmpty(targetList)) {
             // 填充默认多语言数据
             populateDefaultI18n(targetList);
         }
@@ -130,7 +130,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         CheckUtil.notNull(entityType, "entityType null");
         CheckUtil.notNull(ids, "ids null");
 
-        if (CollUtil.isEmpty(ids)) {
+        if (CollectionUtil.isEmpty(ids)) {
             return 0;
         }
 
@@ -146,7 +146,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     public <T extends BaseI18nEntity> List<T> populateI18n(Collection<T> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        if (CollUtil.isEmpty(entities)) {
+        if (CollectionUtil.isEmpty(entities)) {
             return Collections.emptyList();
         }
 
@@ -154,14 +154,14 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         String i18nTable = getI18nTable(entityType);
         String langCode = I18nUtil.getLanguage();
 
-        List<Long> idList = CollUtil.mapToList(entities, BaseI18nEntity::getId);
+        List<Long> idList = CollectionUtil.mapToList(entities, BaseI18nEntity::getId);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.select(idList, langCode);
 
         // 填充多语言字段
-        if (CollUtil.isNotEmpty(i18nRecordList)) {
-            Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        if (CollectionUtil.isNotEmpty(i18nRecordList)) {
+            Map<Long, I18nRecord> i18nRecordMap = CollectionUtil.toMap(i18nRecordList, I18nRecord::getId);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             entities.forEach((entity) -> {
@@ -172,7 +172,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return CollUtil.toList(entities);
+        return CollectionUtil.toList(entities);
     }
 
     @Override
@@ -184,21 +184,21 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         CheckUtil.notNull(keyMapper, "keyMapper null");
         CheckUtil.notNull(populateFunction, "populateFunction null");
 
-        if (CollUtil.isEmpty(targets)) {
+        if (CollectionUtil.isEmpty(targets)) {
             return Collections.emptyList();
         }
 
         String i18nTable = getI18nTable(entityType);
         String langCode = I18nUtil.getLanguage();
 
-        List<Serializable> idList = CollUtil.mapToList(targets, keyMapper);
+        List<Serializable> idList = CollectionUtil.mapToList(targets, keyMapper);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.select(idList, langCode);
 
         // 填充多语言字段
-        if (CollUtil.isNotEmpty(i18nRecordList)) {
-            Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        if (CollectionUtil.isNotEmpty(i18nRecordList)) {
+            Map<Long, I18nRecord> i18nRecordMap = CollectionUtil.toMap(i18nRecordList, I18nRecord::getId);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             targets.forEach((target) -> {
@@ -214,28 +214,28 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return CollUtil.toList(targets);
+        return CollectionUtil.toList(targets);
     }
 
     @Override
     public <T extends BaseI18nEntity> List<T> populateDefaultI18n(Collection<T> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        if (CollUtil.isEmpty(entities)) {
+        if (CollectionUtil.isEmpty(entities)) {
             return Collections.emptyList();
         }
 
         Class<?> entityType = getEntityType(entities);
         String i18nTable = getI18nTable(entityType);
 
-        List<Long> idList = CollUtil.mapToList(entities, BaseI18nEntity::getId);
+        List<Long> idList = CollectionUtil.mapToList(entities, BaseI18nEntity::getId);
         I18nCrud i18nCRUD = new I18nCrud(sqlSessionTemplate, i18nTable);
         // 查询多语言记录
         List<I18nRecord> i18nRecordList = i18nCRUD.selectDefault(idList);
 
         // 填充多语言字段
-        if (CollUtil.isNotEmpty(i18nRecordList)) {
-            Map<Long, I18nRecord> i18nRecordMap = CollUtil.toMap(i18nRecordList, I18nRecord::getId);
+        if (CollectionUtil.isNotEmpty(i18nRecordList)) {
+            Map<Long, I18nRecord> i18nRecordMap = CollectionUtil.toMap(i18nRecordList, I18nRecord::getId);
             I18nMeta i18nMeta = getI18nMeta(entityType);
 
             entities.forEach((entity) -> {
@@ -246,7 +246,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
             });
         }
 
-        return CollUtil.toList(entities);
+        return CollectionUtil.toList(entities);
     }
 
     /**
@@ -258,11 +258,11 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
     protected Class<?> getEntityType(Collection<?> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        if (CollUtil.isEmpty(entities)) {
+        if (CollectionUtil.isEmpty(entities)) {
             return null;
         }
 
-        Object entity = CollUtil.getFirst(entities);
+        Object entity = CollectionUtil.getFirst(entities);
         Class<?> entityType = entity.getClass();
 
         return entityType;

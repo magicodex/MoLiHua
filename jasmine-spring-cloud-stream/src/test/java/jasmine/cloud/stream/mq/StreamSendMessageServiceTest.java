@@ -2,7 +2,7 @@ package jasmine.cloud.stream.mq;
 
 import jasmine.cloud.stream.testdependency.MockSendInterceptor;
 import jasmine.cloud.stream.testdependency.MockStreamBridgeInvoker;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
 import jasmine.framework.test.context.AppTestContext;
 import org.junit.Assert;
@@ -37,7 +37,7 @@ public class StreamSendMessageServiceTest extends AppTestContext {
 
         List<SendInvocationInfo> invocationInfoList = interceptor.getSendInvocationInfo();
         Assert.assertEquals(1, invocationInfoList.size());
-        Assert.assertSame(actual, CollUtil.getFirst(invocationInfoList));
+        Assert.assertSame(actual, CollectionUtil.getFirst(invocationInfoList));
     }
 
     @Test

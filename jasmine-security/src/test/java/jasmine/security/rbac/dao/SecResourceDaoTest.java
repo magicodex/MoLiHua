@@ -1,6 +1,6 @@
 package jasmine.security.rbac.dao;
 
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.framework.test.context.AppTestContext;
 import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.model.SecResource;
@@ -31,7 +31,7 @@ public class SecResourceDaoTest extends AppTestContext {
             Assert.assertNotNull(actualList);
             Assert.assertEquals(1, actualList.size());
 
-            Map<Long, SecResource> actualMap = CollUtil.toMap(actualList, SecResource::getId);
+            Map<Long, SecResource> actualMap = CollectionUtil.toMap(actualList, SecResource::getId);
             Assert.assertTrue(actualMap.containsKey(100001L));
         }
 

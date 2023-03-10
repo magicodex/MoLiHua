@@ -3,7 +3,6 @@ package jasmine.framework.persistence.mybatisplus.i18n;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.reactivex.annotations.NonNull;
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
 import jasmine.core.util.CollectionUtil;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
 import jasmine.framework.persistence.mybatisplus.i18n.support.PopulateFunction;
@@ -218,7 +217,7 @@ public class I18nEntityHelper {
         CheckUtil.notNull(entities, "entities null");
 
         if (i18nFacade == null) {
-            return CollUtil.toList(entities);
+            return CollectionUtil.toList(entities);
         }
 
         return i18nFacade.populateI18n(entities);
@@ -245,7 +244,7 @@ public class I18nEntityHelper {
         CheckUtil.notNull(populateFunction, "populateFunction null");
 
         if (i18nFacade == null) {
-            return CollUtil.toList(targets);
+            return CollectionUtil.toList(targets);
         }
 
         return i18nFacade.populateI18n(targets, entityType, keyMapper, populateFunction);

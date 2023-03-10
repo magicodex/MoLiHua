@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.core.exception.ApplicationException;
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.ObjectUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.wrapper.LongValue;
@@ -69,7 +69,7 @@ public class MapperExtensionHelper {
         Class<?>[] interfaces = baseMapper.getClass().getInterfaces();
         Class<?> mapperClass = interfaces[0];
         String sqlStatement = SqlHelper.getSqlStatement(mapperClass, SqlMethod.INSERT_ONE);
-        Class<?> entityClass = CollUtil.getFirst(entities).getClass();
+        Class<?> entityClass = CollectionUtil.getFirst(entities).getClass();
 
         SqlHelper.executeBatch(entityClass, log, entities, PersistenceConstants.BATCH_INSERT_SIZE,
                 (sqlSession, entity) -> {

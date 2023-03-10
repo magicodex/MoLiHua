@@ -4,7 +4,7 @@ import jasmine.cloud.stream.testdependency.MockMessageReceiver;
 import jasmine.cloud.stream.testdependency.MockReceiveInterceptor;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.framework.remote.mq.MessageReceiver;
 import jasmine.framework.remote.mq.interceptor.ReceiveInvocationInfo;
 import jasmine.framework.test.context.AppTestContext;
@@ -47,7 +47,7 @@ public class StreamReceiveMessageServiceTest extends AppTestContext {
         List<Object> contentList = mockReceiver.getReceivedContents();
         Assert.assertNotNull(contentList);
         Assert.assertEquals(1, contentList.size());
-        Assert.assertEquals("Hello, world!", CollUtil.getFirst(contentList));
+        Assert.assertEquals("Hello, world!", CollectionUtil.getFirst(contentList));
     }
 
     @Test

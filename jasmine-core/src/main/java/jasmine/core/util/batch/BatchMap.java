@@ -1,7 +1,7 @@
 package jasmine.core.util.batch;
 
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -32,19 +32,19 @@ public class BatchMap<K, V> extends AbstractBatchMap<K, V> {
             return;
         }
 
-        List<K> keyList = CollUtil.mapToList(collection, keyMapper);
+        List<K> keyList = CollectionUtil.mapToList(collection, keyMapper);
         Set<K> keySet = new HashSet<>(keyList);
         keySet.remove(null);
 
-        if (CollUtil.isNotEmpty(keySet)) {
+        if (CollectionUtil.isNotEmpty(keySet)) {
             lazyKeys.addAll(keySet);
         }
     }
 
     @Override
     protected void forceLoad() {
-        if (CollUtil.isNotEmpty(lazyKeys)) {
-            List<K> keyList = CollUtil.toList(lazyKeys);
+        if (CollectionUtil.isNotEmpty(lazyKeys)) {
+            List<K> keyList = CollectionUtil.toList(lazyKeys);
             List<V> valueList = loadFunction.apply(keyList);
 
             for (V value : valueList) {

@@ -1,7 +1,7 @@
 package jasmine.framework.concurrent.testdependency;
 
 import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollUtil;
+import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.ErrorUtil;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 
@@ -25,7 +25,7 @@ public class MockAsyncTaskProvider implements AsyncTaskProvider {
     public <T> List<T> asyncAndGet(Collection<Callable> tasks) {
         CheckUtil.notNull(tasks, "tasks null");
 
-        List<T> resultList = (List<T>) CollUtil.mapToList(tasks, (callable) -> {
+        List<T> resultList = (List<T>) CollectionUtil.mapToList(tasks, (callable) -> {
             try {
                 return callable.call();
             } catch (Exception e) {
