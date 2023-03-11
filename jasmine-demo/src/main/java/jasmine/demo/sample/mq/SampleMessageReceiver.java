@@ -1,6 +1,6 @@
 package jasmine.demo.sample.mq;
 
-import jasmine.framework.remote.mq.MessageReceiver;
+import jasmine.framework.mq.MessageReceiver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package jasmine.cloud.stream.testdependency;
+package jasmine.framework.persistence;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;

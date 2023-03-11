@@ -1,6 +1,6 @@
 package jasmine.demo.config;
 
-import jasmine.framework.remote.mq.ReceiveMessageService;
+import jasmine.framework.mq.ReceiveMessageService;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.MessageListenerContainer;

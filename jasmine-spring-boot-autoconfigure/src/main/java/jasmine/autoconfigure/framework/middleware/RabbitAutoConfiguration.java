@@ -1,12 +1,12 @@
 package jasmine.autoconfigure.framework.middleware;
 
 import jasmine.core.context.RuntimeProvider;
-import jasmine.framework.remote.mq.ReceiveMessageService;
-import jasmine.framework.remote.mq.SendMessageService;
-import jasmine.framework.remote.mq.impl.DefaultReceiveMessageService;
-import jasmine.framework.remote.mq.impl.DefaultSendMessageServiceBean;
-import jasmine.framework.remote.mq.interceptor.ReceiveInterceptor;
-import jasmine.framework.remote.mq.interceptor.SendInterceptor;
+import jasmine.framework.mq.ReceiveMessageService;
+import jasmine.framework.mq.SendMessageService;
+import jasmine.framework.mq.impl.DefaultReceiveMessageService;
+import jasmine.framework.mq.impl.DefaultSendMessageServiceBean;
+import jasmine.framework.mq.interceptor.ReceiveInterceptor;
+import jasmine.framework.mq.interceptor.SendInterceptor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

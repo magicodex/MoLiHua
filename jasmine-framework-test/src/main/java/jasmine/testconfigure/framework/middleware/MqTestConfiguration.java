@@ -1,7 +1,7 @@
 package jasmine.testconfigure.framework.middleware;
 
-import jasmine.framework.remote.mq.ReceiveMessageService;
-import jasmine.framework.remote.mq.SendMessageService;
+import jasmine.framework.mq.ReceiveMessageService;
+import jasmine.framework.mq.SendMessageService;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

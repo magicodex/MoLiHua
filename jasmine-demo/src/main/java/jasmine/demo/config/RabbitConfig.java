@@ -1,6 +1,6 @@
 package jasmine.demo.config;
 
-import jasmine.framework.remote.mq.impl.routing.PublisherExchangeDirectRouting;
+import jasmine.framework.mq.impl.routing.PublisherExchangeDirectRouting;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;

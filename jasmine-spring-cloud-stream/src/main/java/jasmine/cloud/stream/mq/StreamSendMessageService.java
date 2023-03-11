@@ -5,10 +5,10 @@ import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.StringUtil;
 import jasmine.framework.common.util.UniqueKeyUtil;
-import jasmine.framework.remote.mq.impl.AbstractSendMessageService;
-import jasmine.framework.remote.mq.impl.interceptor.DefaultSendInvocationInfo;
-import jasmine.framework.remote.mq.interceptor.SendInterceptor;
-import jasmine.framework.remote.mq.interceptor.SendInvocationInfo;
+import jasmine.framework.mq.impl.AbstractSendMessageService;
+import jasmine.framework.mq.impl.interceptor.DefaultSendInvocationInfo;
+import jasmine.framework.mq.interceptor.SendInterceptor;
+import jasmine.framework.mq.interceptor.SendInvocationInfo;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
 

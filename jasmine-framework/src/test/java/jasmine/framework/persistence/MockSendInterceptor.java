@@ -1,4 +1,4 @@
-package jasmine.cloud.stream.testdependency;
+package jasmine.framework.persistence;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.NewUtil;

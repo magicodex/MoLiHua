@@ -1,4 +1,4 @@
-package jasmine.cloud.stream.mq;
+package jasmine.framework.mq.impl;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.RuntimeProvider;
@@ -6,29 +6,28 @@ import jasmine.core.exception.InvalidParameterException;
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.ObjectUtil;
 import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.mq.MessageReceiver;
-import jasmine.framework.mq.impl.AbstractReceiveMessageService;
 import jasmine.framework.mq.impl.interceptor.DefaultReceiveInvocationInfo;
 import jasmine.framework.mq.interceptor.ReceiveInterceptor;
 import jasmine.framework.mq.interceptor.ReceiveInvocationInfo;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHeaders;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
 
 /**
  * @author mh.z
  */
-public class StreamReceiveMessageService extends AbstractReceiveMessageService<Message> {
+public class DefaultReceiveMessageService extends AbstractReceiveMessageService<Message> {
     private RuntimeProvider runtimeProvider;
 
     private static final String HEADER_SUBJECT = "subject";
     private static final String PARAM_USER_ID = "userId";
-    private static final String MESSAGE_KEY = "messageKey";
     /** 消息接收者 bean 的名称后缀 */
     private static final String RECEIVER_BEAN_SUFFIX = "MessageReceiver";
     /** 请求头分隔符 */
     private static final String HEADER_SEPARATOR_SYMBOL = ":";
 
-    public StreamReceiveMessageService(RuntimeProvider runtimeProvider) {
+    public DefaultReceiveMessageService(RuntimeProvider runtimeProvider) {
         this.runtimeProvider = runtimeProvider;
     }
 
@@ -43,9 +42,10 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
         // 获取消息接收者
         MessageReceiver receiver = getReceiver(category, true);
         // 获取消息内容
-        Object content = message.getPayload();
-        MessageHeaders headers = message.getHeaders();
-        String messageId = headers.get(MESSAGE_KEY, String.class);
+        Class<?> targetType = receiver.getType();
+        Object content = getContent(message, targetType);
+        MessageProperties messageProperties = message.getMessageProperties();
+        String messageId = messageProperties.getMessageId();
 
         ReceiveInvocationInfo invocationInfo = new DefaultReceiveInvocationInfo(messageId, content, message);
         // 转化消息后调用
@@ -63,8 +63,8 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
      */
     protected void initCurrentContext(Message message) {
         CheckUtil.notNull(message, "message null");
-        MessageHeaders headers = message.getHeaders();
-        String subject = headers.get(HEADER_SUBJECT, String.class);
+        MessageProperties messageProperties = message.getMessageProperties();
+        String subject = messageProperties.getHeader(HEADER_SUBJECT);
 
         // 初始安全上下文
         if (StringUtil.isNotEmpty(subject)) {
@@ -75,6 +75,28 @@ public class StreamReceiveMessageService extends AbstractReceiveMessageService<M
                 CurrentSubject.setSubject(null, userId);
             }
         }
+    }
+
+    /**
+     * 返回消息内容
+     *
+     * @param message
+     * @param targetType
+     * @return
+     */
+    protected Object getContent(Message message, Class<?> targetType) {
+        CheckUtil.notNull(message, "message null");
+        byte[] messageBody = message.getBody();
+        Object content = null;
+
+        // 转换成指定的类型
+        if (targetType != null) {
+            content = SimpleConvertUtil.deserialize(messageBody, targetType);
+        } else {
+            content = messageBody;
+        }
+
+        return content;
     }
 
     /**
