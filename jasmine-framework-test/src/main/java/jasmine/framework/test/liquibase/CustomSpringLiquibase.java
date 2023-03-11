@@ -1,7 +1,7 @@
 package jasmine.framework.test.liquibase;
 
 import jasmine.core.util.ErrorUtil;
-import jasmine.framework.context.init.CustomInitializingSingleton;
+import jasmine.core.context.CustomInitializingSingleton;
 import liquibase.exception.LiquibaseException;
 import liquibase.integration.spring.SpringLiquibase;
 

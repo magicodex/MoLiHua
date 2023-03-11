@@ -7,7 +7,7 @@ import jasmine.core.util.NewUtil;
 import jasmine.core.util.StringUtil;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.mybatis.util.UniqueKeyUtil;
-import jasmine.framework.context.init.CustomInitializingSingleton;
+import jasmine.core.context.CustomInitializingSingleton;
 import jasmine.framework.mq.impl.interceptor.DefaultSendInvocationInfo;
 import jasmine.framework.mq.impl.routing.PublisherExchangeDirectRouting;
 import jasmine.framework.mq.interceptor.SendInterceptor;

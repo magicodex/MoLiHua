@@ -1,5 +1,6 @@
 package jasmine.framework.context.init;
 
+import jasmine.core.context.CustomInitializingSingleton;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationContext;

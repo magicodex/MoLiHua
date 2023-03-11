@@ -1,5 +1,6 @@
 package jasmine.framework.context.init;
 
+import jasmine.core.context.CustomInitializingSingleton;
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.CollectionUtil;

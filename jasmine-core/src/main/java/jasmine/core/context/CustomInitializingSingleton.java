@@ -1,6 +1,4 @@
-package jasmine.framework.context.init;
-
-import org.springframework.core.Ordered;
+package jasmine.core.context;
 
 /**
  * <p>
@@ -9,10 +7,17 @@ import org.springframework.core.Ordered;
  *
  * @author mh.z
  */
-public interface CustomInitializingSingleton extends Ordered {
+public interface CustomInitializingSingleton {
 
     /**
-     *
+     * 调用方法
      */
     void afterSingletonsInstantiated();
+
+    /**
+     * 返回序号
+     *
+     * @return
+     */
+    int getOrder();
 }

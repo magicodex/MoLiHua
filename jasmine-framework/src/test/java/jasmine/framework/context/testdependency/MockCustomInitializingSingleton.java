@@ -1,6 +1,6 @@
 package jasmine.framework.context.testdependency;
 
-import jasmine.framework.context.init.CustomInitializingSingleton;
+import jasmine.core.context.CustomInitializingSingleton;
 
 /**
  * @author mh.z

@@ -3,7 +3,7 @@ package jasmine.framework.context.impl.thread;
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.NewUtil;
-import jasmine.framework.context.init.CustomInitializingSingleton;
+import jasmine.core.context.CustomInitializingSingleton;
 import jasmine.framework.context.thread.ContextHandler;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.context.thread.ContextSnapshot;
