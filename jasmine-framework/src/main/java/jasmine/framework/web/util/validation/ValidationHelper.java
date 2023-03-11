@@ -1,7 +1,8 @@
-package jasmine.framework.web.validation.helper;
+package jasmine.framework.web.util.validation;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.framework.web.entity.WebResult;
+import jasmine.framework.web.exception.ValidationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;

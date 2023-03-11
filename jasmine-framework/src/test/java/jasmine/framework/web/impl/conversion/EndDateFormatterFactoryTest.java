@@ -1,7 +1,9 @@
-package jasmine.framework.web.conversion.formatter;
+package jasmine.framework.web.impl.conversion;
 
-import jasmine.framework.web.annotation.EndDate;
+import jasmine.framework.web.annotation.conversion.EndDate;
 import jasmine.core.test.mockito.MockUtil;
+import jasmine.framework.web.impl.conversion.EndDateFormatter;
+import jasmine.framework.web.impl.conversion.EndDateFormatterFactory;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;

@@ -1,7 +1,7 @@
-package jasmine.framework.web.conversion.formatter;
+package jasmine.framework.web.impl.conversion;
 
 import jasmine.core.util.DateUtil;
-import jasmine.framework.web.annotation.EndDate;
+import jasmine.framework.web.annotation.conversion.StartDate;
 import org.springframework.format.Formatter;
 
 import java.text.ParseException;
@@ -11,18 +11,18 @@ import java.util.Locale;
 /**
  * @author mh.z
  */
-public class EndDateFormatter implements Formatter<ZonedDateTime> {
-    private EndDate endDate;
+public class StartDateFormatter implements Formatter<ZonedDateTime> {
+    private StartDate startDate;
     private Class<?> fieldType;
 
-    public EndDateFormatter(EndDate endDate, Class<?> fieldType) {
-        this.endDate = endDate;
+    public StartDateFormatter(StartDate startDate, Class<?> fieldType) {
+        this.startDate = startDate;
         this.fieldType = fieldType;
     }
 
     @Override
     public ZonedDateTime parse(String text, Locale locale) throws ParseException {
-        return DateUtil.parseEndYearDay(text);
+        return DateUtil.parseStartYearDay(text);
     }
 
     @Override

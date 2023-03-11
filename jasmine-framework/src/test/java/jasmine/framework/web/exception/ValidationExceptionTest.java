@@ -1,5 +1,6 @@
-package jasmine.framework.web.validation.helper;
+package jasmine.framework.web.exception;
 
+import jasmine.framework.web.exception.ValidationException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.validation.ObjectError;

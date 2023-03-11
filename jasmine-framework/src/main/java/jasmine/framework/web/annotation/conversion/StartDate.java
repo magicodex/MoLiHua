@@ -1,4 +1,4 @@
-package jasmine.framework.web.annotation;
+package jasmine.framework.web.annotation.conversion;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

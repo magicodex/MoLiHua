@@ -1,4 +1,4 @@
-package jasmine.framework.web.validation.helper;
+package jasmine.framework.web.util.validation;
 
 import jasmine.core.util.NewUtil;
 import org.springframework.validation.AbstractBindingResult;

@@ -1,6 +1,7 @@
-package jasmine.framework.web.validation.helper;
+package jasmine.framework.web.util.validation;
 
 import jasmine.framework.web.entity.WebResult;
+import jasmine.framework.web.exception.ValidationException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;

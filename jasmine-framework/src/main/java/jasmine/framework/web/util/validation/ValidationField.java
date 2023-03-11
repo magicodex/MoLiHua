@@ -1,4 +1,4 @@
-package jasmine.framework.web.validation.helper;
+package jasmine.framework.web.util.validation;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
