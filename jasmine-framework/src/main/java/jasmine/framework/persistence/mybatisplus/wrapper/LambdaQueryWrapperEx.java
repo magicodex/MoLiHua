@@ -1,7 +1,7 @@
 package jasmine.framework.persistence.mybatisplus.wrapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import jasmine.framework.persistence.mybatisplus.dynamic.DataAuthHelper;
+import jasmine.framework.persistence.mybatisplus.dynamic.DataAuthUtil;
 
 /**
  * @author mh.z
@@ -20,7 +20,7 @@ public class LambdaQueryWrapperEx<T> extends AbstractLambdaQueryWrapperEx<T, Lam
     public LambdaQueryWrapper<T> dataAuth() {
         // 获取数据权限SQL
         Class<?> entityType = getEntityClass();
-        String sql = DataAuthHelper.generateSql(entityType, null);
+        String sql = DataAuthUtil.generateSql(entityType, null);
         // 加上数据权限SQL
         apply(sql);
 

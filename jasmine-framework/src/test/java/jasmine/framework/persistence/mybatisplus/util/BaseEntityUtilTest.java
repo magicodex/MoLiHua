@@ -17,7 +17,7 @@ import java.util.Collections;
 /**
  * @author mh.z
  */
-public class BaseEntityHelperTest {
+public class BaseEntityUtilTest {
     private LocaleMessageProvider prevLocalMessageProvider;
     private SubjectProvider prevSubjectProvider;
 
@@ -39,7 +39,7 @@ public class BaseEntityHelperTest {
     @Test
     public void testFillInsert() {
         TestEntity1 entity = new TestEntity1();
-        BaseEntityHelper.fillInsert(entity);
+        BaseEntityUtil.fillInsert(entity);
 
         Assert.assertNotNull(entity.getCreatedBy());
         Assert.assertNotNull(entity.getCreatedDate());
@@ -51,7 +51,7 @@ public class BaseEntityHelperTest {
     @Test
     public void testFillInsert2() {
         TestEntity1 entity = new TestEntity1();
-        BaseEntityHelper.fillInsert(Collections.singletonList(entity));
+        BaseEntityUtil.fillInsert(Collections.singletonList(entity));
 
         Assert.assertNotNull(entity.getCreatedBy());
         Assert.assertNotNull(entity.getCreatedDate());
@@ -63,7 +63,7 @@ public class BaseEntityHelperTest {
     @Test
     public void testFillUpdate() {
         TestEntity1 entity = new TestEntity1();
-        BaseEntityHelper.fillUpdate(entity);
+        BaseEntityUtil.fillUpdate(entity);
 
         Assert.assertNotNull(entity.getLastUpdatedBy());
         Assert.assertNotNull(entity.getLastUpdatedDate());
@@ -72,7 +72,7 @@ public class BaseEntityHelperTest {
     @Test
     public void testFillUpdate2() {
         TestEntity1 entity = new TestEntity1();
-        BaseEntityHelper.fillUpdate(Collections.singletonList(entity));
+        BaseEntityUtil.fillUpdate(Collections.singletonList(entity));
 
         Assert.assertNotNull(entity.getLastUpdatedBy());
         Assert.assertNotNull(entity.getLastUpdatedDate());

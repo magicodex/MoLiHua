@@ -1,7 +1,7 @@
 package jasmine.framework.mq.impl;
 
 import jasmine.core.util.ref.ObjectValue;
-import jasmine.framework.context.ContextManagementHelper;
+import jasmine.framework.context.ContextManagementUtil;
 import jasmine.framework.context.handler.ContextHandlerFacade;
 import jasmine.framework.mq.impl.interceptor.DefaultReceiveInterceptor;
 import jasmine.framework.mq.impl.interceptor.DefaultReceiveInvocationInfo;
@@ -25,8 +25,8 @@ public class AbstractReceiveMessageServiceTest extends AbstractReceiveMessageSer
 
     @Before
     public void setUp() {
-        prevContextHandlerFacade = ContextManagementHelper.getHandlerFacade();
-        ContextManagementHelper.initUtil(null);
+        prevContextHandlerFacade = ContextManagementUtil.getHandlerFacade();
+        ContextManagementUtil.initUtil(null);
 
         lastInterceptor = null;
         lastCategory = null;
@@ -35,12 +35,12 @@ public class AbstractReceiveMessageServiceTest extends AbstractReceiveMessageSer
 
     @After
     public void tearDown() {
-        ContextManagementHelper.initUtil(prevContextHandlerFacade);
+        ContextManagementUtil.initUtil(prevContextHandlerFacade);
     }
 
     @Test
     public void test() {
-        ContextManagementHelper.initUtil(Mockito.mock(ContextHandlerFacade.class));
+        ContextManagementUtil.initUtil(Mockito.mock(ContextHandlerFacade.class));
 
         AbstractReceiveMessageService service = new AbstractReceiveMessageServiceTest();
         service.setInterceptor(new DefaultReceiveInterceptor());

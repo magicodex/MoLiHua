@@ -11,18 +11,18 @@ import org.mockito.Mockito;
 /**
  * @author mh.z
  */
-public class ContextManagementHelperTest {
+public class ContextManagementUtilTest {
     private ContextHandlerFacade prevContextHandlerFacade;
 
     @Before
     public void setUp() {
-        prevContextHandlerFacade = ContextManagementHelper.getHandlerFacade();
-        ContextManagementHelper.initUtil(null);
+        prevContextHandlerFacade = ContextManagementUtil.getHandlerFacade();
+        ContextManagementUtil.initUtil(null);
     }
 
     @After
     public void tearDown() {
-        ContextManagementHelper.initUtil(prevContextHandlerFacade);
+        ContextManagementUtil.initUtil(prevContextHandlerFacade);
     }
 
     @Test
@@ -45,9 +45,9 @@ public class ContextManagementHelperTest {
             return null;
         }).when(facade).clearAllFromCurrentThread();
 
-        ContextManagementHelper.initUtil(facade);
+        ContextManagementUtil.initUtil(facade);
         ObjectValue value = new ObjectValue(null);
-        Object actual = ContextManagementHelper.manageContext(() -> {
+        Object actual = ContextManagementUtil.manageContext(() -> {
             value.set("function.call called");
 
             return "Hello, test!";
@@ -79,9 +79,9 @@ public class ContextManagementHelperTest {
             return null;
         }).when(facade).clearAllFromCurrentThread();
 
-        ContextManagementHelper.initUtil(facade);
+        ContextManagementUtil.initUtil(facade);
         ObjectValue value = new ObjectValue(null);
-        ContextManagementHelper.manageContext(() -> {
+        ContextManagementUtil.manageContext(() -> {
             value.set("function.call called");
         });
 

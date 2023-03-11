@@ -10,18 +10,18 @@ import org.mockito.Mockito;
 /**
  * @author mh.z
  */
-public class CryptoFieldHelperTest {
+public class CryptoFieldUtilTest {
     private CryptoProvider previousProvider;
 
     @Before
     public void setUp() {
-        previousProvider = CryptoFieldHelper.getCryptoProvider();
-        CryptoFieldHelper.initUtil(null);
+        previousProvider = CryptoFieldUtil.getCryptoProvider();
+        CryptoFieldUtil.initUtil(null);
     }
 
     @After
     public void tearDown() {
-        CryptoFieldHelper.initUtil(previousProvider);
+        CryptoFieldUtil.initUtil(previousProvider);
     }
 
     @Test
@@ -31,9 +31,9 @@ public class CryptoFieldHelperTest {
                 .thenReturn("encryptedText");
         Mockito.when(provider.decrypt(Mockito.any()))
                 .thenReturn("decryptedText");
-        CryptoFieldHelper.initUtil(provider);
+        CryptoFieldUtil.initUtil(provider);
 
-        String actual = CryptoFieldHelper.encrypt("decryptedText");
+        String actual = CryptoFieldUtil.encrypt("decryptedText");
         Assert.assertEquals("encryptedText", actual);
     }
 
@@ -44,9 +44,9 @@ public class CryptoFieldHelperTest {
                 .thenReturn("encryptedText");
         Mockito.when(provider.decrypt(Mockito.any()))
                 .thenReturn("decryptedText");
-        CryptoFieldHelper.initUtil(provider);
+        CryptoFieldUtil.initUtil(provider);
 
-        String actual = CryptoFieldHelper.decrypt("encryptedText");
+        String actual = CryptoFieldUtil.decrypt("encryptedText");
         Assert.assertEquals("decryptedText", actual);
     }
 

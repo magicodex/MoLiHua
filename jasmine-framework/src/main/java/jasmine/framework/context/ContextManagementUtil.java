@@ -13,11 +13,11 @@ import jasmine.framework.context.handler.ContextHandlerFacade;
  *
  * @author mh.z
  */
-public class ContextManagementHelper {
+public class ContextManagementUtil {
     private static ContextHandlerFacade handlerFacade;
 
     public static void initUtil(ContextHandlerFacade handlerFacade) {
-        ContextManagementHelper.handlerFacade = handlerFacade;
+        ContextManagementUtil.handlerFacade = handlerFacade;
     }
 
     public static ContextHandlerFacade getHandlerFacade() {

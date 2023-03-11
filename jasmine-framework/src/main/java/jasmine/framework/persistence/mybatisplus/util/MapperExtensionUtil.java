@@ -30,8 +30,8 @@ import java.util.Set;
  *
  * @author mh.z
  */
-public class MapperExtensionHelper {
-    private static final Log log = LogFactory.getLog(MapperExtensionHelper.class);
+public class MapperExtensionUtil {
+    private static final Log log = LogFactory.getLog(MapperExtensionUtil.class);
 
     /**
      * 保存记录

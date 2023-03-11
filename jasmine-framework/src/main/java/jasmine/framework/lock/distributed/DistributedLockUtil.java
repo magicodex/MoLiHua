@@ -11,11 +11,11 @@ import javax.annotation.Nonnull;
  *
  * @author mh.z
  */
-public class DistributedLockHelper {
+public class DistributedLockUtil {
     private static DistributedLockProvider provider;
 
     public static void initUtil(DistributedLockProvider provider) {
-        DistributedLockHelper.provider = provider;
+        DistributedLockUtil.provider = provider;
     }
 
     public static DistributedLockProvider getProvider() {

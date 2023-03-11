@@ -9,10 +9,10 @@ import jasmine.framework.common.security.CryptoProvider;
 import jasmine.mock.framework.common.MockCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldUtil;
 import jasmine.framework.persistence.mybatisplus.i18n.DefaultI18nEntityFacade;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityFacade;
-import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
+import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityUtil;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
@@ -61,7 +61,7 @@ public class MybatisPlusTestConfiguration {
     public CryptoProvider cryptoProvider() {
         CryptoProvider provider = new MockCryptoProvider();
         // 初始工具类
-        CryptoFieldHelper.initUtil(provider);
+        CryptoFieldUtil.initUtil(provider);
 
         return provider;
     }
@@ -71,7 +71,7 @@ public class MybatisPlusTestConfiguration {
         DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
 
         // 初始工具类
-        I18nEntityHelper.initUtil(facade);
+        I18nEntityUtil.initUtil(facade);
 
         return facade;
     }

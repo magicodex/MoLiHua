@@ -18,7 +18,7 @@ import java.util.List;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class MapperExtensionHelperTest extends FrameworkTestContext {
+public class MapperExtensionUtilTest extends FrameworkTestContext {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
 
@@ -28,7 +28,7 @@ public class MapperExtensionHelperTest extends FrameworkTestContext {
         list.add(createEntity("code1", "name1", "attr1"));
         list.add(createEntity("code2", "name2", "attr2"));
 
-        MapperExtensionHelper.saveBatch(testEntity1Mapper, list);
+        MapperExtensionUtil.saveBatch(testEntity1Mapper, list);
     }
 
     @Test
@@ -40,13 +40,13 @@ public class MapperExtensionHelperTest extends FrameworkTestContext {
         // 版本不对无法更新
         Assert.assertThrows(RuntimeException.class, () -> {
             entity.setVersionNumber(versionNumber + 1);
-            MapperExtensionHelper.updateById(testEntity1Mapper, entity, true);
+            MapperExtensionUtil.updateById(testEntity1Mapper, entity, true);
         });
 
         // 版本正确可以更新
         {
             entity.setVersionNumber(versionNumber);
-            MapperExtensionHelper.updateById(testEntity1Mapper, entity, true);
+            MapperExtensionUtil.updateById(testEntity1Mapper, entity, true);
         }
     }
 
@@ -61,13 +61,13 @@ public class MapperExtensionHelperTest extends FrameworkTestContext {
         // 部分版本不对无法更新
         Assert.assertThrows(RuntimeException.class, () -> {
             entity2.setVersionNumber(versionNumber2 + 1);
-            MapperExtensionHelper.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
+            MapperExtensionUtil.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
         });
 
         // 全部版本正确才能更新
         {
             entity2.setVersionNumber(versionNumber2);
-            MapperExtensionHelper.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
+            MapperExtensionUtil.updateBatchById(testEntity1Mapper, Arrays.asList(entity1, entity2), true);
         }
     }
 
@@ -78,12 +78,12 @@ public class MapperExtensionHelperTest extends FrameworkTestContext {
 
         // 删除不存在的记录会报错
         Assert.assertThrows(RuntimeException.class, () -> {
-            MapperExtensionHelper.deleteById(testEntity1Mapper, -1, true);
+            MapperExtensionUtil.deleteById(testEntity1Mapper, -1, true);
         });
 
         // 删除存在的记录
         {
-            MapperExtensionHelper.deleteById(testEntity1Mapper, entity1.getId(), true);
+            MapperExtensionUtil.deleteById(testEntity1Mapper, entity1.getId(), true);
         }
     }
 
@@ -99,13 +99,13 @@ public class MapperExtensionHelperTest extends FrameworkTestContext {
         // 删除不存在的记录会报错
         Assert.assertThrows(RuntimeException.class, () -> {
             List<Long> idList = Arrays.asList(-1L, entity1.getId());
-            MapperExtensionHelper.deleteByIds(testEntity1Mapper, idList, true);
+            MapperExtensionUtil.deleteByIds(testEntity1Mapper, idList, true);
         });
 
         // 删除的所有记录都存在
         {
             List<Long> idList = Arrays.asList(entity2.getId(), entity3.getId());
-            MapperExtensionHelper.deleteByIds(testEntity1Mapper, idList, true);
+            MapperExtensionUtil.deleteByIds(testEntity1Mapper, idList, true);
         }
     }
 
@@ -114,11 +114,11 @@ public class MapperExtensionHelperTest extends FrameworkTestContext {
         List<TestEntity1> list = new ArrayList<>();
         list.add(createEntity("code1", "name1", "attr1"));
         list.add(createEntity("code2", "name2", "attr2"));
-        MapperExtensionHelper.saveBatch(testEntity1Mapper, list);
+        MapperExtensionUtil.saveBatch(testEntity1Mapper, list);
 
         // 批量查询记录
         List<Long> idList = CollStreamUtil.toList(list, TestEntity1::getId);
-        List<TestEntity1> entityList = MapperExtensionHelper.listByIds(testEntity1Mapper, idList, true);
+        List<TestEntity1> entityList = MapperExtensionUtil.listByIds(testEntity1Mapper, idList, true);
 
         Assert.assertEquals(2, entityList.size());
     }

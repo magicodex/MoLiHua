@@ -3,7 +3,7 @@ package jasmine.autoconfigure.framework;
 import jasmine.core.context.RuntimeProvider;
 import jasmine.core.util.SpringUtil;
 import jasmine.framework.cache.context.RequestScopeCacheContextHandler;
-import jasmine.framework.context.ContextManagementHelper;
+import jasmine.framework.context.ContextManagementUtil;
 import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.InitSupportScanBean;
 import jasmine.framework.context.SpringRuntimeProvider;
@@ -55,7 +55,7 @@ public class JasmineFrameworkAutoConfiguration {
         ContextHandlerFacade handlerFacade = new ContextHandlerFacadeBean();
 
         // 初始工具类
-        ContextManagementHelper.initUtil(handlerFacade);
+        ContextManagementUtil.initUtil(handlerFacade);
 
         return handlerFacade;
     }

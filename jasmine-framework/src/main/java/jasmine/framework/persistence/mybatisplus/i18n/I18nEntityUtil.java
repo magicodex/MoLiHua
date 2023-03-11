@@ -18,11 +18,11 @@ import java.util.function.Function;
 /**
  * @author mh.z
  */
-public class I18nEntityHelper {
+public class I18nEntityUtil {
     private static I18nEntityFacade i18nFacade;
 
     public static void initUtil(I18nEntityFacade i18nEntityFacade) {
-        I18nEntityHelper.i18nFacade = i18nEntityFacade;
+        I18nEntityUtil.i18nFacade = i18nEntityFacade;
     }
 
     /**

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import jasmine.core.util.CheckUtil;
 import jasmine.framework.persistence.entity.BaseI18nEntity;
-import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
+import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityUtil;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -27,7 +27,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
         CheckUtil.notNull(entity, "entity null");
 
         super.save(entity);
-        I18nEntityHelper.insertI18n(entity);
+        I18nEntityUtil.insertI18n(entity);
     }
 
     @Override
@@ -35,14 +35,14 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
         CheckUtil.notNull(entities, "entities null");
 
         super.saveBatch(entities);
-        I18nEntityHelper.insertI18n(entities);
+        I18nEntityUtil.insertI18n(entities);
     }
 
     @Override
     public void updateById(T entity) {
         CheckUtil.notNull(entity, "entity null");
 
-        I18nEntityHelper.updateI18nThenFillEntity(entity);
+        I18nEntityUtil.updateI18nThenFillEntity(entity);
         super.updateById(entity);
     }
 
@@ -50,7 +50,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     public void updateBatchById(Collection<T> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        I18nEntityHelper.updateI18nThenFillEntities(entities);
+        I18nEntityUtil.updateI18nThenFillEntities(entities);
         super.updateBatchById(entities);
     }
 
@@ -58,7 +58,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     public boolean deleteById(Serializable id) {
         CheckUtil.notNull(id, "id null");
 
-        I18nEntityHelper.deleteI18n(entityClass, id);
+        I18nEntityUtil.deleteI18n(entityClass, id);
         boolean result = super.deleteById(id);
 
         return result;
@@ -68,7 +68,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     public int deleteByIds(Collection<? extends Serializable> ids) {
         CheckUtil.notNull(ids, "ids null");
 
-        I18nEntityHelper.deleteI18n(entityClass, ids);
+        I18nEntityUtil.deleteI18n(entityClass, ids);
         int result = super.deleteByIds(ids);
 
         return result;
@@ -79,7 +79,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
         CheckUtil.notNull(id, "id null");
 
         T record = super.getById(id);
-        record = I18nEntityHelper.populateI18n(record);
+        record = I18nEntityUtil.populateI18n(record);
 
         return record;
     }
@@ -89,7 +89,7 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
         CheckUtil.notNull(ids, "ids null");
 
         List<T> recordList = super.listByIds(ids);
-        recordList = I18nEntityHelper.populateI18n(recordList);
+        recordList = I18nEntityUtil.populateI18n(recordList);
 
         return recordList;
     }

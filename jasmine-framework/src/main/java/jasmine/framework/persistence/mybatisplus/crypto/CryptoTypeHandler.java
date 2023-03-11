@@ -17,7 +17,7 @@ public class CryptoTypeHandler implements TypeHandler<String> {
     @Override
     public void setParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType) throws SQLException {
         if (parameter != null) {
-            String encryptedText = CryptoFieldHelper.encrypt(parameter);
+            String encryptedText = CryptoFieldUtil.encrypt(parameter);
             ps.setString(i, encryptedText);
         } else {
             ps.setNull(i, Types.VARCHAR);
@@ -31,7 +31,7 @@ public class CryptoTypeHandler implements TypeHandler<String> {
             return null;
         }
 
-        String decryptedText = CryptoFieldHelper.decrypt(result);
+        String decryptedText = CryptoFieldUtil.decrypt(result);
         return decryptedText;
     }
 
@@ -42,7 +42,7 @@ public class CryptoTypeHandler implements TypeHandler<String> {
             return null;
         }
 
-        String decryptedText = CryptoFieldHelper.decrypt(result);
+        String decryptedText = CryptoFieldUtil.decrypt(result);
         return decryptedText;
     }
 
@@ -53,7 +53,7 @@ public class CryptoTypeHandler implements TypeHandler<String> {
             return null;
         }
 
-        String decryptedText = CryptoFieldHelper.decrypt(result);
+        String decryptedText = CryptoFieldUtil.decrypt(result);
         return decryptedText;
     }
 

@@ -6,11 +6,11 @@ import jasmine.framework.common.security.CryptoProvider;
 /**
  * @author mh.z
  */
-public class CryptoFieldHelper {
+public class CryptoFieldUtil {
     private static CryptoProvider cryptoProvider;
 
     public static void initUtil(CryptoProvider cryptoProvider) {
-        CryptoFieldHelper.cryptoProvider = cryptoProvider;
+        CryptoFieldUtil.cryptoProvider = cryptoProvider;
     }
 
     public static CryptoProvider getCryptoProvider() {

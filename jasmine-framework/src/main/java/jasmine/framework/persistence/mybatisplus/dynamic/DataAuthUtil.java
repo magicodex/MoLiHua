@@ -5,11 +5,11 @@ import jasmine.core.util.CheckUtil;
 /**
  * @author mh.z
  */
-public class DataAuthHelper {
+public class DataAuthUtil {
     private static DataAuthProvider provider;
 
     public static void initUtil(DataAuthProvider provider) {
-        DataAuthHelper.provider = provider;
+        DataAuthUtil.provider = provider;
     }
 
     /**

@@ -4,7 +4,7 @@ import com.xxl.job.core.context.XxlJobContext;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.context.SubjectProvider;
 import jasmine.core.util.ref.ObjectValue;
-import jasmine.framework.context.ContextManagementHelper;
+import jasmine.framework.context.ContextManagementUtil;
 import jasmine.framework.context.handler.ContextHandlerFacade;
 import jasmine.framework.job.JobCurrent;
 import jasmine.framework.job.JobExecutor;
@@ -33,8 +33,8 @@ public class XxlJobHandlerDelegateTest {
         prevSubjectProvider = CurrentSubject.getSubjectProvider();
         CurrentSubject.initUtil(null);
 
-        prevContextHandlerFacade = ContextManagementHelper.getHandlerFacade();
-        ContextManagementHelper.initUtil(null);
+        prevContextHandlerFacade = ContextManagementUtil.getHandlerFacade();
+        ContextManagementUtil.initUtil(null);
 
         jobExecutorExecuteMethodCalledFlag = new ObjectValue(false);
     }
@@ -43,7 +43,7 @@ public class XxlJobHandlerDelegateTest {
     public void tearDown() {
         XxlJobContext.setXxlJobContext(prevXxlJobContext);
         CurrentSubject.initUtil(prevSubjectProvider);
-        ContextManagementHelper.initUtil(prevContextHandlerFacade);
+        ContextManagementUtil.initUtil(prevContextHandlerFacade);
 
         jobExecutorExecuteMethodCalledFlag = new ObjectValue(false);
     }
@@ -57,7 +57,7 @@ public class XxlJobHandlerDelegateTest {
         // 初始 CurrentSubject 的上下文
         CurrentSubject.initUtil(new MockSubjectProvider());
         // 初始 ContextManagementHelper 的上下文
-        ContextManagementHelper.initUtil(Mockito.mock(ContextHandlerFacade.class));
+        ContextManagementUtil.initUtil(Mockito.mock(ContextHandlerFacade.class));
 
         JobExecutor executor = mockJobExecutor();
         XxlJobHandlerDelegate delegate = new XxlJobHandlerDelegate(executor);

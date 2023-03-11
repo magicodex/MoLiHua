@@ -13,7 +13,7 @@ import java.util.Collection;
 /**
  * @author mh.z
  */
-public class BaseEntityHelper {
+public class BaseEntityUtil {
 
     /**
      * 填充字段

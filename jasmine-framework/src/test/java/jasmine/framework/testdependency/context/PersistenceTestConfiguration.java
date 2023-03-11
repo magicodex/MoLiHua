@@ -9,11 +9,11 @@ import jasmine.framework.common.security.CryptoProvider;
 import jasmine.framework.context.CustomInitializingSingletonScanBean;
 import jasmine.framework.persistence.mybatisplus.BaseEntityMetaObjectHandler;
 import jasmine.framework.persistence.mybatisplus.MybatisPlusInterceptorBuilder;
-import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldHelper;
+import jasmine.framework.persistence.mybatisplus.crypto.CryptoFieldUtil;
 import jasmine.framework.persistence.mybatisplus.crypto.SymmetricCryptoProvider;
 import jasmine.framework.persistence.mybatisplus.i18n.DefaultI18nEntityFacade;
 import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityFacade;
-import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityHelper;
+import jasmine.framework.persistence.mybatisplus.i18n.I18nEntityUtil;
 import jasmine.framework.persistence.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.persistence.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.persistence.mybatisplus.tenant.TenantConfigProcessorScanBean;
@@ -68,7 +68,7 @@ public class PersistenceTestConfiguration {
     public CryptoProvider cryptoProvider() {
         CryptoProvider provider = new SymmetricCryptoProvider("secret", "salt");
         // 初始工具类
-        CryptoFieldHelper.initUtil(provider);
+        CryptoFieldUtil.initUtil(provider);
 
         return provider;
     }
@@ -77,7 +77,7 @@ public class PersistenceTestConfiguration {
     public I18nEntityFacade i18nEntityFacade(SqlSessionTemplate sqlSessionTemplate) {
         DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
         // 初始工具类
-        I18nEntityHelper.initUtil(facade);
+        I18nEntityUtil.initUtil(facade);
 
         return facade;
     }

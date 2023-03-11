@@ -1,6 +1,6 @@
 package jasmine.framework.persistence.mybatisplus.wrapper;
 
-import jasmine.framework.persistence.mybatisplus.dynamic.DataAuthHelper;
+import jasmine.framework.persistence.mybatisplus.dynamic.DataAuthUtil;
 
 /**
  * @author mh.z
@@ -19,7 +19,7 @@ public class QueryWrapperEx<T> extends AbstractQueryWrapperEx<T, QueryWrapperEx<
     public QueryWrapperEx<T> dataAuth() {
         // 获取数据权限SQL
         Class<?> entityType = getEntityClass();
-        String sql = DataAuthHelper.generateSql(entityType, null);
+        String sql = DataAuthUtil.generateSql(entityType, null);
         // 加上数据权限SQL
         apply(sql);
 
