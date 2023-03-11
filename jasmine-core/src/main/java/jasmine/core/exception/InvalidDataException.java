@@ -1,5 +1,7 @@
 package jasmine.core.exception;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 无效数据，表示数据有错误。
@@ -19,53 +21,36 @@ public class InvalidDataException extends UnexpectedException {
     public static final String DEFAULT_ERROR_CODE = "INVALID_DATA";
     /** 默认key名称 */
     public static final String DEFAULT_KEY_NAME = "key";
+    /** 默认错误信息/错误信息key */
+    public static final String DEFAULT_MESSAGE_OR_KEY = "data [{0}={1}] is invalid";
 
     public InvalidDataException(Throwable cause) {
         super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public InvalidDataException(String messageOrKey, Object[] args) {
-        super(DEFAULT_ERROR_CODE, messageOrKey, args);
+    public InvalidDataException(@Nullable String messageOrKey, @Nullable Object[] messageArgs) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, messageArgs);
     }
 
-    public InvalidDataException(String errorCode, String messageOrKey, Object[] args) {
-        super(errorCode, messageOrKey, args);
+    public InvalidDataException(String errorCode, @Nullable String messageOrKey,
+                                @Nullable Object[] messageArgs) {
+        super(errorCode, messageOrKey, messageArgs);
     }
 
-    public InvalidDataException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
-        super(errorCode, messageOrKey, args, cause);
+    public InvalidDataException(String errorCode, @Nullable String messageOrKey,
+                                @Nullable Object[] messageArgs, Throwable cause) {
+        super(errorCode, messageOrKey, messageArgs, cause);
     }
 
     public InvalidDataException(Class<?> dataType, Object dataKey) {
-        this(dataType, DEFAULT_KEY_NAME, dataKey, null, null);
+        this(dataType, DEFAULT_KEY_NAME, dataKey);
     }
 
     public InvalidDataException(Class<?> dataType, String dataKeyName, Object dataKey) {
-        this(dataType, dataKeyName, dataKey, null, null);
-    }
-
-    public InvalidDataException(Class<?> dataType, Object dataKey, String messageOrKey, Object[] args) {
-        this(dataType, DEFAULT_KEY_NAME, dataKey, messageOrKey, args);
-    }
-
-    public InvalidDataException(Class<?> dataType, String dataKeyName, Object dataKey,
-                                String messageOrKey, Object[] args) {
-        super(DEFAULT_ERROR_CODE, messageOrKey, args);
+        super(DEFAULT_ERROR_CODE, DEFAULT_MESSAGE_OR_KEY, new Object[]{dataKeyName, dataKey});
         this.dataType = dataType;
         this.dataKeyName = dataKeyName;
         this.dataKey = dataKey;
-        this.errorDetail = buildErrorDetail(dataType, dataKeyName, dataKey, null);
-    }
-
-    public void detail(Class<?> dataType, Object dataKey, String detail) {
-        detail(dataType, DEFAULT_KEY_NAME, dataKey, detail);
-    }
-
-    public void detail(Class<?> dataType, String dataKeyName, Object dataKey, String detail) {
-        this.dataType = dataType;
-        this.dataKeyName = dataKeyName;
-        this.dataKey = dataKey;
-        this.errorDetail = buildErrorDetail(dataType, dataKeyName, dataKey, detail);
     }
 
     public Class<?> getDataType() {
@@ -81,6 +66,38 @@ public class InvalidDataException extends UnexpectedException {
     }
 
     /**
+     * 设置错误详情
+     *
+     * @param dataType
+     * @param dataKey
+     * @param detail
+     * @return
+     */
+    public InvalidDataException withErrorDetail(Class<?> dataType, Object dataKey,
+                                                @Nullable String detail) {
+        return withErrorDetail(dataType, DEFAULT_KEY_NAME, dataKey, detail);
+    }
+
+    /**
+     * 设置错误详情
+     *
+     * @param dataType
+     * @param dataKeyName
+     * @param dataKey
+     * @param detail
+     * @return
+     */
+    public InvalidDataException withErrorDetail(Class<?> dataType, String dataKeyName, Object dataKey,
+                                                @Nullable String detail) {
+        this.dataType = dataType;
+        this.dataKeyName = dataKeyName;
+        this.dataKey = dataKey;
+        this.errorDetail = buildErrorDetail(dataType, dataKeyName, dataKey, detail);
+
+        return this;
+    }
+
+    /**
      * 生成错误详情
      *
      * @param dataType
@@ -89,7 +106,8 @@ public class InvalidDataException extends UnexpectedException {
      * @param detail
      * @return
      */
-    protected String buildErrorDetail(Class<?> dataType, String dataKeyName, Object dataKey, String detail) {
+    public static String buildErrorDetail(Class<?> dataType, String dataKeyName, Object dataKey,
+                                          @Nullable String detail) {
         StringBuilder builder = new StringBuilder("data ");
 
         builder.append(dataType.getSimpleName());

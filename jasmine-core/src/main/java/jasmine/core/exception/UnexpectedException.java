@@ -1,5 +1,7 @@
 package jasmine.core.exception;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 不期望的异常，表示不应该出现的错误。
@@ -15,15 +17,17 @@ public class UnexpectedException extends ApplicationException {
         super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public UnexpectedException(String messageOrKey, Object[] args) {
-        super(DEFAULT_ERROR_CODE, messageOrKey, args);
+    public UnexpectedException(@Nullable String messageOrKey, @Nullable Object[] messageArgs) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, messageArgs);
     }
 
-    public UnexpectedException(String errorCode, String messageOrKey, Object[] args) {
-        super(errorCode, messageOrKey, args);
+    public UnexpectedException(String errorCode, @Nullable String messageOrKey,
+                               @Nullable Object[] messageArgs) {
+        super(errorCode, messageOrKey, messageArgs);
     }
 
-    public UnexpectedException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
-        super(errorCode, messageOrKey, args, cause);
+    public UnexpectedException(String errorCode, @Nullable String messageOrKey,
+                               @Nullable Object[] messageArgs, Throwable cause) {
+        super(errorCode, messageOrKey, messageArgs, cause);
     }
 }

@@ -1,5 +1,7 @@
 package jasmine.core.exception;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 无效属性的异常，表示属性的值无效。
@@ -15,16 +17,18 @@ public class InvalidPropertyException extends UnexpectedException {
         super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public InvalidPropertyException(String messageOrKey, Object[] args) {
-        super(DEFAULT_ERROR_CODE, messageOrKey, args);
+    public InvalidPropertyException(@Nullable String messageOrKey, @Nullable Object[] messageArgs) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, messageArgs);
     }
 
-    public InvalidPropertyException(String errorCode, String messageOrKey, Object[] args) {
-        super(errorCode, messageOrKey, args);
+    public InvalidPropertyException(String errorCode, @Nullable String messageOrKey,
+                                    @Nullable Object[] messageArgs) {
+        super(errorCode, messageOrKey, messageArgs);
     }
 
-    public InvalidPropertyException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
-        super(errorCode, messageOrKey, args, cause);
+    public InvalidPropertyException(String errorCode, @Nullable String messageOrKey,
+                                    @Nullable Object[] messageArgs, Throwable cause) {
+        super(errorCode, messageOrKey, messageArgs, cause);
     }
 
 }

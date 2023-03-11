@@ -14,11 +14,11 @@ public class ApplicationExceptionTest {
     public void testBuildErrorMessage() {
         MockLocaleMessageProvider provider = new MockLocaleMessageProvider();
         I18nUtil.initUtil(provider);
-        provider.addMessage("message1", "%s + %s = %s");
-        provider.addMessage("message2", "%s - %s = %s");
+        provider.addMessage("message1", "{0} + {1} = {2}");
+        provider.addMessage("message2", "{0} + {1} = {2}");
 
         Assert.assertEquals("15 + 35 = 50", ApplicationException.buildErrorMessage(
-                "%s + %s = %s", new Object[]{"15", "35", "50"}));
+                "{0} + {1} = {2}", new Object[]{"15", "35", "50"}));
         Assert.assertEquals("15 + 35 = 50", ApplicationException.buildErrorMessage(
                 "$message1", new Object[]{"15", "35", "50"}));
     }

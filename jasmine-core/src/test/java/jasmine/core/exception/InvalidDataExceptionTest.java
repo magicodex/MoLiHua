@@ -11,11 +11,11 @@ public class InvalidDataExceptionTest {
 
     @Test
     public void test() {
-        InvalidDataException exception = new InvalidDataException(Example1.class, 1L, "string1 null", null);
+        InvalidDataException exception = new InvalidDataException("string1 null", null);
+        exception.withErrorDetail(Example1.class, 1L, null);
 
-        String expected = String.format("jasmine.core.exception.InvalidDataException: " +
-                "string1 null (data Example1[key=1] is invalid)");
-        Assert.assertEquals(expected, exception.toString());
+        String expected = String.format("data Example1[key=1] is invalid");
+        Assert.assertEquals(expected, exception.getErrorDetail());
     }
 
 }

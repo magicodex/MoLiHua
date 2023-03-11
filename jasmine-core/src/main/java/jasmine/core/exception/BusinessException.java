@@ -1,5 +1,7 @@
 package jasmine.core.exception;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 业务异常，在业务校验不通过时可抛出该异常。
@@ -15,16 +17,18 @@ public class BusinessException extends ApplicationException {
         super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public BusinessException(String messageOrKey, Object[] args) {
-        super(DEFAULT_ERROR_CODE, messageOrKey, args);
+    public BusinessException(@Nullable String messageOrKey, @Nullable Object[] messageArgs) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, messageArgs);
     }
 
-    public BusinessException(String errorCode, String messageOrKey, Object[] args) {
-        super(errorCode, messageOrKey, args);
+    public BusinessException(String errorCode, @Nullable String messageOrKey,
+                             @Nullable Object[] messageArgs) {
+        super(errorCode, messageOrKey, messageArgs);
     }
 
-    public BusinessException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
-        super(errorCode, messageOrKey, args, cause);
+    public BusinessException(String errorCode, @Nullable String messageOrKey,
+                             @Nullable Object[] messageArgs, Throwable cause) {
+        super(errorCode, messageOrKey, messageArgs, cause);
     }
 
 }

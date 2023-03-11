@@ -1,5 +1,7 @@
 package jasmine.core.exception;
 
+import javax.annotation.Nullable;
+
 /**
  * <p>
  * 无效参数的异常，表示参数的值无效。
@@ -15,16 +17,18 @@ public class InvalidParameterException extends UnexpectedException {
         super(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public InvalidParameterException(String messageOrKey, Object[] args) {
-        super(DEFAULT_ERROR_CODE, messageOrKey, args);
+    public InvalidParameterException(@Nullable String messageOrKey, @Nullable Object[] messageArgs) {
+        super(DEFAULT_ERROR_CODE, messageOrKey, messageArgs);
     }
 
-    public InvalidParameterException(String errorCode, String messageOrKey, Object[] args) {
-        super(errorCode, messageOrKey, args);
+    public InvalidParameterException(String errorCode, @Nullable String messageOrKey,
+                                     @Nullable Object[] messageArgs) {
+        super(errorCode, messageOrKey, messageArgs);
     }
 
-    public InvalidParameterException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
-        super(errorCode, messageOrKey, args, cause);
+    public InvalidParameterException(String errorCode, @Nullable String messageOrKey,
+                                     @Nullable Object[] messageArgs, Throwable cause) {
+        super(errorCode, messageOrKey, messageArgs, cause);
     }
 
 }

@@ -2,7 +2,9 @@ package jasmine.core.exception;
 
 import jasmine.core.i18n.I18nConstants;
 import jasmine.core.util.I18nUtil;
-import jasmine.core.util.StringUtil;
+
+import javax.annotation.Nullable;
+import java.text.MessageFormat;
 
 /**
  * <p>
@@ -16,34 +18,38 @@ public class ApplicationException extends RuntimeException {
     protected String errorCode;
     /** 错误详情  */
     protected String errorDetail;
+    /** 错误信息/错误信息key */
+    protected String messageOrKey;
+    /** 错误信息参数 */
+    protected Object[] messageArgs;
 
     /** 默认错误代码 */
     public static final String DEFAULT_ERROR_CODE = "APPLICATION_ERROR";
 
     public ApplicationException(Throwable cause) {
-        super(cause);
-        this.errorCode = DEFAULT_ERROR_CODE;
+        this(DEFAULT_ERROR_CODE, null, null, cause);
     }
 
-    public ApplicationException(String messageOrKey, Object[] args) {
-        super(buildErrorMessage(messageOrKey, args));
-        this.errorCode = DEFAULT_ERROR_CODE;
+    public ApplicationException(@Nullable String messageOrKey, @Nullable Object[] messageArgs) {
+        this(DEFAULT_ERROR_CODE, messageOrKey, messageArgs);
     }
 
-    public ApplicationException(String errorCode, String messageOrKey, Object[] args) {
-        super(buildErrorMessage(messageOrKey, args));
+    public ApplicationException(String errorCode, @Nullable String messageOrKey,
+                                @Nullable Object[] messageArgs) {
+        super(buildErrorMessage(messageOrKey, messageArgs));
         this.errorCode = errorCode;
+        this.errorDetail = null;
+        this.messageOrKey = messageOrKey;
+        this.messageArgs = messageArgs;
     }
 
-    public ApplicationException(String errorCode, String messageOrKey, Object[] args, Throwable cause) {
-        super(buildErrorMessage(messageOrKey, args), cause);
+    public ApplicationException(String errorCode, @Nullable String messageOrKey,
+                                @Nullable Object[] messageArgs, Throwable cause) {
+        super(buildErrorMessage(messageOrKey, messageArgs), cause);
         this.errorCode = errorCode;
-    }
-
-    public ApplicationException detail(String detail) {
-        this.errorDetail = detail;
-
-        return this;
+        this.errorDetail = null;
+        this.messageOrKey = messageOrKey;
+        this.messageArgs = messageArgs;
     }
 
     public String getErrorCode() {
@@ -54,45 +60,46 @@ public class ApplicationException extends RuntimeException {
         return errorDetail;
     }
 
+    public String getMessageOrKey() {
+        return messageOrKey;
+    }
+
+    public Object[] getMessageArgs() {
+        return messageArgs;
+    }
+
+    public ApplicationException withErrorDetail(String errorDetail) {
+        this.errorDetail = errorDetail;
+
+        return this;
+    }
+
     /**
      * 生成错误信息
      *
      * @param messageOrKey
-     * @param args
+     * @param messageArgs
      * @return
      */
-    protected static String buildErrorMessage(String messageOrKey, Object[] args) {
-        String returnErrorMessage = null;
+    public static String buildErrorMessage(@Nullable String messageOrKey, @Nullable Object[] messageArgs) {
+        String errorMessage = null;
 
         if (messageOrKey == null) {
             return null;
         }
 
         if (!messageOrKey.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
-            if (args != null && args.length > 0) {
-                returnErrorMessage = String.format(messageOrKey, args);
+            if (messageArgs != null && messageArgs.length > 0) {
+                errorMessage = MessageFormat.format(messageOrKey, messageArgs);
             } else {
-                returnErrorMessage = messageOrKey;
+                errorMessage = messageOrKey;
             }
         } else {
             // 获取多语言信息
-            returnErrorMessage = I18nUtil.getMessage(messageOrKey, args);
+            errorMessage = I18nUtil.getMessage(messageOrKey, messageArgs);
         }
 
-        return returnErrorMessage;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder(super.toString());
-
-        if (StringUtil.isNotEmpty(errorDetail)) {
-            builder.append(" (");
-            builder.append(errorDetail);
-            builder.append(")");
-        }
-
-        return builder.toString();
+        return errorMessage;
     }
 
 }
