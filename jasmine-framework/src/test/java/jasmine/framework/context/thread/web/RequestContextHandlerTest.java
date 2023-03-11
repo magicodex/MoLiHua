@@ -1,4 +1,4 @@
-package jasmine.framework.context.handler.web;
+package jasmine.framework.context.thread.web;
 
 import org.junit.Assert;
 import org.junit.Test;

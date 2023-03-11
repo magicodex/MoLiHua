@@ -1,4 +1,4 @@
-package jasmine.framework.context.handler;
+package jasmine.framework.context.thread;
 
 /**
  * <p>

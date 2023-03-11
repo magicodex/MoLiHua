@@ -1,8 +1,8 @@
 package jasmine.framework.concurrent;
 
 import jasmine.core.util.ref.ObjectValue;
-import jasmine.framework.context.handler.ContextHandlerFacade;
-import jasmine.framework.context.handler.ContextSnapshot;
+import jasmine.framework.context.thread.ContextHandlerFacade;
+import jasmine.framework.context.thread.ContextSnapshot;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

@@ -4,7 +4,7 @@ import jasmine.framework.concurrent.AsyncExecutorTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskDecorator;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
-import jasmine.framework.context.handler.ContextHandlerFacade;
+import jasmine.framework.context.thread.ContextHandlerFacade;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

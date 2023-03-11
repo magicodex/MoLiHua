@@ -1,4 +1,4 @@
-package jasmine.framework.context.handler;
+package jasmine.framework.context.thread;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.CollectionUtil;

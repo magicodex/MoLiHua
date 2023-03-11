@@ -1,10 +1,9 @@
-package jasmine.framework.context;
+package jasmine.framework.context.thread;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.ErrorUtil;
 import jasmine.core.util.function.FunctionWithResult;
 import jasmine.core.util.function.FunctionWithoutResult;
-import jasmine.framework.context.handler.ContextHandlerFacade;
 
 /**
  * <p>

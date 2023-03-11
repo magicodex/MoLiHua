@@ -1,6 +1,6 @@
 package jasmine.framework.cache.context;
 
-import jasmine.framework.context.handler.ContextSnapshot;
+import jasmine.framework.context.thread.ContextSnapshot;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

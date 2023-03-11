@@ -1,6 +1,6 @@
 package jasmine.security.support;
 
-import jasmine.framework.context.handler.ContextSnapshot;
+import jasmine.framework.context.thread.ContextSnapshot;
 import org.springframework.security.core.Authentication;
 
 /**

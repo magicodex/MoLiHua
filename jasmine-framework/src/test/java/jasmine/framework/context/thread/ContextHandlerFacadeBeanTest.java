@@ -1,4 +1,4 @@
-package jasmine.framework.context.handler;
+package jasmine.framework.context.thread;
 
 import jasmine.core.util.ref.ObjectValue;
 import org.junit.After;

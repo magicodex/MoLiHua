@@ -1,8 +1,8 @@
-package jasmine.framework.context.handler.web;
+package jasmine.framework.context.thread.web;
 
 import jasmine.core.util.CheckUtil;
-import jasmine.framework.context.handler.ContextHandler;
-import jasmine.framework.context.handler.ContextSnapshot;
+import jasmine.framework.context.thread.ContextHandler;
+import jasmine.framework.context.thread.ContextSnapshot;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 

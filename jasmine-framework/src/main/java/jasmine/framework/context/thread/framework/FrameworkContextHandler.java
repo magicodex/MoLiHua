@@ -1,8 +1,8 @@
-package jasmine.framework.context.handler.framework;
+package jasmine.framework.context.thread.framework;
 
 import jasmine.core.util.MapperUtil;
-import jasmine.framework.context.handler.ContextHandler;
-import jasmine.framework.context.handler.ContextSnapshot;
+import jasmine.framework.context.thread.ContextHandler;
+import jasmine.framework.context.thread.ContextSnapshot;
 import jasmine.framework.persistence.datasource.context.DataSourceContext;
 import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;
 

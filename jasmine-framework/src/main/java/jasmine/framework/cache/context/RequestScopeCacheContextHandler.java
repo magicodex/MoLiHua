@@ -1,7 +1,7 @@
 package jasmine.framework.cache.context;
 
-import jasmine.framework.context.handler.ContextHandler;
-import jasmine.framework.context.handler.ContextSnapshot;
+import jasmine.framework.context.thread.ContextHandler;
+import jasmine.framework.context.thread.ContextSnapshot;
 
 /**
  * @author mh.z

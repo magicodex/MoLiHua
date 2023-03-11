@@ -1,4 +1,4 @@
-package jasmine.framework.context.handler.web;
+package jasmine.framework.context.thread.web;
 
 import jasmine.core.exception.InvalidParameterException;
 import org.springframework.web.context.request.RequestAttributes;
