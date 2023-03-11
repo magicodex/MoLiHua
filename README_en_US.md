@@ -44,7 +44,7 @@
 | :----: | :---- |
 | jasmine-bom |  |
 | jasmine-core |  |
-| jasmine-core-test | unit test support |
+| jasmine-test | unit test support |
 | jasmine-framework |  |
 | jasmine-framework-test | unit test support |
 | jasmine-security |  |
