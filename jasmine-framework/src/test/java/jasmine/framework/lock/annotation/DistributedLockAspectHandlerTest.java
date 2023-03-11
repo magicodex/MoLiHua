@@ -2,7 +2,7 @@ package jasmine.framework.lock.annotation;
 
 import cn.hutool.core.util.ReflectUtil;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
-import jasmine.framework.lock.distributed.DistributedLocks;
+import jasmine.framework.lock.distributed.DistributedLockHelper;
 import jasmine.framework.lock.testdependency.MockDistributedLockProvider;
 import jasmine.framework.lock.testdependency.TestObject1;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -23,19 +23,19 @@ public class DistributedLockAspectHandlerTest {
 
     @Before
     public void setUp() {
-        prevDistributedLockProvider = DistributedLocks.getProvider();
-        DistributedLocks.initUtil(null);
+        prevDistributedLockProvider = DistributedLockHelper.getProvider();
+        DistributedLockHelper.initUtil(null);
     }
 
     @After
     public void tearDown() {
-        DistributedLocks.initUtil(prevDistributedLockProvider);
+        DistributedLockHelper.initUtil(prevDistributedLockProvider);
     }
 
     @Test
     public void test() throws Throwable {
         // 初始 DistributedLocks 工具类
-        DistributedLocks.initUtil(new MockDistributedLockProvider());
+        DistributedLockHelper.initUtil(new MockDistributedLockProvider());
 
         ProceedingJoinPoint joinPoint = mockProceedingJoinPoint();
         // 获取注解
