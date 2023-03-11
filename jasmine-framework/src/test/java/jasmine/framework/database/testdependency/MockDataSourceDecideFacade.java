@@ -1,9 +1,9 @@
-package jasmine.framework.persistence.testpendency;
+package jasmine.framework.database.testdependency;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.ErrorUtil;
 import jasmine.core.util.function.FunctionWithResult;
-import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
+import jasmine.framework.database.datasource.DataSourceDecideFacade;
 
 /**
  * @author mh.z

@@ -1,6 +1,7 @@
-package jasmine.framework.persistence.annotation;
+package jasmine.framework.database.annotation.handler;
 
-import jasmine.framework.persistence.testpendency.MockDataSourceDecideFacade;
+import jasmine.framework.database.annotation.ReadOnly;
+import jasmine.framework.database.testdependency.MockDataSourceDecideFacade;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,10 +1,10 @@
 package jasmine.autoconfigure.framework.database;
 
 import com.zaxxer.hikari.HikariDataSource;
-import jasmine.framework.persistence.annotation.ReadOnlyAspectHandler;
-import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
-import jasmine.framework.persistence.datasource.impl.MultipleDataSource;
-import jasmine.framework.persistence.datasource.impl.ReadWriteDataSourceDecideFacade;
+import jasmine.framework.database.annotation.handler.ReadOnlyAspectHandler;
+import jasmine.framework.database.datasource.DataSourceDecideFacade;
+import jasmine.framework.database.impl.datasource.MultipleDataSource;
+import jasmine.framework.database.impl.datasource.ReadWriteDataSourceDecideFacade;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

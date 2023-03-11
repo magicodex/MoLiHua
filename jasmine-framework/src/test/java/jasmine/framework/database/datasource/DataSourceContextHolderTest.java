@@ -1,5 +1,8 @@
-package jasmine.framework.persistence.datasource.context;
+package jasmine.framework.database.datasource;
 
+import jasmine.framework.database.datasource.DataSourceContext;
+import jasmine.framework.database.datasource.DataSourceContextHolder;
+import jasmine.framework.database.impl.datasource.DefaultDataSourceContext;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

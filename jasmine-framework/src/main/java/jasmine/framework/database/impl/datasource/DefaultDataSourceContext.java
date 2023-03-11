@@ -1,4 +1,6 @@
-package jasmine.framework.persistence.datasource.context;
+package jasmine.framework.database.impl.datasource;
+
+import jasmine.framework.database.datasource.DataSourceContext;
 
 /**
  * @author mh.z

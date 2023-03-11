@@ -1,10 +1,10 @@
-package jasmine.framework.persistence.datasource.impl;
+package jasmine.framework.database.impl.datasource;
 
 import jasmine.core.util.ErrorUtil;
 import jasmine.core.util.function.FunctionWithResult;
-import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
-import jasmine.framework.persistence.datasource.context.DataSourceContext;
-import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;
+import jasmine.framework.database.datasource.DataSourceContext;
+import jasmine.framework.database.datasource.DataSourceDecideFacade;
+import jasmine.framework.database.datasource.DataSourceContextHolder;
 
 /**
  * @author mh.z

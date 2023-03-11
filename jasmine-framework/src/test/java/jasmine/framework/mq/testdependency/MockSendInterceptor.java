@@ -1,4 +1,4 @@
-package jasmine.framework.persistence;
+package jasmine.framework.mq.testdependency;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.NewUtil;

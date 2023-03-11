@@ -6,7 +6,7 @@ import jasmine.core.context.SubjectProvider;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.mq.MessageReceiver;
 import jasmine.framework.mq.interceptor.ReceiveInvocationInfo;
-import jasmine.framework.persistence.MockReceiveInterceptor;
+import jasmine.framework.mq.testdependency.MockReceiveInterceptor;
 import jasmine.mock.core.context.MockRuntimeProvider;
 import jasmine.mock.core.context.MockSubjectProvider;
 import org.junit.After;

@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.datasource;
+package jasmine.framework.database.datasource;
 
 import jasmine.core.util.function.FunctionWithResult;
 

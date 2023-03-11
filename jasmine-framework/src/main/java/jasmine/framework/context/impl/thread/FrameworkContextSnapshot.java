@@ -1,8 +1,8 @@
 package jasmine.framework.context.impl.thread;
 
 import jasmine.framework.context.thread.ContextSnapshot;
-import jasmine.framework.persistence.datasource.context.DataSourceContext;
-import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;
+import jasmine.framework.database.datasource.DataSourceContext;
+import jasmine.framework.database.datasource.DataSourceContextHolder;
 
 /**
  * @author mh.z

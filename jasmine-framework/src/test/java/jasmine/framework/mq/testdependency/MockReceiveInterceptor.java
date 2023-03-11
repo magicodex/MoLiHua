@@ -1,4 +1,4 @@
-package jasmine.framework.persistence;
+package jasmine.framework.mq.testdependency;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;

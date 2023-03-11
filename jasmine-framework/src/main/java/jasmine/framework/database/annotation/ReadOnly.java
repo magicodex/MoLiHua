@@ -1,4 +1,4 @@
-package jasmine.framework.persistence.annotation;
+package jasmine.framework.database.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

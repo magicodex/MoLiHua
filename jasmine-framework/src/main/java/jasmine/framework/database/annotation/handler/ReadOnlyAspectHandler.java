@@ -1,7 +1,8 @@
-package jasmine.framework.persistence.annotation;
+package jasmine.framework.database.annotation.handler;
 
 import jasmine.core.util.ErrorUtil;
-import jasmine.framework.persistence.datasource.DataSourceDecideFacade;
+import jasmine.framework.database.annotation.ReadOnly;
+import jasmine.framework.database.datasource.DataSourceDecideFacade;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

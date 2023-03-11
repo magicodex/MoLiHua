@@ -1,7 +1,7 @@
-package jasmine.framework.persistence.datasource.impl;
+package jasmine.framework.database.impl.datasource;
 
-import jasmine.framework.persistence.datasource.context.DataSourceContext;
-import jasmine.framework.persistence.datasource.context.DataSourceContextHolder;
+import jasmine.framework.database.datasource.DataSourceContext;
+import jasmine.framework.database.datasource.DataSourceContextHolder;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 import java.util.Map;
