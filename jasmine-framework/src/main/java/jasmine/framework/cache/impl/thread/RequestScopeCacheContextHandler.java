@@ -1,4 +1,4 @@
-package jasmine.framework.web.cache;
+package jasmine.framework.cache.impl.thread;
 
 import jasmine.framework.context.thread.ContextHandler;
 import jasmine.framework.context.thread.ContextSnapshot;
