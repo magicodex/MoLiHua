@@ -1,4 +1,4 @@
-package jasmine.framework.testdependency.context;
+package jasmine.mybatis.testdependency.context;
 
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import jasmine.mybatis.crypto.CryptoProvider;
-import jasmine.framework.context.init.CustomInitializingSingletonScanBean;
 import jasmine.mybatis.BaseEntityMetaObjectHandler;
 import jasmine.mybatis.MybatisPlusInterceptorBuilder;
 import jasmine.mybatis.crypto.CryptoFieldUtil;
@@ -32,7 +31,7 @@ import java.io.IOException;
  * @author mh.z
  */
 @Configuration
-public class PersistenceTestConfiguration {
+public class MybatisTestConfiguration {
     @Value("${jasmine.data.tenant.enabled:false}")
     private Boolean tenantEnabled;
 

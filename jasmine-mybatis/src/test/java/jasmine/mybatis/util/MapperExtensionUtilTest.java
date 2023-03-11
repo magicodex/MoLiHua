@@ -1,9 +1,9 @@
 package jasmine.mybatis.util;
 
 import cn.hutool.core.collection.CollStreamUtil;
+import jasmine.mybatis.testdependency.context.MybatisTestContext;
 import jasmine.mybatis.testdependency.entity.TestEntity1;
 import jasmine.mybatis.testdependency.mapper.TestEntity1Mapper;
-import jasmine.framework.testdependency.context.FrameworkTestContext;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class MapperExtensionUtilTest extends FrameworkTestContext {
+public class MapperExtensionUtilTest extends MybatisTestContext {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
 

@@ -1,6 +1,6 @@
 package jasmine.mybatis.util;
 
-import jasmine.framework.testdependency.pojo.Example2;
+import jasmine.mybatis.testdependency.pojo.Example2;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -2,14 +2,14 @@ package jasmine.mybatis.dao;
 
 import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.I18nUtil;
+import jasmine.mock.core.context.MockLocaleMessageProvider;
+import jasmine.mybatis.i18n.support.I18nCrud;
 import jasmine.mybatis.i18n.support.I18nMeta;
 import jasmine.mybatis.i18n.support.I18nRecord;
-import jasmine.mybatis.i18n.support.I18nCrud;
-import jasmine.mybatis.testdependency.entity.TestEntity1;
+import jasmine.mybatis.testdependency.context.MybatisTestContext;
 import jasmine.mybatis.testdependency.dao.TestEntity1DAO;
+import jasmine.mybatis.testdependency.entity.TestEntity1;
 import jasmine.mybatis.testdependency.mapper.TestEntity1Mapper;
-import jasmine.framework.testdependency.context.FrameworkTestContext;
-import jasmine.mock.core.context.MockLocaleMessageProvider;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,7 +28,7 @@ import java.util.Map;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class BaseI18nEntityDaoTest extends FrameworkTestContext {
+public class BaseI18nEntityDaoTest extends MybatisTestContext {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
     @Autowired

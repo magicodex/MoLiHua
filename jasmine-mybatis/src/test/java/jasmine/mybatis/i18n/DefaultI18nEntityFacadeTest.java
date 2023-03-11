@@ -1,14 +1,14 @@
 package jasmine.mybatis.i18n;
 
-import jasmine.core.util.CollectionUtil;
 import jasmine.core.constant.LangConstants;
-import jasmine.mybatis.i18n.support.I18nRecord;
+import jasmine.core.util.CollectionUtil;
 import jasmine.mybatis.i18n.support.I18nCrud;
 import jasmine.mybatis.i18n.support.I18nMeta;
+import jasmine.mybatis.i18n.support.I18nRecord;
+import jasmine.mybatis.testdependency.context.MybatisTestContext;
 import jasmine.mybatis.testdependency.entity.TestEntity1;
 import jasmine.mybatis.testdependency.entity.TestEntity2;
 import jasmine.mybatis.testdependency.mapper.TestEntity1Mapper;
-import jasmine.framework.testdependency.context.FrameworkTestContext;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ import java.util.Map;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class DefaultI18nEntityFacadeTest extends FrameworkTestContext {
+public class DefaultI18nEntityFacadeTest extends MybatisTestContext {
     @Autowired
     private TestEntity1Mapper testEntity1Mapper;
     @Autowired

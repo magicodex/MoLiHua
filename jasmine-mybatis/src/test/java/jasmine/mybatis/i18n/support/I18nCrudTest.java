@@ -1,7 +1,7 @@
 package jasmine.mybatis.i18n.support;
 
 import jasmine.core.util.CollectionUtil;
-import jasmine.framework.testdependency.context.FrameworkTestContext;
+import jasmine.mybatis.testdependency.context.MybatisTestContext;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ import java.util.Map;
  * @author mh.z
  */
 @RunWith(SpringRunner.class)
-public class I18nCrudTest extends FrameworkTestContext {
+public class I18nCrudTest extends MybatisTestContext {
     @Autowired
     private SqlSessionTemplate sqlSession;
 
