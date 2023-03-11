@@ -38,7 +38,13 @@
         </dependency>
         <dependency>
             <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-core-test</artifactId>
+            <artifactId>jasmine-mybatis</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.magicodex</groupId>
+            <artifactId>jasmine-test</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>

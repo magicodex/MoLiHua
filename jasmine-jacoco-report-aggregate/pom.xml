@@ -22,7 +22,7 @@
 
         <dependency>
             <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-core-test</artifactId>
+            <artifactId>jasmine-test</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
