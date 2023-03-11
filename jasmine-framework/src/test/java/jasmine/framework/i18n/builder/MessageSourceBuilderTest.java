@@ -1,5 +1,6 @@
-package jasmine.framework.i18n;
+package jasmine.framework.i18n.builder;
 
+import jasmine.framework.i18n.builder.MessageSourceBuilder;
 import jasmine.framework.i18n.testdependency.TestMessageConstants;
 import org.junit.Assert;
 import org.junit.Test;

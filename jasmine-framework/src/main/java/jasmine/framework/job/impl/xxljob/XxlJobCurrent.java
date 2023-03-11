@@ -1,4 +1,4 @@
-package jasmine.framework.job.xxljob;
+package jasmine.framework.job.impl.xxljob;
 
 import com.xxl.job.core.context.XxlJobHelper;
 import jasmine.core.util.NewUtil;

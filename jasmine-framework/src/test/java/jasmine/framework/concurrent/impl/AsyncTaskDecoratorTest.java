@@ -1,6 +1,7 @@
-package jasmine.framework.concurrent;
+package jasmine.framework.concurrent.impl;
 
 import jasmine.core.util.ref.ObjectValue;
+import jasmine.framework.concurrent.impl.AsyncTaskDecorator;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.context.thread.ContextSnapshot;
 import org.junit.After;

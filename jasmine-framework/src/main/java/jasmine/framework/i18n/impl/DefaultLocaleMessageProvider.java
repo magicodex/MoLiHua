@@ -1,4 +1,4 @@
-package jasmine.framework.i18n;
+package jasmine.framework.i18n.impl;
 
 import jasmine.core.i18n.I18nConstants;
 import jasmine.core.i18n.LocaleMessageProvider;

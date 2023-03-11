@@ -4,7 +4,7 @@ import com.xxl.job.core.executor.XxlJobExecutor;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import jasmine.framework.context.CustomInitializingSingleton;
 import jasmine.framework.job.JobExecutor;
-import jasmine.framework.job.xxljob.XxlJobHandlerDelegate;
+import jasmine.framework.job.impl.xxljob.XxlJobHandlerDelegate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;

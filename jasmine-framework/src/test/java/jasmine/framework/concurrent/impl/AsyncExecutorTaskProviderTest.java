@@ -1,5 +1,6 @@
-package jasmine.framework.concurrent;
+package jasmine.framework.concurrent.impl;
 
+import jasmine.framework.concurrent.impl.AsyncExecutorTaskProvider;
 import org.junit.Assert;
 import org.junit.Test;
 

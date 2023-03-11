@@ -1,5 +1,6 @@
-package jasmine.framework.i18n;
+package jasmine.framework.i18n.impl;
 
+import jasmine.framework.i18n.impl.DefaultLocaleMessageProvider;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

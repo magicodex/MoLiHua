@@ -2,8 +2,8 @@ package jasmine.autoconfigure.framework.support;
 
 import jasmine.core.i18n.LocaleMessageProvider;
 import jasmine.core.util.I18nUtil;
-import jasmine.framework.i18n.DefaultLocaleMessageProvider;
-import jasmine.framework.i18n.MessageSourceBuilder;
+import jasmine.framework.i18n.impl.DefaultLocaleMessageProvider;
+import jasmine.framework.i18n.builder.MessageSourceBuilder;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

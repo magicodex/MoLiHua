@@ -1,4 +1,4 @@
-package jasmine.framework.concurrent;
+package jasmine.framework.concurrent.impl;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.CollectionUtil;

@@ -1,6 +1,7 @@
-package jasmine.framework.i18n;
+package jasmine.framework.i18n.builder;
 
 import jasmine.core.util.CheckUtil;
+import jasmine.framework.i18n.DeclareI18nScanUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
