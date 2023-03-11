@@ -7,6 +7,6 @@ package jasmine.q;
  *
  * @author mh.z
  */
-public class I18nTypeHandler extends jasmine.framework.mybatis.i18n.I18nTypeHandler {
+public class I18nTypeHandler extends jasmine.mybatis.i18n.I18nTypeHandler {
 
 }

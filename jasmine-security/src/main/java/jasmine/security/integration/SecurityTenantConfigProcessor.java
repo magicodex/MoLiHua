@@ -1,7 +1,7 @@
 package jasmine.security.integration;
 
-import jasmine.framework.mybatis.tenant.IgnoreTableStrategy;
-import jasmine.framework.mybatis.tenant.TenantConfigProcessor;
+import jasmine.mybatis.tenant.IgnoreTableStrategy;
+import jasmine.mybatis.tenant.TenantConfigProcessor;
 
 /**
  * @author mh.z

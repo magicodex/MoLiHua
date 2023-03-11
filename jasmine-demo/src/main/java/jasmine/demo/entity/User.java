@@ -2,7 +2,7 @@ package jasmine.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.framework.mybatis.entity.BaseEntity;
+import jasmine.mybatis.entity.BaseEntity;
 
 /**
  * @author mh.z

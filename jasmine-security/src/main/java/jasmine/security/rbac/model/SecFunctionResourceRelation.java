@@ -2,7 +2,7 @@ package jasmine.security.rbac.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.framework.mybatis.entity.BaseEntity;
+import jasmine.mybatis.entity.BaseEntity;
 
 /**
  * <p>

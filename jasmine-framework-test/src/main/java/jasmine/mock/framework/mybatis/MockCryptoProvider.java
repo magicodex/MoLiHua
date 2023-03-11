@@ -1,6 +1,6 @@
 package jasmine.mock.framework.mybatis;
 
-import jasmine.framework.mybatis.crypto.CryptoProvider;
+import jasmine.mybatis.crypto.CryptoProvider;
 
 /**
  * @author mh.z
