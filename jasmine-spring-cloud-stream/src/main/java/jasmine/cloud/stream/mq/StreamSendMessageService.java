@@ -4,7 +4,7 @@ import jasmine.cloud.stream.mq.sender.StreamBridgeInvoker;
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.StringUtil;
-import jasmine.framework.common.util.UniqueKeyUtil;
+import jasmine.framework.mybatis.util.UniqueKeyUtil;
 import jasmine.framework.mq.impl.AbstractSendMessageService;
 import jasmine.framework.mq.impl.interceptor.DefaultSendInvocationInfo;
 import jasmine.framework.mq.interceptor.SendInterceptor;

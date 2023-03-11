@@ -1,6 +1,5 @@
 package jasmine.framework.mybatis.crypto;
 
-import jasmine.framework.common.security.CryptoProvider;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

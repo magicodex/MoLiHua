@@ -2,7 +2,7 @@ package jasmine.framework.mybatis.i18n.support;
 
 import cn.hutool.core.util.ReflectUtil;
 import jasmine.core.util.CheckUtil;
-import jasmine.framework.common.util.csv.MybatisPlusColumnMapping;
+import jasmine.framework.mybatis.util.MybatisPlusColumnMapping;
 import jasmine.framework.mybatis.annotation.I18n;
 import jasmine.framework.mybatis.entity.BaseI18nEntity;
 

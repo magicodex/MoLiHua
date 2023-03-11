@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import jasmine.framework.common.security.CryptoProvider;
+import jasmine.framework.mybatis.crypto.CryptoProvider;
 import jasmine.framework.context.init.CustomInitializingSingletonScanBean;
 import jasmine.framework.mybatis.BaseEntityMetaObjectHandler;
 import jasmine.framework.mybatis.MybatisPlusInterceptorBuilder;

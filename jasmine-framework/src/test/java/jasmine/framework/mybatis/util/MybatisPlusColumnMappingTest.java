@@ -1,5 +1,6 @@
-package jasmine.framework.common.util.csv;
+package jasmine.framework.mybatis.util;
 
+import jasmine.framework.mybatis.util.MybatisPlusColumnMapping;
 import jasmine.framework.testdependency.pojo.Example2;
 import org.junit.Assert;
 import org.junit.Test;

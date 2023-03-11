@@ -7,8 +7,8 @@ import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.NewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.ref.LongValue;
-import jasmine.framework.common.constant.CommonMessageConstants;
-import jasmine.framework.mybatis.constant.PersistenceConstants;
+import jasmine.framework.mybatis.constant.MybatisMessageConstants;
+import jasmine.framework.mybatis.constant.MybatisConstants;
 import org.apache.ibatis.session.SqlSession;
 
 import javax.annotation.Nonnull;
@@ -137,7 +137,7 @@ public class I18nCrud {
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
         if (rowCount != 1) {
-            throw new ApplicationException(CommonMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(MybatisMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
         }
 
         return 1;
@@ -162,7 +162,7 @@ public class I18nCrud {
         LongValue rowCount = new LongValue(0);
 
         // 删除多语言记录
-        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
+        BatchCallUtil.call(idSet, MybatisConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             Map<String, Object> paramMap = NewUtil.map();
             // 多语言表
             paramMap.put(PARAM_TABLE, tableName);
@@ -196,7 +196,7 @@ public class I18nCrud {
         Set<? extends Serializable> idSet = new HashSet<>(ids);
         List<Map> mapList = new ArrayList<>();
 
-        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
+        BatchCallUtil.call(idSet, MybatisConstants.BATCH_SELECT_SIZE, (partialIds) -> {
             Map<String, Object> paramMap = NewUtil.map();
             // 多语言表
             paramMap.put(PARAM_TABLE, tableName);
@@ -237,7 +237,7 @@ public class I18nCrud {
         Set<? extends Serializable> idSet = new HashSet<>(ids);
         List<Map> mapList = new ArrayList<>();
 
-        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
+        BatchCallUtil.call(idSet, MybatisConstants.BATCH_SELECT_SIZE, (partialIds) -> {
             Map<String, Object> paramMap = NewUtil.map();
             // 多语言表
             paramMap.put(PARAM_TABLE, tableName);

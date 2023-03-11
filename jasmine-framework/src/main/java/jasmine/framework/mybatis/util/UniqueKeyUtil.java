@@ -1,4 +1,4 @@
-package jasmine.framework.common.util;
+package jasmine.framework.mybatis.util;
 
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 

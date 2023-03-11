@@ -9,8 +9,8 @@ import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.ObjectUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.ref.LongValue;
-import jasmine.framework.common.constant.CommonMessageConstants;
-import jasmine.framework.mybatis.constant.PersistenceConstants;
+import jasmine.framework.mybatis.constant.MybatisMessageConstants;
+import jasmine.framework.mybatis.constant.MybatisConstants;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
@@ -71,7 +71,7 @@ public class MapperExtensionUtil {
         String sqlStatement = SqlHelper.getSqlStatement(mapperClass, SqlMethod.INSERT_ONE);
         Class<?> entityClass = CollectionUtil.getFirst(entities).getClass();
 
-        SqlHelper.executeBatch(entityClass, log, entities, PersistenceConstants.BATCH_INSERT_SIZE,
+        SqlHelper.executeBatch(entityClass, log, entities, MybatisConstants.BATCH_INSERT_SIZE,
                 (sqlSession, entity) -> {
                     sqlSession.insert(sqlStatement, entity);
                 });
@@ -95,7 +95,7 @@ public class MapperExtensionUtil {
 
         int rowCount = baseMapper.updateById(entity);
         if (strict && rowCount != 1) {
-            throw new ApplicationException(CommonMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(MybatisMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
         }
 
         return rowCount;
@@ -142,7 +142,7 @@ public class MapperExtensionUtil {
 
         int rowCount = baseMapper.deleteById(id);
         if (strict && rowCount != 1) {
-            throw new ApplicationException(CommonMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(MybatisMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
         }
 
         return rowCount;
@@ -170,10 +170,10 @@ public class MapperExtensionUtil {
         Set<? extends Serializable> idSet = new HashSet<>(ids);
         LongValue rowCount = new LongValue(0);
         // 分批删除记录
-        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
+        BatchCallUtil.call(idSet, MybatisConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             int deleteTotal = baseMapper.deleteBatchIds(partialIds);
             if (strict && deleteTotal != partialIds.size()) {
-                throw new ApplicationException(CommonMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
+                throw new ApplicationException(MybatisMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
             }
 
             rowCount.add(deleteTotal);
@@ -197,7 +197,7 @@ public class MapperExtensionUtil {
 
         T entity = baseMapper.selectById(id);
         if (strict && entity == null) {
-            throw new ApplicationException(CommonMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(MybatisMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
         }
 
         return entity;
@@ -225,13 +225,13 @@ public class MapperExtensionUtil {
         Set<? extends Serializable> idSet = new HashSet<>(ids);
         List<T> entityList = new ArrayList<>();
 
-        BatchCallUtil.call(idSet, PersistenceConstants.BATCH_SELECT_SIZE, (partialIds) -> {
+        BatchCallUtil.call(idSet, MybatisConstants.BATCH_SELECT_SIZE, (partialIds) -> {
             List<T> newList = baseMapper.selectBatchIds(partialIds);
             entityList.addAll(newList);
         });
 
         if (strict && ObjectUtil.notEqual(idSet.size(), entityList.size())) {
-            throw new ApplicationException(CommonMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(MybatisMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
         }
 
         return entityList;

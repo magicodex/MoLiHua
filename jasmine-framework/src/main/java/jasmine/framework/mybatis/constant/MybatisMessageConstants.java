@@ -1,11 +1,11 @@
-package jasmine.framework.common.constant;
+package jasmine.framework.mybatis.constant;
 
 import jasmine.core.i18n.DeclareI18N;
 
 /**
  * @author mh.z
  */
-public interface CommonMessageConstants {
+public interface MybatisMessageConstants {
 
     @DeclareI18N("更新出错")
     String UPDATE_ROW_COUNT_MISMATCH = "$jasmine.mybatisPlus.updateRowCountMismatch";

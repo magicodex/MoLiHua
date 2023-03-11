@@ -1,8 +1,6 @@
 package jasmine.framework.mybatis.util;
 
 import cn.hutool.core.lang.Assert;
-import jasmine.framework.common.util.csv.CsvToObject;
-import jasmine.framework.common.util.csv.MybatisPlusColumnMapping;
 import liquibase.util.csv.CSVReader;
 import liquibase.util.csv.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 

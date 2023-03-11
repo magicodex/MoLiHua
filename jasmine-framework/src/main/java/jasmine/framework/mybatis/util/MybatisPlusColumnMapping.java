@@ -1,4 +1,4 @@
-package jasmine.framework.common.util.csv;
+package jasmine.framework.mybatis.util;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ReflectUtil;

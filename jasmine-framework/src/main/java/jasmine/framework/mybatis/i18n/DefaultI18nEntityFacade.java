@@ -7,7 +7,7 @@ import jasmine.core.util.CheckUtil;
 import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.I18nUtil;
 import jasmine.core.util.ObjectUtil;
-import jasmine.framework.mybatis.constant.PersistenceConstants;
+import jasmine.framework.mybatis.constant.MybatisConstants;
 import jasmine.framework.mybatis.entity.BaseI18nEntity;
 import jasmine.framework.mybatis.i18n.support.I18nMeta;
 import jasmine.framework.mybatis.i18n.support.I18nRecord;
@@ -55,7 +55,7 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
         String langCode = I18nUtil.getLanguage();
 
         // 新增多语言记录
-        SqlHelper.executeBatch(entityType, mybatisLog, entities, PersistenceConstants.BATCH_INSERT_SIZE,
+        SqlHelper.executeBatch(entityType, mybatisLog, entities, MybatisConstants.BATCH_INSERT_SIZE,
                 (sqlSession, entity) -> {
                     Map<String, String> i18nDataMap = i18nMeta.getI18nData(entity);
                     I18nCrud i18nCRUD = new I18nCrud(sqlSession, i18nTable);

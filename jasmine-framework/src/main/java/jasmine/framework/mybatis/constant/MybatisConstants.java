@@ -3,7 +3,7 @@ package jasmine.framework.mybatis.constant;
 /**
  * @author mh.z
  */
-public interface PersistenceConstants {
+public interface MybatisConstants {
 
     /** 最大同批插入数量 */
     int BATCH_INSERT_SIZE = 1000;
