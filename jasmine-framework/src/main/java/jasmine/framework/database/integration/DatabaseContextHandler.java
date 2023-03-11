@@ -1,4 +1,4 @@
-package jasmine.framework.context.impl.thread;
+package jasmine.framework.database.integration;
 
 import jasmine.core.util.MapperUtil;
 import jasmine.framework.context.thread.ContextHandler;
@@ -9,7 +9,7 @@ import jasmine.framework.database.datasource.DataSourceContextHolder;
 /**
  * @author mh.z
  */
-public class FrameworkContextHandler implements ContextHandler {
+public class DatabaseContextHandler implements ContextHandler {
 
     @Override
     public ContextSnapshot copy() {
@@ -20,7 +20,7 @@ public class FrameworkContextHandler implements ContextHandler {
             dataSourceContext = MapperUtil.mapTo(dataSourceContext, DataSourceContext.class);
         }
 
-        ContextSnapshot snapshot = new FrameworkContextSnapshot(dataSourceContext);
+        ContextSnapshot snapshot = new DatabaseContextSnapshot(dataSourceContext);
         return snapshot;
     }
 

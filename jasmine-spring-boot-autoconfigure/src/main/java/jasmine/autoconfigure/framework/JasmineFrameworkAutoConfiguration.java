@@ -9,7 +9,7 @@ import jasmine.framework.context.init.InitSupportScanBean;
 import jasmine.framework.context.impl.SpringRuntimeProvider;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.context.impl.thread.ContextHandlerFacadeBean;
-import jasmine.framework.context.impl.thread.FrameworkContextHandler;
+import jasmine.framework.database.integration.DatabaseContextHandler;
 import jasmine.framework.web.integration.RequestContextHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,8 +41,8 @@ public class JasmineFrameworkAutoConfiguration {
     }
 
     @Bean
-    public FrameworkContextHandler frameworkContextHandler() {
-        return new FrameworkContextHandler();
+    public DatabaseContextHandler frameworkContextHandler() {
+        return new DatabaseContextHandler();
     }
 
     @Bean

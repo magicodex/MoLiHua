@@ -1,9 +1,10 @@
-package jasmine.framework.context.impl.thread;
+package jasmine.framework.database.integration;
 
 import jasmine.framework.context.thread.ContextSnapshot;
 import jasmine.framework.database.datasource.DataSourceContext;
 import jasmine.framework.database.datasource.DataSourceContextHolder;
 import jasmine.framework.database.impl.datasource.DefaultDataSourceContext;
+import jasmine.framework.database.integration.DatabaseContextHandler;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +13,7 @@ import org.junit.Test;
 /**
  * @author mh.z
  */
-public class FrameworkContextHandlerTest {
+public class DatabaseContextHandlerTest {
     private DataSourceContext previousContext;
 
     @Before
@@ -28,7 +29,7 @@ public class FrameworkContextHandlerTest {
 
     @Test
     public void test() {
-        FrameworkContextHandler handler = new FrameworkContextHandler();
+        DatabaseContextHandler handler = new DatabaseContextHandler();
 
         DataSourceContext context = new DefaultDataSourceContext("testDataSourceKey");
         DataSourceContextHolder.setContext(context);
