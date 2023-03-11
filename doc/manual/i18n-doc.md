@@ -7,7 +7,7 @@ jasmine.i18n.message.resourcePrefix=
 # 多语言资源编码，默认 UTF-8
 jasmine.i18n.message.encoding=
 
-# 多语言常量路径，默认 classpath*:/**/constant/*Messages.class
+# 多语言常量路径，默认 classpath*:/**/constant/*MessageConstants.class
 jasmine.i18n.message.constantPattern=
 
 备注：更多配置查看 jasmine.autoconfigure.framework.support.LocaleMessageProperties。

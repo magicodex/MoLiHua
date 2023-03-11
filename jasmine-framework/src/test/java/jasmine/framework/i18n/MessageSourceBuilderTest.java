@@ -13,7 +13,7 @@ import java.util.Locale;
 public class MessageSourceBuilderTest {
     private static final String RESOURCE_PREFIX = "test/framework/i18n/messages";
     private static final String SCAN_PATH = "classpath:/jasmine/framework" +
-            "/i18n/testdependency/TestMessages.class";
+            "/i18n/testdependency/TestMessageConstants.class";
 
     @Test
     public void test() {

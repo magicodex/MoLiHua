@@ -9,7 +9,7 @@ import java.util.Properties;
  * @author mh.z
  */
 public class DeclareI18nScanUtilTest {
-    private static final String SCAN_PATH = "classpath:/jasmine/framework/i18n/testdependency/TestMessages.class";
+    private static final String SCAN_PATH = "classpath:/jasmine/framework/i18n/testdependency/TestMessageConstants.class";
 
     @Test
     public void testScan() {

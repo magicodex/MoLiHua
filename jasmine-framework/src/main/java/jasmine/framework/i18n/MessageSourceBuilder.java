@@ -19,7 +19,7 @@ public class MessageSourceBuilder {
     /** 多语言资源编码 */
     private static final String DEFAULT_MESSAGE_DEFAULT_ENCODING = "UTF-8";
     /** 多语言常量路径 */
-    private static final String DEFAULT_MESSAGE_CONSTANT_PATH = "classpath*:/**/constant/*Messages.class";
+    private static final String DEFAULT_MESSAGE_CONSTANT_PATH = "classpath*:/**/constant/*MessageConstants.class";
 
     public MessageSourceBuilder() {
         resourcePrefix = DEFAULT_MESSAGE_PATH_PREFIX;

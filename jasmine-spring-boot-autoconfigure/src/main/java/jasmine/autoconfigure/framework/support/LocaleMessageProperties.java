@@ -13,7 +13,7 @@ public class LocaleMessageProperties {
     /** 多语言资源编码 */
     private String encoding = "UTF-8";
     /** 多语言常量路径 */
-    private String constantPattern = "classpath*:/**/constant/*Messages.class";
+    private String constantPattern = "classpath*:/**/constant/*MessageConstants.class";
 
     public String getResourcePrefix() {
         return resourcePrefix;
