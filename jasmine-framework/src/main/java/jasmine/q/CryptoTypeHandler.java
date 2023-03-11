@@ -7,6 +7,6 @@ package jasmine.q;
  *
  * @author mh.z
  */
-public class CryptoTypeHandler extends jasmine.framework.persistence.mybatisplus.crypto.CryptoTypeHandler {
+public class CryptoTypeHandler extends jasmine.framework.mybatis.crypto.CryptoTypeHandler {
 
 }

@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import jasmine.framework.test.liquibase.log.TestDataChangeLog;
 import jasmine.framework.test.liquibase.log.TestDataChangeLogMapper;
 import jasmine.framework.test.util.MybatisPlusUtil;
-import jasmine.framework.persistence.mybatisplus.util.MybatisPlusCsvUtil;
+import jasmine.framework.mybatis.util.MybatisPlusCsvUtil;
 import org.springframework.context.ApplicationContext;
 
 import java.io.InputStream;
