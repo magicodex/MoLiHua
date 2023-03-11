@@ -1,9 +1,12 @@
-package jasmine.framework.context.thread;
+package jasmine.framework.context.impl.thread;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.NewUtil;
-import jasmine.framework.context.CustomInitializingSingleton;
+import jasmine.framework.context.init.CustomInitializingSingleton;
+import jasmine.framework.context.thread.ContextHandler;
+import jasmine.framework.context.thread.ContextHandlerFacade;
+import jasmine.framework.context.thread.ContextSnapshot;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

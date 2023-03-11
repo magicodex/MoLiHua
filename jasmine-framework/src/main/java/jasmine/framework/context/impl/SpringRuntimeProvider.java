@@ -1,4 +1,4 @@
-package jasmine.framework.context;
+package jasmine.framework.context.impl;
 
 import jasmine.core.context.RuntimeProvider;
 import org.springframework.beans.BeansException;

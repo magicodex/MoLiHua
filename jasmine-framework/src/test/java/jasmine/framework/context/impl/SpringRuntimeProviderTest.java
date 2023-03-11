@@ -1,5 +1,6 @@
-package jasmine.framework.context;
+package jasmine.framework.context.impl;
 
+import jasmine.framework.context.impl.SpringRuntimeProvider;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;

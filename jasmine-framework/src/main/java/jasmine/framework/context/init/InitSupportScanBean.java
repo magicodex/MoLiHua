@@ -1,4 +1,4 @@
-package jasmine.framework.context;
+package jasmine.framework.context.init;
 
 import jasmine.core.context.InitSupport;
 import jasmine.core.context.RuntimeProvider;

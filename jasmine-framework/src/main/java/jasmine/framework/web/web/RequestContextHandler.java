@@ -1,4 +1,4 @@
-package jasmine.framework.context.thread.web;
+package jasmine.framework.web.web;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.framework.context.thread.ContextHandler;

@@ -1,9 +1,6 @@
 package jasmine.framework.web.cache;
 
-import jasmine.framework.web.cache.RequestScopeCacheContext;
-import jasmine.framework.web.cache.RequestScopeCacheContextHolder;
-import jasmine.framework.context.thread.web.SimpleRequestAttributes;
-import jasmine.framework.web.cache.RequestScopeCacheUtil;
+import jasmine.framework.web.web.SimpleRequestAttributes;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

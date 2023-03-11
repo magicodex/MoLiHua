@@ -1,4 +1,4 @@
-package jasmine.framework.context.thread.framework;
+package jasmine.framework.context.impl.thread;
 
 import jasmine.core.util.MapperUtil;
 import jasmine.framework.context.thread.ContextHandler;

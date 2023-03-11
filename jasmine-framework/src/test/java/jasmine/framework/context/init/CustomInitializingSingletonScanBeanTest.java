@@ -1,5 +1,7 @@
-package jasmine.framework.context;
+package jasmine.framework.context.init;
 
+import jasmine.framework.context.init.CustomInitializingSingleton;
+import jasmine.framework.context.init.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.testdependency.MockCustomInitializingSingleton;
 import org.junit.After;
 import org.junit.Assert;

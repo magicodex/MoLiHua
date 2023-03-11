@@ -1,7 +1,7 @@
 package jasmine.framework.test.liquibase.loader;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import jasmine.framework.context.SpringRuntimeProvider;
+import jasmine.framework.context.impl.SpringRuntimeProvider;
 import jasmine.framework.test.context.AppTestContext;
 import jasmine.framework.test.liquibase.log.TestDataChangeLogMapper;
 import jasmine.framework.test.testdependency.mapper.Example1Mapper;

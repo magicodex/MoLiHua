@@ -1,4 +1,4 @@
-package jasmine.framework.context;
+package jasmine.framework.context.init;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.SmartInitializingSingleton;

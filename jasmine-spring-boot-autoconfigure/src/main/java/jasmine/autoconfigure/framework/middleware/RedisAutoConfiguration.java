@@ -7,7 +7,7 @@ import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.cache.impl.redis.DefaultRedisTemplateInvoker;
 import jasmine.framework.cache.impl.redis.RedisCacheService;
 import jasmine.framework.cache.impl.redis.RedisTemplateInvoker;
-import jasmine.framework.lock.annotation.DistributedLockAspectHandler;
+import jasmine.framework.lock.annotation.handler.DistributedLockAspectHandler;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.DistributedLockUtil;
 import jasmine.framework.lock.impl.redisson.RedissonDistributedLockProvider;
