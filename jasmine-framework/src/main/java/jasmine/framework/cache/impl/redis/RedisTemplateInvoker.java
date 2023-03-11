@@ -1,4 +1,4 @@
-package jasmine.framework.cache.redis;
+package jasmine.framework.cache.impl.redis;
 
 import java.util.concurrent.TimeUnit;
 

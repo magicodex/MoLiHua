@@ -1,4 +1,4 @@
-package jasmine.framework.cache.context;
+package jasmine.framework.web.cache;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

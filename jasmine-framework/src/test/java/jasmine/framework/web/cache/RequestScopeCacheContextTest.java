@@ -1,5 +1,6 @@
-package jasmine.framework.cache.context;
+package jasmine.framework.web.cache;
 
+import jasmine.framework.web.cache.RequestScopeCacheContext;
 import org.junit.Assert;
 
 /**

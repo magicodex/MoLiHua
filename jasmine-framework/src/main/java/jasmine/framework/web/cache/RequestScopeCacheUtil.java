@@ -1,7 +1,7 @@
-package jasmine.framework.cache;
+package jasmine.framework.web.cache;
 
-import jasmine.framework.cache.context.RequestScopeCacheContext;
-import jasmine.framework.cache.context.RequestScopeCacheContextHolder;
+import jasmine.framework.web.cache.RequestScopeCacheContext;
+import jasmine.framework.web.cache.RequestScopeCacheContextHolder;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 

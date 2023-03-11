@@ -1,4 +1,4 @@
-package jasmine.framework.cache;
+package jasmine.framework.cache.strategy;
 
 /**
  * <p>

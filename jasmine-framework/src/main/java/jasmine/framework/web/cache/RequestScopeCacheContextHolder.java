@@ -1,4 +1,4 @@
-package jasmine.framework.cache.context;
+package jasmine.framework.web.cache;
 
 /**
  * @author mh.z

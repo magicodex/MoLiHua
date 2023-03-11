@@ -1,4 +1,4 @@
-package jasmine.framework.cache.redis;
+package jasmine.framework.cache.impl.redis;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;

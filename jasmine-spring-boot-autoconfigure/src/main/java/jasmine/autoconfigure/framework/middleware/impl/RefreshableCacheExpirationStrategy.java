@@ -2,7 +2,7 @@ package jasmine.autoconfigure.framework.middleware.impl;
 
 import jasmine.autoconfigure.framework.middleware.CacheProperties;
 import jasmine.core.util.ObjectUtil;
-import jasmine.framework.cache.CacheExpirationStrategy;
+import jasmine.framework.cache.strategy.CacheExpirationStrategy;
 
 /**
  * @author mh.z

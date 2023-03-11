@@ -1,11 +1,11 @@
-package jasmine.framework.cache.redis;
+package jasmine.framework.cache.impl.redis;
 
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.StringUtil;
-import jasmine.framework.cache.CacheExpirationStrategy;
+import jasmine.framework.cache.strategy.CacheExpirationStrategy;
 import jasmine.framework.cache.CacheService;
-import jasmine.framework.cache.CacheSyncStrategy;
-import jasmine.framework.cache.DefaultCacheExpirationStrategy;
+import jasmine.framework.cache.strategy.CacheSyncStrategy;
+import jasmine.framework.cache.impl.strategy.DefaultCacheExpirationStrategy;
 import jasmine.framework.common.util.SimpleConvertUtil;
 
 import java.util.List;

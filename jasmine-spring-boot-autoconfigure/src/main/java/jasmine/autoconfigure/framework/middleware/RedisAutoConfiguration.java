@@ -2,11 +2,11 @@ package jasmine.autoconfigure.framework.middleware;
 
 import jasmine.autoconfigure.framework.middleware.impl.RefreshableCacheExpirationStrategy;
 import jasmine.framework.cache.CacheService;
-import jasmine.framework.cache.CacheSyncStrategy;
+import jasmine.framework.cache.strategy.CacheSyncStrategy;
 import jasmine.framework.cache.CacheUtil;
-import jasmine.framework.cache.redis.DefaultRedisTemplateInvoker;
-import jasmine.framework.cache.redis.RedisCacheService;
-import jasmine.framework.cache.redis.RedisTemplateInvoker;
+import jasmine.framework.cache.impl.redis.DefaultRedisTemplateInvoker;
+import jasmine.framework.cache.impl.redis.RedisCacheService;
+import jasmine.framework.cache.impl.redis.RedisTemplateInvoker;
 import jasmine.framework.lock.annotation.DistributedLockAspectHandler;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.distributed.DistributedLockUtil;

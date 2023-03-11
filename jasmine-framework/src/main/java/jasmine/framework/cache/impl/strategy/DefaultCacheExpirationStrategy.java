@@ -1,6 +1,7 @@
-package jasmine.framework.cache;
+package jasmine.framework.cache.impl.strategy;
 
 import jasmine.core.util.ObjectUtil;
+import jasmine.framework.cache.strategy.CacheExpirationStrategy;
 
 import java.util.Collections;
 import java.util.Map;

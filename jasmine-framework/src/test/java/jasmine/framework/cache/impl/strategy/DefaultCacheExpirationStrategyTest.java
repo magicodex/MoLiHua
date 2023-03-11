@@ -1,6 +1,6 @@
-package jasmine.framework.cache;
+package jasmine.framework.cache.impl.strategy;
 
-import jasmine.framework.cache.DefaultCacheExpirationStrategy;
+import jasmine.framework.cache.impl.strategy.DefaultCacheExpirationStrategy;
 import org.junit.Assert;
 import org.junit.Test;
 

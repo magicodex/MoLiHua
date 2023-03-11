@@ -1,6 +1,7 @@
-package jasmine.framework.cache.redis;
+package jasmine.framework.cache.impl.redis;
 
-import jasmine.framework.cache.CacheSyncStrategy;
+import jasmine.framework.cache.impl.redis.RedisCacheService;
+import jasmine.framework.cache.strategy.CacheSyncStrategy;
 import jasmine.framework.cache.testdependency.MockRedisTemplateInvoker;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import org.junit.Assert;

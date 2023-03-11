@@ -1,6 +1,6 @@
 package jasmine.framework.cache.testdependency;
 
-import jasmine.framework.cache.redis.RedisTemplateInvoker;
+import jasmine.framework.cache.impl.redis.RedisTemplateInvoker;
 
 import java.util.HashMap;
 import java.util.Map;
