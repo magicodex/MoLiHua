@@ -7,7 +7,7 @@ import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.NewUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.ref.LongValue;
-import jasmine.framework.common.constant.CommonMessages;
+import jasmine.framework.common.constant.CommonMessageConstants;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.session.SqlSession;
 
@@ -137,7 +137,7 @@ public class I18nCrud {
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
         if (rowCount != 1) {
-            throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(CommonMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
         }
 
         return 1;

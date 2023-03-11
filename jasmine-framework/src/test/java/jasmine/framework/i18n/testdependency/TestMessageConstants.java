@@ -5,7 +5,7 @@ import jasmine.core.i18n.DeclareI18N;
 /**
  * @author mh.z
  */
-public interface TestMessages {
+public interface TestMessageConstants {
 
     @DeclareI18N("message 1")
     String MESSAGE_1 = "message1";

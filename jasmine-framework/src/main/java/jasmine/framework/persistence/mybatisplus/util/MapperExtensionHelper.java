@@ -9,7 +9,7 @@ import jasmine.core.util.CollectionUtil;
 import jasmine.core.util.ObjectUtil;
 import jasmine.core.util.batch.BatchCallUtil;
 import jasmine.core.util.ref.LongValue;
-import jasmine.framework.common.constant.CommonMessages;
+import jasmine.framework.common.constant.CommonMessageConstants;
 import jasmine.framework.persistence.constant.PersistenceConstants;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -95,7 +95,7 @@ public class MapperExtensionHelper {
 
         int rowCount = baseMapper.updateById(entity);
         if (strict && rowCount != 1) {
-            throw new ApplicationException(CommonMessages.UPDATE_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(CommonMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
         }
 
         return rowCount;
@@ -142,7 +142,7 @@ public class MapperExtensionHelper {
 
         int rowCount = baseMapper.deleteById(id);
         if (strict && rowCount != 1) {
-            throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(CommonMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
         }
 
         return rowCount;
@@ -173,7 +173,7 @@ public class MapperExtensionHelper {
         BatchCallUtil.call(idSet, PersistenceConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             int deleteTotal = baseMapper.deleteBatchIds(partialIds);
             if (strict && deleteTotal != partialIds.size()) {
-                throw new ApplicationException(CommonMessages.DELETE_ROW_COUNT_MISMATCH, null);
+                throw new ApplicationException(CommonMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
             }
 
             rowCount.add(deleteTotal);
@@ -197,7 +197,7 @@ public class MapperExtensionHelper {
 
         T entity = baseMapper.selectById(id);
         if (strict && entity == null) {
-            throw new ApplicationException(CommonMessages.SELECT_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(CommonMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
         }
 
         return entity;
@@ -231,7 +231,7 @@ public class MapperExtensionHelper {
         });
 
         if (strict && ObjectUtil.notEqual(idSet.size(), entityList.size())) {
-            throw new ApplicationException(CommonMessages.SELECT_ROW_COUNT_MISMATCH, null);
+            throw new ApplicationException(CommonMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
         }
 
         return entityList;

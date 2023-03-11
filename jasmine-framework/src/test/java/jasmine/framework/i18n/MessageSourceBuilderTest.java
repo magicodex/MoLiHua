@@ -1,6 +1,6 @@
 package jasmine.framework.i18n;
 
-import jasmine.framework.i18n.testdependency.TestMessages;
+import jasmine.framework.i18n.testdependency.TestMessageConstants;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.MessageSource;
@@ -23,7 +23,7 @@ public class MessageSourceBuilderTest {
         builder.setConstantPattern(SCAN_PATH);
 
         MessageSource messageSource = builder.build();
-        String actual = messageSource.getMessage(TestMessages.MESSAGE_1,
+        String actual = messageSource.getMessage(TestMessageConstants.MESSAGE_1,
                 new Object[0], Locale.SIMPLIFIED_CHINESE);
         Assert.assertEquals("消息1", actual);
     }
