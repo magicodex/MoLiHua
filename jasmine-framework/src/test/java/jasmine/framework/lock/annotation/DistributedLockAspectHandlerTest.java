@@ -2,7 +2,7 @@ package jasmine.framework.lock.annotation;
 
 import cn.hutool.core.util.ReflectUtil;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
-import jasmine.framework.lock.distributed.DistributedLockUtil;
+import jasmine.framework.lock.DistributedLockUtil;
 import jasmine.framework.lock.testdependency.MockDistributedLockProvider;
 import jasmine.framework.lock.testdependency.TestObject1;
 import org.aspectj.lang.ProceedingJoinPoint;

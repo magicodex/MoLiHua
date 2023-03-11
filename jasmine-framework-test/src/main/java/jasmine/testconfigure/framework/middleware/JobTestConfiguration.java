@@ -3,7 +3,7 @@ package jasmine.testconfigure.framework.middleware;
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
-import jasmine.framework.lock.distributed.DistributedLockUtil;
+import jasmine.framework.lock.DistributedLockUtil;
 import jasmine.mock.framework.cache.MockCacheService;
 import jasmine.mock.framework.lock.MockDistributedLockProvider;
 import org.springframework.context.annotation.Bean;

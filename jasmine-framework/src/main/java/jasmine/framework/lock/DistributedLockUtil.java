@@ -1,6 +1,9 @@
-package jasmine.framework.lock.distributed;
+package jasmine.framework.lock;
 
 import jasmine.core.util.CheckUtil;
+import jasmine.framework.lock.distributed.DistributedDeclaredLock;
+import jasmine.framework.lock.distributed.DistributedLockCallback;
+import jasmine.framework.lock.distributed.DistributedLockProvider;
 
 import javax.annotation.Nonnull;
 
@@ -29,7 +32,7 @@ public class DistributedLockUtil {
      * @param key
      * @return
      */
-    public static DistributedDeclaredLock declare(@Nonnull String category, @Nonnull Object key) {
+    public static DistributedDeclaredLock declareLock(@Nonnull String category, @Nonnull Object key) {
         CheckUtil.notNull(category, "category null");
         CheckUtil.notNull(key, "key null");
         CheckUtil.notNullProp(provider, "provider null");
@@ -51,7 +54,7 @@ public class DistributedLockUtil {
      */
     public static <T> T lock(@Nonnull String category, @Nonnull Object key,
                              @Nonnull DistributedLockCallback callback) {
-        DistributedDeclaredLock lock = declare(category, key);
+        DistributedDeclaredLock lock = declareLock(category, key);
 
         return lock.lock(callback);
     }
@@ -68,7 +71,7 @@ public class DistributedLockUtil {
      */
     public static <T> T lock(@Nonnull String category, @Nonnull Object key,
                              long waitTime, @Nonnull DistributedLockCallback callback) {
-        DistributedDeclaredLock lock = declare(category, key);
+        DistributedDeclaredLock lock = declareLock(category, key);
 
         return lock.lock(waitTime, callback);
     }

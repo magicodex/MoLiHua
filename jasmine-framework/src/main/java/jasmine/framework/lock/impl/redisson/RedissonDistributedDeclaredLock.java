@@ -1,4 +1,4 @@
-package jasmine.framework.lock.redisson;
+package jasmine.framework.lock.impl.redisson;
 
 
 import jasmine.core.exception.InvalidPropertyException;

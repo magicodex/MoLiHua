@@ -1,6 +1,7 @@
-package jasmine.framework.lock.redisson;
+package jasmine.framework.lock.impl.redisson;
 
 import jasmine.core.util.CollectionUtil;
+import jasmine.framework.lock.impl.redisson.RedissonDistributedLockProvider;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
