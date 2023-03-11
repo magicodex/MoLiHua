@@ -1,5 +1,6 @@
-package jasmine.security.support;
+package jasmine.security.integration;
 
+import jasmine.security.util.SecurityContextUtil;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

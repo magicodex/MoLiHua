@@ -10,7 +10,7 @@ import jasmine.framework.context.impl.SpringRuntimeProvider;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.context.impl.thread.ContextHandlerFacadeBean;
 import jasmine.framework.context.impl.thread.FrameworkContextHandler;
-import jasmine.framework.web.impl.context.RequestContextHandler;
+import jasmine.framework.web.integration.RequestContextHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

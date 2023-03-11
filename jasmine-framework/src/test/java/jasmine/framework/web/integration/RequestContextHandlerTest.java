@@ -1,7 +1,5 @@
-package jasmine.framework.web.impl.context;
+package jasmine.framework.web.integration;
 
-import jasmine.framework.web.impl.context.RequestContextHandler;
-import jasmine.framework.web.impl.context.SimpleRequestAttributes;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.web.context.request.RequestAttributes;

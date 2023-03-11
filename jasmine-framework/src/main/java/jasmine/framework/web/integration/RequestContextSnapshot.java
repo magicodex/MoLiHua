@@ -1,4 +1,4 @@
-package jasmine.framework.web.impl.context;
+package jasmine.framework.web.integration;
 
 import jasmine.framework.context.thread.ContextSnapshot;
 import org.springframework.web.context.request.RequestAttributes;
