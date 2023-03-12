@@ -1,4 +1,4 @@
-package jasmine.testconfigure.framework.database;
+package jasmine.testconfigure.mybatis;
 
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import jasmine.mybatis.crypto.CryptoProvider;
-import jasmine.mock.framework.mybatis.MockCryptoProvider;
+import jasmine.mock.mybatis.crypto.MockCryptoProvider;
 import jasmine.mybatis.BaseEntityMetaObjectHandler;
 import jasmine.mybatis.MybatisPlusInterceptorBuilder;
 import jasmine.mybatis.crypto.CryptoFieldUtil;
