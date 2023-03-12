@@ -1,7 +1,7 @@
 # 配置
 
 ```
-# 多语言资源路径，默认 message/messages
+# 多语言资源路径，默认 message/messageConstants
 jasmine.i18n.message.resourcePrefix=
 
 # 多语言资源编码，默认 UTF-8
