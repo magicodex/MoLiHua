@@ -1,7 +1,6 @@
 package jasmine.mybatis.i18n;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import io.reactivex.annotations.NonNull;
 import jasmine.core.util.CheckUtil;
 import jasmine.core.util.CollectionUtil;
 import jasmine.mybatis.entity.BaseI18nEntity;
@@ -128,7 +127,7 @@ public class I18nEntityUtil {
      * @param id
      * @return
      */
-    public static int deleteI18n(@NonNull Class<? extends BaseI18nEntity> entityType, @Nonnull Serializable id) {
+    public static int deleteI18n(@Nonnull Class<? extends BaseI18nEntity> entityType, @Nonnull Serializable id) {
         CheckUtil.notNull(entityType, "entityType null");
 
         if (i18nFacade == null) {
@@ -144,7 +143,7 @@ public class I18nEntityUtil {
      * @param ids
      * @return
      */
-    public static int deleteI18n(@NonNull Class<? extends BaseI18nEntity> entityType,
+    public static int deleteI18n(@Nonnull Class<? extends BaseI18nEntity> entityType,
                                  @Nonnull Collection<? extends Serializable> ids) {
         CheckUtil.notNull(entityType, "entityType null");
         CheckUtil.notNull(ids, "ids null");

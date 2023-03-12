@@ -88,14 +88,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- MyBatis-Plus持久层框架 -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-
         <!-- Redis客户端 -->
         <dependency>
             <groupId>org.redisson</groupId>
@@ -112,26 +104,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Liquibase数据库版本管理工具 -->
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Mysql数据库驱动 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- H2数据库驱动 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 </project>
