@@ -4,18 +4,10 @@ package jasmine.framework.testdependency.pojo;
  * @author mh.z
  */
 public class Example1 {
-    private Long id;
+    /** 属性1 */
     private String attribute1;
-    private Integer attribute2;
-    private Boolean attribute3;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    /** 属性2 */
+    private String attribute2;
 
     public String getAttribute1() {
         return attribute1;
@@ -25,20 +17,12 @@ public class Example1 {
         this.attribute1 = attribute1;
     }
 
-    public Integer getAttribute2() {
+    public String getAttribute2() {
         return attribute2;
     }
 
-    public void setAttribute2(Integer attribute2) {
+    public void setAttribute2(String attribute2) {
         this.attribute2 = attribute2;
-    }
-
-    public Boolean getAttribute3() {
-        return attribute3;
-    }
-
-    public void setAttribute3(Boolean attribute3) {
-        this.attribute3 = attribute3;
     }
 
 }

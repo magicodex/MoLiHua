@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.framework.database;
+package jasmine.autoconfigure.mybatis;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

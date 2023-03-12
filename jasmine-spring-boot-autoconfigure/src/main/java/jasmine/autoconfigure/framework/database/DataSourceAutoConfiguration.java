@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.framework.database;
 
 import com.zaxxer.hikari.HikariDataSource;
+import jasmine.autoconfigure.mybatis.MybatisPlusAutoConfiguration;
 import jasmine.framework.database.annotation.handler.ReadOnlyAspectHandler;
 import jasmine.framework.database.datasource.DataSourceDecideFacade;
 import jasmine.framework.database.impl.datasource.MultipleDataSource;

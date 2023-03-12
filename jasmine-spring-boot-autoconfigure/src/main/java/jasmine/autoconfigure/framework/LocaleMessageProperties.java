@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.framework.support;
+package jasmine.autoconfigure.framework;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

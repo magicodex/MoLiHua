@@ -96,8 +96,8 @@ public class MybatisTestConfiguration {
     }
 
     @Bean
-    public CustomInitializingSingletonScanBean customInitializingSingletonScanBean() {
-        return new CustomInitializingSingletonScanBean();
+    public MybatisTestInitializingBean customInitializingSingletonScanBean() {
+        return new MybatisTestInitializingBean();
     }
 
     @Bean

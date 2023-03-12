@@ -10,7 +10,7 @@ jasmine.i18n.message.encoding=
 # 多语言常量路径，默认 classpath*:/**/constant/*MessageConstants.class
 jasmine.i18n.message.constantPattern=
 
-备注：更多配置查看 jasmine.autoconfigure.framework.support.LocaleMessageProperties。
+备注：更多配置查看 jasmine.autoconfigure.framework.LocaleMessageProperties。
 ```
 
 # 示例

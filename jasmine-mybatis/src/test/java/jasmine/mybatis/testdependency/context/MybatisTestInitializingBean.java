@@ -14,12 +14,12 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-public class CustomInitializingSingletonScanBean implements SmartInitializingSingleton, ApplicationContextAware {
+public class MybatisTestInitializingBean implements SmartInitializingSingleton, ApplicationContextAware {
     private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        CustomInitializingSingletonScanBean.applicationContext = applicationContext;
+        MybatisTestInitializingBean.applicationContext = applicationContext;
     }
 
     @Override

@@ -7,9 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:property-placeholder location="classpath:test/framework/testdependency/config/application.properties,
-    classpath:/test-config.properties"/>
-
     <!-- 测试上下文 -->
     <import resource="classpath:/test-context.xml"/>
 </beans>

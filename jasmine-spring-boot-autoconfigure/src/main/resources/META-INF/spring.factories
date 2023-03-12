@@ -1,13 +1,13 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 jasmine.autoconfigure.framework.JasmineFrameworkAutoConfiguration,\
-jasmine.autoconfigure.framework.support.LocaleMessageAutoConfiguration,\
-jasmine.autoconfigure.framework.support.AsyncTaskAutoConfiguration,\
+jasmine.autoconfigure.framework.LocaleMessageAutoConfiguration,\
+jasmine.autoconfigure.framework.AsyncTaskAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.RabbitAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.RedisAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.XxlJobAutoConfiguration,\
 jasmine.autoconfigure.framework.database.DataSourceAutoConfiguration,\
-jasmine.autoconfigure.framework.database.MybatisPlusAutoConfiguration,\
+jasmine.autoconfigure.mybatis.MybatisPlusAutoConfiguration,\
 jasmine.autoconfigure.security.JasmineSecurityAutoConfiguration,\
 jasmine.autoconfigure.security.rbac.RbacDaoAutoConfiguration,\
 jasmine.autoconfigure.security.SpringSecurityAutoConfiguration,\
