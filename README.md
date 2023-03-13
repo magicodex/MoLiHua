@@ -28,7 +28,7 @@
 ```
 
 ### 单元测试覆盖率(2022.9.18)
-![单元测试覆盖率](https://s3.bmp.ovh/imgs/2022/09/27/2d6e79f6122b4487.png "单元测试覆盖率")
+![单元测试覆盖率](https://s3.bmp.ovh/imgs/2023/03/13/4009f43aecd907cc.png "单元测试覆盖率")
 
 ## 使用说明
 
@@ -83,6 +83,7 @@
 | jasmine-bom | 依赖管理 |
 | jasmine-core | 公共模块 |
 | jasmine-test | 支持单元测试 |
+| jasmine-MyBatis | 扩展MyBatis |
 | jasmine-framework | 框架相关功能 |
 | jasmine-framework-test | 支持单元测试 |
 | jasmine-security | 安全模块 |
@@ -93,7 +94,7 @@
 | jasmine-spring-cloud-stream | 整合Spring Cloud Stream |
 | jasmine-demo | DEMO示例 |
 
-![模块划分](https://s3.bmp.ovh/imgs/2022/09/27/fd72e1da6c00119e.png "模块划分")
+![模块划分](https://s3.bmp.ovh/imgs/2023/03/13/9e2defcb591869cf.png "模块划分")
 
 ## 文档链接
 

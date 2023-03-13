@@ -45,6 +45,7 @@
 | jasmine-bom |  |
 | jasmine-core |  |
 | jasmine-test | unit test support |
+| jasmine-mybatis |  |
 | jasmine-framework |  |
 | jasmine-framework-test | unit test support |
 | jasmine-security |  |
@@ -55,7 +56,7 @@
 | jasmine-spring-cloud-stream |  |
 | jasmine-demo | DEMO |
 
-![Module](https://s3.bmp.ovh/imgs/2022/09/27/fd72e1da6c00119e.png "Module")
+![Module](https://s3.bmp.ovh/imgs/2023/03/13/9e2defcb591869cf.png "Module")
 
 ## License
 
