@@ -4,28 +4,10 @@
 
 ## 启动 DEMO 示例
 
-1. 修改 jasmine-demo/src/main/resources/application.yml 的数据库连接参数。
+1. 启动 jasmine-demo/src/main/java/jasmine/demo/DemoApplication。
 2. 浏览器输入 http://127.0.0.1:8080 访问。
 3. 默认账户和密码是 MoLiHua/123456。
 4. 默认连接 Redis 的地址是 127.0.0.1:6379。
-
-## 单元测试
-
-```
-通过命令 mvn test 或其它途径执行单元测试。
-
-备注：目前已经内嵌H2数据库做单元测试，若改用其它数据库做单元测试则可以指定数据库连接参数，
-比如 mvn test -Ddb.driver=com.mysql.cj.jdbc.Driver -Ddb.url=jdbc:mysql://127.0.0.1:3306/test_jasmine -Ddb.username=root -Ddb.password=123456
-
-#JDBC驱动，默认org.h2.Driver
--Ddb.driver= 
-#数据库连接URL，默认jdbc:h2:mem:test_jasmine;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
--Ddb.url=
-#数据库用户名
--Ddb.username=
-#数据库密码
--Ddb.password=
-```
 
 ### 单元测试覆盖率(2023.3.13)
 ![单元测试覆盖率](https://s3.bmp.ovh/imgs/2023/03/13/4009f43aecd907cc.png "单元测试覆盖率")
