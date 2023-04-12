@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author mh.z
  */
 @Transactional(rollbackFor = Exception.class)
-@ContextConfiguration(locations = "classpath:/test/mybatis/testdependency/config/springContext.xml")
+@ContextConfiguration(locations = "classpath:/test/framework/testdependency/config/springContext.xml")
 public class MybatisTestContext {
 
     static {
