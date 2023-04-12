@@ -7,4 +7,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+    <!-- 扫描Mapper接口类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="jasmine.**.mapper"/>
+    </bean>
+
+    <bean class="jasmine.framework.database.mybatisplus.testdependency.context.MybatisTestConfiguration" />
 </beans>
