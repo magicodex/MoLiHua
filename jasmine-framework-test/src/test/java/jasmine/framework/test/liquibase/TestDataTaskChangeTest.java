@@ -25,7 +25,7 @@ public class TestDataTaskChangeTest extends AppTestContext {
     @Autowired
     private Example1Mapper exampleMapper;
 
-    private static final String EXAMPLE1_1_PATH = "/test/framework/database/csv/Example1_1.csv";
+    private static final String EXAMPLE1_1_PATH = "/test/framework/test/liquibase/csv/Example1_1.csv";
 
     @Test
     public void test() throws CustomChangeException {
