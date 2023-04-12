@@ -9,7 +9,7 @@ import jasmine.demo.sample.dto.SampleUpdateDTO;
 import jasmine.demo.sample.entity.Sample;
 import jasmine.demo.sample.mapper.SampleMapper;
 import jasmine.framework.lock.annotation.DistributedLock;
-import jasmine.mybatis.util.MapperExtensionUtil;
+import jasmine.framework.database.mybatisplus.util.MapperExtensionUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

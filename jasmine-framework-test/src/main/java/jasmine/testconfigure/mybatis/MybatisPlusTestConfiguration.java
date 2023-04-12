@@ -5,17 +5,17 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import jasmine.mybatis.crypto.CryptoProvider;
+import jasmine.framework.database.mybatisplus.crypto.CryptoProvider;
 import jasmine.mock.mybatis.crypto.MockCryptoProvider;
-import jasmine.mybatis.BaseEntityMetaObjectHandler;
-import jasmine.mybatis.MybatisPlusInterceptorBuilder;
-import jasmine.mybatis.crypto.CryptoFieldUtil;
-import jasmine.mybatis.i18n.DefaultI18nEntityFacade;
-import jasmine.mybatis.i18n.I18nEntityFacade;
-import jasmine.mybatis.i18n.I18nEntityUtil;
-import jasmine.mybatis.tenant.DefaultTenantLineHandler;
-import jasmine.mybatis.tenant.IgnoreTableStrategy;
-import jasmine.mybatis.tenant.TenantConfigProcessorScanBean;
+import jasmine.framework.database.mybatisplus.BaseEntityMetaObjectHandler;
+import jasmine.framework.database.mybatisplus.MybatisPlusInterceptorBuilder;
+import jasmine.framework.database.mybatisplus.crypto.CryptoFieldUtil;
+import jasmine.framework.database.mybatisplus.i18n.DefaultI18nEntityFacade;
+import jasmine.framework.database.mybatisplus.i18n.I18nEntityFacade;
+import jasmine.framework.database.mybatisplus.i18n.I18nEntityUtil;
+import jasmine.framework.database.mybatisplus.tenant.DefaultTenantLineHandler;
+import jasmine.framework.database.mybatisplus.tenant.IgnoreTableStrategy;
+import jasmine.framework.database.mybatisplus.tenant.TenantConfigProcessorScanBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +42,7 @@ public class MybatisPlusTestConfiguration {
         // 拦截器
         factoryBean.setPlugins(mybatisPlusInterceptor());
         // mapper文件路径
-        ClassPathResource mapperLocation = new ClassPathResource("jasmine/mybatis/mapper/DataAuthMapper.xml");
+        ClassPathResource mapperLocation = new ClassPathResource("jasmine/framework/database/mybatisplus/mapper/DataAuthMapper.xml");
         factoryBean.setMapperLocations(mapperLocation);
 
         GlobalConfig globalConfig = GlobalConfigUtils.defaults();

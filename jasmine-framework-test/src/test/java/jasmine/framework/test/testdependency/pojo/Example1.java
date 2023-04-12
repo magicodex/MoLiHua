@@ -2,7 +2,7 @@ package jasmine.framework.test.testdependency.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.mybatis.entity.BaseEntity;
+import jasmine.framework.database.mybatisplus.entity.BaseEntity;
 
 /**
  * @author mh.z

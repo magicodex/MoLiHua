@@ -1,7 +1,7 @@
 package jasmine.demo.config;
 
-import jasmine.mybatis.tenant.IgnoreTableStrategy;
-import jasmine.mybatis.tenant.TenantConfigProcessor;
+import jasmine.framework.database.mybatisplus.tenant.IgnoreTableStrategy;
+import jasmine.framework.database.mybatisplus.tenant.TenantConfigProcessor;
 import org.springframework.context.annotation.Configuration;
 
 /**

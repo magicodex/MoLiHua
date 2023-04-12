@@ -2,9 +2,9 @@ package jasmine.demo.sample.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import jasmine.mybatis.annotation.I18n;
-import jasmine.mybatis.entity.BaseI18nEntity;
-import jasmine.mybatis.crypto.CryptoTypeHandler;
+import jasmine.framework.database.mybatisplus.annotation.I18n;
+import jasmine.framework.database.mybatisplus.entity.BaseI18nEntity;
+import jasmine.framework.database.mybatisplus.crypto.CryptoTypeHandler;
 
 /**
  * @author mh.z
