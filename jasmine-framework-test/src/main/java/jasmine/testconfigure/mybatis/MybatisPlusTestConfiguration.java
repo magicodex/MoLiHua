@@ -42,7 +42,7 @@ public class MybatisPlusTestConfiguration {
         // 拦截器
         factoryBean.setPlugins(mybatisPlusInterceptor());
         // mapper文件路径
-        ClassPathResource mapperLocation = new ClassPathResource("test/framework/mapper/DataAuthMapper.xml");
+        ClassPathResource mapperLocation = new ClassPathResource("jasmine/framework/mapper/DataAuthMapper.xml");
         factoryBean.setMapperLocations(mapperLocation);
 
         GlobalConfig globalConfig = GlobalConfigUtils.defaults();
