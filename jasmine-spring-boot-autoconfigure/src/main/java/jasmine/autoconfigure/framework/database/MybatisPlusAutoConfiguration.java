@@ -1,4 +1,4 @@
-package jasmine.autoconfigure.mybatis;
+package jasmine.autoconfigure.framework.database;
 
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
