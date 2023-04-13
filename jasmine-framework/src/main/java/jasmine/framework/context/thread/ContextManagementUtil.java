@@ -1,9 +1,9 @@
 package jasmine.framework.context.thread;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.ErrorUtil;
-import jasmine.core.util.function.FunctionWithResult;
-import jasmine.core.util.function.FunctionWithoutResult;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.ErrorUtil;
+import jasmine.framework.common.util.function.FunctionWithResult;
+import jasmine.framework.common.util.function.FunctionWithoutResult;
 
 /**
  * <p>

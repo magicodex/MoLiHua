@@ -1,8 +1,8 @@
 package jasmine.demo.sample.service;
 
-import jasmine.core.exception.DataNotFoundException;
-import jasmine.core.util.ErrorUtil;
-import jasmine.core.util.MapperUtil;
+import jasmine.framework.exception.DataNotFoundException;
+import jasmine.framework.common.util.ErrorUtil;
+import jasmine.framework.common.util.MapperUtil;
 import jasmine.demo.sample.dto.SampleCreateDTO;
 import jasmine.demo.sample.dto.SampleDTO;
 import jasmine.demo.sample.dto.SampleUpdateDTO;

@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.tenant;
 
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
-import jasmine.core.context.CurrentSubject;
+import jasmine.framework.context.CurrentSubject;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
 

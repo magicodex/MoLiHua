@@ -1,7 +1,6 @@
 package jasmine.framework.context.impl.thread;
 
-import jasmine.core.util.ref.ObjectValue;
-import jasmine.framework.context.impl.thread.ContextHandlerFacadeBean;
+import jasmine.framework.common.util.ref.ObjectValue;
 import jasmine.framework.context.thread.ContextHandler;
 import jasmine.framework.context.thread.ContextSnapshot;
 import org.junit.After;

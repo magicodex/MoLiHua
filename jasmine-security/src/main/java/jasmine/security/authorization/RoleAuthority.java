@@ -1,6 +1,6 @@
 package jasmine.security.authorization;
 
-import jasmine.core.util.ObjectUtil;
+import jasmine.framework.common.util.ObjectUtil;
 import org.springframework.security.core.GrantedAuthority;
 
 /**

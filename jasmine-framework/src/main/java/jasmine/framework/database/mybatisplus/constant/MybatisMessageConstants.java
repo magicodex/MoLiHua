@@ -1,6 +1,6 @@
 package jasmine.framework.database.mybatisplus.constant;
 
-import jasmine.core.i18n.DeclareI18N;
+import jasmine.framework.i18n.DeclareI18N;
 
 /**
  * @author mh.z

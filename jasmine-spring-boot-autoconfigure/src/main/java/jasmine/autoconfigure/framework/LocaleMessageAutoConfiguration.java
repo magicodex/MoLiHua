@@ -1,7 +1,7 @@
 package jasmine.autoconfigure.framework;
 
-import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.I18nUtil;
+import jasmine.framework.i18n.LocaleMessageProvider;
+import jasmine.framework.common.util.I18nUtil;
 import jasmine.framework.i18n.impl.DefaultLocaleMessageProvider;
 import jasmine.framework.i18n.builder.MessageSourceBuilder;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;

@@ -1,6 +1,6 @@
 package jasmine.framework.testdependency.mockito;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import org.mockito.Mockito;
 
 /**

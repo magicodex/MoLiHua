@@ -1,10 +1,10 @@
 package jasmine.framework.lock.impl.redisson;
 
 
-import jasmine.core.exception.InvalidPropertyException;
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollectionUtil;
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.exception.InvalidPropertyException;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 import org.redisson.api.RLock;

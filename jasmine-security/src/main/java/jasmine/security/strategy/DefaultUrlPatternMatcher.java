@@ -1,8 +1,8 @@
 package jasmine.security.strategy;
 
-import jasmine.core.context.InitSupport;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.context.InitSupport;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.common.util.CheckUtil;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;

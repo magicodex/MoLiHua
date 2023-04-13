@@ -1,6 +1,6 @@
 package jasmine.framework.lock;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 import jasmine.framework.lock.distributed.DistributedLockProvider;

@@ -1,6 +1,6 @@
 package jasmine.testconfigure.security;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.security.strategy.UrlPatternMatcher;
 
 import javax.servlet.http.HttpServletRequest;

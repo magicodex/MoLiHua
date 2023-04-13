@@ -1,6 +1,6 @@
 package jasmine.framework.mq.impl;
 
-import jasmine.core.util.ref.ObjectValue;
+import jasmine.framework.common.util.ref.ObjectValue;
 import jasmine.framework.mq.impl.interceptor.DefaultSendInterceptor;
 import jasmine.framework.mq.impl.interceptor.DefaultSendInvocationInfo;
 import jasmine.framework.mq.interceptor.SendInterceptor;

@@ -1,7 +1,7 @@
 package jasmine.demo.util;
 
-import jasmine.core.util.I18nUtil;
-import jasmine.core.util.NewUtil;
+import jasmine.framework.common.util.I18nUtil;
+import jasmine.framework.common.util.NewUtil;
 
 import java.util.List;
 import java.util.Map;

@@ -1,8 +1,8 @@
 package jasmine.framework.database.mybatisplus.i18n;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.database.mybatisplus.entity.BaseI18nEntity;
 import jasmine.framework.database.mybatisplus.i18n.support.PopulateFunction;
 

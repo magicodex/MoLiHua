@@ -3,7 +3,7 @@ package jasmine.framework.test.liquibase;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.StrUtil;
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.test.liquibase.loader.DefaultTestDataLoader;
 import jasmine.framework.test.liquibase.loader.TestDataLoader;
 import liquibase.change.custom.CustomTaskChange;

@@ -1,6 +1,6 @@
 package jasmine.framework.lock.annotation.handler;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.lock.DistributedLockUtil;
 import jasmine.framework.lock.annotation.DistributedLock;
 import org.aspectj.lang.ProceedingJoinPoint;

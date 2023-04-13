@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.dao;
 
-import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.I18nUtil;
+import jasmine.framework.i18n.LocaleMessageProvider;
+import jasmine.framework.common.util.I18nUtil;
 import jasmine.framework.database.mybatisplus.i18n.support.I18nCrud;
 import jasmine.framework.database.mybatisplus.i18n.support.I18nMeta;
 import jasmine.framework.database.mybatisplus.i18n.support.I18nRecord;

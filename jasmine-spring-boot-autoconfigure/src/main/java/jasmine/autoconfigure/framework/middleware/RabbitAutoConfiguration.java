@@ -1,6 +1,6 @@
 package jasmine.autoconfigure.framework.middleware;
 
-import jasmine.core.context.RuntimeProvider;
+import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.mq.ReceiveMessageService;
 import jasmine.framework.mq.SendMessageService;
 import jasmine.framework.mq.impl.DefaultReceiveMessageService;

@@ -1,7 +1,7 @@
 package jasmine.framework.mq.testdependency;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.NewUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.mq.interceptor.SendInterceptor;
 import jasmine.framework.mq.interceptor.SendInvocation;
 import jasmine.framework.mq.interceptor.SendInvocationInfo;

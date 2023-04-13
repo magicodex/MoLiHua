@@ -5,7 +5,7 @@ import cn.hutool.crypto.Padding;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.crypto.symmetric.AES;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.StringUtil;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

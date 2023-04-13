@@ -1,6 +1,6 @@
 package jasmine.framework.mq.impl;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.context.thread.ContextManagementUtil;
 import jasmine.framework.mq.impl.interceptor.DefaultReceiveInterceptor;
 import jasmine.framework.mq.ReceiveMessageService;

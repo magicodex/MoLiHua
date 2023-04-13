@@ -1,7 +1,7 @@
 package jasmine.autoconfigure.framework;
 
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.SpringUtil;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.common.util.SpringUtil;
 import jasmine.framework.cache.integration.RequestScopeCacheContextHandler;
 import jasmine.framework.context.thread.ContextManagementUtil;
 import jasmine.framework.context.init.CustomInitializingSingletonScanBean;

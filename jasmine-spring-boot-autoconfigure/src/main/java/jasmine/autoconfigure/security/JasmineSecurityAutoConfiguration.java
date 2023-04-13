@@ -1,6 +1,6 @@
 package jasmine.autoconfigure.security;
 
-import jasmine.core.context.CurrentSubject;
+import jasmine.framework.context.CurrentSubject;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;

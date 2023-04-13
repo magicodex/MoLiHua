@@ -1,9 +1,8 @@
 package jasmine.framework.context.init;
 
-import jasmine.core.context.InitSupport;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.ref.ObjectValue;
-import jasmine.framework.context.init.InitSupportScanBean;
+import jasmine.framework.context.InitSupport;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.common.util.ref.ObjectValue;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;

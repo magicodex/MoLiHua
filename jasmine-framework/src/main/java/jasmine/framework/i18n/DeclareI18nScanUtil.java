@@ -1,10 +1,8 @@
 package jasmine.framework.i18n;
 
 
-import jasmine.core.i18n.DeclareI18N;
-import jasmine.core.i18n.I18nConstants;
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.type.ClassMetadata;

@@ -1,6 +1,6 @@
 package jasmine.mock.core.context;
 
-import jasmine.core.context.SubjectProvider;
+import jasmine.framework.context.SubjectProvider;
 
 /**
  * @author mh.z

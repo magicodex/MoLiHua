@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.tenant;
 
-import jasmine.core.util.CollectionUtil;
-import jasmine.core.context.CustomInitializingSingleton;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.context.CustomInitializingSingleton;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

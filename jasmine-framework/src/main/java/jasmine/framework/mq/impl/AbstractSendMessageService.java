@@ -1,6 +1,6 @@
 package jasmine.framework.mq.impl;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.mq.impl.interceptor.DefaultSendInterceptor;
 import jasmine.framework.mq.SendMessageService;
 import jasmine.framework.mq.interceptor.SendInterceptor;

@@ -1,6 +1,6 @@
 package jasmine.framework.database.integration;
 
-import jasmine.core.util.MapperUtil;
+import jasmine.framework.common.util.MapperUtil;
 import jasmine.framework.context.thread.ContextHandler;
 import jasmine.framework.context.thread.ContextSnapshot;
 import jasmine.framework.database.datasource.DataSourceContext;

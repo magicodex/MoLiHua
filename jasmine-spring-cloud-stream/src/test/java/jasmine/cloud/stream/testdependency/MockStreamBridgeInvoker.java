@@ -3,7 +3,7 @@ package jasmine.cloud.stream.testdependency;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import jasmine.cloud.stream.mq.sender.StreamBridgeInvoker;
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 
 import java.util.Collection;
 

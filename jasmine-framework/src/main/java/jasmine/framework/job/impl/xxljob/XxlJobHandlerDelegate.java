@@ -1,9 +1,9 @@
 package jasmine.framework.job.impl.xxljob;
 
 import com.xxl.job.core.handler.IJobHandler;
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.ObjectUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.common.util.ObjectUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.framework.context.thread.ContextManagementUtil;
 import jasmine.framework.job.JobExecutor;
 

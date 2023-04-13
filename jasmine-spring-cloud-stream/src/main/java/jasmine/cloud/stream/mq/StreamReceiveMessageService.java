@@ -1,11 +1,11 @@
 package jasmine.cloud.stream.mq;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.exception.InvalidParameterException;
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.ObjectUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.exception.InvalidParameterException;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.ObjectUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.framework.mq.MessageReceiver;
 import jasmine.framework.mq.impl.AbstractReceiveMessageService;
 import jasmine.framework.mq.impl.interceptor.DefaultReceiveInvocationInfo;

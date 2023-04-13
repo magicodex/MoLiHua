@@ -1,7 +1,6 @@
 package jasmine.framework.common.util;
 
 import cn.hutool.core.lang.Pair;
-import jasmine.core.util.StringUtil;
 import jasmine.framework.testdependency.pojo.Example1;
 import org.junit.Assert;
 import org.junit.Test;

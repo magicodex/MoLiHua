@@ -1,7 +1,7 @@
 package jasmine.mock.core.context;
 
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.common.util.CheckUtil;
 
 import java.util.Map;
 

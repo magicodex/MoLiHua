@@ -1,8 +1,8 @@
 package jasmine.framework.job.impl.xxljob;
 
 import com.xxl.job.core.context.XxlJobHelper;
-import jasmine.core.util.NewUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.NewUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.framework.job.JobCurrent;
 
 import java.util.Collections;

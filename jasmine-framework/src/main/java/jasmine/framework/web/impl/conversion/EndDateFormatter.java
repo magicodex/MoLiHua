@@ -1,6 +1,6 @@
 package jasmine.framework.web.impl.conversion;
 
-import jasmine.core.util.DateUtil;
+import jasmine.framework.common.util.DateUtil;
 import jasmine.framework.web.annotation.conversion.EndDate;
 import org.springframework.format.Formatter;
 

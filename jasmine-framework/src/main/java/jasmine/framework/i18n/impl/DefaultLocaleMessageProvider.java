@@ -1,8 +1,8 @@
 package jasmine.framework.i18n.impl;
 
-import jasmine.core.i18n.I18nConstants;
-import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.i18n.I18nConstants;
+import jasmine.framework.i18n.LocaleMessageProvider;
+import jasmine.framework.common.util.CheckUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 

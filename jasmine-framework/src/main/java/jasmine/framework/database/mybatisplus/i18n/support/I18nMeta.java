@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.i18n.support;
 
 import cn.hutool.core.util.ReflectUtil;
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.database.mybatisplus.entity.BaseI18nEntity;
 import jasmine.framework.database.mybatisplus.util.MybatisPlusColumnMapping;
 import jasmine.framework.database.mybatisplus.annotation.I18n;

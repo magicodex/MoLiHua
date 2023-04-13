@@ -1,7 +1,7 @@
 package jasmine.framework.cache.impl.redis;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.framework.cache.strategy.CacheExpirationStrategy;
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.strategy.CacheSyncStrategy;

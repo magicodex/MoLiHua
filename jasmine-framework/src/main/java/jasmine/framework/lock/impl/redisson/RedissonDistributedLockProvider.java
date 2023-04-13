@@ -1,8 +1,8 @@
 package jasmine.framework.lock.impl.redisson;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.NewUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.NewUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import org.redisson.api.RedissonClient;

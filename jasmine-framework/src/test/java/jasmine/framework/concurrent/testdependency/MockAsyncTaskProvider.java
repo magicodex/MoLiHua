@@ -1,8 +1,8 @@
 package jasmine.framework.concurrent.testdependency;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollectionUtil;
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 
 import java.util.Collection;

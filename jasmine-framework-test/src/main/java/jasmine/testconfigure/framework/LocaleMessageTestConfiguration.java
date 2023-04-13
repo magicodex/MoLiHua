@@ -1,7 +1,7 @@
 package jasmine.testconfigure.framework;
 
-import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.I18nUtil;
+import jasmine.framework.i18n.LocaleMessageProvider;
+import jasmine.framework.common.util.I18nUtil;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

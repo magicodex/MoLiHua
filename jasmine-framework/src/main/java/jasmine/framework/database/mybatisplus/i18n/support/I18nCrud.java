@@ -1,12 +1,12 @@
 package jasmine.framework.database.mybatisplus.i18n.support;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.exception.ApplicationException;
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollectionUtil;
-import jasmine.core.util.NewUtil;
-import jasmine.core.util.batch.BatchCallUtil;
-import jasmine.core.util.ref.LongValue;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.exception.ApplicationException;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.NewUtil;
+import jasmine.framework.common.util.batch.BatchCallUtil;
+import jasmine.framework.common.util.ref.LongValue;
 import jasmine.framework.database.mybatisplus.constant.MybatisMessageConstants;
 import jasmine.framework.database.mybatisplus.constant.MybatisConstants;
 import org.apache.ibatis.session.SqlSession;

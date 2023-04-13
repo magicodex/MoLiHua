@@ -1,7 +1,7 @@
 package jasmine.mock.core.context;
 
-import jasmine.core.i18n.I18nConstants;
-import jasmine.core.i18n.LocaleMessageProvider;
+import jasmine.framework.i18n.I18nConstants;
+import jasmine.framework.i18n.LocaleMessageProvider;
 
 import java.util.HashMap;
 import java.util.Locale;

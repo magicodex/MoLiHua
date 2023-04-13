@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.i18n;
 
-import jasmine.core.constant.LangConstants;
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.common.constant.LangConstants;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.database.mybatisplus.i18n.support.I18nCrud;
 import jasmine.framework.database.mybatisplus.i18n.support.I18nMeta;
 import jasmine.framework.database.mybatisplus.i18n.support.I18nRecord;

@@ -1,9 +1,9 @@
 package jasmine.framework.context.init;
 
-import jasmine.core.context.CustomInitializingSingleton;
-import jasmine.core.context.InitSupport;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.context.CustomInitializingSingleton;
+import jasmine.framework.context.InitSupport;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.common.util.CollectionUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

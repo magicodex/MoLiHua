@@ -1,6 +1,6 @@
 package jasmine.framework.database.mybatisplus.i18n.support;
 
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.database.mybatisplus.testdependency.context.MybatisTestContext;
 import org.junit.Assert;
 import org.junit.Test;

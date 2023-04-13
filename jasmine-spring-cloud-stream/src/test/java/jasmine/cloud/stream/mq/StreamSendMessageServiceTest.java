@@ -2,7 +2,7 @@ package jasmine.cloud.stream.mq;
 
 import jasmine.cloud.stream.testdependency.MockSendInterceptor;
 import jasmine.cloud.stream.testdependency.MockStreamBridgeInvoker;
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.mq.interceptor.SendInvocationInfo;
 import jasmine.framework.test.context.AppTestContext;
 import org.junit.Assert;

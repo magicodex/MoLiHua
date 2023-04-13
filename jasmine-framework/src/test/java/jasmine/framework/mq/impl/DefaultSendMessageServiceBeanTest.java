@@ -1,8 +1,8 @@
 package jasmine.framework.mq.impl;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.SubjectProvider;
-import jasmine.core.util.ref.ObjectValue;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.SubjectProvider;
+import jasmine.framework.common.util.ref.ObjectValue;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.mq.impl.routing.PublisherExchangeDirectRouting;
 import jasmine.framework.mq.routing.PublisherExchangeRouting;

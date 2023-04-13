@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
-import jasmine.core.context.CurrentSubject;
+import jasmine.framework.context.CurrentSubject;
 import jasmine.framework.database.mybatisplus.crypto.CryptoProvider;
 import jasmine.framework.context.impl.FixedSubjectProvider;
 import jasmine.framework.database.mybatisplus.BaseEntityMetaObjectHandler;

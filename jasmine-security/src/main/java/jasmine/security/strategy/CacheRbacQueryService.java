@@ -1,6 +1,6 @@
 package jasmine.security.strategy;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.cache.CacheUtil;
 import jasmine.security.constant.SecurityCaches;
 import jasmine.security.rbac.dao.SecFunctionDAO;

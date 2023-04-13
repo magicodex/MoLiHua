@@ -1,6 +1,6 @@
 package jasmine.cloud.stream.testdependency;
 
-import jasmine.core.util.NewUtil;
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.mq.MessageReceiver;
 
 import java.util.List;

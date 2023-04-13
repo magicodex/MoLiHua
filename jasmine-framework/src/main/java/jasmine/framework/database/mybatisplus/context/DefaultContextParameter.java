@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.context;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.I18nUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.common.util.I18nUtil;
 
 /**
  * @author mh.z

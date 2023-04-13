@@ -1,13 +1,13 @@
 package jasmine.framework.mq.impl;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.exception.InvalidParameterException;
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.NewUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.exception.InvalidParameterException;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.NewUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.database.mybatisplus.util.UniqueKeyUtil;
-import jasmine.core.context.CustomInitializingSingleton;
+import jasmine.framework.context.CustomInitializingSingleton;
 import jasmine.framework.mq.impl.interceptor.DefaultSendInvocationInfo;
 import jasmine.framework.mq.impl.routing.PublisherExchangeDirectRouting;
 import jasmine.framework.mq.interceptor.SendInterceptor;

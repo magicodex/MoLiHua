@@ -1,6 +1,6 @@
 package jasmine.security.rbac.dao;
 
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.test.context.AppTestContext;
 import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.model.SecResource;

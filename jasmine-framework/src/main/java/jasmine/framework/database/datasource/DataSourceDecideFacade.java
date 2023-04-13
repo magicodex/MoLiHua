@@ -1,6 +1,6 @@
 package jasmine.framework.database.datasource;
 
-import jasmine.core.util.function.FunctionWithResult;
+import jasmine.framework.common.util.function.FunctionWithResult;
 
 /**
  * @author mh.z

@@ -1,6 +1,6 @@
 package jasmine.framework.lock.testdependency;
 
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 

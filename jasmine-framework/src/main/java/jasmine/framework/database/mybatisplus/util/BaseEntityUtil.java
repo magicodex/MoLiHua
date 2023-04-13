@@ -1,9 +1,9 @@
 package jasmine.framework.database.mybatisplus.util;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollectionUtil;
-import jasmine.core.util.I18nUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.I18nUtil;
 import jasmine.framework.database.mybatisplus.entity.BaseEntity;
 import jasmine.framework.database.mybatisplus.entity.BaseI18nEntity;
 

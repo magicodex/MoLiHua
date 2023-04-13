@@ -1,6 +1,6 @@
 package jasmine.autoconfigure.security.oauth2;
 
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

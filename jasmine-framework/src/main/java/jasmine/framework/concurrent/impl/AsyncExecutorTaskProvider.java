@@ -1,7 +1,7 @@
 package jasmine.framework.concurrent.impl;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 
 import java.util.ArrayList;

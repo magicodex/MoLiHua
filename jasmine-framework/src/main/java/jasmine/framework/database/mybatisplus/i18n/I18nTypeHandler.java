@@ -1,6 +1,6 @@
 package jasmine.framework.database.mybatisplus.i18n;
 
-import jasmine.core.constant.NumberConstants;
+import jasmine.framework.common.constant.NumberConstants;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 

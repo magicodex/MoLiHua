@@ -1,6 +1,6 @@
 package jasmine.framework.cache;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

@@ -1,8 +1,8 @@
 package jasmine.security.strategy;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollectionUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.security.constant.SecurityConstants;
 import jasmine.security.rbac.dao.SecFunctionDAO;
 import jasmine.security.rbac.dao.SecResourceDAO;

@@ -1,6 +1,6 @@
 package jasmine.framework.concurrent;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 
 import java.util.Collection;
 import java.util.List;

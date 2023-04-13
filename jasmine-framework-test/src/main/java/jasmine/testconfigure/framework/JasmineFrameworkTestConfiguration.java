@@ -1,9 +1,9 @@
 package jasmine.testconfigure.framework;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.context.SubjectProvider;
-import jasmine.core.util.SpringUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.context.SubjectProvider;
+import jasmine.framework.common.util.SpringUtil;
 import jasmine.framework.context.init.CustomInitializingSingletonScanBean;
 import jasmine.framework.context.init.InitSupportScanBean;
 import jasmine.framework.context.impl.SpringRuntimeProvider;

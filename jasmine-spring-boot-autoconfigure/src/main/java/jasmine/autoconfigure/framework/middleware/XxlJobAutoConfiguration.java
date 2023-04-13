@@ -2,7 +2,7 @@ package jasmine.autoconfigure.framework.middleware;
 
 import com.xxl.job.core.executor.XxlJobExecutor;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
-import jasmine.core.context.CustomInitializingSingleton;
+import jasmine.framework.context.CustomInitializingSingleton;
 import jasmine.framework.job.JobExecutor;
 import jasmine.framework.job.impl.xxljob.XxlJobHandlerDelegate;
 import org.slf4j.Logger;

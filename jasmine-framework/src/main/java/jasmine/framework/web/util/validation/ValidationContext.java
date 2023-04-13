@@ -1,6 +1,6 @@
 package jasmine.framework.web.util.validation;
 
-import jasmine.core.util.NewUtil;
+import jasmine.framework.common.util.NewUtil;
 import org.springframework.validation.AbstractBindingResult;
 
 import java.util.Map;

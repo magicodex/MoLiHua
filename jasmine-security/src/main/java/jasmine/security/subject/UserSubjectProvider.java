@@ -1,6 +1,6 @@
 package jasmine.security.subject;
 
-import jasmine.core.context.SubjectProvider;
+import jasmine.framework.context.SubjectProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;

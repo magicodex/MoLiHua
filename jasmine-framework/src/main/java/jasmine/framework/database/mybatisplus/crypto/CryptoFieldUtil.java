@@ -1,6 +1,6 @@
 package jasmine.framework.database.mybatisplus.crypto;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 
 /**
  * @author mh.z

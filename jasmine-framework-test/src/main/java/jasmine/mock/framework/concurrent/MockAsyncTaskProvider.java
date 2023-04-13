@@ -1,7 +1,7 @@
 package jasmine.mock.framework.concurrent;
 
-import jasmine.core.util.CollectionUtil;
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.concurrent.AsyncTaskProvider;
 
 import java.util.Collection;

@@ -1,6 +1,6 @@
 package jasmine.framework.database.annotation.handler;
 
-import jasmine.core.util.ErrorUtil;
+import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.database.annotation.ReadOnly;
 import jasmine.framework.database.datasource.DataSourceDecideFacade;
 import org.aspectj.lang.ProceedingJoinPoint;

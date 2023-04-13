@@ -3,7 +3,7 @@ package jasmine.cloud.stream.autoconfigure;
 import jasmine.cloud.stream.mq.StreamReceiveMessageService;
 import jasmine.cloud.stream.mq.StreamSendMessageService;
 import jasmine.cloud.stream.mq.sender.DefaultStreamBridgeInvoker;
-import jasmine.core.context.RuntimeProvider;
+import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.mq.ReceiveMessageService;
 import jasmine.framework.mq.SendMessageService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

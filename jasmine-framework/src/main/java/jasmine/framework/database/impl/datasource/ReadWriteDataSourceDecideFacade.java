@@ -1,7 +1,7 @@
 package jasmine.framework.database.impl.datasource;
 
-import jasmine.core.util.ErrorUtil;
-import jasmine.core.util.function.FunctionWithResult;
+import jasmine.framework.common.util.ErrorUtil;
+import jasmine.framework.common.util.function.FunctionWithResult;
 import jasmine.framework.database.datasource.DataSourceContext;
 import jasmine.framework.database.datasource.DataSourceDecideFacade;
 import jasmine.framework.database.datasource.DataSourceContextHolder;

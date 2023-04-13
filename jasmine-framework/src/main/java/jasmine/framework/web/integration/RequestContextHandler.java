@@ -1,6 +1,6 @@
 package jasmine.framework.web.integration;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.context.thread.ContextHandler;
 import jasmine.framework.context.thread.ContextSnapshot;
 import org.springframework.web.context.request.RequestAttributes;

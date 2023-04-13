@@ -1,6 +1,6 @@
 package jasmine.security.strategy;
 
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.security.rbac.dto.SecResourceBaseInfoDTO;
 import jasmine.security.rbac.model.SecResource;
 import org.slf4j.Logger;

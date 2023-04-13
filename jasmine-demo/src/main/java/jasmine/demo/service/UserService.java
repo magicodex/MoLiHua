@@ -1,8 +1,8 @@
 package jasmine.demo.service;
 
-import jasmine.core.context.InitSupport;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.context.InitSupport;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.demo.entity.User;
 import jasmine.demo.mapper.UserMapper;
 import jasmine.security.authorization.RoleAuthority;

@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerIntercep
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
-import jasmine.core.util.CheckUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.database.mybatisplus.context.ContextParameter;
 import jasmine.framework.database.mybatisplus.context.ContextParameterInnerInterceptor;
 import jasmine.framework.database.mybatisplus.context.DefaultContextParameter;

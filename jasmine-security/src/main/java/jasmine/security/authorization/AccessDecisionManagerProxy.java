@@ -1,6 +1,6 @@
 package jasmine.security.authorization;
 
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDecisionManager;

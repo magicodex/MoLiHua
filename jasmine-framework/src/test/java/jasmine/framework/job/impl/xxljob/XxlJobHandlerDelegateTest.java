@@ -1,9 +1,9 @@
 package jasmine.framework.job.impl.xxljob;
 
 import com.xxl.job.core.context.XxlJobContext;
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.SubjectProvider;
-import jasmine.core.util.ref.ObjectValue;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.SubjectProvider;
+import jasmine.framework.common.util.ref.ObjectValue;
 import jasmine.framework.context.thread.ContextManagementUtil;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.job.JobCurrent;

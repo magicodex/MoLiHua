@@ -1,6 +1,6 @@
 package jasmine.framework.mq.impl;
 
-import jasmine.core.util.ref.ObjectValue;
+import jasmine.framework.common.util.ref.ObjectValue;
 import jasmine.framework.context.thread.ContextManagementUtil;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.mq.impl.interceptor.DefaultReceiveInterceptor;

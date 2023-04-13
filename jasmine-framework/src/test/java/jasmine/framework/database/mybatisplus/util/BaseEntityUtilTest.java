@@ -1,9 +1,9 @@
 package jasmine.framework.database.mybatisplus.util;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.SubjectProvider;
-import jasmine.core.i18n.LocaleMessageProvider;
-import jasmine.core.util.I18nUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.SubjectProvider;
+import jasmine.framework.i18n.LocaleMessageProvider;
+import jasmine.framework.common.util.I18nUtil;
 import jasmine.framework.database.mybatisplus.testdependency.entity.TestEntity1;
 import jasmine.framework.testdependency.mock.MockLocaleMessageProvider;
 import jasmine.framework.testdependency.mock.MockSubjectProvider;

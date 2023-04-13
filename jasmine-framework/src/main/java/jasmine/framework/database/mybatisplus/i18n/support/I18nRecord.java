@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.i18n.support;
 
-import jasmine.core.util.ObjectUtil;
-import jasmine.core.util.StringUtil;
+import jasmine.framework.common.util.ObjectUtil;
+import jasmine.framework.common.util.StringUtil;
 
 import java.util.HashMap;
 import java.util.Map;

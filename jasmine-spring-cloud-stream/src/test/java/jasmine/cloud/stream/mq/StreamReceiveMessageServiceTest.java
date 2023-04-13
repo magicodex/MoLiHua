@@ -2,9 +2,9 @@ package jasmine.cloud.stream.mq;
 
 import jasmine.cloud.stream.testdependency.MockMessageReceiver;
 import jasmine.cloud.stream.testdependency.MockReceiveInterceptor;
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.mq.MessageReceiver;
 import jasmine.framework.mq.interceptor.ReceiveInvocationInfo;
 import jasmine.framework.test.context.AppTestContext;

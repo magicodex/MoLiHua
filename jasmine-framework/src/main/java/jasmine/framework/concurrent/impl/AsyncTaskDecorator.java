@@ -1,7 +1,7 @@
 package jasmine.framework.concurrent.impl;
 
-import jasmine.core.util.CheckUtil;
-import jasmine.core.util.CollectionUtil;
+import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.context.thread.ContextSnapshot;
 import org.springframework.core.task.TaskDecorator;

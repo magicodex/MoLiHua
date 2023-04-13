@@ -1,8 +1,8 @@
 package jasmine.framework.mq.impl;
 
-import jasmine.core.context.CurrentSubject;
-import jasmine.core.context.RuntimeProvider;
-import jasmine.core.context.SubjectProvider;
+import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.RuntimeProvider;
+import jasmine.framework.context.SubjectProvider;
 import jasmine.framework.common.util.SimpleConvertUtil;
 import jasmine.framework.mq.MessageReceiver;
 import jasmine.framework.mq.interceptor.ReceiveInvocationInfo;

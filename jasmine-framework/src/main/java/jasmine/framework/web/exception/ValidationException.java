@@ -1,6 +1,6 @@
 package jasmine.framework.web.exception;
 
-import jasmine.core.exception.ApplicationException;
+import jasmine.framework.exception.ApplicationException;
 import org.springframework.validation.ObjectError;
 
 import java.util.Collection;

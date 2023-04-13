@@ -1,6 +1,6 @@
 package jasmine.framework.test.context;
 
-import jasmine.core.context.CurrentSubject;
+import jasmine.framework.context.CurrentSubject;
 import org.junit.Before;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,6 @@
 package jasmine.framework.lock.impl.redisson;
 
-import jasmine.core.util.ErrorUtil;
-import jasmine.framework.lock.impl.redisson.RedissonDistributedDeclaredLock;
+import jasmine.framework.common.util.ErrorUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
