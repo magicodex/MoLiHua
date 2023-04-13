@@ -11,7 +11,7 @@
 
 ### 单元测试覆盖率(2023.3.13)
 
-![单元测试覆盖率](https://s3.bmp.ovh/imgs/2023/03/13/4009f43aecd907cc.png "单元测试覆盖率")
+![单元测试覆盖率](https://github.com/magicodex/MoLiHua/blob/main/doc/images/jacoco-code-coverage-report.png "单元测试覆盖率")
 
 ## 使用说明
 
@@ -74,7 +74,7 @@
 |     jasmine-spring-cloud-stream      | 整合Spring Cloud Stream |
 |             jasmine-demo             | DEMO示例                |
 
-![模块划分](https://s3.bmp.ovh/imgs/2023/03/13/9e2defcb591869cf.png "模块划分")
+![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "模块划分")
 
 ## 开源协议
 
