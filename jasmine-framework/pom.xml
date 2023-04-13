@@ -29,40 +29,40 @@
 
     <!-- 除了必要的依赖外，其它都是可选依赖 -->
 
-    <!-- 文档注解 -->
-    <dependency>
-        <groupId>com.google.code.findbugs</groupId>
-        <artifactId>jsr305</artifactId>
-        <scope>compile</scope>
-    </dependency>
-
-    <!-- 工具类库 -->
-    <dependency>
-        <groupId>cn.hutool</groupId>
-        <artifactId>hutool-all</artifactId>
-        <scope>compile</scope>
-    </dependency>
-
-    <!-- JSON库 -->
-    <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.fasterxml.jackson.datatype</groupId>
-        <artifactId>jackson-datatype-jsr310</artifactId>
-        <scope>compile</scope>
-    </dependency>
-
-    <!-- Bean映射框架 -->
-    <dependency>
-        <groupId>ma.glasnost.orika</groupId>
-        <artifactId>orika-core</artifactId>
-        <scope>compile</scope>
-    </dependency>
-
     <dependencies>
+        <!-- 文档注解 -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- 工具类库 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- JSON库 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Bean映射框架 -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- AOP框架 -->
         <dependency>
             <groupId>org.aspectj</groupId>
