@@ -9,7 +9,7 @@ import jasmine.framework.mq.routing.PublisherExchangeRouting;
 import jasmine.framework.mq.routing.PublisherRouting;
 import jasmine.framework.mq.interceptor.SendInvocationInfo;
 import jasmine.framework.mq.testdependency.MockSendInterceptor;
-import jasmine.mock.core.context.MockSubjectProvider;
+import jasmine.framework.testdependency.mock.MockSubjectProvider;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

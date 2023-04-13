@@ -9,7 +9,7 @@ import jasmine.framework.database.mybatisplus.testdependency.context.MybatisTest
 import jasmine.framework.database.mybatisplus.testdependency.dao.TestEntity1DAO;
 import jasmine.framework.database.mybatisplus.testdependency.entity.TestEntity1;
 import jasmine.framework.database.mybatisplus.testdependency.mapper.TestEntity1Mapper;
-import jasmine.mock.core.context.MockLocaleMessageProvider;
+import jasmine.framework.testdependency.mock.MockLocaleMessageProvider;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

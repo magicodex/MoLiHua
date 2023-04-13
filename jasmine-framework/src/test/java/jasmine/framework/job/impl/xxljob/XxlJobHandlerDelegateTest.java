@@ -8,7 +8,7 @@ import jasmine.framework.context.thread.ContextManagementUtil;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.job.JobCurrent;
 import jasmine.framework.job.JobExecutor;
-import jasmine.mock.core.context.MockSubjectProvider;
+import jasmine.framework.testdependency.mock.MockSubjectProvider;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

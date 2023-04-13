@@ -2,8 +2,8 @@ package jasmine.framework.testdependency.context;
 
 import jasmine.core.context.CurrentSubject;
 import jasmine.core.util.I18nUtil;
-import jasmine.mock.core.context.MockLocaleMessageProvider;
-import jasmine.mock.core.context.MockSubjectProvider;
+import jasmine.framework.testdependency.mock.MockLocaleMessageProvider;
+import jasmine.framework.testdependency.mock.MockSubjectProvider;
 import org.junit.Before;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
