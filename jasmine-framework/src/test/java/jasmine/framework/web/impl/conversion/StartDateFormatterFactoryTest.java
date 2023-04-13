@@ -1,7 +1,6 @@
 package jasmine.framework.web.impl.conversion;
 
 import jasmine.framework.web.annotation.conversion.StartDate;
-import jasmine.framework.testdependency.mockito.MockUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -17,9 +16,8 @@ public class StartDateFormatterFactoryTest {
 
     @Test
     public void testGetPrinter() {
-        StartDate startDate = MockUtil.mock(StartDate.class, (target) -> {
-            Mockito.when(target.value()).thenReturn("");
-        });
+        StartDate startDate = Mockito.mock(StartDate.class);
+        Mockito.when(startDate.value()).thenReturn("");
 
         StartDateFormatterFactory factory = new StartDateFormatterFactory();
         Printer actual = factory.getPrinter(startDate, ZonedDateTime.class);
@@ -30,9 +28,8 @@ public class StartDateFormatterFactoryTest {
 
     @Test
     public void testGetParser() {
-        StartDate startDate = MockUtil.mock(StartDate.class, (target) -> {
-            Mockito.when(target.value()).thenReturn("");
-        });
+        StartDate startDate = Mockito.mock(StartDate.class);
+        Mockito.when(startDate.value()).thenReturn("");
 
         StartDateFormatterFactory factory = new StartDateFormatterFactory();
         Parser actual = factory.getParser(startDate, ZonedDateTime.class);

@@ -1,7 +1,6 @@
 package jasmine.framework.web.impl.conversion;
 
 import jasmine.framework.web.annotation.conversion.EndDate;
-import jasmine.framework.testdependency.mockito.MockUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -17,9 +16,8 @@ public class EndDateFormatterFactoryTest {
 
     @Test
     public void testGetPrinter() {
-        EndDate endDate = MockUtil.mock(EndDate.class, (target) -> {
-            Mockito.when(target.value()).thenReturn("");
-        });
+        EndDate endDate = Mockito.mock(EndDate.class);
+        Mockito.when(endDate.value()).thenReturn("");
 
         EndDateFormatterFactory factory = new EndDateFormatterFactory();
         Printer actual = factory.getPrinter(endDate, ZonedDateTime.class);
@@ -30,9 +28,8 @@ public class EndDateFormatterFactoryTest {
 
     @Test
     public void testGetParser() {
-        EndDate endDate = MockUtil.mock(EndDate.class, (target) -> {
-            Mockito.when(target.value()).thenReturn("");
-        });
+        EndDate endDate = Mockito.mock(EndDate.class);
+        Mockito.when(endDate.value()).thenReturn("");
 
         EndDateFormatterFactory factory = new EndDateFormatterFactory();
         Parser actual = factory.getParser(endDate, ZonedDateTime.class);

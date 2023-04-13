@@ -42,12 +42,12 @@ public class SimpleConvertUtilTest {
 
         // 对象
         {
-            String jsonText = "{\"attribute1\":\"value1\"}";
+            String jsonText = "{\"string1\":\"value1\"}";
             byte[] bytes = StringUtil.bytes(jsonText);
             Example1 actual = SimpleConvertUtil.deserialize(bytes, Example1.class);
 
             Assert.assertNotNull(actual);
-            Assert.assertEquals("value1", actual.getAttribute1());
+            Assert.assertEquals("value1", actual.getString1());
         }
     }
 

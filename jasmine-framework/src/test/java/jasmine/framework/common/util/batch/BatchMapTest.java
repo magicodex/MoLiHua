@@ -1,6 +1,6 @@
 package jasmine.framework.common.util.batch;
 
-import jasmine.framework.testdependency.Example1;
+import jasmine.framework.testdependency.pojo.Example1;
 import jasmine.framework.common.util.CollectionUtil;
 import org.junit.Assert;
 import org.junit.Test;

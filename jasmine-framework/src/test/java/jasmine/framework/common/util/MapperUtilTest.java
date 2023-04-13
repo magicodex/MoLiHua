@@ -1,7 +1,7 @@
 package jasmine.framework.common.util;
 
-import jasmine.framework.testdependency.Example1;
-import jasmine.framework.testdependency.Example2;
+import jasmine.framework.testdependency.pojo.Example1;
+import jasmine.framework.testdependency.pojo.Example2;
 import org.junit.Assert;
 import org.junit.Test;
 

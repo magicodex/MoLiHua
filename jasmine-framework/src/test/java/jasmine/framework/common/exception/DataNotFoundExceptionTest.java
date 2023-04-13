@@ -1,6 +1,6 @@
 package jasmine.framework.common.exception;
 
-import jasmine.framework.testdependency.Example1;
+import jasmine.framework.testdependency.pojo.Example1;
 import org.junit.Assert;
 import org.junit.Test;
 

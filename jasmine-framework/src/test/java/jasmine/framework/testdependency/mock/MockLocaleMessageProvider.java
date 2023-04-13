@@ -3,6 +3,7 @@ package jasmine.framework.testdependency.mock;
 import jasmine.framework.i18n.I18nConstants;
 import jasmine.framework.i18n.LocaleMessageProvider;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class MockLocaleMessageProvider implements LocaleMessageProvider {
             message = messages.get(messageKey);
 
             if (message != null && args.length > 0) {
-                message = String.format(message, args);
+                message = MessageFormat.format(message, args);
             }
         }
 
