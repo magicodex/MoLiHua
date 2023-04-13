@@ -1,7 +1,7 @@
 package jasmine.framework.database.mybatisplus.i18n.support;
 
 import jasmine.framework.context.CurrentSubject;
-import jasmine.framework.exception.ApplicationException;
+import jasmine.framework.common.exception.ApplicationException;
 import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.common.util.NewUtil;

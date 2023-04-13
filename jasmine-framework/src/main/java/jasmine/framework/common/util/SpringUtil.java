@@ -1,7 +1,7 @@
 package jasmine.framework.common.util;
 
 import jasmine.framework.context.RuntimeProvider;
-import jasmine.framework.exception.InvalidPropertyException;
+import jasmine.framework.common.exception.InvalidPropertyException;
 
 /**
  * <p>

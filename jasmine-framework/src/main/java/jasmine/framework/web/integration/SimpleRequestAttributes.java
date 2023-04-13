@@ -1,6 +1,6 @@
 package jasmine.framework.web.integration;
 
-import jasmine.framework.exception.InvalidParameterException;
+import jasmine.framework.common.exception.InvalidParameterException;
 import org.springframework.web.context.request.RequestAttributes;
 
 import java.util.Collection;

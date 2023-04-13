@@ -1,7 +1,7 @@
 package jasmine.framework.common.util;
 
-import jasmine.framework.exception.InvalidPropertyException;
-import jasmine.framework.exception.UnexpectedException;
+import jasmine.framework.common.exception.InvalidPropertyException;
+import jasmine.framework.common.exception.UnexpectedException;
 import org.junit.Assert;
 import org.junit.Test;
 

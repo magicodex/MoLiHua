@@ -1,4 +1,4 @@
-package jasmine.framework.exception;
+package jasmine.framework.common.exception;
 
 import jasmine.framework.i18n.I18nConstants;
 import jasmine.framework.common.util.I18nUtil;

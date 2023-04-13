@@ -1,7 +1,7 @@
 package jasmine.framework.mq.impl;
 
 import jasmine.framework.context.CurrentSubject;
-import jasmine.framework.exception.InvalidParameterException;
+import jasmine.framework.common.exception.InvalidParameterException;
 import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.common.util.StringUtil;

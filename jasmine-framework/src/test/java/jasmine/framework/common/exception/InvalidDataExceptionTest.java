@@ -1,4 +1,4 @@
-package jasmine.framework.exception;
+package jasmine.framework.common.exception;
 
 import jasmine.framework.testdependency.Example1;
 import org.junit.Assert;
@@ -7,14 +7,14 @@ import org.junit.Test;
 /**
  * @author mh.z
  */
-public class DataNotFoundExceptionTest {
+public class InvalidDataExceptionTest {
 
     @Test
     public void test() {
-        DataNotFoundException exception = new DataNotFoundException("string1 null", null);
+        InvalidDataException exception = new InvalidDataException("string1 null", null);
         exception.withErrorDetail(Example1.class, 1L, null);
 
-        String expected = String.format("not found data Example1[key=1]");
+        String expected = String.format("data Example1[key=1] is invalid");
         Assert.assertEquals(expected, exception.getErrorDetail());
     }
 

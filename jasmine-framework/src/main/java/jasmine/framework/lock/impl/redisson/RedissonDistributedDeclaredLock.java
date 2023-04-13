@@ -1,7 +1,7 @@
 package jasmine.framework.lock.impl.redisson;
 
 
-import jasmine.framework.exception.InvalidPropertyException;
+import jasmine.framework.common.exception.InvalidPropertyException;
 import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.common.util.ErrorUtil;

@@ -2,7 +2,7 @@ package jasmine.cloud.stream.mq;
 
 import jasmine.framework.context.CurrentSubject;
 import jasmine.framework.context.RuntimeProvider;
-import jasmine.framework.exception.InvalidParameterException;
+import jasmine.framework.common.exception.InvalidParameterException;
 import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.ObjectUtil;
 import jasmine.framework.common.util.StringUtil;

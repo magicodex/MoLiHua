@@ -3,7 +3,7 @@ package jasmine.framework.database.mybatisplus.util;
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
-import jasmine.framework.exception.ApplicationException;
+import jasmine.framework.common.exception.ApplicationException;
 import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.common.util.ObjectUtil;

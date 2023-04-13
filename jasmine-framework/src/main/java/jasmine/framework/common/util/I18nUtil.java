@@ -1,6 +1,6 @@
 package jasmine.framework.common.util;
 
-import jasmine.framework.exception.InvalidPropertyException;
+import jasmine.framework.common.exception.InvalidPropertyException;
 import jasmine.framework.i18n.LocaleMessageProvider;
 
 /**

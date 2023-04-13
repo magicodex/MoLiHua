@@ -1,4 +1,4 @@
-package jasmine.framework.exception;
+package jasmine.framework.common.exception;
 
 import javax.annotation.Nullable;
 

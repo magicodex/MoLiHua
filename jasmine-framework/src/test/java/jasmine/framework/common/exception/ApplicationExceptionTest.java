@@ -1,4 +1,4 @@
-package jasmine.framework.exception;
+package jasmine.framework.common.exception;
 
 import jasmine.framework.testdependency.MockLocaleMessageProvider;
 import jasmine.framework.common.util.I18nUtil;
