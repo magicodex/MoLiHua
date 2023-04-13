@@ -6,7 +6,7 @@
     <sql id="autoSql">
         <bind name="_tableName" value="'${tableName}'"/>
         <bind name="_aliasName" value="'${aliasName}'"/>
-        ${@dynamic.jasmine.framework.database.mybatisplus.DataAuthUtil@generateSql(_tableName, _aliasName)}
+        ${@jasmine.framework.database.mybatisplus.dynamic.DataAuthUtil@generateSql(_tableName, _aliasName)}
     </sql>
 
 </mapper>
