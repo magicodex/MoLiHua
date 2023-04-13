@@ -41,27 +41,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--<dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-spring-boot-autoconfigure</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>-->
-
-        <dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-spring-boot-starter-security</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
         <dependency>
             <groupId>com.magicodex</groupId>
             <artifactId>jasmine-spring-cloud-stream</artifactId>
