@@ -10,6 +10,7 @@
 4. 默认连接 Redis 的地址是 127.0.0.1:6379。
 
 ### 单元测试覆盖率(2023.3.13)
+
 ![单元测试覆盖率](https://s3.bmp.ovh/imgs/2023/03/13/4009f43aecd907cc.png "单元测试覆盖率")
 
 ## 使用说明
@@ -42,42 +43,38 @@
 
 ## 集成框架
 
-| 框架 | 版本 | 说明 |
-| :----: | :---- | :---- |
-| Spring Boot | 2.6.7 | WEB框架 |
-| Spring Security | 5.6.3 | 权限认证框架 |
-| SLF4J | - | 日志库 |
-| Jackson | - | JSON库 |
-| Mybatis-Plus | 3.4.3.4 | 持久层框架 |
-| HikariCP | - | 数据库连接池 |
-| Liquibase | 4.3.5 | 数据库版本管理工具 |
-| Redisson | 3.12.3 | Redis客户端 |
-| amqp-client | 5.13.1 | RabbitMQ客户端 |
-| xxl-job | 2.3.0 | 任务调度 |
-| JUnit | - | 单元测试 |
-| spring-test | 5.3.19 | 单元测试 |
-| mockito | 4.2.0 | 单元测试 |
+|       框架        | 版本      | 说明          |
+|:---------------:|:--------|:------------|
+|   Spring Boot   | 2.6.7   | WEB框架       |
+| Spring Security | 5.6.3   | 权限认证框架      |
+|      SLF4J      | -       | 日志库         |
+|     Jackson     | -       | JSON库       |
+|  Mybatis-Plus   | 3.4.3.4 | 持久层框架       |
+|    HikariCP     | -       | 数据库连接池      |
+|    Liquibase    | 4.3.5   | 数据库版本管理工具   |
+|    Redisson     | 3.12.3  | Redis客户端    |
+|   amqp-client   | 5.13.1  | RabbitMQ客户端 |
+|     xxl-job     | 2.3.0   | 任务调度        |
+|      JUnit      | -       | 单元测试        |
+|   spring-test   | 5.3.19  | 单元测试        |
+|     mockito     | 4.2.0   | 单元测试        |
 
 ## 模块划分
 
-| 目录 | 说明 |
-| :----: | :---- |
-| jasmine-bom | 依赖管理 |
-| jasmine-framework | 框架相关功能 |
-| jasmine-framework-test | 支持单元测试 |
-| jasmine-security | 安全模块 |
-| jasmine-security-test | 支持单元测试 |
-| jasmine-spring-boot-autoconfigure | 自动配置 |
-| jasmine-spring-boot-starter | 自动配置 |
-| jasmine-spring-boot-starter-security | 自动配置 |
-| jasmine-spring-cloud-stream | 整合Spring Cloud Stream |
-| jasmine-demo | DEMO示例 |
+|                  目录                  | 说明                    |
+|:------------------------------------:|:----------------------|
+|             jasmine-bom              | 依赖管理                  |
+|          jasmine-framework           | 框架相关功能                |
+|        jasmine-framework-test        | 支持单元测试                |
+|           jasmine-security           | 安全模块                  |
+|        jasmine-security-test         | 支持单元测试                |
+|  jasmine-spring-boot-autoconfigure   | 自动配置                  |
+|     jasmine-spring-boot-starter      | 自动配置                  |
+| jasmine-spring-boot-starter-security | 自动配置                  |
+|     jasmine-spring-cloud-stream      | 整合Spring Cloud Stream |
+|             jasmine-demo             | DEMO示例                |
 
 ![模块划分](https://s3.bmp.ovh/imgs/2023/03/13/9e2defcb591869cf.png "模块划分")
-
-## 文档链接
-
-- [jasmine-framework 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-framework/doc.md)
 
 ## 开源协议
 
