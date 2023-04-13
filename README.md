@@ -63,7 +63,6 @@
 | 目录 | 说明 |
 | :----: | :---- |
 | jasmine-bom | 依赖管理 |
-| jasmine-test | 支持单元测试 |
 | jasmine-framework | 框架相关功能 |
 | jasmine-framework-test | 支持单元测试 |
 | jasmine-security | 安全模块 |

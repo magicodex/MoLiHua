@@ -15,13 +15,6 @@
     <dependencies>
         <dependency>
             <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-test</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.magicodex</groupId>
             <artifactId>jasmine-framework</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
