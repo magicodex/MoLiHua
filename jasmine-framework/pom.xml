@@ -30,13 +30,6 @@
     <!-- 除了必要的依赖外，其它都是可选依赖 -->
 
     <dependencies>
-        <dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-core</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- AOP框架 -->
         <dependency>
             <groupId>org.aspectj</groupId>

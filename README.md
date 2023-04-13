@@ -63,7 +63,6 @@
 | 目录 | 说明 |
 | :----: | :---- |
 | jasmine-bom | 依赖管理 |
-| jasmine-core | 公共模块 |
 | jasmine-test | 支持单元测试 |
 | jasmine-framework | 框架相关功能 |
 | jasmine-framework-test | 支持单元测试 |
@@ -79,7 +78,6 @@
 
 ## 文档链接
 
-- [jasmine-core 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-core/doc.md)
 - [jasmine-framework 文档](https://github.com/magicodex/MoLiHua/blob/main/jasmine-framework/doc.md)
 
 ## 开源协议

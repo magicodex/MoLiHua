@@ -25,13 +25,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>com.magicodex</groupId>
-            <artifactId>jasmine-core</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- 测试框架 -->
         <dependency>
             <groupId>junit</groupId>
