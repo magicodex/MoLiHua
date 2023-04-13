@@ -1,4 +1,4 @@
-package jasmine.mock.mybatis.crypto;
+package jasmine.mock.framework.database;
 
 import jasmine.framework.database.mybatisplus.crypto.CryptoProvider;
 

@@ -1,4 +1,4 @@
-package jasmine.test.mockito;
+package jasmine.framework.test.mockito;
 
 /**
  * 自定义模拟

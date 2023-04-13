@@ -8,7 +8,7 @@ import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.mq.MessageReceiver;
 import jasmine.framework.mq.interceptor.ReceiveInvocationInfo;
 import jasmine.framework.test.context.AppTestContext;
-import jasmine.mock.core.context.MockRuntimeProvider;
+import jasmine.mock.framework.context.MockRuntimeProvider;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

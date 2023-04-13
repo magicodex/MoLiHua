@@ -1,4 +1,4 @@
-package jasmine.mock.core.context;
+package jasmine.mock.framework.context;
 
 import jasmine.framework.i18n.I18nConstants;
 import jasmine.framework.i18n.LocaleMessageProvider;

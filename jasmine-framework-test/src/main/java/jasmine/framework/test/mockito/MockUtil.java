@@ -1,4 +1,4 @@
-package jasmine.test.mockito;
+package jasmine.framework.test.mockito;
 
 import jasmine.framework.common.util.CheckUtil;
 import org.mockito.Mockito;

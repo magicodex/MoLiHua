@@ -1,4 +1,4 @@
-package jasmine.test.mockito;
+package jasmine.framework.test.mockito;
 
 import jasmine.test.testdependency.Example1;
 import org.junit.Assert;

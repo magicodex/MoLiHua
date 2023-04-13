@@ -1,4 +1,4 @@
-package jasmine.mock.core.context;
+package jasmine.mock.framework.context;
 
 import org.junit.Assert;
 import org.junit.Test;

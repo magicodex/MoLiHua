@@ -1,4 +1,4 @@
-package jasmine.test.constant;
+package jasmine.framework.test.constant;
 
 /**
  * @author mh.z

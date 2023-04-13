@@ -1,4 +1,4 @@
-package jasmine.test.mockito;
+package jasmine.framework.test.mockito;
 
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;

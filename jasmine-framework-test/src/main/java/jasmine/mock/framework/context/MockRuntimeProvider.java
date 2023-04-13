@@ -1,4 +1,4 @@
-package jasmine.mock.core.context;
+package jasmine.mock.framework.context;
 
 import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.common.util.CheckUtil;
