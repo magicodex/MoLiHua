@@ -1,4 +1,4 @@
-# 依赖
+# 添加依赖
 
 ```
 <!-- XXL-JOB任务调度 -->
@@ -9,7 +9,7 @@
 </dependency>
 ```
 
-# 配置
+# 使用配置
 
 ```
 # 是否启用 XXL-job 任务调度（默认false）
@@ -28,7 +28,7 @@ xxl.job.executor.log-retention-days=30
 备注：更多配置查看 jasmine.autoconfigure.framework.middleware.XxlJobProperties。
 ```
 
-# 示例
+# 代码示例
 
 ```
 @Component

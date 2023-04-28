@@ -1,4 +1,4 @@
-# 配置
+# 使用配置
 
 ```
 # 多语言资源路径，默认 message/messageConstants
@@ -13,7 +13,7 @@ jasmine.i18n.message.constantPattern=
 备注：更多配置查看 jasmine.autoconfigure.framework.LocaleMessageProperties。
 ```
 
-# 示例
+# 代码示例
 
 ```
 // 定义多语言常量

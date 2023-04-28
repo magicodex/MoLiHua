@@ -1,4 +1,4 @@
-# 配置
+# 使用配置
 
 ```
 # 是否启用读写分离（默认false)
@@ -13,7 +13,7 @@ spring.datasource.read.password=密码
 2.若要改用其它数据源则可注册 mainDataSource、readDataSource 覆盖默认的 bean。
 ```
 
-# 示例
+# 代码示例
 
 ```
 // 在控制器方法上加上该注解则表明该方法是只读模式

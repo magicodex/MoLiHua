@@ -1,4 +1,4 @@
-# 依赖
+# 添加依赖
 
 ```
 <!-- Redis客户端 -->
@@ -9,12 +9,12 @@
 </dependency>
 ```
 
-# 配置
+# 使用配置
 
 默认是基于 redission 实现，相关配置参考 org.springframework.boot.autoconfigure.data.redis.RedisProperties 以及
 org.redisson.spring.starter.RedissonProperties。
 
-# 示例
+# 代码示例
 
 ```
 // 使用注解 @DistributedLock 加锁，属性 key 使用 SpEL表达式。

@@ -11,7 +11,7 @@ jasmine.message-queue.publisher.enabled=true
 jasmine.message-queue.consumer.enabled=true
 ```
 
-# spring-amqp版配置示例（RabbitMQ）
+# 基于spring-amqp实现的配置示例（RabbitMQ）
 
 ```
 <!-- 添加依赖 -->
@@ -30,7 +30,7 @@ spring.rabbitmq.password=密码
 交换器以及队列等配置参考 jasmine.demo.config.RabbitConfig。
 ```
 
-# Spring Cloud Stream版配置示例（RabbitMQ）
+# 基于Spring Cloud Stream实现的配置示例（RabbitMQ）
 
 ```
 <!-- 添加依赖 -->
@@ -72,7 +72,7 @@ public class ConsumerConfig {
 }
 ```
 
-# 使用示例
+# 代码示例
 
 ```
 // 接收消息，要求 bean 名是 MessageReceiver 作为后缀

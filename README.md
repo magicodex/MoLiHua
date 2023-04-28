@@ -35,10 +35,8 @@
 - [消息队列](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/message-queue-doc.md)
 - [任务调度](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/job-doc.md)
 - [多线程工具类](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/async-task-doc.md)
-- [校验工具类](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/validation-doc.md)
 - [权限访问控制](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/security-doc.md)
-- [读写分离](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/read-write-splitting-doc.md)
-- [扩展Mybatis-Plus](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/mybatis-plus-extersnion-doc.md)
+- [扩展Mybatis-Plus](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/mybatis-plus-extension-doc.md)
 - [单元测试](https://github.com/magicodex/MoLiHua/blob/main/doc/manual/test-doc.md)
 
 ## 集成框架
