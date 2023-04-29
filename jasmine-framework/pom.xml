@@ -130,7 +130,6 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <scope>compile</scope>
-            <optional>true</optional>
         </dependency>
         <!-- Mysql数据库驱动 -->
         <dependency>

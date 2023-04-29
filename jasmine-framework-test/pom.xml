@@ -56,13 +56,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Liquibase数据库版本管理工具 -->
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- Mysql数据库驱动 -->
         <dependency>
             <groupId>mysql</groupId>
