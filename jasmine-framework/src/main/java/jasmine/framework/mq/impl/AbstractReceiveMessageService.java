@@ -27,7 +27,7 @@ public abstract class AbstractReceiveMessageService<T> implements ReceiveMessage
     }
 
     public AbstractReceiveMessageService() {
-        interceptor = new DefaultReceiveInterceptor();
+        interceptor = EMPTY_INTERCEPTOR;
         receiveEnabled = true;
     }
 
