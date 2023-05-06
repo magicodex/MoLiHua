@@ -1,6 +1,7 @@
 package jasmine.framework.web.integration;
 
 import jasmine.framework.common.exception.InvalidParameterException;
+import jasmine.framework.common.util.NewUtil;
 import org.springframework.web.context.request.RequestAttributes;
 
 import java.util.Collection;
@@ -17,8 +18,8 @@ public class SimpleRequestAttributes implements RequestAttributes {
 
     public SimpleRequestAttributes(String sessionId) {
         this.sessionId = sessionId;
-        this.sessionAttributes = new HashMap<>();
-        this.requestAttributes = new HashMap<>();
+        this.sessionAttributes = NewUtil.map();
+        this.requestAttributes = NewUtil.map();
     }
 
     public SimpleRequestAttributes(String sessionId, Map<String, Object> sessionAttributes,

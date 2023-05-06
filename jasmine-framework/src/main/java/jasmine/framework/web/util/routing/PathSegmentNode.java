@@ -1,5 +1,6 @@
 package jasmine.framework.web.util.routing;
 
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.NewUtil;
 
 import java.util.Map;
@@ -39,9 +40,7 @@ public class PathSegmentNode {
      * @param pathInfo 路径信息
      */
     public void add(String[] pathSegments, int index, PathInfo pathInfo) {
-        if (pathSegments == null) {
-            throw new IllegalArgumentException("pathSegments null");
-        }
+        CheckUtil.notNull(pathSegments, "pathSegments null");
 
         if (index >= pathSegments.length) {
             if (this.pathInfo != null) {
@@ -73,9 +72,7 @@ public class PathSegmentNode {
      * @return 路径信息
      */
     public PathInfo get(String[] pathSegments, int index) {
-        if (pathSegments == null) {
-            throw new IllegalArgumentException("pathSegments null");
-        }
+        CheckUtil.notNull(pathSegments, "pathSegments null");
 
         if (index >= pathSegments.length) {
             return pathInfo;

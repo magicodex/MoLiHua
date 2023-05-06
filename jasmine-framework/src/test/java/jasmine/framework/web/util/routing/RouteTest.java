@@ -1,9 +1,9 @@
 package jasmine.framework.web.util.routing;
 
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Map;
 
 /**
  * @author mh.z

@@ -77,7 +77,7 @@ public class I18nCrud {
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
 
-        Map<String, Object> paramMap = new HashMap<>();
+        Map<String, Object> paramMap = NewUtil.map();
         // 多语言表
         paramMap.put(PARAM_TABLE, tableName);
         // 记录主键

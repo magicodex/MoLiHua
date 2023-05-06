@@ -1,9 +1,9 @@
 package jasmine.framework.web.util.routing;
 
-import java.util.HashMap;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.HashMap;
 
 /**
  * @author mh.z
@@ -60,11 +60,16 @@ public class PathSegmentNodeTest {
     @Test
     public void testGet() {
         PathSegmentNode root = new PathSegmentNode();
-        PathSegmentNode node1 = new PathSegmentNode(new HashMap<String, PathSegmentNode>(), new PathInfo(null, "/1", null));
-        PathSegmentNode node2 = new PathSegmentNode(new HashMap<String, PathSegmentNode>(), new PathInfo(null, "/1/null", null));
-        PathSegmentNode node3 = new PathSegmentNode(new HashMap<String, PathSegmentNode>(), new PathInfo(null, "/1/2", null));
-        PathSegmentNode node4 = new PathSegmentNode(new HashMap<String, PathSegmentNode>(), new PathInfo(null, "/1/null/3", null));
-        PathSegmentNode node5 = new PathSegmentNode(new HashMap<String, PathSegmentNode>(), new PathInfo(null, "/1/2/3", null));
+        PathSegmentNode node1 = new PathSegmentNode(new HashMap<>(),
+                new PathInfo(null, "/1", null));
+        PathSegmentNode node2 = new PathSegmentNode(new HashMap<>(),
+                new PathInfo(null, "/1/null", null));
+        PathSegmentNode node3 = new PathSegmentNode(new HashMap<>(),
+                new PathInfo(null, "/1/2", null));
+        PathSegmentNode node4 = new PathSegmentNode(new HashMap<>(),
+                new PathInfo(null, "/1/null/3", null));
+        PathSegmentNode node5 = new PathSegmentNode(new HashMap<>(),
+                new PathInfo(null, "/1/2/3", null));
 
         root.getNextNodeMap().put("1", node1);
         node1.getNextNodeMap().put(null, node2);

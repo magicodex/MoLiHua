@@ -13,7 +13,26 @@ import java.util.Map;
  * @author mh.z
  */
 public class RouterTest {
-    private static final String SAMPLE01 = "test/framework/web/Router_1.json";
+    private static final String PATH_1 = "test/framework/web/Router_1.json";
+
+    @Test
+    public void test() {
+        Router routes = new Router();
+        // 加载样例
+        Collection<SampleGroup> groups = SampleUtil.loadSampleGroupsFromClasspath(PATH_1);
+
+        // 添加路径
+        for (SampleGroup group : groups) {
+            routes.addRoute(group.getPath(), group.getPath());
+        }
+
+        // 检查路径
+        for (SampleGroup group : groups) {
+            for (Sample sample : group.getSamples()) {
+                checkPath(routes, group, sample);
+            }
+        }
+    }
 
     @Test
     public void testGetPathSegments() {
@@ -31,25 +50,6 @@ public class RouterTest {
         Assert.assertEquals(null, routes.getPathParameterName("1"));
         Assert.assertEquals("2", routes.getPathParameterName(":2"));
         Assert.assertEquals(null, routes.getPathParameterName(""));
-    }
-
-    @Test
-    public void test() {
-        Router routes = new Router();
-        // 加载样例
-        Collection<SampleGroup> groups = SampleUtil.loadSampleGroupsFromClasspath(SAMPLE01);
-
-        // 添加路径
-        for (SampleGroup group : groups) {
-            routes.addRoute(group.getPath(), group.getPath());
-        }
-
-        // 检查路径
-        for (SampleGroup group : groups) {
-            for (Sample sample : group.getSamples()) {
-                checkPath(routes, group, sample);
-            }
-        }
     }
 
     /**

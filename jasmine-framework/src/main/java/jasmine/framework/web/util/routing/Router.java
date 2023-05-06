@@ -1,5 +1,7 @@
 package jasmine.framework.web.util.routing;
 
+import jasmine.framework.common.util.CheckUtil;
+
 /**
  * @author mh.z
  */
@@ -18,13 +20,8 @@ public class Router {
      * @param value 路径对应的值
      */
     public void addRoute(String path, Object value) {
-        if (path == null) {
-            throw new IllegalArgumentException("path null");
-        }
-
-        if (value == null) {
-            throw new IllegalArgumentException("value null");
-        }
+        CheckUtil.notNull(path, "path null");
+        CheckUtil.notNull(value, "value null");
 
         // 获取路径片段
         String[] pathSegments = getPathSegments(path);
@@ -55,9 +52,7 @@ public class Router {
      * @return 匹配的结果
      */
     public Route getRoute(String path) {
-        if (path == null) {
-            throw new IllegalArgumentException("path null");
-        }
+        CheckUtil.notNull(path, "path null");
 
         String[] pathSegments = getPathSegments(path);
         PathInfo pathInfo = root.get(pathSegments, 1);
@@ -77,9 +72,7 @@ public class Router {
      * @return 路径片段，第一个路径片段的索引是1
      */
     protected String[] getPathSegments(String path) {
-        if (path == null) {
-            throw new IllegalArgumentException("path null");
-        }
+        CheckUtil.notNull(path, "path null");
 
         String[] pathSegments = path.split("/", -1);
         return pathSegments;
@@ -92,9 +85,7 @@ public class Router {
      * @return 路径参数名，不是路径参数则返回null
      */
     protected String getPathParameterName(String pathSegment) {
-        if (pathSegment == null) {
-            throw new IllegalArgumentException("pathSegment null");
-        }
+        CheckUtil.notNull(pathSegment, "pathSegment null");
 
         String pathParameterName = null;
 

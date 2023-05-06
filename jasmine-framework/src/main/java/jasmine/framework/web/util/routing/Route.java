@@ -1,6 +1,7 @@
 package jasmine.framework.web.util.routing;
 
-import java.util.HashMap;
+import jasmine.framework.common.util.NewUtil;
+
 import java.util.Map;
 
 /**
@@ -18,13 +19,11 @@ public class Route {
     }
 
     public String getExpression() {
-        String path = pathInfo.getExpression();
-        return path;
+        return pathInfo.getExpression();
     }
 
     public Object getBindingValue() {
-        Object item = pathInfo.getBindingValue();
-        return item;
+        return pathInfo.getBindingValue();
     }
 
     /**
@@ -33,7 +32,7 @@ public class Route {
      * @return 路径参数
      */
     public Map<String, String> getPathParameterMap() {
-        Map<String, String> pathParameterMap = new HashMap<String, String>();
+        Map<String, String> pathParameterMap = NewUtil.map();
         String[] pathParameterNames = pathInfo.getPathParameterNames();
         String pathParameterName = null;
 

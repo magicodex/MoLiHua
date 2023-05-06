@@ -1,6 +1,7 @@
 package jasmine.framework.web.util.routing.testdependency;
 
 import cn.hutool.core.io.FileUtil;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.common.util.JsonUtil;
 
@@ -18,10 +19,7 @@ public class SampleUtil {
      * @return 加载的样例
      */
     public static Collection<SampleGroup> loadSampleGroupsFromClasspath(String path) {
-        if (path == null) {
-            throw new IllegalArgumentException("path null");
-        }
-
+        CheckUtil.notNull(path, "path null");
         Collection<SampleGroup> sampleGroups;
 
         try {
