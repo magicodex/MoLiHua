@@ -8,7 +8,7 @@ public class SampleGroup {
     private Sample[] samples;
 
     public SampleGroup() {
-
+        //
     }
 
     public SampleGroup(String path, Sample[] samples) {

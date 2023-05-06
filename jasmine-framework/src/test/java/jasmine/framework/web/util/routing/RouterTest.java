@@ -5,7 +5,7 @@ import java.util.Map;
 
 import jasmine.framework.web.util.routing.testdependency.Sample;
 import jasmine.framework.web.util.routing.testdependency.SampleGroup;
-import jasmine.framework.web.util.routing.testdependency.SampleUtils;
+import jasmine.framework.web.util.routing.testdependency.SampleUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -53,7 +53,7 @@ public class RouterTest {
     public void test() {
         Router routes = new Router();
         // 加载样例
-        Collection<SampleGroup> groups = SampleUtils.loadSampleGroupsFromClasspath(SAMPLE01);
+        Collection<SampleGroup> groups = SampleUtil.loadSampleGroupsFromClasspath(SAMPLE01);
 
         // 添加路径
         for (SampleGroup group : groups) {

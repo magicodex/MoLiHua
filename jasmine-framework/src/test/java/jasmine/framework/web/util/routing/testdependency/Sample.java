@@ -10,7 +10,7 @@ public class Sample {
     private Map<String, String> values;
 
     public Sample() {
-
+        //
     }
 
     public Sample(String key, Map<String, String> values) {
