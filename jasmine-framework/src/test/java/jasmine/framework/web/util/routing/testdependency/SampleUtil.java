@@ -1,14 +1,10 @@
 package jasmine.framework.web.util.routing.testdependency;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import cn.hutool.core.io.FileUtil;
 import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.common.util.JsonUtil;
-import jodd.io.FileUtil;
 
-import java.io.InputStream;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author mh.z
@@ -29,7 +25,7 @@ public class SampleUtil {
         Collection<SampleGroup> sampleGroups;
 
         try {
-            String json = FileUtil.readUTFString(path);
+            String json = FileUtil.readUtf8String(path);
             sampleGroups = JsonUtil.fromArray(json, SampleGroup.class);
         } catch (Exception e) {
             throw ErrorUtil.sneakyError(e);

@@ -1,35 +1,19 @@
 package jasmine.framework.web.util.routing;
 
-import java.util.Collection;
-import java.util.Map;
-
 import jasmine.framework.web.util.routing.testdependency.Sample;
 import jasmine.framework.web.util.routing.testdependency.SampleGroup;
 import jasmine.framework.web.util.routing.testdependency.SampleUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Collection;
+import java.util.Map;
+
 /**
  * @author mh.z
  */
 public class RouterTest {
-    private static final String SAMPLE01 = "/test/framework/web/Router_1.json";
-
-    public static void main(String[] args) {
-        Router routes = new Router();
-
-        // 添加一条路径到路由表中，其中冒号开头的代表路径参数
-        routes.addRoute("/zoos/:zooId/animals/:animalId", "去动物园看动物");
-
-        // 在路由表里匹配具体的路径
-        Route route = routes.getRoute("/zoos/BeijingZoo/animals/panda");
-        System.out.println(route.getBindingValue()); // => "去动物园看动物"
-
-        // 获取路径参数
-        Map<String, String> pathParameterMap = route.getPathParameterMap();
-        System.out.println(pathParameterMap.get("zooId")); // => BeijingZoo
-        System.out.println(pathParameterMap.get("animalId")); // => panda
-    }
+    private static final String SAMPLE01 = "test/framework/web/Router_1.json";
 
     @Test
     public void testGetPathSegments() {
