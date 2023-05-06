@@ -41,10 +41,11 @@ public class PathSegmentNode {
      */
     public void add(String[] pathSegments, int index, PathInfo pathInfo) {
         CheckUtil.notNull(pathSegments, "pathSegments null");
+        CheckUtil.notNull(pathInfo, "pathInfo null");
 
         if (index >= pathSegments.length) {
             if (this.pathInfo != null) {
-                throw new RuntimeException("path exists");
+                throw new RuntimeException("path(" + pathInfo.getExpression() + ") exists");
             }
 
             this.pathInfo = pathInfo;
