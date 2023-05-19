@@ -37,6 +37,21 @@ public class I18nUtil {
     }
 
     /**
+     * 查找多语言并返回
+     *
+     * @param messageKey
+     * @param args
+     * @return
+     */
+    public static String getMessageAllowNone(String messageKey, Object... args) {
+        if (provider == null) {
+            throw new InvalidPropertyException("QI18nUtil.provider null", null);
+        }
+
+        return provider.getMessageAllowNone(messageKey, args);
+    }
+
+    /**
      * 返回语言代码
      *
      * @return

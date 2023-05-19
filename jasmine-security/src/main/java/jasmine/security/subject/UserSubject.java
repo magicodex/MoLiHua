@@ -1,5 +1,6 @@
 package jasmine.security.subject;
 
+import jasmine.framework.common.constant.TextConstants;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -20,7 +21,8 @@ public class UserSubject extends User {
     private Long userId;
 
     public UserSubject(Long tenantId, Long userId) {
-        this(tenantId, userId, "????", "????", Collections.emptyList());
+        this(tenantId, userId, TextConstants.UNKNOWN_PLACEHOLDER,
+                TextConstants.UNKNOWN_PLACEHOLDER, Collections.emptyList());
     }
 
     public UserSubject(Long userId, String username, String password,

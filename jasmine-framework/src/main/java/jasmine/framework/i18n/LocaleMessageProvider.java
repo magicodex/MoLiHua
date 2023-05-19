@@ -19,6 +19,15 @@ public interface LocaleMessageProvider {
     String getMessage(String messageKey, Object... args);
 
     /**
+     * 查找信息
+     *
+     * @param messageKey
+     * @param args
+     * @return
+     */
+    String getMessageAllowNone(String messageKey, Object... args);
+
+    /**
      * 返回语言代码
      *
      * @return

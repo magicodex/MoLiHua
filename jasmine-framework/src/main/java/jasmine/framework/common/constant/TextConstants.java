@@ -10,4 +10,7 @@ public interface TextConstants {
 
     /** 字符N */
     String BOOL_N = "N";
+
+    /** 未知占位符 */
+    String UNKNOWN_PLACEHOLDER = "????";
 }

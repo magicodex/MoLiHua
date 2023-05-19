@@ -1,5 +1,6 @@
 package jasmine.framework.i18n.impl;
 
+import jasmine.framework.common.constant.TextConstants;
 import jasmine.framework.i18n.I18nConstants;
 import jasmine.framework.i18n.LocaleMessageProvider;
 import jasmine.framework.common.util.CheckUtil;
@@ -32,6 +33,22 @@ public class DefaultLocaleMessageProvider implements LocaleMessageProvider {
         }
 
         return messageSource.getMessage(messageKey, args, locale);
+    }
+
+    @Override
+    public String getMessageAllowNone(String messageKey, Object... args) {
+        CheckUtil.notNull(messageKey, "messageKey null");
+
+        if (messageKey != null && messageKey.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
+            messageKey = messageKey.substring(1);
+        }
+
+        Locale locale = LocaleContextHolder.getLocale();
+        if (locale == null) {
+            locale = Locale.SIMPLIFIED_CHINESE;
+        }
+
+        return messageSource.getMessage(messageKey, args, TextConstants.UNKNOWN_PLACEHOLDER, locale);
     }
 
     @Override

@@ -30,6 +30,28 @@ public class MockLocaleMessageProvider implements LocaleMessageProvider {
             }
 
             message = messages.get(messageKey);
+            if (message == null) {
+                throw new RuntimeException("not found message '" + messageKey + "'");
+            }
+
+            if (args.length > 0) {
+                message = MessageFormat.format(message, args);
+            }
+        }
+
+        return message;
+    }
+
+    @Override
+    public String getMessageAllowNone(String messageKey, Object... args) {
+        String message = null;
+
+        if (messageKey != null) {
+            if (messageKey.startsWith(I18nConstants.I18N_MESSAGE_KEY_PREFIX)) {
+                messageKey = messageKey.substring(1);
+            }
+
+            message = messages.get(messageKey);
 
             if (message != null && args.length > 0) {
                 message = MessageFormat.format(message, args);
