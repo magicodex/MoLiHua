@@ -1,5 +1,6 @@
 package jasmine.framework.common.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
@@ -19,11 +20,16 @@ import java.util.List;
  */
 public class JsonUtil {
     private static final ObjectMapper OBJECT_MAPPER;
+    private static final ObjectMapper IGNORE_NULL_OBJECT_MAPPER;
 
     static {
         OBJECT_MAPPER = new ObjectMapper();
         OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         OBJECT_MAPPER.registerModule(new JavaTimeModule());
+
+        IGNORE_NULL_OBJECT_MAPPER = new ObjectMapper();
+        IGNORE_NULL_OBJECT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        IGNORE_NULL_OBJECT_MAPPER.registerModule(new JavaTimeModule());
     }
 
     public static ObjectMapper getObjectMapper() {
@@ -43,6 +49,21 @@ public class JsonUtil {
             throw ErrorUtil.sneakyError(e);
         }
     }
+
+    /**
+     * 序列化对象成JSON字符串
+     *
+     * @param object
+     * @return
+     */
+    public static String toJsonIgnoreNull(Object object) {
+        try {
+            return IGNORE_NULL_OBJECT_MAPPER.writeValueAsString(object);
+        } catch (IOException e) {
+            throw ErrorUtil.sneakyError(e);
+        }
+    }
+
 
     /**
      * 反序列化JSON字符串成对象
