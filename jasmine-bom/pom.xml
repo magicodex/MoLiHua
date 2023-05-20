@@ -27,6 +27,7 @@
         <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
         <orika.version>1.5.4</orika.version>
         <hutool.version>5.6.6</hutool.version>
+        <net.sf.opencsv.version>2.3</net.sf.opencsv.version>
         <guava.version>31.1-jre</guava.version>
         <aspectj.version>1.9.7</aspectj.version>
         <jakarta.xml.bind-api.version>2.3.3</jakarta.xml.bind-api.version>
@@ -131,6 +132,12 @@
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
                 <version>${jaxb-runtime.version}</version>
+            </dependency>
+            <!-- CSV库 -->
+            <dependency>
+                <groupId>net.sf.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>${net.sf.opencsv.version}</version>
             </dependency>
             <!-- JSON库 -->
             <dependency>

@@ -1,8 +1,8 @@
 package jasmine.framework.database.mybatisplus.util;
 
+import au.com.bytecode.opencsv.bean.CsvToBean;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
-import liquibase.util.csv.opencsv.bean.CsvToBean;
 
 import java.beans.PropertyDescriptor;
 import java.math.BigDecimal;
@@ -24,7 +24,8 @@ public class CsvToObject<T> extends CsvToBean<T> {
     private static final String FALSE_VALUE = "0";
 
     @Override
-    protected Object convertValue(String value, PropertyDescriptor prop) throws ReflectiveOperationException {
+    protected Object convertValue(String value, PropertyDescriptor prop)
+            throws InstantiationException, IllegalAccessException {
         Object result = null;
         Class<?> type = prop.getPropertyType();
 

@@ -44,6 +44,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- CSV库-->
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- JSON库 -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -130,6 +137,7 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <scope>compile</scope>
+            <optional>true</optional>
         </dependency>
         <!-- Mysql数据库驱动 -->
         <dependency>
