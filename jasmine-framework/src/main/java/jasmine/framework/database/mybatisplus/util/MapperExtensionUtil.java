@@ -6,11 +6,13 @@ import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.framework.common.exception.ApplicationException;
 import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.JsonUtil;
 import jasmine.framework.common.util.ObjectUtil;
+import jasmine.framework.common.util.StringUtil;
 import jasmine.framework.common.util.batch.BatchCallUtil;
 import jasmine.framework.common.util.ref.LongValue;
-import jasmine.framework.database.mybatisplus.constant.MybatisMessageConstants;
 import jasmine.framework.database.mybatisplus.constant.MybatisConstants;
+import jasmine.framework.database.mybatisplus.constant.MybatisMessageConstants;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
@@ -95,7 +97,15 @@ public class MapperExtensionUtil {
 
         int rowCount = baseMapper.updateById(entity);
         if (strict && rowCount != 1) {
-            throw new ApplicationException(MybatisMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
+            ApplicationException error = new ApplicationException(
+                    MybatisMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
+
+            String entityStr = JsonUtil.toJsonIgnoreNull(entity);
+            String errorDetail = String.format("failed to update entity(%s)", entityStr);
+            error.withErrorDetail(errorDetail);
+            log.warn(errorDetail);
+
+            throw error;
         }
 
         return rowCount;
@@ -142,7 +152,15 @@ public class MapperExtensionUtil {
 
         int rowCount = baseMapper.deleteById(id);
         if (strict && rowCount != 1) {
-            throw new ApplicationException(MybatisMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
+            ApplicationException error = new ApplicationException(
+                    MybatisMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
+
+            String idStr = StringUtil.toString(id);
+            String errorDetail = String.format("failed to delete entity(id=%s)", idStr);
+            error.withErrorDetail(errorDetail);
+            log.warn(errorDetail);
+
+            throw error;
         }
 
         return rowCount;
@@ -173,7 +191,15 @@ public class MapperExtensionUtil {
         BatchCallUtil.call(idSet, MybatisConstants.BATCH_DELETE_SIZE, (partialIds) -> {
             int deleteTotal = baseMapper.deleteBatchIds(partialIds);
             if (strict && deleteTotal != partialIds.size()) {
-                throw new ApplicationException(MybatisMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
+                ApplicationException error = new ApplicationException(
+                        MybatisMessageConstants.DELETE_ROW_COUNT_MISMATCH, null);
+
+                String idsStr = JsonUtil.toJson(ids);
+                String errorDetail = String.format("failed to delete all entities(ids=)", idsStr);
+                error.withErrorDetail(errorDetail);
+                log.warn(errorDetail);
+
+                throw error;
             }
 
             rowCount.add(deleteTotal);
@@ -197,7 +223,15 @@ public class MapperExtensionUtil {
 
         T entity = baseMapper.selectById(id);
         if (strict && entity == null) {
-            throw new ApplicationException(MybatisMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
+            ApplicationException error = new ApplicationException(
+                    MybatisMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
+
+            String idStr = StringUtil.toString(id);
+            String errorDetail = String.format("failed to get entity(id=%s)", idStr);
+            error.withErrorDetail(errorDetail);
+            log.warn(errorDetail);
+
+            throw error;
         }
 
         return entity;
@@ -231,7 +265,15 @@ public class MapperExtensionUtil {
         });
 
         if (strict && ObjectUtil.notEqual(idSet.size(), entityList.size())) {
-            throw new ApplicationException(MybatisMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
+            ApplicationException error = new ApplicationException(
+                    MybatisMessageConstants.SELECT_ROW_COUNT_MISMATCH, null);
+
+            String idsStr = JsonUtil.toJson(ids);
+            String errorDetail = String.format("failed to get all entities(ids=%s)", idsStr);
+            error.withErrorDetail(errorDetail);
+            log.warn(errorDetail);
+
+            throw error;
         }
 
         return entityList;
