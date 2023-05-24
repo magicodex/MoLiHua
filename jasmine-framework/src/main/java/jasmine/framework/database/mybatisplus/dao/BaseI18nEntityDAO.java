@@ -23,45 +23,83 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
     }
 
     @Override
-    public void save(T entity) {
+    public int save(T entity) {
         CheckUtil.notNull(entity, "entity null");
 
-        super.save(entity);
+        int rowCount = super.save(entity);
         I18nEntityUtil.insertI18n(entity);
+
+        return rowCount;
     }
 
     @Override
-    public void saveBatch(Collection<T> entities) {
+    public int saveBatch(Collection<T> entities) {
         CheckUtil.notNull(entities, "entities null");
 
-        super.saveBatch(entities);
+        int rowCount = super.saveBatch(entities);
         I18nEntityUtil.insertI18n(entities);
+
+        return rowCount;
     }
 
     @Override
-    public void updateById(T entity) {
+    public int updateById(T entity) {
         CheckUtil.notNull(entity, "entity null");
 
         I18nEntityUtil.updateI18nThenFillEntity(entity);
-        super.updateById(entity);
+        int rowCount = super.updateById(entity);
+
+        return rowCount;
     }
 
     @Override
-    public void updateBatchById(Collection<T> entities) {
+    public int strictUpdateById(T entity) {
+        CheckUtil.notNull(entity, "entity null");
+
+        I18nEntityUtil.updateI18nThenFillEntity(entity);
+        int rowCount = super.strictUpdateById(entity);
+
+        return rowCount;
+    }
+
+    @Override
+    public int updateBatchById(Collection<T> entities) {
         CheckUtil.notNull(entities, "entities null");
 
         I18nEntityUtil.updateI18nThenFillEntities(entities);
-        super.updateBatchById(entities);
+        int rowCount = super.updateBatchById(entities);
+
+        return rowCount;
     }
 
     @Override
-    public boolean deleteById(Serializable id) {
+    public int strictUpdateBatchById(Collection<T> entities) {
+        CheckUtil.notNull(entities, "entities null");
+
+        I18nEntityUtil.updateI18nThenFillEntities(entities);
+        int rowCount = super.strictUpdateBatchById(entities);
+
+        return rowCount;
+    }
+
+    @Override
+    public int deleteById(Serializable id) {
         CheckUtil.notNull(id, "id null");
 
         I18nEntityUtil.deleteI18n(entityClass, id);
-        boolean result = super.deleteById(id);
+        int rowCount = super.deleteById(id);
 
-        return result;
+        return rowCount;
+    }
+
+    @Override
+    public int strictDeleteById(Serializable id) {
+        CheckUtil.notNull(id, "id null");
+
+        I18nEntityUtil.deleteI18n(entityClass, id);
+        int rowCount = super.strictDeleteById(id);
+
+        return rowCount;
     }
 
     @Override
@@ -69,9 +107,19 @@ public class BaseI18nEntityDAO<M extends BaseMapper<T>, T extends BaseI18nEntity
         CheckUtil.notNull(ids, "ids null");
 
         I18nEntityUtil.deleteI18n(entityClass, ids);
-        int result = super.deleteByIds(ids);
+        int rowCount = super.deleteByIds(ids);
 
-        return result;
+        return rowCount;
+    }
+
+    @Override
+    public int strictDeleteByIds(Collection<? extends Serializable> ids) {
+        CheckUtil.notNull(ids, "ids null");
+
+        I18nEntityUtil.deleteI18n(entityClass, ids);
+        int rowCount = super.strictDeleteByIds(ids);
+
+        return rowCount;
     }
 
     @Override

@@ -1,12 +1,10 @@
 package jasmine.framework.database.mybatisplus.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import jasmine.framework.database.mybatisplus.entity.BaseEntity;
 import jasmine.framework.database.mybatisplus.util.MapperExtensionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -24,33 +22,43 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
     }
 
     @Override
-    public void save(T entity) {
-        MapperExtensionUtil.save(baseMapper, entity);
+    public int save(T entity) {
+        return MapperExtensionUtil.save(baseMapper, entity);
     }
 
     @Override
-    public void saveBatch(Collection<T> entities) {
-        MapperExtensionUtil.saveBatch(baseMapper, entities);
+    public int saveBatch(Collection<T> entities) {
+        return MapperExtensionUtil.saveBatch(baseMapper, entities);
     }
 
     @Override
-    public void updateById(T entity) {
-        MapperExtensionUtil.updateById(baseMapper, entity, true);
+    public int updateById(T entity) {
+        return MapperExtensionUtil.updateById(baseMapper, entity, false);
     }
 
     @Override
-    public void updateBatchById(Collection<T> entities) {
-        MapperExtensionUtil.updateBatchById(baseMapper, entities, true);
+    public int strictUpdateById(T entity) {
+        return MapperExtensionUtil.updateById(baseMapper, entity, true);
     }
 
     @Override
-    public boolean deleteById(Serializable id) {
-        return SqlHelper.retBool(MapperExtensionUtil.deleteById(baseMapper, id, false));
+    public int updateBatchById(Collection<T> entities) {
+        return MapperExtensionUtil.updateBatchById(baseMapper, entities, false);
     }
 
     @Override
-    public void strictDeleteById(@Nonnull Serializable id) {
-        MapperExtensionUtil.deleteById(baseMapper, id, true);
+    public int strictUpdateBatchById(Collection<T> entities) {
+        return MapperExtensionUtil.updateBatchById(baseMapper, entities, true);
+    }
+
+    @Override
+    public int deleteById(Serializable id) {
+        return MapperExtensionUtil.deleteById(baseMapper, id, false);
+    }
+
+    @Override
+    public int strictDeleteById(Serializable id) {
+        return MapperExtensionUtil.deleteById(baseMapper, id, true);
     }
 
     @Override
@@ -59,8 +67,8 @@ public class BaseEntityDAO<M extends BaseMapper<T>, T extends BaseEntity>
     }
 
     @Override
-    public void strictDeleteByIds(@Nonnull Collection<? extends Serializable> ids) {
-        MapperExtensionUtil.deleteByIds(baseMapper, ids, true);
+    public int strictDeleteByIds(Collection<? extends Serializable> ids) {
+        return MapperExtensionUtil.deleteByIds(baseMapper, ids, true);
     }
 
     @Override
