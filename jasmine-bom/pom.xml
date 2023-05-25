@@ -26,25 +26,25 @@
         <!--- 工具类库 -->
         <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
         <orika.version>1.5.4</orika.version>
-        <hutool.version>5.6.6</hutool.version>
+        <hutool.version>5.8.18</hutool.version>
         <net.sf.opencsv.version>2.3</net.sf.opencsv.version>
         <guava.version>31.1-jre</guava.version>
         <aspectj.version>1.9.7</aspectj.version>
         <jakarta.xml.bind-api.version>2.3.3</jakarta.xml.bind-api.version>
         <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
-        <jackson.version>2.12.4</jackson.version>
+        <jackson.version>2.13.5</jackson.version>
         <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
 
         <!-- 中间件 -->
         <javax.servlet-api.version>3.0.1</javax.servlet-api.version>
         <redisson.version>3.12.3</redisson.version>
-        <xxl-job.version>2.3.0</xxl-job.version>
+        <xxl-job.version>2.3.1</xxl-job.version>
         <!-- 持久层框架 -->
         <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
         <h2.version>2.1.214</h2.version>
-        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <hikari.version>4.0.3</hikari.version>
-        <liquibase.version>4.3.5</liquibase.version>
+        <liquibase.version>4.22.0</liquibase.version>
 
         <!-- 测试框架 -->
         <junit.version>4.13.2</junit.version>

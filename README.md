@@ -41,21 +41,21 @@
 
 ## 集成框架
 
-|       框架        | 版本      | 说明          |
-|:---------------:|:--------|:------------|
-|   Spring Boot   | 2.6.7   | WEB框架       |
-| Spring Security | 5.6.3   | 权限认证框架      |
-|      SLF4J      | -       | 日志库         |
-|     Jackson     | -       | JSON库       |
-|  Mybatis-Plus   | 3.4.3.4 | 持久层框架       |
-|    HikariCP     | -       | 数据库连接池      |
-|    Liquibase    | 4.3.5   | 数据库版本管理工具   |
-|    Redisson     | 3.12.3  | Redis客户端    |
-|   amqp-client   | 5.13.1  | RabbitMQ客户端 |
-|     xxl-job     | 2.3.0   | 任务调度        |
-|      JUnit      | -       | 单元测试        |
-|   spring-test   | 5.3.19  | 单元测试        |
-|     mockito     | 4.2.0   | 单元测试        |
+|       框架        | 版本    | 说明          |
+|:---------------:|:------|:------------|
+|   Spring Boot   | 2.6.7 | WEB框架       |
+| Spring Security | 5.6.3 | 权限认证框架      |
+|      SLF4J      | -     | 日志库         |
+|     Jackson     | -     | JSON库       |
+|  Mybatis-Plus   | -     | 持久层框架       |
+|    HikariCP     | -     | 数据库连接池      |
+|    Liquibase    | -     | 数据库版本管理工具   |
+|    Redisson     | -     | Redis客户端    |
+|   amqp-client   | -     | RabbitMQ客户端 |
+|     xxl-job     | -     | 任务调度        |
+|      JUnit      | -     | 单元测试        |
+|   spring-test   | -     | 单元测试        |
+|     mockito     | -     | 单元测试        |
 
 ## 模块划分
 
