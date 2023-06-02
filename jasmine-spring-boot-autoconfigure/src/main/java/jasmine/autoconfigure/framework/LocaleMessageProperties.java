@@ -9,18 +9,18 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class LocaleMessageProperties {
 
     /**  多语言资源路径 */
-    private String resourcePrefix = "message/messages";
+    private String[] resourceBaseNames = new String[]{"message/messages"};
     /** 多语言资源编码 */
     private String encoding = "UTF-8";
     /** 多语言常量路径 */
     private String constantPattern = "classpath*:/**/constant/*MessageConstants.class";
 
-    public String getResourcePrefix() {
-        return resourcePrefix;
+    public String[] getResourceBaseNames() {
+        return resourceBaseNames;
     }
 
-    public void setResourcePrefix(String resourcePrefix) {
-        this.resourcePrefix = resourcePrefix;
+    public void setResourceBaseNames(String[] resourceBaseNames) {
+        this.resourceBaseNames = resourceBaseNames;
     }
 
     public String getEncoding() {

@@ -11,25 +11,25 @@ import java.util.Properties;
  * @author mh.z
  */
 public class MessageSourceBuilder {
-    private String resourcePrefix;
+    private String[] resourceBaseNames;
     private String encoding;
     private String constantPattern;
 
     /**  多语言资源路径 */
-    private static final String DEFAULT_MESSAGE_PATH_PREFIX = "message/messages";
+    private static final String DEFAULT_MESSAGE_BASE_NAME = "message/messages";
     /** 多语言资源编码 */
     private static final String DEFAULT_MESSAGE_DEFAULT_ENCODING = "UTF-8";
     /** 多语言常量路径 */
     private static final String DEFAULT_MESSAGE_CONSTANT_PATH = "classpath*:/**/constant/*MessageConstants.class";
 
     public MessageSourceBuilder() {
-        resourcePrefix = DEFAULT_MESSAGE_PATH_PREFIX;
+        resourceBaseNames = new String[]{DEFAULT_MESSAGE_BASE_NAME};
         encoding = DEFAULT_MESSAGE_DEFAULT_ENCODING;
         constantPattern = DEFAULT_MESSAGE_CONSTANT_PATH;
     }
 
-    public void setResourcePrefix(String resourcePrefix) {
-        this.resourcePrefix = resourcePrefix;
+    public void setResourceBaseNames(String... resourceBaseNames) {
+        this.resourceBaseNames = resourceBaseNames;
     }
 
     public void setEncoding(String encoding) {
@@ -46,12 +46,12 @@ public class MessageSourceBuilder {
      * @return
      */
     public MessageSource build() {
-        CheckUtil.notNullProp(resourcePrefix, "resourcePrefix null");
+        CheckUtil.notNullProp(resourceBaseNames, "resourceBaseNames null");
         CheckUtil.notNullProp(encoding, "encoding null");
         CheckUtil.notNullProp(constantPattern, "constantPattern null");
 
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename(resourcePrefix);
+        messageSource.setBasenames(resourceBaseNames);
         messageSource.setDefaultEncoding(encoding);
         // 扫描多语言常量
         Properties commonMessages = DeclareI18nScanUtil.scan(constantPattern);

@@ -1,6 +1,5 @@
 package jasmine.framework.i18n.builder;
 
-import jasmine.framework.i18n.builder.MessageSourceBuilder;
 import jasmine.framework.i18n.testdependency.TestMessageConstants;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +18,7 @@ public class MessageSourceBuilderTest {
     @Test
     public void test() {
         MessageSourceBuilder builder = new MessageSourceBuilder();
-        builder.setResourcePrefix(RESOURCE_PREFIX);
+        builder.setResourceBaseNames(RESOURCE_PREFIX);
         builder.setEncoding("UTF-8");
         builder.setConstantPattern(SCAN_PATH);
 

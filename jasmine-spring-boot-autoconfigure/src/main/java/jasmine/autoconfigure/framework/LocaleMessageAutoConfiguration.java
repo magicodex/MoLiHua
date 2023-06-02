@@ -27,7 +27,7 @@ public class LocaleMessageAutoConfiguration {
     public MessageSource messageSource(LocaleMessageProperties properties) {
         MessageSourceBuilder builder = new MessageSourceBuilder();
         // 多语言资源路径
-        builder.setResourcePrefix(properties.getResourcePrefix());
+        builder.setResourceBaseNames(properties.getResourceBaseNames());
         // 多语言资源编码
         builder.setEncoding(properties.getEncoding());
         // 多语言常量路径
