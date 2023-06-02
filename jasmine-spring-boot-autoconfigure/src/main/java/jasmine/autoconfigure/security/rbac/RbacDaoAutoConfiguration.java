@@ -12,6 +12,7 @@ import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.mapper.SecRoleMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,21 +28,25 @@ public class RbacDaoAutoConfiguration {
     // 权限
     //
 
+    @ConditionalOnMissingBean(SecRoleDAO.class)
     @Bean
     public SecRoleDAO secRoleDAO(SecRoleMapper baseMapper) {
         return new SecRoleDAO(baseMapper);
     }
 
+    @ConditionalOnMissingBean(SecFunctionDAO.class)
     @Bean
     public SecFunctionDAO secFunctionDAO(SecFunctionMapper baseMapper) {
         return new SecFunctionDAO(baseMapper);
     }
 
+    @ConditionalOnMissingBean(SecPermissionDAO.class)
     @Bean
     public SecPermissionDAO secPermissionDAO() {
         return new SecPermissionDAO();
     }
 
+    @ConditionalOnMissingBean(SecResourceDAO.class)
     @Bean
     public SecResourceDAO secResourceDAO(SecResourceMapper baseMapper) {
         return new SecResourceDAO(baseMapper);
@@ -51,11 +56,13 @@ public class RbacDaoAutoConfiguration {
     // 菜单
     //
 
+    @ConditionalOnMissingBean(SecMenuDAO.class)
     @Bean
     public SecMenuDAO secMenuDAO() {
         return new SecMenuDAO();
     }
 
+    @ConditionalOnMissingBean(SecMenuTemplateDAO.class)
     @Bean
     public SecMenuTemplateDAO secMenuTemplateDAO() {
         return new SecMenuTemplateDAO();

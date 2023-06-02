@@ -20,6 +20,7 @@ import jasmine.framework.database.mybatisplus.tenant.TenantConfigProcessorScanBe
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +33,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton {
 
+    @ConditionalOnMissingBean(CryptoProvider.class)
     @Bean
     public CryptoProvider cryptoProvider(MybatisPlusProperties mybatisPlusProperties) {
         MybatisPlusProperties.Crypto crypto = mybatisPlusProperties.getCrypto();
@@ -45,6 +47,7 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
         return provider;
     }
 
+    @ConditionalOnMissingBean(I18nEntityFacade.class)
     @Bean
     public I18nEntityFacade i18nEntityFacade(SqlSessionTemplate sqlSessionTemplate) {
         DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
@@ -55,11 +58,13 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
         return facade;
     }
 
+    @ConditionalOnMissingBean(TenantLineHandler.class)
     @Bean
     public DefaultTenantLineHandler tenantLineHandler() {
         return new DefaultTenantLineHandler();
     }
 
+    @ConditionalOnMissingBean(MybatisPlusInterceptor.class)
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor(MybatisPlusProperties mybatisPlusProperties,
                                                          TenantLineHandler tenantLineHandler) {
@@ -73,6 +78,7 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
         return builder.build();
     }
 
+    @ConditionalOnMissingBean(MetaObjectHandler.class)
     @Bean
     public MetaObjectHandler metaObjectHandler() {
         return new BaseEntityMetaObjectHandler();
@@ -83,6 +89,7 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
      *
      * @return
      */
+    @ConditionalOnMissingBean(TenantConfigProcessorScanBean.class)
     @Bean
     public TenantConfigProcessorScanBean tenantConfigProcessorScanBean() {
         IgnoreTableStrategy ignoreTableStrategy = tenantLineHandler();

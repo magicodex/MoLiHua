@@ -3,6 +3,7 @@ package jasmine.autoconfigure.security;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -68,6 +69,7 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
                 .sameOrigin();
     }
 
+    @ConditionalOnMissingBean(AuthenticationManager.class)
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {

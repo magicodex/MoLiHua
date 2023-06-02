@@ -34,11 +34,13 @@ public class DataSourceAutoConfiguration {
     private static final String READ_DATA_SOURCE_NAME = "read";
     private static final String READ_CONNECTION_POOL_NAME = "read";
 
+    @ConditionalOnMissingBean(DataSourceDecideFacade.class)
     @Bean
     public DataSourceDecideFacade dataSourceDecideFacade() {
         return new ReadWriteDataSourceDecideFacade();
     }
 
+    @ConditionalOnMissingBean(ReadOnlyAspectHandler.class)
     @Bean
     public ReadOnlyAspectHandler readOnlyAspectHandler(DataSourceDecideFacade dataSourceDecideFacade) {
         return new ReadOnlyAspectHandler(dataSourceDecideFacade);

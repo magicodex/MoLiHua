@@ -6,6 +6,7 @@ import jasmine.framework.concurrent.AsyncTaskProvider;
 import jasmine.framework.concurrent.AsyncTaskUtil;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskDecorator;
@@ -28,11 +29,13 @@ public class AsyncTaskAutoConfiguration implements AsyncConfigurer {
         this.contextHandlerFacade = contextHandlerFacade;
     }
 
+    @ConditionalOnMissingBean(TaskDecorator.class)
     @Bean
     public TaskDecorator taskDecorator() {
         return new AsyncTaskDecorator(contextHandlerFacade);
     }
 
+    @ConditionalOnMissingBean(AsyncTaskProvider.class)
     @Bean
     public AsyncTaskProvider asyncTaskProvider(@Qualifier(EXECUTOR_BEAN_NAME) Executor executor) {
         AsyncTaskProvider provider = new AsyncExecutorTaskProvider(executor);

@@ -14,6 +14,7 @@ import jasmine.framework.lock.impl.redisson.RedissonDistributedLockProvider;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 @Configuration
 public class RedisAutoConfiguration {
 
+    @ConditionalOnMissingBean(CacheService.class)
     @Bean
     public CacheService cacheService(CacheProperties cacheProperties,
                                      RedisTemplate redisTemplate,
@@ -45,11 +47,13 @@ public class RedisAutoConfiguration {
         return cacheService;
     }
 
+    @ConditionalOnMissingBean(DistributedLockAspectHandler.class)
     @Bean
     public DistributedLockAspectHandler distributedLockAspectHandler() {
         return new DistributedLockAspectHandler();
     }
 
+    @ConditionalOnMissingBean(DistributedLockProvider.class)
     @Bean
     public DistributedLockProvider distributedLockProvider(RedissonClient redissonClient) {
         DistributedLockProvider provider = new RedissonDistributedLockProvider(redissonClient);

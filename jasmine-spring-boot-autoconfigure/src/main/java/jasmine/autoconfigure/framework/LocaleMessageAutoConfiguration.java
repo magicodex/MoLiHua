@@ -1,10 +1,11 @@
 package jasmine.autoconfigure.framework;
 
-import jasmine.framework.i18n.LocaleMessageProvider;
 import jasmine.framework.common.util.I18nUtil;
-import jasmine.framework.i18n.impl.DefaultLocaleMessageProvider;
+import jasmine.framework.i18n.LocaleMessageProvider;
 import jasmine.framework.i18n.builder.MessageSourceBuilder;
+import jasmine.framework.i18n.impl.DefaultLocaleMessageProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
@@ -23,6 +24,7 @@ public class LocaleMessageAutoConfiguration {
     /** 多语言的cookie名 */
     private static final String COOKIE_LANGUAGE = "LANG";
 
+    @ConditionalOnMissingBean(MessageSource.class)
     @Bean
     public MessageSource messageSource(LocaleMessageProperties properties) {
         MessageSourceBuilder builder = new MessageSourceBuilder();
@@ -41,6 +43,7 @@ public class LocaleMessageAutoConfiguration {
      *
      * @return
      */
+    @ConditionalOnMissingBean(LocaleResolver.class)
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
@@ -49,6 +52,7 @@ public class LocaleMessageAutoConfiguration {
         return resolver;
     }
 
+    @ConditionalOnMissingBean(LocaleMessageProvider.class)
     @Bean
     public LocaleMessageProvider localeMessageProvider(MessageSource messageSource) {
         LocaleMessageProvider localeMessageProvider = new DefaultLocaleMessageProvider(messageSource);

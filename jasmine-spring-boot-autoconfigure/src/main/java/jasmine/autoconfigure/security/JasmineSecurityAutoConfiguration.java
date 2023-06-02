@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.security;
 
 import jasmine.framework.context.CurrentSubject;
+import jasmine.framework.context.SubjectProvider;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
@@ -41,11 +42,13 @@ import java.util.Arrays;
 @Configuration
 public class JasmineSecurityAutoConfiguration {
 
+    @ConditionalOnMissingBean(PasswordEncoder.class)
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    @ConditionalOnMissingBean(AccessDecisionManager.class)
     @Bean
     public AccessDecisionManager accessDecisionManager(JasmineSecurityProperties securityProperties,
                                                        @Autowired(required = false) AccessDecisionStrategy accessDecisionStrategy) {
@@ -61,6 +64,7 @@ public class JasmineSecurityAutoConfiguration {
         return managerProxy;
     }
 
+    @ConditionalOnMissingBean(UrlPatternMatcher.class)
     @Bean
     public UrlPatternMatcher urlPatternMatcher() {
         return new DefaultUrlPatternMatcher();
@@ -92,6 +96,7 @@ public class JasmineSecurityAutoConfiguration {
         return service;
     }
 
+    @ConditionalOnMissingBean(SubjectProvider.class)
     @Bean
     public UserSubjectProvider subjectProvider(UserSubjectDetailsService userSubjectDetailsService) {
         UserSubjectProvider subjectProvider = new UserSubjectProvider(userSubjectDetailsService);
@@ -102,11 +107,13 @@ public class JasmineSecurityAutoConfiguration {
         return subjectProvider;
     }
 
+    @ConditionalOnMissingBean(SecurityContextHandler.class)
     @Bean
     public SecurityContextHandler securityContextHandler() {
         return new SecurityContextHandler();
     }
 
+    @ConditionalOnMissingBean(SecurityTenantConfigProcessor.class)
     @Bean
     public SecurityTenantConfigProcessor securityTenantConfigProcessor() {
         return new SecurityTenantConfigProcessor();
