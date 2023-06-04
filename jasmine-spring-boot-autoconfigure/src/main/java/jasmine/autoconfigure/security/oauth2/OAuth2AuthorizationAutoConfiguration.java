@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.security.oauth2;
 
 import jasmine.security.config.JasmineSecurityConfig;
+import jasmine.security.subject.ClientSubjectDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +11,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.InMemoryClientDetailsService;
 
 /**
@@ -27,15 +27,15 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
     /** 认证管理器 */
     private final AuthenticationManager authenticationManager;
 
-    private ClientDetailsService clientDetailsService;
+    private ClientSubjectDetailsService clientSubjectDetailsService;
 
     private static final String TOKEN_KEY_ACCESS = "permitAll()";
     private static final String CHECK_TOKEN_ACCESS = "isAuthenticated()";
 
     public OAuth2AuthorizationAutoConfiguration(AuthenticationManager authenticationManager,
-                                                @Autowired(required = false) ClientDetailsService clientDetailsService) {
+                                                @Autowired(required = false) ClientSubjectDetailsService clientSubjectDetailsService) {
         this.authenticationManager = authenticationManager;
-        this.clientDetailsService = clientDetailsService;
+        this.clientSubjectDetailsService = clientSubjectDetailsService;
     }
 
     @Override
@@ -50,8 +50,8 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        if (clientDetailsService != null) {
-            clients.withClientDetails(clientDetailsService);
+        if (clientSubjectDetailsService != null) {
+            clients.withClientDetails(clientSubjectDetailsService);
         } else {
             clients.withClientDetails(new InMemoryClientDetailsService());
         }

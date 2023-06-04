@@ -1,7 +1,7 @@
 package jasmine.autoconfigure.security;
 
+import jasmine.security.subject.ClientSubjectDetailsService;
 import jasmine.security.subject.UserSubjectDetailsService;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
 
 /**
  * @author mh.z
@@ -16,9 +16,9 @@ public interface JasmineSecurityConfigTemplate {
     UserSubjectDetailsService userSubjectDetailsService();
 
     /**
-     * 注册 ClientDetailsService 对象
+     * 注册 ClientSubjectDetailsService 对象
      *
      * @return
      */
-    ClientDetailsService clientDetailsService();
+    ClientSubjectDetailsService clientSubjectDetailsService();
 }

@@ -1,23 +1,22 @@
 package jasmine.demo.service;
 
-import jasmine.framework.context.InitSupport;
-import jasmine.framework.context.RuntimeProvider;
-import jasmine.framework.common.util.CollectionUtil;
 import jasmine.demo.entity.User;
 import jasmine.demo.mapper.UserMapper;
+import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.context.InitSupport;
+import jasmine.framework.context.RuntimeProvider;
 import jasmine.security.authorization.RoleAuthority;
 import jasmine.security.rbac.dao.SecRoleDAO;
 import jasmine.security.rbac.model.SecRole;
+import jasmine.security.subject.ClientSubject;
+import jasmine.security.subject.ClientSubjectDetailsService;
 import jasmine.security.subject.UserSubject;
 import jasmine.security.subject.UserSubjectDetailsService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.ClientRegistrationException;
-import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -27,7 +26,7 @@ import java.util.List;
  * @author mh.z
  */
 @Component
-public class UserService implements UserSubjectDetailsService, ClientDetailsService, InitSupport {
+public class UserService implements UserSubjectDetailsService, ClientSubjectDetailsService, InitSupport {
     private UserMapper userMapper;
     private SecRoleDAO roleDAO;
     private PasswordEncoder passwordEncoder;
@@ -74,7 +73,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
     }
 
     @Override
-    public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
+    public ClientSubject loadClientByClientId(String clientId) throws ClientRegistrationException {
         User user = userMapper.getAllTenantUserByName(clientId);
         if (user == null) {
             return null;
@@ -84,7 +83,7 @@ public class UserService implements UserSubjectDetailsService, ClientDetailsServ
         Long userId = user.getId();
         List<GrantedAuthority> authorityList = getGrantedAuthorities(userId);
 
-        BaseClientDetails clientDetails = new BaseClientDetails();
+        ClientSubject clientDetails = new ClientSubject();
         clientDetails.setClientId(clientId);
         clientDetails.setClientSecret(passwordEncoder.encode(user.getPassword()));
         clientDetails.setAuthorities(authorityList);

@@ -6,6 +6,8 @@ import jasmine.security.authorization.AccessDecisionManagerProxy;
 import jasmine.security.authorization.AccessDecisionStrategy;
 import jasmine.security.authorization.DynamicAccessDecisionVoter;
 import jasmine.security.config.JasmineSecurityConfig;
+import jasmine.security.integration.SecurityContextHandler;
+import jasmine.security.integration.SecurityTenantConfigProcessor;
 import jasmine.security.rbac.dao.SecFunctionDAO;
 import jasmine.security.rbac.dao.SecResourceDAO;
 import jasmine.security.strategy.CacheRbacQueryService;
@@ -13,10 +15,9 @@ import jasmine.security.strategy.DefaultUrlPatternMatcher;
 import jasmine.security.strategy.RbacAccessDecisionStrategy;
 import jasmine.security.strategy.RbacQueryService;
 import jasmine.security.strategy.UrlPatternMatcher;
+import jasmine.security.subject.ClientSubjectDetailsService;
 import jasmine.security.subject.UserSubjectDetailsService;
 import jasmine.security.subject.UserSubjectProvider;
-import jasmine.security.integration.SecurityContextHandler;
-import jasmine.security.integration.SecurityTenantConfigProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -28,7 +29,6 @@ import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
 
@@ -88,10 +88,10 @@ public class JasmineSecurityAutoConfiguration {
         return service;
     }
 
-    @ConditionalOnMissingBean(ClientDetailsService.class)
+    @ConditionalOnMissingBean(ClientSubjectDetailsService.class)
     @Bean
-    public ClientDetailsService clientDetailsService(JasmineSecurityConfigTemplate configTemplate) {
-        ClientDetailsService service = configTemplate.clientDetailsService();
+    public ClientSubjectDetailsService clientSubjectDetailsService(JasmineSecurityConfigTemplate configTemplate) {
+        ClientSubjectDetailsService service = configTemplate.clientSubjectDetailsService();
 
         return service;
     }
