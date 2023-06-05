@@ -3,6 +3,7 @@ package jasmine.demo.service;
 import jasmine.demo.entity.User;
 import jasmine.demo.mapper.UserMapper;
 import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.common.util.ObjectUtil;
 import jasmine.framework.context.InitSupport;
 import jasmine.framework.context.RuntimeProvider;
 import jasmine.security.authorization.RoleAuthority;
@@ -56,7 +57,9 @@ public class UserService implements UserSubjectDetailsService, ClientSubjectDeta
     }
 
     @Override
-    public UserSubject loadUserByUserId(Long userId) throws UsernameNotFoundException {
+    public UserSubject loadUserByUserId(String userIdStr) throws UsernameNotFoundException {
+        Long userId = ObjectUtil.parseLong(userIdStr);
+
         // 获取用户
         User user = userMapper.getAllTenantUserById(userId);
         if (user == null) {

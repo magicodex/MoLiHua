@@ -15,7 +15,7 @@ public interface UserSubjectDetailsService extends UserDetailsService {
      * @return
      * @throws UsernameNotFoundException
      */
-    UserSubject loadUserByUserId(Long userId) throws UsernameNotFoundException;
+    UserSubject loadUserByUserId(String userId) throws UsernameNotFoundException;
 
     @Override
     UserSubject loadUserByUsername(String username) throws UsernameNotFoundException;
