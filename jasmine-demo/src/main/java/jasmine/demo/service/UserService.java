@@ -57,9 +57,7 @@ public class UserService implements UserSubjectDetailsService, ClientSubjectDeta
     }
 
     @Override
-    public UserSubject loadUserByUserId(String userIdStr) throws UsernameNotFoundException {
-        Long userId = ObjectUtil.parseLong(userIdStr);
-
+    public UserSubject loadUserByUserId(Long userId) throws UsernameNotFoundException {
         // 获取用户
         User user = userMapper.getAllTenantUserById(userId);
         if (user == null) {
