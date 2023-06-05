@@ -39,7 +39,7 @@ public class UserService implements UserSubjectDetailsService, ClientSubjectDeta
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserSubject loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userMapper.getAllTenantUserByName(username);
         if (user == null) {
             throw new UsernameNotFoundException("username '" + username + "' not found");
