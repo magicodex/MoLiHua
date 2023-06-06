@@ -2,6 +2,7 @@ package jasmine.autoconfigure.security;
 
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import jasmine.security.config.JasmineSecurityConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -12,6 +13,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
  * <p>
@@ -27,11 +31,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
     private JasmineSecurityProperties securityProperties;
     private AccessDecisionManager accessDecisionManager;
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
     public SpringSecurityAutoConfiguration(JasmineSecurityProperties securityProperties,
-                                           AccessDecisionManager accessDecisionManager) {
+                                           AccessDecisionManager accessDecisionManager,
+                                           @Autowired(required = false) AuthenticationSuccessHandler authenticationSuccessHandler,
+                                           @Autowired(required = false) AuthenticationFailureHandler authenticationFailureHandler) {
         this.securityProperties = securityProperties;
         this.accessDecisionManager = accessDecisionManager;
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+        this.authenticationFailureHandler = authenticationFailureHandler;
     }
 
     @Override
@@ -46,12 +56,28 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
                 // 设置访问决策管理器
                 .withObjectPostProcessor(new FilterSecurityInterceptorPostProcessor(accessDecisionManager));
 
-        JasmineSecurityProperties.FormLogin formLogin = securityProperties.getFormLogin();
-        // 自定义登录页面和认证失败后跳转的页面
-        http.formLogin()
-                .loginPage(formLogin.getLoginPage())
-                .failureForwardUrl(formLogin.getFailureForwardUrl())
-                .permitAll();
+        {
+            JasmineSecurityProperties.FormLogin formLogin = securityProperties.getFormLogin();
+            FormLoginConfigurer formLoginConfigurer = http.formLogin();
+            // 自定义登录页面
+            formLoginConfigurer.loginPage(formLogin.getLoginPage());
+
+            if (authenticationSuccessHandler != null) {
+                formLoginConfigurer.successHandler(authenticationSuccessHandler);
+            } else {
+                // 自定义认证成功后跳转的页面
+                formLoginConfigurer.successForwardUrl(formLogin.getSuccessForwardUrl());
+            }
+
+            if (authenticationFailureHandler != null) {
+                formLoginConfigurer.failureHandler(authenticationFailureHandler);
+            } else {
+                // 自定义认证失败后跳转的页面
+                formLoginConfigurer.failureForwardUrl(formLogin.getFailureForwardUrl());
+            }
+
+            formLoginConfigurer.permitAll();
+        }
 
         JasmineSecurityProperties.Logout logout = securityProperties.getLogout();
         // 自定义登出后跳转的页面

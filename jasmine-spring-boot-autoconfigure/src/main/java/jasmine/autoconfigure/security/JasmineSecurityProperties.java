@@ -72,6 +72,8 @@ public class JasmineSecurityProperties {
     public static class FormLogin {
         /** 登录页面 */
         private String loginPage = "/login";
+        /** 认证成功跳转URL */
+        private String successForwardUrl = "/";
         /** 认证失败跳转URL */
         private String failureForwardUrl = "/login";
 
@@ -81,6 +83,14 @@ public class JasmineSecurityProperties {
 
         public void setLoginPage(String loginPage) {
             this.loginPage = loginPage;
+        }
+
+        public String getSuccessForwardUrl() {
+            return successForwardUrl;
+        }
+
+        public void setSuccessForwardUrl(String successForwardUrl) {
+            this.successForwardUrl = successForwardUrl;
         }
 
         public String getFailureForwardUrl() {
