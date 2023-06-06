@@ -72,10 +72,20 @@ public class JasmineSecurityProperties {
     public static class FormLogin {
         /** 登录页面 */
         private String loginPage = "/login";
-        /** 认证成功跳转URL */
+        /** 登录接口 */
+        private String loginProcessingUrl = "/login";
+        /** 认证成功后转发的请求URL */
         private String successForwardUrl = "/";
-        /** 认证失败跳转URL */
+        /** 认证失败后转发的请求URL */
         private String failureForwardUrl = "/login";
+        /** 认证成功后重定向的URL */
+        private String successUrl = null;
+        /** 认证失败后重定向的URL */
+        private String failureUrl = null;
+        /** 用户名参数 */
+        private String usernameParameter = "username";
+        /** 密码参数 */
+        private String passwordParameter = "password";
 
         public String getLoginPage() {
             return loginPage;
@@ -83,6 +93,14 @@ public class JasmineSecurityProperties {
 
         public void setLoginPage(String loginPage) {
             this.loginPage = loginPage;
+        }
+
+        public String getLoginProcessingUrl() {
+            return loginProcessingUrl;
+        }
+
+        public void setLoginProcessingUrl(String loginProcessingUrl) {
+            this.loginProcessingUrl = loginProcessingUrl;
         }
 
         public String getSuccessForwardUrl() {
@@ -99,6 +117,38 @@ public class JasmineSecurityProperties {
 
         public void setFailureForwardUrl(String failureForwardUrl) {
             this.failureForwardUrl = failureForwardUrl;
+        }
+
+        public String getSuccessUrl() {
+            return successUrl;
+        }
+
+        public void setSuccessUrl(String successUrl) {
+            this.successUrl = successUrl;
+        }
+
+        public String getFailureUrl() {
+            return failureUrl;
+        }
+
+        public void setFailureUrl(String failureUrl) {
+            this.failureUrl = failureUrl;
+        }
+
+        public String getUsernameParameter() {
+            return usernameParameter;
+        }
+
+        public void setUsernameParameter(String usernameParameter) {
+            this.usernameParameter = usernameParameter;
+        }
+
+        public String getPasswordParameter() {
+            return passwordParameter;
+        }
+
+        public void setPasswordParameter(String passwordParameter) {
+            this.passwordParameter = passwordParameter;
         }
     }
 

@@ -1,5 +1,6 @@
 package jasmine.autoconfigure.security;
 
+import jasmine.framework.common.util.StringUtil;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,20 +60,30 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
         {
             JasmineSecurityProperties.FormLogin formLogin = securityProperties.getFormLogin();
             FormLoginConfigurer formLoginConfigurer = http.formLogin();
-            // 自定义登录页面
+            // 自定义登录页面和登录接口
             formLoginConfigurer.loginPage(formLogin.getLoginPage());
+            formLoginConfigurer.loginProcessingUrl(formLogin.getLoginProcessingUrl());
+            // 自定义用户名和密码参数
+            formLoginConfigurer.usernameParameter(formLogin.getUsernameParameter());
+            formLoginConfigurer.passwordParameter(formLogin.getPasswordParameter());
 
             if (authenticationSuccessHandler != null) {
                 formLoginConfigurer.successHandler(authenticationSuccessHandler);
-            } else {
-                // 自定义认证成功后跳转的页面
+            } else if (StringUtil.isNotEmpty(formLogin.getSuccessUrl())) {
+                // 认证成功后重定向的URL
+                formLoginConfigurer.defaultSuccessUrl(formLogin.getSuccessUrl(), true);
+            } else if (StringUtil.isNotEmpty(formLogin.getSuccessForwardUrl())) {
+                // 认证成功后转发的请求URL
                 formLoginConfigurer.successForwardUrl(formLogin.getSuccessForwardUrl());
             }
 
             if (authenticationFailureHandler != null) {
                 formLoginConfigurer.failureHandler(authenticationFailureHandler);
-            } else {
-                // 自定义认证失败后跳转的页面
+            } else if (StringUtil.isNotEmpty(formLogin.getFailureUrl())) {
+                // 认证失败后重定向的URL
+                formLoginConfigurer.failureUrl(formLogin.getFailureUrl());
+            } else if (StringUtil.isNotEmpty(formLogin.getFailureForwardUrl())) {
+                // 认证失败后转发的请求URL
                 formLoginConfigurer.failureForwardUrl(formLogin.getFailureForwardUrl());
             }
 
