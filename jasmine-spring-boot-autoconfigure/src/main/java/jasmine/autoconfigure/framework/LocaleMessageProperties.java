@@ -13,7 +13,7 @@ public class LocaleMessageProperties {
     /** 多语言资源编码 */
     private String encoding = "UTF-8";
     /** 多语言常量路径 */
-    private String[] constantPatterns = new String[]{"classpath*:/**/constant/*MessageConstants.class"};
+    private String[] constantPatterns = new String[]{"classpath*:/jasmine/**/constant/*MessageConstants.class"};
 
     public String[] getResourceBaseNames() {
         return resourceBaseNames;
