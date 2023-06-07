@@ -13,19 +13,19 @@ import java.util.Properties;
 public class MessageSourceBuilder {
     private String[] resourceBaseNames;
     private String encoding;
-    private String constantPattern;
+    private String[] constantPatterns;
 
     /**  多语言资源路径 */
     private static final String DEFAULT_MESSAGE_BASE_NAME = "message/messages";
     /** 多语言资源编码 */
     private static final String DEFAULT_MESSAGE_DEFAULT_ENCODING = "UTF-8";
     /** 多语言常量路径 */
-    private static final String DEFAULT_MESSAGE_CONSTANT_PATH = "classpath*:/**/constant/*MessageConstants.class";
+    private static final String DEFAULT_MESSAGE_CONSTANT_PATH = "classpath*:/jasmine/**/constant/*MessageConstants.class";
 
     public MessageSourceBuilder() {
         resourceBaseNames = new String[]{DEFAULT_MESSAGE_BASE_NAME};
         encoding = DEFAULT_MESSAGE_DEFAULT_ENCODING;
-        constantPattern = DEFAULT_MESSAGE_CONSTANT_PATH;
+        constantPatterns = new String[]{DEFAULT_MESSAGE_CONSTANT_PATH};
     }
 
     public void setResourceBaseNames(String... resourceBaseNames) {
@@ -36,8 +36,8 @@ public class MessageSourceBuilder {
         this.encoding = encoding;
     }
 
-    public void setConstantPattern(String constantPattern) {
-        this.constantPattern = constantPattern;
+    public void setConstantPatterns(String... constantPatterns) {
+        this.constantPatterns = constantPatterns;
     }
 
     /**
@@ -48,13 +48,13 @@ public class MessageSourceBuilder {
     public MessageSource build() {
         CheckUtil.notNullProp(resourceBaseNames, "resourceBaseNames null");
         CheckUtil.notNullProp(encoding, "encoding null");
-        CheckUtil.notNullProp(constantPattern, "constantPattern null");
+        CheckUtil.notNullProp(constantPatterns, "constantPatterns null");
 
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames(resourceBaseNames);
         messageSource.setDefaultEncoding(encoding);
         // 扫描多语言常量
-        Properties commonMessages = DeclareI18nScanUtil.scan(constantPattern);
+        Properties commonMessages = DeclareI18nScanUtil.scan(constantPatterns);
         messageSource.setCommonMessages(commonMessages);
 
         return messageSource;

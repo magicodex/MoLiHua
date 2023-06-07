@@ -25,11 +25,11 @@ public class DeclareI18nScanUtil {
     /**
      * 扫描多语言常量
      *
-     * @param locationPattern
+     * @param locationPatterns
      * @return
      */
-    public static Properties scan(String locationPattern) {
-        CheckUtil.notNull(locationPattern, "locationPattern null");
+    public static Properties scan(String... locationPatterns) {
+        CheckUtil.notNull(locationPatterns, "locationPatterns null");
         Properties properties = new Properties();
 
         PathMatchingResourcePatternResolver pathResolver = new PathMatchingResourcePatternResolver();
@@ -37,18 +37,20 @@ public class DeclareI18nScanUtil {
         ClassLoader classLoader = DeclareI18nScanUtil.class.getClassLoader();
 
         try {
-            // 获取多语言常量类信息
-            Resource[] resources = pathResolver.getResources(locationPattern);
+            for (String locationPattern : locationPatterns) {
+                // 获取多语言常量类信息
+                Resource[] resources = pathResolver.getResources(locationPattern);
 
-            for (Resource resource : resources) {
-                MetadataReader metadataReader = readerFactory.getMetadataReader(resource);
-                ClassMetadata classMetadata = metadataReader.getClassMetadata();
-                String className = classMetadata.getClassName();
-                // 加载多语言常量类
-                Class<?> clazz = classLoader.loadClass(className);
+                for (Resource resource : resources) {
+                    MetadataReader metadataReader = readerFactory.getMetadataReader(resource);
+                    ClassMetadata classMetadata = metadataReader.getClassMetadata();
+                    String className = classMetadata.getClassName();
+                    // 加载多语言常量类
+                    Class<?> clazz = classLoader.loadClass(className);
 
-                // 扫描多语言常量类获取多语言信息
-                doScan(properties, clazz);
+                    // 扫描多语言常量类获取多语言信息
+                    doScan(properties, clazz);
+                }
             }
         } catch (Exception e) {
             throw ErrorUtil.sneakyError(e);

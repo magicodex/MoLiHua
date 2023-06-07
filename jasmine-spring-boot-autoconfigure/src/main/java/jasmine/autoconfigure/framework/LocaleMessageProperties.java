@@ -13,7 +13,7 @@ public class LocaleMessageProperties {
     /** 多语言资源编码 */
     private String encoding = "UTF-8";
     /** 多语言常量路径 */
-    private String constantPattern = "classpath*:/**/constant/*MessageConstants.class";
+    private String[] constantPatterns = new String[]{"classpath*:/**/constant/*MessageConstants.class"};
 
     public String[] getResourceBaseNames() {
         return resourceBaseNames;
@@ -31,12 +31,12 @@ public class LocaleMessageProperties {
         this.encoding = encoding;
     }
 
-    public String getConstantPattern() {
-        return constantPattern;
+    public String[] getConstantPatterns() {
+        return constantPatterns;
     }
 
-    public void setConstantPattern(String constantPattern) {
-        this.constantPattern = constantPattern;
+    public void setConstantPatterns(String[] constantPatterns) {
+        this.constantPatterns = constantPatterns;
     }
 
 }

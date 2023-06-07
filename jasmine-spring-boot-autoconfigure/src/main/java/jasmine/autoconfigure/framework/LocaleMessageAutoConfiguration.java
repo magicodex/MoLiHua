@@ -33,7 +33,7 @@ public class LocaleMessageAutoConfiguration {
         // 多语言资源编码
         builder.setEncoding(properties.getEncoding());
         // 多语言常量路径
-        builder.setConstantPattern(properties.getConstantPattern());
+        builder.setConstantPatterns(properties.getConstantPatterns());
 
         return builder.build();
     }

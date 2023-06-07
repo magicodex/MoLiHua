@@ -20,7 +20,7 @@ public class MessageSourceBuilderTest {
         MessageSourceBuilder builder = new MessageSourceBuilder();
         builder.setResourceBaseNames(RESOURCE_PREFIX);
         builder.setEncoding("UTF-8");
-        builder.setConstantPattern(SCAN_PATH);
+        builder.setConstantPatterns(SCAN_PATH);
 
         MessageSource messageSource = builder.build();
         String actual = messageSource.getMessage(TestMessageConstants.MESSAGE_1,
