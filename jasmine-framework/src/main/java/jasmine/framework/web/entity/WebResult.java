@@ -17,6 +17,8 @@ public class WebResult<T> {
     private Boolean success;
     /** 响应数据 */
     private T data;
+    /** 数据总数 */
+    private Long total;
     /** 响应信息 */
     private String message;
 
@@ -86,6 +88,14 @@ public class WebResult<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
     }
 
     public String getMessage() {
