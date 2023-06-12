@@ -17,11 +17,11 @@ jasmine.i18n.message.constantPatterns=
 
 ```
 // 定义多语言常量
-public interface XxxxMessages {
+public interface XxxxMessageConstants {
   @DeclareI18N("你好，世界！")
   String HELLO_WORLD = "helloWorld";
 }
 
 // 获取多语言信息
-String message = QI18nUtil.getMessage(XxxxMessages.HELLO_WORLD);
+String message = I18nUtil.getMessage(XxxxMessageConstants.HELLO_WORLD);
 ```
