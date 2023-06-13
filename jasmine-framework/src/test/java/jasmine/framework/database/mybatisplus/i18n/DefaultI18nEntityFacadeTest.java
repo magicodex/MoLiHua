@@ -184,18 +184,16 @@ public class DefaultI18nEntityFacadeTest extends MybatisTestContext {
         I18nCrud crud = new I18nCrud(sqlSessionTemplate, I18N_TABLE);
 
         {
-            Map<String, String> data = new HashMap<>() {{
-                put("name_1", "名称1");
-            }};
+            Map<String, String> data = new HashMap<>();
+            data.put("name_1", "名称1");
 
             // 新增多语言记录
             crud.insert(1L, LangConstants.ZH_CN, data, true);
         }
 
         {
-            Map<String, String> data = new HashMap<>() {{
-                put("name_1", "name1");
-            }};
+            Map<String, String> data = new HashMap<>();
+            data.put("name_1", "name1");
             // 新增多语言记录
             crud.insert(1L, LangConstants.EN_US, data, false);
         }

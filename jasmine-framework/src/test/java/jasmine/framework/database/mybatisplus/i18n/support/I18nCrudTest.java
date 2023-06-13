@@ -29,10 +29,9 @@ public class I18nCrudTest extends MybatisTestContext {
     public void testInsert() {
         I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
 
-        Map<String, String> data = new HashMap<>() {{
-            put("name_1", "名称1");
-            put("name_2", "名称2");
-        }};
+        Map<String, String> data = new HashMap<>();
+        data.put("name_1", "名称1");
+        data.put("name_2", "名称2");
         // 新增多语言记录
         int rowCount = crud.insert(1L, "zh-CN", data, true);
         Assert.assertEquals(1, rowCount);
@@ -54,10 +53,9 @@ public class I18nCrudTest extends MybatisTestContext {
         I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
         initI18n(1L);
 
-        Map<String, String> data = new HashMap<>() {{
-            put("name_1", "新名称1");
-            put("name_2", "新名称2");
-        }};
+        Map<String, String> data = new HashMap<>();
+        data.put("name_1", "新名称1");
+        data.put("name_2", "新名称2");
         // 新增多语言记录
         int rowCount = crud.update(1L, "zh-CN", data, null);
         Assert.assertEquals(1, rowCount);
@@ -144,20 +142,18 @@ public class I18nCrudTest extends MybatisTestContext {
         I18nCrud crud = new I18nCrud(sqlSession, I18N_TABLE);
 
         {
-            Map<String, String> data = new HashMap<>() {{
-                put("name_1", "名称1");
-                put("name_2", "名称2");
-            }};
+            Map<String, String> data = new HashMap<>();
+            data.put("name_1", "名称1");
+            data.put("name_2", "名称2");
 
             // 新增多语言记录
             crud.insert(1L, "zh-CN", data, true);
         }
 
         {
-            Map<String, String> data = new HashMap<>() {{
-                put("name_1", "name1");
-                put("name_2", "name2");
-            }};
+            Map<String, String> data = new HashMap<>();
+            data.put("name_1", "name1");
+            data.put("name_2", "name2");
             // 新增多语言记录
             crud.insert(1L, "en-US", data, false);
         }
@@ -171,11 +167,10 @@ public class I18nCrudTest extends MybatisTestContext {
      * @return
      */
     private List<I18nRecord> selectI18n(Collection<Long> ids, String langCode) {
-        Object parameter = new HashMap<>() {{
-            put(I18nCrud.PARAM_TABLE, I18N_TABLE);
-            put(I18nCrud.PARAM_IDS, ids);
-            put(I18nCrud.PARAM_LANG_CODE, langCode);
-        }};
+        Map parameter = new HashMap<>();
+        parameter.put(I18nCrud.PARAM_TABLE, I18N_TABLE);
+        parameter.put(I18nCrud.PARAM_IDS, ids);
+        parameter.put(I18nCrud.PARAM_LANG_CODE, langCode);
 
         List<Map> recordList = sqlSession.selectList(I18nCrud.STATEMENT_SELECT, parameter);
         List<I18nRecord> i18nRecordList = CollectionUtil.mapToList(recordList, (record) -> {
