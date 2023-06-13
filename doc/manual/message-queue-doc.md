@@ -39,6 +39,11 @@ spring.rabbitmq.password=密码
     <artifactId>jasmine-spring-cloud-stream</artifactId>
     <version>最新版本</version>
 </dependency>
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-stream</artifactId>
+</dependency>
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-stream-rabbit</artifactId>

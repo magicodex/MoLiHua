@@ -7,6 +7,17 @@
     <artifactId>jasmine-spring-boot-starter-security</artifactId>
     <scope>compile</scope>
 </dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+    <scope>compile</scope>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security.oauth</groupId>
+    <artifactId>spring-security-oauth2</artifactId>
+    <scope>compile</scope>
+</dependency>
 ```
 
 # 使用配置

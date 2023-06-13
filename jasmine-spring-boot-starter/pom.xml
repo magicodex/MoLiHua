@@ -41,13 +41,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Spring框架 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- 注解校验 -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>

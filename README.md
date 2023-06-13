@@ -18,12 +18,17 @@
 ### 1.添加依赖
 
 ```
-<jasmine.version>1.0.0</jasmine.version>
+<jasmine.version>x.x.x</jasmine.version>
 
 <dependency>
     <groupId>com.magicodex</groupId>
     <artifactId>jasmine-spring-boot-starter</artifactId>
     <version>${jasmine.version}</version>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
 ```
 
