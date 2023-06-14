@@ -1,6 +1,6 @@
 package jasmine.framework.cache.impl.strategy;
 
-import jasmine.framework.cache.impl.strategy.DefaultCacheExpirationStrategy;
+import jasmine.framework.common.util.NewUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class DefaultCacheExpirationStrategyTest {
 
     @Test
     public void testGetTimeout() {
-        Map<String, Long> expirationMap = Map.of(
+        Map<String, Long> expirationMap = NewUtil.asMap(
                 "cache1", 30000L,
                 "cache2", 60000L);
 

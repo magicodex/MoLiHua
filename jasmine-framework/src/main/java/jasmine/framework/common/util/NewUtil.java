@@ -45,6 +45,34 @@ public class NewUtil {
     }
 
     /**
+     * 创建 Map 对象并返回
+     *
+     * @param args
+     * @return
+     * @param <K>
+     * @param <V>
+     */
+    public static <K, V> Map<K, V> asMap(Object... args) {
+        Map<K, V> map = map();
+        K key;
+        V value;
+
+        for (int index = 0; index < args.length; index = index + 2) {
+            key = (K) args[index];
+
+            if (index + 1 < args.length) {
+                value = (V) args[index + 1];
+            } else {
+                value = null;
+            }
+
+            map.put(key, value);
+        }
+
+        return map;
+    }
+
+    /**
      * 创建 List 对象并返回
      *
      * @param <T>

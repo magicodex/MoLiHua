@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -89,7 +90,10 @@ public class CollectionUtilTest {
         }
 
         {
-            Collection<?> collection = CollectionUtil.toList(Set.of("value1", "value2"));
+            Set<String> set = new HashSet<>();
+            set.add("value1");
+            set.add("value2");
+            Collection<?> collection = CollectionUtil.toList(set);
             Assert.assertTrue(collection instanceof List);
         }
     }

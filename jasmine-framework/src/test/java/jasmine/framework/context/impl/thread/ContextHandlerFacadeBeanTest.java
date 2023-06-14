@@ -1,5 +1,6 @@
 package jasmine.framework.context.impl.thread;
 
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.common.util.ref.ObjectValue;
 import jasmine.framework.context.thread.ContextHandler;
 import jasmine.framework.context.thread.ContextSnapshot;
@@ -79,7 +80,7 @@ public class ContextHandlerFacadeBeanTest {
         Mockito.when(handler.copy()).thenReturn(
                 Mockito.mock(ContextSnapshot.class));
 
-        Map<String, ContextHandler> handlerMap = Map.of("bean1", handler);
+        Map<String, ContextHandler> handlerMap = NewUtil.asMap("bean1", handler);
         // 模拟 ApplicationContext 对象
         ApplicationContext context = Mockito.mock(ApplicationContext.class);
         Mockito.when(context.getBeansOfType(ContextHandler.class))

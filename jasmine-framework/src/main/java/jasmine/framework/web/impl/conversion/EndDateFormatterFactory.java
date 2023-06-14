@@ -6,6 +6,7 @@ import org.springframework.format.Parser;
 import org.springframework.format.Printer;
 
 import java.time.ZonedDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,7 +16,8 @@ public class EndDateFormatterFactory implements AnnotationFormatterFactory<EndDa
     private static final Set<Class<?>> FIELD_TYPES;
 
     static {
-        FIELD_TYPES = Set.of(ZonedDateTime.class);
+        FIELD_TYPES = new HashSet<>();
+        FIELD_TYPES.add(ZonedDateTime.class);
     }
 
     @Override

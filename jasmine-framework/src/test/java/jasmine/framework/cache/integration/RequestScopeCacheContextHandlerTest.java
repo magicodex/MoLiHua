@@ -3,6 +3,7 @@ package jasmine.framework.cache.integration;
 import jasmine.framework.cache.impl.thread.RequestScopeCacheContext;
 import jasmine.framework.cache.impl.thread.RequestScopeCacheContextHolder;
 import jasmine.framework.cache.integration.RequestScopeCacheContextHandler;
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.context.thread.ContextSnapshot;
 import org.junit.After;
 import org.junit.Assert;
@@ -30,8 +31,8 @@ public class RequestScopeCacheContextHandlerTest {
 
     @Test
     public void testCopy() {
-        RequestScopeCacheContext context = new RequestScopeCacheContext(Map
-                .of("key1", "value1"));
+        RequestScopeCacheContext context = new RequestScopeCacheContext(NewUtil
+                .asMap("key1", "value1"));
         RequestScopeCacheContextHolder.setContext(context);
 
         // 复制当前的上下文

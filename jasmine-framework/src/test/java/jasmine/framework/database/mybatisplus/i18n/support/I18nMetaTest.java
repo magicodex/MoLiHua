@@ -1,5 +1,6 @@
 package jasmine.framework.database.mybatisplus.i18n.support;
 
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.database.mybatisplus.testdependency.entity.TestEntity2;
 import org.junit.Assert;
 import org.junit.Test;
@@ -46,7 +47,7 @@ public class I18nMetaTest {
 
     @Test
     public void testPopulateI18nField() {
-        Map<String, Object> valueMap = Map.of("name_1", "name1Value",
+        Map<String, Object> valueMap = NewUtil.asMap("name_1", "name1Value",
                 "name_2", "name2Value");
         I18nRecord record = new I18nRecord(valueMap);
 

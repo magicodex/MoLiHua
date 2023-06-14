@@ -1,5 +1,6 @@
 package jasmine.framework.mq.impl;
 
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.context.CurrentSubject;
 import jasmine.framework.context.SubjectProvider;
 import jasmine.framework.common.util.ref.ObjectValue;
@@ -61,7 +62,7 @@ public class DefaultSendMessageServiceBeanTest {
         DirectExchange exchange = new DirectExchange("exchange1");
         PublisherExchangeDirectRouting routing = new PublisherExchangeDirectRouting(
                 "test", exchange, "routingKey1");
-        bean.setRoutingMap(Map.of("test", routing));
+        bean.setRoutingMap(NewUtil.asMap("test", routing));
 
         MockSendInterceptor interceptor = new MockSendInterceptor();
         // 发送消息
@@ -120,7 +121,7 @@ public class DefaultSendMessageServiceBeanTest {
 
         ApplicationContext context = Mockito.mock(ApplicationContext.class);
         Mockito.when(context.getBeansOfType(PublisherRouting.class))
-                .thenReturn(Map.of("test", routing));
+                .thenReturn(NewUtil.asMap("test", routing));
 
         return context;
     }

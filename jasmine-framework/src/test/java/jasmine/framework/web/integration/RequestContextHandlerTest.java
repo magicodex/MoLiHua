@@ -1,5 +1,6 @@
 package jasmine.framework.web.integration;
 
+import jasmine.framework.common.util.NewUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.web.context.request.RequestAttributes;
@@ -16,7 +17,7 @@ public class RequestContextHandlerTest {
     public void testCopyAttributes() {
         RequestContextHandler handler = new RequestContextHandler();
 
-        Map<String, Object> attributeMap = Map.of("key1", "value1", "key2", "value2");
+        Map<String, Object> attributeMap = NewUtil.asMap("key1", "value1", "key2", "value2");
         RequestAttributes requestAttributes = new SimpleRequestAttributes("session1",
                 Collections.emptyMap(), attributeMap);
 

@@ -1,5 +1,6 @@
 package jasmine.framework.context.init;
 
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.context.InitSupport;
 import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.common.util.ref.ObjectValue;
@@ -24,7 +25,7 @@ public class InitSupportScanBeanTest {
 
         ApplicationContext context = Mockito.mock(ApplicationContext.class);
         Mockito.when(context.getBeansOfType(InitSupport.class))
-                .thenReturn(Map.of("bean1", initSupport));
+                .thenReturn(NewUtil.asMap("bean1", initSupport));
 
         RuntimeProvider provider = Mockito.mock(RuntimeProvider.class);
         InitSupportScanBean scanBean = new InitSupportScanBean(provider);

@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.framework.database;
 
 import com.zaxxer.hikari.HikariDataSource;
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.database.annotation.handler.ReadOnlyAspectHandler;
 import jasmine.framework.database.datasource.DataSourceDecideFacade;
 import jasmine.framework.database.impl.datasource.MultipleDataSource;
@@ -96,7 +97,7 @@ public class DataSourceAutoConfiguration {
     @Bean
     public DataSource dataSource(DataSource mainDataSource,
                                  DataSource readDataSource) {
-        Map<Object, Object> dataSourceMap = Map.of(MAIN_DATA_SOURCE_NAME, mainDataSource,
+        Map<Object, Object> dataSourceMap = NewUtil.asMap(MAIN_DATA_SOURCE_NAME, mainDataSource,
                 READ_DATA_SOURCE_NAME, readDataSource);
         MultipleDataSource multipleDataSource = new MultipleDataSource(dataSourceMap);
         multipleDataSource.setDefaultTargetDataSource(mainDataSource);

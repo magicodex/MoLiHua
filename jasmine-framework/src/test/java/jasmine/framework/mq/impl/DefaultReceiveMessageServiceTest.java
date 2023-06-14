@@ -1,5 +1,6 @@
 package jasmine.framework.mq.impl;
 
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.context.CurrentSubject;
 import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.context.SubjectProvider;
@@ -120,7 +121,7 @@ public class DefaultReceiveMessageServiceTest {
         }).when(receiver).receive(Mockito.any());
 
         RuntimeProvider provider = new MockRuntimeProvider(null,
-                Map.of("testMessageReceiver", receiver));
+                NewUtil.asMap("testMessageReceiver", receiver));
         DefaultReceiveMessageService service = new DefaultReceiveMessageService(provider);
 
         return service;

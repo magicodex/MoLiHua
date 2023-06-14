@@ -2,6 +2,7 @@ package jasmine.cloud.stream.mq;
 
 import jasmine.cloud.stream.testdependency.MockMessageReceiver;
 import jasmine.cloud.stream.testdependency.MockReceiveInterceptor;
+import jasmine.framework.common.util.NewUtil;
 import jasmine.framework.context.CurrentSubject;
 import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.common.util.CollectionUtil;
@@ -32,7 +33,7 @@ public class StreamReceiveMessageServiceTest extends AppTestContext {
     public void testDoReceive() {
         MockMessageReceiver<Object> mockReceiver = new MockMessageReceiver<>(Object.class);
         MockRuntimeProvider mockProvider = new MockRuntimeProvider(runtimeProvider,
-                Map.of("testMessageReceiver", mockReceiver));
+                NewUtil.asMap("testMessageReceiver", mockReceiver));
         MockReceiveInterceptor mockInterceptor = new MockReceiveInterceptor();
 
         Message message = MessageBuilder.withPayload("Hello, world!")
@@ -54,7 +55,7 @@ public class StreamReceiveMessageServiceTest extends AppTestContext {
     public void testInitCurrentContext() {
         MockMessageReceiver<Object> mockReceiver = new MockMessageReceiver<>(Object.class);
         MockRuntimeProvider mockProvider = new MockRuntimeProvider(runtimeProvider,
-                Map.of("testMessageReceiver", mockReceiver));
+                NewUtil.asMap("testMessageReceiver", mockReceiver));
 
         Message message = MessageBuilder.withPayload("Hello, world!")
                 .setHeader("subject", "userId:666666")
@@ -72,7 +73,7 @@ public class StreamReceiveMessageServiceTest extends AppTestContext {
     public void testGetReceiver() {
         MockMessageReceiver<Object> mockReceiver = new MockMessageReceiver<>(Object.class);
         MockRuntimeProvider mockProvider = new MockRuntimeProvider(runtimeProvider,
-                Map.of("testMessageReceiver", mockReceiver));
+                NewUtil.asMap("testMessageReceiver", mockReceiver));
         StreamReceiveMessageService testService = new StreamReceiveMessageService(mockProvider);
 
         // 能获取到名称是 testMessageReceiver 的消息接收者
