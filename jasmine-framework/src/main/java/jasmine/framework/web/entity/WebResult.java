@@ -1,6 +1,7 @@
 package jasmine.framework.web.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -14,17 +15,23 @@ import org.springframework.http.ResponseEntity;
  */
 public class WebResult<T> {
     /** 是否成功 */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean success;
     /** 响应数据 */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
     /** 数据总数 */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long total;
     /** 响应信息 */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String message;
 
     /** 错误代码 */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorCode;
     /** 错误详情 */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorDetail;
 
     protected WebResult(Boolean success, T data, String message) {
