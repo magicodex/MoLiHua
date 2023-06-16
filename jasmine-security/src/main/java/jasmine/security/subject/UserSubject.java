@@ -3,6 +3,7 @@ package jasmine.security.subject;
 import jasmine.framework.common.constant.TextConstants;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -33,9 +34,9 @@ public class UserSubject extends User {
         this.userId = userId;
     }
 
-    public UserSubject(Long tenantId, Long userId, User user) {
-        super(user.getUsername(), user.getPassword(), user.isEnabled(), user.isAccountNonExpired(),
-                user.isCredentialsNonExpired(), user.isAccountNonLocked(), user.getAuthorities());
+    public UserSubject(Long tenantId, Long userId, UserDetails details) {
+        super(details.getUsername(), details.getPassword(), details.isEnabled(), details.isAccountNonExpired(),
+                details.isCredentialsNonExpired(), details.isAccountNonLocked(), details.getAuthorities());
         this.tenantId = tenantId;
         this.userId = userId;
     }
