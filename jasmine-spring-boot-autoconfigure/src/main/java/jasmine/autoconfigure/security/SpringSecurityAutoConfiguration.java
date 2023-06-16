@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -32,15 +33,18 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
     private JasmineSecurityProperties securityProperties;
     private AccessDecisionManager accessDecisionManager;
+    private AuthenticationEntryPoint authenticationEntryPoint;
     private AuthenticationSuccessHandler authenticationSuccessHandler;
     private AuthenticationFailureHandler authenticationFailureHandler;
 
     public SpringSecurityAutoConfiguration(JasmineSecurityProperties securityProperties,
                                            AccessDecisionManager accessDecisionManager,
+                                           @Autowired(required = false) AuthenticationEntryPoint authenticationEntryPoint,
                                            @Autowired(required = false) AuthenticationSuccessHandler authenticationSuccessHandler,
                                            @Autowired(required = false) AuthenticationFailureHandler authenticationFailureHandler) {
         this.securityProperties = securityProperties;
         this.accessDecisionManager = accessDecisionManager;
+        this.authenticationEntryPoint = authenticationEntryPoint;
         this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.authenticationFailureHandler = authenticationFailureHandler;
     }
@@ -56,6 +60,11 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
                 .denyAll()
                 // 设置访问决策管理器
                 .withObjectPostProcessor(new FilterSecurityInterceptorPostProcessor(accessDecisionManager));
+
+        if (authenticationEntryPoint != null) {
+            http.exceptionHandling()
+                    .authenticationEntryPoint(authenticationEntryPoint);
+        }
 
         // 配置表单登录
         configFormLogin(http);
