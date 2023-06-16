@@ -57,38 +57,8 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
                 // 设置访问决策管理器
                 .withObjectPostProcessor(new FilterSecurityInterceptorPostProcessor(accessDecisionManager));
 
-        {
-            JasmineSecurityProperties.FormLogin formLogin = securityProperties.getFormLogin();
-            FormLoginConfigurer formLoginConfigurer = http.formLogin();
-            // 自定义登录页面和登录接口
-            formLoginConfigurer.loginPage(formLogin.getLoginPage());
-            formLoginConfigurer.loginProcessingUrl(formLogin.getLoginProcessingUrl());
-            // 自定义用户名和密码参数
-            formLoginConfigurer.usernameParameter(formLogin.getUsernameParameter());
-            formLoginConfigurer.passwordParameter(formLogin.getPasswordParameter());
-
-            if (authenticationSuccessHandler != null) {
-                formLoginConfigurer.successHandler(authenticationSuccessHandler);
-            } else if (StringUtil.isNotEmpty(formLogin.getSuccessUrl())) {
-                // 认证成功后重定向的URL
-                formLoginConfigurer.defaultSuccessUrl(formLogin.getSuccessUrl(), true);
-            } else if (StringUtil.isNotEmpty(formLogin.getSuccessForwardUrl())) {
-                // 认证成功后转发的请求URL
-                formLoginConfigurer.successForwardUrl(formLogin.getSuccessForwardUrl());
-            }
-
-            if (authenticationFailureHandler != null) {
-                formLoginConfigurer.failureHandler(authenticationFailureHandler);
-            } else if (StringUtil.isNotEmpty(formLogin.getFailureUrl())) {
-                // 认证失败后重定向的URL
-                formLoginConfigurer.failureUrl(formLogin.getFailureUrl());
-            } else if (StringUtil.isNotEmpty(formLogin.getFailureForwardUrl())) {
-                // 认证失败后转发的请求URL
-                formLoginConfigurer.failureForwardUrl(formLogin.getFailureForwardUrl());
-            }
-
-            formLoginConfigurer.permitAll();
-        }
+        // 配置表单登录
+        configFormLogin(http);
 
         JasmineSecurityProperties.Logout logout = securityProperties.getLogout();
         // 自定义登出后跳转的页面
@@ -104,6 +74,45 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
         http.headers()
                 .frameOptions()
                 .sameOrigin();
+    }
+
+    /**
+     * 配置表单登录
+     *
+     * @param http
+     * @throws Exception
+     */
+    protected void configFormLogin(HttpSecurity http) throws Exception {
+        JasmineSecurityProperties.FormLogin formLogin = securityProperties.getFormLogin();
+        FormLoginConfigurer formLoginConfigurer = http.formLogin();
+        // 自定义登录页面和登录接口
+        formLoginConfigurer.loginPage(formLogin.getLoginPage());
+        formLoginConfigurer.loginProcessingUrl(formLogin.getLoginProcessingUrl());
+        // 自定义用户名和密码参数
+        formLoginConfigurer.usernameParameter(formLogin.getUsernameParameter());
+        formLoginConfigurer.passwordParameter(formLogin.getPasswordParameter());
+
+        if (authenticationSuccessHandler != null) {
+            formLoginConfigurer.successHandler(authenticationSuccessHandler);
+        } else if (StringUtil.isNotEmpty(formLogin.getSuccessUrl())) {
+            // 认证成功后重定向的URL
+            formLoginConfigurer.defaultSuccessUrl(formLogin.getSuccessUrl(), true);
+        } else if (StringUtil.isNotEmpty(formLogin.getSuccessForwardUrl())) {
+            // 认证成功后转发的请求URL
+            formLoginConfigurer.successForwardUrl(formLogin.getSuccessForwardUrl());
+        }
+
+        if (authenticationFailureHandler != null) {
+            formLoginConfigurer.failureHandler(authenticationFailureHandler);
+        } else if (StringUtil.isNotEmpty(formLogin.getFailureUrl())) {
+            // 认证失败后重定向的URL
+            formLoginConfigurer.failureUrl(formLogin.getFailureUrl());
+        } else if (StringUtil.isNotEmpty(formLogin.getFailureForwardUrl())) {
+            // 认证失败后转发的请求URL
+            formLoginConfigurer.failureForwardUrl(formLogin.getFailureForwardUrl());
+        }
+
+        formLoginConfigurer.permitAll();
     }
 
     @ConditionalOnMissingBean(AuthenticationManager.class)
