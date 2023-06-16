@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 /**
  * <p>
@@ -25,14 +26,16 @@ public class UserSubject extends User {
                 TextConstants.UNKNOWN_PLACEHOLDER, Collections.emptyList());
     }
 
-    public UserSubject(Long userId, String username, String password,
-                       Collection<? extends GrantedAuthority> authorities) {
-        this(-1L, userId, username, password, authorities);
-    }
-
     public UserSubject(Long tenantId, Long userId, String username, String password,
                        Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
+        this.tenantId = tenantId;
+        this.userId = userId;
+    }
+
+    public UserSubject(Long tenantId, Long userId, User user) {
+        super(user.getUsername(), user.getPassword(), user.isEnabled(), user.isAccountNonExpired(),
+                user.isCredentialsNonExpired(), user.isAccountNonLocked(), user.getAuthorities());
         this.tenantId = tenantId;
         this.userId = userId;
     }
