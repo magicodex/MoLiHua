@@ -1,5 +1,5 @@
 
-/** 导航栏 */
+/* 导航栏 */
 .home-top-bar {
   position: absolute;
   left: 201px;
@@ -14,7 +14,7 @@
   z-index: 10;
 }
 
-/** 侧栏 */
+/* 侧栏 */
 .home-side-bar {
   position: absolute;
   left: 0;
@@ -28,7 +28,7 @@
   z-index: 0;
 }
 
-/** 内容 */
+/* 内容 */
 .home-main-content {
   position: absolute;
   left: 202px;
@@ -38,7 +38,7 @@
   z-index: 10;
 }
 
-/** 菜单栏 */
+/* 菜单栏 */
 .home-menu-bar {
   padding: 0 0 0 0;
 }
@@ -55,7 +55,7 @@
   color: #464646;
   font-size: 14px !important;
 }
-/** END 菜单栏 */
+/* END 菜单栏 */
 
 .home-navbar-brand {
   padding: 10px 15px 15px 15px;
@@ -80,7 +80,7 @@
   margin: 0 0 0 0;
 }
 
-/** 隐藏滚动条 */
+/* 隐藏滚动条 */
 .scrollbar-hidden {
   overflow-y: hidden;
   overflow-x: hidden;
