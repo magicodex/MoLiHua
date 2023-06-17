@@ -1,5 +1,7 @@
 package jasmine.framework.common.util;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +28,8 @@ public class ResourceUtil {
      * @param path
      * @return
      */
-    public static String getStringFromPath(String path) {
+    @Nonnull
+    public static String getStringFromPath(@Nonnull String path) {
         CheckUtil.notNull(path, "path null");
 
         return getStringFromPath(path, StandardCharsets.UTF_8.name());
@@ -39,7 +42,8 @@ public class ResourceUtil {
      * @param charsetName
      * @return
      */
-    public static String getStringFromPath(String path, String charsetName) {
+    @Nonnull
+    public static String getStringFromPath(@Nonnull String path, @Nonnull String charsetName) {
         CheckUtil.notNull(path, "path null");
         CheckUtil.notNull(charsetName, "charsetName null");
 
@@ -60,7 +64,8 @@ public class ResourceUtil {
      * @param charsetName
      * @return
      */
-    public static String getStringFromInputStream(InputStream inputStream, String charsetName) {
+    @Nonnull
+    public static String getStringFromInputStream(@Nonnull InputStream inputStream, @Nonnull String charsetName) {
         CheckUtil.notNull(inputStream, "inputStream null");
         CheckUtil.notNull(charsetName, "charsetName null");
 
@@ -75,7 +80,8 @@ public class ResourceUtil {
      * @param charsetName
      * @return
      */
-    public static String getStringFromBytes(byte[] bytes, String charsetName) {
+    @Nonnull
+    public static String getStringFromBytes(@Nonnull byte[] bytes, @Nonnull String charsetName) {
         CheckUtil.notNull(bytes, "bytes null");
         CheckUtil.notNull(charsetName, "charsetName null");
 
@@ -92,7 +98,8 @@ public class ResourceUtil {
      * @param inputStream
      * @return
      */
-    public static byte[] getBytesFromInputStream(InputStream inputStream) {
+    @Nonnull
+    public static byte[] getBytesFromInputStream(@Nonnull InputStream inputStream) {
         CheckUtil.notNull(inputStream, "inputStream null");
 
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
@@ -115,7 +122,8 @@ public class ResourceUtil {
      * @param path
      * @return
      */
-    public static InputStream getInputStreamFromPath(String path) {
+    @Nullable
+    public static InputStream getInputStreamFromPath(@Nonnull String path) {
         CheckUtil.notNull(path, "path null");
         InputStream inputStream = null;
 
@@ -153,7 +161,7 @@ public class ResourceUtil {
      * @param path
      * @param inputStream
      */
-    public static void checkInputStream(String path, InputStream inputStream) {
+    public static void checkInputStream(@Nonnull String path, InputStream inputStream) {
         if (inputStream == null) {
             throw new RuntimeException("not found file '" + path + "'");
         }
@@ -164,7 +172,7 @@ public class ResourceUtil {
      *
      * @param inputStream
      */
-    public static void closeInputStream(InputStream inputStream) {
+    public static void closeInputStream(@Nullable InputStream inputStream) {
         if (inputStream != null) {
             try {
                 inputStream.close();

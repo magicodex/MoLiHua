@@ -20,7 +20,7 @@ public class StringUtil extends StrUtil {
      * @param obj
      * @return
      */
-    public static String toString(Object obj) {
+    public static String toString(@Nullable Object obj) {
         return (obj == null) ? null : obj.toString();
     }
 

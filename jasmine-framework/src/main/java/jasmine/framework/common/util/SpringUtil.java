@@ -3,6 +3,8 @@ package jasmine.framework.common.util;
 import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.common.exception.InvalidPropertyException;
 
+import javax.annotation.Nonnull;
+
 /**
  * <p>
  * Spring工具类。
@@ -28,7 +30,7 @@ public class SpringUtil {
      * @param <T>
      * @return
      */
-    public static <T> T getBean(String name) {
+    public static <T> T getBean(@Nonnull String name) {
         if (runtimeProvider == null) {
             throw new InvalidPropertyException("QSpringUtil.runtimeProvider null", null);
         }
@@ -43,7 +45,7 @@ public class SpringUtil {
      * @param <T>
      * @return
      */
-    public static <T> T getBean(Class<T> type) {
+    public static <T> T getBean(@Nonnull Class<T> type) {
         if (runtimeProvider == null) {
             throw new InvalidPropertyException("QSpringUtil.runtimeProvider null", null);
         }
