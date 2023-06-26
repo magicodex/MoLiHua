@@ -9,8 +9,22 @@ public class Router {
     /** 路径根节点 */
     private PathSegmentNode root;
 
+    /** 路径参数起始符号 */
+    private String pathParameterStartSymbol;
+    /** 路径参数结束符号 */
+    private String pathParameterEndSymbol;
+
+    private static final String DEFAULT_PATH_PARAMETER_START_SYMBOL = ":";
+    private static final String DEFAULT_PATH_PARAMETER_END_SYMBOL = "";
+
     public Router() {
-        root = new PathSegmentNode();
+        this(DEFAULT_PATH_PARAMETER_START_SYMBOL, DEFAULT_PATH_PARAMETER_END_SYMBOL);
+    }
+
+    public Router(String pathParameterStartSymbol, String pathParameterEndSymbol) {
+        this.root = new PathSegmentNode();
+        this.pathParameterStartSymbol = pathParameterStartSymbol;
+        this.pathParameterEndSymbol = pathParameterEndSymbol;
     }
 
     /**
@@ -89,9 +103,11 @@ public class Router {
 
         String pathParameterName = null;
 
-        // 路径参数以":"开头
-        if (pathSegment.startsWith(":")) {
-            pathParameterName = pathSegment.substring(1);
+        if (pathSegment.startsWith(pathParameterStartSymbol)
+                && pathSegment.endsWith(pathParameterEndSymbol)) {
+            int beginIndex = pathParameterStartSymbol.length();
+            int endIndex = pathSegment.length() - pathParameterEndSymbol.length();
+            pathParameterName = pathSegment.substring(beginIndex, endIndex);
         }
 
         return pathParameterName;
