@@ -8,14 +8,9 @@ import java.lang.annotation.Target;
 
 /**
  * <p>
- * 在接口类字段上声明多语言，比如以下示例：
- * <pre>{@code
- * public interface XXXXMessages {
- *     @DeclareI18N("你好，世界！")
- *     String HELLO_WORLD = "helloWorld";
- * }
+ * 在接口类字段上声明多语言。
  * </p>
- * }</pre>
+ *
  * @author mh.z
  */
 @Target({ElementType.FIELD})
