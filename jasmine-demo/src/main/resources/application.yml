@@ -40,7 +40,7 @@ logging:
 
 mybatis-plus:
   # 自定义 mapper 文件路径
-  mapper-locations: jasmine/**/*.xml
+  mapper-locations: classpath*:/jasmine/**/mapper/*.xml
 
 # API文档
 springdoc:
