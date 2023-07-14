@@ -11,8 +11,7 @@ public class MockSubjectProvider implements SubjectProvider {
     private Long currentTenantId;
 
     public MockSubjectProvider() {
-        this.currentUserId = TestConstants.TEST_USER_ID_UNKNOWN;
-        this.currentTenantId = TestConstants.TEST_TENANT_ID_UNKNOWN;
+        this(TestConstants.TEST_USER_ID_UNKNOWN, TestConstants.TEST_TENANT_ID_UNKNOWN);
     }
 
     public MockSubjectProvider(Long currentUserId, Long currentTenantId) {
@@ -21,8 +20,7 @@ public class MockSubjectProvider implements SubjectProvider {
     }
 
     public void reset() {
-        currentUserId = TestConstants.TEST_USER_ID_UNKNOWN;
-        currentTenantId = TestConstants.TEST_TENANT_ID_UNKNOWN;
+        setCurrentSubject(TestConstants.TEST_TENANT_ID_UNKNOWN, TestConstants.TEST_USER_ID_UNKNOWN);
     }
 
     @Override
@@ -37,7 +35,7 @@ public class MockSubjectProvider implements SubjectProvider {
 
     @Override
     public Object getCurrentSubject() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
