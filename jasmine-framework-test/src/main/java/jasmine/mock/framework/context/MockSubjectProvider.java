@@ -1,6 +1,7 @@
 package jasmine.mock.framework.context;
 
 import jasmine.framework.context.SubjectProvider;
+import jasmine.framework.test.constant.TestConstants;
 
 /**
  * @author mh.z
@@ -10,8 +11,8 @@ public class MockSubjectProvider implements SubjectProvider {
     private Long currentTenantId;
 
     public MockSubjectProvider() {
-        this.currentUserId = -1L;
-        this.currentTenantId = -1L;
+        this.currentUserId = TestConstants.TEST_USER_ID_UNKNOWN;
+        this.currentTenantId = TestConstants.TEST_TENANT_ID_UNKNOWN;
     }
 
     public MockSubjectProvider(Long currentUserId, Long currentTenantId) {
@@ -20,8 +21,8 @@ public class MockSubjectProvider implements SubjectProvider {
     }
 
     public void reset() {
-        currentUserId = -1L;
-        currentTenantId = -1L;
+        currentUserId = TestConstants.TEST_USER_ID_UNKNOWN;
+        currentTenantId = TestConstants.TEST_TENANT_ID_UNKNOWN;
     }
 
     @Override

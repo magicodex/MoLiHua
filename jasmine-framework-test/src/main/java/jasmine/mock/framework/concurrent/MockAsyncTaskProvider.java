@@ -1,5 +1,6 @@
 package jasmine.mock.framework.concurrent;
 
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.CollectionUtil;
 import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.concurrent.AsyncTaskProvider;
@@ -16,11 +17,15 @@ public class MockAsyncTaskProvider implements AsyncTaskProvider {
 
     @Override
     public void async(Runnable task) {
+        CheckUtil.notNull(task, "task null");
+
         task.run();
     }
 
     @Override
     public <T> List<T> asyncAndGet(Collection<Callable> tasks) {
+        CheckUtil.notNull(tasks, "tasks null");
+
         List<Object> resultList = CollectionUtil.forEach(tasks, (task) -> {
             try {
                 return task.call();

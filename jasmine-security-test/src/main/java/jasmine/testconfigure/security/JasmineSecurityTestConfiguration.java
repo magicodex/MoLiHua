@@ -1,5 +1,8 @@
 package jasmine.testconfigure.security;
 
+import jasmine.framework.context.SubjectProvider;
+import jasmine.mock.framework.context.MockSubjectProvider;
+import jasmine.security.integration.SecurityContextHandler;
 import jasmine.security.integration.SecurityTenantConfigProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +18,16 @@ public class JasmineSecurityTestConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SubjectProvider subjectProvider() {
+        return new MockSubjectProvider();
+    }
+
+    @Bean
+    public SecurityContextHandler securityContextHandler() {
+        return new SecurityContextHandler();
     }
 
     @Bean

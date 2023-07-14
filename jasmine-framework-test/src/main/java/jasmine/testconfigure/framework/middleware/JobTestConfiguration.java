@@ -1,12 +1,5 @@
 package jasmine.testconfigure.framework.middleware;
 
-import jasmine.framework.cache.CacheService;
-import jasmine.framework.cache.CacheUtil;
-import jasmine.framework.lock.distributed.DistributedLockProvider;
-import jasmine.framework.lock.DistributedLockUtil;
-import jasmine.mock.framework.cache.MockCacheService;
-import jasmine.mock.framework.lock.MockDistributedLockProvider;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -14,23 +7,5 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class JobTestConfiguration {
-
-    @Bean
-    public CacheService cacheService() {
-        CacheService cacheService = new MockCacheService();
-        // 初始工具类
-        CacheUtil.initUtil(cacheService);
-
-        return cacheService;
-    }
-
-    @Bean
-    public DistributedLockProvider distributedLockProvider() {
-        DistributedLockProvider provider = new MockDistributedLockProvider();
-        // 初始工具类
-        DistributedLockUtil.initUtil(provider);
-
-        return provider;
-    }
 
 }

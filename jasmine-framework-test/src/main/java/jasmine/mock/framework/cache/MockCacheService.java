@@ -1,6 +1,7 @@
 package jasmine.mock.framework.cache;
 
 import jasmine.framework.cache.CacheService;
+import jasmine.framework.common.util.CheckUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public class MockCacheService implements CacheService {
 
     @Override
     public <T> T get(String category, Object key, Class<T> type, Supplier<T> supplier) {
+        CheckUtil.notNull(supplier, "supplier null");
+
         return (T) supplier.get();
     }
 
@@ -29,6 +32,8 @@ public class MockCacheService implements CacheService {
 
     @Override
     public <T> List<T> getList(String category, Object key, Class<T> type, Supplier<List<T>> supplier) {
+        CheckUtil.notNull(supplier, "supplier null");
+
         return supplier.get();
     }
 
