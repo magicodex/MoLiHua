@@ -19,7 +19,6 @@ import jasmine.framework.database.mybatisplus.tenant.TenantConfigProcessorScanBe
 import jasmine.mock.framework.database.MockCryptoProvider;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
@@ -34,15 +33,16 @@ import java.io.IOException;
  */
 @Configuration
 public class MybatisPlusTestConfiguration {
-    @Value("${jasmine.data.tenant.enabled:false}")
-    private Boolean tenantEnabled;
+    private final MybatisPlusTestProperties mybatisPlusProperties;
 
-    @Value("${mybatis-plus.mapperLocations:classpath*:/jasmine/**/mapper/*.xml}")
-    private String[] mapperLocations;
+    public MybatisPlusTestConfiguration(MybatisPlusTestProperties mybatisPlusProperties) {
+        this.mybatisPlusProperties = mybatisPlusProperties;
+    }
 
     @Bean
     public MybatisSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) throws IOException {
         MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
+        String[] mapperLocations = mybatisPlusProperties.getMapperLocations();
 
         ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
         Resource[][] resourceArray = new Resource[mapperLocations.length][];
@@ -91,7 +91,7 @@ public class MybatisPlusTestConfiguration {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder();
-        builder.setTenantEnabled(Boolean.TRUE.equals(tenantEnabled));
+        builder.setTenantEnabled(Boolean.TRUE.equals(mybatisPlusProperties.getTenantEnabled()));
         builder.setTenantLineHandler(tenantLineHandler());
 
         return builder.build();

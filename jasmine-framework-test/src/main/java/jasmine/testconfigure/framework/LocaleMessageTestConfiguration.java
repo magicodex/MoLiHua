@@ -4,8 +4,6 @@ import jasmine.framework.common.util.I18nUtil;
 import jasmine.framework.i18n.LocaleMessageProvider;
 import jasmine.framework.i18n.builder.MessageSourceBuilder;
 import jasmine.framework.i18n.impl.DefaultLocaleMessageProvider;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,18 +14,11 @@ import org.springframework.context.annotation.Primary;
  */
 @Configuration
 public class LocaleMessageTestConfiguration {
+    private final LocaleMessageTestProperties localeMessageProperties;
 
-    /**  多语言资源路径 */
-    @Value("${jasmine.i18n.message.resourceBaseNames:message/messages}")
-    private String[] resourceBaseNames = new String[]{"message/messages"};
-
-    /** 多语言资源编码 */
-    @Value("${jasmine.i18n.message.encoding:UTF-8}")
-    private String encoding = "UTF-8";
-
-    /** 多语言常量路径 */
-    @Value("${jasmine.i18n.message.constantPatterns:classpath*:/jasmine/**/constant/*MessageConstants.class}")
-    private String[] constantPatterns;
+    public LocaleMessageTestConfiguration(LocaleMessageTestProperties localeMessageProperties) {
+        this.localeMessageProperties = localeMessageProperties;
+    }
 
     @Bean
     public LocaleMessageProvider localeMessageProvider() {
@@ -43,11 +34,11 @@ public class LocaleMessageTestConfiguration {
     public MessageSource messageSource() {
         MessageSourceBuilder builder = new MessageSourceBuilder();
         // 多语言资源路径
-        builder.setResourceBaseNames(resourceBaseNames);
+        builder.setResourceBaseNames(localeMessageProperties.getResourceBaseNames());
         // 多语言资源编码
-        builder.setEncoding(encoding);
+        builder.setEncoding(localeMessageProperties.getEncoding());
         // 多语言常量路径
-        builder.setConstantPatterns(constantPatterns);
+        builder.setConstantPatterns(localeMessageProperties.getConstantPatterns());
 
         return builder.build();
     }
