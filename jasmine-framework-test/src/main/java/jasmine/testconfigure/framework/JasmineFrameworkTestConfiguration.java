@@ -44,6 +44,15 @@ public class JasmineFrameworkTestConfiguration {
     }
 
     @Bean
+    public ContextHandlerFacade contextHandlerFacade() {
+        ContextHandlerFacade handlerFacade = new ContextHandlerFacadeBean();
+        // 初始工具类
+        ContextManagementUtil.initUtil(handlerFacade);
+
+        return handlerFacade;
+    }
+
+    @Bean
     public InitSupportScanBean initSupportScanBean(RuntimeProvider runtimeProvider) {
         return new InitSupportScanBean(runtimeProvider);
     }
@@ -66,16 +75,6 @@ public class JasmineFrameworkTestConfiguration {
     @Bean
     public RequestScopeCacheContextHandler requestScopeCacheContextHandler() {
         return new RequestScopeCacheContextHandler();
-    }
-
-    @Bean
-    public ContextHandlerFacade contextHandlerFacade() {
-        ContextHandlerFacade handlerFacade = new ContextHandlerFacadeBean();
-
-        // 初始工具类
-        ContextManagementUtil.initUtil(handlerFacade);
-
-        return handlerFacade;
     }
 
 }

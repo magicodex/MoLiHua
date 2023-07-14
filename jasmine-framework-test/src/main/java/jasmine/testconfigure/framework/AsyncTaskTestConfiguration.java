@@ -6,19 +6,11 @@ import jasmine.mock.framework.concurrent.MockAsyncTaskProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 /**
  * @author mh.z
  */
 @Configuration
 public class AsyncTaskTestConfiguration {
-
-    @Bean
-    public Executor getAsyncExecutor() {
-        return Executors.newFixedThreadPool(1);
-    }
 
     @Bean
     public AsyncTaskProvider asyncTaskProvider() {

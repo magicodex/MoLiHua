@@ -7,7 +7,6 @@ import jasmine.framework.i18n.impl.DefaultLocaleMessageProvider;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 /**
  * @author mh.z
@@ -29,7 +28,6 @@ public class LocaleMessageTestConfiguration {
         return provider;
     }
 
-    @Primary
     @Bean
     public MessageSource messageSource() {
         MessageSourceBuilder builder = new MessageSourceBuilder();
