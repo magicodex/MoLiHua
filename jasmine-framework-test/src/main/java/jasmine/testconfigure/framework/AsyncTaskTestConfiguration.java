@@ -21,7 +21,7 @@ public class AsyncTaskTestConfiguration {
     }
 
     @Bean
-    public AsyncTaskProvider asyncTaskProvider(Executor executor) {
+    public AsyncTaskProvider asyncTaskProvider() {
         AsyncTaskProvider provider = new MockAsyncTaskProvider();
         // 初始工具类
         AsyncTaskUtil.initUtil(provider);

@@ -1,5 +1,6 @@
 package jasmine.mock.framework.lock;
 
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
@@ -11,6 +12,8 @@ public class MockDistributedDeclaredLock implements DistributedDeclaredLock {
 
     @Override
     public <T> T lock(DistributedLockCallback callback) {
+        CheckUtil.notNull(callback, "callback null");
+
         try {
             return (T) callback.call();
         } catch (Throwable e) {
@@ -20,6 +23,8 @@ public class MockDistributedDeclaredLock implements DistributedDeclaredLock {
 
     @Override
     public <T> T lock(long waitTime, DistributedLockCallback callback) {
+        CheckUtil.notNull(callback, "callback null");
+
         try {
             return (T) callback.call();
         } catch (Throwable e) {

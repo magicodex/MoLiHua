@@ -82,7 +82,6 @@ public class MybatisPlusTestConfiguration {
     @Bean
     public I18nEntityFacade i18nEntityFacade(SqlSessionTemplate sqlSessionTemplate) {
         DefaultI18nEntityFacade facade = new DefaultI18nEntityFacade(sqlSessionTemplate);
-
         // 初始工具类
         I18nEntityUtil.initUtil(facade);
 
