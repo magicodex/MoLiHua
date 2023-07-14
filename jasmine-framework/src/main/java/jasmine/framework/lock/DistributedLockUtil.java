@@ -1,6 +1,7 @@
 package jasmine.framework.lock;
 
 import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.context.WithContext;
 import jasmine.framework.lock.distributed.DistributedDeclaredLock;
 import jasmine.framework.lock.distributed.DistributedLockCallback;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
@@ -14,7 +15,7 @@ import javax.annotation.Nonnull;
  *
  * @author mh.z
  */
-public class DistributedLockUtil {
+public class DistributedLockUtil implements WithContext {
     private static DistributedLockProvider provider;
 
     public static void initUtil(DistributedLockProvider provider) {

@@ -1,11 +1,12 @@
 package jasmine.framework.database.mybatisplus.dynamic;
 
 import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.context.WithContext;
 
 /**
  * @author mh.z
  */
-public class DataAuthUtil {
+public class DataAuthUtil implements WithContext {
     private static DataAuthProvider provider;
 
     public static void initUtil(DataAuthProvider provider) {

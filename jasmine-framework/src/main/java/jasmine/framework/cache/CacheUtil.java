@@ -1,6 +1,7 @@
 package jasmine.framework.cache;
 
 import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.context.WithContext;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -14,7 +15,7 @@ import java.util.function.Supplier;
  *
  * @author mh.z
  */
-public class CacheUtil {
+public class CacheUtil implements WithContext {
     /** 缓存接口 */
     private static CacheService cacheService;
 

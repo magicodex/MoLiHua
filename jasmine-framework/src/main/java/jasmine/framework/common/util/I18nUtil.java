@@ -1,6 +1,7 @@
 package jasmine.framework.common.util;
 
 import jasmine.framework.common.exception.InvalidPropertyException;
+import jasmine.framework.context.WithContext;
 import jasmine.framework.i18n.LocaleMessageProvider;
 
 /**
@@ -10,7 +11,7 @@ import jasmine.framework.i18n.LocaleMessageProvider;
  *
  * @author mh.z
  */
-public class I18nUtil {
+public class I18nUtil implements WithContext {
     private static LocaleMessageProvider provider;
 
     public static void initUtil(LocaleMessageProvider provider) {

@@ -3,6 +3,7 @@ package jasmine.framework.database.mybatisplus.i18n;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.context.WithContext;
 import jasmine.framework.database.mybatisplus.entity.BaseI18nEntity;
 import jasmine.framework.database.mybatisplus.i18n.support.PopulateFunction;
 
@@ -17,7 +18,7 @@ import java.util.function.Function;
 /**
  * @author mh.z
  */
-public class I18nEntityUtil {
+public class I18nEntityUtil implements WithContext {
     private static I18nEntityFacade i18nFacade;
 
     public static void initUtil(I18nEntityFacade i18nEntityFacade) {

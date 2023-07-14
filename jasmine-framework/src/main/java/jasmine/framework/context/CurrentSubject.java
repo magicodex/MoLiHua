@@ -9,7 +9,7 @@ import jasmine.framework.common.util.CheckUtil;
  *
  * @author mh.z
  */
-public class CurrentSubject {
+public class CurrentSubject implements WithContext {
     /** 用户信息提供者 */
     private static SubjectProvider subjectProvider;
     /** 用户信息提供者 NULL 时的错误信息 */

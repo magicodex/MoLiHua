@@ -1,11 +1,12 @@
 package jasmine.framework.database.mybatisplus.crypto;
 
 import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.context.WithContext;
 
 /**
  * @author mh.z
  */
-public class CryptoFieldUtil {
+public class CryptoFieldUtil implements WithContext {
     private static CryptoProvider cryptoProvider;
 
     public static void initUtil(CryptoProvider cryptoProvider) {

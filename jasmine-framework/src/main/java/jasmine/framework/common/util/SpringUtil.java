@@ -2,6 +2,7 @@ package jasmine.framework.common.util;
 
 import jasmine.framework.context.RuntimeProvider;
 import jasmine.framework.common.exception.InvalidPropertyException;
+import jasmine.framework.context.WithContext;
 
 import javax.annotation.Nonnull;
 
@@ -12,7 +13,7 @@ import javax.annotation.Nonnull;
  *
  * @author mh.z
  */
-public class SpringUtil {
+public class SpringUtil implements WithContext {
     private static RuntimeProvider runtimeProvider;
 
     public static void initUtil(RuntimeProvider runtimeProvider) {

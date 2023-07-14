@@ -1,6 +1,7 @@
 package jasmine.framework.concurrent;
 
 import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.context.WithContext;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.concurrent.Callable;
  *
  * @author mh.z
  */
-public class AsyncTaskUtil {
+public class AsyncTaskUtil implements WithContext {
     private static AsyncTaskProvider provider;
 
     public static void initUtil(AsyncTaskProvider provider) {

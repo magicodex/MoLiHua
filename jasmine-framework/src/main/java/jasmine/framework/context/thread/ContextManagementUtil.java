@@ -4,6 +4,7 @@ import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.ErrorUtil;
 import jasmine.framework.common.util.function.FunctionWithResult;
 import jasmine.framework.common.util.function.FunctionWithoutResult;
+import jasmine.framework.context.WithContext;
 
 /**
  * <p>
@@ -12,7 +13,7 @@ import jasmine.framework.common.util.function.FunctionWithoutResult;
  *
  * @author mh.z
  */
-public class ContextManagementUtil {
+public class ContextManagementUtil implements WithContext {
     private static ContextHandlerFacade handlerFacade;
 
     public static void initUtil(ContextHandlerFacade handlerFacade) {
