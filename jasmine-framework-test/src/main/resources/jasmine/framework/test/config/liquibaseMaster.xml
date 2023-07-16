@@ -18,10 +18,10 @@
             <column name="record_id" type="bigint" remarks="记录id">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
         </createTable>

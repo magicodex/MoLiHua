@@ -33,13 +33,13 @@
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -71,13 +71,13 @@
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -109,13 +109,13 @@
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -159,13 +159,13 @@
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -197,13 +197,13 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -235,13 +235,13 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -270,13 +270,13 @@
             <column name="permission_id" type="bigint" remarks="权限ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -305,13 +305,13 @@
             <column name="resource_id" type="bigint" remarks="资源ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -340,13 +340,13 @@
             <column name="resource_id" type="bigint" remarks="资源ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -381,13 +381,13 @@
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -434,13 +434,13 @@
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -472,13 +472,13 @@
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_date" type="timestamp" remarks="创建日期">
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
