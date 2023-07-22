@@ -20,7 +20,11 @@
     <import resource="classpath:/test-context.xml"/>
 
     <!-- 数据源 -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" class="jasmine.framework.database.impl.datasource.MultipleDataSource" primary="true">
+        <property name="defaultTargetDataSource" ref="mainDataSource"/>
+    </bean>
+
+    <bean id="mainDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${database.driver}"/>
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
