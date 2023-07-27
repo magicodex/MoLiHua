@@ -31,3 +31,7 @@ jasmine.security.publicLocations=/static/**
 
 备注：更多配置查看 jasmine.autoconfigure.security.JasmineSecurityProperties。
 ```
+
+# 实现接口
+* UserSubjectDetailsService: 用户信息查询接口
+* ClientSubjectDetailsService: 用户信息查询接口
