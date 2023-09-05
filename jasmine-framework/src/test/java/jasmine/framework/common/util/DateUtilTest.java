@@ -12,9 +12,9 @@ import java.time.ZonedDateTime;
 public class DateUtilTest {
 
     @Test
-    public void testParseYearSecond() {
+    public void testParseYearSecondWithZone() {
         {
-            ZonedDateTime dateTime = DateUtil.parseYearSecond("2022-02-04 12:00:00+08:00");
+            ZonedDateTime dateTime = DateUtil.parseYearSecondWithZone("2022-02-04 12:00:00+08:00");
 
             Assert.assertEquals(2022, dateTime.getYear());
             Assert.assertEquals(2, dateTime.getMonthValue());
@@ -26,9 +26,9 @@ public class DateUtilTest {
     }
 
     @Test
-    public void testParseStartYearDay() {
+    public void testParseStartYearDayWithZone() {
         {
-            ZonedDateTime dateTime = DateUtil.parseStartYearDay("2022-02-04+08:00");
+            ZonedDateTime dateTime = DateUtil.parseStartYearDayWithZone("2022-02-04+08:00");
 
             Assert.assertEquals(2022, dateTime.getYear());
             Assert.assertEquals(2, dateTime.getMonthValue());
@@ -40,9 +40,9 @@ public class DateUtilTest {
     }
 
     @Test
-    public void testParseEndYearDay() {
+    public void testParseEndYearDayWithZone() {
         {
-            ZonedDateTime dateTime = DateUtil.parseEndYearDay("2022-02-04+08:00");
+            ZonedDateTime dateTime = DateUtil.parseEndYearDayWithZone("2022-02-04+08:00");
 
             Assert.assertEquals(2022, dateTime.getYear());
             Assert.assertEquals(2, dateTime.getMonthValue());

@@ -44,7 +44,7 @@ public class DateUtil {
      * @param text
      * @return
      */
-    public static ZonedDateTime parseYearSecond(@Nullable String text) {
+    public static ZonedDateTime parseYearSecondWithZone(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
         if (StringUtil.isNotEmpty(text)) {
@@ -55,12 +55,12 @@ public class DateUtil {
     }
 
     /**
-     * 解析成开始日期，格式是yyyy-MM-ddZ
+     * 解析成日期，格式是yyyy-MM-ddZ
      *
      * @param text
      * @return
      */
-    public static ZonedDateTime parseStartYearDay(@Nullable String text) {
+    public static ZonedDateTime parseYearDayWithZone(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
         if (StringUtil.isNotEmpty(text)) {
@@ -76,16 +76,28 @@ public class DateUtil {
     }
 
     /**
+     * 解析成开始日期，格式是yyyy-MM-ddZ
+     *
+     * @param text
+     * @return
+     */
+    public static ZonedDateTime parseStartYearDayWithZone(@Nullable String text) {
+        ZonedDateTime zonedDateTime = parseYearDayWithZone(text);
+
+        return zonedDateTime;
+    }
+
+    /**
      * 解析成结束日期，格式是yyyy-MM-ddZ
      *
      * @param text
      * @return
      */
-    public static ZonedDateTime parseEndYearDay(@Nullable String text) {
+    public static ZonedDateTime parseEndYearDayWithZone(@Nullable String text) {
         ZonedDateTime zonedDateTime = null;
 
         if (StringUtil.isNotEmpty(text)) {
-            zonedDateTime = parseStartYearDay(text);
+            zonedDateTime = parseYearDayWithZone(text);
             zonedDateTime = zonedDateTime.plusDays(1);
         }
 

@@ -22,7 +22,7 @@ public class EndDateFormatter implements Formatter<ZonedDateTime> {
 
     @Override
     public ZonedDateTime parse(String text, Locale locale) throws ParseException {
-        return DateUtil.parseEndYearDay(text);
+        return DateUtil.parseEndYearDayWithZone(text);
     }
 
     @Override

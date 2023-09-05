@@ -22,7 +22,7 @@ public class StartDateFormatter implements Formatter<ZonedDateTime> {
 
     @Override
     public ZonedDateTime parse(String text, Locale locale) throws ParseException {
-        return DateUtil.parseStartYearDay(text);
+        return DateUtil.parseStartYearDayWithZone(text);
     }
 
     @Override
