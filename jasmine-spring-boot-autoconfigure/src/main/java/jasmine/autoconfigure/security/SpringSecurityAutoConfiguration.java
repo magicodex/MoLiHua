@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -36,17 +37,20 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
     private AuthenticationEntryPoint authenticationEntryPoint;
     private AuthenticationSuccessHandler authenticationSuccessHandler;
     private AuthenticationFailureHandler authenticationFailureHandler;
+    private UserDetailsService userDetailsService;
 
     public SpringSecurityAutoConfiguration(JasmineSecurityProperties securityProperties,
                                            AccessDecisionManager accessDecisionManager,
                                            @Autowired(required = false) AuthenticationEntryPoint authenticationEntryPoint,
                                            @Autowired(required = false) AuthenticationSuccessHandler authenticationSuccessHandler,
-                                           @Autowired(required = false) AuthenticationFailureHandler authenticationFailureHandler) {
+                                           @Autowired(required = false) AuthenticationFailureHandler authenticationFailureHandler,
+                                           @Autowired(required = false) UserDetailsService userDetailsService) {
         this.securityProperties = securityProperties;
         this.accessDecisionManager = accessDecisionManager;
         this.authenticationEntryPoint = authenticationEntryPoint;
         this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.authenticationFailureHandler = authenticationFailureHandler;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
@@ -119,6 +123,12 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
         } else if (StringUtil.isNotEmpty(formLogin.getFailureForwardUrl())) {
             // 认证失败后转发的请求URL
             formLoginConfigurer.failureForwardUrl(formLogin.getFailureForwardUrl());
+        }
+
+        // 开启"记住我"功能
+        if (Boolean.TRUE.equals(formLogin.getAllowRememberMe())) {
+            http.rememberMe()
+                    .userDetailsService(userDetailsService);
         }
 
         formLoginConfigurer.permitAll();

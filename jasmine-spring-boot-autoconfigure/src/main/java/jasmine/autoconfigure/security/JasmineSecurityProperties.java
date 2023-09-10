@@ -87,6 +87,9 @@ public class JasmineSecurityProperties {
         /** 密码参数 */
         private String passwordParameter = "password";
 
+        /** 是否开启"记住我"功能 */
+        private Boolean allowRememberMe = false;
+
         public String getLoginPage() {
             return loginPage;
         }
@@ -149,6 +152,14 @@ public class JasmineSecurityProperties {
 
         public void setPasswordParameter(String passwordParameter) {
             this.passwordParameter = passwordParameter;
+        }
+
+        public Boolean getAllowRememberMe() {
+            return allowRememberMe;
+        }
+
+        public void setAllowRememberMe(Boolean allowRememberMe) {
+            this.allowRememberMe = allowRememberMe;
         }
     }
 
