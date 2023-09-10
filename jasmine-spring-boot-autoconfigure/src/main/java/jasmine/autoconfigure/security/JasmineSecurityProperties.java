@@ -13,6 +13,8 @@ public class JasmineSecurityProperties {
     private FormLogin formLogin = new FormLogin();
     /** 注销相关配置 */
     private Logout logout = new Logout();
+    /** "记住我"相关配置 */
+    private RememberMe rememberMe = new RememberMe();
 
     /** 公开资源 */
     private String[] publicLocations = new String[]{"/static/**"};
@@ -48,6 +50,14 @@ public class JasmineSecurityProperties {
 
     public void setPublicLocations(String[] publicLocations) {
         this.publicLocations = publicLocations;
+    }
+
+    public RememberMe getRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(RememberMe rememberMe) {
+        this.rememberMe = rememberMe;
     }
 
     /**
@@ -86,9 +96,6 @@ public class JasmineSecurityProperties {
         private String usernameParameter = "username";
         /** 密码参数 */
         private String passwordParameter = "password";
-
-        /** 是否开启"记住我"功能 */
-        private Boolean allowRememberMe = false;
 
         public String getLoginPage() {
             return loginPage;
@@ -153,14 +160,6 @@ public class JasmineSecurityProperties {
         public void setPasswordParameter(String passwordParameter) {
             this.passwordParameter = passwordParameter;
         }
-
-        public Boolean getAllowRememberMe() {
-            return allowRememberMe;
-        }
-
-        public void setAllowRememberMe(Boolean allowRememberMe) {
-            this.allowRememberMe = allowRememberMe;
-        }
     }
 
     /**
@@ -176,6 +175,22 @@ public class JasmineSecurityProperties {
 
         public void setLogoutSuccessUrl(String logoutSuccessUrl) {
             this.logoutSuccessUrl = logoutSuccessUrl;
+        }
+    }
+
+    /**
+     * "记住我"相关配置
+     */
+    public static class RememberMe {
+        /** 是否开启"记住我"功能 */
+        private Boolean enabled = false;
+
+        public Boolean getEnabled() {
+            return enabled;
+        }
+
+        public void setEnabled(Boolean enabled) {
+            this.enabled = enabled;
         }
     }
 

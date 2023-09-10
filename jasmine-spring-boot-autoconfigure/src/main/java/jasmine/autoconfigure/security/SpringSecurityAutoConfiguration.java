@@ -15,10 +15,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
+import org.springframework.security.config.annotation.web.configurers.RememberMeConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 /**
  * <p>
@@ -34,23 +37,32 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
     private JasmineSecurityProperties securityProperties;
     private AccessDecisionManager accessDecisionManager;
+    private UserDetailsService userDetailsService;
     private AuthenticationEntryPoint authenticationEntryPoint;
     private AuthenticationSuccessHandler authenticationSuccessHandler;
     private AuthenticationFailureHandler authenticationFailureHandler;
-    private UserDetailsService userDetailsService;
+    private RememberMeServices rememberMeServices;
+    private PersistentTokenRepository rememberMeTokenRepository;
+    private AuthenticationSuccessHandler rememberMeSuccessHandler;
 
     public SpringSecurityAutoConfiguration(JasmineSecurityProperties securityProperties,
                                            AccessDecisionManager accessDecisionManager,
+                                           @Autowired(required = false) UserDetailsService userDetailsService,
                                            @Autowired(required = false) AuthenticationEntryPoint authenticationEntryPoint,
                                            @Autowired(required = false) AuthenticationSuccessHandler authenticationSuccessHandler,
                                            @Autowired(required = false) AuthenticationFailureHandler authenticationFailureHandler,
-                                           @Autowired(required = false) UserDetailsService userDetailsService) {
+                                           @Autowired(required = false) RememberMeServices rememberMeServices,
+                                           @Autowired(required = false) PersistentTokenRepository rememberMeTokenRepository,
+                                           @Autowired(required = false) AuthenticationSuccessHandler rememberMeSuccessHandler) {
         this.securityProperties = securityProperties;
         this.accessDecisionManager = accessDecisionManager;
+        this.userDetailsService = userDetailsService;
         this.authenticationEntryPoint = authenticationEntryPoint;
         this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.authenticationFailureHandler = authenticationFailureHandler;
-        this.userDetailsService = userDetailsService;
+        this.rememberMeServices = rememberMeServices;
+        this.rememberMeTokenRepository = rememberMeTokenRepository;
+        this.rememberMeSuccessHandler = rememberMeSuccessHandler;
     }
 
     @Override
@@ -72,6 +84,8 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
 
         // 配置表单登录
         configFormLogin(http);
+        // 配置"记住我"功能
+        configRememberMe(http);
 
         JasmineSecurityProperties.Logout logout = securityProperties.getLogout();
         // 自定义登出后跳转的页面
@@ -125,13 +139,37 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
             formLoginConfigurer.failureForwardUrl(formLogin.getFailureForwardUrl());
         }
 
-        // 开启"记住我"功能
-        if (Boolean.TRUE.equals(formLogin.getAllowRememberMe())) {
-            http.rememberMe()
-                    .userDetailsService(userDetailsService);
-        }
-
         formLoginConfigurer.permitAll();
+    }
+
+    /**
+     * 配置"记住我"功能
+     *
+     * @param http
+     * @throws Exception
+     */
+    protected void configRememberMe(HttpSecurity http) throws Exception {
+        JasmineSecurityProperties.RememberMe rememberMe = securityProperties.getRememberMe();
+
+        if (Boolean.TRUE.equals(rememberMe.getEnabled())) {
+            RememberMeConfigurer rememberMeConfigurer = http.rememberMe();
+
+            if (userDetailsService != null) {
+                rememberMeConfigurer.userDetailsService(userDetailsService);
+            }
+
+            if (rememberMeServices != null) {
+                rememberMeConfigurer.rememberMeServices(rememberMeServices);
+            }
+
+            if (rememberMeTokenRepository != null) {
+                rememberMeConfigurer.tokenRepository(rememberMeTokenRepository);
+            }
+
+            if (rememberMeSuccessHandler != null) {
+                rememberMeConfigurer.authenticationSuccessHandler(rememberMeSuccessHandler);
+            }
+        }
     }
 
     @ConditionalOnMissingBean(AuthenticationManager.class)
