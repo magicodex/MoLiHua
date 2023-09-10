@@ -182,8 +182,18 @@ public class JasmineSecurityProperties {
      * "记住我"相关配置
      */
     public static class RememberMe {
+        /** 若不指定该值，服务重启后"记住我"可能失效 */
+        private String key;
         /** 是否开启"记住我"功能 */
         private Boolean enabled = false;
+
+        public String getKey() {
+            return key;
+        }
+
+        public void setKey(String key) {
+            this.key = key;
+        }
 
         public Boolean getEnabled() {
             return enabled;

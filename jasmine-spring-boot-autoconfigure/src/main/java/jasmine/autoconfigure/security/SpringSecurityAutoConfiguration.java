@@ -1,6 +1,7 @@
 package jasmine.autoconfigure.security;
 
 import jasmine.framework.common.util.StringUtil;
+import jasmine.security.authentication.RememberMeSuccessHandler;
 import jasmine.security.authorization.FilterSecurityInterceptorPostProcessor;
 import jasmine.security.config.JasmineSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
     private AuthenticationFailureHandler authenticationFailureHandler;
     private RememberMeServices rememberMeServices;
     private PersistentTokenRepository rememberMeTokenRepository;
-    private AuthenticationSuccessHandler rememberMeSuccessHandler;
+    private RememberMeSuccessHandler rememberMeSuccessHandler;
 
     public SpringSecurityAutoConfiguration(JasmineSecurityProperties securityProperties,
                                            AccessDecisionManager accessDecisionManager,
@@ -53,7 +54,7 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
                                            @Autowired(required = false) AuthenticationFailureHandler authenticationFailureHandler,
                                            @Autowired(required = false) RememberMeServices rememberMeServices,
                                            @Autowired(required = false) PersistentTokenRepository rememberMeTokenRepository,
-                                           @Autowired(required = false) AuthenticationSuccessHandler rememberMeSuccessHandler) {
+                                           @Autowired(required = false) RememberMeSuccessHandler rememberMeSuccessHandler) {
         this.securityProperties = securityProperties;
         this.accessDecisionManager = accessDecisionManager;
         this.userDetailsService = userDetailsService;
@@ -153,6 +154,11 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
 
         if (Boolean.TRUE.equals(rememberMe.getEnabled())) {
             RememberMeConfigurer rememberMeConfigurer = http.rememberMe();
+            String key = rememberMe.getKey();
+
+            if (StringUtil.isNotEmpty(key)) {
+                rememberMeConfigurer.key(key);
+            }
 
             if (userDetailsService != null) {
                 rememberMeConfigurer.userDetailsService(userDetailsService);
