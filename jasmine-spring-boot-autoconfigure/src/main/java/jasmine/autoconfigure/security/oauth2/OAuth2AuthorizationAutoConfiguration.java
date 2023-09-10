@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.client.InMemoryClientDetailsService;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 
 /**
  * <p>
@@ -28,14 +29,17 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
     private final AuthenticationManager authenticationManager;
 
     private ClientSubjectDetailsService clientSubjectDetailsService;
+    private TokenStore tokenStore;
 
     private static final String TOKEN_KEY_ACCESS = "permitAll()";
     private static final String CHECK_TOKEN_ACCESS = "isAuthenticated()";
 
     public OAuth2AuthorizationAutoConfiguration(AuthenticationManager authenticationManager,
-                                                @Autowired(required = false) ClientSubjectDetailsService clientSubjectDetailsService) {
+                                                @Autowired(required = false) ClientSubjectDetailsService clientSubjectDetailsService,
+                                                @Autowired(required = false) TokenStore tokenStore) {
         this.authenticationManager = authenticationManager;
         this.clientSubjectDetailsService = clientSubjectDetailsService;
+        this.tokenStore = tokenStore;
     }
 
     @Override
@@ -61,6 +65,12 @@ public class OAuth2AuthorizationAutoConfiguration extends AuthorizationServerCon
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         // 设置认证管理器
         endpoints.authenticationManager(authenticationManager);
+
+        // 自定义令牌存储方式
+        if (tokenStore != null) {
+            endpoints.tokenStore(tokenStore);
+        }
     }
 
 }
+
