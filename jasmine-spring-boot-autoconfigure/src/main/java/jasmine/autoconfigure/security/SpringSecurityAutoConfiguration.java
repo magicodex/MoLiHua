@@ -161,6 +161,9 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
             String cookieName = rememberMe.getCookieName();
             rememberMeConfigurer.rememberMeCookieName(cookieName);
 
+            String parameterName = rememberMe.getParameterName();
+            rememberMeConfigurer.rememberMeParameter(parameterName);
+
             String key = rememberMe.getKey();
             if (StringUtil.isNotEmpty(key)) {
                 rememberMeConfigurer.key(key);

@@ -188,6 +188,8 @@ public class JasmineSecurityProperties {
         private Boolean enabled = false;
         /** cookie 名称 */
         private String cookieName = "remember-me";
+        /** 参数名称 */
+        private String parameterName = "remember-me";
 
         public String getKey() {
             return key;
@@ -211,6 +213,14 @@ public class JasmineSecurityProperties {
 
         public void setCookieName(String cookieName) {
             this.cookieName = cookieName;
+        }
+
+        public String getParameterName() {
+            return parameterName;
+        }
+
+        public void setParameterName(String parameterName) {
+            this.parameterName = parameterName;
         }
     }
 
