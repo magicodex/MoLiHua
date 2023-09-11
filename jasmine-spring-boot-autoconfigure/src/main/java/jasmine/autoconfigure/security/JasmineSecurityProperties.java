@@ -186,6 +186,8 @@ public class JasmineSecurityProperties {
         private String key;
         /** 是否开启"记住我"功能 */
         private Boolean enabled = false;
+        /** cookie 名称 */
+        private String cookieName = "remember-me";
 
         public String getKey() {
             return key;
@@ -201,6 +203,14 @@ public class JasmineSecurityProperties {
 
         public void setEnabled(Boolean enabled) {
             this.enabled = enabled;
+        }
+
+        public String getCookieName() {
+            return cookieName;
+        }
+
+        public void setCookieName(String cookieName) {
+            this.cookieName = cookieName;
         }
     }
 

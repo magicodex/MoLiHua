@@ -89,10 +89,13 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
         configRememberMe(http);
 
         JasmineSecurityProperties.Logout logout = securityProperties.getLogout();
+        JasmineSecurityProperties.RememberMe rememberMe = securityProperties.getRememberMe();
+        String[] cookieNamesToClear = new String[]{rememberMe.getCookieName()};
         // 自定义登出后跳转的页面
         http.logout()
                 .logoutSuccessUrl(logout.getLogoutSuccessUrl())
-                .permitAll();
+                .permitAll()
+                .deleteCookies(cookieNamesToClear);
 
         // 不启用 CSRF 特殊处理
         http.csrf()
@@ -154,8 +157,11 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
 
         if (Boolean.TRUE.equals(rememberMe.getEnabled())) {
             RememberMeConfigurer rememberMeConfigurer = http.rememberMe();
-            String key = rememberMe.getKey();
 
+            String cookieName = rememberMe.getCookieName();
+            rememberMeConfigurer.rememberMeCookieName(cookieName);
+
+            String key = rememberMe.getKey();
             if (StringUtil.isNotEmpty(key)) {
                 rememberMeConfigurer.key(key);
             }
