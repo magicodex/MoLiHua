@@ -49,6 +49,23 @@ public class JasmineSecurityAutoConfiguration {
         return new BCryptPasswordEncoder();
     }
 
+    @ConditionalOnMissingBean(UrlPatternMatcher.class)
+    @Bean
+    public UrlPatternMatcher urlPatternMatcher() {
+        return new DefaultUrlPatternMatcher();
+    }
+
+    @ConditionalOnMissingBean(SubjectProvider.class)
+    @Bean
+    public UserSubjectProvider subjectProvider(UserSubjectDetailsService userSubjectDetailsService) {
+        UserSubjectProvider subjectProvider = new UserSubjectProvider(userSubjectDetailsService);
+
+        // 初始工具类
+        CurrentSubject.initUtil(subjectProvider);
+
+        return subjectProvider;
+    }
+
     @ConditionalOnMissingBean(AccessDecisionManager.class)
     @Bean
     public AccessDecisionManager accessDecisionManager(JasmineSecurityProperties securityProperties,
@@ -63,12 +80,6 @@ public class JasmineSecurityAutoConfiguration {
         AccessDecisionManagerProxy managerProxy = new AccessDecisionManagerProxy(manager);
 
         return managerProxy;
-    }
-
-    @ConditionalOnMissingBean(UrlPatternMatcher.class)
-    @Bean
-    public UrlPatternMatcher urlPatternMatcher() {
-        return new DefaultUrlPatternMatcher();
     }
 
     @ConditionalOnProperty(value = "jasmine.security.authorization.strategy",
@@ -95,17 +106,6 @@ public class JasmineSecurityAutoConfiguration {
         ClientSubjectDetailsService service = servicesTemplate.clientSubjectDetailsService();
 
         return service;
-    }
-
-    @ConditionalOnMissingBean(SubjectProvider.class)
-    @Bean
-    public UserSubjectProvider subjectProvider(UserSubjectDetailsService userSubjectDetailsService) {
-        UserSubjectProvider subjectProvider = new UserSubjectProvider(userSubjectDetailsService);
-
-        // 初始工具类
-        CurrentSubject.initUtil(subjectProvider);
-
-        return subjectProvider;
     }
 
     @ConditionalOnMissingBean(SecurityContextHandler.class)

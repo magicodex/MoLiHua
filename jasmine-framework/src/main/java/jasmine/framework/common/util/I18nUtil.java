@@ -31,7 +31,7 @@ public class I18nUtil implements WithContext {
      */
     public static String getMessage(String messageKey, Object... args) {
         if (provider == null) {
-            throw new InvalidPropertyException("QI18nUtil.provider null", null);
+            throw new InvalidPropertyException("I18nUtil.provider null", null);
         }
 
         return provider.getMessage(messageKey, args);
@@ -46,7 +46,7 @@ public class I18nUtil implements WithContext {
      */
     public static String getMessageAllowNone(String messageKey, Object... args) {
         if (provider == null) {
-            throw new InvalidPropertyException("QI18nUtil.provider null", null);
+            throw new InvalidPropertyException("I18nUtil.provider null", null);
         }
 
         return provider.getMessageAllowNone(messageKey, args);
