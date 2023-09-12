@@ -67,7 +67,7 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 允许所有人访问公开资源
                 .antMatchers(securityProperties.getPublicLocations())
@@ -113,7 +113,7 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
      * @param http
      * @throws Exception
      */
-    protected void configFormLogin(HttpSecurity http) throws Exception {
+    public void configFormLogin(HttpSecurity http) throws Exception {
         JasmineSecurityProperties.FormLogin formLogin = securityProperties.getFormLogin();
         FormLoginConfigurer formLoginConfigurer = http.formLogin();
         // 自定义登录页面和登录接口
@@ -152,7 +152,7 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
      * @param http
      * @throws Exception
      */
-    protected void configRememberMe(HttpSecurity http) throws Exception {
+    public void configRememberMe(HttpSecurity http) throws Exception {
         JasmineSecurityProperties.RememberMe rememberMe = securityProperties.getRememberMe();
 
         if (Boolean.TRUE.equals(rememberMe.getEnabled())) {
