@@ -1,5 +1,6 @@
 package jasmine.autoconfigure.security;
 
+import jasmine.autoconfigure.security.template.JasmineSecurityServicesTemplate;
 import jasmine.framework.context.CurrentSubject;
 import jasmine.framework.context.SubjectProvider;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
