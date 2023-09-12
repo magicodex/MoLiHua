@@ -82,16 +82,16 @@ public class JasmineSecurityAutoConfiguration {
 
     @ConditionalOnMissingBean(UserSubjectDetailsService.class)
     @Bean
-    public UserSubjectDetailsService userSubjectDetailsService(JasmineSecurityConfigTemplate configTemplate) {
-        UserSubjectDetailsService service = configTemplate.userSubjectDetailsService();
+    public UserSubjectDetailsService userSubjectDetailsService(JasmineSecurityServicesTemplate servicesTemplate) {
+        UserSubjectDetailsService service = servicesTemplate.userSubjectDetailsService();
 
         return service;
     }
 
     @ConditionalOnMissingBean(ClientSubjectDetailsService.class)
     @Bean
-    public ClientSubjectDetailsService clientSubjectDetailsService(JasmineSecurityConfigTemplate configTemplate) {
-        ClientSubjectDetailsService service = configTemplate.clientSubjectDetailsService();
+    public ClientSubjectDetailsService clientSubjectDetailsService(JasmineSecurityServicesTemplate servicesTemplate) {
+        ClientSubjectDetailsService service = servicesTemplate.clientSubjectDetailsService();
 
         return service;
     }

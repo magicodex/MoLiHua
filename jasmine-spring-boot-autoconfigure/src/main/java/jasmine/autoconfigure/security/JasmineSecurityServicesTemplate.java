@@ -6,7 +6,7 @@ import jasmine.security.subject.UserSubjectDetailsService;
 /**
  * @author mh.z
  */
-public interface JasmineSecurityConfigTemplate {
+public interface JasmineSecurityServicesTemplate {
 
     /**
      * 注册 UserSubjectDetailsService 对象
