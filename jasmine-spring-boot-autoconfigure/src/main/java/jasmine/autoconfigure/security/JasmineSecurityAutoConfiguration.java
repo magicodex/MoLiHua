@@ -1,6 +1,11 @@
 package jasmine.autoconfigure.security;
 
+import jasmine.autoconfigure.security.oauth2.OAuth2AuthorizationConfiguration;
+import jasmine.autoconfigure.security.oauth2.OAuth2ResourceConfiguration;
 import jasmine.autoconfigure.security.template.JasmineSecurityServicesTemplate;
+import jasmine.autoconfigure.security.template.OAuth2AuthorizationConfigsTemplate;
+import jasmine.autoconfigure.security.template.OAuth2ResourceConfigsTemplate;
+import jasmine.autoconfigure.security.template.SpringSecurityConfigsTemplate;
 import jasmine.framework.context.CurrentSubject;
 import jasmine.framework.context.SubjectProvider;
 import jasmine.security.authorization.AccessDecisionManagerProxy;
@@ -42,6 +47,24 @@ import java.util.Arrays;
 @ConditionalOnClass(JasmineSecurityConfig.class)
 @Configuration
 public class JasmineSecurityAutoConfiguration {
+
+    @ConditionalOnMissingBean(OAuth2AuthorizationConfigsTemplate.class)
+    @Bean
+    public OAuth2AuthorizationConfigsTemplate oAuth2AuthorizationConfigsTemplate() {
+        return new OAuth2AuthorizationConfiguration();
+    }
+
+    @ConditionalOnMissingBean(OAuth2ResourceConfigsTemplate.class)
+    @Bean
+    public OAuth2ResourceConfigsTemplate oAuth2ResourceConfigsTemplate() {
+        return new OAuth2ResourceConfiguration();
+    }
+
+    @ConditionalOnMissingBean(SpringSecurityConfigsTemplate.class)
+    @Bean
+    public SpringSecurityConfigsTemplate springSecurityConfigsTemplate(JasmineSecurityProperties securityProperties) {
+        return new SpringSecurityConfiguration(securityProperties);
+    }
 
     @ConditionalOnMissingBean(PasswordEncoder.class)
     @Bean
