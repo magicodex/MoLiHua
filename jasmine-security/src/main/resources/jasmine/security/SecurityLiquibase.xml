@@ -422,8 +422,17 @@
             <column name="menu_name" type="varchar(100)" remarks="菜单名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="menu_icon" type="varchar(100)" remarks="菜单图标">
+                <constraints nullable="true"/>
+            </column>
+            <column name="menu_path" type="varchar(1000)" remarks="菜单路径">
+                <constraints nullable="true"/>
+            </column>
             <column name="menu_order" type="int" remarks="菜单序号">
                 <constraints nullable="false"/>
+            </column>
+            <column name="link_function_id" type="bigint" remarks="链接功能ID">
+                <constraints nullable="true"/>
             </column>
             <column name="link_resource_id" type="bigint" remarks="链接资源ID">
                 <constraints nullable="true"/>
