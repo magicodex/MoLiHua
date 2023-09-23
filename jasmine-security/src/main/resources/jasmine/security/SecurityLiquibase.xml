@@ -39,7 +39,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -77,7 +78,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -115,7 +117,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -165,7 +168,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -203,7 +207,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -241,7 +246,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -276,7 +282,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -311,7 +318,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -346,7 +354,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -387,7 +396,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -449,7 +459,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -487,7 +498,8 @@
             <column name="created_by" type="bigint" remarks="创建人ID">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_updated_date" type="timestamp" remarks="最后更新日期" defaultValueComputed="CURRENT_TIMESTAMP">
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
@@ -497,6 +509,325 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923190001" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_role_i18n"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="sec_role_i18n" remarks="角色多语言表">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_name" type="varchar(100)" remarks="角色名称">
+                <constraints nullable="true"/>
+            </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923190002" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_function_i18n"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="sec_function_i18n" remarks="功能多语言表">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="function_name" type="varchar(100)" remarks="功能名称">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923190003" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_permission_i18n"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="sec_permission_i18n" remarks="权限多语言表">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_name" type="varchar(100)" remarks="权限名称">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923190004" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_resource_i18n"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="sec_resource_i18n" remarks="资源多语言表">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923190005" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_menu_template_i18n"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="sec_menu_template_i18n" remarks="菜单模板多语言表">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="template_name" type="varchar(100)" remarks="模板名称">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923190006" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="sec_menu_i18n"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="sec_menu_i18n" remarks="菜单多语言表">
+            <column name="id" type="bigint" remarks="主键id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="menu_name" type="varchar(100)" remarks="菜单名称">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lang_code" type="varchar(50)" remarks="语言代码">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_flag" type="tinyint" remarks="默认标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tenant_id" type="bigint" remarks="租户ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" remarks="创建日期" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="bigint" remarks="创建人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_date" type="timestamp" remarks="最后更新日期"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated_by" type="bigint" remarks="最后更新人ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version_number" type="int" remarks="版本号">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923230001" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_role_i18n" indexName="uk_sec_role_i18n"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_role_i18n" tableName="sec_role_i18n" columnNames="id,lang_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923230002" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_function_i18n" indexName="uk_sec_function_i18n"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_function_i18n" tableName="sec_function_i18n"
+                             columnNames="id,lang_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923230003" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_permission_i18n" indexName="uk_sec_permission_i18n"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_permission_i18n" tableName="sec_permission_i18n"
+                             columnNames="id,lang_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923230004" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_resource_i18n" indexName="uk_sec_resource_i18n"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_resource_i18n" tableName="sec_resource_i18n"
+                             columnNames="id,lang_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923230005" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_menu_template_i18n" indexName="uk_sec_menu_template_i18n"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_menu_template_i18n" tableName="sec_menu_template_i18n"
+                             columnNames="id,lang_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20230923230006" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_menu_i18n" indexName="uk_sec_menu_i18n"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_menu_i18n" tableName="sec_menu_i18n" columnNames="id,lang_code"/>
     </changeSet>
 
 </databaseChangeLog>
