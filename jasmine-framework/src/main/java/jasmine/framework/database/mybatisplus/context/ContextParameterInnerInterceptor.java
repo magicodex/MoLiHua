@@ -1,10 +1,15 @@
 package jasmine.framework.database.mybatisplus.context;
 
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
+import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.session.ResultHandler;
+import org.apache.ibatis.session.RowBounds;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * <p>
@@ -23,8 +28,18 @@ public class ContextParameterInnerInterceptor implements InnerInterceptor {
     }
 
     @Override
-    public void beforePrepare(StatementHandler statementHandler, Connection connection,
-                              Integer transactionTimeout) {
+    public void beforeQuery(Executor executor, MappedStatement ms, Object parameter, RowBounds rowBounds,
+                            ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
+        setContextParameter(boundSql);
+    }
+
+    @Override
+    public void beforeUpdate(Executor executor, MappedStatement ms, Object parameter) throws SQLException {
+        //
+    }
+
+    @Override
+    public void beforePrepare(StatementHandler statementHandler, Connection connection, Integer transactionTimeout) {
         setContextParameter(statementHandler);
     }
 
@@ -40,6 +55,15 @@ public class ContextParameterInnerInterceptor implements InnerInterceptor {
      */
     protected void setContextParameter(StatementHandler statementHandler) {
         BoundSql boundSql = statementHandler.getBoundSql();
+        setContextParameter(boundSql);
+    }
+
+    /**
+     * 设置上下文参数
+     *
+     * @param boundSql
+     */
+    protected void setContextParameter(BoundSql boundSql) {
         boundSql.setAdditionalParameter("_current", contextParameter);
     }
 
