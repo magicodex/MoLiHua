@@ -8,7 +8,7 @@ import liquibase.integration.spring.SpringLiquibase;
 /**
  * @author mh.z
  */
-public class CustomSpringLiquibase extends SpringLiquibase implements CustomInitializingSingleton {
+public class CustomTestLiquibase extends SpringLiquibase implements CustomInitializingSingleton {
 
     @Override
     public void afterPropertiesSet() throws LiquibaseException {

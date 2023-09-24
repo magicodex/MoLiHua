@@ -10,6 +10,8 @@ import jasmine.framework.context.init.InitSupportScanBean;
 import jasmine.framework.context.thread.ContextHandlerFacade;
 import jasmine.framework.context.thread.ContextManagementUtil;
 import jasmine.framework.database.integration.DatabaseContextHandler;
+import jasmine.framework.database.liquibase.BeanTaskChange;
+import jasmine.framework.database.liquibase.CustomSpringLiquibase;
 import jasmine.framework.web.integration.RequestContextHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -71,6 +73,18 @@ public class JasmineFrameworkAutoConfiguration {
     @Bean
     public CustomInitializingSingletonScanBean customInitializingSingletonScanBean() {
         return new CustomInitializingSingletonScanBean();
+    }
+
+    @ConditionalOnMissingBean(CustomSpringLiquibase.class)
+    @Bean
+    public CustomSpringLiquibase customSpringLiquibase() {
+        return new CustomSpringLiquibase();
+    }
+
+    @ConditionalOnMissingBean(BeanTaskChange.class)
+    @Bean
+    public BeanTaskChange beanTaskChange() {
+        return new BeanTaskChange();
     }
 
 }
