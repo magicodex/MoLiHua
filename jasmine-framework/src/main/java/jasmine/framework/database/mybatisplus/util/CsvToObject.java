@@ -32,8 +32,24 @@ public class CsvToObject<T> extends CsvToBean<T> {
         this.valueConverters = NewUtil.map();
     }
 
-    public <R> void addValueConverter(Class<R> valueType, Function<String, R> valueConverter) {
-        valueConverters.put(valueType, valueConverter);
+    public CsvToObject(Map<Class<?>, Function> valueConverters) {
+        this.valueConverters = valueConverters;
+    }
+
+    public <R> Function<String, R> getValueConverter(Class<R> clazz) {
+        return valueConverters.get(clazz);
+    }
+
+    public Map<Class<?>, Function> getValueConverters() {
+        return valueConverters;
+    }
+
+    public <R> void addValueConverter(Class<R> clazz, Function<String, R> newConverter) {
+        valueConverters.put(clazz, newConverter);
+    }
+
+    public <R> void addValueConverters(Map<Class<?>, Function> newConverters) {
+        valueConverters.putAll(newConverters);
     }
 
     @Override
