@@ -3,12 +3,15 @@ package jasmine.framework.database.mybatisplus.util;
 import au.com.bytecode.opencsv.bean.CsvToBean;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
+import jasmine.framework.common.util.NewUtil;
 
 import java.beans.PropertyDescriptor;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Map;
+import java.util.function.Function;
 
 /**
  * <p>
@@ -18,10 +21,20 @@ import java.time.ZonedDateTime;
  * @author mh.z
  */
 public class CsvToObject<T> extends CsvToBean<T> {
+    private Map<Class<?>, Function> valueConverters;
+
     private static final String TRUE_TEXT = "true";
     private static final String FALSE_TEXT = "false";
     private static final String TRUE_VALUE = "1";
     private static final String FALSE_VALUE = "0";
+
+    public CsvToObject() {
+        this.valueConverters = NewUtil.map();
+    }
+
+    public <R> void addValueConverter(Class<R> valueType, Function<String, R> valueConverter) {
+        valueConverters.put(valueType, valueConverter);
+    }
 
     @Override
     protected Object convertValue(String value, PropertyDescriptor prop)
@@ -31,6 +44,13 @@ public class CsvToObject<T> extends CsvToBean<T> {
 
         if (StrUtil.isEmpty(value)) {
             return null;
+        }
+
+        Class<?> valueType = value.getClass();
+        Function valueConverter = valueConverters.get(valueType);
+
+        if (valueConverter != null) {
+            return valueConverter.apply(value);
         }
 
         if (type == Boolean.class || type == boolean.class) {
