@@ -6,9 +6,9 @@ jasmine.autoconfigure.framework.AsyncTaskAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.RabbitAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.RedisAutoConfiguration,\
 jasmine.autoconfigure.framework.middleware.XxlJobAutoConfiguration,\
-jasmine.autoconfigure.framework.database.DataSourceAutoConfiguration,\
-jasmine.autoconfigure.framework.database.LiquibaseAutoConfiguration,\
-jasmine.autoconfigure.framework.database.MybatisPlusAutoConfiguration,\
+jasmine.autoconfigure.framework.database.CustomDataSourceAutoConfiguration,\
+jasmine.autoconfigure.framework.database.CustomLiquibaseAutoConfiguration,\
+jasmine.autoconfigure.framework.database.CustomMybatisPlusAutoConfiguration,\
 jasmine.autoconfigure.security.JasmineSecurityAutoConfiguration,\
 jasmine.autoconfigure.security.rbac.RbacDaoAutoConfiguration,\
 jasmine.autoconfigure.security.SpringSecurityAutoConfiguration,\

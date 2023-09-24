@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -24,19 +25,19 @@ import javax.sql.DataSource;
         name = {"enabled"},
         matchIfMissing = true
 )
-@AutoConfigureBefore(org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration.class)
-@EnableConfigurationProperties({LiquibaseProperties.class, CustomLiquibaseProperties.class})
+@AutoConfigureBefore(LiquibaseAutoConfiguration.class)
+@EnableConfigurationProperties({LiquibaseProperties.class, InitDataProperties.class})
 @Configuration
-public class LiquibaseAutoConfiguration {
+public class CustomLiquibaseAutoConfiguration {
 
     @ConditionalOnMissingBean(CustomSpringLiquibase.class)
     @Bean
     public CustomSpringLiquibase customSpringLiquibase(LiquibaseProperties properties,
-                                                       CustomLiquibaseProperties customProperties,
+                                                       InitDataProperties initDataProperties,
                                                        DataSource dataSource) {
         CustomSpringLiquibase liquibase = new CustomSpringLiquibase();
-        liquibase.setDefaultUserId(customProperties.getDefaultUserId());
-        liquibase.setDefaultTenantId(customProperties.getDefaultTenantId());
+        liquibase.setDefaultUserId(initDataProperties.getDefaultUserId());
+        liquibase.setDefaultTenantId(initDataProperties.getDefaultTenantId());
         liquibase.setDataSource(dataSource);
 
         liquibase.setChangeLog(properties.getChangeLog());

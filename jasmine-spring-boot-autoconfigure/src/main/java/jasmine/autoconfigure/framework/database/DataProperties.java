@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author mh.z
  */
 @ConfigurationProperties(prefix = "jasmine.data")
-public class MybatisPlusProperties {
+public class DataProperties {
     /** 加密相关配置 */
     private Crypto crypto = new Crypto();
     /** 租户相关配置 */

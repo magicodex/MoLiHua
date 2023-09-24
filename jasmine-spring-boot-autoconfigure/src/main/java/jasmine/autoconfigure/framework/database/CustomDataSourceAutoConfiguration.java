@@ -9,6 +9,7 @@ import jasmine.framework.database.impl.datasource.ReadWriteDataSourceDecideFacad
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -24,13 +25,12 @@ import java.util.Map;
 /**
  * @author mh.z
  */
-@AutoConfigureBefore({org.springframework.boot.autoconfigure.jdbc
-        .DataSourceAutoConfiguration.class, MybatisPlusAutoConfiguration.class})
+@AutoConfigureBefore({DataSourceAutoConfiguration.class, CustomMybatisPlusAutoConfiguration.class})
 @ConditionalOnProperty(value = "jasmine.datasource.readWrite.enabled",
         havingValue = "true", matchIfMissing = false)
 @EnableConfigurationProperties({DataSourceProperties.class, ReadDataSourceProperties.class})
 @Configuration
-public class DataSourceAutoConfiguration {
+public class CustomDataSourceAutoConfiguration {
     private static final String MAIN_DATA_SOURCE_NAME = "master";
     private static final String READ_DATA_SOURCE_NAME = "read";
     private static final String READ_CONNECTION_POOL_NAME = "read";

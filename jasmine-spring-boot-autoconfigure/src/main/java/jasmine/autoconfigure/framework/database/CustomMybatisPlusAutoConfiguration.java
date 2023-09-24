@@ -29,14 +29,14 @@ import org.springframework.context.annotation.Configuration;
  * @author mh.z
  */
 @ConditionalOnClass(MybatisConfiguration.class)
-@EnableConfigurationProperties(MybatisPlusProperties.class)
+@EnableConfigurationProperties(DataProperties.class)
 @Configuration
-public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton {
+public class CustomMybatisPlusAutoConfiguration implements SmartInitializingSingleton {
 
     @ConditionalOnMissingBean(CryptoProvider.class)
     @Bean
-    public CryptoProvider cryptoProvider(MybatisPlusProperties mybatisPlusProperties) {
-        MybatisPlusProperties.Crypto crypto = mybatisPlusProperties.getCrypto();
+    public CryptoProvider cryptoProvider(DataProperties dataProperties) {
+        DataProperties.Crypto crypto = dataProperties.getCrypto();
         String password = crypto.getPassword();
         String salt = crypto.getSalt();
         SymmetricCryptoProvider provider = new SymmetricCryptoProvider(password, salt);
@@ -66,9 +66,9 @@ public class MybatisPlusAutoConfiguration implements SmartInitializingSingleton 
 
     @ConditionalOnMissingBean(MybatisPlusInterceptor.class)
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor(MybatisPlusProperties mybatisPlusProperties,
+    public MybatisPlusInterceptor mybatisPlusInterceptor(DataProperties dataProperties,
                                                          TenantLineHandler tenantLineHandler) {
-        Boolean tenantEnabled = mybatisPlusProperties.getTenant().getEnabled();
+        Boolean tenantEnabled = dataProperties.getTenant().getEnabled();
 
         MybatisPlusInterceptorBuilder builder = new MybatisPlusInterceptorBuilder();
         // 是否启用租户拦截器
