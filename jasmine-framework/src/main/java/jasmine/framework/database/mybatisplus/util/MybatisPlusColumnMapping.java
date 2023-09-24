@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.annotation.TableField;
+import jasmine.framework.common.util.StringUtil;
 
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
@@ -18,10 +19,25 @@ public class MybatisPlusColumnMapping extends LinkedHashMap<String, String> {
         Field[] fields = ReflectUtil.getFields(type);
 
         for (Field field : fields) {
-            String fieldName = field.getName();
-            String columnName = getColumnName(field);
+            handleFieldMapping(field);
+        }
+    }
 
-            put(columnName, fieldName);
+    /**
+     * 处理字段映射
+     *
+     * @param field
+     */
+    protected void handleFieldMapping(Field field) {
+        Assert.notNull(field, "field null");
+
+        String fieldName = field.getName();
+        String columnName = getColumnName(field);
+
+        put(columnName, fieldName);
+
+        if (!StringUtil.equals(fieldName, columnName)) {
+            put(fieldName, fieldName);
         }
     }
 
