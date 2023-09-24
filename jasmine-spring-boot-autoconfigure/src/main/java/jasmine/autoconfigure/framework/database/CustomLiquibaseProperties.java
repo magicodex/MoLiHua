@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author mh.z
  */
-@ConfigurationProperties(prefix = "jasmine.liquibase")
+@ConfigurationProperties(prefix = "jasmine.init-data")
 public class CustomLiquibaseProperties {
     /** 默认用户ID */
     private Long defaultUserId = CurrentSubject.DEFAULT_USER_ID;
