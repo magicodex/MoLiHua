@@ -3,6 +3,7 @@ package jasmine.framework.database.mybatisplus.util;
 import cn.hutool.core.lang.Assert;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+import jasmine.framework.common.util.csv.CsvToObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;

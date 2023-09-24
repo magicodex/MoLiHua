@@ -1,4 +1,4 @@
-package jasmine.framework.database.mybatisplus.util;
+package jasmine.framework.common.util.csv;
 
 import au.com.bytecode.opencsv.bean.CsvToBean;
 import cn.hutool.core.date.DateUtil;

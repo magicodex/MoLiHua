@@ -1,5 +1,6 @@
-package jasmine.framework.database.mybatisplus.util;
+package jasmine.framework.common.util.csv;
 
+import jasmine.framework.common.util.csv.CsvToObject;
 import org.junit.Assert;
 import org.junit.Test;
 
