@@ -19,6 +19,7 @@ public class UserSubjectProvider implements SubjectProvider {
     private UserSubjectDetailsService subjectDetailsService;
 
     private static final Long DEFAULT_TENANT_ID = -1L;
+    private static final Long DEFAULT_USER_ID = -1L;
 
     public UserSubjectProvider(UserSubjectDetailsService subjectDetailsService) {
         this.subjectDetailsService = subjectDetailsService;
@@ -43,7 +44,7 @@ public class UserSubjectProvider implements SubjectProvider {
             return subject.getTenantId();
         }
 
-        return DEFAULT_TENANT_ID;
+        return null;
     }
 
     @Override
@@ -56,13 +57,20 @@ public class UserSubjectProvider implements SubjectProvider {
         UserSubject userSubject = null;
 
         if (userId != null) {
-            userSubject = subjectDetailsService.loadUserByUserId(userId);
-        } else if (tenantId != null) {
-            userSubject = new UserSubject(tenantId, -1L);
-        }
+            if (tenantId != null) {
+                userSubject = new UserSubject(tenantId, userId);
+            } else {
+                userSubject = subjectDetailsService.loadUserByUserId(userId);
 
-        if (userSubject == null) {
-            userSubject = new UserSubject(-1L, -1L);
+                if (userSubject == null) {
+                    userSubject = new UserSubject(DEFAULT_TENANT_ID, userId);
+                }
+            }
+        } else if (tenantId != null) {
+            userSubject = new UserSubject(tenantId, DEFAULT_USER_ID);
+        } else {
+            SecurityContextHolder.clearContext();
+            return;
         }
 
         setSubjectToContext(userSubject);

@@ -15,6 +15,9 @@ public class CurrentSubject implements WithContext {
     /** 用户信息提供者 NULL 时的错误信息 */
     private static final String SUBJECT_PROVIDER_NULL_MESSAGE;
 
+    public static final Long DEFAULT_USER_ID = -1L;
+    public static final Long DEFAULT_TENANT_ID = -1L;
+
     static {
         SUBJECT_PROVIDER_NULL_MESSAGE = CurrentSubject.class.getSimpleName() + ".subjectProvider null";
     }
