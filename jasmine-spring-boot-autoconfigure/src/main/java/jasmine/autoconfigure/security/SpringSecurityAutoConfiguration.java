@@ -39,6 +39,10 @@ public class SpringSecurityAutoConfiguration extends WebSecurityConfigurerAdapte
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         configsTemplate.configure(auth);
+
+        if (!auth.isConfigured()) {
+            super.configure(auth);
+        }
     }
 
     @ConditionalOnMissingBean(AuthenticationManager.class)
