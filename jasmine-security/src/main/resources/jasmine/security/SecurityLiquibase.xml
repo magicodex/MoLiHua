@@ -830,4 +830,127 @@
         <addUniqueConstraint constraintName="uk_sec_menu_i18n" tableName="sec_menu_i18n" columnNames="id,lang_code"/>
     </changeSet>
 
+    <changeSet id="jasmine_20231008171001" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_menu" indexName="idx_sec_menu"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx_sec_menu" tableName="sec_menu">
+            <column name="tenant_id"/>
+            <column name="template_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171002" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_resource" indexName="idx_sec_resource"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx_sec_resource" tableName="sec_resource">
+            <column name="resource_path"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171003" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_user_role_rel" indexName="idx_sec_user_role_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx_sec_user_role_rel" tableName="sec_user_role_rel">
+            <column name="tenant_id"/>
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171004" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_role_function_rel" indexName="idx_sec_role_function_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx_sec_role_function_rel" tableName="sec_role_function_rel">
+            <column name="tenant_id"/>
+            <column name="role_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171005" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_function_permission_rel" indexName="idx_sec_function_perm_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx_sec_function_perm_rel" tableName="sec_function_permission_rel">
+            <column name="function_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171006" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_function_permission_rel" indexName="idx2_sec_function_perm_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx2_sec_function_perm_rel" tableName="sec_function_permission_rel">
+            <column name="permission_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171007" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_permission_resource_rel" indexName="idx_sec_permission_res_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx_sec_permission_res_rel" tableName="sec_permission_resource_rel">
+            <column name="permission_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171008" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_permission_resource_rel" indexName="idx2_sec_permission_res_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx2_sec_permission_res_rel" tableName="sec_permission_resource_rel">
+            <column name="resource_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171009" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_function_resource_rel" indexName="idx_sec_function_resource_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx_sec_function_resource_rel" tableName="sec_function_resource_rel">
+            <column name="function_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="jasmine_20231008171010" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_function_resource_rel" indexName="idx2_sec_function_resource_rel"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="idx2_sec_function_resource_rel" tableName="sec_function_resource_rel">
+            <column name="resource_id"/>
+        </createIndex>
+    </changeSet>
+
 </databaseChangeLog>
