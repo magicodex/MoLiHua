@@ -1,6 +1,8 @@
 package jasmine.framework.web.util.validation;
 
 import jasmine.framework.common.util.CheckUtil;
+import jasmine.framework.common.util.I18nUtil;
+import jasmine.framework.web.constant.ValidationMessageConstants;
 import jasmine.framework.web.entity.WebResult;
 import jasmine.framework.web.exception.ValidationException;
 import org.springframework.http.ResponseEntity;
@@ -110,7 +112,9 @@ public class ValidationHelper {
      * @return
      */
     public <T> ResponseEntity<WebResult<T>> toEntity() {
-        WebResult<T> result = WebResult.error(ValidationException.DEFAULT_ERROR_CODE, "validate failed");
+        String message = I18nUtil.getMessage(ValidationMessageConstants.VALIDATE_FAILED);
+
+        WebResult<T> result = WebResult.error(ValidationException.DEFAULT_ERROR_CODE, message);
         Collection<ObjectError> allErrors = getAllErrors();
         result.setErrorDetail(ValidationException.buildErrorDetail(allErrors));
 
@@ -124,7 +128,9 @@ public class ValidationHelper {
      * @return
      */
     public <T> ResponseEntity<WebResult<T>> toOkEntity() {
-        WebResult<T> result = WebResult.error(ValidationException.DEFAULT_ERROR_CODE, "validate failed");
+        String message = I18nUtil.getMessage(ValidationMessageConstants.VALIDATE_FAILED);
+
+        WebResult<T> result = WebResult.error(ValidationException.DEFAULT_ERROR_CODE, message);
         Collection<ObjectError> allErrors = getAllErrors();
         result.setErrorDetail(ValidationException.buildErrorDetail(allErrors));
 

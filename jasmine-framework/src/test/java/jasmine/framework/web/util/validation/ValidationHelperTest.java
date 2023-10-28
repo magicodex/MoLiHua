@@ -1,16 +1,20 @@
 package jasmine.framework.web.util.validation;
 
+import jasmine.framework.testdependency.context.FrameworkTestContext;
 import jasmine.framework.web.entity.WebResult;
 import jasmine.framework.web.exception.ValidationException;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author mh.z
  */
-public class ValidationHelperTest {
+@RunWith(SpringRunner.class)
+public class ValidationHelperTest extends FrameworkTestContext {
 
     @Test
     public void test() {
@@ -41,7 +45,7 @@ public class ValidationHelperTest {
         WebResult result = actual.getBody();
         Assert.assertNotNull(result);
         Assert.assertEquals(ValidationException.DEFAULT_ERROR_CODE, result.getErrorCode());
-        Assert.assertEquals("validate failed", result.getMessage());
+        Assert.assertEquals("校验出错", result.getMessage());
         Assert.assertNotNull(result.getErrorDetail());
     }
 
@@ -57,7 +61,7 @@ public class ValidationHelperTest {
         WebResult result = actual.getBody();
         Assert.assertNotNull(result);
         Assert.assertEquals(ValidationException.DEFAULT_ERROR_CODE, result.getErrorCode());
-        Assert.assertEquals("validate failed", result.getMessage());
+        Assert.assertEquals("校验出错", result.getMessage());
         Assert.assertNotNull(result.getErrorDetail());
     }
 
