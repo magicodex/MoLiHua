@@ -2,6 +2,7 @@ package jasmine.framework.common.util;
 
 import jasmine.framework.common.exception.InvalidPropertyException;
 import jasmine.framework.context.WithContext;
+import jasmine.framework.i18n.I18nKeyAndArgs;
 import jasmine.framework.i18n.LocaleMessageProvider;
 
 /**
@@ -20,6 +21,24 @@ public class I18nUtil implements WithContext {
 
     public static LocaleMessageProvider getProvider() {
         return provider;
+    }
+
+    /**
+     * 查找多语言并返回
+     *
+     * @param keyAndArgs
+     * @return
+     */
+    public static String getMessage(I18nKeyAndArgs keyAndArgs) {
+        if (provider == null) {
+            throw new InvalidPropertyException("I18nUtil.provider null", null);
+        }
+
+        if (keyAndArgs != null) {
+            return getMessage(keyAndArgs.getI18nKey(), keyAndArgs.getI18nArgs());
+        }
+
+        return null;
     }
 
     /**
