@@ -150,7 +150,7 @@
             <column name="access_method" type="varchar(50)" remarks="访问方式">
                 <constraints nullable="false"/>
             </column>
-            <column name="resource_path" type="varchar(1000)" remarks="资源路径">
+            <column name="resource_path" type="varchar(500)" remarks="资源路径">
                 <constraints nullable="false"/>
             </column>
             <column name="frozen_flag" type="tinyint" remarks="冻结标志">
