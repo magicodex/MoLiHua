@@ -953,4 +953,67 @@
         </createIndex>
     </changeSet>
 
+    <changeSet id="jasmine_20231104155001" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_role" indexName="uk_sec_role"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_role" tableName="sec_role" columnNames="tenant_id,role_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20231104155002" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_function" indexName="uk_sec_function"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_function" tableName="sec_function" columnNames="function_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20231104155003" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_permission" indexName="uk_sec_permission"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_permission" tableName="sec_permission"
+                             columnNames="permission_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20231104155004" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_resource" indexName="uk_sec_resource"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_resource" tableName="sec_resource"
+                             columnNames="resource_path,access_method"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20231104155005" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_menu_template" indexName="uk_sec_menu_template"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_menu_template" tableName="sec_menu_template"
+                             columnNames="tenant_id,template_code"/>
+    </changeSet>
+
+    <changeSet id="jasmine_20231104155006" author="mh.z">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="sec_menu" indexName="uk_sec_menu"/>
+            </not>
+        </preConditions>
+
+        <addUniqueConstraint constraintName="uk_sec_menu" tableName="sec_menu" columnNames="tenant_id,menu_code"/>
+    </changeSet>
+
 </databaseChangeLog>
