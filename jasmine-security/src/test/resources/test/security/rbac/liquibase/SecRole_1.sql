@@ -2,7 +2,7 @@ SELECT
 	id,
 	role_code,
 	role_name,
-	enable_flag,
+	effective_flag,
 	remark,
 	tenant_id,
 	created_lang,

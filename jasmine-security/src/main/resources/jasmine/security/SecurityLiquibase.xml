@@ -21,7 +21,7 @@
             <column name="role_name" type="varchar(100)" remarks="角色名称">
                 <constraints nullable="false"/>
             </column>
-            <column name="enable_flag" type="tinyint" remarks="启用标志">
+            <column name="effective_flag" type="tinyint" remarks="生效标志">
                 <constraints nullable="false"/>
             </column>
             <column name="remark" type="varchar(1000)" remarks="备注">

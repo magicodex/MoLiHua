@@ -16,7 +16,7 @@
         sec_function t_function
         where t_role.id = t_role_function_rel.role_id
         and t_role_function_rel.function_id = t_function.id
-        and t_role.enable_flag = 1
+        and t_role.effective_flag = 1
         and t_role.id in
         <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
             #{roleId}

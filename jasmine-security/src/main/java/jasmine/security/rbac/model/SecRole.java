@@ -24,9 +24,9 @@ public class SecRole extends BaseI18nEntity {
     @TableField("role_name")
     private String roleName;
 
-    /** 启用标志 */
-    @TableField("enable_flag")
-    private Boolean enableFlag;
+    /** 生效标志 */
+    @TableField("effective_flag")
+    private Boolean effectiveFlag;
 
     /** 备注 */
     @I18n
@@ -53,12 +53,12 @@ public class SecRole extends BaseI18nEntity {
         this.roleName = roleName;
     }
 
-    public Boolean getEnableFlag() {
-        return enableFlag;
+    public Boolean getEffectiveFlag() {
+        return effectiveFlag;
     }
 
-    public void setEnableFlag(Boolean enableFlag) {
-        this.enableFlag = enableFlag;
+    public void setEffectiveFlag(Boolean effectiveFlag) {
+        this.effectiveFlag = effectiveFlag;
     }
 
     public String getRemark() {
