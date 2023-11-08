@@ -69,6 +69,9 @@
             <column name="function_name" type="varchar(100)" remarks="功能名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
+                <constraints nullable="true"/>
+            </column>
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
@@ -108,6 +111,9 @@
             <column name="permission_name" type="varchar(100)" remarks="权限名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
+                <constraints nullable="true"/>
+            </column>
             <column name="created_lang" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
@@ -140,6 +146,9 @@
         <createTable tableName="sec_resource" remarks="资源">
             <column name="id" type="bigint" remarks="主键id">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sec_resource"/>
+            </column>
+            <column name="resource_category" type="varchar(50)" remarks="资源类别">
+                <constraints nullable="false"/>
             </column>
             <column name="resource_type" type="varchar(50)" remarks="资源类型">
                 <constraints nullable="false"/>
@@ -384,6 +393,9 @@
             <column name="template_name" type="varchar(100)" remarks="模板名称">
                 <constraints nullable="false"/>
             </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
+                <constraints nullable="true"/>
+            </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
                 <constraints nullable="false"/>
             </column>
@@ -445,6 +457,12 @@
                 <constraints nullable="true"/>
             </column>
             <column name="link_resource_id" type="bigint" remarks="链接资源ID">
+                <constraints nullable="true"/>
+            </column>
+            <column name="show_flag" type="tinyint" remarks="显示标志">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
                 <constraints nullable="true"/>
             </column>
             <column name="tenant_id" type="bigint" remarks="租户ID">
@@ -570,6 +588,9 @@
             <column name="function_name" type="varchar(100)" remarks="功能名称">
                 <constraints nullable="true"/>
             </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
+                <constraints nullable="true"/>
+            </column>
             <column name="lang_code" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
@@ -610,6 +631,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="permission_name" type="varchar(100)" remarks="权限名称">
+                <constraints nullable="true"/>
+            </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
                 <constraints nullable="true"/>
             </column>
             <column name="lang_code" type="varchar(50)" remarks="语言代码">
@@ -696,6 +720,9 @@
             <column name="template_name" type="varchar(100)" remarks="模板名称">
                 <constraints nullable="true"/>
             </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
+                <constraints nullable="true"/>
+            </column>
             <column name="lang_code" type="varchar(50)" remarks="语言代码">
                 <constraints nullable="false"/>
             </column>
@@ -736,6 +763,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="menu_name" type="varchar(100)" remarks="菜单名称">
+                <constraints nullable="true"/>
+            </column>
+            <column name="remark" type="varchar(1000)" remarks="备注">
                 <constraints nullable="true"/>
             </column>
             <column name="lang_code" type="varchar(50)" remarks="语言代码">
@@ -992,7 +1022,7 @@
         </preConditions>
 
         <addUniqueConstraint constraintName="uk_sec_resource" tableName="sec_resource"
-                             columnNames="resource_path,access_method"/>
+                             columnNames="resource_category,resource_path,access_method"/>
     </changeSet>
 
     <changeSet id="jasmine_20231104155005" author="mh.z">

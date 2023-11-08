@@ -24,6 +24,11 @@ public class SecFunction extends BaseI18nEntity {
     @TableField("function_name")
     private String functionName;
 
+    /** 备注 */
+    @I18n
+    @TableField("remark")
+    private String remark;
+
     public String getFunctionCode() {
         return functionCode;
     }
@@ -38,6 +43,14 @@ public class SecFunction extends BaseI18nEntity {
 
     public void setFunctionName(String functionName) {
         this.functionName = functionName;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
 }

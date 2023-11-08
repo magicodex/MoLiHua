@@ -2,6 +2,7 @@ package jasmine.security.rbac.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import jasmine.framework.database.mybatisplus.dao.BaseI18nEntityDAO;
 import jasmine.security.rbac.mapper.SecResourceMapper;
 import jasmine.security.rbac.model.SecResource;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecResourceDAO {
+public class SecResourceDAO extends BaseI18nEntityDAO<SecResourceMapper, SecResource> {
     private SecResourceMapper baseMapper;
 
     public SecResourceDAO(SecResourceMapper baseMapper) {

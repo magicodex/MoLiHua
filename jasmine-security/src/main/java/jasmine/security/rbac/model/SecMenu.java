@@ -53,6 +53,15 @@ public class SecMenu extends BaseI18nEntity {
     @TableField(value = "link_resource_id", updateStrategy = FieldStrategy.IGNORED)
     private Long linkResourceId;
 
+    /** 显示标志 */
+    @TableField("show_flag")
+    private Boolean showFlag;
+
+    /** 备注 */
+    @I18n
+    @TableField("remark")
+    private String remark;
+
     /** 租户ID */
     @TableField("tenant_id")
     private Long tenantId;
@@ -127,6 +136,22 @@ public class SecMenu extends BaseI18nEntity {
 
     public void setLinkResourceId(Long linkResourceId) {
         this.linkResourceId = linkResourceId;
+    }
+
+    public Boolean getShowFlag() {
+        return showFlag;
+    }
+
+    public void setShowFlag(Boolean showFlag) {
+        this.showFlag = showFlag;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Long getTenantId() {

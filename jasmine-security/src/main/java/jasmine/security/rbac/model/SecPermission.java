@@ -24,6 +24,11 @@ public class SecPermission extends BaseI18nEntity {
     @TableField("permission_name")
     private String permissionName;
 
+    /** 备注 */
+    @I18n
+    @TableField("remark")
+    private String remark;
+
     public String getPermissionCode() {
         return permissionCode;
     }
@@ -38,6 +43,14 @@ public class SecPermission extends BaseI18nEntity {
 
     public void setPermissionName(String permissionName) {
         this.permissionName = permissionName;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
 }

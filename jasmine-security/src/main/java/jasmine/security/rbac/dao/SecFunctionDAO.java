@@ -1,8 +1,10 @@
 package jasmine.security.rbac.dao;
 
 import jasmine.framework.common.util.CollectionUtil;
+import jasmine.framework.database.mybatisplus.dao.BaseI18nEntityDAO;
 import jasmine.security.rbac.dto.SecFunctionBaseInfoDTO;
 import jasmine.security.rbac.mapper.SecFunctionMapper;
+import jasmine.security.rbac.model.SecFunction;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecFunctionDAO {
+public class SecFunctionDAO extends BaseI18nEntityDAO<SecFunctionMapper, SecFunction> {
     private SecFunctionMapper baseMapper;
 
     public SecFunctionDAO(SecFunctionMapper baseMapper) {

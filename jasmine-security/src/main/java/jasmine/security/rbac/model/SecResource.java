@@ -15,6 +15,10 @@ import jasmine.framework.database.mybatisplus.entity.BaseI18nEntity;
 @TableName("sec_resource")
 public class SecResource extends BaseI18nEntity {
 
+    /** 资源类别 */
+    @TableField("resource_category")
+    private String resourceCategory;
+
     /** 资源类型 */
     @TableField("resource_type")
     private String resourceType;
@@ -39,6 +43,14 @@ public class SecResource extends BaseI18nEntity {
     @I18n
     @TableField("remark")
     private String remark;
+
+    public String getResourceCategory() {
+        return resourceCategory;
+    }
+
+    public void setResourceCategory(String resourceCategory) {
+        this.resourceCategory = resourceCategory;
+    }
 
     public String getResourceType() {
         return resourceType;

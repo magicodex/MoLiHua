@@ -1,5 +1,6 @@
 package jasmine.security.rbac.dao;
 
+import jasmine.framework.database.mybatisplus.dao.BaseI18nEntityDAO;
 import jasmine.security.rbac.mapper.SecRoleMapper;
 import jasmine.security.rbac.model.SecRole;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author mh.z
  */
 
-public class SecRoleDAO {
+public class SecRoleDAO extends BaseI18nEntityDAO<SecRoleMapper, SecRole> {
     private SecRoleMapper baseMapper;
 
     public SecRoleDAO(SecRoleMapper baseMapper) {

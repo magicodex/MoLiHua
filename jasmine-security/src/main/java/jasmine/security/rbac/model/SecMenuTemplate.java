@@ -24,6 +24,11 @@ public class SecMenuTemplate extends BaseI18nEntity {
     @TableField("template_name")
     private String templateName;
 
+    /** 备注 */
+    @I18n
+    @TableField("remark")
+    private String remark;
+
     /** 租户ID */
     @TableField("tenant_id")
     private Long tenantId;
@@ -42,6 +47,14 @@ public class SecMenuTemplate extends BaseI18nEntity {
 
     public void setTemplateName(String templateName) {
         this.templateName = templateName;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Long getTenantId() {
