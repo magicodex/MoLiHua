@@ -1,5 +1,6 @@
 package jasmine.security.rbac.model;
 
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import jasmine.framework.database.mybatisplus.annotation.I18n;
@@ -30,7 +31,7 @@ public class SecRole extends BaseI18nEntity {
 
     /** 备注 */
     @I18n
-    @TableField("remark")
+    @TableField(value = "remark", updateStrategy = FieldStrategy.IGNORED)
     private String remark;
 
     /** 租户ID */

@@ -59,7 +59,7 @@ public class SecMenu extends BaseI18nEntity {
 
     /** 备注 */
     @I18n
-    @TableField("remark")
+    @TableField(value = "remark", updateStrategy = FieldStrategy.IGNORED)
     private String remark;
 
     /** 租户ID */
