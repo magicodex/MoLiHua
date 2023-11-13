@@ -4,8 +4,10 @@ import jasmine.framework.common.constant.CollectionConstants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>
@@ -70,6 +72,27 @@ public class NewUtil {
         }
 
         return map;
+    }
+
+    /**
+     * 创建 Set 对象并返回
+     *
+     * @return
+     * @param <T>
+     */
+    public static <T> Set<T> set() {
+        return new HashSet<>(CollectionConstants.DEFAULT_SET_INITIAL_CAPACITY);
+    }
+
+    /**
+     * 创建 Set 对象并返回
+     *
+     * @param initialCapacity
+     * @return
+     * @param <T>
+     */
+    public static <T> Set<T> set(int initialCapacity) {
+        return new HashSet<>(initialCapacity);
     }
 
     /**
