@@ -105,6 +105,7 @@ public class JasmineSecurityAutoConfiguration {
         return managerProxy;
     }
 
+    @ConditionalOnMissingBean(RbacAccessDecisionStrategy.class)
     @ConditionalOnProperty(value = "jasmine.security.authorization.strategy",
             havingValue = "rbac", matchIfMissing = false)
     @Bean
