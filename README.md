@@ -9,9 +9,9 @@
 3. 默认账户和密码是 MoLiHua/123456。
 4. 默认连接 Redis 的地址是 127.0.0.1:6379。
 
-### 单元测试覆盖率(2023.3.13)
+### 单元测试覆盖率(2023.11.13)
 
-![单元测试覆盖率](https://github.com/magicodex/MoLiHua/blob/main/doc/images/jacoco-code-coverage-report.png "单元测试覆盖率")
+![单元测试覆盖率](https://s3.bmp.ovh/imgs/2023/11/13/cea870eb92472eea.png "单元测试覆盖率")
 
 ## 使用说明
 
@@ -77,7 +77,7 @@
 |     jasmine-spring-cloud-stream      | 整合Spring Cloud Stream |
 |             jasmine-demo             | DEMO示例                |
 
-![模块划分](https://github.com/magicodex/MoLiHua/blob/main/MODULE.png "模块划分")
+![模块划分](https://s3.bmp.ovh/imgs/2023/11/13/6bace7a53f3715f6.png "模块划分")
 
 ## 开源协议
 
