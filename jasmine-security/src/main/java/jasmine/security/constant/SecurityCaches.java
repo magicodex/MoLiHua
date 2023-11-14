@@ -6,11 +6,11 @@ package jasmine.security.constant;
 public interface SecurityCaches {
 
     /** 通过资源 ID 缓存资源 */
-    String RESOURCE_WITH_PATH_KEY = "RESOURCE_WITH_PATH_KEY";
+    String RESOURCE_WITH_PATH_KEY = "jasmine.security.resourceWithPathKey";
 
     /** 通过资源 ID 缓存功能 */
-    String FUNCTIONS_WITH_RESOURCE_ID = "FUNCTIONS_WITH_RESOURCE_ID";
+    String FUNCTIONS_WITH_RESOURCE_ID = "jasmine.security.functionsWithResourceId";
 
     /** 通过角色 ID 缓存功能 */
-    String FUNCTIONS_WITH_ROLE_ID = "FUNCTIONS_WITH_ROLE_ID";
+    String FUNCTIONS_WITH_ROLE_ID = "jasmine.security.functionsWithRoleId";
 }
