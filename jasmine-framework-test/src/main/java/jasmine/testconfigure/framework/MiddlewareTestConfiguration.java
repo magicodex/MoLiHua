@@ -2,11 +2,13 @@ package jasmine.testconfigure.framework;
 
 import jasmine.framework.cache.CacheService;
 import jasmine.framework.cache.CacheUtil;
+import jasmine.framework.cache.impl.redis.RedisCacheService;
+import jasmine.framework.cache.impl.redis.RedisTemplateInvoker;
 import jasmine.framework.lock.distributed.DistributedLockProvider;
 import jasmine.framework.lock.DistributedLockUtil;
 import jasmine.framework.mq.ReceiveMessageService;
 import jasmine.framework.mq.SendMessageService;
-import jasmine.mock.framework.cache.MockCacheService;
+import jasmine.mock.framework.cache.RedisMockUtil;
 import jasmine.mock.framework.lock.MockDistributedLockProvider;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +22,8 @@ public class MiddlewareTestConfiguration {
 
     @Bean
     public CacheService cacheService() {
-        CacheService cacheService = new MockCacheService();
+        RedisTemplateInvoker redisTemplateInvoker = RedisMockUtil.getRedisTemplateInvoker();
+        CacheService cacheService = new RedisCacheService(redisTemplateInvoker);
         // 初始工具类
         CacheUtil.initUtil(cacheService);
 
