@@ -1,4 +1,4 @@
-package jasmine.framework.database.mybatisplus.testdependency.context;
+package jasmine.framework.testdependency.context;
 
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;

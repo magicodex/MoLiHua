@@ -12,5 +12,5 @@
         <property name="basePackage" value="jasmine.**.mapper"/>
     </bean>
 
-    <bean class="jasmine.framework.database.mybatisplus.testdependency.context.MybatisTestConfiguration" />
+    <bean class="jasmine.framework.testdependency.context.MybatisTestConfiguration" />
 </beans>

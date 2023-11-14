@@ -1,4 +1,4 @@
-package jasmine.framework.database.mybatisplus.testdependency.context;
+package jasmine.framework.testdependency.context;
 
 import jasmine.framework.context.CustomInitializingSingleton;
 import org.springframework.beans.BeansException;
