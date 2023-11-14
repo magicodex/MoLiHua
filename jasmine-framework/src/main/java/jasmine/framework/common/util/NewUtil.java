@@ -116,4 +116,15 @@ public class NewUtil {
         return new ArrayList<>(initialCapacity);
     }
 
+    /**
+     * 创建数组对象并返回
+     *
+     * @param array
+     * @return
+     * @param <T>
+     */
+    public static <T> T[] array(T... array) {
+        return array;
+    }
+
 }
