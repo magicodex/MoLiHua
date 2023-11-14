@@ -51,14 +51,12 @@ public class DefaultRbacQueryService implements RbacQueryService {
     }
 
     @Override
-    public List<Long> queryFunctionsByUser(Long userId, Collection<Long> roleIds) {
-        CheckUtil.notNull(userId, "userId null");
-        CheckUtil.notNull(roleIds, "roleIds null");
+    public List<Long> queryFunctionsByRole(Long roleId) {
+        CheckUtil.notNull(roleId, "roleId null");
 
-        List<Long> roleIdList = CollectionUtil.toList(roleIds);
         // 获取角色被授予的所有功能
         List<SecFunctionBaseInfoDTO> functionList = functionDAO
-                .listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(roleIdList);
+                .listAllTenantFunctionBaseInfoDTOsByRoleIdsNoI18n(Collections.singletonList(roleId));
 
         List<Long> functionIdList = CollectionUtil.mapToList(functionList,
                 SecFunctionBaseInfoDTO::getFunctionId);

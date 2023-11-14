@@ -22,11 +22,10 @@ public interface RbacQueryService {
     /**
      * 查找被授予的功能
      *
-     * @param userId
-     * @param roleIds
+     * @param roleId
      * @return
      */
-    List<Long> queryFunctionsByUser(Long userId, Collection<Long> roleIds);
+    List<Long> queryFunctionsByRole(Long roleId);
 
     /**
      * 查找被授予给的功能

@@ -11,6 +11,6 @@ public interface SecurityCaches {
     /** 通过资源 ID 缓存功能 */
     String FUNCTIONS_WITH_RESOURCE_ID = "FUNCTIONS_WITH_RESOURCE_ID";
 
-    /** 通过用户 ID 缓存功能 */
-    String FUNCTIONS_WITH_USER_ID = "FUNCTIONS_WITH_USER_ID";
+    /** 通过角色 ID 缓存功能 */
+    String FUNCTIONS_WITH_ROLE_ID = "FUNCTIONS_WITH_ROLE_ID";
 }

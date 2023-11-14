@@ -40,19 +40,9 @@ public class DefaultRbacQueryServiceTest extends AppTestContext {
     public void testQueryFunctionsByUser() {
         DefaultRbacQueryService service = createTestObject();
 
-        // 角色1和角色2被授权功能加起来有功能1和功能2
-        {
-            List<Long> actualList = service.queryFunctionsByUser(101001L, Arrays.asList(100001L, 100002L));
-            Assert.assertNotNull(actualList);
-
-            Assert.assertEquals(2, actualList.size());
-            Assert.assertTrue(actualList.contains(100001L));
-            Assert.assertTrue(actualList.contains(100002L));
-        }
-
         // 角色1被授权了功能1和功能2
         {
-            List<Long> actualList = service.queryFunctionsByUser(101001L, Arrays.asList(100001L, 100002L));
+            List<Long> actualList = service.queryFunctionsByRole(100001L);
             Assert.assertNotNull(actualList);
 
             Assert.assertEquals(2, actualList.size());
@@ -62,7 +52,7 @@ public class DefaultRbacQueryServiceTest extends AppTestContext {
 
         // 角色2被授权了功能2
         {
-            List<Long> actualList = service.queryFunctionsByUser(101001L, Arrays.asList(100002L));
+            List<Long> actualList = service.queryFunctionsByRole(100002L);
             Assert.assertNotNull(actualList);
 
             Assert.assertEquals(1, actualList.size());

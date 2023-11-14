@@ -100,22 +100,28 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy {
             return ((RoleAuthority) authority).getRoleId();
         });
 
-        // 获取该用户被授予的所有功能
-        List<Long> userFunctionList = rbacQueryService.queryFunctionsByUser(userId, roleIdList);
-        if (CollectionUtil.isEmpty(userFunctionList)) {
-            return false;
-        }
-
         // 获取该资源被授予给的所有功能
         List<Long> resourceFunctionList = rbacQueryService.queryFunctionsByResource(resourceId);
         if (CollectionUtil.isEmpty(resourceFunctionList)) {
             return false;
         }
 
-        // 若两个集合存在交集则该用户允许访问该资源
-        boolean checkResult = CollectionUtil.containsAny(userFunctionList, resourceFunctionList);
+        for (int index = 0; index < roleIdList.size(); index++) {
+            Long roleId = roleIdList.get(index);
+            // 获取指定角色被授予的所有功能
+            List<Long> roleFunctionList = rbacQueryService.queryFunctionsByRole(roleId);
 
-        return checkResult;
+            if (CollectionUtil.isNotEmpty(roleFunctionList)) {
+                // 若两个集合存在交集则该用户允许访问该资源
+                boolean checkResult = CollectionUtil.containsAny(roleFunctionList, resourceFunctionList);
+
+                if (checkResult) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
 

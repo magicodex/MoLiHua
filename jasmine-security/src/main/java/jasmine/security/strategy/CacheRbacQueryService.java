@@ -33,12 +33,11 @@ public class CacheRbacQueryService extends DefaultRbacQueryService {
     }
 
     @Override
-    public List<Long> queryFunctionsByUser(Long userId, Collection<Long> roleIds) {
-        CheckUtil.notNull(userId, "userId null");
-        CheckUtil.notNull(roleIds, "roleIds null");
+    public List<Long> queryFunctionsByRole(Long roleId) {
+        CheckUtil.notNull(roleId, "roleId null");
 
-        List<Long> functionIdList = CacheUtil.getList(SecurityCaches.FUNCTIONS_WITH_USER_ID, userId, () -> {
-            return super.queryFunctionsByUser(userId, roleIds);
+        List<Long> functionIdList = CacheUtil.getList(SecurityCaches.FUNCTIONS_WITH_ROLE_ID, roleId, () -> {
+            return super.queryFunctionsByRole(roleId);
         }, Long.class);
 
         return functionIdList;
