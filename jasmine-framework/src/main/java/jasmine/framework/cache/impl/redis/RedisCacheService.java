@@ -1,12 +1,12 @@
 package jasmine.framework.cache.impl.redis;
 
-import jasmine.framework.common.util.CheckUtil;
-import jasmine.framework.common.util.StringUtil;
-import jasmine.framework.cache.strategy.CacheExpirationStrategy;
 import jasmine.framework.cache.CacheService;
-import jasmine.framework.cache.strategy.CacheSyncStrategy;
 import jasmine.framework.cache.impl.strategy.DefaultCacheExpirationStrategy;
+import jasmine.framework.cache.strategy.CacheExpirationStrategy;
+import jasmine.framework.cache.strategy.CacheSyncStrategy;
+import jasmine.framework.common.util.CheckUtil;
 import jasmine.framework.common.util.SimpleConvertUtil;
+import jasmine.framework.common.util.StringUtil;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -143,14 +143,12 @@ public class RedisCacheService implements CacheService {
         CheckUtil.notNull(category, "category null");
         CheckUtil.notNull(key, "key null");
 
-        if (supplier != null) {
-            if (syncStrategy != null) {
-                // 同步缓存
-                syncStrategy.sync(category, key, supplier);
-            } else {
-                // 移除缓存
-                remove(category, key);
-            }
+        if (syncStrategy != null) {
+            // 同步缓存
+            syncStrategy.sync(category, key, supplier);
+        } else {
+            // 移除缓存
+            remove(category, key);
         }
     }
 
