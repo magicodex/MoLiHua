@@ -139,6 +139,21 @@ public class CacheUtil implements WithContext {
     }
 
     /**
+     * 添加数据到缓存中
+     *
+     * @param category
+     * @param key
+     * @param value
+     * @param timeout
+     */
+    public static void set(@Nonnull String category, @Nonnull Object key,
+                           @Nullable Object value, long timeout) {
+        CheckUtil.notNullProp(cacheService, CACHE_SERVICE_NULL_MESSAGE);
+
+        cacheService.set(category, key, value, timeout);
+    }
+
+    /**
      * 从缓存中清除指定的数据
      *
      * @param category

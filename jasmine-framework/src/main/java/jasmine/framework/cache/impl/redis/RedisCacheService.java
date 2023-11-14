@@ -128,6 +128,22 @@ public class RedisCacheService implements CacheService {
     }
 
     @Override
+    public void set(String category, Object key, Object value, long timeout) {
+        CheckUtil.notNull(category, "category null");
+        CheckUtil.notNull(key, "key null");
+
+        // 序列化成字节
+        byte[] bytes = SimpleConvertUtil.serialize(value);
+        // 获取缓存key
+        String cacheKey = getCacheKey(category, key);
+
+        // 缓存数据
+        redisTemplateInvoker.set(cacheKey, bytes);
+        // 设置缓存时间
+        redisTemplateInvoker.expire(cacheKey, timeout, TimeUnit.SECONDS);
+    }
+
+    @Override
     public void remove(String category, Object key) {
         CheckUtil.notNull(category, "category null");
         CheckUtil.notNull(key, "key null");

@@ -66,6 +66,16 @@ public interface CacheService {
     void set(String category, Object key, Object value);
 
     /**
+     * 添加数据到缓存中
+     *
+     * @param category
+     * @param key
+     * @param value
+     * @param timeout
+     */
+    void set(String category, Object key, Object value, long timeout);
+
+    /**
      * 从缓存中清除指定的数据
      *
      * @param category

@@ -43,6 +43,11 @@ public class MockCacheService implements CacheService {
     }
 
     @Override
+    public void set(String category, Object key, Object value, long timeout) {
+        //
+    }
+
+    @Override
     public void remove(String category, Object key) {
         //
     }
