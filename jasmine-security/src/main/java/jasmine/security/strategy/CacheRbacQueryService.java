@@ -7,7 +7,6 @@ import jasmine.security.rbac.dao.SecFunctionDAO;
 import jasmine.security.rbac.dao.SecResourceDAO;
 import jasmine.security.rbac.dto.SecResourceBaseInfoDTO;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -25,7 +24,7 @@ public class CacheRbacQueryService extends DefaultRbacQueryService {
         CheckUtil.notNull(urlPattern, "urlPattern null");
         String cacheKey = requestMethod + "&" + urlPattern;
 
-        SecResourceBaseInfoDTO resource = CacheUtil.get(SecurityCaches.RESOURCE_WITH_REQUEST, cacheKey, () -> {
+        SecResourceBaseInfoDTO resource = CacheUtil.get(SecurityCaches.RESOURCE_WITH_PATH_KEY, cacheKey, () -> {
             return super.queryResourceByRequest(requestMethod, urlPattern);
         }, SecResourceBaseInfoDTO.class);
 
