@@ -34,6 +34,9 @@ public class MybatisPlusInterceptorBuilder {
     public MybatisPlusInterceptor build() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
 
+        ContextParameter contextParameter = new DefaultContextParameter();
+        interceptor.addInnerInterceptor(new ContextParameterInnerInterceptor(contextParameter));
+
         // 如果用了分页插件注意先 add TenantLineInnerInterceptor 再 add PaginationInnerInterceptor
         // 用了分页插件必须设置 MybatisConfiguration#useDeprecatedExecutor = false
 
@@ -49,9 +52,6 @@ public class MybatisPlusInterceptorBuilder {
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor());
         // 防止全表更新与删除插件
         interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
-
-        ContextParameter contextParameter = new DefaultContextParameter();
-        interceptor.addInnerInterceptor(new ContextParameterInnerInterceptor(contextParameter));
 
         return interceptor;
     }
