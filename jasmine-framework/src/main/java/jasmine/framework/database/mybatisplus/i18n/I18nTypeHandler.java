@@ -12,7 +12,8 @@ import java.sql.SQLException;
  * @author mh.z
  */
 public class I18nTypeHandler implements TypeHandler<String> {
-    private static final String COLUMN_NAME_I18N_SUFFIX = "_i18n";
+    private static final String I18N_COLUMN_NAME_SUFFIX = "_i18n";
+    private static final String LANG_COLUMN_NAME_SUFFIX = "_lang";
 
     @Override
     public void setParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType) throws SQLException {
@@ -21,12 +22,14 @@ public class I18nTypeHandler implements TypeHandler<String> {
 
     @Override
     public String getResult(ResultSet rs, String columnName) throws SQLException {
-        String columnNameI18n = columnName + COLUMN_NAME_I18N_SUFFIX;
-
-        String result = rs.getString(columnNameI18n);
+        String langColumnName = columnName + LANG_COLUMN_NAME_SUFFIX;
+        String result = rs.getString(langColumnName);
 
         if (result == null) {
             result = rs.getString(columnName);
+        } else {
+            String i18nColumnName = columnName + I18N_COLUMN_NAME_SUFFIX;
+            result = rs.getString(i18nColumnName);
         }
 
         return result;
