@@ -16,7 +16,7 @@ import jasmine.framework.database.mybatisplus.crypto.SymmetricCryptoProvider;
 import jasmine.framework.database.mybatisplus.i18n.DefaultI18nEntityFacade;
 import jasmine.framework.database.mybatisplus.i18n.I18nEntityFacade;
 import jasmine.framework.database.mybatisplus.i18n.I18nEntityUtil;
-import jasmine.framework.database.mybatisplus.i18n.injector.I18nSupportSqlInjector;
+import jasmine.framework.database.mybatisplus.injector.I18nSupportSqlInjector;
 import jasmine.framework.database.mybatisplus.tenant.DefaultTenantLineHandler;
 import jasmine.framework.database.mybatisplus.tenant.IgnoreTableStrategy;
 import jasmine.framework.database.mybatisplus.tenant.TenantConfigProcessorScanBean;

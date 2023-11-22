@@ -1,4 +1,4 @@
-package jasmine.framework.database.mybatisplus.i18n.injector;
+package jasmine.framework.database.mybatisplus.injector;
 
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 
