@@ -1,12 +1,13 @@
 package jasmine.framework.database.mybatisplus.wrapper;
 
+import com.baomidou.mybatisplus.core.conditions.SharedString;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.baomidou.mybatisplus.core.enums.SqlKeyword;
 import com.baomidou.mybatisplus.core.enums.SqlLike;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import jasmine.framework.database.mybatisplus.dynamic.DataAuthUtil;
+import liquibase.util.StringUtil;
 
 import static com.baomidou.mybatisplus.core.enums.WrapperKeyword.APPLY;
 
@@ -62,12 +63,13 @@ public class LambdaQueryWrapperEx<T> extends AbstractLambdaQueryWrapperEx<T, Lam
     protected LambdaQueryWrapperEx likeValueWithI18n(boolean condition, SqlKeyword keyword, SFunction<T, ?> column,
                                                      Object val, SqlLike sqlLike) {
         maybeDo(condition, () -> {
-            QueryWrapper<T> nestedWrapper = Wrappers.query();
+            QueryWrapperEx<T> nestedWrapper = new QueryWrapperEx(getEntity(), getEntityClass(), paramNameSeq, paramNameValuePairs,
+                    new MergeSegments(), paramAlias, SharedString.emptyString(), SharedString.emptyString(), SharedString.emptyString());
 
             nestedWrapper.nested((wrapper) -> {
                 wrapper.isNull(I18N_TABLE_ID_COLUMN_NAME);
 
-                String columnName = ENTITY_TABLE_COLUMN_NAME_PREFIX + columnToString(column);
+                String columnName = ENTITY_TABLE_COLUMN_NAME_PREFIX + super.columnToString(column, true);
                 if (sqlLike == SqlLike.LEFT) {
                     wrapper.likeLeft(columnName, val);
                 } else if (sqlLike == SqlLike.RIGHT) {
@@ -80,7 +82,7 @@ public class LambdaQueryWrapperEx<T> extends AbstractLambdaQueryWrapperEx<T, Lam
             nestedWrapper.or((wrapper) -> {
                 wrapper.isNotNull(I18N_TABLE_ID_COLUMN_NAME);
 
-                String columnName = I18N_TABLE_COLUMN_NAME_PREFIX + columnToString(column);
+                String columnName = I18N_TABLE_COLUMN_NAME_PREFIX + super.columnToString(column, true);
                 if (sqlLike == SqlLike.LEFT) {
                     wrapper.likeLeft(columnName, val);
                 } else if (sqlLike == SqlLike.RIGHT) {
@@ -94,6 +96,17 @@ public class LambdaQueryWrapperEx<T> extends AbstractLambdaQueryWrapperEx<T, Lam
         });
 
         return this;
+    }
+
+    @Override
+    protected String columnToString(SFunction<T, ?> column, boolean onlyColumn) {
+        String columnName = super.columnToString(column, onlyColumn);
+
+        if (StringUtil.isEmpty(columnName)) {
+            return columnName;
+        }
+
+        return ("t." + columnName);
     }
 
 }
