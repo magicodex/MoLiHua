@@ -1,0 +1,11 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jasmine.CommonSql">
+
+    <sql id="andI18nColumnLike">
+        and ((${i18nTable}.id is null and ${entityTable}.${columnName} like concat('%', concat(#{${paramName}}, '%')))
+        or (${i18nTable}.id is not null and ${i18nTable}.${columnName} like concat('%', concat(#{${paramName}}, '%'))))
+    </sql>
+
+</mapper>
