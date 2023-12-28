@@ -93,10 +93,14 @@ public class DefaultI18nEntityFacade implements I18nEntityFacade {
 
             // 更新多语言记录
             if (i18nRecord != null) {
-                i18nCRUD.update(entityId, langCode, i18nDataMap, null);
+                i18nCRUD.update(entityId, langCode, i18nDataMap, null, true);
             } else {
                 String createdLang = entity.getCreatedLang();
-                i18nCRUD.update(entityId, createdLang, i18nDataMap, null);
+                int rowCount = i18nCRUD.update(entityId, createdLang, i18nDataMap, null, false);
+
+                if (rowCount <= 0) {
+                    i18nCRUD.insert(entityId, createdLang, i18nDataMap, true);
+                }
             }
         });
 

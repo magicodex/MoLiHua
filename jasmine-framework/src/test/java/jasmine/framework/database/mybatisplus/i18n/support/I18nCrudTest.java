@@ -57,7 +57,7 @@ public class I18nCrudTest extends MybatisTestContext {
         data.put("name_1", "新名称1");
         data.put("name_2", "新名称2");
         // 新增多语言记录
-        int rowCount = crud.update(1L, "zh-CN", data, null);
+        int rowCount = crud.update(1L, "zh-CN", data, null, true);
         Assert.assertEquals(1, rowCount);
 
         // 中文多语言应当被修改

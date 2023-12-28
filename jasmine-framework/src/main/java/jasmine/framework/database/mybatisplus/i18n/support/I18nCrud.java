@@ -109,10 +109,12 @@ public class I18nCrud {
      * @param langCode
      * @param data
      * @param versionNumber
+     * @param strict
      * @return
      */
     public int update(@Nonnull Serializable id, @Nonnull String langCode,
-                      @Nonnull Map<String, String> data, @Nullable Integer versionNumber) {
+                      @Nonnull Map<String, String> data, @Nullable Integer versionNumber,
+                      boolean strict) {
         CheckUtil.notNull(id, "id null");
         CheckUtil.notNull(langCode, "langCode null");
         CheckUtil.notNull(data, "data null");
@@ -136,11 +138,11 @@ public class I18nCrud {
 
         // 更新多语言记录
         int rowCount = sqlSession.update(STATEMENT_UPDATE, paramMap);
-        if (rowCount != 1) {
+        if (strict && rowCount != 1) {
             throw new ApplicationException(MybatisMessageConstants.UPDATE_ROW_COUNT_MISMATCH, null);
         }
 
-        return 1;
+        return rowCount;
     }
 
     /**
