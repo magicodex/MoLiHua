@@ -85,7 +85,7 @@ jasmine:
       # 访问策略
       strategy: default
     # 公开资源
-    publicLocations: /static/**,/swagger-ui/**,/v3/api-docs/**
+    publicLocations: /,/static/**,/swagger-ui/**,/v3/api-docs/**
 
 app:
   message-queue:

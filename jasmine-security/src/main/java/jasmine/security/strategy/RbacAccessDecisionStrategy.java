@@ -21,8 +21,6 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy {
     private RbacQueryService rbacQueryService;
     private UrlPatternMatcher urlPatternMatcher;
 
-    private static final String SLASH_SYMBOL = "/";
-
     public RbacAccessDecisionStrategy(RbacQueryService rbacQueryService,
                                       UrlPatternMatcher urlPatternMatcher) {
         this.rbacQueryService = rbacQueryService;
@@ -33,11 +31,6 @@ public class RbacAccessDecisionStrategy implements AccessDecisionStrategy {
     public boolean check(UserSubject subject, HttpServletRequest request) {
         CheckUtil.notNull(subject, "subject null");
         CheckUtil.notNull(request, "request null");
-        String servletPath = request.getServletPath();
-
-        if (servletPath.isEmpty() || servletPath.equals(SLASH_SYMBOL)) {
-            return true;
-        }
 
         // 获取请求对应的 URL 模式
         String urlPattern = urlPatternMatcher.getUrlPattern(request);
