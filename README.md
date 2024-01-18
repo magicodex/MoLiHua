@@ -18,7 +18,7 @@
 ### 1.添加依赖
 
 ```
-<jasmine.version>x.x.x</jasmine.version>
+<jasmine.version>1.3.6</jasmine.version>
 
 <dependency>
     <groupId>com.magicodex</groupId>

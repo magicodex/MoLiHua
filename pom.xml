@@ -8,7 +8,7 @@
     <groupId>com.magicodex</groupId>
     <artifactId>jasmine-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.3.6-SNAPSHOT</version>
+    <version>1.3.6</version>
 
     <description>Jasmine, Java web framework.</description>
     <url>https://github.com/magicodex/MoLiHua/wiki</url>
@@ -69,7 +69,7 @@
     </distributionManagement>
 
     <profiles>
-        <!-- 部署到Maven仓库，示例 mvn deploy -DmavenCenter=true -->
+        <!-- 部署到Maven仓库，示例 mvn clean deploy -DmavenCenter=true -->
         <profile>
             <id>deployToMavenCenter</id>
             <activation>
@@ -146,7 +146,7 @@
             </build>
         </profile>
 
-        <!-- 统计代码测试覆盖率，示例 mvn test -DcoverageReport=true -->
+        <!-- 统计代码测试覆盖率，示例 mvn clean test -DcoverageReport=true -->
         <profile>
             <id>runAllTestsWithCoverage</id>
             <activation>
