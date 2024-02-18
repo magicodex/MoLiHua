@@ -16,22 +16,31 @@ public class QueryWrapperEx<T> extends AbstractQueryWrapperEx<T, QueryWrapperEx<
         super();
     }
 
-    public QueryWrapperEx(T entity, Class<T> entityClass, AtomicInteger paramNameSeq,
-                          Map<String, Object> paramNameValuePairs, MergeSegments mergeSegments, SharedString paramAlias,
-                          SharedString lastSql, SharedString sqlComment, SharedString sqlFirst) {
-        super.setEntity(entity);
-        super.setEntityClass(entityClass);
-        this.paramNameSeq = paramNameSeq;
-        this.paramNameValuePairs = paramNameValuePairs;
-        this.expression = mergeSegments;
-        this.paramAlias = paramAlias;
-        this.lastSql = lastSql;
-        this.sqlComment = sqlComment;
-        this.sqlFirst = sqlFirst;
+    public QueryWrapperEx(T entity) {
+        super(entity);
+    }
+
+    public QueryWrapperEx(T entity, String... columns) {
+        super(entity, columns);
+    }
+
+    protected QueryWrapperEx(T entity, Class<T> entityClass, AtomicInteger paramNameSeq,
+                             Map<String, Object> paramNameValuePairs, MergeSegments mergeSegments,
+                             SharedString paramAlias, SharedString lastSql,
+                             SharedString sqlComment, SharedString sqlFirst) {
+        super(entity, entityClass, paramNameSeq, paramNameValuePairs, mergeSegments,
+                paramAlias, lastSql, sqlComment, sqlFirst);
     }
 
     public static <T> QueryWrapperEx<T> wrapper() {
         return new QueryWrapperEx<>();
+    }
+
+    @Override
+    protected QueryWrapperEx<T> instance() {
+        return new QueryWrapperEx<>(getEntity(), getEntityClass(), paramNameSeq, paramNameValuePairs,
+                new MergeSegments(), paramAlias, SharedString.emptyString(),
+                SharedString.emptyString(), SharedString.emptyString());
     }
 
     /**

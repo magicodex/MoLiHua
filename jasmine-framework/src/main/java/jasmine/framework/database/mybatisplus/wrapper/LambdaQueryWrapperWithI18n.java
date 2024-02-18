@@ -7,6 +7,9 @@ import com.baomidou.mybatisplus.core.enums.SqlLike;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import liquibase.util.StringUtil;
 
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import static com.baomidou.mybatisplus.core.enums.WrapperKeyword.APPLY;
 
 /**
@@ -18,8 +21,46 @@ public class LambdaQueryWrapperWithI18n<T> extends LambdaQueryWrapperEx<T> {
     private static final String I18N_TABLE_COLUMN_NAME_PREFIX = "t_i18n.";
     private static final String I18N_TABLE_ID_COLUMN_NAME = "t_i18n.id";
 
+    public LambdaQueryWrapperWithI18n() {
+        super();
+    }
+
+    public LambdaQueryWrapperWithI18n(T entity) {
+        super(entity);
+    }
+
+    public LambdaQueryWrapperWithI18n(Class<T> entityClass) {
+        super(entityClass);
+    }
+
+    protected LambdaQueryWrapperWithI18n(T entity, Class<T> entityClass, AtomicInteger paramNameSeq,
+                                         Map<String, Object> paramNameValuePairs, MergeSegments mergeSegments,
+                                         SharedString paramAlias, SharedString lastSql,
+                                         SharedString sqlComment, SharedString sqlFirst) {
+        super(entity, entityClass, paramNameSeq, paramNameValuePairs, mergeSegments,
+                paramAlias, lastSql, sqlComment, sqlFirst);
+    }
+
     public static <T> LambdaQueryWrapperWithI18n<T> wrapper() {
         return new LambdaQueryWrapperWithI18n<>();
+    }
+
+    @Override
+    protected LambdaQueryWrapperWithI18n<T> instance() {
+        return new LambdaQueryWrapperWithI18n<>(getEntity(), getEntityClass(), paramNameSeq, paramNameValuePairs,
+                new MergeSegments(), paramAlias, SharedString.emptyString(),
+                SharedString.emptyString(), SharedString.emptyString());
+    }
+
+    @Override
+    protected String columnToString(SFunction<T, ?> column, boolean onlyColumn) {
+        String columnName = super.columnToString(column, onlyColumn);
+
+        if (StringUtil.isEmpty(columnName)) {
+            return columnName;
+        }
+
+        return ("t." + columnName);
     }
 
     /**
@@ -79,17 +120,6 @@ public class LambdaQueryWrapperWithI18n<T> extends LambdaQueryWrapperEx<T> {
         });
 
         return this;
-    }
-
-    @Override
-    protected String columnToString(SFunction<T, ?> column, boolean onlyColumn) {
-        String columnName = super.columnToString(column, onlyColumn);
-
-        if (StringUtil.isEmpty(columnName)) {
-            return columnName;
-        }
-
-        return ("t." + columnName);
     }
 
 }

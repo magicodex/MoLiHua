@@ -1,13 +1,44 @@
 package jasmine.framework.database.mybatisplus.wrapper;
 
+import com.baomidou.mybatisplus.core.conditions.SharedString;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 
 import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author mh.z
  */
 public abstract class AbstractQueryWrapperEx<T, R extends QueryWrapper<T>> extends QueryWrapper<T> {
+
+    public AbstractQueryWrapperEx() {
+        super();
+    }
+
+    public AbstractQueryWrapperEx(T entity) {
+        super(entity);
+    }
+
+    public AbstractQueryWrapperEx(T entity, String... columns) {
+        super(entity, columns);
+    }
+
+    protected AbstractQueryWrapperEx(T entity, Class<T> entityClass, AtomicInteger paramNameSeq,
+                                     Map<String, Object> paramNameValuePairs, MergeSegments mergeSegments,
+                                     SharedString paramAlias, SharedString lastSql,
+                                     SharedString sqlComment, SharedString sqlFirst) {
+        super.setEntity(entity);
+        super.setEntityClass(entityClass);
+        this.paramNameSeq = paramNameSeq;
+        this.paramNameValuePairs = paramNameValuePairs;
+        this.expression = mergeSegments;
+        this.paramAlias = paramAlias;
+        this.lastSql = lastSql;
+        this.sqlComment = sqlComment;
+        this.sqlFirst = sqlFirst;
+    }
 
     @Override
     public R eq(boolean condition, String column, Object val) {

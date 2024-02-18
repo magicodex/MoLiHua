@@ -1,14 +1,45 @@
 package jasmine.framework.database.mybatisplus.wrapper;
 
+import com.baomidou.mybatisplus.core.conditions.SharedString;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 
 import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author mh.z
  */
 public abstract class AbstractLambdaQueryWrapperEx<T, R extends LambdaQueryWrapper<T>> extends LambdaQueryWrapper<T> {
+
+    public AbstractLambdaQueryWrapperEx() {
+        super();
+    }
+
+    public AbstractLambdaQueryWrapperEx(T entity) {
+        super(entity);
+    }
+
+    public AbstractLambdaQueryWrapperEx(Class<T> entityClass) {
+        super(entityClass);
+    }
+
+    protected AbstractLambdaQueryWrapperEx(T entity, Class<T> entityClass, AtomicInteger paramNameSeq,
+                                           Map<String, Object> paramNameValuePairs, MergeSegments mergeSegments,
+                                           SharedString paramAlias, SharedString lastSql,
+                                           SharedString sqlComment, SharedString sqlFirst) {
+        super.setEntity(entity);
+        super.setEntityClass(entityClass);
+        this.paramNameSeq = paramNameSeq;
+        this.paramNameValuePairs = paramNameValuePairs;
+        this.expression = mergeSegments;
+        this.paramAlias = paramAlias;
+        this.lastSql = lastSql;
+        this.sqlComment = sqlComment;
+        this.sqlFirst = sqlFirst;
+    }
 
     @Override
     public R eq(SFunction<T, ?> column, Object val) {
