@@ -17,6 +17,10 @@ public class SecurityTenantConfigProcessor implements TenantConfigProcessor {
         strategy.addIgnoreTable("sec_function_permission_rel");
         strategy.addIgnoreTable("sec_function_resource_rel");
         strategy.addIgnoreTable("sec_permission_resource_rel");
+
+        strategy.addIgnoreTable("sec_function_i18n");
+        strategy.addIgnoreTable("sec_permission_i18n");
+        strategy.addIgnoreTable("sec_resource_i18n");
     }
 
 }
