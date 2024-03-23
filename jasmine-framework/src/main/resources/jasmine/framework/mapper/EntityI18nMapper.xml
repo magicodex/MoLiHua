@@ -12,7 +12,8 @@
         created_by,
         last_updated_date,
         last_updated_by,
-        version_number
+        version_number,
+        tenant_id
         <foreach item="column" collection="columns" separator="">
             ,${column}
         </foreach>
@@ -24,7 +25,8 @@
         #{createdBy, jdbcType=BIGINT},
         #{lastUpdatedDate, jdbcType=TIMESTAMP},
         #{lastUpdatedBy, jdbcType=BIGINT},
-        #{versionNumber, jdbcType=INTEGER}
+        #{versionNumber, jdbcType=INTEGER},
+        #{tenantId, jdbcType=BIGINT}
         <foreach item="value" collection="values" separator="">
             ,#{value, jdbcType=VARCHAR}
         </foreach>

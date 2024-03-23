@@ -53,6 +53,7 @@ public class I18nCrud {
     protected static final String PARAM_LAST_UPDATED_DATE = "lastUpdatedDate";
     protected static final String PARAM_LAST_UPDATED_BY = "lastUpdatedBy";
     protected static final String PARAM_VERSION_NUMBER = "versionNumber";
+    protected static final String PARAM_TENANT_ID = "tenantId";
 
     public I18nCrud(SqlSession sqlSession, String tableName) {
         this.sqlSession = sqlSession;
@@ -76,6 +77,7 @@ public class I18nCrud {
 
         ZonedDateTime currentTime = ZonedDateTime.now();
         Long userId = CurrentSubject.getUserId();
+        Long tenantId = CurrentSubject.getTenantId();
 
         Map<String, Object> paramMap = NewUtil.map();
         // 多语言表
@@ -92,6 +94,8 @@ public class I18nCrud {
         paramMap.put(PARAM_LAST_UPDATED_BY, userId);
         // 版本字段
         paramMap.put(PARAM_VERSION_NUMBER, 1);
+        // 租户ID
+        paramMap.put(PARAM_TENANT_ID, tenantId);
         // 多语言列
         paramMap.put(PARAM_COLUMNS, data.keySet());
         paramMap.put(PARAM_VALUES, data.values());
