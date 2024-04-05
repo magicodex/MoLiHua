@@ -1,5 +1,9 @@
 package jasmine.framework.common.exception;
 
+import cn.hutool.core.util.ClassUtil;
+import jasmine.framework.common.constant.CommonMessageConstants;
+import jasmine.framework.common.util.StringUtil;
+
 import javax.annotation.Nullable;
 
 /**
@@ -22,7 +26,7 @@ public class InvalidDataException extends UnexpectedException {
     /** 默认key名称 */
     public static final String DEFAULT_KEY_NAME = "key";
     /** 默认错误信息/错误信息key */
-    public static final String DEFAULT_MESSAGE_OR_KEY = "data [{0}={1}] is invalid";
+    public static final String DEFAULT_MESSAGE_OR_KEY = CommonMessageConstants.INVALID_DATA;
 
     public InvalidDataException(Throwable cause) {
         super(DEFAULT_ERROR_CODE, null, null, cause);
@@ -47,7 +51,8 @@ public class InvalidDataException extends UnexpectedException {
     }
 
     public InvalidDataException(Class<?> dataType, String dataKeyName, Object dataKey) {
-        super(DEFAULT_ERROR_CODE, DEFAULT_MESSAGE_OR_KEY, new Object[]{dataKeyName, dataKey});
+        super(DEFAULT_ERROR_CODE, DEFAULT_MESSAGE_OR_KEY, new Object[]{ClassUtil.getClassName(dataType, true),
+                dataKeyName, StringUtil.toString(dataKey)});
         this.dataType = dataType;
         this.dataKeyName = dataKeyName;
         this.dataKey = dataKey;
